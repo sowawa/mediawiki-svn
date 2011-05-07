@@ -47,6 +47,7 @@ $messages['qqq'] = array(
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'apisb-desc' => 'Дазваляе налажваць выклікі [http://www.mediawiki.org/wiki/API MediaWiki API] з браўзэра',
@@ -70,6 +71,7 @@ $messages['be-tarask'] = array(
 	'apisb-submit' => 'Зрабіць запыт',
 	'apisb-query-prop' => 'Уласьцівасьці',
 	'apisb-query-list' => 'Сьпісы',
+	'apisb-query-meta' => 'Мэтазьвесткі',
 );
 
 /** Breton (Brezhoneg)
@@ -182,8 +184,11 @@ Reportez-vous sur [http://www.mediawiki.org/wiki/API la documentation de l’API
  * @author Toliño
  */
 $messages['gl'] = array(
+	'apisb-desc' => 'Permite a depuración das chamadas de [http://www.mediawiki.org/wiki/API API de MediaWiki] desde o navegador',
 	'apisandbox' => 'Zona de probas API',
 	'apisb-no-js' => "'''Error''': esta característica necesita JavaScript.",
+	'apisb-intro' => "Use esta páxina para experimentar co '''API de MediaWiki'''.
+Consulte a [http://www.mediawiki.org/wiki/API documentación de API] para obter máis información sobre o uso de API.",
 	'apisb-api-disabled' => 'API está desactivado neste sitio.',
 	'apisb-parameters' => 'Parámetros',
 	'apisb-result' => 'Resultado',
@@ -200,6 +205,7 @@ $messages['gl'] = array(
 	'apisb-submit' => 'Facer a solicitude',
 	'apisb-query-prop' => 'Propiedades',
 	'apisb-query-list' => 'Listas',
+	'apisb-query-meta' => 'Meta información',
 );
 
 /** Interlingua (Interlingua)
@@ -267,10 +273,23 @@ $messages['lb'] = array(
 	'apisb-api-disabled' => 'API ass op dësem Site ausgeschalt.',
 	'apisb-parameters' => 'Parameteren',
 	'apisb-result' => 'Resultat',
+	'apisb-select-action' => 'Aktioun eraussichen',
 	'apisb-select-value' => 'Wäert eraussichen',
 	'apisb-loading' => 'Lueden...',
+	'apisb-query-prop' => 'Eegeschaften',
 	'apisb-query-list' => 'Lëschten',
 	'apisb-query-meta' => 'Meta-Informatioun',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Eitvys200
+ */
+$messages['lt'] = array(
+	'apisb-api-disabled' => 'API yra išjungtas šioje svetainėje.',
+	'apisb-parameters' => 'Parametrai',
+	'apisb-result' => 'Rezultatai',
+	'apisb-select-action' => 'Pasirinkite veiksmą',
+	'apisb-loading' => 'Kraunasi ...',
 );
 
 /** Macedonian (Македонски)
@@ -328,5 +347,90 @@ Zie de [http://www.mediawiki.org/wiki/API API-documentatie] voor verdere details
 	'apisb-query-prop' => 'Eigenschappen',
 	'apisb-query-list' => 'Lijsten',
 	'apisb-query-meta' => 'Metaigegevens',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'apisb-desc' => 'Tillater å feilsøke [http://www.mediawiki.org/wiki/API MediaWiki API]-kall fra nettleseren',
+	'apisandbox' => 'API-sandkasse',
+	'apisb-no-js' => "'''Feil''': denne funksjonen krever JavaScript.",
+	'apisb-intro' => "Bruk denne siden til å eksperimentere med '''MediaWiki API'''.
+Sjekk [http://www.mediawiki.org/wiki/API API-dokumentasjonen] for flere detaljer om bruk av API.",
+	'apisb-api-disabled' => 'API er deaktivert på dette nettstedet.',
+	'apisb-parameters' => 'Parametere',
+	'apisb-result' => 'Resultat',
+	'apisb-request-url' => 'Forespurt URL:',
+	'apisb-request-post' => 'POST-data:',
+	'apisb-select-action' => 'Velg handling',
+	'apisb-select-query' => 'Hva skal du spørre etter?',
+	'apisb-select-value' => 'Velg verdi',
+	'apisb-loading' => 'Laster...',
+	'apisb-load-error' => 'Feil under lasting av API-beskrivelse',
+	'apisb-request-error' => 'Feil under utføring av API-forespørsel',
+	'apisb-namespaces-error' => 'Feil under lasting av navnerom',
+	'apisb-ns-main' => '(Hoved)',
+	'apisb-submit' => 'Foreta en forespørsel',
+	'apisb-query-prop' => 'Egenskaper',
+	'apisb-query-list' => 'Lister',
+	'apisb-query-meta' => 'Metainformasjon',
+);
+
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Odisha1
+ */
+$messages['or'] = array(
+	'apisb-ns-main' => '(ମୂଳ)',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'apisb-parameters' => 'Parametre',
+	'apisb-result' => 'Resultate',
+	'apisb-ns-main' => '(Prengepàle)',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'apisb-parameters' => 'పరామితులు',
+	'apisb-result' => 'ఫలితం',
+	'apisb-select-action' => 'చర్యను ఎంచుకోండి',
+	'apisb-loading' => 'లోడవుతోంది...',
+	'apisb-ns-main' => '(మొదటి)',
+	'apisb-query-list' => 'జాబితాలు',
+	'apisb-query-meta' => 'మెటా సమాచారం',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'apisb-desc' => 'Nagpapahintulot ng pagkumpuni ng mga pagtawag ng [http://www.mediawiki.org/wiki/API MediaWiki API] mula sa pantingin-tingin',
+	'apisandbox' => 'Kahong buhanginan ng API',
+	'apisb-no-js' => "'''Kamalian''': nangangailangan ng JavaScript ang tampok na ito.",
+	'apisb-intro' => "Gamitin ang pahinang ito upang mag-eksperimento sa pamamagitan ng '''API ng MediaWiki'''.
+Sumangguni sa [http://www.mediawiki.org/wiki/API dokumentasyon ng API] para sa karagdagan pang mga detalye sa paggamit ng API.",
+	'apisb-api-disabled' => 'Hindi pinagagana ang API sa sityong ito.',
+	'apisb-parameters' => 'Mga parametro',
+	'apisb-result' => 'Kinalabasan',
+	'apisb-request-url' => 'Hilingin ang URL:',
+	'apisb-request-post' => 'Dato ng POST:',
+	'apisb-select-action' => 'Piliin ang kilos',
+	'apisb-select-query' => 'Ano ang itatanong?',
+	'apisb-select-value' => 'Piliin ang halaga',
+	'apisb-loading' => 'Ikinakarga...',
+	'apisb-load-error' => 'Kamalian sa pagkakarga ng paglalarawan ng API',
+	'apisb-request-error' => 'Kamalian sa pagsasagawa ng hiling ng API',
+	'apisb-namespaces-error' => 'Kamalian sa pagkakarga ng mga puwang ng pangalan',
+	'apisb-ns-main' => '(Pangunahin)',
+	'apisb-submit' => 'Gumawa ng kahilingan',
+	'apisb-query-prop' => 'Mga katangiang-ari',
+	'apisb-query-list' => 'Mga talaan',
+	'apisb-query-meta' => 'Kabatirang meta',
 );
 

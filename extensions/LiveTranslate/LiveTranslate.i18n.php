@@ -108,6 +108,7 @@ $messages['az'] = array(
  */
 $messages['be-tarask'] = array(
 	'livetranslate-desc' => 'Дазваляе пераклады тэкстаў старонак на ляту ў Google Translate',
+	'right-managetms' => '[[Special:SpecialLiveTranslate|зьмена]] сьпісу памяці перакладаў',
 	'livetranslate-translate-to' => 'Перакласьці гэту старонку на',
 	'livetranslate-button-translate' => 'Перакласьці',
 	'livetranslate-button-translating' => 'Ідзе пераклад…',
@@ -217,6 +218,7 @@ $messages['bs'] = array(
  */
 $messages['de'] = array(
 	'livetranslate-desc' => 'Ermöglicht die unmittelbare Übersetzung des Seiteninhalts mit „Google Übersetzer“',
+	'right-managetms' => 'Liste der Übersetzungsspeicher [[Special:SpecialLiveTranslate|anpassen]]',
 	'livetranslate-translate-to' => 'Diese Seite in folgende Sprache übersetzen:',
 	'livetranslate-button-translate' => 'Übersetze',
 	'livetranslate-button-translating' => 'Übersetze …',
@@ -320,6 +322,7 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'livetranslate-desc' => 'Activa a tradución en vivo do contido dunha páxina mediante o servizo de tradución do Google',
+	'right-managetms' => '[[Special:SpecialLiveTranslate|Modificar]] a lista de memorias de tradución',
 	'livetranslate-translate-to' => 'Traducir esta páxina ao',
 	'livetranslate-button-translate' => 'Traducir',
 	'livetranslate-button-translating' => 'Traducindo...',
@@ -444,6 +447,7 @@ $messages['hsb'] = array(
  */
 $messages['ia'] = array(
 	'livetranslate-desc' => 'Permitte le traduction in directo de contento de paginas usante le servicio Google Translate',
+	'right-managetms' => '[[Special:SpecialLiveTranslate|Modificar]] le lista de memorias de traduction',
 	'livetranslate-translate-to' => 'Traducer iste pagina in',
 	'livetranslate-button-translate' => 'Traducer',
 	'livetranslate-button-translating' => 'Traduction in curso...',
@@ -562,6 +566,7 @@ $messages['ku-latn'] = array(
  */
 $messages['lb'] = array(
 	'livetranslate-desc' => 'Erméiglecht d\'live Iwwersetzen vu Säiteninhalt mam Service "Google Translate"',
+	'right-managetms' => "[[Special:SpecialLiveTranslate|Ännert]] d'Lëscht vun Iwwersetzungen am Späicher",
 	'livetranslate-translate-to' => 'Iwwersetzt dës Säit op',
 	'livetranslate-button-translate' => 'Iwwersetzen',
 	'livetranslate-button-translating' => 'Iwwersetzen...',
@@ -593,6 +598,7 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'livetranslate-desc' => 'Овозможува преведување на содржината на една страница во живо, користејќи Google Translate',
+	'right-managetms' => '[[Special:SpecialLiveTranslate|Менување]] на списокот на преводни памтила',
 	'livetranslate-translate-to' => 'Преведи ја страницава на',
 	'livetranslate-button-translate' => 'Преведи',
 	'livetranslate-button-translating' => 'Преведувам...',
@@ -633,6 +639,7 @@ $messages['ms'] = array(
  */
 $messages['nl'] = array(
 	'livetranslate-desc' => 'Maakt het mogelijk paginainhoud live te vertalen met behulp van de dienst Google Translate',
+	'right-managetms' => 'De lijst met vertaalgeheugens [[Special:SpecialLiveTranslate|wijzigen]]',
 	'livetranslate-translate-to' => 'Pagina vertalen in het',
 	'livetranslate-button-translate' => 'Vertalen',
 	'livetranslate-button-translating' => 'Bezig met vertalen...',
@@ -748,6 +755,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'livetranslate-desc' => 'Permite a tradução imediata do conteúdo das páginas usando o serviço Google Translate',
+	'right-managetms' => '[[Special:SpecialLiveTranslate|Modificar]] a lista de memórias de tradução',
 	'livetranslate-translate-to' => 'Traduzir esta página para',
 	'livetranslate-button-translate' => 'Traduzir',
 	'livetranslate-button-translating' => 'A traduzir...',

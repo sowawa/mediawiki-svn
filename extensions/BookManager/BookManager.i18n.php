@@ -292,6 +292,14 @@ $messages['lb'] = array(
 	'printversion-inexistent-book' => "D'Buch gouf net fonnt. Gitt w.e.g. den Numm vun engem Buch dat et gëtt a fir seng Drockversioun ze kréien.",
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Eitvys200
+ */
+$messages['lt'] = array(
+	'printversion' => 'Versija spausdinimui',
+	'printversion-inexistent-book' => 'Knyga nerasta. Įveskite esamos knygos pavadinimą kad gautumėte spausdinimo versiją.',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -357,6 +365,14 @@ $messages['pt-br'] = array(
 	'printversion-desc' => 'Gera uma [[Special:PrintVersion|versão para impressão]] de um livro',
 	'printversion-no-book' => 'Por favor informe o nome de um livro para obter sua versão para impressão.',
 	'printversion-inexistent-book' => 'Livro não encontrado. Por favor informe o nome de um livro existente para obter sua versão para impressão.',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'bookmanager-desc' => 'Struminde pe le libbre',
+	'printversion' => 'Versione ca se stambe',
 );
 
 /** Russian (Русский)

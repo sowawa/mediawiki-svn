@@ -48,6 +48,7 @@ $messages['qqq'] = array(
  */
 $messages['be-tarask'] = array(
 	'ratings-desc' => 'Дазваляе ўдзельнікам ацэньваць розныя «ўласьцівасьці» старонкі',
+	'right-rate' => 'адзначэньне асобных ўласьцівасьцяў старонак',
 	'ratings-starsratings-desc' => 'Паказвае простае кіраваньне адзнакамі з дапамогай зорак, які дазваляе ўдзельнікам адзначаць некаторыя ўласьцівасьці старонкі.
 Цяперашняя адзнака будзе паказаная адразу, калі ўдзельнік прагаласуе.',
 	'ratings-par-page' => 'Старонка, якая адзначаецца.',
@@ -74,6 +75,7 @@ $messages['br'] = array(
  */
 $messages['de'] = array(
 	'ratings-desc' => 'Ermöglicht es Benutzern einzelne Inhalte einer Seite unabhängig voneinander bewerten zu können',
+	'right-rate' => 'Bestimmte Inhalte einer Seite bewerten',
 	'ratings-starsratings-desc' => 'Zeigt ein einfaches Bewertungssteuerelement (Sterne) mit dem ein Benutzer bestimmte Inhalte einer Seite bewerten kann.
 Die aktuelle Bewertung eines Benutzers wird angezeigt, sofern er bereits eine vorgenommen hat.',
 	'ratings-par-page' => 'Die Seite auf die sich die Bewertung bezieht.',
@@ -106,6 +108,7 @@ Le vote actuel de l'utilisateur s'affichera initialement lorsqu'il a déjà vot�
  */
 $messages['he'] = array(
 	'ratings-desc' => 'אפשרות לדרג "מאפיינים" שונים של דפים',
+	'right-rate' => 'לדרג מאפיין מסוים של דף',
 	'ratings-starsratings-desc' => 'הצגה של רכיב פשוט שמאפשר למשתמש לדרג בכוכבים מאפיין מסוים בדף.
 ההצבעה הנוכחית של המשתמש תוצג בתחילה אחרי שהוא יצביע.',
 	'ratings-par-page' => 'הדף שאליו מתייחס הדירוג.',
@@ -122,6 +125,7 @@ $messages['he'] = array(
  */
 $messages['ia'] = array(
 	'ratings-desc' => 'Permitter al usatores de evalutar diverse "proprietates" de paginas',
+	'right-rate' => 'Evalutar un certe proprietate de un pagina',
 	'ratings-starsratings-desc' => 'Presenta un icone de stella con que le usator pote valutar un certe proprietate de un pagina.
 Le voto actual del usator essera monstrate initialmente si ille ha jam votate.',
 	'ratings-par-page' => 'Le pagina al qual le evalutation pertine.',
@@ -180,6 +184,7 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'ratings-desc' => 'Им овозможува на корисниците да оценуваат разни „својства“ на страниците',
+	'right-rate' => 'Оценување на извесно својство на страница',
 	'ratings-starsratings-desc' => 'Прикажува проста можност за доделување на ѕвездички за оценување на одредено својство на страницата.
 Ако корисникот веќе еднаш гласал, тогаш ќе се прикажува тековната оценка (глас).',
 	'ratings-par-page' => 'На која страница се однесува оценкава.',
@@ -197,6 +202,7 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'ratings-desc' => "Maakt het voor gebruikers mogelijk verschillende eigenschappen van pagina's te waarderen",
+	'right-rate' => 'Een eigenschap van een pagina waarderen',
 	'ratings-starsratings-desc' => 'Geeft een eenvoudig besturingselement met sterren weer waarin gebruikers een eigenschap van een pagina kunnen waarderen.
 De huidige waardering van gebruikers wordt weergegeven als er al gewaardeerd is.',
 	'ratings-par-page' => 'De pagina waar de waardering op van toepassing is.',

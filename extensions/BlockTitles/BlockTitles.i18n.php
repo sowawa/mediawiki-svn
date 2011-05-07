@@ -495,6 +495,13 @@ $messages['li'] = array(
 	'block_title_error' => "'t Is neet toegestaon om 'ne pasjena mit deze naam op te slaon.",
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Eitvys200
+ */
+$messages['lt'] = array(
+	'block_title_error' => 'Atsiprašome, šio puslapio pavadinimo negalima išsaugoti.',
+);
+
 /** Latvian (Latviešu)
  * @author Papuass
  */

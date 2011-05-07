@@ -61,9 +61,10 @@ $messages['arz'] = array(
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
-	'mediafunctions-desc' => 'Функцыя парсэра для атрыманьня інфармацыя пра мэдыя-файлы',
+	'mediafunctions-desc' => 'Функцыя парсэра для атрыманьня інфармацыя пра мэдыяфайлы',
 	'mediafunctions-invalid-title' => '«$1» не зьяўляецца слушнай назвай',
 	'mediafunctions-not-exist' => '«$1» не існуе',
 );

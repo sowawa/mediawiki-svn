@@ -512,6 +512,16 @@ $messages['li'] = array(
 	'categorywatch-autocat' => 'Otomatisch gevolg door $1',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Eitvys200
+ */
+$messages['lt'] = array(
+	'categorywatch-catmovein' => '$1 buvo perkeltas į $2 iš $3',
+	'categorywatch-catmoveout' => '$1 buvo perkeltas iš $2 į $3',
+	'categorywatch-catadd' => '$1 buvo pridėtas į $2',
+	'categorywatch-catsub' => '$1 buvo pašalintas iš $2',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  * @author Brest

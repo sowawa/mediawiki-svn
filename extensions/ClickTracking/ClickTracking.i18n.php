@@ -184,6 +184,19 @@ $messages['arz'] = array(
 	'ct-update-table' => 'حدّث الجدول',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'ct-start-date' => "Data d'aniciu (YYYYMMDD)",
+	'ct-end-date' => 'Data final (YYYYMMDD)',
+	'ct-increment-by' => 'Númberu de díes que representa cada puntu',
+	'ct-change-graph' => 'Camudar gráficu',
+	'ct-beginner' => 'Principiante',
+	'ct-intermediate' => 'Intermediu',
+	'ct-expert' => 'Espertu',
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
  */

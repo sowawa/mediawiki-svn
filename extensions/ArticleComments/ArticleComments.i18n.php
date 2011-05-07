@@ -1124,6 +1124,17 @@ Méiglech sinn "plain", "normal" a "wiki".',
 	'processcomment' => "D'Bemierkung zum Artikel gëtt verschafft",
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Eitvys200
+ */
+$messages['lt'] = array(
+	'article-comments-url-field' => 'Tinklalapis:',
+	'article-comments-url-string' => 'URL',
+	'article-comments-submit-button' => 'Siųsti',
+	'article-comments-leave-comment-link' => 'Palikite komentarą ...',
+	'article-comments-required-field' => '" $1 "laukas yra būtinas.',
+);
+
 /** Latvian (Latviešu)
  * @author GreenZeb
  * @author Papuass
@@ -1393,6 +1404,7 @@ $messages['or'] = array(
 	'article-comments-name-string' => 'ନାମ',
 	'article-comments-comment-string' => 'ମତାମତ',
 	'article-comments-comment-field' => 'ମତାମତ:',
+	'article-comments-submit-button' => 'ଦାଖଲକରିବା',
 );
 
 /** Polish (Polski)
@@ -1583,6 +1595,20 @@ $messages['ro'] = array(
 	'article-comments-user-is-blocked' => 'Contului dumneavoastră de utilizator nu îi este permisă modificarea paginii „[[$1]]”.',
 	'article-comments-comment-missing-name-parameter' => 'Lipseşte numele',
 	'article-comments-comment-missing-date-parameter' => 'Lipseşte data comentariului',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'article-comments-title-string' => 'titele',
+	'article-comments-name-string' => 'Nome',
+	'article-comments-name-field' => 'Nome (obbligatorie):',
+	'article-comments-url-string' => 'URL',
+	'article-comments-comment-string' => 'Commende',
+	'article-comments-comment-field' => 'Commende:',
+	'article-comments-submit-button' => 'Conferme',
+	'article-comments-leave-comment-link' => "Lasse 'nu commende ...",
 );
 
 /** Russian (Русский)

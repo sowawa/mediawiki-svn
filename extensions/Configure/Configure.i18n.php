@@ -1035,6 +1035,14 @@ $messages['az'] = array(
 	'configure-condition-name-5' => 'İstifadəçilərin IP ünvanları',
 );
 
+/** Bashkir (Башҡортса)
+ * @author Roustammr
+ */
+$messages['ba'] = array(
+	'configure-desc-group' => 'Төркөм',
+	'configure-desc-key' => 'Асҡыс',
+);
+
 /** Belarusian (Беларуская)
  * @author Тест
  */
@@ -2004,7 +2012,7 @@ $messages['ca'] = array(
 	'configure-section-cookie' => 'Testimonis (cookies)',
 	'configure-section-performance' => 'Rendiment',
 	'configure-section-test' => 'Proves',
-	'configure-section-upload' => 'Pujada',
+	'configure-section-upload' => 'Carrega',
 	'configure-section-sharedupload' => 'Pujada compartida',
 	'configure-section-mime' => 'Tipus MIME',
 	'configure-section-images' => 'Arxius',

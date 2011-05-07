@@ -3903,6 +3903,7 @@ $messages['kn'] = array(
 
 /** Korean (한국어)
  * @author Albamhandae
+ * @author Cwt96
  * @author Kwj2772
  */
 $messages['ko'] = array(
@@ -3914,6 +3915,7 @@ APC가 작동하지 않는 것으로 추정됩니다.',
 	'viewapc-clear-confirm' => '캐시를 갱신하시겠습니까?',
 	'viewapc-clear-user-cache' => '사용자 캐시 지우기',
 	'viewapc-php-version' => 'PHP 버전',
+	'viewapc-rps' => '초당 요청 $1 개',
 	'viewapc-display-filename' => '파일 이름',
 );
 
@@ -4219,14 +4221,18 @@ APC liek neet gesjtart te zeen.',
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Eitvys200
  * @author Perkunas
  * @author Tomasdd
  */
 $messages['lt'] = array(
+	'apc' => 'APC informacija',
 	'viewapc-mode-version-check' => 'Tikrinti versiją',
 	'viewapc-info-general' => 'Bendra informacija',
 	'viewapc-apc-version' => 'APC versija',
 	'viewapc-php-version' => 'PHP versija',
+	'viewapc-start-time' => 'Pradžios laikas',
+	'viewapc-rps' => '$1 prašymų per sekundę',
 	'viewapc-memory-usage' => 'Atminties naudojimas',
 	'viewapc-display-attribute' => 'Atributas',
 	'viewapc-display-value' => 'Reikšmė',
@@ -4238,7 +4244,16 @@ $messages['lt'] = array(
 	'viewapc-display-mtime' => 'Pakeista',
 	'viewapc-display-creation_time' => 'Sukurta',
 	'viewapc-display-deletion_time' => 'Ištrinta',
+	'viewapc-display-no-delete' => 'Neištrintas',
 	'viewapc-display-mem_size' => 'Dydis',
+	'viewapc-display-too-big' => "''Turinys yra per didelis, kad būtų rodomas.''",
+	'viewapc-ls-options-legend' => 'Parametrai',
+	'viewapc-ls-header-created' => 'Sukurta',
+	'viewapc-ls-header-deleted' => 'Ištrinta',
+	'viewapc-ls-scope-deleted' => 'Ištrinta',
+	'viewapc-ls-sort-size' => 'Dydis',
+	'viewapc-ls-limit-none' => 'Visi',
+	'viewapc-version-info' => 'Versijos informacija',
 );
 
 /** Latgalian (Latgaļu)
@@ -5147,7 +5162,9 @@ Una version novèla $2 es disponibla a http://pecl.php.net/package/APC/$2',
  * @author Odisha1
  */
 $messages['or'] = array(
+	'viewapc-display-info' => 'ନାମ',
 	'viewapc-ls-sort-name' => 'ନାମ',
+	'viewapc-ls-limit-none' => 'ସବୁ',
 );
 
 /** Ossetic (Иронау)
@@ -5746,12 +5763,14 @@ $messages['roa-tara'] = array(
 	'viewapc-apc-version' => 'versione APC',
 	'viewapc-php-version' => 'versione PHP',
 	'viewapc-shared-memory' => 'Memorie condivise',
+	'viewapc-uptime' => 'Tiembe de carecamende',
 	'viewapc-cached-files' => "File jndr'à cache",
 	'viewapc-memory-free' => 'Libbere: $1 ($2)',
 	'viewapc-memory-used' => 'Ausate: $1 ($2)',
 	'viewapc-display-attribute' => 'Attribbute',
 	'viewapc-display-value' => 'Valore',
 	'viewapc-display-filename' => "Nome d'u file",
+	'viewapc-display-device' => 'Despositive',
 	'viewapc-display-info' => 'Nome',
 	'viewapc-display-type' => 'Tipe',
 	'viewapc-display-mtime' => 'Cangiate',
@@ -5768,6 +5787,7 @@ $messages['roa-tara'] = array(
 	'viewapc-ls-header-deleted' => 'Scangellete',
 	'viewapc-ls-scope-active' => 'Attive',
 	'viewapc-ls-scope-deleted' => 'Scangellate',
+	'viewapc-ls-scope-both' => 'Tutte e doje',
 	'viewapc-ls-sort-size' => 'Dimenzione',
 	'viewapc-ls-sort-name' => 'Nome',
 	'viewapc-ls-sort-created' => 'Ccrejate',

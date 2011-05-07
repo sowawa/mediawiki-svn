@@ -82,6 +82,13 @@ $messages['az'] = array(
 	'commentbox-first-comment-heading' => '== Şərhlər ==',
 );
 
+/** Bashkir (Башҡортса)
+ * @author Roustammr
+ */
+$messages['ba'] = array(
+	'commentbox-name' => 'Исем:',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by

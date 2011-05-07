@@ -1147,6 +1147,7 @@ $messages['be'] = array(
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Wizardist
  * @author Zedlik
  */
 $messages['be-tarask'] = array(
@@ -1260,7 +1261,7 @@ $mvMVDTypeDefaultDisp павінна быць падмноствам $mvMVDTypeA
 	'video_feed_cat' => 'Відэа-канал для катэгорыі:',
 	'mv_cat_search_note' => 'Заўвага: катэгорыі зьмяшчаюць толькі сьпіс катэгорыяў вышэйшага ўзроўню.
 Для ўсіх мэта-зьвестак у дыяпазоне катэгорыяў шукайце $1',
-	'mv-category-media-count' => 'У катэгорыі $1 {{PLURAL:$1|мэдыя-сэгмэнт|мэдыя-сэгмэнты|мэдыя-сэгмэнтаў}}',
+	'mv-category-media-count' => 'У катэгорыі $1 {{PLURAL:$1|мэдыясэгмэнт|мэдыясэгмэнты|мэдыясэгмэнтаў}}',
 	'mv_mvd_linkback' => 'Частка струменя $1 <br />
 Перайсьці да прагляду струменя: $2',
 	'mvBadMVDtitle' => 'неіснуючы тып, струмень адсутнічае альбо няслушны фармат часу',

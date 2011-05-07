@@ -238,6 +238,7 @@ $messages['az'] = array(
 
 /** Bashkir (Башҡортса)
  * @author Assele
+ * @author Roustammr
  */
 $messages['ba'] = array(
 	'articlefeedback' => 'Мәҡәләне баһалау',
@@ -295,6 +296,7 @@ $messages['ba'] = array(
 	'articlefeedback-pitch-edit-accept' => 'Был битте үҙгәртергә',
 	'articlefeedback-survey-message-success' => 'Һорауҙарға яуап биреүегеҙ өсөн рәхмәт.',
 	'articlefeedback-survey-message-error' => 'Хата килеп сыҡты. Зинһар, һуңыраҡ яңынан ҡабатлап ҡарағыҙ.',
+	'articleFeedback-table-heading-page' => 'Бит',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
@@ -334,6 +336,7 @@ $messages['be-tarask'] = array(
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Правілы адносна прыватнасьці',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Правілы адносна прыватнасьці',
 	'articlefeedback-form-panel-submit' => 'Даслаць адзнакі',
+	'articlefeedback-form-panel-pending' => 'Вашыя адзнакі не адпраўленыя',
 	'articlefeedback-form-panel-success' => 'Пасьпяхова захаваны',
 	'articlefeedback-form-panel-expiry-title' => 'Вашыя адзнакі састарэлі',
 	'articlefeedback-form-panel-expiry-message' => 'Калі ласка, адзначце зноў гэтую старонку і дашліце новыя адзнакі.',
@@ -365,6 +368,8 @@ $messages['be-tarask'] = array(
 	'articlefeedback-survey-message-error' => 'Узьнікла памылка.
 Калі ласка, паспрабуйце потым.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Сёньняшнія ўзьлёты і падзеньні',
+	'articleFeedback-table-caption-dailyhighs' => 'Артыкулы з найвышэйшымі адзнакамі: $1',
+	'articleFeedback-table-caption-dailylows' => 'Артыкулы з найніжэйшымі адзнакамі: $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Найбольш зьмененыя на гэтым тыдні',
 	'articleFeedback-table-caption-recentlows' => 'Апошнія падзеньні',
 	'articleFeedback-table-heading-page' => 'Старонка',
@@ -775,7 +780,7 @@ Zkuste to prosím později.',
  * @author Purodha
  */
 $messages['de'] = array(
-	'articlefeedback' => 'Seiteneinschätzung',
+	'articlefeedback' => 'Arbeits- und Übersichtsseite zu Seiteneinschätzungen',
 	'articlefeedback-desc' => 'Ermöglicht die Einschätzung von Seiten (Pilotversion)',
 	'articlefeedback-survey-question-origin' => 'Auf welcher Seite befandest du dich zu Anfang dieser Umfrage?',
 	'articlefeedback-survey-question-whyrated' => 'Bitte lasse uns wissen, warum du diese Seite heute eingeschätzt hast (Zutreffendes bitte ankreuzen):',
@@ -806,6 +811,7 @@ $messages['de'] = array(
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Datenschutz',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Datenschutz',
 	'articlefeedback-form-panel-submit' => 'Einschätzung übermitteln',
+	'articlefeedback-form-panel-pending' => 'Deine Bewertungen wurden nicht übertragen',
 	'articlefeedback-form-panel-success' => 'Erfolgreich gespeichert',
 	'articlefeedback-form-panel-expiry-title' => 'Deine Einschätzung liegt zu lange zurück.',
 	'articlefeedback-form-panel-expiry-message' => 'Bitte beurteile die Seite erneut und speichere eine neue Einschätzung.',
@@ -837,8 +843,8 @@ $messages['de'] = array(
 	'articlefeedback-survey-message-error' => 'Ein Fehler ist aufgetreten.
 Bitte später erneut versuchen.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Heutige Hochs und Tiefs',
-	'articleFeedback-table-caption-dailyhighs' => 'Heutige Hochs',
-	'articleFeedback-table-caption-dailylows' => 'Heutige Tiefs',
+	'articleFeedback-table-caption-dailyhighs' => 'Artikel mit den höchsten Bewertungen: $1',
+	'articleFeedback-table-caption-dailylows' => 'Artikel mit den niedrigsten Bewertungen: $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Diese Woche am meisten geändert',
 	'articleFeedback-table-caption-recentlows' => 'Aktuelle Tiefs',
 	'articleFeedback-table-heading-page' => 'Seite',
@@ -1396,7 +1402,7 @@ $messages['fur'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'articlefeedback' => 'Avaliación do artigo',
+	'articlefeedback' => 'Panel de avaliación de artigos',
 	'articlefeedback-desc' => 'Versión piloto da avaliación dos artigos',
 	'articlefeedback-survey-question-origin' => 'En que páxina estaba cando comezou a enquisa?',
 	'articlefeedback-survey-question-whyrated' => 'Díganos por que valorou esta páxina (marque todas as opcións que cumpran):',
@@ -1427,6 +1433,7 @@ $messages['gl'] = array(
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Política de protección de datos',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Política de protección de datos',
 	'articlefeedback-form-panel-submit' => 'Enviar a avaliación',
+	'articlefeedback-form-panel-pending' => 'Non enviou as súas valoracións',
 	'articlefeedback-form-panel-success' => 'Gardado correctamente',
 	'articlefeedback-form-panel-expiry-title' => 'As súas avaliacións caducaron',
 	'articlefeedback-form-panel-expiry-message' => 'Volva avaliar esta páxina e envíe as novas valoracións.',
@@ -1458,8 +1465,8 @@ $messages['gl'] = array(
 	'articlefeedback-survey-message-error' => 'Houbo un erro.
 Inténteo de novo máis tarde.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Os altos e baixos de hoxe',
-	'articleFeedback-table-caption-dailyhighs' => 'Os altos de hoxe',
-	'articleFeedback-table-caption-dailylows' => 'Os baixos de hoxe',
+	'articleFeedback-table-caption-dailyhighs' => 'Artigos coas valoracións máis altas: $1',
+	'articleFeedback-table-caption-dailylows' => 'Artigos coas valoracións máis baixas: $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Os máis modificados esta semana',
 	'articleFeedback-table-caption-recentlows' => 'Últimos baixos',
 	'articleFeedback-table-heading-page' => 'Páxina',
@@ -1556,7 +1563,7 @@ Bitte versuech s speter nomol.',
  * @author YaronSh
  */
 $messages['he'] = array(
-	'articlefeedback' => 'הערכת ערך',
+	'articlefeedback' => 'לוח בקרה למשוב על ערך',
 	'articlefeedback-desc' => 'הערכת ערך (גרסה ניסיונית)',
 	'articlefeedback-survey-question-origin' => 'מאיזה עמוד הגעתם לסקר הזה?',
 	'articlefeedback-survey-question-whyrated' => 'נא ליידע אותנו מדובר דירגת דף זה היום (יש לסמן את כל העונים לשאלה):',
@@ -1587,6 +1594,7 @@ $messages['he'] = array(
 	'articlefeedback-form-panel-helpimprove-privacy' => 'מדיניות הפרטיות',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:מדיניות הפרטיות',
 	'articlefeedback-form-panel-submit' => 'לשלוח דירוגים',
+	'articlefeedback-form-panel-pending' => 'הדירוגים שלכם לא נשלחו',
 	'articlefeedback-form-panel-success' => 'נשמר בהצלחה',
 	'articlefeedback-form-panel-expiry-title' => 'הדירוגים שלכם פגו',
 	'articlefeedback-form-panel-expiry-message' => 'נא להעריך את הדף מחדש ולשלוח דירוגים חדשים.',
@@ -1618,6 +1626,8 @@ $messages['he'] = array(
 	'articlefeedback-survey-message-error' => 'אירעה שגיאה. 
 נא לנסות שוב מאוחר יותר.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'התוצאות הגבוהות והנמוכות היום',
+	'articleFeedback-table-caption-dailyhighs' => 'ערכים עם הדירוגים הגבוהים ביותר: $1',
+	'articleFeedback-table-caption-dailylows' => 'ערכים עם הדירוגים הנמוכים ביותר: $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'מה השתנה השבוע יותר מכול',
 	'articleFeedback-table-caption-recentlows' => 'תוצאות נמוכות לאחרונה',
 	'articleFeedback-table-heading-page' => 'דף',
@@ -1802,7 +1812,7 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'articlefeedback' => 'Evalutation de articulos',
+	'articlefeedback' => 'Pannello de evalutation de articulos',
 	'articlefeedback-desc' => 'Evalutation de articulos (version pilota)',
 	'articlefeedback-survey-question-origin' => 'In qual pagina te trovava tu quando tu comenciava iste sondage?',
 	'articlefeedback-survey-question-whyrated' => 'Per favor dice nos proque tu ha evalutate iste pagina hodie (marca tote le optiones applicabile):',
@@ -1833,6 +1843,7 @@ $messages['ia'] = array(
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Politica de confidentialitate',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Politica de confidentialitate',
 	'articlefeedback-form-panel-submit' => 'Submitter evalutationes',
+	'articlefeedback-form-panel-pending' => 'Tu evalutationes non ha essite submittite',
 	'articlefeedback-form-panel-success' => 'Salveguardate con successo',
 	'articlefeedback-form-panel-expiry-title' => 'Tu evalutationes ha expirate',
 	'articlefeedback-form-panel-expiry-message' => 'Per favor re-evaluta iste pagina e submitte nove evalutationes.',
@@ -1864,8 +1875,8 @@ $messages['ia'] = array(
 	'articlefeedback-survey-message-error' => 'Un error ha occurrite.
 Per favor reproba plus tarde.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Altos e bassos de hodie',
-	'articleFeedback-table-caption-dailyhighs' => 'Le altos de hodie',
-	'articleFeedback-table-caption-dailylows' => 'Le bassos de hodie',
+	'articleFeedback-table-caption-dailyhighs' => 'Articulos le plus appreciate: $1',
+	'articleFeedback-table-caption-dailylows' => 'Articulos le minus appreciate: $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Le plus modificate iste septimana',
 	'articleFeedback-table-caption-recentlows' => 'Bassos recente',
 	'articleFeedback-table-heading-page' => 'Pagina',
@@ -2303,7 +2314,7 @@ $messages['ku-latn'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'articlefeedback' => 'Artikelaschätzung',
+	'articlefeedback' => 'Iwwerbléck-Säit Artikelbewäertung',
 	'articlefeedback-desc' => 'Artikelaschätzung Pilotversioun',
 	'articlefeedback-survey-question-origin' => 'Op wat fir enger Säit war Dir wéi Dir mat der Ëmfro ugefaang huet?',
 	'articlefeedback-survey-question-whyrated' => 'Sot eis w.e.g. firwat datt Dir dës säit bewäert hutt (klickt alles u wat zoutrëfft):',
@@ -2380,21 +2391,49 @@ $messages['li'] = array(
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Eitvys200
  * @author Perkunas
  */
 $messages['lt'] = array(
+	'articlefeedback-survey-question-whyrated' => 'Prašome pranešti mums, kodėl jus įvertino šį puslapį šiandien (pažymėkite visus tinkamus):',
+	'articlefeedback-survey-answer-whyrated-sharing-opinion' => 'Man patinka dalintis savo nuomonę',
+	'articlefeedback-survey-answer-whyrated-other' => 'Kita',
+	'articlefeedback-survey-question-useful-iffalse' => 'Kodėl?',
+	'articlefeedback-survey-submit' => 'Siųsti',
+	'articlefeedback-survey-title' => 'Prašome atsakyti į kelis klausimus',
+	'articlefeedback-survey-thanks' => 'Dėkojame, kad užpildėte apklausa.',
+	'articlefeedback-error' => 'Įvyko klaida. Bandykite dar kartą vėliau.',
 	'articlefeedback-form-switch-label' => 'Įvertinti šį puslapį',
 	'articlefeedback-form-panel-title' => 'Įvertinti šį puslapį',
 	'articlefeedback-form-panel-clear' => 'Pašalinti šį įvertinimą',
+	'articlefeedback-form-panel-expertise' => 'Aš labai gerai nusimanau apie šią temą (neprivaloma)',
+	'articlefeedback-form-panel-expertise-profession' => 'Tai dalis mano profesijos',
+	'articlefeedback-form-panel-expertise-hobby' => 'Tai yra asmeninė aistra',
+	'articlefeedback-form-panel-expertise-other' => 'Mano žinių šaltinio čia nėra',
+	'articlefeedback-form-panel-helpimprove-note' => 'Mes jums atsiųsime patvirtinimą elektroniniu paštu. Mes nesidaliname Jūsų adresu su bet kuo. $1',
+	'articlefeedback-form-panel-helpimprove-privacy' => 'Privatumo politika',
+	'articlefeedback-form-panel-helpimprove-privacylink' => 'Projektas: Privatumo politika',
+	'articlefeedback-form-panel-submit' => 'Pateikti įvertinimus',
+	'articlefeedback-form-panel-pending' => 'Jūsų įvertinimai nebuvo pateikti',
+	'articlefeedback-form-panel-success' => 'Išsaugota sėkmingai',
 	'articlefeedback-report-empty' => 'Nėra vertinimų',
 	'articlefeedback-report-ratings' => '$1 vertinimas',
+	'articlefeedback-field-complete-label' => 'Užbaigti',
+	'articlefeedback-field-objective-label' => 'Tikslas',
+	'articlefeedback-pitch-reject' => 'Galbūt vėliau',
+	'articlefeedback-pitch-or' => 'arba',
+	'articlefeedback-pitch-survey-message' => 'Prašome skirkite truputi laiko kad užpildytumėte trumpą apklausą.',
+	'articlefeedback-pitch-survey-accept' => 'Pradėti apklausą',
 	'articlefeedback-pitch-join-message' => 'Ar norėjote sukurti paskyrą?',
 	'articlefeedback-pitch-join-accept' => 'Sukurti paskyrą',
 	'articlefeedback-pitch-join-login' => 'Prisijungti',
 	'articlefeedback-pitch-edit-message' => 'Ar žinote, kad galite redaguoti šį puslapį?',
 	'articlefeedback-pitch-edit-accept' => 'Redaguoti šį puslapį',
+	'articlefeedback-survey-message-success' => 'Dėkojame, kad užpildėte apklausa.',
 	'articlefeedback-survey-message-error' => 'Įvyko klaida.
 Pabandykite vėliau.',
+	'articleFeedback-table-caption-dailyhighs' => 'Straipsniai su aukščiausiais įvertinimais: $1',
+	'articleFeedback-table-caption-dailylows' => 'Straipsniai su žemiausiais įvertinimais: $1',
 );
 
 /** Latvian (Latviešu)
@@ -2474,7 +2513,7 @@ Lūdzu, mēģiniet vēlāk vēlreiz.',
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'articlefeedback' => 'Оценување на статија',
+	'articlefeedback' => 'Табла за оценување на статија',
 	'articlefeedback-desc' => 'Пилотна верзија на Оценување на статија',
 	'articlefeedback-survey-question-origin' => 'На која страница бевте кога ја започнавте анкетава?',
 	'articlefeedback-survey-question-whyrated' => 'Кажете ни зошто ја оценивте страницава денес (штиклирајте ги сите релевантни одговори)',
@@ -2506,6 +2545,7 @@ $messages['mk'] = array(
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Заштита на личните податоци',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Заштита на личните податоци',
 	'articlefeedback-form-panel-submit' => 'Поднеси оценки',
+	'articlefeedback-form-panel-pending' => 'Вашите оценки не се поднесени',
 	'articlefeedback-form-panel-success' => 'Успешно зачувано',
 	'articlefeedback-form-panel-expiry-title' => 'Вашите оценки истекоа',
 	'articlefeedback-form-panel-expiry-message' => 'Прегледајте ја страницава повторно и дајте ѝ нови оценки.',
@@ -2537,8 +2577,8 @@ $messages['mk'] = array(
 	'articlefeedback-survey-message-error' => 'Се појави грешка.
 Обидете се подоцна.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Издигања и падови за денес',
-	'articleFeedback-table-caption-dailyhighs' => 'Денешни издигања',
-	'articleFeedback-table-caption-dailylows' => 'Денешни падови',
+	'articleFeedback-table-caption-dailyhighs' => 'Статии со највисоки оценки: $1',
+	'articleFeedback-table-caption-dailylows' => 'Статии со најниски оценки: $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Најизменети за неделава',
 	'articleFeedback-table-caption-recentlows' => 'Скорешни падови',
 	'articleFeedback-table-heading-page' => 'Страница',
@@ -2571,7 +2611,7 @@ $3
  * @author Praveenp
  */
 $messages['ml'] = array(
-	'articlefeedback' => 'ലേഖനത്തിന്റെ മൂല്യനിർണ്ണയം',
+	'articlefeedback' => 'ലേഖനത്തിന്റെ മൂല്യനിർണ്ണയ നിയന്ത്രണോപാധികൾ',
 	'articlefeedback-desc' => 'ലേഖനത്തിന്റെ മൂല്യനിർണ്ണയം (പ്രാരംഭ പതിപ്പ്)',
 	'articlefeedback-survey-question-origin' => 'താങ്കൾ ഈ സർവേ ഉപയോഗിക്കാൻ തുടങ്ങിയപ്പോൾ ഏത് താളിലായിരുന്നു?',
 	'articlefeedback-survey-question-whyrated' => 'ഈ താളിന് താങ്കൾ ഇന്ന് നിലവാരമിട്ടതെന്തുകൊണ്ടാണെന്ന് ദയവായി പറയാമോ (ബാധകമാകുന്ന എല്ലാം തിരഞ്ഞെടുക്കുക):',
@@ -2602,6 +2642,7 @@ $messages['ml'] = array(
 	'articlefeedback-form-panel-helpimprove-privacy' => 'സ്വകാര്യതാനയം',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:സ്വകാര്യതാനയം',
 	'articlefeedback-form-panel-submit' => 'നിലവാരമിടലുകൾ സമർപ്പിക്കുക',
+	'articlefeedback-form-panel-pending' => 'താങ്കളുടെ നിലവാരമിടലുകൾ സമർപ്പിക്കപ്പെട്ടിട്ടില്ല',
 	'articlefeedback-form-panel-success' => 'വിജയകരമായി സേവ് ചെയ്തിരിക്കുന്നു',
 	'articlefeedback-form-panel-expiry-title' => 'താങ്കളിട്ട നിലവാരങ്ങൾ കാലഹരണപ്പെട്ടിരിക്കുന്നു',
 	'articlefeedback-form-panel-expiry-message' => 'ദയവായി ഈ താൾ പുനർമൂല്യനിർണ്ണയം ചെയ്ത് പുതിയ നിലവാരമിടലുകൾ സമർപ്പിക്കുക.',
@@ -2633,8 +2674,8 @@ $messages['ml'] = array(
 	'articlefeedback-survey-message-error' => 'എന്തോ പിഴവുണ്ടായിരിക്കുന്നു.
 ദയവായി വീണ്ടും ശ്രമിക്കുക.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'ഇന്നത്തെ കയറ്റിറക്കങ്ങൾ',
-	'articleFeedback-table-caption-dailyhighs' => 'ഇന്നത്തെ ഉയർച്ചകൾ',
-	'articleFeedback-table-caption-dailylows' => 'ഇന്നത്തെ താഴ്ചകൾ',
+	'articleFeedback-table-caption-dailyhighs' => 'ഉയർന്ന നിലവാരമിട്ട ലേഖനങ്ങൾ: $1',
+	'articleFeedback-table-caption-dailylows' => 'താഴ്ന്ന നിലവാരമിട്ട ലേഖനങ്ങൾ: $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'ഈ ആഴ്ചയിൽ ഏറ്റവുമധികം മാറിയത്',
 	'articleFeedback-table-caption-recentlows' => 'സമീപകാല ഇറക്കങ്ങൾ',
 	'articleFeedback-table-heading-page' => 'താൾ',
@@ -2731,7 +2772,7 @@ $messages['ne'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'articlefeedback' => 'Paginabeoordeling',
+	'articlefeedback' => 'Dashboard voor paginawaardering',
 	'articlefeedback-desc' => 'Paginabeoordeling (testversie)',
 	'articlefeedback-survey-question-origin' => 'Op welke pagina was u toen u aan deze vragenlijst bent begonnen?',
 	'articlefeedback-survey-question-whyrated' => 'Laat ons weten waarom u deze pagina vandaag hebt beoordeeld (kies alle redenen die van toepassing zijn):',
@@ -2763,6 +2804,7 @@ Probeer het later opnieuw.',
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Privacybeleid',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Privacybeleid',
 	'articlefeedback-form-panel-submit' => 'Beoordelingen opslaan',
+	'articlefeedback-form-panel-pending' => 'Uw waarderingen zijn niet opgeslagen',
 	'articlefeedback-form-panel-success' => 'Opgeslagen',
 	'articlefeedback-form-panel-expiry-title' => 'Uw beoordelingen zijn verlopen',
 	'articlefeedback-form-panel-expiry-message' => 'Beoordeel deze pagina alstublieft opnieuw en sla uw beoordeling op.',
@@ -2795,8 +2837,8 @@ Uw beoordeling is opgeslagen.',
 	'articlefeedback-survey-message-error' => 'Er is een fout opgetreden.
 Probeer het later opnieuw.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Hoogte- en dieptepunten van vandaag',
-	'articleFeedback-table-caption-dailyhighs' => 'Hoogste dagwaarden',
-	'articleFeedback-table-caption-dailylows' => 'Laagste dagwaarden',
+	'articleFeedback-table-caption-dailyhighs' => "Pagina's met de hoogste waarderingen: $1",
+	'articleFeedback-table-caption-dailylows' => "Pagina's met de laagste waarderingen: $1",
 	'articleFeedback-table-caption-weeklymostchanged' => 'Deze week de meeste wijzigingen',
 	'articleFeedback-table-caption-recentlows' => 'Recente dieptepunten',
 	'articleFeedback-table-heading-page' => 'Pagina',
@@ -2889,7 +2931,7 @@ $messages['nn'] = array(
  * @author Sjurhamre
  */
 $messages['no'] = array(
-	'articlefeedback' => 'Artikkelvurdering',
+	'articlefeedback' => 'Panelbord for artikkelvurdering',
 	'articlefeedback-desc' => 'Artikkelvurdering (pilotversjon)',
 	'articlefeedback-survey-question-origin' => 'Hvilken side var du på når du startet denne undersøkelsen?',
 	'articlefeedback-survey-question-whyrated' => 'Gi oss beskjed om hvorfor du vurderte denne siden idag (huk av alle som passer):',
@@ -2920,6 +2962,7 @@ $messages['no'] = array(
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Retningslinjer for personvern',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Retningslinjer for personvern',
 	'articlefeedback-form-panel-submit' => 'Send vurdering',
+	'articlefeedback-form-panel-pending' => 'Vurderingene dine har ikke blitt sendt inn',
 	'articlefeedback-form-panel-success' => 'Lagret',
 	'articlefeedback-form-panel-expiry-title' => 'Vurderingen din har utløpt',
 	'articlefeedback-form-panel-expiry-message' => 'Revurder denne siden og send inn din nye vurdering.',
@@ -2951,6 +2994,8 @@ $messages['no'] = array(
 	'articlefeedback-survey-message-error' => 'En feil har oppstått.
 Prøv igjen senere.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Dagens oppturer og nedturer',
+	'articleFeedback-table-caption-dailyhighs' => 'Artikler med høyest vurdering: $1',
+	'articleFeedback-table-caption-dailylows' => 'Artikler med lavest vurdering: $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Mest endret denne uken',
 	'articleFeedback-table-caption-recentlows' => 'Ukens nedturer',
 	'articleFeedback-table-heading-page' => 'Side',
@@ -3172,7 +3217,7 @@ $messages['ps'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
-	'articlefeedback' => 'Avaliação do artigo',
+	'articlefeedback' => 'Painel de avaliação de artigos',
 	'articlefeedback-desc' => 'Avaliação do artigo (versão de testes)',
 	'articlefeedback-survey-question-origin' => 'Em que página estava quando iniciou esta avaliação?',
 	'articlefeedback-survey-question-whyrated' => 'Diga-nos porque é que avaliou esta página hoje (marque todas as opções verdadeiras):',
@@ -3203,6 +3248,7 @@ $messages['pt'] = array(
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Política de privacidade',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Política de privacidade',
 	'articlefeedback-form-panel-submit' => 'Enviar avaliações',
+	'articlefeedback-form-panel-pending' => 'As suas avaliações não foram enviadas',
 	'articlefeedback-form-panel-success' => 'Gravado',
 	'articlefeedback-form-panel-expiry-title' => 'As suas avaliações expiraram',
 	'articlefeedback-form-panel-expiry-message' => 'Volte a avaliar esta página e envie as novas avaliações, por favor.',
@@ -3234,8 +3280,8 @@ $messages['pt'] = array(
 	'articlefeedback-survey-message-error' => 'Ocorreu um erro. 
 Tente novamente mais tarde, por favor.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Os melhores e piores de hoje',
-	'articleFeedback-table-caption-dailyhighs' => 'Os melhores de hoje',
-	'articleFeedback-table-caption-dailylows' => 'Os piores de hoje',
+	'articleFeedback-table-caption-dailyhighs' => 'Artigos com as avaliações mais elevadas: $1',
+	'articleFeedback-table-caption-dailylows' => 'Artigos com as avaliações mais baixas: $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Os mais alterados da semana',
 	'articleFeedback-table-caption-recentlows' => 'Os piores mais recentes',
 	'articleFeedback-table-heading-page' => 'Página',
@@ -3367,7 +3413,7 @@ A equipe da {{SITENAME}}',
  * @author Strainu
  */
 $messages['ro'] = array(
-	'articlefeedback' => 'Evaluare articol',
+	'articlefeedback' => 'Panou de control evaluare articol',
 	'articlefeedback-desc' => 'Evaluare articol',
 	'articlefeedback-survey-question-origin' => 'Care a fost ultima pagină vizitată înainte de a începe acest sondaj?',
 	'articlefeedback-survey-question-whyrated' => 'Vă rugăm să ne spuneți de ce ați evaluat această pagină astăzi (bifați tot ce se aplică):',
@@ -3435,7 +3481,7 @@ Vă rugăm să reîncercați mai târziu.',
  * @author Reder
  */
 $messages['roa-tara'] = array(
-	'articlefeedback' => 'Artichele de valutazione',
+	'articlefeedback' => "Cruscotte d'a valutazione de le vôsce",
 	'articlefeedback-desc' => 'Artichele de valutazione (versiune guidate)',
 	'articlefeedback-survey-answer-whyrated-contribute-rating' => "Ije vogghie condrebbuische a 'u pundegge totale d'a pàgene",
 	'articlefeedback-survey-answer-whyrated-contribute-wiki' => "Ije amm'a condrebbuì a {{SITENAME}}",
@@ -3452,7 +3498,10 @@ $messages['roa-tara'] = array(
 	'articlefeedback-form-panel-clear' => 'Live stu pundegge',
 	'articlefeedback-form-panel-expertise-profession' => "Jè parte d'a professiona meje",
 	'articlefeedback-form-panel-expertise-hobby' => "Queste jè 'na passiona profonda meje",
+	'articlefeedback-form-panel-helpimprove-privacy' => "Regole p'a privacy",
+	'articlefeedback-form-panel-helpimprove-privacylink' => "Project:Regole p'a privacy",
 	'articlefeedback-form-panel-submit' => 'Conferme le pundegge',
+	'articlefeedback-form-panel-pending' => "'U vote tune non g'ha state confermate",
 	'articlefeedback-form-panel-success' => 'Reggistrate cu successe',
 	'articlefeedback-form-panel-expiry-title' => 'Le pundegge tune onne scadute',
 	'articlefeedback-report-switch-label' => "Vide 'u pundegge d'a pàgene",
@@ -3472,6 +3521,8 @@ $messages['roa-tara'] = array(
 	'articlefeedback-pitch-edit-accept' => 'Cange sta pàgene',
 	'articlefeedback-survey-message-error' => "'N'errore s'a verificate.
 Pe piacere pruève arrete.",
+	'articleFeedback-table-heading-page' => 'Pàgene',
+	'articleFeedback-table-heading-average' => 'Medie',
 );
 
 /** Russian (Русский)
@@ -3750,7 +3801,7 @@ Prosím, skúste to neskôr.',
  * @author Dbc334
  */
 $messages['sl'] = array(
-	'articlefeedback' => 'Ocenjevanje člankov',
+	'articlefeedback' => 'Pregledna plošča povratnih informacij člankov',
 	'articlefeedback-desc' => 'Ocenjevanje člankov (pilotska različica)',
 	'articlefeedback-survey-question-origin' => 'Na kateri strani ste bili, ko ste začeli s to anketo?',
 	'articlefeedback-survey-question-whyrated' => 'Prosimo, povejte nam, zakaj ste danes ocenili to stran (izberite vse, kar ustreza):',
@@ -3813,8 +3864,8 @@ $messages['sl'] = array(
 	'articlefeedback-survey-message-error' => 'Prišlo je do napake.
 Prosimo, poskusite znova pozneje.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Današnji vzponi in padci',
-	'articleFeedback-table-caption-dailyhighs' => 'Današnji vzponi',
-	'articleFeedback-table-caption-dailylows' => 'Današnji padci',
+	'articleFeedback-table-caption-dailyhighs' => 'Članki z najvišjimi ocenami: $1',
+	'articleFeedback-table-caption-dailylows' => 'Članki z najnižjimi ocenami: $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Ta teden najbolj spremenjeno',
 	'articleFeedback-table-caption-recentlows' => 'Nedavni padci',
 	'articleFeedback-table-heading-page' => 'Stran',
@@ -4188,8 +4239,8 @@ $messages['vec'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
-	'articlefeedback' => 'Đánh giá bài',
-	'articlefeedback-desc' => 'Đánh giá bài (phiên bản thử nghiệm)',
+	'articlefeedback' => 'Bảng phản hồi bài',
+	'articlefeedback-desc' => 'Phản hồi bài',
 	'articlefeedback-survey-question-origin' => 'Bạn đang xem trang nào lúc khi bắt đầu cuộc khảo sát này?',
 	'articlefeedback-survey-question-whyrated' => 'Xin hãy cho chúng tôi biết lý do tại sao bạn đánh giá trang này hôm nay (kiểm tra các hộp thích hợp):',
 	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'Tôi muốn có ảnh hưởng đến đánh giá tổng cộng của trang',
@@ -4219,6 +4270,7 @@ $messages['vi'] = array(
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Chính sách về sự riêng tư',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Chính sách về sự riêng tư',
 	'articlefeedback-form-panel-submit' => 'Gửi đánh giá',
+	'articlefeedback-form-panel-pending' => 'Các đánh giá của bạn chưa được gửi',
 	'articlefeedback-form-panel-success' => 'Lưu thành công',
 	'articlefeedback-form-panel-expiry-title' => 'Các đánh giá của bạn đã hết hạn',
 	'articlefeedback-form-panel-expiry-message' => 'Xin vui lòng coi lại và đánh giá lại trang này.',
@@ -4250,8 +4302,8 @@ $messages['vi'] = array(
 	'articlefeedback-survey-message-error' => 'Đã gặp lỗi.
 Xin hãy thử lại sau.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Các điểm cao và thấp nhất hôm nay',
-	'articleFeedback-table-caption-dailyhighs' => 'Các điểm cao nhất hôm nay',
-	'articleFeedback-table-caption-dailylows' => 'Các điểm thấp nhất hôm nay',
+	'articleFeedback-table-caption-dailyhighs' => 'Các bài đánh giá cao nhất: $1',
+	'articleFeedback-table-caption-dailylows' => 'Các bài đánh giá thấp nhất: $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Các điểm thay đổi nhiều nhất vào tuần này',
 	'articleFeedback-table-caption-recentlows' => 'Các điểm thấp gần đây',
 	'articleFeedback-table-heading-page' => 'Trang',

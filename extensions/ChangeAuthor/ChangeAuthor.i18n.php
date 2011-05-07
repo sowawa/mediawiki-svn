@@ -1448,6 +1448,15 @@ Es doe dees foutmeljing jedere kier weer zuus, is de database allezelaeve kepot.
 	'right-changeauthor' => "De outäör van 'n bewirking aanpasse",
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Eitvys200
+ */
+$messages['lt'] = array(
+	'changeauthor-comment' => 'Komentaras:',
+	'changeauthor-changeauthors-single' => 'Keisti autorių',
+	'changeauthor-nosuchtitle' => 'Nėra puslapio pavadinimu " $1 ".',
+);
+
 /** Latvian (Latviešu)
  * @author Papuass
  */
@@ -1718,6 +1727,14 @@ $messages['oc'] = array(
 	'right-changeauthor' => "Modificar l'autor d'una revision",
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Odisha1
+ */
+$messages['or'] = array(
+	'changeauthor-pagenameform-go' => 'ଯିବା',
+	'changeauthor-comment' => 'ମତାମତ:',
+);
+
 /** Deitsch (Deitsch)
  * @author Xqt
  */
@@ -1929,6 +1946,8 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'changeauthor-pagenameform-go' => 'Veje',
+	'changeauthor-comment' => 'Commende:',
+	'changeauthor-changeauthors-single' => 'Cange autore',
 	'changeauthor-nosuchtitle' => 'Non g\'esiste \'na pàgene chiamete "$1".',
 );
 

@@ -427,6 +427,18 @@ $messages['lb'] = array(
 	'right-ArticleToCategory2AddCat' => "Kategorie bäi d'Kategorie derbäisetzen",
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Eitvys200
+ */
+$messages['lt'] = array(
+	'articletocategory2-create-article-under-category-text' => 'Pridėti puslapį į šią kategoriją',
+	'articletocategory2-create-article-under-category-button' => 'Sukurti',
+	'articletocategory2-create-category-under-category-text' => 'Pridėti kategoriją į šią kategoriją',
+	'articletocategory2-create-category-under-category-button' => 'Sukurti',
+	'right-ArticleToCategory2' => 'Pridėti puslapį į kategoriją',
+	'right-ArticleToCategory2AddCat' => 'Pridėti kategoriją į kategoriją',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */
@@ -507,6 +519,13 @@ $messages['no'] = array(
 	'right-ArticleToCategory2AddCat' => 'Legg kategori til kategorien',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Odisha1
+ */
+$messages['or'] = array(
+	'articletocategory2-create-category-under-category-button' => 'ତିଆରି',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
@@ -572,6 +591,15 @@ $messages['ro'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Creează',
 	'articletocategory2-create-category-under-category-text' => 'Adauga o categorie pentru această categorie',
 	'articletocategory2-create-category-under-category-button' => 'Creează',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'articletocategory2-create-article-under-category-button' => 'Ccreje',
+	'articletocategory2-create-category-under-category-text' => "Aggiunge 'na categorije a sta categorije",
+	'articletocategory2-create-category-under-category-button' => 'Ccreje',
 );
 
 /** Russian (Русский)

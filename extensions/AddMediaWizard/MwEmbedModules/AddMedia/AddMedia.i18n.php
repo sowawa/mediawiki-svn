@@ -1132,7 +1132,7 @@ $messages['be-tarask'] = array(
 	'mwe-ftype-ogg' => 'Відэа-файл ў фармаце Ogg',
 	'mwe-ftype-unk' => 'Невядомы фармат файла',
 	'mwe-am-commons-title' => 'ВікіСховішча',
-	'mwe-am-commons' => 'ВікіСховішча — архіў мэдыя-матэрыялаў, якія распаўсюджваюцца згодна ўмоваў вольных ліцэнзіяў (выявы, аўдыё- і відэа-кліпы)',
+	'mwe-am-commons' => 'ВікіСховішча — архіў мэдыяматэрыялаў, якія распаўсюджваюцца згодна ўмоваў вольных ліцэнзіяў (выявы, аўдыё- і відэакліпы)',
 	'mwe-am-kaltura-title' => 'Пошук Kaltura (усе крыніцы)',
 	'mwe-am-kaltura' => 'Агрэгаваны пошук Kaltura для мэдыя з вольнымі ліцэнзіямі з дапамогай некалькіх пошукавых сыстэмаў',
 	'mwe-am-this_wiki-title' => '{{SITENAME}}',
@@ -4108,8 +4108,10 @@ $messages['kn'] = array(
 );
 
 /** Korean (한국어)
+ * @author Cwt96
  * @author Gapo
  * @author Kwj2772
+ * @author Purodha
  */
 $messages['ko'] = array(
 	'mwe-cancel-confim' => '정말 취소 하시겠습니까?',
@@ -4128,6 +4130,7 @@ $messages['ko'] = array(
 	'mwe-cc_nd_title' => '변경금지',
 	'mwe-cc_sa_title' => '동일조건변경허락',
 	'mwe-cc_pd_title' => '퍼블릭 도메인',
+	'mwe-upload-a-file' => '파일 업로드',
 	'mwe-watch_this_page' => '이 문서를 주시하기',
 	'mwe-ftype-svg' => 'SVG 벡터 그래픽 파일',
 	'mwe-ftype-jpg' => 'JPEG 이미지 파일',
@@ -4136,97 +4139,6 @@ $messages['ko'] = array(
 	'mwe-ftype-ogg' => 'Ogg 비디오 파일',
 	'mwe-am-commons-title' => '위키미디어 공용',
 	'mwe-am-this_wiki-title' => '이 위키',
-	);
-
-/** Colognian (Ripoarisch)
- * @author Purodha
- */
-$messages['ksh'] = array(
-	'mwe-upload-stats-fileprogress' => '$1 vun $2',
-	'mwe-upload-unknown-size' => 'Dä Datteiömfang es unbikannt',
-	'mwe-cancel-confim' => 'Wells De werklesch ophüüre?',
-	'mwe-successfulupload' => 'Huhjelaade',
-	'mwe-uploaderror' => 'Fähler beim Huhlade',
-	'mwe-uploadwarning' => 'Warnung beim Huhlade',
-	'mwe-unknown-error' => 'Fähler, dä mer nit kenne:',
-	'mwe-return-to-form' => 'Jangk retuur op dat Fommulaa',
-	'mwe-file-exists-duplicate' => 'Di Dattei es dubbel met dä hee:',
-	'mwe-fileexists' => 'En Dattei met dämm Name jidd_et ald. Beß esu joot un donn <b><tt>$1</tt></b> prööfe, wann De Der nit sescher beß, of De jät ändere wells.',
-	'mwe-fileexists-thumb' => 'Datei ald doh',
-	'mwe-ignorewarning' => '{{int:ignorewarning}}',
-	'mwe-file-thumbnail-no' => 'Dä Dattei iere Name fängk met <b><tt>$1</tt></b> aan.',
-	'mwe-go-to-resource' => 'Jank op di Sigg doh drövver',
-	'mwe-upload-misc-error' => 'Dat Huhlaade jing donevve, woröm es nit kloh.',
-	'mwe-wgfogg_warning_bad_extension' => 'Do häss_en Dattei met enem onbikannte Datteinamesengk ußjsöhk (<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_file_types">mieh doh drövver</a>).',
-	'mwe-thumbnail-more' => 'Jrüüßer maache',
-	'mwe-filesource' => 'Quell:',
-	'mwe-filestatus' => 'Urhevverrääch:',
-	'mwe-imported_from' => '$1 es vun [$2 $3] empotteet woode. Op dä [$4 Ojinaal-Sigg] künnt mieh doh drövver ze lässe sin.',
-	'mwe-select_file' => 'Dattei ußsöhke',
-	'mwe-select_ownwork' => 'Esch ben bloß ming eije Werk aam huhlaade, un et darf jebruch wääde onger dä Lizänz:',
-	'mwe-upload' => 'Datei huhlaade',
-	'mwe-destfilename' => 'Dä Name för di neu Dattei:',
-	'mwe-summary' => '{{int:Summary}}',
-	'mwe-error_not_loggedin' => 'Do bes nit enjelogg udder häs nit dat Rääsch för jät huhzelaade.',
-	'mwe-watch-this-file' => 'Op heh di Dattei oppaße',
-	'mwe-ignore-any-warnings' => 'All de Warnunge övverjonn',
-	'mwe-upload-in-progress' => 'Et Huhlaade es em Jang (Donn heh dat Finster nit zohmaache)',
-	'mwe-uploaded-status' => 'Huhjelaade',
-	'mwe-add_media_wizard' => 'Der Hexemeister för Meedije dobeidonn',
-	'mwe-media_search' => 'Meedijje Söhke',
-	'mwe-am-box_layout' => 'Als ene Kaßte',
-	'mwe-am-list_layout' => 'Als en Leß',
-	'mwe-am-results_desc' => 'Eruß kohme $1 beß $2',
-	'mwe-am-results_desc_total' => 'Eruß kohme $1 beß $2 vun Schtöcker $3',
-	'mwe-am-results_next' => 'näx',
-	'mwe-am-results_prev' => 'vörijje',
-	'mwe-am-no_results' => 'Beim Söhke noh <b>$1</b> kohm nix erus',
-	'mwe-upload_tab' => 'Datei huhlaade',
-	'mwe-am-layout' => 'Forrem:',
-	'mwe-am-resource_edit' => 'Beärbeide: $1',
-	'mwe-resource_description_page' => 'Sigg, woh dat beschrevve es',
-	'mwe-link' => 'Lengk',
-	'mwe-am-do_insert' => 'Ennfööje',
-	'mwe-cc_title' => '<i lang="en">Creative Commons</i>',
-	'mwe-cc_by_title' => 'De Schriiver möße jenannt wääde',
-	'mwe-cc_nc_title' => 'Kein Jeldverdeene met zohjelohße',
-	'mwe-cc_nd_title' => 'Kein afjeleidt Werke zohjelohße',
-	'mwe-cc_sa_title' => 'Afjeleidt Werke onger desellve Bedenunge wigger jävve',
-	'mwe-cc_pd_title' => 'Allmende (jemeinfrei, <i lang="en">public domain</i>)',
-	'mwe-unknown_license' => 'En onbikannte Lizänz',
-	'mwe-no-import-by-url-linktext' => '<code lang="en">$wgAllowCopyUploads</code>',
-	'mwe-results_from' => 'Wat eruß kohm bei $1',
-	'mwe-missing_desc_see_source' => 'Dat Denge hee es unbeschrevve. Loor op dä [$1 Ojinaal-Sigg] noh, un hellf met, dat mer dat beschrevve krijje.',
-	'mwe-am-config_error' => 'Dä Hexemeister för Meedije hädd_enne Fähler en singe Enshtällunge: $1',
-	'mwe-no_recent_uploads' => 'Nix es köözlesch huhjelaade woode.',
-	'mwe-upload-a-file' => 'En neu Dattei huh laade',
-	'mwe-resource_page_desc' => 'Beschrevve:',
-	'mwe-edit_resource_desc' => 'Donn dä Wiki_Kood ändere, woh dat Denge met beschrevve es:',
-	'mwe-local_resource_title' => 'Dä Tittel heh em Wiki:',
-	'mwe-watch_this_page' => 'Op di Sigg hee oppasse',
-	'mwe-do_import_resource' => 'Empotteere',
-	'mwe-update_preview' => 'Vör_Aansesch op der neuste Shtand bränge',
-	'mwe-importing_asset' => 'Ben aam Empotteere',
-	'mwe-preview_insert_resource' => 'Vör_Aansesch övver et Ennfööje vun: $1',
-	'mwe-resource-needs-import' => 'De Quäll $1 moß noh $2 empotteet wääde',
-	'mwe-ftype-svg' => 'Ene <code lang="en"i>SVG</code> Dattei met Väktoore',
-	'mwe-ftype-jpg' => 'Ene <code lang="en"i>JPEG</code> Dattei met enem Beld',
-	'mwe-ftype-png' => 'Ene <code lang="en"i>PNG</code> Dattei met enem Beld',
-	'mwe-ftype-oga' => 'Ene <code lang="en"i>OGG</code> Dattei met Tön',
-	'mwe-ftype-ogg' => 'Ene <code lang="en"i>Ogg</code> Dattei met enem Viddejo',
-	'mwe-ftype-unk' => 'E nit bekannt Datteifommaat',
-	'mwe-am-commons-title' => '<i lang="en">Wikimedia Commons</i>',
-	'mwe-am-commons' => '<i lang="en">Wikimedia Commons</i>, en A\'schiif met Medije för jät vun ze liehre unger freije Lizänze, met Beld-, Ton-, un Viddejo-Datteije',
-	'mwe-am-this_wiki-title' => 'Heh dat Wiki',
-	'mwe-am-archive_org-title' => '<i lang="en">Archive.org</i>',
-	'mwe-am-flickr-title' => '<i lang="en">Flickr.com</i>',
-	'mwe-am-flickr-desc' => '<i lang="en">Flickr.com</i>, en Websigg för Fottos öffentlesch ze maache',
-	'mwe-am-metavid-title' => '<i lang="en">Metavid.org</i>',
-	'mwe-upload-transcoded-status' => 'Ömjesaz',
-	'mwe-upload-transcode-in-progress' => 'Et Huhlaade un Ömsäze es ungerwähß (Donn heh dat Finster nit zohmaache)',
-	
-	'mwe-upload-multi' => '{{PLURAL:$1|Ein Datei|$1 Dateie|Kein Datteije}} huhlaade',
-	'mwe-review-upload' => 'Donn de huhjelaade {{PLURAL:$1|Dattei|Datteije|nix}} nohloore',
 );
 
 /** Colognian (Ripoarisch)
@@ -4407,8 +4319,11 @@ Dir kënnt Iech $1 an nach eng kéier probéieren',
 	'mwe-upload-not-my-file' => 'E Fichier op $1 eroplueden deen net mäin eegent Wierk ass',
 	'mwe-upload-in-new-win-link' => 'an enger neier Fënster oder engem neien Tab eroplueden',
 	'mwe-upload-refresh' => 'aktualiséiert Är Lëscht vum Eroplueden',
+	'mwe-ie-inline-upload' => "D'Inline-Eroplueden ass elo fir den Internet Explorer ausgeschalt.
+Dir kënnt $1, duerno $2",
 	'mwe-upload-in-progress' => 'Eroplueden amgaang (maacht dës Fënster net zou)',
 	'mwe-uploaded-status' => 'Eropgelueden',
+	'mwe-transcoded-status' => 'Transcodéiert',
 	'mwe-uploaded-time-remaining' => 'Zäit déi nach bleift: $1',
 	'mwe-upload-done' => 'Ären Upload <i>sollt</i> accessibel sinn.',
 	'mwe-add_media_wizard' => 'Medien-Assistent derbäisetzen',
@@ -4432,6 +4347,7 @@ Dir kënnt Iech $1 an nach eng kéier probéieren',
 	'mwe-cc_pd_title' => 'Ëffentlechen Domaine',
 	'mwe-unknown_license' => 'Onbekannte Lizenz',
 	'mwe-results_from' => 'Resultater vu(n) $1',
+	'mwe-am-config_error' => "Astellungsfeeler vum Assistent fir d'Eropluede vu Medien: $1",
 	'mwe-your-recent-uploads' => 'Är eropgeluede Fichieren',
 	'mwe-your-recent-uploads-to' => 'Är Fichieren déi Dir rezent op $1 eropgelueden hutt',
 	'mwe-no_recent_uploads' => 'Rezent gouf näischt eropgelueden',
@@ -4455,6 +4371,9 @@ Dir kënnt Iech $1 an nach eng kéier probéieren',
 	'mwe-am-kaltura-title' => 'kaltura-Sich (All Quellen)',
 	'mwe-am-this_wiki-title' => 'Dës Wiki',
 	'mwe-am-this_wiki-desc' => 'Déi lokal Wiki',
+	'mwe-am-flickr-desc' => 'Flickr.com, een Online-Foto-Sharing-Site',
+	'mwe-upload-transcoded-status' => 'Transcodéiert',
+	'mwe-upload-transcode-in-progress' => 'TRanscodéieren an eroplueden am gaang (maacht dës Fënster net zou)',
 	'mwe-upload-multi' => '{{PLURAL:$1|Fichier|Fichieren}} eroplueden',
 	'mwe-review-upload' => '{{PLURAL:$1|Eropgeluedene Fichier|Eropgeluede Fichieren}} nokucken',
 );
@@ -4533,6 +4452,8 @@ Peržiūrėti originalą [$4 išteklių puslapio] dėl informacijos.',
 	'mwe-date-of-work' => 'Darbo dienos',
 	'mwe-link-login' => 'prisijungti',
 	'mwe-watch-this-file' => 'Stebėti šį failą',
+	'mwe-upload-own-file' => 'Įkelti savo darbus į $1',
+	'mwe-upload-not-my-file' => 'Įkelti failus, kuri yra ne mano darbas į $1',
 	'mwe-upload-in-progress' => 'Įkelimas viksta (Neuždarykite šio puslapio)',
 	'mwe-uploaded-status' => 'Įkelta',
 	'mwe-am-results_desc' => 'Rezultatai $1 iš $2',
@@ -5393,6 +5314,13 @@ $messages['oc'] = array(
 	'mwe-upload-transcoded-status' => 'Transcodat',
 	'mwe-upload-transcode-in-progress' => 'Transcodatge e telecargament en cors (tampetz pas aquesta fenèstra)',
 	'mwe-upload-multi' => 'Cargar {{PLURAL:$1|lo fichièr|los fichièrs}}',
+);
+
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Odisha1
+ */
+$messages['or'] = array(
+	'mwe-link-login' => 'ଲଗଇନ',
 );
 
 /** Deitsch (Deitsch)

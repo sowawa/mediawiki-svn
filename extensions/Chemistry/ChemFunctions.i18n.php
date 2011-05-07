@@ -123,6 +123,13 @@ $messages['az'] = array(
 	'chemFunctions_Formula' => 'Formul',
 );
 
+/** Bashkir (Башҡортса)
+ * @author Roustammr
+ */
+$messages['ba'] = array(
+	'chemFunctions_Formula' => 'Формула',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by

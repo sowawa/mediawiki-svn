@@ -324,6 +324,13 @@ $messages['lb'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|Kontrollpunkt späicheren]])',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Eitvys200
+ */
+$messages['lt'] = array(
+	'checkpoint' => 'Išsaugoti ir tęsti redagavimą',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

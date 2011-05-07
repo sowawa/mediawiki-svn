@@ -245,8 +245,14 @@ $messages['arz'] = array(
 $messages['ast'] = array(
 	'specialuserstats' => "Estadístiques d'usu",
 	'usagestatistics' => "Estadístiques d'usu",
+	'usagestatistics-desc' => "Amosar estadístiques d'usu de la wiki d'usuariu individual y globales",
 	'usagestatisticsfor' => "<h2>Estadístiques d'usu de [[User:$1|$1]]</h2>",
-	'usagestatisticsinterval' => 'Intervalu',
+	'usagestatisticsforallusers' => "<h2>Estadístiques d'usu de tolos usuarios</h2>",
+	'usagestatisticsinterval' => 'Intervalu:',
+	'usagestatisticsnamespace' => 'Espaciu de nomes:',
+	'usagestatisticsexcluderedirects' => 'Escluir redireiciones',
+	'usagestatistics-namespace' => 'Estes son les estadístiques del espaciu de nomes [[Special:Allpages/$1|$2]].',
+	'usagestatistics-noredirects' => 'Les [[Special:ListRedirects|redireiciones]] nun se tienen en cuenta.',
 	'usagestatisticstype' => 'Triba',
 	'usagestatisticsstart' => "Data d'aniciu:",
 	'usagestatisticsend' => 'Data final:',
@@ -254,6 +260,17 @@ $messages['ast'] = array(
 	'usagestatisticsnostart' => 'Por favor especifica una fecha inicial',
 	'usagestatisticsnoend' => 'Por favor especifica una fecha final',
 	'usagestatisticsbadstartend' => '<b>¡Fecha <i>Inicial</i> y/o <i>Final</i> non válides!</b>',
+	'usagestatisticsintervalday' => 'Día',
+	'usagestatisticsintervalweek' => 'Selmana',
+	'usagestatisticsintervalmonth' => 'Mes',
+	'usagestatisticsincremental' => 'Incrementales',
+	'usagestatisticsincremental-text' => 'incrementales',
+	'usagestatisticscumulative' => 'Acumulatives',
+	'usagestatisticscumulative-text' => 'acumulatives',
+	'usagestatisticscalselect' => 'Seleicionar',
+	'usagestatistics-editindividual' => "Estadístiques d'ediciones $1 d'usuariu individual",
+	'usagestatistics-editpages' => "Estadístiques de páxines $1 d'usuariu individual",
+	'right-viewsystemstats' => "Ver les [[Special:UserStats|estadístiques d'usu de la wiki]]",
 );
 
 /** Kotava (Kotava)

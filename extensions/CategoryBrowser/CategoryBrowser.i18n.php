@@ -1187,6 +1187,21 @@ Wiesselt Äre Borwseroder maacht en Update, wa méiglech.",
 	'cb_edit_paste_right_hint' => 'Operateur an déi nächst Positioun drasetzen (wa méiglech)',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Eitvys200
+ */
+$messages['lt'] = array(
+	'cb_previous_items_link' => 'Ankstesnis',
+	'cb_next_items_link' => 'Sekantis',
+	'cb_next_items_stats' => ' (iš $2 )',
+	'cb_cat_subcats' => 'subkategorijos',
+	'cb_cat_pages' => 'puslapiai',
+	'cb_cat_files' => 'failai',
+	'cb_edit_left_hint' => 'Perkelti į kairę, jei įmanoma',
+	'cb_edit_right_hint' => 'Perkelti į dešinę, jei įmanoma',
+	'cb_edit_remove_hint' => 'Ištrinti, jei įmanoma',
+);
+
 /** Latgalian (Latgaļu)
  * @author Dark Eagle
  */
@@ -1433,6 +1448,13 @@ Endre eller oppgrader nettleseren din, om mulig.',
 	'cb_edit_paste_right_hint' => 'Lim operator inn i neste posisjon, om mulig',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Odisha1
+ */
+$messages['or'] = array(
+	'cb_cat_files' => 'ଫାଇଲ',
+);
+
 /** Deitsch (Deitsch)
  * @author Xqt
  */
@@ -1643,6 +1665,8 @@ $messages['ro'] = array(
 $messages['roa-tara'] = array(
 	'cb_previous_items_link' => 'Precedende',
 	'cb_next_items_link' => 'Prossime',
+	'cb_next_items_stats' => ' (da $1)',
+	'cb_cat_subcats' => 'sotte categorije',
 	'cb_cat_pages' => 'pàggene',
 	'cb_cat_files' => 'file',
 	'cb_apply_button' => 'Appleche',

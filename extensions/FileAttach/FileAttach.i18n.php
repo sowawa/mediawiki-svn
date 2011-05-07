@@ -212,6 +212,17 @@ $messages['pms'] = array(
 	'fileattach-editcomment' => 'Archivi [[File:$1|$1]] alegà',
 );
 
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'fileattach-desc' => 'Permite fazer o upload de ficheiros para a página actual',
+	'fileattach-attachments' => 'Ficheiros anexados',
+	'fileattach-attachfile' => 'Anexar ficheiro',
+	'fileattach-uploadheading' => 'Anexar ficheiro a $1',
+	'fileattach-editcomment' => 'O ficheiro [[File:$1|$1]] foi anexado',
+);
+
 /** Russian (Русский)
  * @author Sasha Blashenkov
  */

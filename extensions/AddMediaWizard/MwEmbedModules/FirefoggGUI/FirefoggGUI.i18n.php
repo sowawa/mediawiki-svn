@@ -2745,15 +2745,22 @@ $messages['kn'] = array(
 );
 
 /** Korean (한국어)
+ * @author Cwt96
  * @author Gapo
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'fogg-videoQuality-title' => '비디오 품질',
+	'fogg-videoCodec-title' => '비디오 코덱',
+	'fogg-audioCodec-title' => '오디오 코덱',
+	'fogg-videoBitrate-title' => '비디오 비트레이트',
 	'fogg-copyright-title' => '저작권',
 	'fogg-transcoding' => '비디오를 Ogg로 인코딩하는 중...',
+	'fogg-select_file' => '파일 선택',
 	'fogg-installed' => 'Firefogg가 설치되었습니다',
 	'fogg-encoding-done' => '인코딩 완료',
 	'fogg-badtoken' => '토큰이 유효하지 않습니다.',
+	'fogg-preview' => '비디오 미리보기',
 );
 
 /** Colognian (Ripoarisch)
@@ -2914,7 +2921,37 @@ $messages['li'] = array(
  */
 $messages['lt'] = array(
 	'fogg-videoQuality-title' => 'Vaizdo kokybė',
+	'fogg-audioQuality-title' => 'Garso kokybė',
+	'fogg-width-title' => 'Vaizdo plotis',
+	'fogg-width-help' => 'Keisti į pateiktą plotį.',
+	'fogg-height-title' => 'Vaizdo aukštis',
+	'fogg-novideo-title' => 'Be vaizdo',
+	'fogg-noaudio-title' => 'Be garso',
+	'fogg-title-help' => 'Jūsų klipo pavadinimas',
+	'fogg-artist-title' => 'Kūrėjo vardas',
+	'fogg-artist-help' => 'Šio įrašo kūrėjas',
+	'fogg-date-title' => 'Data',
+	'fogg-location-title' => 'Vieta',
+	'fogg-organization-title' => 'Organizacija',
+	'fogg-organization-help' => 'Organizacijos pavadinimas (studija)',
 	'fogg-copyright-title' => 'Autorinės teisės',
+	'fogg-copyright-help' => 'Įrašo autorinės teisės',
+	'fogg-contact-title' => 'Kontaktai',
+	'fogg-contact-help' => 'Kontakto nuorodą',
+	'fogg-select_file' => 'Pasirinkite failą',
+	'fogg-select_new_file' => 'Pasirinkite naują failą',
+	'fogg-select_url' => 'Pasirinkite URL',
+	'fogg-check_for_firefogg' => 'Tikrinimas Firefogg ...',
+	'fogg-installed' => 'Firefogg yra įdiegtas.',
+	'fogg-not-installed' => 'Firefogg neįdiegtas arba neįjungtas.',
+	'fogg-please-install' => '$1 . Daugiau $2',
+	'fogg-please-install-install-linktext' => 'Įdiegti Firefogg',
+	'fogg-please-install-about-linktext' => 'apie Firefogg',
+	'fogg-use_latest_firefox' => 'Pirmiausia įdiekite $1.
+<i>Tada peržiūrėkite šį puslapį kad įdiegti <b>Firefogg</b> plėtinį.</i>',
+	'fogg-latest-firefox' => 'naujausias Firefox',
+	'fogg-preview' => 'Peržiūrėti video',
+	'fogg-hidepreview' => 'Slėpti peržiūrą',
 );
 
 /** Latvian (Latviešu)

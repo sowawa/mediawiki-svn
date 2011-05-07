@@ -295,7 +295,7 @@ $messages['arz'] = array(
 $messages['ast'] = array(
 	'ogg-desc' => "Remanador d'archivos Ogg Theora y Vorbis, con un reproductor JavaScript",
 	'ogg-short-audio' => 'Archivu de soníu ogg $1, $2',
-	'ogg-short-video' => 'Archivu de videu ogg $1, $2',
+	'ogg-short-video' => 'Ficheru de videu ogg $1, $2',
 	'ogg-short-general' => 'Archivu multimedia ogg $1, $2',
 	'ogg-long-audio' => '(Archivu de soníu ogg $1, llonxitú $2, $3)',
 	'ogg-long-video' => '(Archivu de videu ogg $1, llonxitú $2, $4×$5 píxeles, $3)',
@@ -428,16 +428,17 @@ $messages['be'] = array(
  * @author EugeneZelenko
  * @author Jim-by
  * @author Red Winged Duck
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'ogg-desc' => 'Апрацоўшчык файлаў Ogg Theora і Vorbis з прайгравальнікам JavaScript',
 	'ogg-short-audio' => 'Аўдыё-файл Ogg $1, $2',
 	'ogg-short-video' => 'Відэа-файл у фармаце Ogg $1, $2',
-	'ogg-short-general' => 'Мэдыя-файл Ogg $1, $2',
+	'ogg-short-general' => 'Мэдыяфайл Ogg $1, $2',
 	'ogg-long-audio' => '(аўдыё-файл Ogg $1, даўжыня $2, $3)',
 	'ogg-long-video' => '(відэа-файл Ogg $1, даўжыня $2, $4×$5 піксэляў, $3)',
 	'ogg-long-multiplexed' => '(мультыплексны аўдыё/відэа-файл Ogg, $1, даўжыня $2, $4×$5 піксэляў, усяго $3)',
-	'ogg-long-general' => '(мэдыя-файл Ogg, даўжыня $2, $3)',
+	'ogg-long-general' => '(мэдыяфайл Ogg, даўжыня $2, $3)',
 	'ogg-long-error' => '(Няслушны файл у фармаце Ogg: $1)',
 	'ogg-play' => 'Прайграць',
 	'ogg-pause' => 'Паўза',

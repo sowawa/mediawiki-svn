@@ -22,7 +22,7 @@ $messages['en'] = array(
  * @author Elancev Michael
  */
 $messages['ru'] = array(
-	'elm-easyref-ref'    => 'Ссылка $1',
-	'elm-easyref-close'  => 'Закрыть',
+	'elm-easyref-ref' => 'Ссылка $1',
+	'elm-easyref-close' => 'Закрыть',
 );
 

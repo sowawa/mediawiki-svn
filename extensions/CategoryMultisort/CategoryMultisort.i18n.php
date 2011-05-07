@@ -442,6 +442,13 @@ $messages['lb'] = array(
 	'prefs-category' => 'Kategorie',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Eitvys200
+ */
+$messages['lt'] = array(
+	'prefs-category' => 'Kategorija',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

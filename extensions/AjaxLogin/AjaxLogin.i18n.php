@@ -697,6 +697,7 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Cwt96
  * @author Klutzy
  * @author Kwj2772
  * @author Yknok29
@@ -709,6 +710,7 @@ $messages['ko'] = array(
 	'al-nosuchuser' => '"$1"이라는 이름을 가진 사용자가 없습니다.
 계정 이름은 대소문자를 구별합니다.
 철자를 다시 확인해보십시오.',
+	'al-createblocked' => '당신의 IP 주소로 계정을 생성하는 것은 차단되어 있습니다.',
 );
 
 /** Colognian (Ripoarisch)

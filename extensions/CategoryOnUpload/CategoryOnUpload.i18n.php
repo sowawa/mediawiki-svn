@@ -554,6 +554,13 @@ $messages['oc'] = array(
 	'categoryonupload-label' => 'Categoria :',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Odisha1
+ */
+$messages['or'] = array(
+	'categoryonupload-label' => 'ଶ୍ରେଣୀ:',
+);
+
 /** Picard (Picard)
  * @author Geoleplubo
  */

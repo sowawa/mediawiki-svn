@@ -13,6 +13,13 @@ $messages['en'] = array(
 	'public_read_whitelist' => '',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'whitelistpages-desc' => '{{desc}}',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -48,6 +55,20 @@ $messages['id'] = array(
 	'whitelistpages-desc' => 'Menyediakan [[MediaWiki:Public read whitelist|daftar putih]] halaman pada wiki pribadi agar pengguna anonim dapat membaca halaman yang ditentukan',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'whitelistpages-desc' => 'Määd et müjjelesch, en enem privaate Wiki Sigge [[MediaWiki:Public read whitelist|freizejävve för de Öffentleschkeit]], su dat och de naameloose Metmaacher dren lässe künne.',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'whitelistpages-desc' => 'Erméiglecht et op zouene Wikie [[MediaWiki:Public read whitelist|bestëmmte Säite fräi ze ginn]], esou datt déi vun anonyme Benotzer gekuckt kënne ginn',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -74,5 +95,12 @@ $messages['pt'] = array(
  */
 $messages['ru'] = array(
 	'whitelistpages-desc' => 'Позволяет добавлять страницы частной вики [[MediaWiki:Public read whitelist|в белый список]], чтобы анонимные участники могли их просматривать',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'whitelistpages-desc' => 'Nagpapahintulot ng mga pahina ng [[MediaWiki:Public read whitelist|talaan ng hindi pinagbabawalan]] sa isang pribadong wiki upang mabasa ng hindi nagpapakilalang mga tagagamit ang nasabing mga pahina',
 );
 

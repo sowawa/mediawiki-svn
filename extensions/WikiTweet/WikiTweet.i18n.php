@@ -32,7 +32,7 @@ $messages['en'] = array(
 	'wikitweet-tweets-from-room' => 'Tweets from room',
 );
 
-/** French (France)
+/** French (Français)
  * @author Thomas FAURÉ
  */
 $messages['fr'] = array(
@@ -41,7 +41,7 @@ $messages['fr'] = array(
 	'wikitweet-infoajax' => 'utilise la technologie ajax et se rafraîchit automatiquement toutes les 5 secondes sans recharger la page.',
 	'wikitweet-submit' => 'Tweeter',
 	'wikitweet-submitandmail' => 'Tweeter et prévenir',
-	'wikitweet-intheroom' => 'Vous êtes dans la room ',
+	'wikitweet-intheroom' => 'Vous êtes dans la room',
 	'wikitweet-subscribe' => "s'abonner",
 	'wikitweet-subscribed' => 'abonné',
 	'wikitweet-unsubscribe' => 'se désabonner',

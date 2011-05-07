@@ -1624,6 +1624,7 @@ $messages['loz'] = array(
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Eitvys200
  * @author Homo
  * @author Hugo.arg
  */
@@ -1632,6 +1633,8 @@ $messages['lt'] = array(
 	'badimages-add-btn' => 'Pridėti',
 	'badimages-added' => '$1 buvo pridėtas prie sąrašo.',
 	'badimages-name' => 'Pavadinimas:',
+	'badimages-not-added' => 'Vaizdas negali būti pridėtas.',
+	'badimages-not-removed' => 'Vaizdas negali būti pašalintas.',
 	'badimages-reason' => 'Priežastis:',
 	'badimages-remove' => '(pašalinti)',
 	'badimages-remove-btn' => 'Pašalinti',
@@ -2015,6 +2018,16 @@ $messages['oc'] = array(
 	'badimages-log-remove' => 'a levat [[$1]] de la lista dels imatges indesirables',
 	'badimages-page' => '{{ns:help}}:Lista dels imatges indesirables',
 	'right-badimages' => 'Modificar la lista dels imatges marrits',
+);
+
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Odisha1
+ */
+$messages['or'] = array(
+	'badimages-name' => 'ନାମ:',
+	'badimages-reason' => 'କାରଣ:',
+	'badimages-remove' => '(ବାହାର କରିବା)',
+	'badimages-remove-btn' => 'ବାହାର କରିବା',
 );
 
 /** Ossetic (Иронау)

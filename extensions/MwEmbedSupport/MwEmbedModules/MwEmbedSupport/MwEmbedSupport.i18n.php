@@ -328,6 +328,7 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'mwe-loading' => 'cargando...',
+	'mwe-size-kilobytes' => '$1 kB',
 	'mwe-error_load_lib' => 'Erro: o JavaScript $1 non se puido atopar ou non definía $2',
 	'mwe-apiproxy-setup' => 'Configurando o proxy API',
 	'mwe-load-drag-item' => 'Cargando o elemento arrastrado',

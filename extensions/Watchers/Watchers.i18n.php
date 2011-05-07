@@ -122,15 +122,20 @@ $messages['arz'] = array(
 
 /** Asturian (Asturianu)
  * @author Esbardu
+ * @author Xuacu
  */
 $messages['ast'] = array(
 	'watchers' => 'Vixilantes',
+	'watchers-desc' => 'Amuesa [[Special:Watchers|qué usuarios tienen una páxina na so llista de vixilancia]]',
 	'watchers_link_title' => '¿Quién vixila esta páxina?',
 	'watchers_error_article' => '<b>Error:</b> La páxina nun esiste.',
-	'watchers_header' => 'Persones que tán vixilando "[[:$1]]"',
-	'watchers_noone_watches' => 'Naide ta vixilando esta páxina.',
-	'watchers_x_or_more' => '$1 o más persones tán vixilando esta páxina.',
-	'watchers_less_than_x' => 'Hai menos de $1 vixilando esta páxina.',
+	'watchers-error-invalid-page' => "'''Fallu:''' \"\$1\" ye un títulu de páxina inválidu.",
+	'watchers_header' => '{{PLURAL:$2|Usuariu que ta|Usuarios que tan}} vixilando "[[:$1]]"',
+	'watchers_noone_watches' => 'Naide ta vixilando la páxina [[:$1]].',
+	'watchers_x_or_more' => '$1 o más {{PLURAL:$1|usuariu|usuarios}} tienen la páxina [[:$2]] na so llista de vixilancia.',
+	'watchers_less_than_x' => 'Menos de {{PLURAL:$1|usuariu|usuarios}} tienen la páxina [[:$2]] na so llista de vixilancia.',
+	'watchers-num' => '$1 {{PLURAL:$1|usuariu tien|usuarios tienen}} la páxina [[:$2]] {{PLURAL:$1|na so páxina|nes sos páxines}} de vixilancia.',
+	'right-watchers-list' => "[[Special:Watchers|Llista d'usuarios que vixilen cierta páxina]]",
 );
 
 /** Kotava (Kotava)
