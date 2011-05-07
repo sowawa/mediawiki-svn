@@ -11,7 +11,7 @@ $messages = array();
  * @author Thomas FAURÉ
  */
 $messages['en'] = array(
-	'wikitweet-desc' => 'Create a twitter-like feed into MediaWiki',
+	'wikitweet-desc' => 'Create a Twitter-like feed into MediaWiki',
 	'wikitweet-name' => 'MorphoTweets', // Do not translate, used as pagename
 	'wikitweet-pleaselogin' => 'Please login to tweet.',
 	'wikitweet-moretweets' => 'More tweets...',
@@ -19,9 +19,9 @@ $messages['en'] = array(
 	'wikitweet-submit' => 'Tweet',
 	'wikitweet-submitandmail' => 'Tweet and e-mail',
 	'wikitweet-intheroom' => 'You are in the room',
-	'wikitweet-subscribe' => 'suscribe',
-	'wikitweet-subscribed' => 'suscribed',
-	'wikitweet-unsubscribe' => 'unsuscribe',
+	'wikitweet-subscribe' => 'subscribe',
+	'wikitweet-subscribed' => 'subscribed',
+	'wikitweet-unsubscribe' => 'unsubscribe',
 	'wikitweet-delete' => 'delete',
 	'wikitweet-inform' => 'by the informer',
 	'wikitweet-private' => 'private',
@@ -54,4 +54,3 @@ $messages['fr'] = array(
 	'wikitweet-back-timeline' => 'Retour au flux',
 	'wikitweet-tweets-from-room' => 'Tweets de la room',
 );
-
