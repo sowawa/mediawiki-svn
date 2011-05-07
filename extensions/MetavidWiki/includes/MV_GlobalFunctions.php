@@ -126,6 +126,8 @@ function mvSetupExtension() {
 	$wgAutoloadClasses['MV_EditDataPage']		= $wgAutoloadClasses['MV_DataPage'] =  dirname( __FILE__ ) . '/articlepages/MV_DataPage.php';
 	$wgAutoloadClasses['MV_EditStreamPage']		= dirname( __FILE__ )  . '/MV_EditStreamPage.php';
 
+	$wgAutoloadClasses['LogReader']		= dirname( __FILE__ )  . '/LogEventsList.php';
+	$wgAutoloadClasses['LogViewer']		= dirname( __FILE__ )  . '/LogEventsList.php';
 
 	$wgAutoloadClasses['MV_Title'] 				= dirname( __FILE__ )  . '/MV_Title.php';
 	$wgAutoloadClasses['MV_Index'] 				= dirname( __FILE__ )  . '/MV_Index.php';
