@@ -31,6 +31,12 @@
 	text-align: right;
 }
 
+/**
+ * Per ArticleFeedback meeting of 2011-05-06,
+ * disable colors for now. We may re-enable them
+ * later if found useful.
+ */
+/*
 .articleFeedback-table-column-score-0,
 .articleFeedback-table-column-score-1 {
 	background-color: #ffcccc;
@@ -52,4 +58,13 @@
 }
 .articleFeedback-table-column-score-5 {
 	background-color: #55ff55;
+}
+*/
+
+.articleFeedback-table-column-bad {
+	background-color: #ffcc99;
+}
+
+.articleFeedback-table-column-good {
+	background-color: #99ff99;
 }
