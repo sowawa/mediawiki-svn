@@ -24,8 +24,12 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
+if ( version_compare( SMW_VERSION, '1.6', '>=' ) ) {
+	die( '<b>Error:</b> SMW 1.6 and later have the functionality of SMWAutoRefresh build in. Disable SMWAutoRefresh.' );
+}
+
 if ( !defined( 'SMWAutoRefresh_VERSION' ) ) {
-	define( 'SMWAutoRefresh_VERSION', '0.1 rc' );
+	define( 'SMWAutoRefresh_VERSION', '0.1' );
 	
 	$wgExtensionCredits[defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'other'][] = array(
 		'path' => __FILE__,
