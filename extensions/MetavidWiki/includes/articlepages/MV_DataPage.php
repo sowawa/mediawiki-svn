@@ -91,10 +91,10 @@
 		$sk = $wgUser->getSkin();
 		
 		$streamTitle = Title::makeTitle( MV_NS_STREAM, $this->mvTitle->getStreamNameText() );
-		$streamLink = $sk->makeLinkObj( $streamTitle,  $this->mvTitle->getStreamNameText()  );
+		$streamLink = $sk->makeLinkObj( $streamTitle, htmlspecialchars( $this->mvTitle->getStreamNameText() ) );
 		
 		$typeTitle = Title::makeTitle( NS_MEDIAWIKI_TALK, $this->mvTitle->getMvdTypeKey() );
-		$typeLink = $sk->makeLinkObj( $typeTitle, wfMsg( $this->mvTitle->getMvdTypeKey() ) );
+		$typeLink = $sk->makeLinkObj( $typeTitle, wfMsgHtml( $this->mvTitle->getMvdTypeKey() ) );
 		
 		// print_r($this->mvTitle); 
 		// do mvIndex query to get near stream count:
@@ -107,7 +107,7 @@
 			. '/' . $this->mvTitle->getTimeRequest() );
 		$nearLinkTxt = $this->mvTitle->getTimeDesc();
 		// force a known link for time queries in the metavid namespace:
-		$nearLink = $sk->makeKnownLinkObj( $nearTitle, $nearLinkTxt );
+		$nearLink = $sk->makeKnownLinkObj( $nearTitle, htmlspecialchars( $nearLinkTxt ) );
 		
 		$html = wfMsg( 'mv_mvd_linkback',  $streamLink, $nearLink, $typeLink );
 			

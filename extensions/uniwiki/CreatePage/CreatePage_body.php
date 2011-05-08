@@ -41,9 +41,9 @@ class SpecialCreatePage extends SpecialPage {
 
 				// if the title exists then let the user know and give other options
 				$wgOut->addWikiText ( wfMsg ( "createpage_titleexists", $title->getFullText() ) . "<br />" );
-				$editlink = $skin->makeLinkObj( $title, wfMsg ( "createpage_editexisting" ), 'action=edit' );
+				$editlink = $skin->makeLinkObj( $title, wfMsgHtml( "createpage_editexisting" ), 'action=edit' );
 				$wgOut->addHTML ( $editlink . '<br />'
-					. $skin->makeLinkObj ( $thisPage, wfMsg ( "createpage_tryagain" ) )
+					. $skin->makeLinkObj ( $thisPage, wfMsgHtml( "createpage_tryagain" ) )
 				);
 				return;
 			} else {

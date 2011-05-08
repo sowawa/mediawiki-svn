@@ -283,9 +283,9 @@ class SpecialTasks extends IncludableSpecialPage {
 		# Additional info
 		$help_title = Title::makeTitleSafe( NS_HELP, wfMsgForContent('tasks_help_page') );
 		$help_title->mFragment = $encType ;
-		$ext1 = $sk->makeLinkObj( $help_title , wfMsgForContent('tasks_help_page_link') );
+		$ext1 = $sk->makeLinkObj( $help_title , htmlspecialchars( wfMsgForContent('tasks_help_page_link') ) );
 		$more_title = SpecialPage::getTitleFor( 'Tasks' ); # This special page
-		$ext2 = $sk->makeLinkObj( $more_title , wfMsgForContent('tasks_more_like_it') , 'task_type='.$task->task_type );
+		$ext2 = $sk->makeLinkObj( $more_title , htmlspecialchars( wfMsgForContent('tasks_more_like_it') ), 'task_type='.$task->task_type );
 		$out .= wfMsgForContent ( 'tasks_help_separator' , $ext1 , $ext2 ) ;
 
 

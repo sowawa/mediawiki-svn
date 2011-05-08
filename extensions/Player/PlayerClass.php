@@ -419,9 +419,9 @@ class Player {
 		else $pagequery = '';
 
 		$sptitle = $this->getPlayerTitle();
-		$splink = $sk->makeLinkObj( $sptitle, wfMsg('player-goto-player'), $pagequery );
+		$splink = $sk->makeLinkObj( $sptitle, wfMsgHtml('player-goto-player'), $pagequery );
 
-		$iplink = $sk->makeLinkObj( $this->title, wfMsg('player-goto-page') );
+		$iplink = $sk->makeLinkObj( $this->title, wfMsgHtml('player-goto-page') );
 		$iflink = '<a href="'.htmlspecialchars($this->image->getURL()).'" class="internal">'.wfMsg('player-goto-file').'</a>'; #FIXME: get path
 
 		$caption = @$this->options['caption'];

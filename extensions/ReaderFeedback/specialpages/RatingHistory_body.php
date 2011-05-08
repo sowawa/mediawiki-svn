@@ -656,7 +656,7 @@ class RatingHistory extends UnlistedSpecialPage
 		foreach ( $res as $row ) {
 			$title = Title::makeTitleSafe( NS_USER, $row->name );
 			if( is_null($title) ) continue; // bad IP?
-			$html .= '<td>'.$this->skin->makeLinkObj( $title, $title->getText() )." [{$row->n}]</td>";
+			$html .= '<td>'.$this->skin->makeLinkObj( $title, htmlspecialchars( $title->getText() ) )." [{$row->n}]</td>";
 			$count++;
 			if( $total > $count && ($count % $columns) == 0 ) {
 				$html .= "</tr><tr>";

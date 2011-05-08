@@ -50,7 +50,7 @@ class AdvancedSearch extends SpecialPage {
 		return wfMsg( 'advancedsearch-permalink',
 			$wgUser->getSkin()->makeLinkObj(
 				SpecialPage::getTitleFor( "AdvancedSearch/$key" ),
-				wfMsg( 'advancedsearch-permalink-text' ) ) );
+				wfMsgHtml( 'advancedsearch-permalink-text' ) ) );
 	}
 
 	protected function showResults( $par ) {

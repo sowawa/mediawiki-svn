@@ -85,7 +85,7 @@ class MV_SpecialListStreams extends QueryPage {
 
 
 		$title = Title::makeTitle( MV_NS_STREAM, $result->title  );
-		$rlink = $skin->makeLinkObj( $title,  $img_html . ' ' . $title->getText()  );
+		$rlink = $skin->makeLinkObj( $title,  $img_html . ' ' . htmlspecialchars( $title->getText() )  );
 		// if admin expose an edit link
 		if ( $wgUser->isAllowed( 'delete' ) ) {
 			$rlink .= ' ' . $skin->makeKnownLinkObj( Title::makeTitle( MV_NS_STREAM, $title->getText() ),

@@ -143,7 +143,7 @@ function wfPostcommentForm() {
 	if ($wgUser->getID() == 0) {
 		$user_str = wfMsg( 'postcomment_notloggedin' );
 	} else {
-		$link = $sk->makeLinkObj( $wgUser->getUserPage(), $wgUser->getName() );
+		$link = $sk->makeLinkObj( $wgUser->getUserPage(), htmlspecialchars($wgUser->getName()) );
 		$user_str = wfMsg( 'postcomment_youareloggedinas', $link );
 	}
 

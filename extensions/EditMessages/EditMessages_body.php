@@ -49,7 +49,7 @@ class EditMessagesPage extends SpecialPage {
 		$languages = Language::getLanguageNames( true );
 		$sk = $wgUser->getSkin();
 		$wgOut->addHTML( Xml::element( 'h3', null, wfMsg( 'editmsg-show-list', $messageName ) . "\n" ) );
-		$wgOut->addHTML( '<p>' . $sk->makeLinkObj( $this->getTitle(), wfMsg( 'editmsg-new-search' ) ) . '</p>' );
+		$wgOut->addHTML( '<p>' . $sk->makeLinkObj( $this->getTitle(), wfMsgHtml( 'editmsg-new-search' ) ) . '</p>' );
 		$wgOut->addHTML( "<form method=\"POST\" action=\"$encAction\"><table>" );
 		foreach ( $languages as $lang => $langName ) {
 			$messages = false;
@@ -277,6 +277,6 @@ class EditMessagesPage extends SpecialPage {
 			$wgOut->addWikiMsg( 'editmsg-patch-success' );
 		}
 		$sk = $wgUser->getSkin();
-		$wgOut->addHTML( '<p>' . $sk->makeLinkObj( $this->getTitle(), wfMsg( 'editmsg-new-search' ) ) . '</p>' );
+		$wgOut->addHTML( '<p>' . $sk->makeLinkObj( $this->getTitle(), wfMsgHtml( 'editmsg-new-search' ) ) . '</p>' );
 	}
 }

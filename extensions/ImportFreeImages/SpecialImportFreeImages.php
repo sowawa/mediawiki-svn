@@ -154,7 +154,7 @@ class SpecialImportFreeImages extends SpecialPage {
 			$page++;
 			$wgOut->addHTML( '<br />' . $sk->makeLinkObj(
 				$this->getTitle(),
-				wfMsg( 'importfreeimages_next', $ifi->resultsPerPage ),
+				wfMsgHtml( 'importfreeimages_next', $ifi->resultsPerPage ),
 				"p=$page&q=" . urlencode( $q )
 			) );
 		}

@@ -177,7 +177,7 @@ class SpecialFilelist extends SpecialPage {
 			$ut = $s->img_user_text;
 
 			$nt = Title::newFromText( $name, NS_IMAGE );
-			$ul = $this->sk->makeLinkObj( Title::makeTitle( NS_USER, $ut ), $ut );
+			$ul = $this->sk->makeLinkObj( Title::makeTitle( NS_USER, $ut ), htmlspecialchars( $ut ) );
 
 			$gallery->add( $nt, "$ul<br />\n<i>".$wgLang->timeanddate( $s->img_timestamp, true )."</i><br />\n" );
 
@@ -215,7 +215,7 @@ class SpecialFilelist extends SpecialPage {
 			if ( 0 == $s->img_user ) {
 				$ul = $ut;
 			} else {
-				$ul = $this->sk->makeLinkObj( Title::makeTitle( NS_USER, $ut ), $ut );
+				$ul = $this->sk->makeLinkObj( Title::makeTitle( NS_USER, $ut ), htmlspecialchars( $ut ) );
 			}
 
 			$ilink = "<a href=\"" . htmlspecialchars( wfLocalFile( $name )->getUrl() ) .

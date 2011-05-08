@@ -90,7 +90,7 @@ class MV_SpecialCRUDStream extends SpecialPage {
 				$mvStreamTitle = Title::makeTitle( MV_NS_STREAM,  $this->stream_name );
 				if ( $mvStreamTitle->exists() ) {
 					$sk = $wgUser->getSkin();
-					$streamLink = $sk->makeLinkObj( $mvStreamTitle,  $this->stream_name );
+					$streamLink = $sk->makeLinkObj( $mvStreamTitle, htmlspecialchars( $this->stream_name ) );
 					$html .= wfMsg( 'mv_edit_strea_docu', $streamLink );
 				}
 			} else {
@@ -192,7 +192,7 @@ class MV_SpecialCRUDStream extends SpecialPage {
 				$status = $article->doEdit( $this->stream_desc, wfMsg( 'mv_summary_add_stream' ) );
 				if ( $status === true || ( is_object( $status ) && $status->isOK() ) ) {
 					// stream inserted sucesfully report to output
-					$out = wfMsg('mv_stream_added', $sk->makeLinkObj( $streamTitle,  $this->stream_name ) );
+					$out = wfMsg('mv_stream_added', $sk->makeLinkObj( $streamTitle, htmlspecialchars( $this->stream_name ) ) );
 				} else {
 					$out = wfMsg( 'mv_error_stream_insert' );
 				}
