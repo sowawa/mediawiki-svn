@@ -37,8 +37,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'This file is a MediaWiki extension, it is not a valid entry point' );
 }
 $dir = dirname( __FILE__ );
+$wgParserTestFiles[] = $dir . "/BookManagerParserTests.txt";
 $wgAutoloadClasses['BookManagerCore'] = $dir . '/BookManager.body.php';
-
 $wgAutoloadClasses['BookManagerNavBar'] = $dir . '/BookManager.body.php';
 $wgAutoloadClasses['PrintVersion'] = $dir . '/BookManager.body.php';
 $wgExtensionMessagesFiles['BookManager'] = $dir . '/BookManager.i18n.php';
