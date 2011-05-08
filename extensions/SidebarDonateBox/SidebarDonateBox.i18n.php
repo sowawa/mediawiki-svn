@@ -10,7 +10,8 @@ $messages = array();
  * @author Daniel Friesen
  */
 $messages['en'] = array(
-	'sidebardonatebox-desc' => 'Adds a custom donate box to the sidebar'
+	'sidebardonatebox-desc' => 'Adds a custom donate box to the sidebar',
+	'DONATE' => 'Donate',
 );
 
 /** Message documentation (Message documentation)
