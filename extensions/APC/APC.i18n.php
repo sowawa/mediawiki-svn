@@ -4250,10 +4250,18 @@ $messages['lt'] = array(
 	'viewapc-ls-options-legend' => 'Parametrai',
 	'viewapc-ls-header-created' => 'Sukurta',
 	'viewapc-ls-header-deleted' => 'Ištrinta',
+	'viewapc-ls-delete' => '[Ištrinti dabar]',
+	'viewapc-ls-scope-active' => 'Aktyvus',
 	'viewapc-ls-scope-deleted' => 'Ištrinta',
+	'viewapc-ls-scope-both' => 'Abu',
 	'viewapc-ls-sort-size' => 'Dydis',
+	'viewapc-ls-sort-created' => 'Sukurta',
+	'viewapc-ls-sort-deleted' => 'Ištrinta',
 	'viewapc-ls-limit-none' => 'Visi',
 	'viewapc-version-info' => 'Versijos informacija',
+	'viewapc-version-ok' => 'Jūs naudojate naujausią APC ($1)',
+	'viewapc-version-old' => 'Jūs naudojate sena APC versiją ($1).
+Nauja versija $2 galima rasti http://pecl.php.net/package/APC/$2',
 );
 
 /** Latgalian (Latgaļu)
@@ -4488,12 +4496,13 @@ $messages['mn'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Htt
  * @author Kaustubh
  */
 $messages['mr'] = array(
 	'apc' => 'APC माहिती',
 	'apc-desc' => 'मीडियाविकि बरोबर [[Special:APC|एपीसी सय पहा व बदला]]',
-	'right-apc' => 'Special:APC ची सगळी वैशिष्ठ्ये वापरा',
+	'right-apc' => '[[Special:APC]] ची सगळी वैशिष्ठ्ये वापरा',
 	'viewapc-apc-not-available' => 'सय माहिती उपलब्ध नाही.
 कदाचित एपीसी चालू नसेल.',
 	'viewapc-clear-confirm' => 'तुम्ही सय रिकामी करू इच्छिता का?',

@@ -76,6 +76,13 @@ $messages['mk'] = array(
 	'whitelistpages-desc' => 'Овозможува заведување на страници на приватно вики во [[MediaWiki:Public read whitelist|бел список]], овозможувајќи им на анонимните корисници да ги читаат наведените страници',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'whitelistpages-desc' => 'Membolehkan laman-laman [[MediaWiki:Public read whitelist|senarai putih]] dalam wiki persendirian supaya pengguna tanpa nama boleh membaca laman-laman berkenaan',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

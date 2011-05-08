@@ -1316,6 +1316,7 @@ $messages['mn'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Htt
  * @author Kaustubh
  * @author Mahitgar
  */
@@ -1329,7 +1330,7 @@ $messages['mr'] = array(
 कृपया हे डॉक्यूमेंट सही साठी उपलब्ध करण्यासाठी योग्य असल्याची खात्री करा, तसेच ''हा अर्ज पाठविण्यापूर्वी'' तुम्ही सर्व रकाने योग्य प्रकारे भरलेले आहेत, याची खात्री करा.",
 	'createsigndoc-pagename' => 'पान',
 	'createsigndoc-allowedgroup' => 'अधिकृत सदस्य गट:',
-	'createsigndoc-email' => 'इ-मेल पत्ता:',
+	'createsigndoc-email' => 'विपत्र पत्ता:',
 	'createsigndoc-address' => 'घरचा पत्ता:',
 	'createsigndoc-extaddress' => 'शहर, राज्य, देश:',
 	'createsigndoc-phone' => 'दूरध्वनी क्रमांक',

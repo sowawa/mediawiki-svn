@@ -285,11 +285,14 @@ $messages['lb'] = array(
  * @author Eitvys200
  */
 $messages['lt'] = array(
+	'apisb-no-js' => '"" Klaida "": ši funkcija reikalauja JavaScript.',
 	'apisb-api-disabled' => 'API yra išjungtas šioje svetainėje.',
 	'apisb-parameters' => 'Parametrai',
 	'apisb-result' => 'Rezultatai',
 	'apisb-select-action' => 'Pasirinkite veiksmą',
 	'apisb-loading' => 'Kraunasi ...',
+	'apisb-submit' => 'Pateikti prašymą',
+	'apisb-query-list' => 'Sąrašai',
 );
 
 /** Macedonian (Македонски)
@@ -318,6 +321,34 @@ $messages['mk'] = array(
 	'apisb-query-prop' => 'Својства',
 	'apisb-query-list' => 'Списоци',
 	'apisb-query-meta' => 'Метаинформации',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'apisb-desc' => 'Membolehkan penyahpepijatan panggilan [http://www.mediawiki.org/wiki/API MediaWiki API] dari pelayar',
+	'apisandbox' => 'Kotak pasir API',
+	'apisb-no-js' => "'''Perhatian''': ciri ini memerlukan JavaScript.",
+	'apisb-intro' => "Gunakan laman ini untuk bereksperimen dengan '''MediaWiki API'''.
+	Rujuk [http://www.mediawiki.org/wiki/API dokumentasi API] untuk keterangan lanjut tentang penggunaan API.",
+	'apisb-api-disabled' => 'API dimatikan di tapak web ini.',
+	'apisb-parameters' => 'Parameter',
+	'apisb-result' => 'Hasil',
+	'apisb-request-url' => 'URL permohonan:',
+	'apisb-request-post' => 'Data POST:',
+	'apisb-select-action' => 'Pilih tindakan',
+	'apisb-select-query' => 'Apa untuk ditanya?',
+	'apisb-select-value' => 'Pilih nilai',
+	'apisb-loading' => 'Sedang dimuatkan...',
+	'apisb-load-error' => 'Ralat ketika memuatkan keterangan API',
+	'apisb-request-error' => 'Ralat ketika melakukan permohonan API',
+	'apisb-namespaces-error' => 'Ralat ketika memuatkan ruang nama',
+	'apisb-ns-main' => '(Utama)',
+	'apisb-submit' => 'Buat permintaan',
+	'apisb-query-prop' => 'Sifat',
+	'apisb-query-list' => 'Senarai',
+	'apisb-query-meta' => 'Maklumat meta',
 );
 
 /** Dutch (Nederlands)
@@ -432,5 +463,15 @@ Sumangguni sa [http://www.mediawiki.org/wiki/API dokumentasyon ng API] para sa k
 	'apisb-query-prop' => 'Mga katangiang-ari',
 	'apisb-query-list' => 'Mga talaan',
 	'apisb-query-meta' => 'Kabatirang meta',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Trần Nguyễn Minh Huy
+ */
+$messages['vi'] = array(
+	'apisandbox' => 'Chỗ thử API',
+	'apisb-result' => 'Kết quả',
+	'apisb-request-url' => 'Yêu cầu URL:',
+	'apisb-query-meta' => 'Thông tin Meta',
 );
 

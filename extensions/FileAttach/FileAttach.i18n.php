@@ -147,6 +147,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'fileattach-desc' => 'Erméiglecht et Fichieren direkt op déi aktuell Säit eropzelueden',
 	'fileattach-attachfile' => 'Fichier drunhänken',
 	'fileattach-uploadheading' => 'Fichier un $1 drunhänken',
 	'fileattach-editcomment' => 'Fichier [[File:$1|$1]] dru gehaang',
@@ -180,6 +181,17 @@ $messages['ml'] = array(
 	'fileattach-attachfile' => 'പ്രമാണം ചേർക്കുക',
 	'fileattach-uploadheading' => '$1 എന്നതിൽ പ്രമാണം ചേർക്കുക',
 	'fileattach-editcomment' => 'പ്രമാണം [[File:$1|$1]] ചേർത്തിരിക്കുന്നു',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'fileattach-desc' => 'Membolehkan fail dimuat naik ke laman semasa',
+	'fileattach-attachments' => 'Lampiran fail',
+	'fileattach-attachfile' => 'Lampirkan fail',
+	'fileattach-uploadheading' => 'Lampirkan fail pada $1',
+	'fileattach-editcomment' => 'Fail [[File:$1|$1]] dilampirkan',
 );
 
 /** Erzya (Эрзянь)

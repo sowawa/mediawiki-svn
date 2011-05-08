@@ -3211,7 +3211,7 @@ $messages['mr'] = array(
 	'sign-country' => 'देश:',
 	'sign-phone' => 'दूरध्वनी क्रमांक:',
 	'sign-bday' => 'वय:',
-	'sign-email' => 'इ-मेल पत्ता:',
+	'sign-email' => 'विपत्र पत्ता:',
 	'sign-indicates-req' => '<small><i><span style="color:red">*</span> आवश्यक रकाने दर्शवितो.</i></small>',
 	'sign-hide-note' => '<small><i><span style="color:red">**</span> सूचना: प्रबंधकांना यादीत नसलेली माहिती सुद्धा पाहता येईल.</i></small>',
 	'sign-list-anonymous' => 'अनामिक म्हणून नोंद करा',

@@ -534,6 +534,13 @@ $messages['ig'] = array(
 	'commentbox-first-comment-heading' => '== Ókwúnókwú ==',
 );
 
+/** Ingush (ГІалгІай Ğalğaj)
+ * @author Sapral Mikail
+ */
+$messages['inh'] = array(
+	'commentbox-name' => 'ЦIи:',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

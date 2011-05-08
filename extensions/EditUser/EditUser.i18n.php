@@ -935,6 +935,20 @@ $messages['mr'] = array(
 	'edituser-exempt' => 'दिलेला सदस्य संपादित करू शकत नाही',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'edituser-desc' => 'Membolehkan pengguna istimewa menyunting keutamaan pengguna lain',
+	'edituser' => 'Sunting pengguna',
+	'edituser-username' => 'Nama pengguna:',
+	'edituser-dosearch' => 'Cari',
+	'edituser-nouser' => 'Pengguna "$1" tidak wujud.',
+	'edituser-exempt' => 'Pengguna "$1" tidak boleh disunting.',
+	'right-edituser' => 'Sunting keutamaan pengguna lain',
+	'right-edituser-exempt' => 'Orang lain tidak boleh menyunting keutamaan pengguna ini',
+);
+
 /** Maltese (Malti)
  * @author Chrisportelli
  */

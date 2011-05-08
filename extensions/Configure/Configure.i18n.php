@@ -5709,6 +5709,17 @@ $messages['ig'] = array(
 	'configure-condition-operator-or' => 'Mà',
 );
 
+/** Ingush (ГІалгІай Ğalğaj)
+ * @author Sapral Mikail
+ */
+$messages['inh'] = array(
+	'configure-desc-group' => 'Тоаб',
+	'configure-desc-key' => 'ДоагI',
+	'configure-desc-ns' => 'ЦIерий аренаш',
+	'configure-ext-use' => 'Болха бе',
+	'configure-form-reason' => 'Бахьан:',
+);
+
 /** Ido (Ido)
  * @author Wyvernoid
  */

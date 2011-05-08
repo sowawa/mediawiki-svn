@@ -230,6 +230,23 @@ $messages['pms'] = array(
 	'ratings-no-votes-yet' => "Pa gnun a l'ha anco' valutà son-sì.",
 );
 
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'ratings-desc' => 'Permite que os utilizadores avaliem várias "propriedades" das páginas',
+	'right-rate' => 'Avalie uma determinada propriedade de uma página',
+	'ratings-starsratings-desc' => 'Mostra um controlo simples de avaliação com estrelas, que permite que o utilizador avalie uma determinada propriedade de uma página.
+Quando o utilizador já tiver votado antes, será inicialmente mostrado o seu voto actual.',
+	'ratings-par-page' => 'A página à qual a avaliação se aplica.',
+	'ratings-par-tag' => 'A marca da avaliação. A marca indica a "propriedade" que será avaliada na página.',
+	'ratings-par-showdisabled' => 'Mostrar as avaliações quando o utilizador não pode votar (no modo de leitura).',
+	'ratings-par-incsummary' => 'Mostrar um resumo dos votos actuais acima do elemento de avaliação?',
+	'ratings-votesummary-desc' => 'Apresenta um resumo da votação referente à página e propriedades indicadas.',
+	'ratings-current-score' => 'Avaliação actual dos utilizadores: $1 ($2 {{PLURAL:$2|avaliação|avaliações}})',
+	'ratings-no-votes-yet' => 'Ainda não existem avaliações.',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

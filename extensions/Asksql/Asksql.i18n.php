@@ -876,6 +876,23 @@ $messages['mr'] = array(
 	'right-asksql' => 'एसक्यूएल पृच्छा करा',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'asksql' => 'Pertanyaan SQL',
+	'asksql-desc' => 'Kemukakan pertanyaan SQL dalam [[Special:Asksql|laman khas ini]]',
+	'asksqltext' => "Gunakan borang di bawah untuk membuat pertanyaan pangkalan data secara langsung.
+Gunakan tanda petikan tunggal ('seperti ini') untuk menyempadani literal rentetan.
+Selalunya ini boleh membebankan lagi pelayan, jadi tolong jangan terlalu kerap menggunakan fungsi ini.",
+	'sqlislogged' => 'Sila ambil perhatian bahawa semua pertanyaan direkodkan dalam log.',
+	'sqlquery' => 'Isikan pertanyaan',
+	'querybtn' => 'Hantar pertanyaan',
+	'selectonly' => 'Hanya pertanyaan baca sahaja yang dibenarkan.',
+	'querysuccessful' => 'Pertanyaan berjaya',
+	'right-asksql' => 'Kemukakan pertanyaan SQL',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

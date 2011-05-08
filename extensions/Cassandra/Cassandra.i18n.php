@@ -285,6 +285,13 @@ $messages['ml'] = array(
 	'cassandra-desc' => 'നാൾപ്പതിപ്പ് എഴുത്തുകൾ [http://cassandra.apache.org/ അപ്പാച്ചേ കസാൻഡ്രാ] ഡേറ്റാബേസിൽ സൂക്ഷിച്ച് വെയ്ക്കുക',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'cassandra-desc' => 'Simpan teks semakan dalam pangkalan data [http://cassandra.apache.org/ Apache Cassandra]',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

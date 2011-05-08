@@ -4971,6 +4971,7 @@ $messages['sr-el'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Ainali
  * @author Boivie
  * @author Cohan
  * @author Fluff
@@ -5045,6 +5046,7 @@ $messages['sv'] = array(
 	'fundraiserstats-tab-averages' => 'Genomsnitt (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximum (USD)',
 	'fundraiserstats-tab-ytd' => 'Total i år (USD)',
+	'fundraiserstats-instructions' => 'För att visa statistik för en dag, håll muspekaren över linjen för den dagen. Varje år är en annan färg i diagrammet.',
 	'fundraiserstats-customize' => 'Anpassa',
 	'fundraiserstats-show-years' => 'Visa de följande åren:',
 	'fundraiserstats-time-zone' => 'Tidszon:',

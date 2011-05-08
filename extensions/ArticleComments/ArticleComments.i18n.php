@@ -1128,8 +1128,13 @@ Méiglech sinn "plain", "normal" a "wiki".',
  * @author Eitvys200
  */
 $messages['lt'] = array(
+	'article-comments-title-string' => 'Kreipinys',
+	'article-comments-name-string' => 'Vardas',
+	'article-comments-name-field' => 'Vardas (privaloma):',
 	'article-comments-url-field' => 'Tinklalapis:',
 	'article-comments-url-string' => 'URL',
+	'article-comments-comment-string' => 'Komentaras',
+	'article-comments-comment-field' => 'Komentaras:',
 	'article-comments-submit-button' => 'Siųsti',
 	'article-comments-leave-comment-link' => 'Palikite komentarą ...',
 	'article-comments-required-field' => '" $1 "laukas yra būtinas.',

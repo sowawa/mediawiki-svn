@@ -1429,6 +1429,7 @@ $messages['te'] = array(
  */
 $messages['tl'] = array(
 	'wikisync' => 'Pagsasabay ng Wiki',
+	'wikisync-desc' => 'Nagbibigay ng isang [[Special:WikiSync|natatanging pahina]] upang maisabay ang kamakailang mga pagbabago ng dalawang mga wiki - isang katutubo at isang malayo',
 	'wikisync_direction' => 'Mangyaring piliin ang kapupuntahan ng pagpapasabayan',
 	'wikisync_local_root' => 'Katutubong ugat ng lugar ng wiki',
 	'wikisync_remote_root' => 'Malayong ugat ng lugar ng wiki',
@@ -1452,6 +1453,7 @@ $messages['tl'] = array(
 	'wikisync_apply_button' => 'Ilapat',
 	'wikisync_log_imported_by' => 'Inangkat ng [[Special:WikiSync|WikiSync]]',
 	'wikisync_log_uploaded_by' => 'Ikinargang papaitaas ng [[Special:WikiSync|WikiSync]]',
+	'wikisync_unsupported_user' => 'Tanging isang tagagamit na $1 lamang ng natatanging bot ang makapagsasagawa ng mga pagsasabay ng wiki. Mangyaring lumagda bilang $1. Huwag baguhin ang pangalang $1 na nasa pagitan ng mga pagsasabay, kung hindi ay hindi magiging tama ang paglaktaw sa pangkabatiran na mga rebisyong walang bisa (tingnan ang [http://www.mediawiki.org/wiki/Extension:WikiSync] para sa mas marami pang kabatiran).',
 	'wikisync_api_result_unknown_action' => 'Hindi nalalamang galaw ng API',
 	'wikisync_api_result_exception' => 'Naganap ang hindi pagsasali sa loob ng katutubong pagtawag ng API',
 	'wikisync_api_result_noaccess' => 'Tanging mga kasapi lamang ng sumusunod na {{PLURAL:$2|pangkat|mga pangkat}} ang makapagsasagawa ng galaw na ito: $1',

@@ -463,6 +463,15 @@ $messages['mr'] = array(
 	'advancedrandom-desc' => 'असे एक अविशिष्ट पान मिळवा की ज्याचे चर्चा अथवा विषयपान दिलेल्या पानाशी जोडलेले आहे, जसे की अविशिष्ट विशेष लेख मिळविण्यासाठी [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] हे वापरता येईल अथवा अविशिष्ट जीएफडीएल (GFDL) संचिका मिळविण्यासाठी [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] हे वापरता येईल',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'advancedrandom' => 'Rawak lanjutan',
+	'advancedrandom-desc' => 'Dapatkan laman rawak daripada mana-mana ruang nama, yang laman perbincangan atau subjeknya berpautan dengan laman yang tertentu.
+Boleh digunakan seperti [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] untuk memperoleh laman perbincangan rencana pilihan, atau seperti [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] untuk memperoleh fail GFDL rawak',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

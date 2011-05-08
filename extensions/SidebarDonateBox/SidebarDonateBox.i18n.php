@@ -56,6 +56,7 @@ $messages['bs'] = array(
  */
 $messages['de'] = array(
 	'sidebardonatebox-desc' => 'Ermöglicht eine wikispezifische Spendenbox in der Seitenleiste',
+	'DONATE' => 'Spenden',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -119,6 +120,7 @@ $messages['hsb'] = array(
  */
 $messages['ia'] = array(
 	'sidebardonatebox-desc' => 'Adde un quadro personalisate de donation al barra lateral',
+	'DONATE' => 'Donar',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -161,6 +163,7 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'sidebardonatebox-desc' => 'Во страничната лента додава посебна кутија за донации',
+	'DONATE' => 'Донирајте',
 );
 
 /** Dutch (Nederlands)
@@ -168,6 +171,7 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'sidebardonatebox-desc' => 'Voegt een aangepast venster voor donaties toe in de menubalk',
+	'DONATE' => 'Doneren',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -197,6 +201,7 @@ $messages['pms'] = array(
  */
 $messages['pt'] = array(
 	'sidebardonatebox-desc' => 'Adiciona à barra lateral uma caixa personalizada para donativos',
+	'DONATE' => 'Donativos',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

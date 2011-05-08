@@ -11417,6 +11417,13 @@ $messages['ig'] = array(
 	'configure-setting-wgDebugLogGroups-value' => 'Ákwúkwó orunotu',
 );
 
+/** Ingush (ГІалгІай Ğalğaj)
+ * @author Sapral Mikail
+ */
+$messages['inh'] = array(
+	'configure-setting-wgExtraLanguageNames-value' => 'ЦIи',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Gianfranco

@@ -168,6 +168,13 @@ $messages['mk'] = array(
 	'xmlrc-desc' => 'Испраќа известувања за промени во облик на XML, преку UDP, Jabber или на друг начин',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'xmlrc-desc' => 'Menghantar pemberitahuan mengenai perubahan sebagai XML, melalui UDP, Jabber atau kaedah-kaedah lain',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

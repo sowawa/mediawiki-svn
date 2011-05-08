@@ -1310,6 +1310,7 @@ Se podaria perdare łe modifeghe aportae a sta pajina se se lassa ła pajina ora
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Trần Nguyễn Minh Huy
  * @author Vinhtantran
  */
 $messages['vi'] = array(
@@ -1322,6 +1323,7 @@ Bạn có thể mất các sửa đổi tại trang này nếu bạn thoát kh�
 	'al-nosuchuser' => 'Không có thành viên nào có tên "$1".
 Tên thành viên có phân biệt chữ hoa chữ thường.
 Hãy xem lại có sai chính tả không.',
+	'al-createblocked' => 'Địa chỉ IP của bạn bị cấm tạo tài khoản mới.',
 );
 
 /** Yiddish (ייִדיש)

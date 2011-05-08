@@ -622,10 +622,12 @@ $messages['uk'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Trần Nguyễn Minh Huy
  * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'addmediawizard-desc' => 'Thuật sĩ để thêm tập tin, phát triển dưới sự cộng tác của Kaltura và Wikimedia Foundation',
+	'addmediawizard-loading' => 'Tải thêm phương tiện trình thuật sĩ (wizard)',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

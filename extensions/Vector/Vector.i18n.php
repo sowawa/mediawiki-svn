@@ -940,6 +940,7 @@ $messages['ko'] = array(
 	'vector-editwarning-preference' => '수정한 내용을 저장하지 않고 편집 양식을 닫거나 다른 페이지로 이동할 때 알림',
 	'vector-simplesearch-search' => '검색',
 	'vector-simplesearch-containing' => '다음의 어구가 들어간 문서 찾기',
+	'vector-noexperiments-preference' => '새 기능 실험에서 나를 제외합니다.',
 );
 
 /** Karachay-Balkar (Къарачай-Малкъар)
