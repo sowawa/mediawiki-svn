@@ -162,7 +162,7 @@ class HoneyPotCommentSpammer {
 		$spammer = self::isCommentSpammer( $editPage->mTitle );
 		if( $spammer ) {
 			global $wgOut;
-			$wgOut->addWikiText( wfMsg( 'commentspammer-save-blocked' ) );
+			$wgOut->addWikiMsg( 'commentspammer-save-blocked' );
 		}
 		return ! $spammer;  // need to invert, as true hook retval means "no problem", whereas if $spammer == true, then we have a problem.
 	}
