@@ -224,7 +224,9 @@ def get_query_header(query_name):
     else:
         return 'no such table'
 
-""" Returns the index of the key for the query data """
+"""     
+    Returns the index of the key for the query data 
+"""
 def get_key_index(query_name):
     if query_name == 'report_banner_metrics_minutely':
         return 1
@@ -235,20 +237,15 @@ def get_key_index(query_name):
     elif query_name == 'report_campaign_metrics_minutely_total':
         return 1
     elif query_name == 'report_campaign_totals':
-        return 0
+        return 1
     elif query_name == 'report_campaign_banners':
         return 0
     elif query_name == 'report_campaign_lps':
         return 0
 
-def get_count_index(query_name):
-    if query_name == 'report_lp_views_by_hour':
-        return 1
-    elif query_name == 'report_banner_impressions_by_hour':
-        return 1
-    else:
-        return -1
-        
+"""     
+    Returns the index of the timestamp for the query data 
+"""
 def get_time_index(query_name):
     if query_name == 'report_campaign_logs_by_min':
         return 0
@@ -274,56 +271,12 @@ def get_time_index(query_name):
         return 0
     elif query_name == 'report_campaign_metrics_minutely_total':
         return 0
-    else:
-        return -1
-
-def get_campaign_index(query_name):
-    if query_name == 'report_campaign_logs_by_min':
-        return 2
-    elif query_name == 'report_campaign_logs_by_hr':
-        return 1
-    elif query_name == 'report_contribution_tracking':
-        return 3
-    elif query_name == 'report_bannerLP_metrics':
-        return 1
-    elif query_name == 'report_latest_campaign':
+    elif query_name == 'report_campaign_totals':
         return 0
-    elif query_name == 'report_campaign_metrics_minutely':
-        return 1
-    elif query_name == 'report_campaign_metrics_minutely_total':
-        return 1
     else:
         return -1
 
-def get_banner_index(query_name):
-    if query_name == 'report_campaign_logs_by_min':
-        return 3
-    elif query_name == 'report_campaign_logs_by_hr':
-        return 2
-    elif query_name == 'report_contribution_tracking':
-        return 1
-    elif query_name == 'report_bannerLP_metrics':
-        return 1
-    elif query_name == 'report_banner_metrics_minutely':
-        return 1
-    else:
-        return -1
 
-def get_landing_page_index(query_name):
-    if query_name == 'report_campaign_logs_by_min':
-        return 4
-    elif query_name == 'report_campaign_logs_by_hr':
-        return 3
-    elif query_name == 'report_non_US_clicks':
-        return 2
-    elif query_name == 'report_contribution_tracking':
-        return 2
-    elif query_name == 'report_bannerLP_metrics':
-        return 1
-    elif query_name == 'report_LP_metrics_minutely':
-        return 1
-    else:
-        return -1
 
 def get_metric_index(query_name, metric_name):
     if query_name == 'report_campaign_logs_by_min':
@@ -465,7 +418,11 @@ def get_metric_index(query_name, metric_name):
             return -1
     elif query_name == 'report_campaign_totals':
         if metric_name == 'donations':
-            return 1
+            return 2
+        elif metric_name == 'name':
+            return 0
+        elif metric_name == 'timestamp':
+            return 3
         else:
             return -1
         
