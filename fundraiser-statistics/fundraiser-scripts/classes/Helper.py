@@ -32,18 +32,7 @@ def precede_with_backslash(string, char):
         
     return new_string
 
-"""
-    
-            
-"""
-def get_test_type_metrics(test_type):
-    
-    if test_type == 'banner':
-        test_metrics = ['imp', 'donations', 'don_per_imp', 'amt50_per_imp']
-    if test_type == 'LP':
-        test_metrics = ['views', 'donations', 'don_per_view', 'amt50_per_view']
-        
-    return test_metrics
+
 
 """
     
@@ -57,23 +46,18 @@ def convert_Decimal_list_to_float(lst):
 
     return new_lst
 
-
-"""
-    Get Test type from campaign
-            
-"""
-def get_test_type(utm_campaign):
-    
-        if utm_campaign == '20101228JA075':
-            return 'banner' 
-        elif utm_campaign == '20101230JA089_US':
-             return 'banner' 
+     
+     
      
 """
     Return a specific query name given a query type
             
 """
 def stringify(str_to_stringify):
+        
+        if str_to_stringify is None:
+            return 'NULL'
+        
         return '"' + str_to_stringify + '"'
     
     
