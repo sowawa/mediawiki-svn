@@ -16,7 +16,7 @@ __date__ = "April 16th, 2011"
 
 
 import sys
-sys.path.append('../')
+# sys.path.append('../')
 
 import math
 import datetime as dt
@@ -24,10 +24,10 @@ import MySQLdb
 import pylab
 import matplotlib
 
-import miner_help as mh
-import QueryData as QD
-import DataLoader as DL
-import TimestampProcessor as TP
+import Fundraiser_Tools.miner_help as mh
+import Fundraiser_Tools.classes.QueryData as QD
+import Fundraiser_Tools.classes.DataLoader as DL
+import Fundraiser_Tools.classes.TimestampProcessor as TP
 
 matplotlib.use('Agg')
 
@@ -67,7 +67,7 @@ class HypothesisTest(object):
     def compute_parameters(self, metrics_1, metrics_2, num_samples):
         
         # A trial represents a group of samples over which parameters are computed 
-        num_trials = int(math.ceil(len(metrics_1) / num_samples))
+        num_trials = int(math.ceil(float(len(metrics_1)) / float(num_samples)))
         
         means_1 = []
         means_2 = []
