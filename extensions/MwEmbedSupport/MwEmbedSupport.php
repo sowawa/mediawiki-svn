@@ -49,10 +49,8 @@ MwEmbedResourceManager::register( 'extensions/MwEmbedSupport/MwEmbedModules/MwEm
 MwEmbedResourceManager::register( 'extensions/MwEmbedSupport/MwEmbedModules/MediaWikiSupport' );
 
 // Add MwEmbedSupport to Startup:
-function MwUpdateStartupModules( &$modules ){
-	// TODO parser will become part of core once Neil's parser patch gets in there. 
-	array_push($modules, 'mediawiki.language', 'mediawiki.language.parser', 'jquery.triggerQueueCallback', 
-				'jquery.mwEmbedUtil', 'mwEmbedStartup' );		
+function MwUpdateStartupModules( &$modules ){ 
+	array_push($modules, 'jquery.triggerQueueCallback', 'jquery.mwEmbedUtil', 'mw.MwEmbedSupport' );		
 	return true;
 }
 $wgHooks['ResourceLoaderGetStartupModules'][] = 'MwUpdateStartupModules';
@@ -62,6 +60,6 @@ $wgHooks['ResourceLoaderGetStartupModules'][] = 'MwUpdateStartupModules';
 // Add mwEmbed Support ( style sheets and messages post page ready ) 
 $wgHooks['BeforePageDisplay'][] = 'MwUpdatePageModules';
 function MwUpdatePageModules( &$out ){
-	$out->addModules( 'MwEmbedCommonStyle' );
+	$out->addModules( 'mw.MwEmbedSupport.style' );
 	return true;
 }

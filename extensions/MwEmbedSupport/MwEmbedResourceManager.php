@@ -101,6 +101,7 @@ class MwEmbedResourceManager {
 						$name, new MwEmbedResourceLoaderFileModule( $resources, "$IP/$path", $path)
 					);
 				} else {
+					// Register with normal resource loader: 
 					$resourceLoader->register(					
 						// Resource loader expects trailing slash: 
 						$name, new ResourceLoaderFileModule( $resources, "$IP/$path", $wgScriptPath .'/' . $path)

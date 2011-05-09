@@ -1,24 +1,20 @@
 <?php 
 
 return array(
-	"mwEmbedStartup" => array( 
+	"mw.MwEmbedSupport" => array( 
 		'scripts' => array( 
-			"mwEmbedSupport.js",
+			"mw.MwEmbedSupport.js",
 		),
 		'debugRaw' => false,
 		'dependencies' => array(
 			// jQuery dependencies:
 			'jquery.triggerQueueCallback',
 			'jquery.mwEmbedUtil',
-			'mediawiki.language.parser',
-		),				
+		),
 		'messageFile' => 'MwEmbedSupport.i18n.php',
-	),	
-	
-	// All the mwEmbed Support components that are not needed for mwEmbed loader.js files:  
-	// Right now this is only css files. 
-	'mwEmbedSupport' => array(
-		'styles' => 'skins/common/MwEmbedCommonStyle.css',	 
+	),
+	'mw.MwEmbedSupport.style' => array(
+		'styles'=>'skins/common/MwEmbedCommonStyle.css',
 		'skinStyles' => array(
 			/* shared jQuery ui skin styles */
 			'darkness' => 'skins/jquery.ui.themes/darkness/jquery-ui-1.7.2.css',
@@ -28,11 +24,6 @@ return array(
 			'start' => 'skins/jquery.ui.themes/start/jquery-ui-1.7.2.css',
 			'sunny' => 'skins/jquery.ui.themes/sunny/jquery-ui-1.7.2.css',	
 		),
-		'messageFile' => 'MwEmbedSupport.i18n.php',
-	),
-	'MwEmbedCommonStyle' => array(
-		'styles'=>'skins/common/MwEmbedCommonStyle.css',
-		'messageFile' => 'MwEmbedSupport.i18n.php'
 	),	
 	'mediawiki.UtilitiesTime' => array( 'scripts' => 'mediawiki/mediawiki.UtilitiesTime.js' ),
 	'mediawiki.client' => array( 'scripts' => 'mediawiki/mediawiki.client.js' ),
@@ -41,7 +32,8 @@ return array(
 	
 	'mediawiki.language.parser' => array( 
 		'scripts'=> 'mediawiki/mediawiki.language.parser.js',
-		'debugRaw' => false
+		'debugRaw' => false,
+		'dependencies' => array( 'mediawiki.language', 'mediawiki.util' ),
 	),
 	'jquery.menu' => array(
 		'scripts' => 'jquery.menu/jquery.menu.js',

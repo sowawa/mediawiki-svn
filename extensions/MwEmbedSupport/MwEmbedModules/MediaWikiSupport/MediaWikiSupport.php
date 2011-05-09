@@ -1,7 +1,7 @@
 <?php
 
 return array(
-	"MediaWikiPlayerSupport" => array(
+	"mw.MediaWikiPlayerSupport" => array(
 		'scripts' => 'resources/mw.MediaWikiPlayerSupport.js',
 		'dependencies'=> array( 
 			'mw.Api' 

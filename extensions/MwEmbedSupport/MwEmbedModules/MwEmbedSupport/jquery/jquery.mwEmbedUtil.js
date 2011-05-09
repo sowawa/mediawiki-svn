@@ -1,7 +1,6 @@
 /**
  * mwEmbed jQuery utility functions that are too small for their own file
  */ 
-
 ( function( $ ) {
 
 	/**
