@@ -340,7 +340,7 @@ $.articleFeedback = {
 					'afanontoken': userrating ? mw.user.id() : '',
 					'afuserrating': Number( userrating ),
 					'maxage': 0,
-					'smaxage': mw.config.get( 'wgArticleFeedbackSMaxage' )
+					'smaxage': userrating ? 0 : mw.config.get( 'wgArticleFeedbackSMaxage' )
 				},
 				'success': function( data ) {
 					var context = this;
