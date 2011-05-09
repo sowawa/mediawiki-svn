@@ -1,0 +1,64 @@
+
+
+"""
+
+Implements the stateful FundraiserDataHandler class that co-ordinates the data loading and reporting particular to the fundraiser
+
+!! MODIFY -- make singleton ??? !!
+
+
+"""
+
+__author__ = "Ryan Faulkner"
+__revision__ = "$Rev$"
+__date__ = "May 8th, 2011"
+
+
+import sys
+import Fundraiser_Tools.classes.DataLoader as DL
+
+""" Test Types """
+_TESTTYPE_BANNER_ = 'banner'
+_TESTTYPE_LP_ = 'lp'
+
+_interval_reporting_loader_ = DL.IntervalReportingLoader()
+_campaign_reporting_loader_ = DL.CampaignReportingLoader()  
+""" !! MODIFY -- Bring this class right in here !! """
+
+"""
+    Get Test type from campaign.  The logic in this method will evolve as new ways to classify test types are developed
+            
+"""
+def get_test_type(utm_campaign, start_time, end_time):
+    
+    banner_list = _campaign_reporting_loader_.run_query('banners', {'utm_campaign' : utm_campaign, 'start_time' : start_time, 'end_time' : end_time})
+    lp_list = _campaign_reporting_loader_.run_query('lps', {'utm_campaign' : utm_campaign, 'start_time' : start_time, 'end_time' : end_time})
+    
+    if len(banner_list) > 1:
+        return _TESTTYPE_BANNER_, banner_list
+    elif len(lp_list) > 1:
+        return _TESTTYPE_LP_, lp_list
+    elif len(lp_list) > len(banner_list):
+        return _TESTTYPE_LP_, lp_list
+    elif len(banner_list) > len(lp_list):
+        return _TESTTYPE_BANNER_, banner_list
+    else:
+        """ !! MODIFY -- hardcode for now, insert custom logic !! """
+        if utm_campaign == '20101228JA075':
+            return _TESTTYPE_BANNER_, banner_list 
+        elif utm_campaign == '20101230JA089_US':
+             return _TESTTYPE_BANNER_, banner_list
+         
+        return _TESTTYPE_BANNER_, banner_list 
+"""
+    Return the metrics measured for a particular type of test
+            
+"""
+def get_test_type_metrics(test_type):
+    
+    if test_type == _TESTTYPE_BANNER_:
+        test_metrics = ['imp', 'donations', 'don_per_imp', 'amt50_per_imp']
+    if test_type == _TESTTYPE_LP_:
+        test_metrics = ['views', 'donations', 'don_per_view', 'amt50_per_view']
+        
+    return test_metrics
