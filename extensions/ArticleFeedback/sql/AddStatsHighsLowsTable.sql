@@ -8,4 +8,4 @@ CREATE TABLE IF NOT EXISTS /*_*/article_feedback_stats_highs_lows (
 	-- timestamp of insertion job	
 	afshl_ts binary(14) NOT NULL
 ) /*$wgDBTableOptions*/;
-CREATE INDEX /*i*/ afshl_timestamp ON /*_*/article_feedback_stats_highs_lows (afshl_ts);
+CREATE INDEX /*i*/ afshl_ts_avg_overall ON /*_*/article_feedback_stats_highs_lows (afshl_ts, afshl_avg_overall);
