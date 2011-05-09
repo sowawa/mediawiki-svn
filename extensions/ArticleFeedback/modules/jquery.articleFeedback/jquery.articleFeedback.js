@@ -331,7 +331,7 @@ $.articleFeedback = {
 				'type': 'GET',
 				'dataType': 'json',
 				'context': context,
-				'cache': userrating,
+				'cache': !userrating,
 				'data': {
 					'action': 'query',
 					'format': 'json',
