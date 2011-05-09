@@ -343,7 +343,7 @@ class BookManagerNavBar extends BookManagerCore {
 		$out->addHTML( "<div>$bottom</div>" );
 		# adds CSS and JS to navigation bar
 		$out->addModuleStyles( 'ext.BookManager' );
-		//$out->addModules( 'ext.BookManager' );
+		$out->addModules( 'ext.BookManager' );
  		return true;
  	}
 }

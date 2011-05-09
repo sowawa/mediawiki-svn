@@ -9,10 +9,8 @@
  * - NEXTPAGENAMEE		(get next page encode)
  * - ROOTPAGENAME		(get root page)
  * - ROOTPAGENAMEE		(get root page encode)
- * - CHAPTERNAME		(get chapter)
- * - CHAPTERNAMEE		(get chapter encode)
- * - RANDOMCHAPTER		(get random page)
- * - RANDOMCHAPTERE		(get random page encode)
+ * - CHAPTERNAME		(get root page)
+ * - CHAPTERNAMEE		(get root page encode)
  * @addtogroup Extensions
  * @author Raylton P. Sousa <raylton.sousa@gmail.com>
  * @author Helder.wiki
@@ -66,8 +64,8 @@ $wgResourceModules['ext.BookManager'] = array(
 	'styles'	=> 'bookmanager.css',
 	'messages'	=> array( 'BookManager', 'BookManager-top', 'BookManager-bottom' ),
 	'dependencies'	=> array( 'jquery', 'mediawiki.util' ),
-	'localBasePath'	=> $dir,
-	'remoteExtPath'	=> 'BookManager'
+	'localBasePath'	=> $dir. '/client',
+	'remoteExtPath'	=> 'BookManager/client'
 );
 $wgBookManagerNamespaces = array( NS_MAIN );
 $wgBookManagerVariables = true ;
