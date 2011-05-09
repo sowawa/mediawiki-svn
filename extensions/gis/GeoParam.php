@@ -312,6 +312,15 @@ class GeoParam {
 		}
 		return $res."&pagetitle={$this->title}";
 	}
+	/**
+	 * Produce array for Linker functions
+	 */
+	function get_param_array() {
+		$res = $this->coor;
+		$res['pagetitle'] = $this->title;
+
+		return $res;
+	}
 
 	/**
 	 *  Produce markup suitable for use in page

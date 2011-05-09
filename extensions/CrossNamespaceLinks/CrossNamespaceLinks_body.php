@@ -83,7 +83,7 @@ class CrossNamespaceLinks extends QueryPage {
 		$nt = Title::makeTitle( NS_MAIN, $result->title );
 		$text = $wgContLang->convert( $nt->getPrefixedText() );
 
-		$plink = $skin->makeKnownLink( $nt->getPrefixedText(), htmlspecialchars( $text ) );
+		$plink = Linker::link( $nt, htmlspecialchars( $text ), array(), array(), "known" );
 
 		return wfMsgExt( 'crossnamespacelinkstext', array( 'parsemag' ), $plink, $wgLang->formatNum( $result->namespace ), htmlspecialchars( $wgLang->getNsText( $result->value ) ) );
 	}
