@@ -116,10 +116,10 @@ class BookManagerCore extends SpecialPage {
 	/**
 	 * Get the prefixed title of a page near the given page.
 	 * @param $text String Text for title of current page
-	 * @param $n Integer Position of wanted page. Next page is +1; Previous page is -1
+	 * @param $p Integer/String Position of wanted page. Next page is +1; Previous page is -1; Random position is 'rand'
 	 * @return String The prefixed title or empty string if not found or found but not valid
 	 */
-	protected static function pageText( &$parser, $text = null, $n = 0 ) {
+	protected static function pageText( &$parser, $text = null, $p = 0 ) {
 		$pagetitle = self::newTitleObject( $parser, $text );
 		$prefixes = self::getBookPagePrefixes();
 		$booktitle = Title::newFromText( $prefixes['community-prefix'] . self::bookparts( $parser, $text, 0 ) ); // ...the book name will be 'Foo'.
@@ -131,12 +131,17 @@ class BookManagerCore extends SpecialPage {
 			return '';
 		}
 		$current = array_search( $pagetitle, self::$chapterList );
-		if ( $current === false || !isset( self::$chapterList[ $current + $n ] ) ) {
+		if ( $current === false || !isset( self::$chapterList[ $current + $p ] ) ) {
 			return '';
 		}
-		$otherpagetitle = Title::newFromText( self::$chapterList[ $current + $n ] );
+		$otherpagetitle = Title::newFromText( self::$chapterList[ $current + $p ] );
 		if ( is_null( $otherpagetitle ) ) {
 			return '';
+		}
+		if ( $p == 'rand' ){
+			$limit = count( self::$chapterList ) - 1;
+			$randPosition = rand( 0, $limit );
+			return Title::newFromText( self::$chapterList[ $randPosition ] );
 		}
 		return wfEscapeWikiText( $otherpagetitle->getText() );
 	}
@@ -156,7 +161,8 @@ class BookManagerVariables extends BookManagerCore {
 		$parser->setFunctionHook( 'rootpagenamee',	array( __CLASS__, 'rootpagenamee' ),	SFH_NO_HASH );
 		$parser->setFunctionHook( 'chaptername',	array( __CLASS__, 'chaptername' ),	SFH_NO_HASH );
 		$parser->setFunctionHook( 'chapternamee',	array( __CLASS__, 'chapternamee' ),	SFH_NO_HASH );
-
+		$parser->setFunctionHook( 'randomchapter',	array( __CLASS__, 'randomchapter' ),	SFH_NO_HASH );
+		$parser->setFunctionHook( 'randomchaptere',	array( __CLASS__, 'randomchaptere' ),	SFH_NO_HASH );
 		return true;
 	}
 	# Function to declare magicword id
@@ -171,6 +177,9 @@ class BookManagerVariables extends BookManagerCore {
 		$aCustomVariableIds[] = 'rootpagenamee';
 		$aCustomVariableIds[] = 'chaptername';
 		$aCustomVariableIds[] = 'chapternamee';
+		$aCustomVariableIds[] = 'randomchapter';
+		$aCustomVariableIds[] = 'randomchaptere';
+
 		return true;
 	}
 
@@ -208,6 +217,14 @@ class BookManagerVariables extends BookManagerCore {
 		$t = self::bookparts( $parser, $text, 1 );
 		return wfUrlEncode( $t );
 	}
+	static function randomchapter( &$parser, $text = null ) {
+		$t = self::pageText( $parser, $text, 'rand' );
+		return $t;
+	}
+	static function randomchaptere( &$parser, $text = null ) {
+		$t = self::pageText( $parser, $text, 'rand' );
+		return wfUrlEncode( $t );
+	}
 
 	# Function for use with MW Variables on the current page
 	static function AssignAValue( &$parser, &$cache, &$magicWordId, &$ret ) {
@@ -236,6 +253,13 @@ class BookManagerVariables extends BookManagerCore {
 		case 'chapternamee':
 			$ret = BookManagerVariables::chapternamee( $parser );
 			return true;
+		case 'randomchapter':
+			$ret = BookManagerVariables::randomchapter( $parser );
+			return true;
+		case 'randomchaptere':
+			$ret = BookManagerVariables::randomchaptere( $parser );
+			return true;
+
 		}
 		return false;
 	}
@@ -360,6 +384,3 @@ class PrintVersion extends BookManagerCore {
 	}
 
 }
-
-
-

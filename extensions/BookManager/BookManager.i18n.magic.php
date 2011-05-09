@@ -14,4 +14,6 @@ $magicWords['en'] = array(
 	'rootpagenamee' => array( 0, 'ROOTPAGENAMEE', 'BOOKNAMEE' ),
 	'chaptername' => array( 0, 'CHAPTERNAME' ),
 	'chapternamee' => array( 0, 'CHAPTERNAMEE' ),
+	'randomchapter' => array( 0, 'RANDOMCHAPTER' ),
+	'randomchaptere' => array( 0, 'RANDOMCHAPTERE' ),
 );
