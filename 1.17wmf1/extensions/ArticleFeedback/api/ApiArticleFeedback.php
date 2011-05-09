@@ -5,10 +5,9 @@ class ApiArticleFeedback extends ApiBase {
 	}
 
 	public function execute() {
-		global $wgUser, $wgArticleFeedbackRatings;
+		global $wgUser, $wgArticleFeedbackRatings, $wgArticleFeedbackSMaxage;
 		$params = $this->extractRequestParams();
 
-		$token = array();
 		if ( $wgUser->isAnon() ) {
 			if ( !isset( $params['anontoken'] ) ) {
 				$this->dieUsageMsg( array( 'missingparam', 'anontoken' ) );
@@ -74,6 +73,18 @@ class ApiArticleFeedback extends ApiBase {
 		}
 
 		$this->insertProperties( $revisionId, $wgUser, $token, $params );
+
+		$squidUpdate = new SquidUpdate( array( wfAppendQuery( wfScript( 'api' ), array(
+			'action' => 'query',
+			'format' => 'json',
+			'list' => 'articlefeedback',
+			'afpageid' => $pageId,
+			'afanontoken' => '',
+			'afuserrating' => 0,
+			'maxage' => 0,
+			'smaxage' => $wgArticleFeedbackSMaxage
+		) ) ) );
+		$squidUpdate->doUpdate();
 
 		wfRunHooks( 'ArticleFeedbackChangeRating', array( $params ) );
 
@@ -360,7 +371,7 @@ class ApiArticleFeedback extends ApiBase {
 				ApiBase::PARAM_TYPE => 'integer',
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI => false,
-				ApiBase::PARAM_MIN => 1
+				ApiBase::PARAM_MIN => 0
 			),
 			'expertise' => array(
 				ApiBase::PARAM_TYPE => 'string',
@@ -390,14 +401,14 @@ class ApiArticleFeedback extends ApiBase {
 			'expertise' => 'What kinds of expertise does the user claim to have',
 		);
 		foreach( $wgArticleFeedbackRatings as $rating ) {
-		        $ret["r{$rating}"] = "Rating {$rating}";
+			$ret["r{$rating}"] = "Rating {$rating}";
 		}
 		return $ret;
 	}
 
 	public function getDescription() {
 		return array(
-			'Submit article feedbacks'
+			'Submit article feedback'
 		);
 	}
 

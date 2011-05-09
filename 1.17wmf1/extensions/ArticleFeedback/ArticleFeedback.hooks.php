@@ -77,6 +77,7 @@ class ArticleFeedbackHooks {
 				'articlefeedback-form-panel-helpimprove-privacylink',
 				'articlefeedback-form-panel-submit',
 				'articlefeedback-form-panel-success',
+				'articlefeedback-form-panel-pending',
 				'articlefeedback-form-panel-expiry-title',
 				'articlefeedback-form-panel-expiry-message',
 				'articlefeedback-report-switch-label',
@@ -87,6 +88,7 @@ class ArticleFeedbackHooks {
 				'parentheses',
 			),
 			'dependencies' => array(
+				'jquery.appear',
 				'jquery.tipsy',
 				'jquery.json',
 				'jquery.localize',
@@ -172,6 +174,19 @@ class ArticleFeedbackHooks {
 				$dir . '/sql/AddRevisionsTable.sql',
 				true
 			) );
+			$updater->addExtensionUpdate( array(
+				'addTable',
+				'article_feedback_stats_highs_lows',
+				$dir . '/sql/AddStatsHighsLowsTable.sql',
+				true
+			) );
+			$updater->addExtensionUpdate( array(
+				'addIndex',
+				'article_feedback',
+				'article_feedback_timestamp',
+				$dir . '/sql/AddArticleFeedbackTimestampIndex.sql',
+				true
+			) );
 		}
 		return true;
 	}
@@ -215,14 +230,18 @@ class ArticleFeedbackHooks {
 	 * ResourceLoaderGetConfigVars hook
 	 */
 	public static function resourceLoaderGetConfigVars( &$vars ) {
-		global $wgArticleFeedbackCategories,
+		global $wgArticleFeedbackSMaxage,
+			$wgArticleFeedbackCategories,
 			$wgArticleFeedbackLotteryOdds,
 			$wgArticleFeedbackTracking,
-			$wgArticleFeedbackOptions;
+			$wgArticleFeedbackOptions,
+			$wgArticleFeedbackNamespaces;
+		$vars['wgArticleFeedbackSMaxage'] = $wgArticleFeedbackSMaxage;
 		$vars['wgArticleFeedbackCategories'] = $wgArticleFeedbackCategories;
 		$vars['wgArticleFeedbackLotteryOdds'] = $wgArticleFeedbackLotteryOdds;
 		$vars['wgArticleFeedbackTracking'] = $wgArticleFeedbackTracking;
 		$vars['wgArticleFeedbackOptions'] = $wgArticleFeedbackOptions;
+		$vars['wgArticleFeedbackNamespaces'] = $wgArticleFeedbackNamespaces;
 		return true;
 	}
 }

@@ -83,6 +83,7 @@ $.articleFeedback = {
 		</div>\
 		<button class="articleFeedback-submit articleFeedback-visibleWith-form" type="submit" disabled="disabled"><html:msg key="form-panel-submit" /></button>\
 		<div class="articleFeedback-success articleFeedback-visibleWith-form"><span><html:msg key="form-panel-success" /></span></div>\
+		<div class="articleFeedback-pending articleFeedback-visibleWith-form"><span><html:msg key="form-panel-pending" /></span></div>\
 		<div style="clear:both;"></div>\
 		<div class="articleFeedback-notices articleFeedback-visibleWith-form">\
 			<div class="articleFeedback-expiry">\
@@ -133,14 +134,28 @@ $.articleFeedback = {
 		'enableSubmission': function( state ) {
 			var context = this;
 			if ( state ) {
-				// Reset and remove success message
+				// Reset success timeout
 				clearTimeout( context.successTimeout );
-				context.$ui.find( '.articleFeedback-success span' ).fadeOut( 'fast' );
-				// Enable
-				context.$ui.find( '.articleFeedback-submit' ).button( { 'disabled': false } );
+				context.$ui
+					// Enable
+					.find( '.articleFeedback-submit' )
+						.button( { 'disabled': false } )
+						.end()
+					// Hide success
+					.find( '.articleFeedback-success span' )
+						.hide()
+						.end()
+					// Show pending
+					.find( '.articleFeedback-pending span' )
+						.fadeIn( 'fast' );
 			} else {
 				// Disable
-				context.$ui.find( '.articleFeedback-submit' ).button( { 'disabled': true } );
+				context.$ui
+					.find( '.articleFeedback-submit' )
+						.button( { 'disabled': true } )
+						.end()
+					.find( '.articleFeedback-pending span' )
+						.hide();
 			}
 		},
 		'updateRating': function() {
@@ -173,6 +188,10 @@ $.articleFeedback = {
 		},
 		'submit': function() {
 			var context = this;
+			// For anon users, keep a cookie around so we know they've rated before
+			if ( mw.user.anonymous() ) {
+				$.cookie( prefix( 'rated' ), 'true', { 'expires': 365, 'path': '/' } );
+			}
 			$.articleFeedback.fn.enableSubmission.call( context, false );
 			context.$ui.find( '.articleFeedback-lock' ).show();
 			// Build data from form values for 'action=articlefeedback'
@@ -306,19 +325,22 @@ $.articleFeedback = {
 		},
 		'load': function() {
 			var context = this;
+			var userrating = !mw.user.anonymous() || $.cookie( prefix( 'rated' ) ) === 'true';
 			$.ajax( {
 				'url': mw.config.get( 'wgScriptPath' ) + '/api.php',
 				'type': 'GET',
 				'dataType': 'json',
 				'context': context,
-				'cache': false,
+				'cache': userrating,
 				'data': {
 					'action': 'query',
 					'format': 'json',
 					'list': 'articlefeedback',
 					'afpageid': mw.config.get( 'wgArticleId' ),
-					'afanontoken': mw.user.id(),
-					'afuserrating': 1
+					'afanontoken': userrating ? mw.user.id() : '',
+					'afuserrating': Number( userrating ),
+					'maxage': 0,
+					'smaxage': mw.config.get( 'wgArticleFeedbackSMaxage' )
 				},
 				'success': function( data ) {
 					var context = this;
@@ -508,7 +530,9 @@ $.articleFeedback = {
 										// Remember that the users rejected this, set a cookie to not
 										// show this for 3 days
 										$.cookie(
-											prefix( 'pitch-' + key ), 'hide', { 'expires': 3 }
+											prefix( 'pitch-' + key ),
+											'hide',
+											{ 'expires': 3, 'path': '/' }
 										);
 										// Track that a pitch was dismissed
 										if ( tracked && typeof $.trackAction == 'function' ) {
@@ -640,7 +664,7 @@ $.articleFeedback = {
 						}
 						if ( pitches.length ) {
 							// Select randomly using equal distribution of available pitches
-							var key = pitches[Math.round( Math.random() * ( pitches.length - 1 ) )];
+							var key = pitches[Math.floor( Math.random() * pitches.length )];
 							context.$ui.find( '.articleFeedback-pitches' )
 								.css( 'width', context.$ui.width() )
 								.find( '.articleFeedback-pitch[rel="' + key + '"]' )
@@ -758,8 +782,10 @@ $.articleFeedback = {
 			if ( !showOptions ) {
 				context.$ui.find( '.articleFeedback-options' ).hide();
 			}
-			// Show initial form and report values
-			$.articleFeedback.fn.load.call( context );
+			// Show initial form and report values when the tool is visible
+			context.$ui.appear( function() {
+				$.articleFeedback.fn.load.call( context );
+			} );
 		}
 	}
 };

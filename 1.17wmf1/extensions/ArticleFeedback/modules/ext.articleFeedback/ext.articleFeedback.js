@@ -36,7 +36,7 @@ function isPitchVisible( pitch ) {
  * @param durration Integer: Number of days to mute the pitch for
  */
 function mutePitch( pitch, duration ) {
-	$.cookie( prefix( 'pitches-' + pitch ), 'hide', { 'expires': duration } );
+	$.cookie( prefix( 'pitches-' + pitch ), 'hide', { 'expires': duration, 'path': '/' } );
 }
 
 function trackClick( id ) {
@@ -280,7 +280,7 @@ var config = {
 					var groups =  mw.config.get( 'wgUserGroups' );
 					// Verify that each restriction exists in the user's groups
 					for ( var i = 0; i < restrictions.length; i++ ) {
-						if ( !$.inArray( restrictions[i], groups ) ) {
+						if ( $.inArray( restrictions[i], groups ) < 0 ) {
 							return false;
 						}
 					}

@@ -15,6 +15,9 @@ require_once( dirname( dirname( __FILE__ ) ) . '/SimpleSurvey/SimpleSurvey.php' 
 
 /* Configuration */
 
+// How long to keep ratings in the squids (they will also be purged when needed)
+$wgArticleFeedbackSMaxage = 2592000;
+
 // Enable/disable dashboard page
 $wgArticleFeedbackDashboard = false;
 
@@ -27,6 +30,10 @@ $wgArticleFeedbackRatings = array( 1, 2, 3, 4 );
 // Which categories the pages must belong to have the rating widget added (with _ in text)
 // Extension is "disabled" if this field is an empty array (as per default configuration)
 $wgArticleFeedbackCategories = array();
+
+// Only load the module / enable the tool in these namespaces
+// Default to $wgContentNamespaces (defaults to array( NS_MAIN ) ).
+$wgArticleFeedbackNamespaces = $wgContentNamespaces;
 
 // Articles not categorized as on of the values in $wgArticleFeedbackCategories can still have the
 // tool psudo-randomly activated by applying the following odds to a lottery based on $wgArticleId.
@@ -116,6 +123,7 @@ $wgExtensionCredits['other'][] = array(
 		'Brandon Harris',
 		'Adam Miller',
 		'Nimish Gautam',
+		'Arthur Richards',
 	),
 	'version' => '0.2.0',
 	'descriptionmsg' => 'articlefeedback-desc',
