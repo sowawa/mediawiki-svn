@@ -30,7 +30,7 @@ class SpecialArticleFeedback extends SpecialPage {
 			$lows = $this->getDailyLows( $highs_lows );
 			
 			// provide some messaging above high/low tables
-			$wgOut->addWikiText( wfMsg( 'articleFeedback-copy-above-highlow-tables' ));
+			$wgOut->addWikiMsg( 'articleFeedback-copy-above-highlow-tables' );
 			
 			//render daily highs table
 			$this->renderDailyHighsAndLows( $highs, wfMsg( 'articleFeedback-table-caption-dailyhighs', $wgLang->date( time() )));
@@ -39,7 +39,7 @@ class SpecialArticleFeedback extends SpecialPage {
 			$this->renderDailyHighsAndLows( $lows, wfMsg( 'articleFeedback-table-caption-dailylows', $wgLang->date( time() )));
 
 			// provide some messaging below high/low tables
-			$wgOut->addWikiText( wfMsg( 'articleFeedback-copy-below-highlow-tables' ));
+			$wgOut->addWikiMsg( 'articleFeedback-copy-below-highlow-tables' );
 			
 			/*
 			This functionality does not exist yet.
