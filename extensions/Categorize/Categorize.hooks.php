@@ -110,7 +110,7 @@ class CategorizeHooks {
 		if(strlen($strSelectedCats)>1){
 			$arrSelectedCats = array();
 			$arrSelectedCats = explode(";",$_POST['txtSelectedCategories2']);
-			# !!!!!!!!!!!!!!!!  TODO dédoublonner les catégories ICI !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			# !!!!!!!!!!!!!!!!  TODO dÃ©doublonner les catÃ©gories ICI !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 			foreach( $arrSelectedCats as $m_cat ) {
 				if(strlen($m_cat)>0){
 					$m_text .= "\n[[$m_catString:" . mysql_escape_string(trim($m_cat)) . "]]";
