@@ -12,7 +12,7 @@ classes in an Adapter structural pattern.
 
 __author__ = "Ryan Faulkner"
 __revision__ = "$Rev$"
-__date__ = "April 8th, 2010"
+__date__ = "April 8th, 2011"
 
 
 import sys
@@ -459,7 +459,7 @@ class BannerLPReportingLoader(DataLoader):
         return [metric_lists, time_norm]
 
     
-    """ !! MOVE INTO DATA LOADER!!
+    """ 
 
      <description>
     
@@ -652,10 +652,11 @@ class CampaignReportingLoader(DataLoader):
         sql_stmnt = QD.format_query(query_name, sql_stmnt, [start_time, end_time])
         
         """ Get Indexes into Query """
-        key_index = QD.get_key_index(query_name)    
+        key_index = QD.get_key_index(query_name)
         metric_index = QD.get_metric_index(query_name, metric_name)
         
         data = mh.AutoVivification()
+        raw_data = mh.AutoVivification()
         
         """ Compose the data for each separate donor pipeline artifact """
         try:
@@ -668,7 +669,7 @@ class CampaignReportingLoader(DataLoader):
                 
                 key_name = row[key_index]
                 data[key_name] = float(row[metric_index])
-                    
+                raw_data[key_name] = row
          
         except Exception as inst:
             print type(inst)     # the exception instance
@@ -679,7 +680,7 @@ class CampaignReportingLoader(DataLoader):
             sys.exit(0)
 
 
-        return data
+        return data, raw_data
     
     """
     
@@ -730,10 +731,9 @@ class CampaignReportingLoader(DataLoader):
         return data
 
 
-
 """
 
-    CLASS :: TTestLoaderHelp
+    CLASS :: TableLoader
     
     Provides data access particular to the t-test
     
@@ -741,7 +741,38 @@ class CampaignReportingLoader(DataLoader):
             init_db         -
             close_db        -
 """
-class TTestLoaderHelp(DataLoader):
+class TableLoader(DataLoader):
+    
+    def record_exists(self, **kwargs):
+        return
+    
+    def insert_row(self, **kwargs):
+        return
+    
+    def delete_row(self, **kwargs):
+        return
+    
+    def update_row(self, **kwargs):
+        return
+    
+    
+"""
+
+    CLASS :: TTestLoaderHelp
+    
+    Provides data access particular to the t-test
+    
+    +--------------------+--------------+------+-----+---------+-------+
+    | Field              | Type         | Null | Key | Default | Extra |
+    +--------------------+--------------+------+-----+---------+-------+
+    | degrees_of_freedom | int(2)       | YES  |     | NULL    |       | 
+    | p                  | decimal(7,6) | YES  |     | NULL    |       | 
+    | t                  | decimal(5,4) | YES  |     | NULL    |       | 
+    +--------------------+--------------+------+-----+---------+-------+
+
+
+"""
+class TTestLoaderHelp(TableLoader):
     
     """
     This method knows about faulkner.t_test.  This is a lookup table for p-values
@@ -778,86 +809,211 @@ class TTestLoaderHelp(DataLoader):
         
         return p
 
-"""
 
-    CLASS :: TableLoader
-    
-    Provides data access particular to the t-test
-    
-    METHODS:
-            init_db         -
-            close_db        -
-"""
-class TableLoader(DataLoader):
-    
-    def insert_row(self):
-        return
-    
-    def delete_row(self):
-        return
-    
-    def update_row(self):
-        return
     
 """
 
     CLASS :: TestTableLoader
     
     storage3.pmtpa.wmnet.faulkner.test:
-    
-    +---------------+---------------+------+-----+---------------------+-----------------------------+
-    | Field         | Type          | Null | Key | Default             | Extra                       |
-    +---------------+---------------+------+-----+---------------------+-----------------------------+
-    | utm_campaign  | varchar(128)  | NO   | PRI | NULL                |                             | 
-    | start_time    | timestamp     | NO   |     | CURRENT_TIMESTAMP   | on update CURRENT_TIMESTAMP | 
-    | end_time      | timestamp     | NO   |     | 0000-00-00 00:00:00 |                             | 
-    | winner        | varchar(128)  | YES  |     | NULL                |                             | 
-    | is_conclusive | binary(1)     | YES  |     | NULL                |                             | 
-    | html_report   | varchar(2000) | YES  |     | NULL                |                             | 
-    +---------------+---------------+------+-----+---------------------+-----------------------------+
+        
+    +---------------+----------------+------+-----+---------------------+-----------------------------+
+    | Field         | Type           | Null | Key | Default             | Extra                       |
+    +---------------+----------------+------+-----+---------------------+-----------------------------+
+    | test_name     | varchar(50)    | YES  |     |                     |                             | 
+    | test_type     | varchar(20)    | YES  |     |                     |                             | 
+    | utm_campaign  | varchar(128)   | NO   | PRI | NULL                |                             | 
+    | start_time    | timestamp      | NO   |     | CURRENT_TIMESTAMP   | on update CURRENT_TIMESTAMP | 
+    | end_time      | timestamp      | NO   |     | 0000-00-00 00:00:00 |                             | 
+    | winner        | varchar(128)   | YES  |     | NULL                |                             | 
+    | is_conclusive | binary(1)      | YES  |     | NULL                |                             | 
+    | html_report   | varchar(10000) | YES  |     | NULL                |                             | 
+    +---------------+----------------+------+-----+---------------------+-----------------------------+
 
-    METHODS:
+
             
 """
 class TestTableLoader(TableLoader):
+    
+    def process_kwargs(self, kwargs_dict):
+        
+        utm_campaign = 'NULL'
+        test_type = 'NULL'
+        start_time =  'NULL'
+        end_time =  'NULL'
+        winner = 'NULL'
+        is_conclusive = 'NULL'
+        html_report = 'NULL'
+        test_name = 'NULL'
+        
+        for key in kwargs_dict:
+            if key == 'utm_campaign':           
+                utm_campaign = Hlp.stringify(kwargs_dict[key])
+            elif key == 'test_name':
+                test_name = Hlp.stringify(kwargs_dict[key])
+            elif key == 'test_type':
+                test_type = Hlp.stringify(kwargs_dict[key])
+            elif key == 'start_time':
+                start_time = Hlp.stringify(kwargs_dict[key])
+            elif key == 'end_time':
+                end_time = Hlp.stringify(kwargs_dict[key])
+            elif key == 'winner':
+                winner = Hlp.stringify(kwargs_dict[key])
+            elif key == 'is_conclusive':
+                is_conclusive = Hlp.stringify(kwargs_dict[key])
+            elif key == 'html_report':                
+                html_report = kwargs_dict[key]
+        
+        return [test_name, test_type, utm_campaign, start_time, end_time, winner, is_conclusive, html_report]
+            
+            
+    def update_test_row(self, **kwargs):
+        
+        test_name, test_type, utm_campaign, start_time, end_time, winner, is_conclusive, html_report = self.process_kwargs(kwargs)
+        
+        cols = ' test_name = ' + test_name + ', test_type = ' + test_type + ', utm_campaign = ' +  utm_campaign + ', start_time = ' +  start_time + ', end_time = ' +  end_time + ', winner = ' +  winner + ', is_conclusive = ' +  is_conclusive + ', html_report = ' +  html_report 
+        update_stmnt = 'update test set' + cols + ' where utm_campaign = ' + utm_campaign
+        
+        self.init_db()
+        
+        try:
+            self._cur_.execute(update_stmnt)
+        except:
+            self._db_.rollback()
+            self.close_db()
+            print >> sys.stderr, 'Could not execute: ' + update_stmnt
+            return -1
+        else:
+            self.close_db()
+        
+        return 0
+
     
     def insert_row(self, **kwargs):
         
         insert_stmnt = 'insert into test values '
         
-        winner = 'NULL'
-        is_conclusive = 'NULL'
-        html_report = 'NULL'
+        test_name, test_type, utm_campaign, start_time, end_time, winner, is_conclusive, html_report = self.process_kwargs(kwargs)
+    
+        insert_stmnt = insert_stmnt + '(' + test_name + ',' + test_type + ',' + utm_campaign + ',' + start_time + ',' + end_time + ',' + winner + ',' + is_conclusive + ',' + html_report + ')'
         
-        
-        for key in kwargs:
-            if key == 'utm_campaign':           
-                utm_campaign = Hlp.stringify(kwargs[key])
-            elif key == 'start_time':
-                start_time = Hlp.stringify(kwargs[key])
-            elif key == 'end_time':
-                end_time = Hlp.stringify(kwargs[key])
-            elif key == 'winner':
-                winner = kwargs[key]
-            elif key == 'is_conclusive':
-                is_conclusive = kwargs[key]
-            elif key == 'html_report':                
-                html_report = kwargs[key]
-                
-        insert_stmnt = insert_stmnt + '(' + utm_campaign + ',' + start_time + ',' + end_time + ',' + winner + ',' + is_conclusive + ',' + html_report + ')'
+        self.init_db()
         
         try:
             self._cur_.execute(insert_stmnt)
         except:
             self._db_.rollback()
-            self._db_.close()
-            sys.exit('Could not execute: ' + insert_stmnt)
+            self.close_db()
+            print >> sys.stderr, 'Could not execute: ' + insert_stmnt
             
-        return
+            return -1
+            # sys.exit('Could not execute: ' + insert_stmnt)
+        else:
+            self.close_db()
+
+        return 0
+
+    
+    def record_exists(self, **kwargs):
+        
+        test_name, test_type, utm_campaign, start_time, end_time, winner, is_conclusive, html_report = self.process_kwargs(kwargs)
+        
+        if utm_campaign != 'NULL' and utm_campaign != None: 
+            select_stmnt = 'select * from test where utm_campaign = ' + utm_campaign
+            
+            self.init_db()
+        
+            try:
+                self._cur_.execute(select_stmnt)
+                results = self._cur_.fetchone()
+                
+            except:
+                results = None
+                self._db_.rollback()
+                self.close_db()
+                print >> sys.stderr, 'Could not execute: ' + select_stmnt
+                # sys.exit('Could not execute: ' + select_stmnt)
+            else:
+                self.close_db()
+
+            if results is None:
+                return False
+            else:
+                return True
+            
+        else:
+            print "A utm_campaign must be specified (e.g. record_exists(utm_campaign='smthg'))"
+            return -1
+    
+    def get_test_row(self, utm_campaign):
+        
+        select_stmnt = 'select * from test where utm_campaign = ' + Hlp.stringify(utm_campaign)
+        
+        self.init_db()
+        
+        try:
+            self._cur_.execute(select_stmnt)
+            results = self._cur_.fetchone()
+            
+        except:
+            results = None
+            self._db_.rollback()
+            self.close_db()
+            print >> sys.stderr, 'Could not execute: ' + select_stmnt
+        else:
+            self.close_db()
+        
+        return results
+    
+    
+    def get_all_test_rows(self):
+        
+        select_stmnt = 'select * from test'
+        
+        self.init_db()
+        
+        try:
+            self._cur_.execute(select_stmnt)
+            results = self._cur_.fetchall()
+            
+        except:
+            results = None
+            self._db_.rollback()
+            self.close_db()
+            print >> sys.stderr, 'Could not execute: ' + select_stmnt
+            # sys.exit('Could not execute: ' + select_stmnt)
+        else:
+            self.close_db()
+
+        
+        return results
+        
+    """
+        This method handles mapping test row fields to col names
+    """
+    def get_test_field(self, row, key):
+        
+        if key == 'test_name':
+            return row[0]
+        elif key == 'test_type':
+            return row[1]
+        elif key == 'utm_campaign':           
+            return row[2]
+        elif key == 'start_time':
+            return row[3].__str__()
+        elif key == 'end_time':
+            return row[4].__str__()
+        elif key == 'winner':
+            return row[5]
+        elif key == 'is_conclusive':
+            return row[6]
+        elif key == 'html_report':                
+            return row[7]
+        
+
     
     def delete_row(self):
         return
     
-    def update_row(self):
-        return
+    
     
