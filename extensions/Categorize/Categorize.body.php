@@ -1,7 +1,7 @@
 <?php
 /* Categorize Mediawiki Extension
  *
- * @author Andreas Rindler (mediawiki at jenandi dot com) for initial Extension:CategorySuggest and Thomas Fauré (faure dot thomas at gmail dot com) for Categorize improvments
+ * @author Andreas Rindler (mediawiki at jenandi dot com) for initial Extension:CategorySuggest and Thomas FaurÃ© (faure dot thomas at gmail dot com) for Categorize improvments
  * @credits 
  * @licence GNU General Public Licence 3.0
  * @description 
