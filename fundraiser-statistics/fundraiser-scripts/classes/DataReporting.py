@@ -530,7 +530,7 @@ class ConfidenceReporting(DataReporting):
     def print_metrics(self, filename, metric_name, means_1, means_2, std_devs_1, std_devs_2, times_indices, labels, test_call):
         
         filename += '.txt'
-        file = open(filename, 'w')
+        file = open(self._file_path_ + filename, 'w')
         
         """ Compute % increase and report """
         av_means_1 = sum(means_1) / len(means_1)
