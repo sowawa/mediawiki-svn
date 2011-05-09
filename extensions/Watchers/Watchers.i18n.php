@@ -731,6 +731,7 @@ $messages['ml'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Htt
  * @author Kaustubh
  * @author Mahitgar
  */
@@ -738,6 +739,7 @@ $messages['mr'] = array(
 	'watchers' => 'दर्शक',
 	'watchers_link_title' => 'या पानाला कोणी पहारा दिलेला आहे?',
 	'watchers_error_article' => '<b>त्रुटी:</b> पान अस्तित्वात नाही',
+	'watchers-error-invalid-page' => "'''चूक:''' \"\$1\" हा अवैध पान मथळा आहे.",
 	'watchers_header' => '"[[:$1]]" ला पहारा देणारे सदस्य',
 	'watchers_noone_watches' => 'या पानावर कुणीही पहारा दिलेला नाही.',
 	'watchers_x_or_more' => '$1 किंवा जास्त सदस्यांनी पहारा दिलेला आहे.',

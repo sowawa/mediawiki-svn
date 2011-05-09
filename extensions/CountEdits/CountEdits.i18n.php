@@ -1039,6 +1039,7 @@ $messages['mn'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Htt
  * @author Kaustubh
  * @author Mahitgar
  */
@@ -1050,7 +1051,7 @@ $messages['mr'] = array(
 	'countedits-ok' => 'सर्व ठीक',
 	'countedits-nosuchuser' => '$1 नावाचा सदस्य अस्तित्वात नाही.',
 	'countedits-resultheader' => '$1 साठीचे निकाल',
-	'countedits-resulttext' => '$1 ने $2 संपादने केलेली आहेत',
+	'countedits-resulttext' => '$1 ने $2 {{PLURAL:$2|संपादन केले आहे|संपादने केलेली आहेत}}',
 	'countedits-mostactive' => 'सर्वात जास्त कार्यशील सदस्य',
 	'countedits-nocontribs' => 'या विकिवर योगदान केलेले नाही.',
 );

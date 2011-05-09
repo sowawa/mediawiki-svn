@@ -1375,6 +1375,7 @@ $messages['mn'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Htt
  * @author Kaustubh
  * @author Mahitgar
  */
@@ -1401,6 +1402,7 @@ $messages['mr'] = array(
 	'group-patroller' => 'निरीक्षक',
 	'group-patroller-member' => 'निरीक्षक',
 	'grouppage-patroller' => '{{ns:project}}:निरीक्षक',
+	'right-patroller' => 'पानांवर पहारा करा',
 );
 
 /** Malay (Bahasa Melayu)

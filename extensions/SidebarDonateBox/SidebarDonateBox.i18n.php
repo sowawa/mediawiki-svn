@@ -34,6 +34,7 @@ $messages['ast'] = array(
  */
 $messages['be-tarask'] = array(
 	'sidebardonatebox-desc' => 'Дадае нестандартнае паведамленьне пра ахвяраваньні ў бакавую панэль',
+	'DONATE' => 'Ахвяраваць',
 );
 
 /** Breton (Brezhoneg)
@@ -124,10 +125,12 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
  * @author Kenrick95
  */
 $messages['id'] = array(
 	'sidebardonatebox-desc' => 'Tambahkan sebuah kotak donasi kustom ke sidebar',
+	'DONATE' => 'Menyumbang',
 );
 
 /** Italian (Italiano)

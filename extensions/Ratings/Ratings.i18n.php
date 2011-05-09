@@ -142,6 +142,7 @@ Le voto actual del usator essera monstrate initialmente si ille ha jam votate.',
  */
 $messages['id'] = array(
 	'ratings-desc' => 'Memungkinkan pengguna untuk memberi nilai terhadap berbagai "properti" halaman',
+	'right-rate' => 'Memberi nilai untuk properti tertentu suatu halaman',
 	'ratings-starsratings-desc' => 'Menampilkan alat pemeringkat bintang sederhana yang memungkinkan pengguna untuk menilai properti tertentu dari sebuah halaman.
 Suara pengguna saat ini akan ditampilkan ketika ia sudah memilih.',
 	'ratings-par-page' => 'Halaman yang diberi peringkat.',

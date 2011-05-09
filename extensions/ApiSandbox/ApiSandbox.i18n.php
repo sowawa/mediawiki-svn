@@ -35,8 +35,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'apisb-desc' => '{{desc}}',
 	'apisb-parameters' => '{{Identical|Parameter}}',
 	'apisb-result' => '{{Identical|Result}}',
 	'apisb-loading' => '{{Identical|Loading}}',
@@ -155,6 +157,7 @@ $messages['es'] = array(
 );
 
 /** French (Français)
+ * @author Balzac 40
  * @author Crochet.david
  */
 $messages['fr'] = array(
@@ -173,11 +176,13 @@ Reportez-vous sur [http://www.mediawiki.org/wiki/API la documentation de l’API
 	'apisb-select-value' => 'Sélectionnez la valeur',
 	'apisb-loading' => 'Chargement …',
 	'apisb-load-error' => 'Erreur lors du chargement de description de l’API',
+	'apisb-request-error' => "Erreur lors de l'exécution d'une requête API",
 	'apisb-namespaces-error' => 'Erreur lors du chargement des espaces de noms',
 	'apisb-ns-main' => '(Principal)',
 	'apisb-submit' => 'Faire la demande',
 	'apisb-query-prop' => 'Propriétés',
 	'apisb-query-list' => 'Listes',
+	'apisb-query-meta' => 'Méta-information',
 );
 
 /** Galician (Galego)
@@ -262,6 +267,13 @@ Lihat [http://www.mediawiki.org/wiki/API dokumentasi API] untuk perincian lanjut
 	'apisb-query-prop' => 'Properti',
 	'apisb-query-list' => 'Daftar',
 	'apisb-query-meta' => 'Informasi meta',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'apisb-desc' => 'Hellef noh Fähler ze söhke bei [http://www.mediawiki.org/wiki/API MediaWiki <i lang="en">API</i>] Oprohfe uss_em Brauser.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -466,12 +478,13 @@ Sumangguni sa [http://www.mediawiki.org/wiki/API dokumentasyon ng API] para sa k
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Trần Nguyễn Minh Huy
  */
 $messages['vi'] = array(
 	'apisandbox' => 'Chỗ thử API',
 	'apisb-result' => 'Kết quả',
-	'apisb-request-url' => 'Yêu cầu URL:',
-	'apisb-query-meta' => 'Thông tin Meta',
+	'apisb-request-url' => 'URL của yêu cầu:',
+	'apisb-query-meta' => 'Siêu thông tin',
 );
 

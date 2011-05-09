@@ -1365,6 +1365,7 @@ $messages['mn'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Htt
  * @author Kaustubh
  * @author Mahitgar
  */
@@ -1381,6 +1382,7 @@ $messages['mr'] = array(
 	'expand_templates_xml_output' => 'XML चे आऊटपुट',
 	'expand_templates_ok' => 'ठिक',
 	'expand_templates_remove_comments' => 'संदेश हटवा',
+	'expand_templates_remove_nowiki' => 'निकालात <nowiki> अंकितक दाखवू नका',
 	'expand_templates_generate_xml' => 'XML चा पार्स (parse) वृक्ष दाखवा',
 	'expand_templates_preview' => 'झलक',
 );

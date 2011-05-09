@@ -3262,10 +3262,10 @@ $1',
 	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
 -->[[User:$1|$1]] ([[User talk:$1|चर्चा]] • <!--
 -->[[Special:Contributions/$1|योगदान]] • <!--
--->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
--->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
--->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
--->[[Special:BlockIP/$1|सदस्याला ब्लक करा]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on डब्ल्युएचओआयएस] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on आरडीएनएस] • <!--
+-->[http://www.robtex.com/rbls/$1.html आरबीएल] • <!--
+-->[[Special:BlockIP/$1|सदस्याला प्रतिबंधित करा]] • <!--
 -->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} ब्लक नोंदी] • <!--
 -->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} आयपी तपासा])<!--
 --></span>',

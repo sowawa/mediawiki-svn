@@ -842,11 +842,13 @@ $messages['ml'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Htt
  * @author Kaustubh
  */
 $messages['mr'] = array(
 	'chemicalsources' => 'रासायनिक स्रोत',
 	'chemicalsource-desc' => 'रासायनिक सूत्रांसाठीची <nowiki><chemform></nowiki> ही खूण वाढवितो',
+	'chemicalsources-desc' => 'रासायनिक स्रोतांसाठी [[Special:ChemicalSources|विशेष पान]]',
 	'chemFunctions_ListPage' => 'रासायनिक स्रोत',
 	'chemFunctions_DataList' => 'खाली तुम्ही शोधत असलेल्या रासायनिक पदार्थाची माहिती देणार्‍या संकेतस्थळांचे दुवे आहेत.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">एन‍आयएसटी वरील संयुग $MIXCASनाव सूत्र</a><br />

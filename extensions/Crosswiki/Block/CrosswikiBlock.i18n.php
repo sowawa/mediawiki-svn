@@ -1866,6 +1866,7 @@ $messages['mn'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Htt
  * @author Kaustubh
  */
 $messages['mr'] = array(
@@ -1908,6 +1909,7 @@ $messages['mr'] = array(
 * [[Special:CrosswikiBlock|ब्लॉक अर्ज]]
 * [[$4]]",
 	'crosswikiunblock-local' => 'स्थानिक अनब्लॉक इथे बदलता येत नाहीत. [[Special:IPBlockList|{{int:ipblocklist}}]] चा उपयोग करा',
+	'right-crosswikiblock' => 'इतर विकींवरील सदस्यांना प्रतिबंधित व अप्रतिबंधित करा',
 );
 
 /** Malay (Bahasa Melayu)

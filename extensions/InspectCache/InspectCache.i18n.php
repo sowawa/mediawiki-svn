@@ -698,6 +698,7 @@ $messages['ml'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Htt
  * @author Kaustubh
  */
 $messages['mr'] = array(
@@ -710,6 +711,7 @@ $messages['mr'] = array(
 	'inspectcache-delete' => 'वगळा',
 	'inspectcache-deleted' => 'वगळलेली सय',
 	'inspectcache-list' => 'यादी',
+	'right-inspectcache' => 'स्मृतिशेष पहा व वगळा',
 );
 
 /** Erzya (Эрзянь)

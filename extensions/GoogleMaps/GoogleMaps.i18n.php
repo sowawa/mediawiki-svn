@@ -3768,6 +3768,7 @@ $wgGoogleMapsMessages['mn'] = array(
  * @author Kaustubh
  */
 $wgGoogleMapsMessages['mr'] = array(
+	'gm-desc' => 'विकी-फीड मार्करांपासून नकाशे बनवतो',
 	'gm-incompatible-browser' => 'या जागेमध्ये दिसणारा नकाशा पाहण्यासाठी, तुम्हाला सुयोग्य ब्राउझर वापरणे गरजेचे आहे.',
 	'gm-incompatible-browser-link' => 'सुयोग्य ब्राउझर्सची यादी पाहण्यासाठी इथे टिचकी द्या.',
 	'gm-no-editor' => 'दुर्दैवाने, तुमचा ब्राउझर नकाशा-बनविण्यासाठी लागणार्‍या फीचर्सना साहाय्य करीत नाही. <a href="http://www.microsoft.com/ie">इंटरनेट एक्स्प्लोरर</a> (विंडोज) किंवा <a href="http://www.mozilla.org/products/firefox">फायरफॉक्स</a> (विंडोज, मॅक, व लिनक्स) यांची नवीनतम आवृत्ती वापरुन पहा.',

@@ -668,10 +668,12 @@ $messages['ml'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Htt
  * @author Kaustubh
  */
 $messages['mr'] = array(
 	'profiling' => 'प्रोफिलींग डाटा',
+	'profiling-desc' => 'रूपरेखित माहितीच्या शोधासाठी व निरीक्षणासाठी [[Special:Profiling|विशेष पान]]',
 	'profiling-process' => 'क्रिया स्ट्रींग:',
 	'profiling-wildcard' => 'वाईल्डकार्ड वापरा',
 	'profiling-ok' => 'सर्व ठीक',

@@ -479,6 +479,7 @@ $messages['ia'] = array(
  */
 $messages['id'] = array(
 	'livetranslate-desc' => 'Memungkinkan penerjemahan langsung konten halaman dengan menggunakan layanan Google Terjemahan',
+	'right-managetms' => '[[Special:SpecialLiveTranslate|Mengubah]] daftar memori terjemahan',
 	'livetranslate-translate-to' => 'Terjemahkan halaman ini ke',
 	'livetranslate-button-translate' => 'Terjemahkan',
 	'livetranslate-button-translating' => 'Menerjemahkan ...',

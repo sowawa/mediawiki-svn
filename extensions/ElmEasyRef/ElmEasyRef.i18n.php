@@ -18,6 +18,13 @@ $messages['en'] = array(
 	'elm-easyref-close'  => 'Close',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'elm-easyref-desc' => '{{desc}}',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -34,6 +41,24 @@ $messages['ia'] = array(
 	'elm-easyref-desc' => 'Adder un campo emergente pro presentar le contento del referentia',
 	'elm-easyref-ref' => 'Referentia $1',
 	'elm-easyref-close' => 'Clauder',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'elm-easyref-desc' => 'Menambahkan bidang munculan untuk menampilkan konten rujukan',
+	'elm-easyref-ref' => 'Rujukan $1',
+	'elm-easyref-close' => 'Tutup',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'elm-easyref-desc' => 'Maad_et müjjelesh, der Enhallt vun Verwiese en de Websigge enzeblände.',
+	'elm-easyref-ref' => 'Verwies $1',
+	'elm-easyref-close' => 'Zohmaache',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

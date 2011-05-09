@@ -32,6 +32,20 @@ $messages['en'] = array(
 	'wikitweet-tweets-from-room' => 'Tweets from room',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'wikitweet-desc' => '{{desc}}',
+);
+
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'wikitweet-delete' => 'изтриване',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  * @author MF-Warburg
@@ -78,6 +92,13 @@ $messages['fr'] = array(
 	'wikitweet-tweets-tagged' => 'Tweets taggés',
 	'wikitweet-back-timeline' => 'Retour au flux',
 	'wikitweet-tweets-from-room' => 'Tweets de la room',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'wikitweet-desc' => 'Määd ene Kanaal ähnlesch wi <i lang="en">Twitter</i> em Wiki müjjelesch.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

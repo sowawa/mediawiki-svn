@@ -892,6 +892,7 @@ $messages['ml'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Htt
  * @author Kaustubh
  */
 $messages['mr'] = array(
@@ -902,6 +903,7 @@ $messages['mr'] = array(
 	'importfreeimages_owner' => 'लेखक',
 	'importfreeimages_importthis' => 'हे घ्या',
 	'importfreeimages_next' => 'पुढील $1',
+	'importfreeimages_size_square' => 'चौकोन',
 	'importfreeimages_size_thumbnail' => 'प्रारुप',
 	'importfreeimages_size_small' => 'छोटा',
 	'importfreeimages_size_medium' => 'मध्यम',

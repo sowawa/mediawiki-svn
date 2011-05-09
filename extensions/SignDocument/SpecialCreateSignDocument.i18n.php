@@ -1344,7 +1344,8 @@ $messages['mr'] = array(
 	'createsigndoc-error-pagenoexist' => 'त्रुटी: पान [[$1]] अस्तित्त्वात नाही.',
 	'createsigndoc-success' => '[[$1]] वर आता सही करता येऊ शकेल.
 तपासण्यासाठी, [{{fullurl:{{#Special:SignDocument}}|doc=$2}} या पानाला] भेट द्या.',
-	'createsigndoc-error-alreadycreated' => 'डॉक्यूमेंट सही "$1" अगोदरच अस्तित्त्वात आहे.',
+	'createsigndoc-error-alreadycreated' => 'दस्तऐवज सही "$1" अगोदरच अस्तित्त्वात आहे.
+ती दुसर्‍यांदा होत नाही.',
 );
 
 /** Mirandese (Mirandés)
