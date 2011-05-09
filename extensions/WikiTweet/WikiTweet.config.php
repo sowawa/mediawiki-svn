@@ -2,8 +2,8 @@
 	$wgWikiTweet = array(
 		// User roles configuration :
 		'informuser'   => "Informer",
-		'informers'    => array("user1","user2"),
-		'admin'        => array("user1"),
+		'informers'    => array("Faure.thomas","user2"),
+		'admin'        => array("Faure.thomas"),
 		'allowAnonymous'    => True,                   // Is it possible to tweet anonymously ?
 		'AnonymousUser'     => 'Anonymous',            // Who is the "Anonymous user" (fictive user)
 		'allowDisconnected' => False,                  // Is it possible to post tweet when not log in ?

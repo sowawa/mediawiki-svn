@@ -4,74 +4,61 @@ function gettweets() {
 	var l__rows = $("#status_update_form input[name=rows]").val();
 	var l__room = $("#status_update_form input[name=room]").val();
 	var l__user = $("#status_update_form input[name=user]").val();
-	sajax_debug_mode = false;
 	$("#img_loader").css("display","inline");
-	sajax_do_call("fnGetTweetsAjax", [l__rows, l__room, l__user, l__size], ajaxResponse1);
-}
-ajaxResponse1 = function handleResponse1(response) {
-	$("#img_loader").css("display","none");
-	$("#lasttweets").html(response.responseText);
-	if (g__timer) clearTimeout(g__timer);
-	g__timer = setTimeout(gettweets, refreshTime);
+	$.getJSON(wgScriptPath+"/api.php?action=query&format=json&list=wikitweet&wtwreq=get&wtwrows="+l__rows+"&wtwroom="+l__room+"&wtwuser="+l__user+"&wtwsize="+l__size,
+		function(data) {
+			$.each(data.query.wikitweet, function(i,item){
+				$("#img_loader").css("display","none");
+				$("#lasttweets").html(item);
+				if (g__timer) clearTimeout(g__timer);
+				g__timer = setTimeout(gettweets, refreshTime);
+			});
+		}
+	);
 }
 function gettweets_with_tag(i__tag) {
 	var l__size = $("#status_update_form input[name=size]").val();
 	var l__rows = $("#status_update_form input[name=rows]").val();
 	var l__room = $("#status_update_form input[name=room]").val();
 	var l__user = $("#status_update_form input[name=user]").val();
-	sajax_debug_mode = false;
 	$("#img_loader").css("display","inline");
-	sajax_do_call("fnGetTweetsAjax", [l__rows, l__room, l__user, l__size, i__tag], ajaxResponse2);
-}
-ajaxResponse2 = function handleResponse2(response) {
-	$("#img_loader").css("display","none");
-	$("#lasttweets").html(response.responseText);
-	if (g__timer) clearTimeout(g__timer);
+	$.getJSON(wgScriptPath+"/api.php?action=query&format=json&list=wikitweet&wtwreq=get&wtwrows="+l__rows+"&wtwroom="+l__room+"&wtwuser="+l__user+"&wtwsize="+l__size+"&wtwtag="+i__tag,
+		function(data) {
+			$.each(data.query.wikitweet, function(i,item){
+				$("#img_loader").css("display","none");
+				$("#lasttweets").html(item);
+				if (g__timer) clearTimeout(g__timer);
+			});
+		}
+	);
 }
 function gettweets_from_room(i__room) {
-	var l__size = $("#status_update_form input[name=size]").val();
-	var l__rows = $("#status_update_form input[name=rows]").val();
-	var l__room = $("#status_update_form input[name=room]").val();
-	var l__user = $("#status_update_form input[name=user]").val();
-	sajax_debug_mode = false;
+	var l__size = escape ( $("#status_update_form input[name=size]").val() ) ;
+	var l__rows = escape ( $("#status_update_form input[name=rows]").val() ) ;
+	var l__room = escape ( $("#status_update_form input[name=room]").val() ) ;
+	var l__user = escape ( $("#status_update_form input[name=user]").val() ) ;
 	$("#img_loader").css("display","inline");
-	sajax_do_call("fnGetTweetsAjax", [l__rows, l__room, l__user, l__size, '', i__room], ajaxResponse2);
+	$.getJSON(wgScriptPath+"/api.php?action=query&format=json&list=wikitweet&wtwreq=get&wtwrows="+l__rows+"&wtwroom="+l__room+"&wtwuser="+l__user+"&wtwsize="+l__size+"&wtwother_room="+i__room,
+		function(data) {
+			$.each(data.query.wikitweet, function(i,item){
+				$("#img_loader").css("display","none");
+				$("#lasttweets").html(item);
+				if (g__timer) clearTimeout(g__timer);
+			});
+		}
+	);
 }
 function updatetweet(i__mail, i__userused){
-	var l__status = $("#status_update_form textarea[name=status]").val();
-	var l__room   = $("#status_update_form input[name=room]").val();
-	sajax_debug_mode = false;
-	sajax_do_call("fnUpdateTweetAjax", [l__status, i__userused, l__room, i__mail], ajaxResponse3);
+	var l__status = escape( $("#status_update_form textarea[name=status]").val() ) ;
+	var l__room   = escape( $("#status_update_form input[name=room]").val()      ) ;
+	$.getJSON(wgScriptPath+"/api.php?action=query&format=json&list=wikitweet&wtwreq=update&wtwstatus="+l__status+"&wtwuser="+i__userused+"&wtwroom="+l__room+"&wtwtomail="+i__mail,
+		function(data) {
+			$("#status_update_form textarea[name=status]").val("");
+			$("#stringlength").html("<span>140</span>");
+			gettweets();
+		}
+	);
 }
-ajaxResponse3 = function handleResponse3(response) {
-	$("#status_update_form textarea[name=status]").val("");
-	$("#stringlength").html("<span>140</span>");
-	gettweets();
-}
-
-ajaxResponse4 = function handleResponse4(response) {
-	// ROOM SUBSCRIPTION
-	if(data==""){
-		$("#tempimg").html("");
-		$("#room_subscribe").css("display", "none");
-		$("#room_unsubscribe").css("display", "inline");
-	}
-	else {
-		$("#id_room_subscribe").html("error :<br/>"+response.responseText);
-	}
-}
-ajaxResponse5 = function handleResponse5(response) {
-	// ROM UNSUBSCRIPTION
-	if(data==""){
-		$("#tempimg").html("");
-		$("#room_unsubscribe").css("display", "none");
-		$("#room_subscribe").css("display", "inline");
-	}
-	else {
-		$("#id_room_subscribe").html("error :<br/>"+response.responseText);
-	}
-}
-
 gettweets();
 $(document).ready(function() {
 	$("textarea[name=status]").keyup(function() {
@@ -129,14 +116,24 @@ $(document).ready(function() {
 		$("#tempimg").html('<img src="'+wgScriptPath+'/extensions/WikiTweet/images/ajax-loader-mini.gif" style ="padding: 0 5px 0 5px;"/>waiting...');
 		var i__link = $("#status_update_form input[name=room]").val();
 		var i__user = $("#status_update_form input[name=user]").val();
-		sajax_debug_mode = false;
-		sajax_do_call("fnSubscribeAjax", [i__link, i__user, 'room'], ajaxResponse4);
+		$.getJSON(wgScriptPath+"/api.php?action=query&format=json&list=wikitweet&wtwreq=subscribe&wtwlink="+i__link+"&wtwuser="+i__user+"&wtwtype=room",
+			function(data) {
+				$("#tempimg").html("");
+				$("#room_subscribe").css("display", "none");
+				$("#room_unsubscribe").css("display", "inline");
+			}
+		);
 	});
 	$("#room_unsubscribe").click(function() {
 		$("#tempimg").html('<img src="'+wgScriptPath+'/extensions/WikiTweet/images/ajax-loader-mini.gif" style ="padding: 0 5px 0 5px;"/>waiting...');
 		var i__link = $("#status_update_form input[name=room]").val();
 		var i__user = $("#status_update_form input[name=user]").val();
-		sajax_debug_mode = false;
-		sajax_do_call("fnUnsubscribeAjax", [i__link, i__user, 'room'], ajaxResponse5);
+		$.getJSON(wgScriptPath+"/api.php?action=query&format=json&list=wikitweet&wtwreq=unsubscribe&wtwlink="+i__link+"&wtwuser="+i__user+"&wtwtype=room",
+			function(data) {
+				$("#tempimg").html("");
+				$("#room_subscribe").css("display", "inline");
+				$("#room_unsubscribe").css("display", "none");
+			}
+		);
 	});
 });

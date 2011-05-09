@@ -9,7 +9,7 @@
  * with optional parameters being includes as "|param=value".
  *
  * @addtogroup Extensions
- * @author Thomas FAURÉ <faure.thomas@gmail.com> @whiblog
+ * @author Thomas FAURÉ <faure dot thomas at gmail dot com> <@whiblog>
  * @copyright © 2010 Thomas FAURÉ
  * @licence GNU General Public Licence 3.0
  */
@@ -31,28 +31,19 @@ if ( !$wgUseAjax ) {
 $wgExtensionFunctions[] = 'wikiTweeter';
 $wgHooks['LanguageGetMagic'][]	= 'wikiTweeterMagic';
 $wgExtensionCredits['parserhook'][] = array(
-	'path'        => __FILE__,
-	'name'        => 'WikiTweet',
-	'author'      => 'Thomas Fauré',
+	'path'           => __FILE__,
+	'name'           => 'WikiTweet',
+	'author'         => 'Thomas Fauré',
 	'descriptionmsg' => 'wikitweet-desc',
-	'url'         => 'http://www.mediawiki.org/wiki/Extension:WikiTweet',
-	'version'     => '0.5.1'
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:WikiTweet',
+	'version'        => '0.5.3'
 );
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['WikiTweet'] = $dir . 'WikiTweet.i18n.php';
 
-# Register Ajax functions to be called from Javascript file
-$wgAjaxExportList[] = 'fnGetTweetsAjax'  ;
-$wgAjaxExportList[] = 'fnUpdateTweetAjax';
-$wgAjaxExportList[] = 'fnSubscribeAjax'  ;
-$wgAjaxExportList[] = 'fnUnsubscribeAjax';
-$wgAjaxExportList[] = 'fnDelTweetAjax';
-
-require_once( 'gettweets.php'   );
-require_once( 'updatetweet.php' );
-require_once( 'subscribe.php'   );
-require_once( 'deletetweet.php' );
+$wgAutoloadClasses['ApiQueryWikiTweet'] = "$dir/WikiTweet.api.php";
+$wgAPIListModules['wikitweet'] = 'ApiQueryWikiTweet';
 
 function wikiTweeter()
 {
