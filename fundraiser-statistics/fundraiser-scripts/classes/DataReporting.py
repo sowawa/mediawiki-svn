@@ -27,6 +27,7 @@ import HTML
 import math
 
 import Fundraiser_Tools.classes.QueryData as QD
+import Fundraiser_Tools.classes.Helper as Hlp
 import Fundraiser_Tools.miner_help as mh
 import Fundraiser_Tools.classes.TimestampProcessor as TP
 import Fundraiser_Tools.classes.DataLoader as DL
@@ -63,6 +64,8 @@ class DataReporting(object):
     _fig_file_format_ = 'png'
     _plot_type_ = 'line'
     _item_keys_ = list()
+    _file_path_ = './tests/'
+    
     _data_loader_ = None
      
 
@@ -84,9 +87,9 @@ class DataReporting(object):
                 self._plot_type_ = kwargs[key]
             elif key == 'item_keys':                
                 self._item_keys_ = kwargs[key]
-            elif key == 'data_loader':                          # Set custom data loaders
-                if kwargs[key] == 'campaign_interval':
-                    self._data_loader_ = DL.CampaignIntervalReportingLoader()
+            elif key == 'file_path':                
+                self._file_path_ = kwargs[key]
+            
         
         # print self._data_loader_.__str__
         
@@ -187,74 +190,6 @@ class DataReporting(object):
     
     """
     def write_to_html_table(self):
-        
-        """
-        FROM TEST REPORTING
-        
-        query_obj = qs.query_store()
-    
-        # Populate the campaigns table
-        s1 = 'drop table if exists campaigns;'
-        s2 = 'create table campaigns as (select utm_campaign from drupal.contribution_tracking where ts > \'%s\' group by utm_campaign having count(*) > 100);' % (start_time)
-        cur.execute(s1)
-        cur.execute(s2)
-        
-        table_data = []
-        sql_stmnt = mh.read_sql(sql_path + query_type + '.sql');
-        
-        # open the html file for writing
-        f = open(html_path + query_type + '.html', 'w')
-        
-        format_start_time = start_time[0:4] + '-' + start_time[4:6] + '-' + start_time[6:8]  + '-' + start_time[8:10] + 'HRs'   
-        
-        # Formats the statement according to query type
-        select_stmnt = query_obj.format_query(query_type, sql_stmnt, [start_time])
-        
-        # html formatting
-        if query_type == 'report_campaign_ecomm':
-            f.write('<br>Donation data since ' + format_start_time + ' ... <br><br>')
-            select_stmnt = query_obj.format_query(query_type, sql_stmnt, [start_time])
-            
-        elif query_type == 'report_campaign_logs':
-            f.write('<br>Impression and landing page data since ' + format_start_time+ ' ... <br><br>')
-            select_stmnt = query_obj.format_query(query_type, sql_stmnt, [start_time])
-        
-        elif query_type == 'report_campaign_ecomm_by_hr':
-            f.write('<br>Donation data by hour since ' + format_start_time + ' ... <br><br>')
-            select_stmnt = query_obj.format_query(query_type, sql_stmnt, [start_time])
-        
-        elif query_type == 'report_campaign_logs_by_hr':
-            f.write('<br>Impression and landing page by hour since ' + format_start_time + ' ... <br><br>')
-            select_stmnt = query_obj.format_query(query_type, sql_stmnt, [start_time])
-        
-        else:
-            select_stmnt = query_obj.format_query(query_type, sql_stmnt, [start_time])
-            
-        try:
-            err_msg = select_stmnt
-            cur.execute(select_stmnt)
-            
-            results = cur.fetchall()
-            
-            for row in results:
-                cpRow = listify(row)
-                # t.rows.append(row)
-                table_data.append(cpRow)
-                
-        except:
-            db.rollback()
-            sys.exit("Database Interface Exception:\n" + err_msg)
-        
-        
-        t = HTML.table(table_data, header_row=header)
-        htmlcode = str(t)
-        
-        f.write(htmlcode)
-        f.close()
-        
-        return htmlcode
-        
-        """
         return 0
     
     
@@ -275,572 +210,6 @@ class DataReporting(object):
         
 
 
-"""
-
-    CLASS :: ^TotalAmountsReporting^
-    
-    This subclass handles reporting on total amounts for the fundraiser.
-
-"""
-
-class TotalAmountsReporting(DataReporting):
-    
-    """
-         <description>
-        
-        INPUT:
-                        
-        RETURN:
-        
-    """    
-    def __init__(self):
-        self.data = []
-
-    """
-         <description>
-        
-        INPUT:
-                        
-        RETURN:
-        
-    """            
-    def run_query(self, start_time, end_time, query_name, descriptor):
-        
-        self.init_db()
-
-        # Load the SQL File & Format
-        filename = self._sql_path_ + query_name + '.sql'
-        sql_stmnt = mh.read_sql(filename)
-        sql_stmnt = QD.format_query(query_name + descriptor, sql_stmnt, [start_time, end_time])
-        
-        labels = [None] * 21
-        labels[0] = 'clicks'
-        labels[1] = 'donations'
-        labels[2] = 'total amount'
-        labels[3] = 'banner amount'
-        labels[4] = 'US amount'
-        labels[5] = 'EN amount'
-        labels[6] = 'Other Amount'
-        labels[7] = 'Email Amount'
-        labels[8] = 'Recurring Guess'
-        labels[9] = 'completion_rate'
-        labels[10] = 'pp_clicks'
-        labels[11] = 'pp_donations'
-        labels[12] = 'pp_completion'
-        labels[13] = 'pp_amount'
-        labels[14] = 'pp_max_amount'
-        labels[15] = 'cc_clicks'
-        labels[16] = 'cc_donations'
-        labels[17] = 'cc_completion'
-        labels[18] = 'cc_amount'
-        labels[19] = 'cc_max_amount'
-        labels[20] = 'total_amt50'
-
-        
-        num_keys = len(labels)
-        
-        lists = list()
-        for i in range(num_keys):
-            lists.append(list())
-        
-        # Composes the data for each banner
-        try:
-            err_msg = sql_stmnt
-            self.cur.execute(sql_stmnt)
-
-            # This query store records according to dates
-            results = self.cur.fetchall()
-            for row in results:
-                for i in range(num_keys):
-                    lists[i].append(row[i+1])     
-                
-        except:
-            self.db.rollback()
-            sys.exit("Database Interface Exception:\n" + err_msg)
-        
-        self.close_db()
-        
-        # Only interested in amounts
-        return [labels, lists]
-    
-    
-    
-    def gen_plot(self,x, y_lists, labels, title, xlabel, ylabel, ranges, subplot_index, fname):
-        pylab.subplot(subplot_index)
-        num_keys = len(y_lists)
-        
-        pylab.figure(num=None,figsize=[26,14])
-        line_types = ['b-o','g-o','r-o','c-o','m-o','k-o','b--o','g--o','r--o','c--o','m--o','k--o']
-        
-        for i in range(num_keys):
-            pylab.plot(x, y_lists[i], line_types[i])
-
-        pylab.grid()
-        pylab.xlim(ranges[0], ranges[1])
-        pylab.legend(labels,loc=2)
-
-        pylab.xlabel(xlabel)
-        pylab.ylabel(ylabel)
-
-        pylab.title(title)
-        pylab.savefig(fname+'.png', format='png')
-    
-    
-    """
-         <description>
-        
-        INPUT:
-                        
-        RETURN:
-        
-    """    
-    def run_hr(self, type):
-        
-        
-        # Current date & time
-        now = datetime.datetime.now()
-        #UTC = 8
-        #delta = datetime.timedelta(hours=UTC)
-        #now = now + delta
-
-
-        """ ESTABLISH THE START TIME TO PULL ANALYTICS - TS format=1, TS resolution=1 """
-        hours_back = 24
-        times = self.gen_date_strings(now, hours_back,1,1)
-        
-        start_time = times[0]
-        end_time = times[1]
-
-        print '\nGenerating analytics total amount for ' + str(hours_back) + ' hours back. The start and end times are: ' + start_time + ' - ' + end_time +' ... \n'
-
-        # QUERY NAME
-        query_name = 'report_total_amounts'
-        
-
-        # RUN BY HOUR
-        descriptor = '_by_hr'
-        return_val = self.run_query(start_time, end_time, query_name, descriptor)
-        
-        labels = return_val[0]     # curve labels
-        counts = return_val[1]    # curve data - lists
-        
-        r = self.get_query_fields(labels, counts, type, start_time, end_time)
-        labels = r[0]
-        counts = r[1]
-        title = r[2]
-        ylabel = r[3]
-        
-        xlabel = 'Time - Hours'
-        subplot_index = 111
-        
-        # plot the curves
-        time_range = range(len(counts[0]))
-        for i in range(len(counts[0])):
-            time_range[i] = time_range[i] - len(counts[0])
-        
-        ranges = [min(time_range), max(time_range)]
-        
-        fname = query_name + descriptor + '_' + type
-        self.gen_plot(time_range, counts, labels, title, xlabel, ylabel, ranges, subplot_index, fname)
-        
-    
-    """
-         <description>
-        
-        INPUT:
-                        
-        RETURN:
-        
-    """    
-    def run_day(self,type):
-        
-        # Current date & time
-        now = datetime.datetime.now()
-        #UTC = 8
-        #delta = datetime.timedelta(hours=UTC)
-        #now = now + delta
-
-
-        """ ESTABLISH THE START TIME TO PULL ANALYTICS - TS format=1, TS resolution=0 """
-        hours_back = 7 * 24         # 7 days back
-        times = self.gen_date_strings(now, hours_back,1,0)
-        
-        start_time = times[0]
-        end_time = times[1]
-
-        print '\nGenerating analytics total amount for ' + str(days_back) + ' days back. The start and end times are: ' + start_time + ' - ' + end_time +' ... \n'
-
-
-        # FORMAT HEADERS & QUERY NAME
-        query_name = 'report_total_amounts'
-        descriptor = '_by_day'
-        return_val = self.run_query(start_time, end_time, query_name, descriptor)
-
-        labels = return_val[0]
-        counts = return_val[1]
-
-        r = self.get_query_fields(labels, counts, type, start_time, end_time)
-        labels = r[0]
-        counts = r[1]
-        title = r[2]
-        ylabel = r[3]
-        
-        xlabel = 'Time - Days'
-        subplot_index = 111
-        
-        # Plot values
-        time_range = range(len(counts[0]))
-        for i in range(len(counts[0])):
-            time_range[i] = time_range[i] - len(counts[0])
-        
-        ranges = [min(time_range), max(time_range)]
-        
-        fname = query_name + descriptor + '_' + type
-        self.gen_plot(time_range, counts, labels, title, xlabel, ylabel, ranges, subplot_index, fname)
-        
-    """
-         <description>
-        
-        INPUT:
-                        
-        RETURN:
-        
-    """        
-    def get_query_fields(self, labels, counts, type, start_time, end_time):
-        
-        if type == 'BAN_EM':
-            indices = range(2,9)
-            title = 'Total Amounts: ' + start_time + ' -- ' + end_time
-            ylabel = 'Amount'
-        elif type == 'CC_PP_completion':
-            indices = [12,17]
-            title = 'Credit Card & Paypal Completion Rates: ' + start_time + ' -- ' + end_time
-            ylabel = 'Rate'            
-        elif type == 'CC_PP_amount':
-            indices = [13,18]
-            title = 'Credit Card & Paypal Total Amounts: ' + start_time + ' -- ' + end_time
-            ylabel = 'Amount'
-        elif type == 'AMT_VS_AMT50':
-            indices = [2,20]
-            title = 'Amount50 and Amount Totals: ' + start_time + ' -- ' + end_time
-            ylabel = 'Amount'
-        else:
-            sys.exit("Total Amounts: You must enter a valid report type.\n" )
-        
-        # Exract relevant labels and values
-        labels_temp = list()
-        counts_temp = list()
-        
-        for i in range(len(labels)):
-            if i in indices:
-                labels_temp.append(labels[i])
-                counts_temp.append(counts[i])
-
-        return [labels_temp, counts_temp, title, ylabel]
-        
-
-"""
-
-    CLASS :: ^BannerLPReporting^
-    
-    This subclass handles reporting on banners and landing pages for the fundraiser.
-
-"""
-
-class BannerLPReporting(DataReporting):
-    
-    
-    """
-         <description>
-        
-        INPUT:
-                        
-        RETURN:
-        
-    """        
-    def __init__(self, **kwargs):
-            
-        self._data_loader_ = DL.BannerLPReportingLoader()
-        DataReporting.__init__(self, **kwargs)
-   
-#        for key in kwargs:
-#            
-#            if key == 'font_size':
-#                self._font_size_ = kwargs[key]
-#            elif key == 'fig_width_pt':
-#                self._fig_width_pt_ = kwargs[key]
-                
-                
-    """
-         <description>
-        
-        INPUT:
-                        
-        RETURN:
-        
-    """        
-    def gen_plot(self,counts, times, title, xlabel, ylabel, ranges, subplot_index, fname):
-        pylab.subplot(subplot_index)
-        pylab.figure(num=None,figsize=[26,14])    
-        count_keys = counts.keys()
-        
-        line_types = ['b-o','g-o','r-o','c-o','m-o','k-o','y-o','b--d','g--d','r--d','c--d','m--d','k--d','y--d','b-.s','g-.s','r-.s','c-.s','m-.s','k-.s','y-.s']
-        
-        count = 0
-        for key in counts.keys():
-            pylab.plot(times[key], counts[key], line_types[count])
-            count = count + 1
-
-        pylab.grid()
-        pylab.xlim(ranges[0], ranges[1])
-        pylab.legend(count_keys,loc=2)
-
-        pylab.xlabel(xlabel)
-        pylab.ylabel(ylabel)
-
-        pylab.title(title)
-        pylab.savefig(fname, format='png')
-        
-    
-    """
-        
-         <description>
-        
-        INPUT:
-                        
-        RETURN:
-        
-       
-        type = 'LP' || 'BAN' || 'BAN-TEST' || 'LP-TEST'
-        
-    """
-    def run(self, test_type, start_time, end_time, metric_name):
-                
-        # print '\nGenerating ' + test_type +' for ' + str(hours_back) + ' hours back. The start and end times are: ' + start_time + ' - ' + end_time +' ... \n'
-        
-        if test_type == 'LP':
-            query_name = 'report_LP_metrics'
-            
-            # Set the campaign type - either a regular expression corresponding to a particular campaign or specific campaign
-            if self.campaign == None:
-                campaign = '[0-9](JA|SA|EA|TY)[0-9]'
-            else:
-                campaign = self.campaign 
-                
-            title = metric_name + ': ' + start_time + ' -- ' + end_time 
-            fname = query_name + '_' + metric_name + '.png'            
-        elif test_type == 'BAN':
-            query_name = 'report_banner_metrics'
-            
-            # Set the campaign type - either a regular expression corresponding to a particular campaign or specific campaign
-            if self.campaign == None:
-                campaign = '[0-9](JA|SA|EA|TY)[0-9]'
-            else:
-                campaign = self.campaign 
-                
-            title = metric_name + ': ' + start_time + ' -- ' + end_time 
-            fname = query_name + '_' + metric_name + '.png'
-        elif test_type == 'BAN-TEST':
-            r = _data_loader_.get_latest_campaign()
-            query_name = 'report_banner_metrics'
-            
-            # Set the campaign type - either a regular expression corresponding to a particular campaign or specific campaign
-            if self.campaign == None:
-                campaign = r[0]
-                start_time = r[1]
-            else:
-                campaign = self.campaign 
-                start_time = self.start_time
-                
-            title = metric_name + ': ' + start_time + ' -- ' + end_time + ', CAMPAIGN =' + campaign 
-            fname = query_name + '_' + metric_name + '_latest' + '.png'
-        elif test_type == 'LP-TEST':
-            r = self.get_latest_campaign()
-            query_name = 'report_LP_metrics'
-            
-            # Set the campaign type - either a regular expression corresponding to a particular campaign or specific campaign
-            if self.campaign == None:
-                campaign = r[0]
-                start_time = r[1]
-            else:
-                campaign = self.campaign 
-                start_time = self.start_time
-                
-            title = metric_name + ': ' + start_time + ' -- ' + end_time + ', CAMPAIGN =' + campaign 
-            fname = query_name + '_' + metric_name + '_latest' + '.png'
-        else:
-            sys.exit("Invalid type name - must be 'LP' or 'BAN'.")    
-        
-        return_val = _data_loader_.run_query(start_time, end_time, campaign, query_name, metric_name)
-        self._counts_ = return_val[0]
-        self._times_ = return_val[1]
-        
-        """ Convert Times to Integers that indicate relative times AND normalize the intervals in case any are missing """
-        for key in self._times_.keys():
-            self._times_[key] = TP.normalize_timestamps(self._times_[key], False, 2)
-            self._times_[key], self._counts_[key] = TP.normalize_intervals(self._times_[key], self._counts_[key], interval)
-        
-        # title = metric_name + ': ' + start_time + ' -- ' + end_time
-        xlabel = 'Time - Hours'
-        ylabel = metric_name
-        subplot_index = 111
-        
-        min_time = 99
-        for key in times.keys():
-            min_elem = min(times[key])
-            if min_elem < min_time:
-                min_time = min_elem
-        
-        ranges = [min_time, 0]
-        
-        self.gen_plot(self._counts_, self._times_, title, xlabel, ylabel, ranges, subplot_index, fname)
-        
-        return [metrics, times]
-    
-
-
-
-
-"""
-
-CLASS :: ^MinerReporting^
-
-This subclass handles reporting on raw values imported into the database.
-
-"""
-
-class MinerReporting(DataReporting):
-    
-    """ 
-        <description>
-        
-        INPUT:
-                        
-        RETURN:
-        
-    """
-    def run_query(self, start_time, end_time, query_name):
-        
-        self.init_db()
-
-        counts = list()
-        times = list()
-            
-        # Load the SQL File & Format
-        filename = self._sql_path_+ query_name + '.sql'
-        sql_stmnt = mh.read_sql(filename)
-        
-        sql_stmnt = QD.format_query(query_name, sql_stmnt, [start_time, end_time])
-        #print sql_stmnt
-        
-        # Get Indexes into Query
-        count_index = QD.get_count_index(query_name)
-        time_index = QD.get_time_index(query_name)
-
-        # Composes the data for each banner
-        try:
-            err_msg = sql_stmnt
-            self.cur.execute(sql_stmnt)
-            
-            results = self.cur.fetchall()
-            
-            for row in results:
-                counts.append(row[count_index])
-                times.append(row[time_index])
-                
-        except:
-            self.db.rollback()
-            sys.exit("Database Interface Exception:\n" + err_msg)
-        
-        """ Convert Times to Integers """
-        time_norm =  self.normalize_timestamps(times)
-                    
-
-        self.close_db()
-        
-        return [counts, time_norm]
-    
-
-    """ 
-        Create histograms for hourly counts
-        <description>
-        
-        INPUT:
-                        
-        RETURN:
-        
-    """
-    def gen_plot(self,counts, times, title, xlabel, ylabel, ranges, subplot_index, fname):
-        
-        pylab.subplot(subplot_index)
-        pylab.figure(num=None,figsize=[26,14])    
-        
-        # pylab.plot(times, counts)
-        # pylab.hist(counts, times)
-        pylab.bar(times, counts, width=0.5)
-        
-        pylab.grid()
-        pylab.xlim(ranges[0], ranges[1])
-        
-        pylab.xlabel(xlabel)
-        pylab.ylabel(ylabel)
-
-        pylab.title(title)
-        pylab.savefig(fname, format='png')
-    
-    """ 
-        Entry point and definition for execution of miner reporting
-        
-        INPUT:
-                        
-        RETURN:
-        
-    """
-    def run(self, query_name):
-        
-        # Current date & time
-        now = datetime.datetime.now()
-        #UTC = 8
-        #delta = datetime.timedelta(hours=UTC)
-        #now = now + delta
-        
-        """ ESTABLISH THE START TIME TO PULL ANALYTICS - TS format=1, TS resolution=1 """
-        hours_back = 24
-        times = self.gen_date_strings_hr(now, hours_back,1,1)
-        
-        start_time = times[0]
-        end_time = times[1]
-        
-        print '\nGenerating ' + query_name +', start and end times are: ' + start_time + ' - ' + end_time +' ... \n'
-        
-        # Run Query
-        return_val = self.run_query(start_time, end_time, query_name)
-        counts = return_val[0]
-        times = return_val[1]
-        
-        # Normalize times
-        min_time = min(times)
-        ranges = [min_time, 0]
-        
-        xlabel = 'Hours'
-        subplot_index = 111
-        fname = query_name + '.png'
-        
-        title = QD.get_plot_title(query_name)
-        title = title + ' -- ' + start_time + ' - ' + end_time
-        ylabel = QD.get_plot_ylabel(query_name)
-        
-        # Convert counts to float (from Decimal) to prevent exception when bar plotting
-        # Bbox::update_numerix_xy expected numerix array
-        counts_new = list()
-        for i in range(len(counts)):
-            counts_new.append(float(counts[i]))
-        counts = counts_new
-            
-        # Generate Histogram
-        self.gen_plot(counts, times, title, xlabel, ylabel, ranges, subplot_index, fname)
-        
-    
 """
 
     CLASS :: IntervalReporting
@@ -866,11 +235,17 @@ class IntervalReporting(DataReporting):
         INPUT:
         
             loader_type    - string which determines the type of dataloader object
-            **kwargs       - allows plotting parameters to be tuned     !! MODIFY -- move up to base class !! 
+            **kwargs       - allows plotting parameters to be tuned     
     """
     def __init__(self, **kwargs):
         
         self._data_loader_ = DL.IntervalReportingLoader()
+        
+        for key in kwargs:
+            if key == 'data_loader':                          # Set custom data loaders
+                if kwargs[key] == 'campaign':
+                    self._data_loader_ = DL.CampaignIntervalReportingLoader()
+        
         DataReporting.__init__(self, **kwargs)
         
   
@@ -971,7 +346,7 @@ class IntervalReporting(DataReporting):
         pylab.ylabel(ylabel)
 
         pylab.title(title)
-        pylab.savefig('./tests/' + fname + '.' + self._fig_file_format_, format=self._fig_file_format_)
+        pylab.savefig(self._file_path_ + fname + '.' + self._fig_file_format_, format=self._fig_file_format_)
 
 
     """
@@ -1038,6 +413,8 @@ class IntervalReporting(DataReporting):
         """ Generate plots given data """
         self.gen_plot(self._counts_, self._times_, title, xlabel, ylabel, ranges, subplot_index, fname, labels)
         
+    
+
 
 """
 
@@ -1100,8 +477,6 @@ class ConfidenceReporting(DataReporting):
     """
     def gen_plot(self,means_1, means_2, std_devs_1, std_devs_2, times_indices, title, xlabel, ylabel, ranges, subplot_index, labels, fname):
                 
-        file_format = 'png'
-                
         pylab.subplot(subplot_index)
         pylab.figure(num=None,figsize=[26,14])    
         
@@ -1140,7 +515,7 @@ class ConfidenceReporting(DataReporting):
         pylab.ylabel(ylabel)
         
         pylab.title(title)
-        pylab.savefig(fname + '.' + file_format, format=file_format)
+        pylab.savefig(self._file_path_ + fname + '.' + self._fig_file_format_, format=self._fig_file_format_)
         
         
     """ 
@@ -1182,15 +557,15 @@ class ConfidenceReporting(DataReporting):
         win_str =  '\nThe winner "' + winner + '" had a %.2f%s increase.'
         win_str = win_str % (percent_increase, '%')
         
-        print '\nCOMMAND = ' + test_call
+        #print '\nCOMMAND = ' + test_call
         file.write('\nCOMMAND = ' + test_call)
                  
          
-        print  '\n\n' +  metric_name 
-        print '\nitem 1  = ' + labels[0] 
-        print 'item 2  = ' + labels[1]
-        print win_str
-        print '\ninterval\tmean1\t\tmean2\t\tstddev1\t\tstddev2\n'
+#        print  '\n\n' +  metric_name 
+#        print '\nitem 1  = ' + labels[0] 
+#        print 'item 2  = ' + labels[1]
+#        print win_str
+#        print '\ninterval\tmean1\t\tmean2\t\tstddev1\t\tstddev2\n'
         file.write('\n\n' +  metric_name)
         file.write('\nitem 1  = ' + labels[0] + '\n')
         file.write('\nitem 2  = ' + labels[1] + '\n')
@@ -1203,23 +578,24 @@ class ConfidenceReporting(DataReporting):
         for i in range(len(times_indices)):
             line_args = str(i) + '\t\t' + '%.5f\t\t' + '%.5f\t\t' + '%.5f\t\t' + '%.5f\n'
             line_str = line_args % (means_1[i], means_2[i], std_devs_1[i], std_devs_2[i])
-            print  line_str
+#            print  line_str
             file.write(line_str)
         
         """ Print out the averaged parameters """
         line_args = '%.5f\t\t' + '%.5f\t\t' + '%.5f\t\t' + '%.5f\n'
         line_str = line_args % (av_means_1, av_means_2, av_std_dev_1, av_std_dev_2)
         
-        print '\n\nOverall Parameters -- the confidence test was run with these parameters:\n'
-        print '\nmean1\t\tmean2\t\tstddev1\t\tstddev2\n'
-        print line_str
+#        print '\n\nOverall Parameters -- the confidence test was run with these parameters:\n'
+#        print '\nmean1\t\tmean2\t\tstddev1\t\tstddev2\n'
+#        print line_str
         
         file.write('\n\nOverall Parameters:\n')
         file.write('\nmean1\t\tmean2\t\tstddev1\t\tstddev2\n')
         file.write(line_str)
-            
-            
+                        
         file.close()
+        
+        return [winner, percent_increase]
     
     """ 
         Executes the test reporting
@@ -1244,8 +620,8 @@ class ConfidenceReporting(DataReporting):
                 
         """ Retrieve values from database """
         ret = self._data_loader_.run_query(query_name, metric_name, campaign, item_1, item_2, start_time, end_time, interval, num_samples)
-        metrics_1 = ret[0]
-        metrics_2 = ret[1]
+        metrics_1 = Hlp.convert_Decimal_list_to_float(ret[0])
+        metrics_2 = Hlp.convert_Decimal_list_to_float(ret[1])
         times_indices = ret[2]
         
         """ run the confidence test """
@@ -1259,7 +635,7 @@ class ConfidenceReporting(DataReporting):
         """ plot the results """
         xlabel = 'Hours'
         subplot_index = 111
-        fname = './tests/' + campaign + '_conf_' + metric_name
+        fname = campaign + '_conf_' + metric_name
         
         title = confidence + '\n\n' + test_name + ' -- ' + TP.timestamp_convert_format(start_time,1,2) + ' - ' + TP.timestamp_convert_format(end_time,1,2)
         
@@ -1278,69 +654,12 @@ class ConfidenceReporting(DataReporting):
         """ Print out results """ 
         test_call = "run('" + test_name + "', '" + query_name + "', '" + metric_name + "', '" + campaign + "', '" + \
             item_1 + "', '" + item_2 + "', '" + start_time + "', '" + end_time + "', " + str(interval) + ", " + str(num_samples) + ")"
-        self.print_metrics(fname, title, means_1, means_2, std_devs_1, std_devs_2, times_indices, labels, test_call)
+        winner, percent_increase = self.print_metrics(fname, title, means_1, means_2, std_devs_1, std_devs_2, times_indices, labels, test_call)
         
-        return
+        return [winner, percent_increase, confidence]
 
 
 
 
-class CampaignReporting(DataReporting):      
-    
-    """
 
-        Constructor for confidence reporting class
-        
-        INPUT:
-    
-        
-        
-        
-    """
-    def __init__(self, **kwargs):
-        
-        self._data_loader_ = DL.CampaignReportingLoader()
-        DataReporting.__init__(self, **kwargs)
-        
-        
-        
-        
-        
-    """
-        Describes how to run a report !! MODIFY !!
-    """    
-    def usage(self): 
-        
-        print ''
-        
-        return
-    
-    """ 
-        Print in Tabular form the means and standard deviation of each group over each 
-        interval
-        
-        INPUT:
-                        
-        RETURN: 
-        
-    """
-    def print_metrics(self):
-        
-        return
-    
-    
-    """ 
-        Executes the test reporting
-        
-        INPUT:
-                        
-        RETURN:
-        
-    """
-    def run(self, query_type, params):  
-        
-        data = self._data_loader_.run_query(start_time, end_time, interval, query_type, metric_name, campaign)
-        
-        return 
-        
     
