@@ -338,7 +338,9 @@ $.articleFeedback = {
 					'list': 'articlefeedback',
 					'afpageid': mw.config.get( 'wgArticleId' ),
 					'afanontoken': userrating ? mw.user.id() : '',
-					'afuserrating': Number( userrating )
+					'afuserrating': Number( userrating ),
+					'maxage': 0,
+					'smaxage': mw.config.get( 'wgArticleFeedbackSMaxage' )
 				},
 				'success': function( data ) {
 					var context = this;

@@ -15,6 +15,9 @@ require_once( dirname( dirname( __FILE__ ) ) . '/SimpleSurvey/SimpleSurvey.php' 
 
 /* Configuration */
 
+// How long to keep ratings in the squids (they will also be purged when needed)
+$wgArticleFeedbackSMaxage = 25920000;
+
 // Enable/disable dashboard page
 $wgArticleFeedbackDashboard = false;
 

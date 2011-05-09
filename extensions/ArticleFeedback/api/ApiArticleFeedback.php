@@ -5,7 +5,7 @@ class ApiArticleFeedback extends ApiBase {
 	}
 
 	public function execute() {
-		global $wgUser, $wgArticleFeedbackRatings;
+		global $wgUser, $wgArticleFeedbackRatings, $wgArticleFeedbackSMaxage;
 		$params = $this->extractRequestParams();
 
 		if ( $wgUser->isAnon() ) {
@@ -80,7 +80,9 @@ class ApiArticleFeedback extends ApiBase {
 			'list' => 'articlefeedback',
 			'afpageid' => $pageId,
 			'afanontoken' => '',
-			'afuserrating' => 0
+			'afuserrating' => 0,
+			'maxage' => 0,
+			'smaxage' => $wgArticleFeedbackSMaxage
 		) ) ) );
 		$squidUpdate->doUpdate();
 
