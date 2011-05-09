@@ -823,7 +823,7 @@ window.mediaWiki = new ( function( $ ) {
 						}
 					}
 					requests[requests.length] = $.extend(
-						{ 'modules': groups[group].join( '|' ), 'version': formatVersionNumber( version ) }, base
+						{ 'modules': groups[group].join( '|' ).replace( /\./g, '!' ), 'version': formatVersionNumber( version ) }, base
 					);
 				}
 				// Clear the batch - this MUST happen before we append the

@@ -2403,7 +2403,7 @@ class OutputPage {
 				continue;
 			}
 			
-			$query['modules'] = implode( '|', array_keys( $modules ) );
+			$query['modules'] = str_replace( '.', '!', implode( '|', array_keys( $modules ) ) );
 			
 			// Support inlining of private modules if configured as such
 			if ( $group === 'private' && $wgResourceLoaderInlinePrivateModules ) {

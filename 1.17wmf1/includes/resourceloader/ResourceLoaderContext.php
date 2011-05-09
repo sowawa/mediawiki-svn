@@ -51,7 +51,7 @@ class ResourceLoaderContext {
 		// Interpret request
 		// List of modules
 		$modules = $request->getVal( 'modules' );
-		$this->modules   = $modules ? explode( '|', $modules ) : array();
+		$this->modules   = $modules ? explode( '|', str_replace( '!', '.', $modules ) ) : array();
 		// Various parameters
 		$this->skin      = $request->getVal( 'skin' );
 		$this->user      = $request->getVal( 'user' );
