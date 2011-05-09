@@ -60,48 +60,60 @@ class PopulateAFStatistics extends Maintenance {
 		$this->dbw = wfGetDB( DB_MASTER );
 		
 		// the data structure to store ratings for a given page
-		$ratings = array();
+		$ratings = array();  // stores rating-specific info
+		$rating_set_count = array(); // keep track of rating sets
+		$highs_and_lows = array(); // store highest/lowest rated page stats
+		$averages = array(); // store overall averages for a given page
 		
 		// fetch the ratings since the lower bound timestamp
 		$this->output( 'Fetching page ratings between now and ' . date('Y-m-d H:i:s', strtotime( $this->getLowerBoundTimestamp())) . "...\n");
 		$res = $this->dbr->select(
 			'article_feedback', 
 			array( 
+				'aa_revision',
+				'aa_user_text',
+				'aa_rating_id',
+				'aa_user_anon_token',
 				'aa_page_id', 
 				'aa_rating_value',
-				'aa_rating_id'
 			), 
 			array( 'aa_timestamp >= ' . $this->dbr->addQuotes( $this->getLowerBoundTimestamp() ) ),
 			__METHOD__,
-			array() // better to do with limits and offsets?
+			array()
 		);
 		
 		// assign the rating data to our data structure
 		foreach ( $res as $row ) {
+			// determine the unique hash for a given rating set (page rev + user identifying info)
+			$rating_hash = md5( $row->aa_revision . $row->aa_user_text . $row->aa_user_anon_token );
+			
+			// keep track of how many rating sets a particular page has
+			if ( !isset( $rating_count[ $row->aa_page_id ][ $rating_hash ] )) {
+				// we store the rating hash as a key rather than value as checking isset( $arr[$hash] ) is way faster
+				// than doing something like array_search( $hash, $arr ) when dealing with large arrays
+				$rating_set_count[ $row->aa_page_id ][ $rating_hash ] = 1;
+			}
+			
 			$ratings[ $row->aa_page_id ][ $row->aa_rating_id ][] = $row->aa_rating_value; 
 		}
 		$this->output( "Done\n" );
 
 		// determine the average ratings for a given page
 		$this->output( "Determining average ratings for articles ...\n" );
-		$highs_and_lows = array();
-		$averages = array();
 		foreach ( $ratings as $page_id => $data ) {
-			$rating_count = 0;
+			// make sure that we have at least 10 rating sets for this page in order to qualify for ranking
+			if ( count( array_keys( $rating_set_count[ $page_id ] )) < 5 ) {
+				continue;
+			}
+			
+			// calculate the rating averages for a given page
 			foreach( $data as $rating_id => $rating ) {
-				$rating_count += count( $rating );
 				$rating_sum = array_sum( $rating );
 				$rating_avg = $rating_sum / count( $rating );
 				$highs_and_lows[ $page_id ][ 'avg_ratings' ][ $rating_id ] = $rating_avg;
 			}
 			
-			// make sure that we have at least 10 ratings for this page
-			if ( $rating_count < 10 ) {
-				// if not, remove it from our data store
-				unset( $highs_and_lows[ $page_id ] );
-				continue;
-			}
-			
+			// calculate the overall average for a page
 			$overall_rating_sum = array_sum( $highs_and_lows[ $page_id ][ 'avg_ratings' ] );
 			$overall_rating_average = $overall_rating_sum / count( $highs_and_lows[ $page_id ][ 'avg_ratings' ] );
 			$highs_and_lows[ $page_id ][ 'average' ] = $overall_rating_average;
