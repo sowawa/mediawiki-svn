@@ -71,7 +71,7 @@ class PopulateAFStatistics extends Maintenance {
 				'aa_rating_value',
 				'aa_rating_id'
 			), 
-			array( 'aa_timestamp >= ' . $this->getLowerBoundTimestamp() ),
+			array( 'aa_timestamp >= ' . $this->dbr->addQuotes( $this->getLowerBoundTimestamp() ) ),
 			__METHOD__,
 			array() // better to do with limits and offsets?
 		);

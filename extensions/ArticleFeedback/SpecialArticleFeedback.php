@@ -261,9 +261,9 @@ class SpecialArticleFeedback extends SpecialPage {
 					'afshl_avg_overall',
 					'afshl_avg_ratings'
 				),
-				array( 'afshl_ts = ' . $row->afshl_ts),
+				array( 'afshl_ts' => $row->afshl_ts ),
 				__METHOD__,
-				array( "ORDER BY" => "afshl_avg_overall" )	
+				array( "ORDER BY" => "afshl_avg_overall" ) // FIXME unindexed
 			);
 			$highs_lows = $this->buildHighsAndLows( $result );
 			$wgMemc->set( $key, $highs_lows, 86400 );
