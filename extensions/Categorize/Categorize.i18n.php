@@ -17,8 +17,6 @@ $messages['en'] = array(
 	'categorize-title'       => 'Knowledge qualification',
 	'categorize-subtitle'    => '',
 	'categorize-footer'      => 'If you want to add a label, please contact us at ...',
-	'categorize-boxlabel'    => 'Cat&eacute;gories',
-	'categorize-taglabel'    => 'Cat&eacute;gories populaires',
 	'categorize-advice'      => 'Click on the labels you want to attribute to this article:'
 	);
 /** French (Français)
@@ -28,8 +26,6 @@ $messages['fr'] = array(
 	'categorize-title'       => 'Qualification des savoirs',
 	'categorize-subtitle'    => '',
 	'categorize-footer'      => 'Si vous souhaitez ajouter un label, contactez ...',
-	'categorize-boxlabel'    => 'Catégories',
-	'categorize-taglabel'    => 'Catégories populaires',
 	'categorize-advice'      => 'Cliquez sur les labels que vous souhaitez attribuer à cet article :'
 	);
 ?>

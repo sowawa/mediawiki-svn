@@ -58,10 +58,6 @@ function sendRequest(q,e) {
 		csQuery = strQuery;
 		$.getJSON("api.php?action=query&format=json&list=categorize&catstrquery="+strQuery,
 		function(data) {
-			$.each(data.query.categorize, function(i,item){
-				
-			});
-			// resultSet = response.responseText;
 			var resultDiv = document.getElementById('searchResults');
 			displayType = document.getElementById('txtCSDisplayType').name;
 			resultDiv.innerHTML = '';
