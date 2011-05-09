@@ -15,7 +15,7 @@ class SpecialArticleFeedback extends SpecialPage {
 	}
 
 	public function execute( $par ) {
-		global $wgUser, $wgOut, $wgRequest, $wgLang, $wgArticleFeedbackDashboard;
+		global $wgUser, $wgOut, $wgRequest, $wgLang, $wgArticleFeedbackDashboard, $wgArticleFeedbackDashboardTalkPage;
 
 		$wgOut->addModules( 'ext.articleFeedback.dashboard' );
 		$this->setHeaders();
@@ -30,7 +30,7 @@ class SpecialArticleFeedback extends SpecialPage {
 			$lows = $this->getDailyLows( $highs_lows );
 			
 			// provide some messaging above high/low tables
-			$wgOut->addWikiMsg( 'articleFeedback-copy-above-highlow-tables' );
+			$wgOut->addWikiMsg( 'articleFeedback-copy-above-highlow-tables', $wgArticleFeedbackDashboardTalkPage );
 			
 			//render daily highs table
 			$this->renderDailyHighsAndLows( $highs, wfMsg( 'articleFeedback-table-caption-dailyhighs', $wgLang->date( time() )));

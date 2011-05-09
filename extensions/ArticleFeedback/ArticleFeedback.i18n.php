@@ -84,7 +84,7 @@ Please try again later.',
 	'articleFeedback-table-caption-recentlows' => 'Recent lows',
 	'articleFeedback-table-heading-page' => 'Page',
 	'articleFeedback-table-heading-average' => 'Average',
-	'articleFeedback-copy-above-highlow-tables' => 'This is an experimental feature.  Please provide feedback on the talk page.',
+	'articleFeedback-copy-above-highlow-tables' => 'This is an experimental feature.  Please provide feedback on the [$1 discusson page].',
 	'articleFeedback-copy-below-highlow-tables' => 'These tables contain articles that have received at least 10 ratings within the last 24 hours.  Averages are calculated by taking the mean of all ratings submitted within the last 24 hours.',
 	/* EmailCapture */
 	'articlefeedback-emailcapture-response-body' => 'Hello!
@@ -119,6 +119,7 @@ The {{SITENAME}} team',
  * @author Purodha
  * @author Raymond
  * @author Sam Reed
+ * @author Arthur Richards
  */
 $messages['qqq'] = array(
 	'articlefeedback' => 'The title of the feature. It is about reader feedback.
@@ -149,6 +150,7 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedback-pitch-join-login' => '{{Identical|Log in}}',
 	'articleFeedback-table-heading-page' => '{{Identical|Page}}',
 	'articleFeedback-table-heading-average' => '{{Identical|Average}}',
+	'articleFeedback-copy-above-highlow-tables' => 'The variable $1 will contain a full URL to a discussion page where the dashboard can be discussed - since the dashboard is powered by a special page, we can not rely on the built-in MediaWiki talk page.',
 );
 
 /** Afrikaans (Afrikaans)

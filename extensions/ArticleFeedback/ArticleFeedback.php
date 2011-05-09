@@ -73,6 +73,18 @@ $wgArticleFeedbackOptions = array(
 	'tracked' => true
 );
 
+/**
+ * The full URL for a discussion page about the Article Feedback Dashboard
+ *
+ * Since the dashboard is powered by a SpecialPage, we cannot rel on the built-in
+ * MW talk page for this, so we must expose our own page - internally or externally.
+ * 
+ * This value will be passed into an i18n message which will parse the URL as an 
+ * external link using wikitext, so this must be a full URL.
+ * @var string
+ */
+$wgArticleFeedbackDashboardTalkPage = "http://www.mediawiki.org/wiki/Talk:Article_feedback";
+
 // Would ordinarily call this articlefeedback but survey names are 16 chars max
 $wgPrefSwitchSurveys['articlerating'] = array(
 	'updatable' => false,
