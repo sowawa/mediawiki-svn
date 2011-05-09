@@ -28,4 +28,3 @@ $messages['fr'] = array(
 	'categorize-footer'      => 'Si vous souhaitez ajouter un label, contactez ...',
 	'categorize-advice'      => 'Cliquez sur les labels que vous souhaitez attribuer à cet article :'
 	);
-?>
