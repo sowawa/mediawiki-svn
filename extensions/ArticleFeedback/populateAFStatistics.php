@@ -165,9 +165,9 @@ class PopulateAFStatistics extends Maintenance {
 				'afshl_avg_overall',
 				'afshl_avg_ratings'
 			),
-			'afshl_ts = ' . $cur_ts,
+			array( 'afshl_ts' => $cur_ts ),
 			__METHOD__,
-			array()
+			array( "ORDER BY" => "afshl_avg_overall" )
 		);
 		// grab the article feedback special page so we can reuse the data structure building code
 		// FIXME this logic should not be in the special page class
