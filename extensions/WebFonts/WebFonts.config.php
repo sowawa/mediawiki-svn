@@ -29,7 +29,7 @@ $wgWebFonts = array(
 			'eot' => "$fontsPath/ml/Dyuthi.eot",
 			'ttf' => "$fontsPath/ml/Dyuthi.ttf",
 			'woff' => "$fontsPath/ml/Dyuthi.woff",
-			'size' => 32,
+			'scale' => 2.0,
 			'normalization' => array(
 				"ൾ" => "ള്‍",
 				"ൻ" => "ന്‍",
@@ -46,7 +46,7 @@ $wgWebFonts = array(
 			'eot' => "$fontsPath/ml/Meera.eot",
 			'ttf' => "$fontsPath/ml/Meera.ttf",
 			'woff' => "$fontsPath/ml/Meera.woff",
-			'size' => 20,
+			'scale' => 1.5,
 			'normalization' => array(
 				"ൾ" => "ള്‍",
 				"ൻ" => "ന്‍",
@@ -139,6 +139,12 @@ $wgWebFonts = array(
 			'ttf' => "$fontsPath/he/EzraSILSR.ttf",
 			'woff' => "$fontsPath/he/EzraSILSR.woff",
 				),
+		'Taamey Frank CLM' => array(
+			'eot' => "$fontsPath/he/TaameyFrankCLM.eot",
+			'ttf' => "$fontsPath/he/TaameyFrankCLM.ttf",
+			'woff' => "$fontsPath/he/TaameyFrankCLM.woff",
+			'svg' => "$fontsPath/he/TaameyFrankCLM.svg",
+				),				
 		'Kedage' => array(
 			'eot' => "$fontsPath/kn/Kedage.eot",
 			'ttf' => "$fontsPath/kn/Kedage.ttf",
@@ -227,7 +233,11 @@ $wgWebFonts = array(
 			'woff' => "$fontsPath/km/KhmerOSfasthand.woff",
 			'svg' =>  "$fontsPath/km/KhmerOSfasthand.svg",
 		),
-
+		'Pagul' => array(
+			'eot' => "$fontsPath/saz/Pagul.eot",
+			'ttf' => "$fontsPath/saz/Pagul.ttf",
+			'woff' => "$fontsPath/saz/Pagul.woff",
+		),
 		),
 
 	'languages' => array(
@@ -242,9 +252,10 @@ $wgWebFonts = array(
 		'hi' => array( 'Samyak Devanagari', 'Lohit Hindi'),
 		'mr' => array( 'Samyak Devanagari', 'Lohit Hindi'),
 		'ks' => array( 'Samyak Devanagari', 'Lohit Hindi'),
-		'he' => array( 'Ezra SIL', 'David CLM','Hadasim CLM'),
+		'he' => array( 'Ezra SIL', 'David CLM','Hadasim CLM', 'Taamey Frank CLM'),
 		'kn' => array( 'Kedage', 'Lohit Kannada'),
 		'my' => array( 'Masterpiece Uni Sans','Padauk-Regular','Myanmar3','Yunghkio'),
 		'km' => array('KhmerOSbattambang', 'KhmerOSsiemreap', 'KhmerOS', 'KhmerOSbokor', 'KhmerOSmuollight', 'KhmerOSmuol','KhmerOSmuolpali', 'KhmerOSfreehand', 'KhmerOSfasthand'),
+		'saz' => array('Pagul'),
 		),
 	);

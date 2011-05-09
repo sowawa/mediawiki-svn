@@ -15,6 +15,7 @@ $messages['en'] = array(
 	'webfonts'         => 'WebFonts',
 	'webfonts-desc'    => 'Embed fonts in pages',
 	'webfonts-load'    => 'Select font',
+	'webfonts-reset'   => 'Reset',
 	'webfonts-disable-preference' => 'Disable font embedding (WebFonts)',
 );
 
@@ -176,7 +177,8 @@ $messages['ml'] = array(
 	'webfonts' => 'വെബ്ഫോണ്ടുകള്‍',
 	'webfonts-desc' => 'മീഡിയവിക്കി താളുകളില്‍ ഫോണ്ടുകള്‍ എംബെഡ് ചെയ്യുക',
 	'webfonts-load' => 'ഫോണ്ടുകള്‍',
-	'webfonts-disable-preference' => 'ഫോണ്ടു് എംബഡ് ചെയ്യാതിരിക്കുക(വെബ്ഫോണ്ട്)',
+	'webfonts-reset' => 'പഴയപടിയാക്കുക',
+	'webfonts-disable-preference' => 'ഫോണ്ട് എംബഡ് ചെയ്യാതിരിക്കുക(വെബ്ഫോണ്ട്)',
 );
 
 /** Dutch (Nederlands)

@@ -39,14 +39,12 @@ $wgHooks['ResourceLoaderGetConfigVars'][] = 'WebFontsHooks::addConfig';
 $wgHooks['MakeGlobalVariablesScript'][] = 'WebFontsHooks::addVariables';
 $wgHooks['GetPreferences'][] = 'WebFontsHooks::addPreference';
 
-//TODO #1: Get the user preference for the font.
-//TODO #2: Add a preview page for available fonts?
-
 $wgWebFontsEnabled = true;
 
 $wgResourceModules['webfonts'] = array(
 	'scripts' => 'js/webfonts.js',
+	'styles' => 'css/webfonts.css',
 	'localBasePath' => dirname( __FILE__ ),
 	'remoteExtPath' => 'WebFonts',
-	'messages' => array( 'webfonts-load' ),
+	'messages' => array( 'webfonts-load', 'webfonts-reset'),
 );
