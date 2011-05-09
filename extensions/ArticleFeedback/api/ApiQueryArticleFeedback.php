@@ -240,6 +240,14 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 		}
 		return 0;
 	}
+	
+	public function getCacheMode( $params ) {
+		if ( $params['userrating'] ) {
+			return 'anon-public-user-private';
+		} else {
+			return 'public';
+		}
+	}
 
 	public function getAllowedParams() {
 		return array(
