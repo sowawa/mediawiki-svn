@@ -311,7 +311,16 @@ var config = {
 };
 
 /* Load at the bottom of the article */
-$( '<div id="mw-articlefeedback"></div>' ).articleFeedback( config ).insertBefore( '#catlinks' );
+var $aftDiv = $( '<div id="mw-articlefeedback"></div>' ).articleFeedback( config );
+
+// Put on bottom of article before #catlinks (if it exists)
+// Except in Classic, which has #catlinks above the article but inside content-div.
+if ( $( '#catlinks' ).length && mw.config.get( 'skin' ) != 'standard' ) {
+	$aftDiv.insertBefore( '#catlinks' );
+} else {
+	// CologneBlue, Nostalgia, ...
+	mw.util.$content.append( $aftDiv );
+}
 
 /* Add link so users can navigate to the feedback tool from the toolbox */
 var $tbAft = $( '<li id="t-articlefeedback"><a href="#mw-articlefeedback"></a></li>' )
