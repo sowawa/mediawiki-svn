@@ -321,7 +321,7 @@ class SpecialArticleFeedback extends SpecialPage {
 	 * @param object Database result
 	 * @return array
 	 */
-	public function buildHighsAndLows( $result ) {
+	public static function buildHighsAndLows( $result ) {
 		$highs_lows = array();
 		foreach ( $result as $row ) {
 			$highs_lows[] = array(

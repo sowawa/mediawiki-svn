@@ -170,8 +170,8 @@ class PopulateAFStatistics extends Maintenance {
 			array()
 		);
 		// grab the article feedback special page so we can reuse the data structure building code
-		$sp = SpecialPageFactory::getPage( 'ArticleFeedback' );
-		$highs_lows = $sp->buildHighsAndLows( $result );
+		// FIXME this logic should not be in the special page class
+		$highs_lows = SpecialArticleFeedback::buildHighsAndLows( $result );
 		// stash the data structure in the cache
 		$wgMemc->set( $key, $highs_lows, 86400 );
 		$this->output( "Done\n" );
