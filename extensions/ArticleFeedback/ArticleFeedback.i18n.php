@@ -84,6 +84,8 @@ Please try again later.',
 	'articleFeedback-table-caption-recentlows' => 'Recent lows',
 	'articleFeedback-table-heading-page' => 'Page',
 	'articleFeedback-table-heading-average' => 'Average',
+	'articleFeedback-copy-above-highlow-tables' => 'This is an experimental feature.  Please provide feedback on the talk page.',
+	'articleFeedback-copy-below-highlow-tables' => 'These tables contain articles that have received at least 10 ratings within the last 24 hours.  Averages are calculated by taking the mean of all ratings submitted within the last 24 hours.',
 	/* EmailCapture */
 	'articlefeedback-emailcapture-response-body' => 'Hello!
 
