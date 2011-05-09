@@ -42,6 +42,9 @@ class UploadWizardHooks {
 				// mediawiki-specific interface helper (relies on mediawiki globals)
 				'resources/jquery/jquery.mwCoolCats.js',
 
+				// wikimedia-comons specific title checker
+				'resources/jquery/jquery.validate.wmCommonsBlacklist.js',
+
 				// common utilities
 				'resources/mw.Log.js',
 				'resources/mw.Utilities.js',
@@ -133,9 +136,9 @@ class UploadWizardHooks {
 				'mwe-upwiz-api-error-unknown-warning',
 				'mwe-upwiz-api-error-timeout',
 				'mwe-upwiz-api-error-noimageinfo',
-
 				'mwe-upwiz-api-error-fileexists-shared-forbidden',
-
+				'mwe-upwiz-api-error-unclassified',
+				'mwe-upwiz-api-warning-was-deleted',
 				'mwe-upwiz-api-warning-exists',
 				'mwe-upwiz-tutorial-error-localized-file-missing',
 				'mwe-upwiz-tutorial-error-file-missing',
@@ -254,6 +257,15 @@ class UploadWizardHooks {
 				'mwe-upwiz-error-too-short',
 				'mwe-upwiz-error-bad-chars',
 				'mwe-upwiz-error-date',
+				'mwe-upwiz-error-title-blacklisted',
+				'mwe-upwiz-error-title-badchars',
+				'mwe-upwiz-error-title-senselessimagename',
+				'mwe-upwiz-error-title-hosting',
+				'mwe-upwiz-error-title-thumbnail',
+				'mwe-upwiz-error-title-fileexists-shared-forbidden',
+				'mwe-upwiz-error-title-double-apostrophe',
+				'mwe-upwiz-error-title-extension',
+				'mwe-upwiz-details-error-count',
 				'mwe-upwiz-license-cc-by-sa-3.0',
 				'mwe-upwiz-license-cc-by-3.0',
 				'mwe-upwiz-license-cc-zero',

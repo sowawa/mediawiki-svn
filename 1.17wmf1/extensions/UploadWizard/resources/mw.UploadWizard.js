@@ -31,7 +31,8 @@ mw.UploadWizardUpload = function( api, filesDiv ) {
 	// this.handler = new mw.MockUploadHandler( this );
 	this.handler = new mw.ApiUploadHandler( this, api );
 	
-	this.index = mw.UploadWizardUpload.prototype.count++;
+	this.index = mw.UploadWizardUpload.prototype.count;
+	mw.UploadWizardUpload.prototype.count++;
 };
 
 mw.UploadWizardUpload.prototype = {
@@ -461,16 +462,16 @@ mw.UploadWizardUpload.prototype = {
 								setTimeout( function() { 
 									timeoutMs = timeoutMs * 2 + Math.round( Math.random() * ( timeoutMs / 10 ) ); 
 									setSrc();
-								}, timeoutMs )	
+								}, timeoutMs );
 							} else {
 								$j.publish( key, null );
-					}
+							}
 						} );
 
 					// executing this should cause a .load() or .error() event on the image
 					function setSrc() { 
 						image.src = thumb.thumburl;
-			};
+					}
 
 					// and, go!
 					setSrc();
@@ -675,8 +676,16 @@ mw.UploadWizard.prototype = {
 		}
 		if ( mw.isDefined( mw.UploadWizard.config['altUploadForm'] ) && mw.UploadWizard.config['altUploadForm'] !== '' ) {
 			// altUploadForm is expected to be a page title like 'Commons:Upload', so convert to URL
-			var altUploadFormUrl = ( new mw.Title( mw.UploadWizard.config['altUploadForm'] ) ).getUrl();
-			$j( '#contentSub' ).append( $j( '<span class="contentSubLink"></span>' ).msg( 'mwe-upwiz-subhead-alt-upload', $j( '<a></a>' ).attr( { href: altUploadFormUrl } ) ) );
+			var title;
+			try {
+				title = new mw.Title( mw.UploadWizard.config['altUploadForm'] );
+			} catch ( e ) {
+				// page was empty, or impossible on this wiki (missing namespace or some other issue). Give up.
+			}
+			if ( title instanceof mw.Title ) { 
+				var altUploadFormUrl = title.getUrl();
+				$j( '#contentSub' ).append( $j( '<span class="contentSubLink"></span>' ).msg( 'mwe-upwiz-subhead-alt-upload', $j( '<a></a>' ).attr( { href: altUploadFormUrl } ) ) );
+			}
 		}
 		$j( '#contentSub .contentSubLink:not(:last)' ).after( '&nbsp;&middot;&nbsp;' );
 
@@ -783,8 +792,11 @@ mw.UploadWizard.prototype = {
 			if ( _this.detailsValid() ) {
 				_this.hideDetailsEndButtons();
 				_this.detailsSubmit( function() {
+					_this.detailsErrorCount();
 					_this.showNext( 'details', 'complete', finalizeDetails );
 				} );
+			} else {
+				_this.detailsErrorCount();
 			}
 		};
 
@@ -1298,6 +1310,15 @@ mw.UploadWizard.prototype = {
 			.find( '.mwe-upwiz-data' )
 			.morphCrossfade( '.mwe-upwiz-submitting' );
 
+		// hide errors ( assuming maybe this submission will fix it, if it hadn't blocked )
+		$j( '#mwe-upwiz-stepdiv-details' ) 
+			.find( 'label.mwe-error' )
+			.hide().empty();
+
+		$j( '#mwe-upwiz-stepdiv-details' ) 
+			.find( 'input.mwe-error' )
+			.removeClass( 'mwe-error' );
+
 		// add the upload progress bar, with ETA
 		// add in the upload count
 		_this.makeTransitioner(
@@ -1309,6 +1330,21 @@ mw.UploadWizard.prototype = {
 			},
 			endCallback /* called when all uploads are in a valid end state */
 		);
+	},
+
+	/** 
+	 * The details page can be vertically long so sometimes it is not obvious there are errors above. This counts them and puts the count
+ 	 * right next to the submit button, so it should be obvious to the user they need to fix things. 
+	 * This is a bit of a hack. The validator library actually already has a way to count errors but some errors are generated
+	 * outside of that library. So we are going to just look for any visible inputs in an error state.
+	 */
+	detailsErrorCount: function() {
+		var errorCount = $( '#mwe-upwiz-stepdiv-details' ).find( 'input.mwe-error, textarea.mwe-error, input.mwe-validator-error, textarea.mwe-validator-error' ).length;
+		if ( errorCount > 0 ) {
+			$( '#mwe-upwiz-details-error-count' ).msg( 'mwe-upwiz-details-error-count', errorCount, this.uploads.length );
+		} else {
+			$( '#mwe-upwiz-details-error-count' ).empty();
+		}
 	},
 
 	prefillThanksPage: function() {
