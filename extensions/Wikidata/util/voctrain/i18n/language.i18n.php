@@ -4634,6 +4634,50 @@ $messages['tr'] = array(
 	'voctrain_other' => 'diğer',
 );
 
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Zahidulla
+ */
+$messages['tt-cyrl'] = array(
+	'voctrain_Hello_World' => 'СӘЛАМ, ВИКИ!',
+	'voctrain_I_don_t_know_what_to_do_with_action_' => 'Мин «%action» белән нишләргә белмим.',
+	'voctrain_User_added' => 'Кулланучы өстәлде',
+	'voctrain_Hello_username_welcome_to_the_omega_language_trainer' => 'Сәлам, %username, Omega телләр өйрәнү программасына рәхим итегез',
+	'voctrain_continue' => 'дәвам итәргә',
+	'voctrain_hello_place' => 'сәлам, монда %place',
+	'voctrain_bye' => 'сау булыгыз',
+	'voctrain_Number_of_questions' => 'Сораулар саны',
+	'voctrain_Languages' => 'Телләр',
+	'voctrain_Questions' => 'Сораулар',
+	'voctrain_Answers' => 'Җаваплар',
+	'voctrain_start_exercise' => 'күнегүне башларга',
+	'voctrain_collection' => 'коллекция',
+	'voctrain_ISO_639_3_format' => 'ISO-639-3 форматы',
+	'voctrain_Definition' => 'Билгеләмә',
+	'voctrain_Dictionary_definition_to_help_you' => 'Сезгә ярдәм өчен сүзлек билгеләмәсе',
+	'voctrain_Word' => 'Сүз',
+	'voctrain_Please_type_your_answer_here' => 'Монда җавабыгызны кертегез',
+	'voctrain_submit_answer' => 'җавапны җибәрергә',
+	'voctrain_peek' => 'карарга',
+	'voctrain_I_know_it_do_not_ask_again' => 'Мин аны беләм  / башка сорамаска',
+	'voctrain_abort_exercise' => 'күнегүне туктатып торырга',
+	'voctrain_list_answers' => 'җаваплар исемлеге',
+	'voctrain_Question' => 'Сорау',
+	'voctrain_The_word_to_translate' => 'Тәрҗемә өчен сүз',
+	'voctrain_Answer' => 'Җавап',
+	'voctrain_list_of_questions_and_answers' => 'сораулар һәм җаваплар исемлеге',
+	'voctrain_Answer_s_' => 'Җавап(лар)',
+	'voctrain_logout' => 'чыгу',
+	'voctrain_Exercise_complete' => 'Күнегү ясалды',
+	'voctrain_Exercise_terminated' => 'Күнегү туктатылды',
+	'voctrain_Start_a_new_exercise' => 'Яңа күнегү башларга',
+	'voctrain_User_name' => 'Кулланучы исеме',
+	'voctrain_Password' => 'Серсүз:',
+	'voctrain_Login' => 'Керү',
+	'voctrain_Definitions' => 'Билгеләмәләр',
+	'voctrain_hiding' => 'Качыру',
+	'voctrain_other' => 'Башка',
+);
+
 /** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */

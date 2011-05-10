@@ -560,7 +560,7 @@ $messages['cu'] = array(
 	'prefstats-factor-hour' => 'часъ',
 	'prefstats-factor-sixhours' => 'шєсть часъ',
 	'prefstats-factor-day' => 'дьнь',
-	'prefstats-factor-week' => 'сєдми́ца',
+	'prefstats-factor-week' => 'сєдмица',
 	'prefstats-factor-twoweeks' => 'двѣ сєдмици',
 	'prefstats-factor-fourweeks' => 'чєтꙑрє сєдмицѧ',
 );

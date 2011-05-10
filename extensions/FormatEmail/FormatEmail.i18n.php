@@ -58,6 +58,17 @@ $messages['arz'] = array(
 $2',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'email-desc' => 'Permite amestar testeres/pies de páxina personalizaos a los correos electrónicos de los usuarios',
+	'email_footer' => '----------------------------------------------------------------------------
+Esti corréu te lu unvía $1 per aciu del sistema de corréu de {{SITENAME}}.
+
+$2',
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Wertuose
  */

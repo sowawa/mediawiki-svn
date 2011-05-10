@@ -18,6 +18,13 @@ $messages['en'] = array(
 	'folktagcloud-desc' => 'Adds an Semantic MediaWiki property for tagging pages with user-defined labels and a parser tag for displaying them in a tag cloud',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'folktagcloud-desc' => "Amiesta una propiedá de MediaWiki semántica para marcar les páxines con etiquetes definíes pol usuariu y una etiqueta analítica p'amosales nuna nube d'etiquetes",
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */

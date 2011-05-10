@@ -84,6 +84,25 @@ $3',
 	'latexdoc-desc' => 'تعديل تعاونى لوثائق لا تك',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'latexdoc_no_text' => 'La páxina nun contién testu, nun se pue xenerar DVI',
+	'latexdoc_cant_create_dir' => 'Nun se pue crear el direutoriu temporal $1',
+	'latexdoc_cant_write' => 'Nun se pue escribir nel ficheru $1',
+	'latexdoc_error' => 'Fallu de LaTeX
+
+Comandu: $1
+
+Salida: $2
+
+$3',
+	'latexdoc_get_dvi' => 'Xenerar DVI',
+	'latexdoc_get_pdf' => 'Xenerar PDF',
+	'latexdoc-desc' => 'Edición en collaboración de documentos LaTeX',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Jim-by
  */

@@ -19,6 +19,13 @@ $messages['en'] = array(
 	'webfonts-disable-preference' => 'Disable font embedding (WebFonts)',
 );
 
+/** Message documentation (Message documentation)
+ * @author EugeneZelenko
+ */
+$messages['qqq'] = array(
+	'webfonts-reset' => '{{Identical|Reset}}',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Wizardist
@@ -27,6 +34,7 @@ $messages['be-tarask'] = array(
 	'webfonts' => 'WebFonts',
 	'webfonts-desc' => 'Дазваляе ўбудоўваць шрыфты на старонкі',
 	'webfonts-load' => 'Выбраць шрыфт',
+	'webfonts-reset' => 'Скінуць',
 	'webfonts-disable-preference' => 'Забараніць убудаваньне шрыфтоў (WebFonts)',
 );
 
@@ -57,6 +65,7 @@ $messages['da'] = array(
 	'webfonts' => 'WebFonts',
 	'webfonts-desc' => 'Integrer skrifttyper i siderne',
 	'webfonts-load' => 'Vælg skrifttype',
+	'webfonts-reset' => 'Nulstil',
 	'webfonts-disable-preference' => 'Deaktiver integrering af skrifttyper (WebFonts)',
 );
 
@@ -67,6 +76,7 @@ $messages['de'] = array(
 	'webfonts' => 'WebSchriftarten',
 	'webfonts-desc' => 'Ermöglicht das Einbetten von Schriftarten auf  Seiten',
 	'webfonts-load' => 'Schriftart auswählen',
+	'webfonts-reset' => 'Zurücksetzen',
 	'webfonts-disable-preference' => 'Schriftarteneinbettung deaktivieren (WebSchriftarten)',
 );
 
@@ -97,6 +107,7 @@ $messages['gl'] = array(
 	'webfonts' => 'WebFonts',
 	'webfonts-desc' => 'Incorporar fontes nas páxinas',
 	'webfonts-load' => 'Seleccione a fonte',
+	'webfonts-reset' => 'Restablecer',
 	'webfonts-disable-preference' => 'Desactivar a incorporación de fontes (WebFonts)',
 );
 
@@ -167,6 +178,7 @@ $messages['mk'] = array(
 	'webfonts' => 'WebFonts',
 	'webfonts-desc' => 'Вградување на фонтови во страници',
 	'webfonts-load' => 'Изберете фонт',
+	'webfonts-reset' => 'Врати',
 	'webfonts-disable-preference' => 'Оневозможи вградување фонтови (WebFonts)',
 );
 
@@ -226,6 +238,7 @@ $messages['pt'] = array(
 	'webfonts' => 'TiposDeLetraIncorporados',
 	'webfonts-desc' => 'Tipos de letra incorporados nas páginas',
 	'webfonts-load' => 'Seleccione o tipo',
+	'webfonts-reset' => 'Reiniciar',
 	'webfonts-disable-preference' => 'Desactivar a incorporação de tipos (TiposDeLetraIncorporados)',
 );
 

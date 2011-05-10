@@ -24,6 +24,13 @@ $messages['qqq'] = array(
 	'geequbox-desc' => 'See http://www.mediawiki.org/wiki/Extension:GeeQuBox',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'geequbox-desc' => 'Xenera efeutos de lightbox usando el complementu lightbox de jQuery',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */

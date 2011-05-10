@@ -55,11 +55,11 @@ $messages['bg'] = array(
  */
 $messages['de'] = array(
 	'wikitweet-desc' => 'Ermöglicht Twitter ähnelnde Feedstänge',
-	'wikitweet-pleaselogin' => 'Bitte zum Tweeten anmelden.',
-	'wikitweet-moretweets' => 'Weitere Tweets …',
+	'wikitweet-pleaselogin' => 'Bitte zum Versenden von Kurznachrichten anmelden.',
+	'wikitweet-moretweets' => 'Weitere Kurznachrichten …',
 	'wikitweet-infoajax' => 'Nutzt AJAX, um den Feedstrang alle fünf Sekunden zu aktualisieren, ohne dass die Seite neu geladen werden muss.',
-	'wikitweet-submit' => 'Tweeten',
-	'wikitweet-submitandmail' => 'Tweeten und per E-Mail versenden',
+	'wikitweet-submit' => 'Senden',
+	'wikitweet-submitandmail' => 'Senden und per E-Mail verschicken',
 	'wikitweet-intheroom' => 'Du bist beim Feedstrang',
 	'wikitweet-subscribe' => 'abonnieren',
 	'wikitweet-subscribed' => 'abonniert',
@@ -69,9 +69,12 @@ $messages['de'] = array(
 	'wikitweet-private' => 'privat',
 	'wikitweet-answer' => 'Antwort auf',
 	'wikitweet-anonymous' => 'anonym',
-	'wikitweet-tweets-tagged' => 'Mit Stichworten versehene Tweets',
+	'wikitweet-tweets-tagged' => 'Mit Stichworten versehene Kurznachrichten',
 	'wikitweet-back-timeline' => 'Zurück zum Feedstrang',
-	'wikitweet-tweets-from-room' => 'Tweets von Feedstrang',
+	'wikitweet-tweets-from-room' => 'Kurznachrichten von Feedstrang',
+	'wikitweet-timeago' => 'Vor $1',
+	'wikitweet-inthefuture' => 'In der Zukunft.',
+	'wikitweet-fewsecondsago' => 'Vor wenigen Sekunden',
 );
 
 /** French (Français)

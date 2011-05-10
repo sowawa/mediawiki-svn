@@ -41,6 +41,16 @@ $messages['ar'] = array(
 	'checkpoint-tooltip' => 'إحفظ هذه المرحلة واستمرّ في تحرير الصفحة',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'checkpoint' => 'Guardar y siguir editando',
+	'checkpoint-desc' => "Permite qu'ún guarde lo editao y siga editando",
+	'checkpoint-tooltip' => 'Guardar lo avanzao y siguir editando la páxina',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|guardar un puntu de control]])',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */

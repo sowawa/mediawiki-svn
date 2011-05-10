@@ -19,6 +19,13 @@ $messages['qqq'] = array(
 	'firefoggcu-desc' => '{{desc}}',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'firefoggcu-desc' => 'Protocolu de xubía fragmentada de Firefogg',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Wizardist
  */

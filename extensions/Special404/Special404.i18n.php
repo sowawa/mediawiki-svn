@@ -121,6 +121,13 @@ Snaź coš se slědujucy bok woglědaś:
 * [[{{MediaWiki:Mainpage}}|Głowny bok]]',
 );
 
+/** Spanish (Español)
+ * @author Locos epraix
+ */
+$messages['es'] = array(
+	'error404' => '404 No encontrado',
+);
+
 /** French (Français)
  * @author Sherbrooke
  */

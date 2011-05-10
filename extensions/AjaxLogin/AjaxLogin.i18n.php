@@ -65,6 +65,22 @@ $messages['arc'] = array(
 	'ajaxlogin-create' => 'ܒܪܝ ܚܘܫܒܢܐ',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'ajaxlogin-desc' => 'Caxa dinámica que permite a los usuarios/es entrar y recordar la contraseña',
+	'ajaxLogin1' => "Pa completar el rexistru, tienes d'escribir una contraseña nueva.
+Esto te sacará d'esta páxina d'edición y podríes perder lo editao anguaño.",
+	'ajaxLogin2' => "¿Tas seguru?
+Pues perder los cambios fechos nesta páxina si sales d'ella agora.",
+	'ajaxlogin-create' => 'Crea una cuenta',
+	'al-nosuchuser' => 'Nun hai dengún usuariu col nome "$1".
+Los nomes d\'usuariu distinguen ente mayúscules y minúscules.
+Comprueba la escritura.',
+	'al-createblocked' => 'La to direición IP tien bloquiada la creación de cuentes.',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */

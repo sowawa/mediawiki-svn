@@ -19,10 +19,23 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'elm-easyref-desc' => '{{desc}}',
+	'elm-easyref-ref' => '{{Identical|Reference}}',
+	'elm-easyref-close' => '{{Identical|Close}}',
+);
+
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'elm-easyref-desc' => 'Дадаць разгортваемае поле для паказу зьместу зносак',
+	'elm-easyref-ref' => 'Зноска $1',
+	'elm-easyref-close' => 'Закрыць',
 );
 
 /** German (Deutsch)
@@ -97,12 +110,28 @@ $messages['nl'] = array(
 	'elm-easyref-close' => 'Sluiten',
 );
 
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'elm-easyref-desc' => 'Adicionar um campo flutuante para mostrar o conteúdo da referência',
+	'elm-easyref-ref' => 'Referência $1',
+	'elm-easyref-close' => 'Fechar',
+);
+
 /** Russian (Русский)
  * @author Elancev Michael
  */
 $messages['ru'] = array(
 	'elm-easyref-ref' => 'Ссылка $1',
 	'elm-easyref-close' => 'Закрыть',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'elm-easyref-close' => 'మూసివేయి',
 );
 
 /** Tagalog (Tagalog)

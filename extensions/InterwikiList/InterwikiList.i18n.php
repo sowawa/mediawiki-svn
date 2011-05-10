@@ -82,6 +82,18 @@ $messages['arz'] = array(
 	'interwikilist-prefix' => 'بادئة الإنترويكى:',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'interwikilist' => "Llista d'interwiki",
+	'interwikilist-desc' => 'Amiesta una [[Special:Interwikilist|páxina especial]] pa ver los enllaces interwiki disponibles',
+	'interwikilist-linkname' => "Enllaz d'interwiki",
+	'interwikilist-target' => 'URL destín',
+	'interwikilist-filter' => 'Llista de peñeres',
+	'interwikilist-prefix' => 'Prefixu interwiki:',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  * @author Haqmar

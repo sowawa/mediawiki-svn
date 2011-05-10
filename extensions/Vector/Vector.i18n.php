@@ -1349,6 +1349,7 @@ Yaykusqa kaspaykiqa, kay yuyampayta hark'ayta atinki allinkachinaykikunapi \"Lla
 	'vector-editwarning-preference' => "Yuyampaway p'anqata saqiptiy manaraq rurarqusqay hukchasqakunata waqaychaspay.",
 	'vector-simplesearch-search' => 'Maskay',
 	'vector-simplesearch-containing' => 'kaykunayuq: ...',
+	'vector-noexperiments-preference' => 'Ñuqawan ama lliplli llanchikukunata ruraychu',
 );
 
 /** Romanian (Română)

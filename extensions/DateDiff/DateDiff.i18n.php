@@ -17,6 +17,13 @@ $messages['en'] = array(
 	'datediff-desc' => 'Takes two dates and returns all intermediate days'
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'datediff-desc' => 'Toma dos dates y devuelve tolos díes intermedios',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */

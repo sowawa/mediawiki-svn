@@ -15,10 +15,12 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'sidebardonatebox-desc' => '{{desc}}',
+	'DONATE' => '{{Identical|Donate}}',
 );
 
 /** Asturian (Asturianu)
@@ -93,6 +95,7 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'sidebardonatebox-desc' => 'Engade unha caixa personalizada para as doazóns na barra lateral',
+	'DONATE' => 'Doazóns',
 );
 
 /** Swiss German (Alemannisch)

@@ -188,6 +188,14 @@ $messages['arz'] = array(
  * @author Xuacu
  */
 $messages['ast'] = array(
+	'clicktracking' => "Siguimientu de los clics de la Iniciativa d'usabilidá",
+	'clicktracking-desc' => "Siguimientu de clics pa siguir los socesos que nun causen l'anovamientu de la páxina",
+	'ct-title' => "Clics d'usuariu acumulaos",
+	'ct-event-name' => 'Nome del socesu',
+	'ct-expert-header' => "Clics «d'espertu»",
+	'ct-intermediate-header' => "Clics d'usuariu «mediu»",
+	'ct-beginner-header' => 'Clics de «novatu»',
+	'ct-total-header' => 'Total de clics',
 	'ct-start-date' => "Data d'aniciu (YYYYMMDD)",
 	'ct-end-date' => 'Data final (YYYYMMDD)',
 	'ct-increment-by' => 'Númberu de díes que representa cada puntu',
@@ -195,6 +203,13 @@ $messages['ast'] = array(
 	'ct-beginner' => 'Principiante',
 	'ct-intermediate' => 'Intermediu',
 	'ct-expert' => 'Espertu',
+	'ct-date-range' => 'Intervalu de dates',
+	'ct-editing' => 'Editando actualmente:',
+	'ct-anon-users' => 'Usuarios anónimos',
+	'ct-user-contribs' => 'Total de contribuciones del usuariu',
+	'ct-user-span' => 'Contribuciones del usuariu nel intervalu de tiempu',
+	'ct-and' => 'y',
+	'ct-update-table' => 'Anovar la tabla',
 );
 
 /** Azerbaijani (Azərbaycanca)

@@ -41,6 +41,13 @@ $messages['arz'] = array(
 	'randomimage-desc' => 'يوفر ميديا عشوائية باستخدام <code>&lt;randomimage /&gt;</code>',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'randomimage-desc' => 'Ufre un selector de multimedia al debalu usando <code>&lt;randomimage /&gt;</code>',
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Sortilegus
  */

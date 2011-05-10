@@ -51,6 +51,13 @@ $messages['arz'] = array(
 	'jskit-desc' => 'يدمج مجموعة أدوات جافاسكريبت إلى صفحة ويكى',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'jskit-desc' => 'Integra ferramientes js-kit nuna páxina wiki',
+);
+
 /** Belarusian (Беларуская)
  * @author Хомелка
  */

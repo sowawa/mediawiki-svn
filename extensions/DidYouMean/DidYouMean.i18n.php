@@ -48,6 +48,13 @@ $messages['arz'] = array(
 	'didyoumean-desc' => 'يضيف وصلات إلى صفحات بعناوين "مشابهة"',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'didyoumean-desc' => 'Amiesta enllaces a paxines con títulos «asemeyaos»',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */

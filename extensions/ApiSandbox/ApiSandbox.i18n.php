@@ -210,7 +210,7 @@ Consulte a [http://www.mediawiki.org/wiki/API documentación de API] para obter 
 	'apisb-submit' => 'Facer a solicitude',
 	'apisb-query-prop' => 'Propiedades',
 	'apisb-query-list' => 'Listas',
-	'apisb-query-meta' => 'Meta información',
+	'apisb-query-meta' => 'Metainformación',
 );
 
 /** Interlingua (Interlingua)

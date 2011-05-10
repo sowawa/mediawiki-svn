@@ -402,6 +402,18 @@ $messages['ltg'] = array(
 	'ts-kml-on-ol-all' => 'Vysi',
 );
 
+/** Latvian (Latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'ts-kml-on-ol-options' => 'Iespējas',
+	'ts-kml-on-ol-languages' => 'Valodas',
+	'ts-kml-on-ol-thumbnails' => 'Sīktēli',
+	'ts-kml-on-ol-help' => 'Palīdzība',
+	'ts-kml-on-ol-all' => 'Visas',
+	'ts-kml-on-ol-map-by' => 'Karte no',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

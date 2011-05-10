@@ -9089,6 +9089,27 @@ $messages['nds'] = array(
 	'ow_meaningsoftitle' => 'Bedüden vun „$1“',
 );
 
+/** Nepali (नेपाली)
+ * @author Bhawani Gautam
+ */
+$messages['ne'] = array(
+	'langman_langname' => 'भाषा नाम:',
+	'langman_iso639-3' => 'ISO 639-3 कोड:',
+	'langman_iso639-2' => 'ISO 639-2 कोड:',
+	'langman_wikimedia' => 'विकिमीडिया कोड:',
+	'langman_field_optional' => '(वैकल्पिक)',
+	'langman_addlang' => 'भाषा थप्ने',
+	'importlangnames' => 'विकिमीडिया: भाषा नामहरु आयात गर्ने',
+	'importlangnames_title' => 'भाषा नामहरु आयात गर्ने',
+	'importlangnames_not_allowed' => 'तपाईंलाई  भाषा आयात गर्ने अनुमति छैन।',
+	'importlangnames_added' => ' "$1" को लागि भाषा नाम थपियो।',
+	'importlangnames_not_found' => '<strong>पाइएको  "$1" को लागि भाषा प्रवेश अनुमति नभएको found!</strong>',
+	'datasearch' => 'विकिडेटा: डेटा खोज',
+	'datasearch_language' => 'भाषा:',
+	'datasearch_found_word' => 'शव्द पाइयो',
+	'datasearch_meaning' => 'अर्थ',
+);
+
 /** Dutch (Nederlands)
  * @author GerardM
  * @author SPQRobin

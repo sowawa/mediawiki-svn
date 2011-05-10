@@ -1726,6 +1726,14 @@ $messages['pt-br'] = array(
 	'right-patroller' => 'Patrulhar páginas',
 );
 
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'group-patroller' => 'Patrullaqkuna',
+	'group-patroller-member' => 'patrullaq',
+);
+
 /** Romansh (Rumantsch) */
 $messages['rm'] = array(
 	'patrol-revert-reason' => 'Motiv:',

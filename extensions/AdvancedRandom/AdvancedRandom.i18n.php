@@ -67,9 +67,11 @@ $messages['arz'] = array(
 
 /** Asturian (Asturianu)
  * @author Esbardu
+ * @author Xuacu
  */
 $messages['ast'] = array(
 	'advancedrandom' => 'Accesu aleatoriu avanzáu',
+	'advancedrandom-desc' => "Ver una páxina al debalu de cualesquier espaciu de nomes qu'enllace (esa páxina l la d'alderique) a una páxina dada. Se pue usar como en [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] pa ver un artículu destacáu al debalu o como en [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] pa ver un ficheru GFDL al debalu",
 );
 
 /** Kotava (Kotava)
