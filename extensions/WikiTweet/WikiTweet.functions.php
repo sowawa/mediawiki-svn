@@ -113,24 +113,24 @@ class WikiTweetFunctions {
 		
 		if ($l__nber_hours !=0 && $l__nber_minutes != 0 )
 		{
-			$result = str_replace( "%time%" , "$l__nber_hours $hours $l__nber_minutes $minutes" , wfMsg( 'wikitweet-timeago' ) ); // "%time% ago"
+			$result = wfMsgExt( 'wikitweet-timeago', 'parse', "$l__nber_hours $hours $l__nber_minutes $minutes" );
 		}
 		elseif (($l__nber_hours != 0 && $l__nber_minutes == 0 ) || ($l__nber_hours >= 5 ) )
 		{
-			$result = str_replace( "%time%" , "$l__nber_hours $hours" , wfMsg( 'wikitweet-timeago' ) ); // "%time% ago"
+			$result = wfMsgExt( 'wikitweet-timeago', 'parse', "$l__nber_hours $hours" );
 		}
 		elseif (($l__nber_minutes >= 5) || ($l__nber_minutes != 0 && $l__nber_seconds == 0 ) )
 		{
-			$result = str_replace( "%time%" , "$l__nber_minutes $minutes" , wfMsg( 'wikitweet-timeago' ) ); // "%time% ago"
+			$result = wfMsgExt( 'wikitweet-timeago', 'parse', "$l__nber_minutes $minutes" );
 		}
 		elseif ($l__nber_minutes != 0 && $l__nber_seconds != 0 )
 		{
-			$result = str_replace( "%time%" , "$l__nber_minutes $minutes $l__nber_seconds $seconds" , wfMsg( 'wikitweet-timeago' ) ); // "%time% ago"
+			$result = wfMsgExt( 'wikitweet-timeago', 'parse', "$l__nber_minutes $minutes $l__nber_seconds $seconds" );
 		}
 		elseif ($l__nber_seconds !=0 )
 		{
-			$result = str_replace( "%time%" , "$l__nber_seconds $seconds" , wfMsg( 'wikitweet-timeago' ) ); // "%time% ago"
+			$result = wfMsgExt( 'wikitweet-timeago', 'parse', "$l__nber_seconds $seconds" );
 		}
-	return $result ; // a string
+	return $result ;
 	}
 }
