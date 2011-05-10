@@ -7,14 +7,13 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 
 import sys
-import datetime
-# sys.path.append('/home/rfaulkner/trunk/projects/')
-# sys.path.append('/home/rfaulkner/trunk/projects/Fundraiser_Tools/classes')
-
 import os
+import datetime
+
 import Fundraiser_Tools.classes.Helper as Hlp
 import Fundraiser_Tools.classes.DataReporting as DR
 import Fundraiser_Tools.classes.DataLoader as DL
+import Fundraiser_Tools.classes.FundraiserDataHandler as FDH
 import Fundraiser_Tools.classes.TimestampProcessor as TP
 import Fundraiser_Tools.settings as projSet
 import operator
@@ -23,10 +22,6 @@ import operator
 """
     Index page for finding the latest camapigns.  Displays a list of recent campaigns with more than k donations over the last n hours. 
     
-    INPUT:
-    
-    RETURN:
-
 """
 def index(request):
     
@@ -35,7 +30,7 @@ def index(request):
     os.chdir(projSet.__project_home__ + '/Fundraiser_Tools/classes')
     
     crl = DL.CampaignReportingLoader()
-    campaigns, all_data = crl.run_query('totals',{'metric_name':'donations','start_time':'20101230130400','end_time':'20101230144400'})
+    campaigns, all_data = crl.run_query('totals',{'metric_name':'donations','start_time':'20101230130400','end_time':'20101230154400'})
     
     sorted_campaigns = sorted(campaigns.iteritems(), key=operator.itemgetter(1))
     sorted_campaigns.reverse()
@@ -49,7 +44,7 @@ def index(request):
             if name  == None:
                 name = 'none'
             timestamp = TP.timestamp_from_obj(all_data[key][3], 2, 2)
-            new_sorted_campaigns.append([campaign[0], campaign[1], name, timestamp])
+            new_sorted_campaigns.append([campaign[0], campaign[1], name, timestamp, all_data[key][4]])
     
     sorted_campaigns = new_sorted_campaigns
     
@@ -63,38 +58,26 @@ def index(request):
 """
 
     Use time interval views of the data to display campaign information
-    
-    INPUT:
-            
-        request 
-        utm_campaign
-    
-    RETURN:
-    
-        HttpResponse
 
 """
 def show_campaigns(request, utm_campaign):
     
     """ Look 5 hrs into the past? """
     start_time = '20101230130400'
-    end_time = '20101230144400' 
+    end_time = '20101230154400' 
     interval = 2
-    
+
     os.chdir(projSet.__project_home__ + '/Fundraiser_Tools/classes')
     
     """ Estimate start/end time of campaign """
     """ This generates an image for campaign views """
-    ir = DR.IntervalReporting(use_labels=False, font_size=20, plot_type='line', data_loader='campaign_interval', item_keys=[utm_campaign])
+    ir = DR.IntervalReporting(use_labels=False, font_size=20, plot_type='line', data_loader='campaign', file_path=projSet.__web_home__ + 'campaigns/static/images/')
     ir.run(start_time, end_time, interval, 'campaign', 'views', utm_campaign, [])
     
     """ search for start_time and end_time """
     
     top_view_interval = max(ir._counts_[utm_campaign])
-    
-    # print top_view_interval
-    # print ir._counts_[utm_campaign]
-    
+
     start_count = 0
     end_count = len(ir._counts_[utm_campaign]) 
     begin_count = False
@@ -103,12 +86,12 @@ def show_campaigns(request, utm_campaign):
     """ Define the start time as the first interval at least80% of the maximum view interval 
         Define the end time as the first interval following the estimated start time and less than 50% of the maximum view interval """
     for i in ir._counts_[utm_campaign]:
-        if i > (0.4 * top_view_interval) and not(begin_count):
+        if i > (0.5 * top_view_interval) and not(begin_count):
             start_count = count
             begin_count = True
             
-        if begin_count and i < (0.2 * top_view_interval) and (end_count > count):
-            end_count = count
+        if begin_count and i < (0.5 * top_view_interval) and (end_count > count):
+            end_count = count - 3
             
         count = count + 1
     
@@ -120,18 +103,8 @@ def show_campaigns(request, utm_campaign):
     
     """ determine the type of test """
     """ Get the banners  """
-    test_type = Hlp.get_test_type(utm_campaign)
-    
-    if test_type == 'banner':
-        """ Get the Banners -- dataloader """
-        crl = DL.CampaignReportingLoader()
-        artifact_name_list = crl.run_query('banners', {'utm_campaign' : utm_campaign, 'start_time' : start_time_est, 'end_time' : end_time_est})
+    test_type, artifact_name_list = FDH.get_test_type(utm_campaign, start_time_est, end_time_est)
         
-    elif  test_type == 'LP':
-        """ Get the Landing Pages -- data loader """
-        crl = DL.CampaignReportingLoader()
-        artifact_name_list = crl.run_query('lps', {'utm_campaign' : utm_campaign, 'start_time' : start_time_est, 'end_time' : end_time_est})
-    
     os.chdir(projSet.__project_home__ + '/Fundraiser_Tools/web_reporting')
 
     return render_to_response('campaigns/show_campaigns.html', {'utm_campaign' : utm_campaign, 'start_time' : start_time_est, 'end_time' : end_time_est, 'artifacts' : artifact_name_list, 'test_type' : test_type}, context_instance=RequestContext(request))    
@@ -139,4 +112,22 @@ def show_campaigns(request, utm_campaign):
     # return HttpResponseRedirect(reverse('campaigns.views.index'))
 
     """ return a form that displays estimates and allows a test to be generated """
+
+
+"""
+    
+    Retrieve a report from the database and display
+
+"""
+def show_report(request, utm_campaign):
+    
+    ttl = DL.TestTableLoader()
+    
+    row = ttl.get_test_row(utm_campaign)
+    
+    html = row[7]
+
+    return HttpResponse(html)
+
+    
     
