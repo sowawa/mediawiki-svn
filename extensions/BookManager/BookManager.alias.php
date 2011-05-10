@@ -14,7 +14,7 @@ $specialPageAliases = array();
  * @author Helder.wiki
  */
 $specialPageAliases['en'] = array(
-	'PrintVersion' => array( 'PrintVersion' ),
+	'PrintVersion' => array( 'Print Version' ),
 );
 
 /** Portuguese (Português)

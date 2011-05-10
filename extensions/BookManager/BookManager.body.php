@@ -343,9 +343,32 @@ class BookManagerNavBar extends BookManagerCore {
 		$out->addHTML( "<div>$bottom</div>" );
 		# adds CSS and JS to navigation bar
 		$out->addModuleStyles( 'ext.BookManager' );
-		$out->addModules( 'ext.BookManager' );
+		//$out->addModules( 'ext.BookManager' );
  		return true;
  	}
+
+
+	public static function ratingToolboxLink( &$sk, &$toolbox ) {
+		global $wgTitle;
+		$currenttitletext = $wgTitle->getText();
+		# Add book tools section and all yours itens 
+		?><div class="portal" id='p-tb'><?php
+				?><h5><?php $sk->msg( 'bm-booktools-section' ); ?></h5><?php
+				?><div class="body"><?php
+					?><ul><?php
+						?><li id="t-rating"><?php
+							?><a href="<?php echo htmlspecialchars( self::pageText( $wgParser, $currenttitletext, 'rand' )->getLocalURL()) ?>"><?php
+							echo $sk->msg( 'bm-randomchapter-link' );
+							?></a><?php
+						?></li><?php
+					?></ul><?php
+				?></div><?php
+			?></div><?php
+		
+		return true;
+	}
+
+
 }
 /**
 * BookManager Functions [PrintVersion]
@@ -363,14 +386,14 @@ class PrintVersion extends BookManagerCore {
 
 		$book = !is_null( $book ) ? $book : $wgRequest->getVal( 'book' );
 		if ( !isset( $book ) ) {
-			$wgOut->addWikiMsg( 'printversion-no-book' );
+			$wgOut->addWikiMsg( 'bm-printversion-no-book' );
 			return;
 		}
 		$prefixes = self::getBookPagePrefixes();
 		$booktitle = Title::newFromText( $prefixes['community-prefix'] . $book );
 		$chapterList = self::loadListFromCollection( $booktitle );
 		if ( $chapterList === false ) {
-			$wgOut->addWikiMsg( 'printversion-inexistent-book' );
+			$wgOut->addWikiMsg( 'bm-printversion-inexistent-book' );
 			return;
 		}
 		$text = '';

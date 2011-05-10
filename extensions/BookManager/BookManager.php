@@ -85,5 +85,5 @@ $wgHooks['ParserGetVariableValueSwitch'][] = 'BookManagerVariables::AssignAValue
 }
 /**** Navbar ****/
 $wgHooks['BeforePageDisplay'][] = 'BookManagerNavBar::addNavBar';
-
-
+# Sidebar section
+$wgHooks['BaseTemplateToolbox'][] = 'BookManagerNavBar::ratingToolboxLink';

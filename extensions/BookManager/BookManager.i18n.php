@@ -15,11 +15,13 @@ $messages = array();
  * @author Purodha
  */
 $messages['en'] = array(
-	'bookmanager-desc'             => 'Tools for books',
-	'printversion'                 => 'Print version',
-	'printversion-desc'            => 'Generates a [[Special:PrintVersion|print version]] of a book',
-	'printversion-no-book'         => 'Please enter the name of a book to get its print version.',
-	'printversion-inexistent-book' => 'Book not found. Please enter the name of an existing book to get its print version.',
+	'bookmanager-desc'			=> 'Tools for books',
+	'bm-booktools-section'			=> 'Tools of book',
+	'bm-randomchapter-link'			=> 'Ranbom chapter', 
+	'bm-printversion'			=> 'Print version',
+	'bm-printversion-desc'			=> 'Generates a [[Special:PrintVersion|print version]] of a book',
+	'bm-printversion-no-book'		=> 'Please enter the name of a book to get its print version.',
+	'bm-printversion-inexistent-book'	=> 'Book not found. Please enter the name of an existing book to get its print version.',
 );
 
 /** Message documentation (Message documentation)
@@ -33,7 +35,7 @@ $messages['qqq'] = array(
  * @author OsamaK
  */
 $messages['ar'] = array(
-	'printversion' => 'نسخة الطباعة',
+	'bm-printversion' => 'نسخة الطباعة',
 );
 
 /** Bashkir (Башҡортса)
@@ -41,10 +43,10 @@ $messages['ar'] = array(
  */
 $messages['ba'] = array(
 	'bookmanager-desc' => 'Китаптар өсөн ҡоралдар',
-	'printversion' => 'Ҡағыҙға баҫыу өлгөһө',
-	'printversion-desc' => 'Китаптың [[Special:PrintVersion|ҡағыҙға баҫыу өлгөһөн]] булдыра',
-	'printversion-no-book' => 'Зинһар, ҡағыҙға баҫыу өлгөһөн алыр өсөн, китаптың исемен керетегеҙ.',
-	'printversion-inexistent-book' => 'Китап табылманы. Зинһар, ҡағыҙға баҫыу өлгөһөн алыр өсөн, булған китаптың исемен керетегеҙ.',
+	'bm-printversion' => 'Ҡағыҙға баҫыу өлгөһө',
+	'bm-printversion-desc' => 'Китаптың [[Special:PrintVersion|ҡағыҙға баҫыу өлгөһөн]] булдыра',
+	'bm-printversion-no-book' => 'Зинһар, ҡағыҙға баҫыу өлгөһөн алыр өсөн, китаптың исемен керетегеҙ.',
+	'bm-printversion-inexistent-book' => 'Китап табылманы. Зинһар, ҡағыҙға баҫыу өлгөһөн алыр өсөн, булған китаптың исемен керетегеҙ.',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
@@ -53,10 +55,10 @@ $messages['ba'] = array(
  */
 $messages['be-tarask'] = array(
 	'bookmanager-desc' => 'Інструмэнты для кнігаў',
-	'printversion' => 'Вэрсія для друку',
-	'printversion-desc' => 'Стварае [[Special:PrintVersion|вэрсіі кніг для друку]]',
-	'printversion-no-book' => 'Калі ласка, увядзіце назву кнігі, каб атрымаць яе вэрсію для друку.',
-	'printversion-inexistent-book' => 'Кніга ня знойдзеная. Калі ласка, увядзіце назву існуючай кнігі, каб атрымаць яе вэрсію для друку.',
+	'bm-printversion' => 'Вэрсія для друку',
+	'bm-printversion-desc' => 'Стварае [[Special:PrintVersion|вэрсіі кніг для друку]]',
+	'bm-printversion-no-book' => 'Калі ласка, увядзіце назву кнігі, каб атрымаць яе вэрсію для друку.',
+	'bm-printversion-inexistent-book' => 'Кніга ня знойдзеная. Калі ласка, увядзіце назву існуючай кнігі, каб атрымаць яе вэрсію для друку.',
 );
 
 /** Bulgarian (Български)
@@ -64,8 +66,8 @@ $messages['be-tarask'] = array(
  */
 $messages['bg'] = array(
 	'bookmanager-desc' => 'Инструменти за книги',
-	'printversion' => 'Версия за печат',
-	'printversion-desc' => 'Създава [[Special:PrintVersion|версия за печат]] на книга',
+	'bm-printversion' => 'Версия за печат',
+	'bm-printversion-desc' => 'Създава [[Special:PrintVersion|версия за печат]] на книга',
 );
 
 /** Bengali (বাংলা)
@@ -73,10 +75,10 @@ $messages['bg'] = array(
  */
 $messages['bn'] = array(
 	'bookmanager-desc' => 'বইয়ের জন্য সরঞ্জাম',
-	'printversion' => 'ছাপার যোগ্য সংস্করণ',
-	'printversion-desc' => 'একটি বইয়ের [[Special:PrintVersion|ছাপার যোগ্য সংস্করণ]] তৈরি করুন',
-	'printversion-no-book' => 'ছাপার যোগ্য সংষ্করণ পেতে অনুগ্রহপূর্বক বইটির নাম প্রবেশ করান।',
-	'printversion-inexistent-book' => 'বইটি খুঁজে পাওয়া যায়নি। ছাপার যোগ্য সংস্করণ পেতে অনুগ্রহপূর্বক ইতিমধ্যেই থাকা একটি বইয়ের নাম প্রবেশ করান।',
+	'bm-printversion' => 'ছাপার যোগ্য সংস্করণ',
+	'bm-printversion-desc' => 'একটি বইয়ের [[Special:PrintVersion|ছাপার যোগ্য সংস্করণ]] তৈরি করুন',
+	'bm-printversion-no-book' => 'ছাপার যোগ্য সংষ্করণ পেতে অনুগ্রহপূর্বক বইটির নাম প্রবেশ করান।',
+	'bm-printversion-inexistent-book' => 'বইটি খুঁজে পাওয়া যায়নি। ছাপার যোগ্য সংস্করণ পেতে অনুগ্রহপূর্বক ইতিমধ্যেই থাকা একটি বইয়ের নাম প্রবেশ করান।',
 );
 
 /** Breton (Brezhoneg)
@@ -84,10 +86,10 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'bookmanager-desc' => 'Ostilhoù evit levrioù',
-	'printversion' => 'Stumm da voullañ',
-	'printversion-desc' => 'Genel a ra ur [[Special:PrintVersion|stumm da voullañ]] evit ul levr',
-	'printversion-no-book' => 'Merkit anv ul levr da gaout e stumm moullet.',
-	'printversion-inexistent-book' => "N'eo ket bet kavet al levr. Merkit anv ul levr zo anezhañ a-benn kaout ur stumm moullet.",
+	'bm-printversion' => 'Stumm da voullañ',
+	'bm-printversion-desc' => 'Genel a ra ur [[Special:PrintVersion|stumm da voullañ]] evit ul levr',
+	'bm-printversion-no-book' => 'Merkit anv ul levr da gaout e stumm moullet.',
+	'bm-printversion-inexistent-book' => "N'eo ket bet kavet al levr. Merkit anv ul levr zo anezhañ a-benn kaout ur stumm moullet.",
 );
 
 /** Bosnian (Bosanski)
@@ -95,10 +97,10 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'bookmanager-desc' => 'Alati za knjige',
-	'printversion' => 'Verzija za štampanje',
-	'printversion-desc' => 'Pravi [[Special:PrintVersion|verziju za štampanje]] knjige',
-	'printversion-no-book' => 'Molimo unesite ime knjige da dobijete njenu verziju za štampanje',
-	'printversion-inexistent-book' => 'Knjiga nije pronađena. Molimo unesite ime postojeće knjige da dobijete njenu verziju za štampanje.',
+	'bm-printversion' => 'Verzija za štampanje',
+	'bm-printversion-desc' => 'Pravi [[Special:PrintVersion|verziju za štampanje]] knjige',
+	'bm-printversion-no-book' => 'Molimo unesite ime knjige da dobijete njenu verziju za štampanje',
+	'bm-printversion-inexistent-book' => 'Knjiga nije pronađena. Molimo unesite ime postojeće knjige da dobijete njenu verziju za štampanje.',
 );
 
 /** Catalan (Català)
@@ -107,10 +109,10 @@ $messages['bs'] = array(
  */
 $messages['ca'] = array(
 	'bookmanager-desc' => 'Eines per als llibres',
-	'printversion' => 'Versió per imprimir',
-	'printversion-desc' => "Genera una [[Special:PrintVersion|versió per imprimir]] d'un llibre",
-	'printversion-no-book' => "Introduïu el nom d'un llibre per a obtenir la seva versió impresa.",
-	'printversion-inexistent-book' => "No s'ha trobat el llibre. Introduïu el nom d'un llibre existent, per a obtenir-ne la versió per imprimir.",
+	'bm-printversion' => 'Versió per imprimir',
+	'bm-printversion-desc' => "Genera una [[Special:PrintVersion|versió per imprimir]] d'un llibre",
+	'bm-printversion-no-book' => "Introduïu el nom d'un llibre per a obtenir la seva versió impresa.",
+	'bm-printversion-inexistent-book' => "No s'ha trobat el llibre. Introduïu el nom d'un llibre existent, per a obtenir-ne la versió per imprimir.",
 );
 
 /** Czech (Česky)
@@ -118,10 +120,10 @@ $messages['ca'] = array(
  */
 $messages['cs'] = array(
 	'bookmanager-desc' => 'Nástroje pro knihy',
-	'printversion' => 'Verze pro tisk',
-	'printversion-desc' => 'Vytvoří [[Special:PrintVersion|tiskovou verzi]] knihy',
-	'printversion-no-book' => 'Pro vytvoření tiskové verze knihy zadejte prosím název knihy.',
-	'printversion-inexistent-book' => 'Kniha nenalezena. Zadejte prosím jméno existující knihy, pokud chcete její tiskovou verzi.',
+	'bm-printversion' => 'Verze pro tisk',
+	'bm-printversion-desc' => 'Vytvoří [[Special:PrintVersion|tiskovou verzi]] knihy',
+	'bm-printversion-no-book' => 'Pro vytvoření tiskové verze knihy zadejte prosím název knihy.',
+	'bm-printversion-inexistent-book' => 'Kniha nenalezena. Zadejte prosím jméno existující knihy, pokud chcete její tiskovou verzi.',
 );
 
 /** German (Deutsch)
@@ -130,10 +132,10 @@ $messages['cs'] = array(
  */
 $messages['de'] = array(
 	'bookmanager-desc' => 'Hilfsprogramme für Bücher',
-	'printversion' => 'Druckversion',
-	'printversion-desc' => 'Ergänzt eine Spezialseite zum [[Special:PrintVersion|Erstellen einer Druckversion]] eines Buchs',
-	'printversion-no-book' => 'Bitte den Namen des Buchs angeben, für das eine Druckversion erstellt werden soll.',
-	'printversion-inexistent-book' => 'Das Buch wurde nicht gefunden. Bitte den Namen eines vorhandenen Buchs angeben, für das eine Druckversion erstellt werden soll.',
+	'bm-printversion' => 'Druckversion',
+	'bm-printversion-desc' => 'Ergänzt eine Spezialseite zum [[Special:PrintVersion|Erstellen einer Druckversion]] eines Buchs',
+	'bm-printversion-no-book' => 'Bitte den Namen des Buchs angeben, für das eine Druckversion erstellt werden soll.',
+	'bm-printversion-inexistent-book' => 'Das Buch wurde nicht gefunden. Bitte den Namen eines vorhandenen Buchs angeben, für das eine Druckversion erstellt werden soll.',
 );
 
 /** Greek (Ελληνικά)
@@ -141,8 +143,8 @@ $messages['de'] = array(
  */
 $messages['el'] = array(
 	'bookmanager-desc' => 'Εργαλεία για βιβλία',
-	'printversion' => 'Εκτυπώσιμη έκδοση',
-	'printversion-no-book' => 'Παρακαλώ εισάγετε το όνομα ενός βιβλίου για να πάρετε την έντυπη έκδοση του.',
+	'bm-printversion' => 'Εκτυπώσιμη έκδοση',
+	'bm-printversion-no-book' => 'Παρακαλώ εισάγετε το όνομα ενός βιβλίου για να πάρετε την έντυπη έκδοση του.',
 );
 
 /** Esperanto (Esperanto)
@@ -150,10 +152,10 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'bookmanager-desc' => 'Iloj por libroj',
-	'printversion' => 'Versio por printilo',
-	'printversion-desc' => 'Generas [[Special:PrintVersion|printilan version]] de libro',
-	'printversion-no-book' => 'Bonvolu enigi la nomon de libro por akiri ties printilan version.',
-	'printversion-inexistent-book' => 'Libro ne troviĝis. Bonvolu enigi la nomon de ekzistanta libro por akiri ties printilan version.',
+	'bm-printversion' => 'Versio por printilo',
+	'bm-printversion-desc' => 'Generas [[Special:PrintVersion|printilan version]] de libro',
+	'bm-printversion-no-book' => 'Bonvolu enigi la nomon de libro por akiri ties printilan version.',
+	'bm-printversion-inexistent-book' => 'Libro ne troviĝis. Bonvolu enigi la nomon de ekzistanta libro por akiri ties printilan version.',
 );
 
 /** Spanish (Español)
@@ -161,18 +163,18 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'bookmanager-desc' => 'Herramientas para libros',
-	'printversion' => 'Versión para imprimir',
-	'printversion-desc' => 'Genera una [[Special:PrintVersion|versión para imprimir]] de un libro',
-	'printversion-no-book' => 'Introduce el nombre de un libro para obtener su versión impresa.',
-	'printversion-inexistent-book' => 'Libro no encontrado. Introduce el nombre de un libro existente para obtener su versión impresa.',
+	'bm-printversion' => 'Versión para imprimir',
+	'bm-printversion-desc' => 'Genera una [[Special:PrintVersion|versión para imprimir]] de un libro',
+	'bm-printversion-no-book' => 'Introduce el nombre de un libro para obtener su versión impresa.',
+	'bm-printversion-inexistent-book' => 'Libro no encontrado. Introduce el nombre de un libro existente para obtener su versión impresa.',
 );
 
 /** Basque (Euskara)
  * @author Theklan
  */
 $messages['eu'] = array(
-	'printversion' => 'Inprimatzeko bertsioa',
-	'printversion-desc' => 'Liburu baten [[Special:PrintVersion|inprimatzeko bertsioa]] sortzen du',
+	'bm-printversion' => 'Inprimatzeko bertsioa',
+	'bm-printversion-desc' => 'Liburu baten [[Special:PrintVersion|inprimatzeko bertsioa]] sortzen du',
 );
 
 /** Persian (فارسی)
@@ -180,10 +182,10 @@ $messages['eu'] = array(
  */
 $messages['fa'] = array(
 	'bookmanager-desc' => 'ابزارهایی برای کتاب‌ها',
-	'printversion' => 'نسخه قابل چاپ',
-	'printversion-desc' => 'ساخت یک [[Special:PrintVersion|نسخهٔ قابل چاپ]] از یک کتاب',
-	'printversion-no-book' => 'لطفاً نام کتابی که می‌خواهید به صورت قابل چاپ بگیرید را وارد کنید.',
-	'printversion-inexistent-book' => 'کتاب یافت نشد. لطفاً نام یک کتاب که موجود باشد را وارد کنید تا نسخهٔ قابل چاپ آن را بگیرید.',
+	'bm-printversion' => 'نسخه قابل چاپ',
+	'bm-printversion-desc' => 'ساخت یک [[Special:PrintVersion|نسخهٔ قابل چاپ]] از یک کتاب',
+	'bm-printversion-no-book' => 'لطفاً نام کتابی که می‌خواهید به صورت قابل چاپ بگیرید را وارد کنید.',
+	'bm-printversion-inexistent-book' => 'کتاب یافت نشد. لطفاً نام یک کتاب که موجود باشد را وارد کنید تا نسخهٔ قابل چاپ آن را بگیرید.',
 );
 
 /** French (Français)
@@ -192,10 +194,10 @@ $messages['fa'] = array(
  */
 $messages['fr'] = array(
 	'bookmanager-desc' => 'Outils pour les livres',
-	'printversion' => 'Version imprimable',
-	'printversion-desc' => 'Génère une [[Special:PrintVersion|version imprimable]] d’un livre',
-	'printversion-no-book' => 'Veuillez entrer le nom d’un livre pour obtenir sa version imprimée.',
-	'printversion-inexistent-book' => 'Livre introuvable. Veuillez entrer le nom d’un livre existant pour obtenir sa version imprimée.',
+	'bm-printversion' => 'Version imprimable',
+	'bm-printversion-desc' => 'Génère une [[Special:PrintVersion|version imprimable]] d’un livre',
+	'bm-printversion-no-book' => 'Veuillez entrer le nom d’un livre pour obtenir sa version imprimée.',
+	'bm-printversion-inexistent-book' => 'Livre introuvable. Veuillez entrer le nom d’un livre existant pour obtenir sa version imprimée.',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -203,8 +205,8 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'bookmanager-desc' => 'Outils por los lévros.',
-	'printversion' => 'Vèrsion emprimâbla',
-	'printversion-desc' => 'Fât una [[Special:PrintVersion|vèrsion emprimâbla]] d’un lévro.',
+	'bm-printversion' => 'Vèrsion emprimâbla',
+	'bm-printversion-desc' => 'Fât una [[Special:PrintVersion|vèrsion emprimâbla]] d’un lévro.',
 );
 
 /** Galician (Galego)
@@ -212,10 +214,10 @@ $messages['frp'] = array(
  */
 $messages['gl'] = array(
 	'bookmanager-desc' => 'Ferramentas para libros',
-	'printversion' => 'Versión para imprimir',
-	'printversion-desc' => 'Xera a [[Special:PrintVersion|versión para imprimir]] dun libro',
-	'printversion-no-book' => 'Introduza o nome dun libro para obter a súa versión para imprimir.',
-	'printversion-inexistent-book' => 'Non se atopou o libro. Introduza o nome dun libro que exista para obter a súa versión para imprimir.',
+	'bm-printversion' => 'Versión para imprimir',
+	'bm-printversion-desc' => 'Xera a [[Special:PrintVersion|versión para imprimir]] dun libro',
+	'bm-printversion-no-book' => 'Introduza o nome dun libro para obter a súa versión para imprimir.',
+	'bm-printversion-inexistent-book' => 'Non se atopou o libro. Introduza o nome dun libro que exista para obter a súa versión para imprimir.',
 );
 
 /** Hebrew (עברית)
@@ -223,10 +225,10 @@ $messages['gl'] = array(
  */
 $messages['he'] = array(
 	'bookmanager-desc' => 'כלים לספרים',
-	'printversion' => 'גרסת הדפסה',
-	'printversion-desc' => 'יצירת [[Special:PrintVersion|גרסת הדפסה]] מיוחדת של הספר',
-	'printversion-no-book' => 'נא להזין את שם הספר כדי לקבל את גרסת ההדפסה שלו.',
-	'printversion-inexistent-book' => 'הספר לא נמצא. נא להזין את שם הספר הקיים כדי לקבל את גרסת ההדפסה שלו.',
+	'bm-printversion' => 'גרסת הדפסה',
+	'bm-printversion-desc' => 'יצירת [[Special:PrintVersion|גרסת הדפסה]] מיוחדת של הספר',
+	'bm-printversion-no-book' => 'נא להזין את שם הספר כדי לקבל את גרסת ההדפסה שלו.',
+	'bm-printversion-inexistent-book' => 'הספר לא נמצא. נא להזין את שם הספר הקיים כדי לקבל את גרסת ההדפסה שלו.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -234,10 +236,10 @@ $messages['he'] = array(
  */
 $messages['hsb'] = array(
 	'bookmanager-desc' => 'Nastroje za knihi',
-	'printversion' => 'Ćišćerska wersija',
-	'printversion-desc' => 'Twori [[Special:PrintVersion|ćišćersku wersiju]] knihi',
-	'printversion-no-book' => 'Prošu zapodaj mjeno knihi, za kotruž ma so ćišćerska wersija wutworić.',
-	'printversion-inexistent-book' => 'Kniha njeje so namakała. Prošu zapodaj mjeno eksistowaceje knihi, zo by jeje ćišćersku wersiju wutworił.',
+	'bm-printversion' => 'Ćišćerska wersija',
+	'bm-printversion-desc' => 'Twori [[Special:PrintVersion|ćišćersku wersiju]] knihi',
+	'bm-printversion-no-book' => 'Prošu zapodaj mjeno knihi, za kotruž ma so ćišćerska wersija wutworić.',
+	'bm-printversion-inexistent-book' => 'Kniha njeje so namakała. Prošu zapodaj mjeno eksistowaceje knihi, zo by jeje ćišćersku wersiju wutworił.',
 );
 
 /** Interlingua (Interlingua)
@@ -245,10 +247,10 @@ $messages['hsb'] = array(
  */
 $messages['ia'] = array(
 	'bookmanager-desc' => 'Instrumentos pro libros',
-	'printversion' => 'Version pro impression',
-	'printversion-desc' => 'Genera un [[Special:PrintVersion|version pro impression]] de un libro',
-	'printversion-no-book' => 'Per favor entra le nomine de un libro pro obtener su version pro impression.',
-	'printversion-inexistent-book' => 'Libro non trovate. Per favor entra le nomine de un libro existente pro obtener su version pro impression.',
+	'bm-printversion' => 'Version pro impression',
+	'bm-printversion-desc' => 'Genera un [[Special:PrintVersion|version pro impression]] de un libro',
+	'bm-printversion-no-book' => 'Per favor entra le nomine de un libro pro obtener su version pro impression.',
+	'bm-printversion-inexistent-book' => 'Libro non trovate. Per favor entra le nomine de un libro existente pro obtener su version pro impression.',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -256,10 +258,10 @@ $messages['ia'] = array(
  */
 $messages['id'] = array(
 	'bookmanager-desc' => 'Peralatan untuk buku',
-	'printversion' => 'Versi cetak',
-	'printversion-desc' => 'Menghasilkan [[Special:PrintVersion|versi cetak]] suatu buku',
-	'printversion-no-book' => 'Silakan masukkan nama buku untuk mendapatkan versi cetaknya.',
-	'printversion-inexistent-book' => 'Buku tidak ditemukan. Silakan masukkan nama buku yang ada untuk mendapatkan versi cetaknya.',
+	'bm-printversion' => 'Versi cetak',
+	'bm-printversion-desc' => 'Menghasilkan [[Special:PrintVersion|versi cetak]] suatu buku',
+	'bm-printversion-no-book' => 'Silakan masukkan nama buku untuk mendapatkan versi cetaknya.',
+	'bm-printversion-inexistent-book' => 'Buku tidak ditemukan. Silakan masukkan nama buku yang ada untuk mendapatkan versi cetaknya.',
 );
 
 /** Italian (Italiano)
@@ -267,7 +269,7 @@ $messages['id'] = array(
  */
 $messages['it'] = array(
 	'bookmanager-desc' => 'Strumenti per i libri',
-	'printversion-desc' => 'Genera una [[Special:PrintVersion|versione stampata]] di un libro',
+	'bm-printversion-desc' => 'Genera una [[Special:PrintVersion|versione stampata]] di un libro',
 );
 
 /** Colognian (Ripoarisch)
@@ -275,10 +277,10 @@ $messages['it'] = array(
  */
 $messages['ksh'] = array(
 	'bookmanager-desc' => 'Wärkzüsh för Bööscher',
-	'printversion' => 'Dröck_Version',
-	'printversion-desc' => 'Määd en [[Special:PrintVersion|Dröck_Version]] vun enem Booch.',
-	'printversion-no-book' => 'Bes esu jood un donn dä  Name vun enem Booch aanjävve, öm aan däm sing Dröck_Version ze kumme.',
-	'printversion-inexistent-book' => 'Mer han dat Booch nit jefonge. Bes esu jood un donn ene reshteteje Name vun enem Booch aanjävve, wadd et jit, öm aan däm sing Dröck_Version draan ze kumme.',
+	'bm-printversion' => 'Dröck_Version',
+	'bm-printversion-desc' => 'Määd en [[Special:PrintVersion|Dröck_Version]] vun enem Booch.',
+	'bm-printversion-no-book' => 'Bes esu jood un donn dä  Name vun enem Booch aanjävve, öm aan däm sing Dröck_Version ze kumme.',
+	'bm-printversion-inexistent-book' => 'Mer han dat Booch nit jefonge. Bes esu jood un donn ene reshteteje Name vun enem Booch aanjävve, wadd et jit, öm aan däm sing Dröck_Version draan ze kumme.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -286,18 +288,18 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'bookmanager-desc' => 'Fonctioune fir Bicher',
-	'printversion' => 'Drockversioun',
-	'printversion-desc' => 'Generéiert eng [[Special:PrintVersion|Drockversioun]] vun engem Buch',
-	'printversion-no-book' => 'Gitt w.e.g. den Numm vun engem Buch a fir seng Drockversioun ze kréien.',
-	'printversion-inexistent-book' => "D'Buch gouf net fonnt. Gitt w.e.g. den Numm vun engem Buch dat et gëtt a fir seng Drockversioun ze kréien.",
+	'bm-printversion' => 'Drockversioun',
+	'bm-printversion-desc' => 'Generéiert eng [[Special:PrintVersion|Drockversioun]] vun engem Buch',
+	'bm-printversion-no-book' => 'Gitt w.e.g. den Numm vun engem Buch a fir seng Drockversioun ze kréien.',
+	'bm-printversion-inexistent-book' => "D'Buch gouf net fonnt. Gitt w.e.g. den Numm vun engem Buch dat et gëtt a fir seng Drockversioun ze kréien.",
 );
 
 /** Lithuanian (Lietuvių)
  * @author Eitvys200
  */
 $messages['lt'] = array(
-	'printversion' => 'Versija spausdinimui',
-	'printversion-inexistent-book' => 'Knyga nerasta. Įveskite esamos knygos pavadinimą kad gautumėte spausdinimo versiją.',
+	'bm-printversion' => 'Versija spausdinimui',
+	'bm-printversion-inexistent-book' => 'Knyga nerasta. Įveskite esamos knygos pavadinimą kad gautumėte spausdinimo versiją.',
 );
 
 /** Macedonian (Македонски)
@@ -305,10 +307,10 @@ $messages['lt'] = array(
  */
 $messages['mk'] = array(
 	'bookmanager-desc' => 'Алатки за книги',
-	'printversion' => 'Верзија за печатење',
-	'printversion-desc' => 'Создава [[Special:PrintVersion|верзија за печатење]] на книга',
-	'printversion-no-book' => 'Внесете го името на книгата за да ја добиете верзијата за печатење',
-	'printversion-inexistent-book' => 'Не ја најдов книгата. Внесете име на постоечка книга за да ја добиете нејзината верзија за печатење.',
+	'bm-printversion' => 'Верзија за печатење',
+	'bm-printversion-desc' => 'Создава [[Special:PrintVersion|верзија за печатење]] на книга',
+	'bm-printversion-no-book' => 'Внесете го името на книгата за да ја добиете верзијата за печатење',
+	'bm-printversion-inexistent-book' => 'Не ја најдов книгата. Внесете име на постоечка книга за да ја добиете нејзината верзија за печатење.',
 );
 
 /** Dutch (Nederlands)
@@ -316,10 +318,10 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'bookmanager-desc' => 'Hulpmiddelen voor boeken',
-	'printversion' => 'Afdrukbare versie',
-	'printversion-desc' => 'Maakt een [[Special:PrintVersion|afdrukbare versie]] van een boek',
-	'printversion-no-book' => 'Voer de naam van een bestaand boek in om de afdrukbare versie te downloaden.',
-	'printversion-inexistent-book' => 'Het boek is niet aangetroffen. Voer de naam van een bestaand boek in om de afdrukbare versie te downloaden.',
+	'bm-printversion' => 'Afdrukbare versie',
+	'bm-printversion-desc' => 'Maakt een [[Special:PrintVersion|afdrukbare versie]] van een boek',
+	'bm-printversion-no-book' => 'Voer de naam van een bestaand boek in om de afdrukbare versie te downloaden.',
+	'bm-printversion-inexistent-book' => 'Het boek is niet aangetroffen. Voer de naam van een bestaand boek in om de afdrukbare versie te downloaden.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -327,10 +329,10 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'bookmanager-desc' => 'Verktøy for bøker',
-	'printversion' => 'Utskriftsversjon',
-	'printversion-desc' => 'Genererer en [[Special:PrintVersion|utskriftsversjon]] av en bok',
-	'printversion-no-book' => 'Skriv inn navnet på en bok for å få dens utskriftsversjon.',
-	'printversion-inexistent-book' => 'Bok ikke funnet. Skriv inn navnet på en eksisterende bok for å få dens utskriftsversjon.',
+	'bm-printversion' => 'Utskriftsversjon',
+	'bm-printversion-desc' => 'Genererer en [[Special:PrintVersion|utskriftsversjon]] av en bok',
+	'bm-printversion-no-book' => 'Skriv inn navnet på en bok for å få dens utskriftsversjon.',
+	'bm-printversion-inexistent-book' => 'Bok ikke funnet. Skriv inn navnet på en eksisterende bok for å få dens utskriftsversjon.',
 );
 
 /** Piedmontese (Piemontèis)
@@ -338,10 +340,10 @@ $messages['no'] = array(
  */
 $messages['pms'] = array(
 	'bookmanager-desc' => 'Utiss për lìber',
-	'printversion' => 'Version dë stampa',
-	'printversion-desc' => "A génera na [[Special:PrintVersion|vërsion dë stampa]] d'un lìber",
-	'printversion-no-book' => "Për piasì ansëriss ël nòm d'un lìber për pijé la soa vërsion dë stampa.",
-	'printversion-inexistent-book' => "Lìber pa trovà. Për piasì ansëriss ël nòm d'un lìber esistent për pijé soa vërsion dë stampa.",
+	'bm-printversion' => 'Version dë stampa',
+	'bm-printversion-desc' => "A génera na [[Special:PrintVersion|vërsion dë stampa]] d'un lìber",
+	'bm-printversion-no-book' => "Për piasì ansëriss ël nòm d'un lìber për pijé la soa vërsion dë stampa.",
+	'bm-printversion-inexistent-book' => "Lìber pa trovà. Për piasì ansëriss ël nòm d'un lìber esistent për pijé soa vërsion dë stampa.",
 );
 
 /** Portuguese (Português)
@@ -350,10 +352,12 @@ $messages['pms'] = array(
  */
 $messages['pt'] = array(
 	'bookmanager-desc' => 'Ferramentas para livros',
-	'printversion' => 'Versão para impressão',
-	'printversion-desc' => 'Gera uma [[Special:PrintVersion|versão para impressão]] de um livro',
-	'printversion-no-book' => 'Por favor informe o nome de um livro para obter sua versão para impressão.',
-	'printversion-inexistent-book' => 'Livro não encontrado. Por favor informe o nome de um livro existente para obter sua versão para impressão.',
+	'bm-booktools-section' => 'Ferramentas do livro',
+	'bm-randomchapter-link' => 'Capítulo aleatório', 
+	'bm-printversion' => 'Versão para impressão',
+	'bm-printversion-desc' => 'Gera uma [[Special:PrintVersion|versão para impressão]] de um livro',
+	'bm-printversion-no-book' => 'Por favor informe o nome de um livro para obter sua versão para impressão.',
+	'bm-printversion-inexistent-book' => 'Livro não encontrado. Por favor informe o nome de um livro existente para obter sua versão para impressão.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -361,10 +365,12 @@ $messages['pt'] = array(
  */
 $messages['pt-br'] = array(
 	'bookmanager-desc' => 'Ferramentas para livros',
-	'printversion' => 'Versão para impressão',
-	'printversion-desc' => 'Gera uma [[Special:PrintVersion|versão para impressão]] de um livro',
-	'printversion-no-book' => 'Por favor informe o nome de um livro para obter sua versão para impressão.',
-	'printversion-inexistent-book' => 'Livro não encontrado. Por favor informe o nome de um livro existente para obter sua versão para impressão.',
+	'bm-booktools-section' => 'Ferramentas do livro',
+	'bm-randomchapter-link' => 'Capítulo aleatório', 
+	'bm-printversion' => 'Versão para impressão',
+	'bm-printversion-desc' => 'Gera uma [[Special:PrintVersion|versão para impressão]] de um livro',
+	'bm-printversion-no-book' => 'Por favor informe o nome de um livro para obter sua versão para impressão.',
+	'bm-printversion-inexistent-book' => 'Livro não encontrado. Por favor informe o nome de um livro existente para obter sua versão para impressão.',
 );
 
 /** Tarandíne (Tarandíne)
@@ -372,7 +378,7 @@ $messages['pt-br'] = array(
  */
 $messages['roa-tara'] = array(
 	'bookmanager-desc' => 'Struminde pe le libbre',
-	'printversion' => 'Versione ca se stambe',
+	'bm-printversion' => 'Versione ca se stambe',
 );
 
 /** Russian (Русский)
@@ -380,10 +386,10 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'bookmanager-desc' => 'Книжные инструменты',
-	'printversion' => 'Версия для печати',
-	'printversion-desc' => 'Создает [[Special:PrintVersion|печатную версию]] книги',
-	'printversion-no-book' => 'Пожалуйста, введите название книги, чтобы получить её печатную версию.',
-	'printversion-inexistent-book' => 'Книга не найдена. Пожалуйста, введите название существующей книги, чтобы получить её печатную версию.',
+	'bm-printversion' => 'Версия для печати',
+	'bm-printversion-desc' => 'Создает [[Special:PrintVersion|печатную версию]] книги',
+	'bm-printversion-no-book' => 'Пожалуйста, введите название книги, чтобы получить её печатную версию.',
+	'bm-printversion-inexistent-book' => 'Книга не найдена. Пожалуйста, введите название существующей книги, чтобы получить её печатную версию.',
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
@@ -391,10 +397,10 @@ $messages['ru'] = array(
  */
 $messages['sr-ec'] = array(
 	'bookmanager-desc' => 'Алатке за књиге',
-	'printversion' => 'Издање за штампу',
-	'printversion-desc' => 'Ствара [[Special:PrintVersion|издање за штампу]] књиге',
-	'printversion-no-book' => 'Унесите назив књиге да бисте добили њено издање за штампу.',
-	'printversion-inexistent-book' => 'Књига није пронађена. Унесите назив постојеће књиге да бисте добили њено издање за штампу.',
+	'bm-printversion' => 'Издање за штампу',
+	'bm-printversion-desc' => 'Ствара [[Special:PrintVersion|издање за штампу]] књиге',
+	'bm-printversion-no-book' => 'Унесите назив књиге да бисте добили њено издање за штампу.',
+	'bm-printversion-inexistent-book' => 'Књига није пронађена. Унесите назив постојеће књиге да бисте добили њено издање за штампу.',
 );
 
 /** Swedish (Svenska)
@@ -404,10 +410,10 @@ $messages['sr-ec'] = array(
  */
 $messages['sv'] = array(
 	'bookmanager-desc' => 'Verktyg för böcker',
-	'printversion' => 'Utskriftsversion',
-	'printversion-desc' => 'Skapar en [[Special:PrintVersion|utskriftsversion]] av en bok',
-	'printversion-no-book' => 'Ange namnet på en bok för att få den i utskriftsversion.',
-	'printversion-inexistent-book' => 'Boken hittades inte. Fyll i namnet på en befintlig bok för att få den i utskriftsversion.',
+	'bm-printversion' => 'Utskriftsversion',
+	'bm-printversion-desc' => 'Skapar en [[Special:PrintVersion|utskriftsversion]] av en bok',
+	'bm-printversion-no-book' => 'Ange namnet på en bok för att få den i utskriftsversion.',
+	'bm-printversion-inexistent-book' => 'Boken hittades inte. Fyll i namnet på en befintlig bok för att få den i utskriftsversion.',
 );
 
 /** Telugu (తెలుగు)
@@ -415,7 +421,7 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'bookmanager-desc' => 'పుస్తకాల కొరకు పనిముట్లు',
-	'printversion' => 'ముద్రణ కూర్పు',
+	'bm-printversion' => 'ముద్రణ కూర్పు',
 );
 
 /** Tagalog (Tagalog)
@@ -423,10 +429,10 @@ $messages['te'] = array(
  */
 $messages['tl'] = array(
 	'bookmanager-desc' => 'Mga kasangkapan para sa mga aklat',
-	'printversion' => 'Bersyong maililimbag',
-	'printversion-desc' => 'Gumagawa ng isang [[Special:PrintVersion|bersyong naililimbag]] ng isang aklat',
-	'printversion-no-book' => 'Pakipasok ang pangalan ng isang aklat upang makuha ang bersyong maililimbag.',
-	'printversion-inexistent-book' => 'Hindi natagpuan ang aklat.  Pakipasok ang pangalan ng umiiral na aklat upang makuha ang bersyong maililimbag nito.',
+	'bm-printversion' => 'Bersyong maililimbag',
+	'bm-printversion-desc' => 'Gumagawa ng isang [[Special:PrintVersion|bersyong naililimbag]] ng isang aklat',
+	'bm-printversion-no-book' => 'Pakipasok ang pangalan ng isang aklat upang makuha ang bersyong maililimbag.',
+	'bm-printversion-inexistent-book' => 'Hindi natagpuan ang aklat.  Pakipasok ang pangalan ng umiiral na aklat upang makuha ang bersyong maililimbag nito.',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
@@ -434,8 +440,8 @@ $messages['tl'] = array(
  */
 $messages['zh-hans'] = array(
 	'bookmanager-desc' => '书的工具',
-	'printversion' => '打印版本',
-	'printversion-no-book' => '请输入一本书以获取其打印版本的名称。',
-	'printversion-inexistent-book' => '找不到的书。请输入现有的书，以获取其打印版本的名称。',
+	'bm-printversion' => '打印版本',
+	'bm-printversion-no-book' => '请输入一本书以获取其打印版本的名称。',
+	'bm-printversion-inexistent-book' => '找不到的书。请输入现有的书，以获取其打印版本的名称。',
 );
 
