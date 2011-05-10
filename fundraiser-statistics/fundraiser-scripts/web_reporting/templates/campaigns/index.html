@@ -1,16 +1,27 @@
 
-<html>
-<head><title>Big Ass Reportin'</title></head>
-<body>
+{% extends "base.html" %}
+{% block content %}
 
 <h1>Choose a Campaign:</h1><br>
 <u><h3>Campaign, Donations (>50) </h1></u><br>
 {% if campaigns %}
     <ul>
     {% for c in campaigns %}
-        <li>{{ c.2 }} , {{ c.3 }}, <a href="/campaigns/{{ c.0 }}">{{ c.0 }}</a> , {{ c.1 }}</li><br>
+    	{% if c.4 %}
+        	<li>{{ c.2 }} , {{ c.3 }}, <a href="/campaigns/{{ c.0 }}">{{ c.0 }}</a> , {{ c.1 }}, <a href="/tests/report/{{ c.0 }}">view report</a></li><br>
+        {% else %}
+        	<li>{{ c.2 }} , {{ c.3 }}, <a href="/campaigns/{{ c.0 }}">{{ c.0 }}</a> , {{ c.1 }}</li><br>
+        {% endif %}
     {% endfor %}
     </ul>
 {% else %}
     <p>No campaigns are available.</p>
 {% endif %}
+
+<br><br><br>
+<u>Go to:</u>
+<br><br>
+<a href="/tests">Test Generation</a>
+<br>
+
+{% endblock %}

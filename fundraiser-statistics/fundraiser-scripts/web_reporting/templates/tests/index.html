@@ -1,13 +1,17 @@
 
-<html>
-<head><title>Big Ass Reportin'</title></head>
-<body>
+{% extends "base.html" %}
+{% block content %}
 
-<h1>Enter a Campaign:</h1>
+<h1>Generate a new test:</h1>
 
 
 <form action="/tests/build_test" method="post">
 {% csrf_token %}
+<label for="test_name"> 
+<pre>TEST NAME:		</pre>
+</label>
+<input type="text" name="test_name" />
+<br/>
 <label for="utm_campaign"> 
 <pre>UTM CAMPAIGN:		</pre>
 </label>
@@ -21,11 +25,46 @@
 <label for="end_time">
 <pre>END TIMESTAMP:		</pre>
 </label>
-<input type="text" name="end_time" />
-<br/>
-
+<input type="text" name="end_time" /><br><br>
 <input type="submit" value="Test" />
 </form>
 
-</body>
-</html>
+
+<br><hr width=80%><br><br>
+
+<!-- Table listing all tests run -->
+
+<table border="1" cellpadding="10">
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Campaign</th>
+<th>Start Time</th>
+<th>End Time</th>
+<th>Winner</th>
+<th>Conclusive?</th>
+<th>Report</th>
+</tr>
+
+{% for row in test_rows %}
+	<tr>
+	<td>{{ row.0 }}</td> <!-- test_name -->
+	<td>{{ row.1 }}</td> <!-- test_type -->
+	<td>{{ row.2 }}</td> <!-- utm_campaign -->
+	<td>{{ row.3 }}</td> <!-- start_time -->
+	<td>{{ row.4 }}</td> <!-- end_time -->
+	<td>{{ row.5 }}</td> <!-- winner -->
+	<td>{{ row.6 }}</td> <!-- is_conclusive -->
+	<td><a href="/tests/report/{{ row.2 }}">view</a></td>
+	</tr>
+{% endfor %}
+
+</table> 
+
+<br><br><br>
+<u>Go to:</u>
+<br><br>
+<a href="/campaigns">Latest Campaigns</a>
+<br>
+
+{% endblock %}
