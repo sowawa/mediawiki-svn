@@ -102,7 +102,7 @@ class PopulateAFStatistics extends Maintenance {
 		$this->output( "Determining average ratings for articles ...\n" );
 		foreach ( $ratings as $page_id => $data ) {
 			// make sure that we have at least 10 rating sets for this page in order to qualify for ranking
-			if ( count( array_keys( $rating_set_count[ $page_id ] )) < 5 ) {
+			if ( count( array_keys( $rating_set_count[ $page_id ] )) < 10 ) {
 				continue;
 			}
 			
