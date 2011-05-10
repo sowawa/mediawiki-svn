@@ -23,7 +23,6 @@ var openid = window.openid = {
 
 			$('#openid_url').val($('#openid_provider_url_' + openid.current).val().replace(/{.*}/, param));
 		}
-		event.preventDefault();
 	},
 	init: function() {
 		var provider = $.cookie('openid.provider');
