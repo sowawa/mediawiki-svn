@@ -33,7 +33,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  *
  * The need to handle NFD is illustrated best by Korean which has a tractable map in NFD but
  * would require thousands of NFC rules.  Word start and end markers are required by Greek and other 
- * languages that treat initial and final leters separately. Code-points are combined because of the
+ * languages that treat initial and final letters separately. Code-points are combined because of the
  * mess that letting stray combining characters through on their own can cause, and the confusion 
  * that this causes.
  *
