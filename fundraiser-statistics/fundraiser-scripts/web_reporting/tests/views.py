@@ -183,7 +183,7 @@ def auto_gen(test_name, start_time, end_time, campaign, labels, sample_interval,
     os.chdir('/home/rfaulkner/trunk/projects/Fundraiser_Tools/classes/tests/')
     
     
-    f = open('auto_report.html', 'w')
+    #f = open('auto_report.html', 'w')
     
     html_script = ''
     
@@ -231,9 +231,9 @@ def auto_gen(test_name, start_time, end_time, campaign, labels, sample_interval,
 
     # print html_script
     
-    f.write(html_script)
+    #f.write(html_script)
     
-    f.close()
+    #f.close()
         
     return [winner_dpi, percent_increase_dpi, confidence_dpi, winner_api, percent_increase_api, confidence_api]
 
