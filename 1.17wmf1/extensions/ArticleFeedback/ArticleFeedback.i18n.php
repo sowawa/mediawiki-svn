@@ -78,14 +78,14 @@ $messages['en'] = array(
 Please try again later.',
 	/* Special:ArticleFeedback */
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Today\'s highs and lows',
-	'articleFeedback-table-caption-dailyhighs' => 'Articles with highest ratings: $1',
-	'articleFeedback-table-caption-dailylows' => 'Articles with lowest ratings: $1',
+	'articleFeedback-table-caption-dailyhighs' => 'Pages with highest ratings: $1',
+	'articleFeedback-table-caption-dailylows' => 'Pages with lowest ratings: $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'This week\'s most changed',
 	'articleFeedback-table-caption-recentlows' => 'Recent lows',
 	'articleFeedback-table-heading-page' => 'Page',
 	'articleFeedback-table-heading-average' => 'Average',
-	'articleFeedback-copy-above-highlow-tables' => 'This is an experimental feature.  Please provide feedback on the talk page.',
-	'articleFeedback-copy-below-highlow-tables' => 'These tables contain articles that have received at least 10 ratings within the last 24 hours.  Averages are calculated by taking the mean of all ratings submitted within the last 24 hours.',
+	'articleFeedback-copy-above-highlow-tables' => 'This is an experimental feature.  Please provide feedback on the [$1 discussion page].',
+	'articleFeedback-copy-below-highlow-tables' => 'These tables contain pages that have received at least 10 ratings within the last 24 hours.  Averages are calculated by taking the mean of all ratings submitted within the last 24 hours.',
 	/* EmailCapture */
 	'articlefeedback-emailcapture-response-body' => 'Hello!
 
@@ -112,6 +112,7 @@ The {{SITENAME}} team',
 );
 
 /** Message documentation (Message documentation)
+ * @author Arthur Richards
  * @author Brandon Harris
  * @author EugeneZelenko
  * @author Krinkle
@@ -149,6 +150,7 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedback-pitch-join-login' => '{{Identical|Log in}}',
 	'articleFeedback-table-heading-page' => '{{Identical|Page}}',
 	'articleFeedback-table-heading-average' => '{{Identical|Average}}',
+	'articleFeedback-copy-above-highlow-tables' => 'The variable $1 will contain a full URL to a discussion page where the dashboard can be discussed - since the dashboard is powered by a special page, we can not rely on the built-in MediaWiki talk page.',
 );
 
 /** Afrikaans (Afrikaans)
@@ -307,7 +309,7 @@ $messages['ba'] = array(
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
-	'articlefeedback' => 'Адзнака артыкулаў',
+	'articlefeedback' => 'Дошка адзнакі артыкулаў',
 	'articlefeedback-desc' => 'Адзнака артыкулаў (пачатковая вэрсія)',
 	'articlefeedback-survey-question-origin' => 'На якой старонцы Вы знаходзіліся, калі пачалося апытаньне?',
 	'articlefeedback-survey-question-whyrated' => 'Калі ласка, паведаміце нам, чаму Вы адзначылі сёньня гэтую старонку (пазначце ўсе падыходзячыя варыянты):',
@@ -376,6 +378,8 @@ $messages['be-tarask'] = array(
 	'articleFeedback-table-caption-recentlows' => 'Апошнія падзеньні',
 	'articleFeedback-table-heading-page' => 'Старонка',
 	'articleFeedback-table-heading-average' => 'Сярэдняе',
+	'articleFeedback-copy-above-highlow-tables' => 'Гэта экспэрымэнтальная магчымасьць. Калі ласка, падайце Ваш водгук на [$1 старонцы абмеркаваньня].',
+	'articleFeedback-copy-below-highlow-tables' => 'Гэтыя табліцы ўтрымліваюць артыкулы, якія атрымалі адзнаку не меней 10 за апошнія 24 гадзіны.  Сярэдняя адзнака разьлічваецца на падставе ўсіх адзнака пададзеных за апошнія 24 гадзіны.',
 	'articlefeedback-emailcapture-response-body' => 'Вітаем!
 
 Дзякуй, за дапамогу ў паляпшэньні {{GRAMMAR:родны|{{SITENAME}}}}.
@@ -813,7 +817,7 @@ $messages['de'] = array(
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Datenschutz',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Datenschutz',
 	'articlefeedback-form-panel-submit' => 'Einschätzung übermitteln',
-	'articlefeedback-form-panel-pending' => 'Deine Bewertungen wurden nicht übertragen',
+	'articlefeedback-form-panel-pending' => 'Deine Bewertung wurde noch nicht übertragen',
 	'articlefeedback-form-panel-success' => 'Erfolgreich gespeichert',
 	'articlefeedback-form-panel-expiry-title' => 'Deine Einschätzung liegt zu lange zurück.',
 	'articlefeedback-form-panel-expiry-message' => 'Bitte beurteile die Seite erneut und speichere eine neue Einschätzung.',
@@ -851,6 +855,8 @@ Bitte später erneut versuchen.',
 	'articleFeedback-table-caption-recentlows' => 'Aktuelle Tiefs',
 	'articleFeedback-table-heading-page' => 'Seite',
 	'articleFeedback-table-heading-average' => 'Durchschnitt',
+	'articleFeedback-copy-above-highlow-tables' => 'Dies ist ein experimenteller Funktionsbestandteil. Bitte hierzu auf der [$1 Diskussionsseite] eine Rückmeldung geben.',
+	'articleFeedback-copy-below-highlow-tables' => 'Diese Tabellen enthalten die Namen der Artikel, zu denen während der letzten 24 Stunden mindestens zehn Bewertungen abgegeben wurden. Die Durchschnittswerte basieren auf allen während der vergangenen 24 Stunden abgegebenen Bewertungen.',
 	'articlefeedback-emailcapture-response-body' => 'Hallo!
 
 Vielen Dank für dein Interesse an der Verbesserung von {{SITENAME}}.
@@ -1177,7 +1183,40 @@ $messages['et'] = array(
 	'articlefeedback-survey-submit' => 'Saada',
 	'articlefeedback-survey-title' => 'Palun vasta mõnele küsimusele.',
 	'articlefeedback-survey-thanks' => 'Aitäh küsitlusele vastamast!',
+	'articlefeedback-error' => 'Ilmnes tõrge. Palun proovi hiljem uuesti.',
+	'articlefeedback-form-switch-label' => 'Hinda seda lehekülge',
+	'articlefeedback-form-panel-title' => 'Selle lehekülje hindamine',
+	'articlefeedback-form-panel-instructions' => 'Palun leia selle lehekülje hindamiseks pisut aega.',
+	'articlefeedback-form-panel-clear' => 'Eemalda see hinnang',
+	'articlefeedback-form-panel-expertise' => 'Mul on sellel alal väga head teadmised (valikuline)',
+	'articlefeedback-form-panel-expertise-studies' => 'Mul on vastav kõrgharidus',
+	'articlefeedback-form-panel-expertise-profession' => 'See on seotud minu elukutsega',
+	'articlefeedback-form-panel-expertise-hobby' => 'Ma olen sellest teemast sügavalt huvitatud',
+	'articlefeedback-form-panel-expertise-other' => 'Minu teadmiste allikas on nimetamata',
+	'articlefeedback-form-panel-helpimprove' => 'Soovin aidata Vikipeediat täiustada. Saatke mulle palun e-kiri. (valikuline)',
+	'articlefeedback-form-panel-helpimprove-note' => 'Me saadame sulle kinnitus-e-kirja. Me ei jagu sinu e-posti aadressi kellegagi. $1',
+	'articlefeedback-form-panel-submit' => 'Saada hinnang',
+	'articlefeedback-form-panel-pending' => 'Sinu hinnangut pole veel saadetud',
+	'articlefeedback-report-switch-label' => 'Vaata leheküljele antud hinnanguid',
+	'articlefeedback-report-panel-title' => 'Leheküljele antud hinnangud',
+	'articlefeedback-report-panel-description' => 'Praegused keskmised hinnangud',
+	'articlefeedback-report-empty' => 'Hinnanguteta',
+	'articlefeedback-report-ratings' => '$1 hinnangut',
+	'articlefeedback-field-trustworthy-label' => 'Usaldusväärne',
+	'articlefeedback-field-trustworthy-tip' => 'Kas sinu meelest on artikkel vajalikul määral viidatud ja kas viidatakse usaldusväärsetele allikatele?',
+	'articlefeedback-field-complete-label' => 'Täielik',
+	'articlefeedback-field-complete-tip' => 'Kas sinu meelest on artiklis kõik põhiline käsitletud?',
+	'articlefeedback-field-objective-label' => 'Erapooletu',
+	'articlefeedback-field-objective-tip' => 'Kas sinu meelest on artiklis kõik vaatenurgad võrdselt esindatud?',
+	'articlefeedback-field-wellwritten-label' => 'Hästi kirjutatud',
+	'articlefeedback-field-wellwritten-tip' => 'Kas sinu meelest on see artikkel hästi üles ehitatud ja kirjutatud?',
+	'articlefeedback-pitch-reject' => 'Ehk hiljem',
 	'articlefeedback-pitch-or' => 'või',
+	'articlefeedback-pitch-thanks' => 'Suur tänu! Sinu hinnang on salvestatud.',
+	'articlefeedback-pitch-edit-message' => 'Kas teadsid, et saad seda lehekülge redigeerida?',
+	'articlefeedback-pitch-edit-accept' => 'Redigeeri',
+	'articleFeedback-table-heading-page' => 'Lehekülg',
+	'articleFeedback-table-heading-average' => 'Keskmine',
 );
 
 /** Basque (Euskara)
@@ -1883,6 +1922,8 @@ Per favor reproba plus tarde.',
 	'articleFeedback-table-caption-recentlows' => 'Bassos recente',
 	'articleFeedback-table-heading-page' => 'Pagina',
 	'articleFeedback-table-heading-average' => 'Medie',
+	'articleFeedback-copy-above-highlow-tables' => 'Iste function es experimental.  Per favor lassa tu opinion in le [$1 pagina de discussion].',
+	'articleFeedback-copy-below-highlow-tables' => 'Iste tabellas contine paginas que ha recipite al minus 10 evalutationes durante le ultime 24 horas. Le medias es calculate per prender le media de tote le evalutationes submittite durante le ultime 24 horas.',
 	'articlefeedback-emailcapture-response-body' => 'Salute!
 
 Gratias pro tu interesse in adjutar a meliorar {{SITENAME}}.
@@ -1913,7 +1954,7 @@ Le equipa de {{SITENAME}}',
  * @author Kenrick95
  */
 $messages['id'] = array(
-	'articlefeedback' => 'Penilaian artikel',
+	'articlefeedback' => 'Dasbor umpan balik artikel',
 	'articlefeedback-desc' => 'Penilaian artikel (versi percobaan)',
 	'articlefeedback-survey-question-origin' => 'Apa halaman yang sedang Anda lihat saat memulai survei ini?',
 	'articlefeedback-survey-question-whyrated' => 'Harap beritahu kami mengapa Anda menilai halaman ini hari ini (centang semua yang benar):',
@@ -1944,6 +1985,7 @@ $messages['id'] = array(
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Kebijakan privasi',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Kebijakan privasi',
 	'articlefeedback-form-panel-submit' => 'Kirim peringkat',
+	'articlefeedback-form-panel-pending' => 'Penilaian Anda belum dikirim',
 	'articlefeedback-form-panel-success' => 'Berhasil disimpan',
 	'articlefeedback-form-panel-expiry-title' => 'Peringkat Anda sudah kedaluwarsa',
 	'articlefeedback-form-panel-expiry-message' => 'Silakan evaluasi kembali halaman ini dan kirimkan peringkat baru.',
@@ -1975,8 +2017,8 @@ $messages['id'] = array(
 	'articlefeedback-survey-message-error' => 'Kesalahan terjadi.
 Silakan coba lagi.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Kenaikan dan penurunan hari ini',
-	'articleFeedback-table-caption-dailyhighs' => 'Tertinggi hari ini',
-	'articleFeedback-table-caption-dailylows' => 'Terendah hari ini',
+	'articleFeedback-table-caption-dailyhighs' => 'Artikel berperingkat tertinggi: $1',
+	'articleFeedback-table-caption-dailylows' => 'Artikel berperingkat terendah: $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Paling berubah minggu ini',
 	'articleFeedback-table-caption-recentlows' => 'Penurunan terbaru',
 	'articleFeedback-table-heading-page' => 'Halaman',
@@ -2010,7 +2052,7 @@ Tim {{SITENAME}}',
  * @author Pietrodn
  */
 $messages['it'] = array(
-	'articlefeedback' => 'Valutazione pagina',
+	'articlefeedback' => 'Cruscotto valutazione pagina',
 	'articlefeedback-desc' => 'Valutazione pagina (versione pilota)',
 	'articlefeedback-survey-question-origin' => 'In quale pagina eravate quando avete iniziato questa indagine?',
 	'articlefeedback-survey-question-whyrated' => 'Esprimi il motivo per cui oggi hai valutato questa pagina (puoi selezionare più opzioni):',
@@ -2072,8 +2114,12 @@ Riprova più tardi.',
 	'articlefeedback-survey-message-success' => 'Grazie per aver compilato il questionario.',
 	'articlefeedback-survey-message-error' => 'Si è verificato un errore. 
 Riprova più tardi.',
+	'articleFeedback-table-caption-dailyhighs' => 'Articoli con punteggi più alti: $1',
+	'articleFeedback-table-caption-dailylows' => 'Articoli con punteggi più bassi: $1',
 	'articleFeedback-table-heading-page' => 'Pagina',
 	'articleFeedback-table-heading-average' => 'Media',
+	'articleFeedback-copy-above-highlow-tables' => 'Questa è una funzione sperimentale. Lascia un feedback sulla [$1 pagina di discussione].',
+	'articleFeedback-copy-below-highlow-tables' => 'Queste tabelle contengono gli articoli che hanno ricevuto almeno 10 voti nelle ultime 24 ore. Le medie sono calcolate prendendo in considerazione tutte le valutazioni presentate nelle ultime 24 ore.',
 );
 
 /** Japanese (日本語)
@@ -2301,6 +2347,7 @@ Versöhg et shpääder norr_enß.',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Diß Woch et miehtß jeändert',
 	'articleFeedback-table-heading-page' => 'Sigg',
 	'articleFeedback-table-heading-average' => 'Dorschnett',
+	'articleFeedback-copy-below-highlow-tables' => 'En dänne Tabälle sin Atikelle, di en de läzde 24 winnischsdens 10 Note krääje han. Der Dorschnedd es jenou vun dä Zick.',
 );
 
 /** Kurdish (Latin) (Kurdî (Latin))
@@ -2588,6 +2635,8 @@ $messages['mk'] = array(
 	'articleFeedback-table-caption-recentlows' => 'Скорешни падови',
 	'articleFeedback-table-heading-page' => 'Страница',
 	'articleFeedback-table-heading-average' => 'Просечно',
+	'articleFeedback-copy-above-highlow-tables' => 'Ова е експериментална функција. Искажете го вашето мислење на [$1 страницатата за разговор].',
+	'articleFeedback-copy-below-highlow-tables' => 'Овие табели содржат статии што добиле барем 10 оценки во последниве 24 часа. Просекот се пресметува земајќи ја средната вредност на сите оцеки поднесени во текот на последните 24 часа.',
 	'articlefeedback-emailcapture-response-body' => 'Здраво!
 
 Ви благодариме што изразивте интерес да помогнете во развојот на {{SITENAME}}.
@@ -2685,6 +2734,8 @@ $messages['ml'] = array(
 	'articleFeedback-table-caption-recentlows' => 'സമീപകാല ഇറക്കങ്ങൾ',
 	'articleFeedback-table-heading-page' => 'താൾ',
 	'articleFeedback-table-heading-average' => 'ശരാശരി',
+	'articleFeedback-copy-above-highlow-tables' => 'ഇത് പരീക്ഷണാടിസ്ഥാനത്തിലുള്ള സൗകര്യമാണ്. അഭിപ്രായങ്ങൾ [$1 സംവാദം താളിൽ] തീർച്ചയായും അറിയിക്കുക.',
+	'articleFeedback-copy-below-highlow-tables' => 'കഴിഞ്ഞ 24 മണിക്കൂറിനുള്ളിൽ കുറഞ്ഞത് 10 നിലവാരമിടലുകൾ ലഭിച്ച ലേഖനങ്ങൾ ഈ പട്ടികകളിൽ ഉൾക്കൊള്ളിച്ചിരിക്കുന്നു. കഴിഞ്ഞ 14 മണിക്കൂറിനുള്ളിൽ ലഭിച്ച എല്ലാ നിലവാരമിടലുകളുടേയും മധ്യമവിലയെടുത്താണ് ശരാശരി കണക്കുകൂട്ടിയിരിക്കുന്നത്.',
 	'articlefeedback-emailcapture-response-body' => 'നമസ്കാരം!
 
 {{SITENAME}} മെച്ചപ്പെടുത്താനുള്ള സഹായം ചെയ്യാൻ സന്നദ്ധത പ്രകടിപ്പിച്ചതിന് ആത്മാർത്ഥമായ നന്ദി.
@@ -2848,6 +2899,8 @@ Probeer het later opnieuw.',
 	'articleFeedback-table-caption-recentlows' => 'Recente dieptepunten',
 	'articleFeedback-table-heading-page' => 'Pagina',
 	'articleFeedback-table-heading-average' => 'Gemiddelde',
+	'articleFeedback-copy-above-highlow-tables' => 'Dit is experimentele functionaliteit. Geef alstublieft terugkoppeling op de [$1 overlegpagina].',
+	'articleFeedback-copy-below-highlow-tables' => "Deze tabellen bevatten pagina's die in de afgelopen 24 uur tenminste 10 waarderingen hebben gehad. De gemiddelden worden berekend door het gemiddelde te berekenen van alle waarderingen in de afgelopen 24 uur.",
 	'articlefeedback-emailcapture-response-body' => 'Hallo!
 
 Dank u wel voor uw interesse in het verbeteren van {{SITENAME}}.
@@ -3071,6 +3124,7 @@ $messages['pl'] = array(
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Zasady ochrony prywatności',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Zasady ochrony prywatności',
 	'articlefeedback-form-panel-submit' => 'Prześlij opinię',
+	'articlefeedback-form-panel-pending' => 'Twoja ocena nie została jeszcze zapisana',
 	'articlefeedback-form-panel-success' => 'Zapisano',
 	'articlefeedback-form-panel-expiry-title' => 'Twoje oceny są nieaktualne',
 	'articlefeedback-form-panel-expiry-message' => 'Dokonaj ponownej oceny tej strony i zapisz jej wynik',
@@ -3102,6 +3156,8 @@ $messages['pl'] = array(
 	'articlefeedback-survey-message-error' => 'Wystąpił błąd.
 Proszę spróbować ponownie później.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Najwyższe i najniższe w dniu dzisiejszym',
+	'articleFeedback-table-caption-dailyhighs' => 'Artykuły najwyżej oceniane: $1',
+	'articleFeedback-table-caption-dailylows' => 'Artykuły najniżej oceniane: $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Najczęściej zmieniane w tym tygodniu',
 	'articleFeedback-table-caption-recentlows' => 'Najniższe ostatnio',
 	'articleFeedback-table-heading-page' => 'Strona',
@@ -3291,6 +3347,8 @@ Tente novamente mais tarde, por favor.',
 	'articleFeedback-table-caption-recentlows' => 'Os piores mais recentes',
 	'articleFeedback-table-heading-page' => 'Página',
 	'articleFeedback-table-heading-average' => 'Média',
+	'articleFeedback-copy-above-highlow-tables' => 'Esta funcionalidade é experimental. Deixe os seus comentários na página de discussão, por favor.',
+	'articleFeedback-copy-below-highlow-tables' => 'Estas tabelas contêm artigos que receberam pelo menos 10 avaliações nas últimas 24 horas. As médias são calculadas pela média aritmética de todas as avaliações enviadas nas últimas 24 horas.',
 	'articlefeedback-emailcapture-response-body' => 'Olá,
 
 Obrigado por expressar interesse em ajudar a melhorar a {{SITENAME}}.
@@ -3538,7 +3596,7 @@ Pe piacere pruève arrete.",
  * @author Сrower
  */
 $messages['ru'] = array(
-	'articlefeedback' => 'Оценка статьи',
+	'articlefeedback' => 'Панель оценок статьи',
 	'articlefeedback-desc' => 'Оценка статьи (экспериментальный вариант)',
 	'articlefeedback-survey-question-origin' => 'На какой странице вы находились, когда начали этот опрос?',
 	'articlefeedback-survey-question-whyrated' => 'Пожалуйста, дайте нам знать, почему вы сегодня дали оценку этой странице (отметьте все подходящие варианты):',
@@ -3600,8 +3658,8 @@ $messages['ru'] = array(
 	'articlefeedback-survey-message-error' => 'Произошла ошибка. 
 Пожалуйста, повторите попытку позже.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Сегодняшние взлёты и падения',
-	'articleFeedback-table-caption-dailyhighs' => 'Сегодняшние взлёты',
-	'articleFeedback-table-caption-dailylows' => 'Сегодняшние падения',
+	'articleFeedback-table-caption-dailyhighs' => 'Статьи с наивысшими оценками: $1',
+	'articleFeedback-table-caption-dailylows' => 'Статьи с самыми низкими оценками: $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Наиболее изменившиеся на этой неделе',
 	'articleFeedback-table-caption-recentlows' => 'Недавние падения',
 	'articleFeedback-table-heading-page' => 'Страница',
@@ -3875,6 +3933,8 @@ Prosimo, poskusite znova pozneje.',
 	'articleFeedback-table-caption-recentlows' => 'Nedavni padci',
 	'articleFeedback-table-heading-page' => 'Stran',
 	'articleFeedback-table-heading-average' => 'Povprečje',
+	'articleFeedback-copy-above-highlow-tables' => 'To je preizkusna funkcija. Prosimo, podajte povratno informacijo na [$1 pogovorni strani].',
+	'articleFeedback-copy-below-highlow-tables' => 'Te razpredelnice vsebujejo članke, ki so v zadnjih 24 urah prejeli vsaj 10 ocen. Povprečna so izračunana iz povprečja vseh ocen, podanih v zadnjih 24 urah.',
 	'articlefeedback-emailcapture-response-body' => 'Pozdravljeni!
 
 Zahvaljujemo se vam za izkazano zanimanje za pomoč pri izboljševanju {{GRAMMAR:rodilnik|{{SITENAME}}}}.
@@ -4316,6 +4376,8 @@ Xin hãy thử lại sau.',
 	'articleFeedback-table-caption-recentlows' => 'Các điểm thấp gần đây',
 	'articleFeedback-table-heading-page' => 'Trang',
 	'articleFeedback-table-heading-average' => 'Trung bình',
+	'articleFeedback-copy-above-highlow-tables' => 'Đây là một tính năng thử nghiệm. Xin vui lòng đưa ra phản hồi tại trang thảo luận.',
+	'articleFeedback-copy-below-highlow-tables' => 'Các bảng này chứa các bài đã được đánh giá 10 lần trở lên trong vòng 24 giờ qua. Các trung bình tính các đánh giá được nhận trong vòng 24 giờ qua.',
 	'articlefeedback-emailcapture-response-body' => 'Xin chào!
 
 Cám ơn bạn đã bày tỏ quan tâm về việc giúp cải tiến {{SITENAME}}.
