@@ -88,48 +88,11 @@ class WikiTweetFunctions {
 			// less than 10 seconds is "few"
 			$result = wfMsg ( 'wikitweet-fewsecondsago' ) ;
 		}
-		elseif ( $l__diff_date >= 60 )
-		{
-			// real conversion
-			$l__nber_seconds = $l__diff_date % 60 ;
-			$l__new_diff = $l__diff_date - $l__nber_seconds ;
-			$l__nber_minutes = $l__new_diff / 60 ;
-			if ($l__nber_minutes >= 60)
-			{
-				$l__old_nber_minutes = $l__nber_minutes ;
-				$l__nber_minutes = $l__nber_minutes % 60 ;
-				$l__new_nber_minutes = $l__old_nber_minutes - $l__nber_minutes ;
-				$l__nber_hours = $l__new_nber_minutes / 60 ;
-			}
-		}
 		else
 		{
-			$l__nber_seconds = $l__diff_date ;
-		}
-		//plurals
-		$seconds = ( $l__nber_seconds == 1 ) ? wfMsg( 'wikitweet-second' ) : wfMsg( 'wikitweet-seconds' ) ;
-		$minutes = ( $l__nber_minutes == 1 ) ? wfMsg( 'wikitweet-minute' ) : wfMsg( 'wikitweet-minutes' ) ;
-		$hours   = ( $l__nber_hours == 1 )   ? wfMsg( 'wikitweet-hour' )   : wfMsg( 'wikitweet-hours' )   ;
-		
-		if ($l__nber_hours !=0 && $l__nber_minutes != 0 )
-		{
-			$result = wfMsgExt( 'wikitweet-timeago', 'parse', "$l__nber_hours $hours $l__nber_minutes $minutes" );
-		}
-		elseif (($l__nber_hours != 0 && $l__nber_minutes == 0 ) || ($l__nber_hours >= 5 ) )
-		{
-			$result = wfMsgExt( 'wikitweet-timeago', 'parse', "$l__nber_hours $hours" );
-		}
-		elseif (($l__nber_minutes >= 5) || ($l__nber_minutes != 0 && $l__nber_seconds == 0 ) )
-		{
-			$result = wfMsgExt( 'wikitweet-timeago', 'parse', "$l__nber_minutes $minutes" );
-		}
-		elseif ($l__nber_minutes != 0 && $l__nber_seconds != 0 )
-		{
-			$result = wfMsgExt( 'wikitweet-timeago', 'parse', "$l__nber_minutes $minutes $l__nber_seconds $seconds" );
-		}
-		elseif ($l__nber_seconds !=0 )
-		{
-			$result = wfMsgExt( 'wikitweet-timeago', 'parse', "$l__nber_seconds $seconds" );
+			$languageobject = new Language();
+			$date_to_display = $languageobject->formatTimePeriod(time()-strtotime($dateSrc));
+			$result = wfMsgExt( 'wikitweet-timeago', 'parse', $date_to_display );
 		}
 	return $result ;
 	}
