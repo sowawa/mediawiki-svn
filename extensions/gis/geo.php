@@ -156,6 +156,6 @@ function parseGeo ( $text, $params, &$parser ) {
 	$skin = $wgUser->getSkin();
 
 	// !JF1 Replace Special: by NS call.
-	return Linker::link( Title::makeTitle( NS_SPECIAL, 'Geo' ), $geo->get_markup(), $geo->get_param_array() );
+	return Linker::link( SpecialPage::getTitleFor( 'Geo' ), $geo->get_markup(), $geo->get_param_array() );
 
 }
