@@ -221,3 +221,28 @@ $wgHooks['SavePreferences'][] = 'OpenIDHooks::onSavePreferences';
 
 # FIXME, function does not exist
 # $wgHooks['UserLoginForm'][] = 'OpenIDHooks::onUserLoginForm';
+
+$myResourceTemplate = array(
+	'localBasePath' => dirname( __FILE__ ) . '/skin',
+	'remoteExtPath' => 'OpenID/skin',
+	'group' => 'ext.openid',
+);
+
+$wgResourceModules['ext.openid'] = $myResourceTemplate + array(
+	'scripts' => 'openid.js',
+	'dependencies' => array(
+		'jquery.cookie'
+	)
+);
+$wgResourceModules['ext.openid.plain'] = $myResourceTemplate + array(
+	'styles' => 'openid-plain.css',
+	'dependencies' => array(
+		'ext.openid'
+	)
+);
+$wgResourceModules['ext.openid.icons'] = $myResourceTemplate + array(
+	'styles' => 'openid.css',
+	'dependencies' => array(
+		'ext.openid'
+	)
+);

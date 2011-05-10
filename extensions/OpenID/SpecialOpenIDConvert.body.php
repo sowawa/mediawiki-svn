@@ -91,18 +91,9 @@ class SpecialOpenIDConvert extends SpecialOpenID {
 	}
 
 	function form() {
-		global $wgOut, $wgUser, $wgScriptPath, $wgOpenIDShowProviderIcons;
+		global $wgOut, $wgUser, $wgOpenIDShowProviderIcons;
 
-		$oidScriptPath = $wgScriptPath . '/extensions/OpenID';
-
-		$wgOut->addLink( array(
-			'rel' => 'stylesheet',
-			'type' => 'text/css',
-			'media' => 'screen',
-			'href' => $oidScriptPath . ( $wgOpenIDShowProviderIcons ? '/skin/openid.css' : '/skin/openid-plain.css' )
-		) );
-
-		$wgOut->addScript( '<script type="text/javascript" src="' . $oidScriptPath . '/skin/openid-combined-min.js"></script>' . "\n" );
+		$wgOut->addModules( $wgOpenIDShowProviderIcons ? 'ext.openid.icons' : 'ext.openid.plain' );
 
 		$formsHTML = '';
 

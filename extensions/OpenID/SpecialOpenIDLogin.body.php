@@ -96,18 +96,9 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	 * Displays the main login form
 	 */
 	function loginForm() {
-		global $wgOut, $wgScriptPath, $wgOpenIDShowProviderIcons;
+		global $wgOut, $wgOpenIDShowProviderIcons;
 
-		$oidScriptPath = $wgScriptPath . '/extensions/OpenID';
-
-		$wgOut->addLink( array(
-			'rel' => 'stylesheet',
-			'type' => 'text/css',
-			'media' => 'screen',
-			'href' => $oidScriptPath . ( $wgOpenIDShowProviderIcons ? '/skin/openid.css' : '/skin/openid-plain.css' )
-		) );
-
-		$wgOut->addScript( '<script type="text/javascript" src="' . $oidScriptPath . '/skin/openid-combined-min.js"></script>' . "\n" );
+		$wgOut->addModules( $wgOpenIDShowProviderIcons ? 'ext.openid.icons' : 'ext.openid.plain' );
 
 		$formsHTML = '';
 

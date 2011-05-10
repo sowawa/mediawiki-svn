@@ -1,12 +1,16 @@
+VER=2.2.2
+SUBDIR=openid-php-openid-782224d
+# how to make that one predictable easily?
+
 php-openid: Auth
 
-Auth:	php-openid-2.1.3.tar.bz2
-	tar -xjf php-openid-2.1.3.tar.bz2 php-openid-2.1.3/Auth
-	mv php-openid-2.1.3/Auth ./
-	rmdir php-openid-2.1.3
+Auth:	php-openid-$(VER).tar.gz
+	tar -xzf php-openid-$(VER).tar.gz $(SUBDIR)/Auth
+	mv $(SUBDIR)/Auth ./
+	rmdir $(SUBDIR)
 
-php-openid-2.1.3.tar.bz2:
-	wget http://openidenabled.com/files/php-openid/packages/php-openid-2.1.3.tar.bz2 -O php-openid-2.1.3.tar.bz2
+php-openid-$(VER).tar.gz:
+	wget --no-check-certificate https://github.com/openid/php-openid/tarball/$(VER) -O php-openid-$(VER).tar.gz
 
 clean:
-	rm -rf Auth php-openid-2.1.3.tar.bz2
+	rm -rf Auth php-openid-$(VER).tar.bz2

@@ -1,4 +1,4 @@
-var openid = {
+var openid = window.openid = {
 	current: 'openid',
 
 	show: function(provider) {
@@ -23,6 +23,7 @@ var openid = {
 
 			$('#openid_url').val($('#openid_provider_url_' + openid.current).val().replace(/{.*}/, param));
 		}
+		event.preventDefault();
 	},
 	init: function() {
 		var provider = $.cookie('openid.provider');
