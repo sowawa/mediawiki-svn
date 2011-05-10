@@ -30,6 +30,15 @@ $messages['en'] = array(
 	'wikitweet-tweets-tagged' => 'Tweets tagged',
 	'wikitweet-back-timeline' => 'Back to the timeline',
 	'wikitweet-tweets-from-room' => 'Tweets from room',
+	'wikitweet-timeago' => '%time% ago', // Do not translate the string "%time%", it is a keyword 
+	'wikitweet-hour' => 'hour',
+	'wikitweet-hours' => 'hours',
+	'wikitweet-minute' => 'minute',
+	'wikitweet-minutes' => 'minutes',
+	'wikitweet-second' => 'second',
+	'wikitweet-seconds' => 'seconds',
+	'wikitweet-inthefuture' => 'In the future !!',
+	'wikitweet-fewsecondsago' => 'Few seconds ago'
 );
 
 /** Message documentation (Message documentation)
@@ -92,6 +101,15 @@ $messages['fr'] = array(
 	'wikitweet-tweets-tagged' => 'Tweets taggés',
 	'wikitweet-back-timeline' => 'Retour au flux',
 	'wikitweet-tweets-from-room' => 'Tweets de la room',
+	'wikitweet-timeago' => 'Il y a %time%', 
+	'wikitweet-hour' => 'heure',
+	'wikitweet-hours' => 'heures',
+	'wikitweet-minute' => 'minute',
+	'wikitweet-minutes' => 'minutes',
+	'wikitweet-second' => 'seconde',
+	'wikitweet-seconds' => 'secondes',
+	'wikitweet-inthefuture' => 'Dans le futur !!',
+	'wikitweet-fewsecondsago' => 'Il y a quelques secondes'
 );
 
 /** Colognian (Ripoarisch)

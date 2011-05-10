@@ -45,6 +45,8 @@ $wgExtensionMessagesFiles['WikiTweet'] = $dir . 'WikiTweet.i18n.php';
 $wgAutoloadClasses['ApiQueryWikiTweet'] = "$dir/WikiTweet.api.php";
 $wgAPIListModules['wikitweet'] = 'ApiQueryWikiTweet';
 
+$wgAutoloadClasses['WikiTweetFunctions'] = "$dir/WikiTweet.functions.php";
+
 function wikiTweeter()
 {
 	global $wgExtensionMessagesFiles, $wgParser, $wgMessageCache;

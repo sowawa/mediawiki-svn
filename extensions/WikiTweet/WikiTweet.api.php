@@ -168,8 +168,8 @@ class ApiQueryWikiTweet extends ApiQueryBase {
 			}
 			
 			$dateSrc = $date.' GMT';
-			// TODO : "x hours ago, today, etc"
-			$date_to_display = date('H:i, F jS', strtotime($dateSrc));
+			$date_to_display = WikiTweetFunctions::Convert_Date(strtotime($dateSrc));
+			//$date_to_display = date('H:i, F jS', strtotime($dateSrc));
 			
 			$res2 = $dbr->select('wikitweet_avatar','avatar',"`user`='".mysql_real_escape_string($tweetuser)."' ",__METHOD__,false);
 			$row2 = $dbr->fetchObject ( $res2 );
@@ -284,7 +284,6 @@ class ApiQueryWikiTweet extends ApiQueryBase {
 		
 		$dest=array();
 		$user_email = $wgWikiTweet['wikimail'];
-		include('WikiTweet.functions.php');
 		if($tomail==1 or $tomail==2){
 			$res = $dbr->select('user','user_email',"user_name = '$user' ");
 			if ($dbr->numRows($res) > 0){
@@ -326,7 +325,7 @@ class ApiQueryWikiTweet extends ApiQueryBase {
 			$lenlist += strlen($destmail);
 		}
 		if($lenlist>0){
-			send( $dest, $user_email, "A new tweet for or about you !", $status);
+			WikiTweetFunctions::send( $dest, $user_email, "A new tweet for or about you !", $status);
 			$text .= 'mail sent';
 		}
 
