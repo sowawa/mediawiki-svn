@@ -2,6 +2,7 @@
 /**
 * BookManager protected functions [Core]
 */
+$wgBookSidebarSection = false;
 class BookManagerCore extends SpecialPage {
 	const VERSION = "0.1.6 ";
 	private static $chapterList;
@@ -343,32 +344,30 @@ class BookManagerNavBar extends BookManagerCore {
 		$out->addHTML( "<div>$bottom</div>" );
 		# adds CSS and JS to navigation bar
 		$out->addModuleStyles( 'ext.BookManager' );
-		//$out->addModules( 'ext.BookManager' );
+		$out->addModules( 'ext.BookManager' );
  		return true;
  	}
-
-
-	public static function ratingToolboxLink( &$sk, &$toolbox ) {
-		global $wgTitle;
+	static function bookToolboxSection( &$sk, &$toolbox ) {
+		global $wgTitle, $wgParser;
 		$currenttitletext = $wgTitle->getText();
+		$randchapter = self::pageText( $wgParser, $currenttitletext, 'rand' );
 		# Add book tools section and all yours itens 
-		?><div class="portal" id='p-tb'><?php
-				?><h5><?php $sk->msg( 'bm-booktools-section' ); ?></h5><?php
-				?><div class="body"><?php
-					?><ul><?php
-						?><li id="t-rating"><?php
-							?><a href="<?php echo htmlspecialchars( self::pageText( $wgParser, $currenttitletext, 'rand' )->getLocalURL()) ?>"><?php
-							echo $sk->msg( 'bm-randomchapter-link' );
-							?></a><?php
-						?></li><?php
-					?></ul><?php
+		if ( $randchapter ){
+			?><div class="portal" id='p-tb'><?php
+					?><h5><?php $sk->msg( 'bm-booktools-section' ); ?></h5><?php
+					?><div class="body"><?php
+						?><ul><?php
+							?><li id="t-rating"><?php
+								?><a href="<?php echo htmlspecialchars( $randchapter->getLocalURL() ) ?>"><?php
+								echo $sk->msg( 'bm-randomchapter-link' );
+								?></a><?php
+							?></li><?php
+						?></ul><?php
+					?></div><?php
 				?></div><?php
-			?></div><?php
-		
+		}
 		return true;
 	}
-
-
 }
 /**
 * BookManager Functions [PrintVersion]

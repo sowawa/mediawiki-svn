@@ -67,9 +67,11 @@ $wgResourceModules['ext.BookManager'] = array(
 	'localBasePath'	=> $dir. '/client',
 	'remoteExtPath'	=> 'BookManager/client'
 );
+
 $wgBookManagerNamespaces = array( NS_MAIN );
 $wgBookManagerVariables = true ;
 $wgBookManagerNavBar = true;
+
 /* Copyied from extensions/Collection/Collection.php */
 /** Namespace for "community books" */
 $wgBookManagerPrefixNamespace = NS_PROJECT;
@@ -85,5 +87,5 @@ $wgHooks['ParserGetVariableValueSwitch'][] = 'BookManagerVariables::AssignAValue
 }
 /**** Navbar ****/
 $wgHooks['BeforePageDisplay'][] = 'BookManagerNavBar::addNavBar';
-# Sidebar section
-$wgHooks['BaseTemplateToolbox'][] = 'BookManagerNavBar::ratingToolboxLink';
+# Rating link
+$wgHooks['BaseTemplateToolbox'][] = 'BookManagerNavBar::bookToolboxSection';
