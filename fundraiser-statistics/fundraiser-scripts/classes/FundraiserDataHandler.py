@@ -17,13 +17,36 @@ __date__ = "May 8th, 2011"
 import sys
 import Fundraiser_Tools.classes.DataLoader as DL
 
+
 """ Test Types """
 _TESTTYPE_BANNER_ = 'banner'
 _TESTTYPE_LP_ = 'lp'
 
+
+""" Column Types """
+_COLTYPE_RATE_ = 'rate'
+_COLTYPE_AMOUNT_ = 'amount'
+_COLTYPE_KEY_ = 'key'
+_COLTYPE_TIME_ = 'time'
+
+
 _interval_reporting_loader_ = DL.IntervalReportingLoader()
 _campaign_reporting_loader_ = DL.CampaignReportingLoader()  
 """ !! MODIFY -- Bring this class right in here !! """
+
+""" """
+_banner_interval_reporting_col_types_ = [_COLTYPE_TIME_, _COLTYPE_KEY_, _COLTYPE_AMOUNT_, _COLTYPE_AMOUNT_, _COLTYPE_AMOUNT_, _COLTYPE_AMOUNT_, _COLTYPE_AMOUNT_, _COLTYPE_AMOUNT_, _COLTYPE_RATE_, _COLTYPE_RATE_, _COLTYPE_RATE_, _COLTYPE_RATE_, _COLTYPE_RATE_]
+_lp_interval_reporting_col_types_ = [_COLTYPE_TIME_, _COLTYPE_KEY_, _COLTYPE_AMOUNT_, _COLTYPE_AMOUNT_, _COLTYPE_AMOUNT_, _COLTYPE_AMOUNT_, _COLTYPE_RATE_, _COLTYPE_RATE_, _COLTYPE_RATE_, _COLTYPE_RATE_] 
+
+
+def get_col_types(query_type):
+    
+    if query_type == _TESTTYPE_BANNER_:
+        return _banner_interval_reporting_col_types_
+    if query_type == _TESTTYPE_LP_:
+        return _lp_interval_reporting_col_types_
+    
+    return 
 
 """
     Get Test type from campaign.  The logic in this method will evolve as new ways to classify test types are developed
