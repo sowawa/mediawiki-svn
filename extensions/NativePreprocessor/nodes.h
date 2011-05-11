@@ -30,6 +30,20 @@ enum nodeTypes {
 	closebrace_node = '}',
 };
 
+/* May contain childs: root_node, ext_node, name_node, heading_node (h?_node), template_node, tplarg_node, title_node, part_node, value_node */
+
+const struct str_ref {
+	char const* string;
+	int length;
+	bool allocated;
+} empty_str = { NULL, 0, false };
+
+extern inline void str_ref_free(struct str_ref* str) {
+	if ( str->allocated ) {
+		efree( (char*)str->string);
+	}
+}
+
 struct node {
 	enum nodeTypes type;
 	char flags;
@@ -37,7 +51,7 @@ struct node {
 	int contentLength;
 	
 	/* Relevant only for nodes with childs */
-	int index; /* index inside nodeString */
+	int index; /* index inside nodeString (preprocess) / space of children read (expand) */
 	struct node* parent;
 	
 	/* Used for headings */
@@ -51,6 +65,14 @@ struct node {
 	int eqpos; /* Name nodes */
 	int argIndex; /* Brace nodes */
 	/* Compact me: Move the last three blocks into an union */
+
+	union {
+		struct {
+			struct str_ref expanded;
+			struct str_ref name, attr, inner, close;
+		} ext_data;
+	};
+
 };
 
 struct literalNode {
@@ -221,6 +243,14 @@ static inline int hex2dec(char val) {
 static inline int getNextSibling(const char* pointer) {
 	assert( pointer[2] != '?' );
 	return ( ( ( ( ( hex2dec(pointer[2]) << 4 ) | hex2dec(pointer[3]) ) << 4 | hex2dec(pointer[4]) ) << 4 | hex2dec(pointer[5]) ) << 4 | hex2dec(pointer[6]) ) << 4 | hex2dec(pointer[7]);
+}
+
+/**
+ * Get the contentLength value from a node serialized at pointer.
+ * The contentLength is a hexadecimal value in bytes 8-15.
+ */
+static inline int getContentLength(const char* pointer) {
+	return ( ( ( ( ( ( ( hex2dec(pointer[8]) << 4 ) | hex2dec(pointer[9]) ) << 4 | hex2dec(pointer[10]) ) << 4 | hex2dec(pointer[11]) ) << 4 | hex2dec(pointer[12]) ) << 4 | hex2dec(pointer[13]) ) << 4 | hex2dec(pointer[14]) ) << 4 | hex2dec(pointer[15]);
 }
 
 /**
