@@ -800,6 +800,7 @@ $messages['pt-br'] = array(
  */
 $messages['ru'] = array(
 	'livetranslate-desc' => 'Включает перевод текста страницы на лету с помощью службы переводов Google',
+	'right-managetms' => '[[Special:SpecialLiveTranslate|изменять]] список памяти переводов',
 	'livetranslate-translate-to' => 'Перевести эту страницу на',
 	'livetranslate-button-translate' => 'Перевести',
 	'livetranslate-button-translating' => 'Выполняется перевод...',

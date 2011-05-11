@@ -1286,6 +1286,7 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Crochet.david
+ * @author Faure.thomas
  * @author IAlex
  * @author Od1n
  * @author Peter17
@@ -1323,6 +1324,7 @@ $messages['fr'] = array(
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Politique de confidentialité',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Confidentialité',
 	'articlefeedback-form-panel-submit' => 'Envoyer les cotes',
+	'articlefeedback-form-panel-pending' => "Vos votes n'ont pas encore été soumis",
 	'articlefeedback-form-panel-success' => 'Enregistré avec succès',
 	'articlefeedback-form-panel-expiry-title' => 'Votre évaluation a expiré',
 	'articlefeedback-form-panel-expiry-message' => 'Veuillez réévaluer cette page et soumettre votre nouvelle évaluation.',
@@ -1512,6 +1514,8 @@ Inténteo de novo máis tarde.',
 	'articleFeedback-table-caption-recentlows' => 'Últimos baixos',
 	'articleFeedback-table-heading-page' => 'Páxina',
 	'articleFeedback-table-heading-average' => 'Media',
+	'articleFeedback-copy-above-highlow-tables' => 'Esta é unha característica experimental. Deixe os seus comentarios na [$1 páxina de conversa].',
+	'articleFeedback-copy-below-highlow-tables' => 'Estas táboas conteñen as páxinas que recibiron, polo menos, 10 votos nas últimas 24 horas. As medias calcúlanse facendo a media de todas as valoracións enviadas nas últimas 24 horas.',
 	'articlefeedback-emailcapture-response-body' => 'Ola!
 
 Grazas por expresar interese en axudar a mellorar {{SITENAME}}.
@@ -1673,6 +1677,8 @@ $messages['he'] = array(
 	'articleFeedback-table-caption-recentlows' => 'תוצאות נמוכות לאחרונה',
 	'articleFeedback-table-heading-page' => 'דף',
 	'articleFeedback-table-heading-average' => 'ממוצע',
+	'articleFeedback-copy-above-highlow-tables' => 'זוהי תכונה ניסיונית. נשמח לקבל משוב ב[$1 דף השיחה].',
+	'articleFeedback-copy-below-highlow-tables' => 'הטבלאות האלו מכילות דפים שקיהלו לפחות 10 דירוגים ב־24 השעות האחרונות. הממוצעים מחושבים על סמך ממוצעים של כל הדירוגים שנשלחו ב־24 השעות האחרונות.',
 	'articlefeedback-emailcapture-response-body' => 'שלום!
 
 תודה שהבעתם עניין בסיוע לשיפור אתר {{SITENAME}}.
@@ -2052,7 +2058,7 @@ Tim {{SITENAME}}',
  * @author Pietrodn
  */
 $messages['it'] = array(
-	'articlefeedback' => 'Cruscotto valutazione pagina',
+	'articlefeedback' => 'Cruscotto valutazione pagine',
 	'articlefeedback-desc' => 'Valutazione pagina (versione pilota)',
 	'articlefeedback-survey-question-origin' => 'In quale pagina eravate quando avete iniziato questa indagine?',
 	'articlefeedback-survey-question-whyrated' => 'Esprimi il motivo per cui oggi hai valutato questa pagina (puoi selezionare più opzioni):',
@@ -2084,6 +2090,7 @@ Riprova più tardi.',
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Informazioni sulla privacy',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Informazioni sulla privacy',
 	'articlefeedback-form-panel-submit' => 'Invia voti',
+	'articlefeedback-form-panel-pending' => 'Le tue valutazioni non sono state ancora inviate',
 	'articlefeedback-form-panel-success' => 'Salvato con successo',
 	'articlefeedback-form-panel-expiry-title' => 'Le tue valutazioni sono obsolete',
 	'articlefeedback-form-panel-expiry-message' => 'Valuta nuovamente questa pagina ed inviaci i tuoi giudizi.',
@@ -3627,6 +3634,7 @@ $messages['ru'] = array(
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Политика конфиденциальности',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Политика конфиденциальности',
 	'articlefeedback-form-panel-submit' => 'Отправить оценку',
+	'articlefeedback-form-panel-pending' => 'Ваши оценки ещё не были отправлены',
 	'articlefeedback-form-panel-success' => 'Информация сохранена',
 	'articlefeedback-form-panel-expiry-title' => 'Ваши оценки устарели',
 	'articlefeedback-form-panel-expiry-message' => 'Пожалуйста, пересмотрите эту страницу и укажите новые оценки.',
@@ -3664,6 +3672,8 @@ $messages['ru'] = array(
 	'articleFeedback-table-caption-recentlows' => 'Недавние падения',
 	'articleFeedback-table-heading-page' => 'Страница',
 	'articleFeedback-table-heading-average' => 'Среднее',
+	'articleFeedback-copy-above-highlow-tables' => 'Это экспериментальная возможность. Пожалуйста, оставьте отзыв на [$1 странице обсуждения].',
+	'articleFeedback-copy-below-highlow-tables' => 'В таблицах указаны страницы, получившие за последние 24 часа не менее 10 оценок. Средние показатели рассчитываются путём усреднения всех оценок за последние 24 часа.',
 	'articlefeedback-emailcapture-response-body' => 'Здравствуйте!
 
 Спасибо за интерес к улучшению проекта {{SITENAME}}.
@@ -4376,7 +4386,7 @@ Xin hãy thử lại sau.',
 	'articleFeedback-table-caption-recentlows' => 'Các điểm thấp gần đây',
 	'articleFeedback-table-heading-page' => 'Trang',
 	'articleFeedback-table-heading-average' => 'Trung bình',
-	'articleFeedback-copy-above-highlow-tables' => 'Đây là một tính năng thử nghiệm. Xin vui lòng đưa ra phản hồi tại trang thảo luận.',
+	'articleFeedback-copy-above-highlow-tables' => 'Đây là một tính năng thử nghiệm. Xin vui lòng đưa ra phản hồi tại [$1 trang thảo luận].',
 	'articleFeedback-copy-below-highlow-tables' => 'Các bảng này chứa các bài đã được đánh giá 10 lần trở lên trong vòng 24 giờ qua. Các trung bình tính các đánh giá được nhận trong vòng 24 giờ qua.',
 	'articlefeedback-emailcapture-response-body' => 'Xin chào!
 

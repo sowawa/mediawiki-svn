@@ -201,6 +201,7 @@ $messages['nl'] = array(
 	'webfonts' => 'WebFonts',
 	'webfonts-desc' => "Lettertypen op pagina's insluiten",
 	'webfonts-load' => 'Lettertype selecteren',
+	'webfonts-reset' => 'Opnieuw instellen',
 	'webfonts-disable-preference' => 'Lettertypen insluiten (WebFonts) uitschakelen',
 );
 
@@ -244,11 +245,13 @@ $messages['pt'] = array(
 
 /** Russian (Русский)
  * @author Lockal
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'webfonts' => 'WebFonts',
 	'webfonts-desc' => 'Позволяет встраивать шрифты на страницы',
 	'webfonts-load' => 'Выбрать шрифт',
+	'webfonts-reset' => 'Сбросить',
 	'webfonts-disable-preference' => 'Отключить встраивание шрифтов (WebFonts)',
 );
 

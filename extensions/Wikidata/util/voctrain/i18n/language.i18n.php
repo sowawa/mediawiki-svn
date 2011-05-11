@@ -4272,6 +4272,7 @@ $messages['sq'] = array(
 	'voctrain_Languages' => 'Gjuhët',
 	'voctrain_Please_specify_the_languages_you_want_to_test_in' => 'Ju lutem specifikoni gjuhët që ju doni të testoheni',
 	'voctrain_eg_eng_for_English_deu_for_Deutch_German_' => '(P.sh., eng për anglisht, deu për gjermanisht).',
+	'voctrain_Depending_on_your_test_set_some_combinations_might_work_better_than_others_' => 'Varësisht nga vendosja juaj e testit, disa kombinime të mund të punojnë më mirë se të tjerët.',
 	'voctrain_Questions' => 'Pyetjet',
 	'voctrain_Answers' => 'Përgjigjet',
 	'voctrain_start_exercise' => 'fillo ushtrimin',

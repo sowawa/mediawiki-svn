@@ -436,6 +436,22 @@ $messages['roa-tara'] = array(
 	'apisb-ns-main' => '(Prengepàle)',
 );
 
+/** Russian (Русский)
+ * @author KorneySan
+ */
+$messages['ru'] = array(
+	'apisb-desc' => 'Позволяет отлаживать вызовы [http://www.mediawiki.org/wiki/API MediaWiki API] из браузера',
+	'apisandbox' => 'Песочница API',
+	'apisb-no-js' => "'''Ошибка''': эта возможность требует JavaScript.",
+	'apisb-intro' => "Используйте эту страницу для экспериментов с '''MediaWiki API'''.
+Обратитесь к [http://www.mediawiki.org/wiki/API документации API] для получения дополнительной информации об использовании API.",
+	'apisb-api-disabled' => 'API отключен на этом сайте.',
+	'apisb-parameters' => 'Параметры',
+	'apisb-result' => 'Результат',
+	'apisb-request-url' => 'URL-адрес запроса:',
+	'apisb-request-post' => 'POST данные:',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

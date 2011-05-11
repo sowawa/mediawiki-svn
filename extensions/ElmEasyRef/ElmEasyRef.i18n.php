@@ -121,8 +121,10 @@ $messages['pt'] = array(
 
 /** Russian (Русский)
  * @author Elancev Michael
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'elm-easyref-desc' => 'Добавляет всплывающее поле для отображения содержания страницы по ссылке',
 	'elm-easyref-ref' => 'Ссылка $1',
 	'elm-easyref-close' => 'Закрыть',
 );

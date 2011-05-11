@@ -229,6 +229,7 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'sidebardonatebox-desc' => 'Добавляет специальное уведомление о пожертвованиях на боковую панель',
+	'DONATE' => 'Пожертвовать',
 );
 
 /** Tagalog (Tagalog)

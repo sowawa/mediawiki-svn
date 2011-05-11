@@ -78,15 +78,17 @@ $messages['de'] = array(
 );
 
 /** French (Français)
+ * @author Balzac 40
  * @author Thomas FAURÉ
  */
 $messages['fr'] = array(
+	'wikitweet-desc' => 'Créer un flux du genre Twitter dans MediaWiki',
 	'wikitweet-pleaselogin' => 'Veuillez vous connecter pour tweeter.',
 	'wikitweet-moretweets' => 'Plus de tweets...',
 	'wikitweet-infoajax' => 'utilise la technologie ajax et se rafraîchit automatiquement toutes les 5 secondes sans recharger la page.',
 	'wikitweet-submit' => 'Tweeter',
 	'wikitweet-submitandmail' => 'Tweeter et prévenir',
-	'wikitweet-intheroom' => 'Vous êtes dans la room',
+	'wikitweet-intheroom' => 'Vous êtes dans la salle',
 	'wikitweet-subscribe' => "s'abonner",
 	'wikitweet-subscribed' => 'abonné',
 	'wikitweet-unsubscribe' => 'se désabonner',
@@ -97,10 +99,42 @@ $messages['fr'] = array(
 	'wikitweet-anonymous' => 'anonyme',
 	'wikitweet-tweets-tagged' => 'Tweets taggés',
 	'wikitweet-back-timeline' => 'Retour au flux',
-	'wikitweet-tweets-from-room' => 'Tweets de la room',
-	'wikitweet-timeago' => 'Il y a $1', 
+	'wikitweet-tweets-from-room' => 'Tweets de la salle',
+	'wikitweet-timeago' => 'Il y a $1',
 	'wikitweet-inthefuture' => 'Dans le futur !!',
-	'wikitweet-fewsecondsago' => 'Il y a quelques secondes'
+	'wikitweet-fewsecondsago' => 'Il y a quelques secondes',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'wikitweet-desc' => 'Crear unha fonte semellante ao Twitter en MediaWiki',
+	'wikitweet-pleaselogin' => 'Acceda ao sistema para deixar un chío.',
+	'wikitweet-moretweets' => 'Máis chíos...',
+	'wikitweet-infoajax' => 'emprega tecnoloxía AJAX e actualízase automaticamente cada 5 segundos sen ter que recargar a páxina.',
+	'wikitweet-submit' => 'Chiar',
+	'wikitweet-intheroom' => 'Está na sala',
+	'wikitweet-subscribe' => 'seguir',
+	'wikitweet-subscribed' => 'seguindo',
+	'wikitweet-unsubscribe' => 'deixar de seguir',
+	'wikitweet-delete' => 'borrar',
+	'wikitweet-private' => 'privado',
+	'wikitweet-answer' => 'resposta a',
+	'wikitweet-anonymous' => 'anónimo',
+	'wikitweet-tweets-tagged' => 'Chíos etiquetados',
+	'wikitweet-back-timeline' => 'Volver á cronoloxía',
+	'wikitweet-tweets-from-room' => 'Chíos da sala',
+	'wikitweet-timeago' => 'hai $1',
+	'wikitweet-inthefuture' => 'No futuro!',
+	'wikitweet-fewsecondsago' => 'hai uns segundos',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'wikitweet-desc' => 'Crear un syndication Twitteresc a importar in MediaWiki',
 );
 
 /** Colognian (Ripoarisch)
@@ -143,6 +177,9 @@ $messages['mk'] = array(
 	'wikitweet-tweets-tagged' => 'Означени објави',
 	'wikitweet-back-timeline' => 'Кон хронологијата',
 	'wikitweet-tweets-from-room' => 'Објави од собата',
+	'wikitweet-timeago' => 'пред $1',
+	'wikitweet-inthefuture' => 'Во иднина !!',
+	'wikitweet-fewsecondsago' => 'Пред неколку секунди',
 );
 
 /** Malay (Bahasa Melayu)
@@ -185,6 +222,9 @@ $messages['nl'] = array(
 	'wikitweet-tweets-tagged' => 'Tweets gelabeld',
 	'wikitweet-back-timeline' => 'Terug naar de tijdlijn',
 	'wikitweet-tweets-from-room' => 'Tweets uit de ruimte',
+	'wikitweet-timeago' => '$1 geleden',
+	'wikitweet-inthefuture' => 'In de toekomst!',
+	'wikitweet-fewsecondsago' => 'Een paar seconden geleden',
 );
 
 /** Telugu (తెలుగు)

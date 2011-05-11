@@ -55,6 +55,8 @@ $messages['ba'] = array(
  */
 $messages['be-tarask'] = array(
 	'bookmanager-desc' => 'Інструмэнты для кнігаў',
+	'bm-booktools-section' => 'Інструмэнты кнігі',
+	'bm-randomchapter-link' => 'Выпадковая частка',
 	'bm-printversion' => 'Вэрсія для друку',
 	'bm-printversion-desc' => 'Стварае [[Special:PrintVersion|вэрсіі кніг для друку]]',
 	'bm-printversion-no-book' => 'Калі ласка, увядзіце назву кнігі, каб атрымаць яе вэрсію для друку.',
@@ -131,7 +133,9 @@ $messages['cs'] = array(
  * @author Purodha
  */
 $messages['de'] = array(
-	'bookmanager-desc' => 'Hilfsprogramme für Bücher',
+	'bookmanager-desc' => 'Stellt Hilfsmittel für Bücher bereit',
+	'bm-booktools-section' => 'Hilfsmittel zum Buch',
+	'bm-randomchapter-link' => 'Zufälliges Kapitel',
 	'bm-printversion' => 'Druckversion',
 	'bm-printversion-desc' => 'Ergänzt eine Spezialseite zum [[Special:PrintVersion|Erstellen einer Druckversion]] eines Buchs',
 	'bm-printversion-no-book' => 'Bitte den Namen des Buchs angeben, für das eine Druckversion erstellt werden soll.',
@@ -190,10 +194,12 @@ $messages['fa'] = array(
 
 /** French (Français)
  * @author Crochet.david
+ * @author Faure.thomas
  * @author IAlex
  */
 $messages['fr'] = array(
 	'bookmanager-desc' => 'Outils pour les livres',
+	'bm-randomchapter-link' => 'Chapitre aléatoire',
 	'bm-printversion' => 'Version imprimable',
 	'bm-printversion-desc' => 'Génère une [[Special:PrintVersion|version imprimable]] d’un livre',
 	'bm-printversion-no-book' => 'Veuillez entrer le nom d’un livre pour obtenir sa version imprimée.',
@@ -225,6 +231,8 @@ $messages['gl'] = array(
  */
 $messages['he'] = array(
 	'bookmanager-desc' => 'כלים לספרים',
+	'bm-booktools-section' => 'כלים של ספר',
+	'bm-randomchapter-link' => 'פרק אקראי',
 	'bm-printversion' => 'גרסת הדפסה',
 	'bm-printversion-desc' => 'יצירת [[Special:PrintVersion|גרסת הדפסה]] מיוחדת של הספר',
 	'bm-printversion-no-book' => 'נא להזין את שם הספר כדי לקבל את גרסת ההדפסה שלו.',
@@ -247,6 +255,8 @@ $messages['hsb'] = array(
  */
 $messages['ia'] = array(
 	'bookmanager-desc' => 'Instrumentos pro libros',
+	'bm-booktools-section' => 'Instrumentos de libro',
+	'bm-randomchapter-link' => 'Capitulo aleatori',
 	'bm-printversion' => 'Version pro impression',
 	'bm-printversion-desc' => 'Genera un [[Special:PrintVersion|version pro impression]] de un libro',
 	'bm-printversion-no-book' => 'Per favor entra le nomine de un libro pro obtener su version pro impression.',
@@ -307,6 +317,8 @@ $messages['lt'] = array(
  */
 $messages['mk'] = array(
 	'bookmanager-desc' => 'Алатки за книги',
+	'bm-booktools-section' => 'Алатки за книгата',
+	'bm-randomchapter-link' => 'Случајна глава',
 	'bm-printversion' => 'Верзија за печатење',
 	'bm-printversion-desc' => 'Создава [[Special:PrintVersion|верзија за печатење]] на книга',
 	'bm-printversion-no-book' => 'Внесете го името на книгата за да ја добиете верзијата за печатење',
@@ -318,6 +330,8 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'bookmanager-desc' => 'Hulpmiddelen voor boeken',
+	'bm-booktools-section' => 'Hulpmiddelen voor boek',
+	'bm-randomchapter-link' => 'Willekeurige hoofdstuk',
 	'bm-printversion' => 'Afdrukbare versie',
 	'bm-printversion-desc' => 'Maakt een [[Special:PrintVersion|afdrukbare versie]] van een boek',
 	'bm-printversion-no-book' => 'Voer de naam van een bestaand boek in om de afdrukbare versie te downloaden.',
@@ -386,6 +400,8 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'bookmanager-desc' => 'Книжные инструменты',
+	'bm-booktools-section' => 'Инструменты книги',
+	'bm-randomchapter-link' => 'Случайная глава',
 	'bm-printversion' => 'Версия для печати',
 	'bm-printversion-desc' => 'Создает [[Special:PrintVersion|печатную версию]] книги',
 	'bm-printversion-no-book' => 'Пожалуйста, введите название книги, чтобы получить её печатную версию.',
