@@ -23,7 +23,6 @@ import math
 import datetime
 import re        # regular expression matching
 
-import Fundraiser_Tools.miner_help as mh
 import Fundraiser_Tools.classes.QueryData as QD
 import Fundraiser_Tools.classes.TimestampProcessor as TP
 import Fundraiser_Tools.classes.Helper as Hlp
@@ -213,8 +212,8 @@ class IntervalReportingLoader(DataLoader):
         
         query_name = self.get_sql_filename_for_query(query_type)
         
-        metrics = mh.AutoVivification()
-        times = mh.AutoVivification()
+        metrics = Hlp.AutoVivification()
+        times = Hlp.AutoVivification()
         
         """ Compose datetime objects to represent the first and last intervals """
         start_time_obj = TP.timestamp_to_obj(start_time, 1)
@@ -229,7 +228,7 @@ class IntervalReportingLoader(DataLoader):
         
         """ Load the SQL File & Format """
         filename = self._sql_path_+ query_name + '.sql'
-        sql_stmnt = mh.read_sql(filename)
+        sql_stmnt = Hlp.read_sql(filename)
         
         sql_stmnt = QD.format_query(query_name, sql_stmnt, [start_time, end_time, campaign, interval])
         
@@ -307,7 +306,68 @@ class IntervalReportingLoader(DataLoader):
                 metrics_new.append(float(metrics[key][i]))
             metrics[key] = metrics_new
         
-        return [metrics, times]
+        return [metrics, times, results]
+
+    """
+        Post process raw data from query.  Combines data rows according to column type definitions.
+        
+        INPUT:
+                data             - a list of rows
+                data_handler     - the data handler module
+                query_name       - 
+        RETURN:
+                the dictionary of combined rows (note that there must be a key column)
+    """
+    def combine_rows(self, data, data_handler, query_type):
+        
+        query_name = self.get_sql_filename_for_query(query_type)
+        
+        col_types = data_handler.get_col_types(query_type)
+        key_index = QD.get_key_index(query_name)
+        
+        data_dict = dict()
+        num_rows = len(data)
+        
+        """ Combine the rows of data according to the column type definition for the given query """
+        for row in data:
+            
+            key = row[key_index]
+            
+            try:
+                data_dict[key] == None
+            except KeyError as e:
+                data_dict[key] = dict()
+                
+            for i in range(len(row)):
+                
+                col_type = col_types[i]
+                field = row[i]
+                
+                if col_type == data_handler._COLTYPE_RATE_:
+                    
+                    try:
+                        data_dict[key][i.__str__()] = data_dict[key][i.__str__()] + float(field)
+                    except KeyError as e:
+                        data_dict[key][i.__str__()] = float(field)
+                        
+                elif col_type == data_handler._COLTYPE_AMOUNT_:
+                    
+                    try:
+                        data_dict[key][i.__str__()] = data_dict[key][i.__str__()] + float(field)
+                    except KeyError as e:
+                        data_dict[key][i.__str__()] = float(field)
+        
+        """ !! MODIFY --- this could cause issues in the case of missing data """
+        num_rows = len(data) / len(data_dict.keys())
+        
+        """ POST PROCESSING
+            Normalize rate columns """
+        for i in range(len(col_types)):
+            if col_types[i] == data_handler._COLTYPE_RATE_:
+                for key in data_dict.keys():
+                    data_dict[key][i.__str__()] = data_dict[key][i.__str__()] / num_rows
+        
+        return data_dict
 
 
 """
@@ -341,10 +401,14 @@ class CampaignIntervalReportingLoader(IntervalReportingLoader):
         query_type_2 = 'campaign_total'
         
         """ Execute the standard interval reporting query """
-        metrics, times = IntervalReportingLoader.run_query(self, start_time, end_time, interval, query_type_1, metric_name, campaign)
+        data = IntervalReportingLoader.run_query(self, start_time, end_time, interval, query_type_1, metric_name, campaign)
+        metrics = data[0] 
+        times = data[1]
         
         """ Get the totals for campaign views and donations """
-        metrics_total, times_total = IntervalReportingLoader.run_query(self, start_time, end_time, interval, query_type_2, metric_name, campaign)
+        data = IntervalReportingLoader.run_query(self, start_time, end_time, interval, query_type_2, metric_name, campaign)
+        metrics_total = data[0] 
+        times_total = data[1]
         
         """ Combine the results for the campaign totals with (banner, landing page, campaign) """
         for key in metrics_total.keys():
@@ -386,13 +450,13 @@ class BannerLPReportingLoader(DataLoader):
         
         self.init_db()
     
-        metric_lists = mh.AutoVivification()
-        time_lists = mh.AutoVivification()
+        metric_lists = Hlp.AutoVivification()
+        time_lists = Hlp.AutoVivification()
         # table_data = []        # store the results in a table for reporting
         
         # Load the SQL File & Format
         filename = self._sql_path_ + query_name + '.sql'
-        sql_stmnt = mh.read_sql(filename)
+        sql_stmnt = Hlp.read_sql(filename)
         
         sql_stmnt = QD.format_query(query_name, sql_stmnt, [start_time, end_time, campaign])
         
@@ -440,7 +504,7 @@ class BannerLPReportingLoader(DataLoader):
         
         
         # Normalize dates
-        time_norm = mh.AutoVivification()
+        time_norm = Hlp.AutoVivification()
         for key in time_lists.keys():
             for date_str in time_lists[key]:
                 day = int(date_str[8:10])
@@ -478,7 +542,7 @@ class BannerLPReportingLoader(DataLoader):
         hours_back = 72
         times = self.gen_date_strings(now, hours_back,1,1)
         
-        sql_stmnt = mh.read_sql('./sql/report_latest_campaign.sql')
+        sql_stmnt = Hlp.read_sql('./sql/report_latest_campaign.sql')
         sql_stmnt = QD.format_query(query_name, sql_stmnt, [times[0]])
         
         campaign_index = QD.get_campaign_index(query_name)
@@ -534,7 +598,7 @@ class HypothesisTestLoader(DataLoader):
         self.init_db()
         
         filename = self._sql_path_ + query_name + '.sql'
-        sql_stmnt = mh.read_sql(filename)
+        sql_stmnt = Hlp.read_sql(filename)
         
         metric_index = QD.get_metric_index(query_name, metric_name)
         metrics_1 = []
@@ -648,15 +712,15 @@ class CampaignReportingLoader(DataLoader):
         
         """ Load the SQL File & Format """
         filename = self._sql_path_+ query_name + '.sql'
-        sql_stmnt = mh.read_sql(filename)        
+        sql_stmnt = Hlp.read_sql(filename)        
         sql_stmnt = QD.format_query(query_name, sql_stmnt, [start_time, end_time])
         
         """ Get Indexes into Query """
         key_index = QD.get_key_index(query_name)
         metric_index = QD.get_metric_index(query_name, metric_name)
         
-        data = mh.AutoVivification()
-        raw_data = mh.AutoVivification()
+        data = Hlp.AutoVivification()
+        raw_data = Hlp.AutoVivification()
         
         """ Compose the data for each separate donor pipeline artifact """
         try:
@@ -700,7 +764,7 @@ class CampaignReportingLoader(DataLoader):
         
         """ Load the SQL File & Format """
         filename = self._sql_path_+ query_name + '.sql'
-        sql_stmnt = mh.read_sql(filename)        
+        sql_stmnt = Hlp.read_sql(filename)        
         sql_stmnt = QD.format_query(query_name, sql_stmnt, [start_time, end_time, utm_campaign])
         
         """ Get Indexes into Query """
@@ -945,6 +1009,7 @@ class TestTableLoader(TableLoader):
             print "A utm_campaign must be specified (e.g. record_exists(utm_campaign='smthg'))"
             return -1
     
+    
     def get_test_row(self, utm_campaign):
         
         select_stmnt = 'select * from test where utm_campaign = ' + Hlp.stringify(utm_campaign)
@@ -1016,4 +1081,303 @@ class TestTableLoader(TableLoader):
         return
     
     
+"""
+
+    CLASS :: SquidLogTableLoader
     
+    storage3.pmtpa.wmnet.faulkner.table squid_log_record :
+    
+    +--------------------+------------------+------+-----+---------------------+-----------------------------+
+    | Field              | Type             | Null | Key | Default             | Extra                       |
+    +--------------------+------------------+------+-----+---------------------+-----------------------------+
+    | type               | varchar(20)      | YES  |     |                     |                             | 
+    | log_copy_time      | timestamp        | NO   | PRI | CURRENT_TIMESTAMP   | on update CURRENT_TIMESTAMP | 
+    | start_time         | timestamp        | NO   |     | 0000-00-00 00:00:00 |                             | 
+    | end_time           | timestamp        | NO   |     | 0000-00-00 00:00:00 |                             | 
+    | log_completion_pct | int(3)           | YES  |     | 0                   |                             | 
+    | total_rows         | int(10) unsigned | YES  |     | NULL                |                             | 
+    +--------------------+------------------+------+-----+---------------------+-----------------------------+
+
+            
+"""
+class SquidLogTableLoader(TableLoader):
+    
+    def process_kwargs(self, kwargs_dict):
+        
+        type = 'NULL'
+        log_copy_time = 'NULL'
+        start_time =  'NULL'
+        end_time =  'NULL'
+        log_completion_pct = 'NULL'
+        total_rows = 'NULL'
+
+        
+        for key in kwargs_dict:
+            if key == 'type':           
+                type = Hlp.stringify(kwargs_dict[key])
+            elif key == 'log_copy_time':
+                log_copy_time = Hlp.stringify(kwargs_dict[key])
+            elif key == 'start_time':
+                start_time = Hlp.stringify(kwargs_dict[key])
+            elif key == 'end_time':
+                end_time = Hlp.stringify(kwargs_dict[key])
+            elif key == 'log_completion_pct':
+                log_completion_pct = kwargs_dict[key]
+            elif key == 'total_rows':
+                total_rows = kwargs_dict[key]
+        
+        return [type, log_copy_time, start_time, end_time, log_completion_pct, total_rows]
+    
+    def insert_row(self, **kwargs):
+        
+        insert_stmnt = 'insert into squid_log_record values '
+        
+        type, log_copy_time, start_time, end_time, log_completion_pct, total_rows = self.process_kwargs(kwargs)
+    
+        insert_stmnt = insert_stmnt + '(' + type + ',' + log_copy_time + ',' + start_time + ',' + end_time + ',' + log_completion_pct + ',' + total_rows + ')'
+        
+        self.init_db()
+        
+        try:
+            self._cur_.execute(insert_stmnt)
+        except:
+            self._db_.rollback()
+            self.close_db()
+            print >> sys.stderr, 'Could not execute: ' + insert_stmnt
+            
+            return -1
+            # sys.exit('Could not execute: ' + insert_stmnt)
+        else:
+            self.close_db()
+
+        return 0
+
+    
+    def get_table_row(self, log_copy_time):
+        
+        select_stmnt = 'select * from squid_log_record where log_copy_time = ' + Hlp.stringify(log_copy_time)
+        
+        self.init_db()
+        
+        try:
+            self._cur_.execute(select_stmnt)
+            results = self._cur_.fetchone()
+            
+        except:
+            results = None
+            self._db_.rollback()
+            self.close_db()
+            print >> sys.stderr, 'Could not execute: ' + select_stmnt
+        else:
+            self.close_db()
+        
+        return results
+    
+    
+    def get_all_table_rows(self):
+        
+        select_stmnt = 'select * from squid_log_record'
+        
+        self.init_db()
+        
+        try:
+            self._cur_.execute(select_stmnt)
+            results = self._cur_.fetchall()
+            
+        except:
+            results = None
+            self._db_.rollback()
+            self.close_db()
+            print >> sys.stderr, 'Could not execute: ' + select_stmnt
+            # sys.exit('Could not execute: ' + select_stmnt)
+        else:
+            self.close_db()
+
+        
+        return results
+    
+    
+    def update_table_row(self, **kwargs):
+        
+        type, log_copy_time, start_time, end_time, log_completion_pct, total_rows = self.process_kwargs(kwargs)
+        
+        cols = ' type = ' + type + ', log_copy_time = ' + log_copy_time + ', start_time = ' +  start_time + ', end_time = ' +  end_time + ', log_completion_pct = ' +  log_completion_pct + ', total_rows = ' +  total_rows
+        update_stmnt = 'update squid_log_record set' + cols + ' where log_copy_time = ' + log_copy_time
+        
+        self.init_db()
+        
+        try:
+            self._cur_.execute(update_stmnt)
+        except:
+            self._db_.rollback()
+            self.close_db()
+            print >> sys.stderr, 'Could not execute: ' + update_stmnt
+            return -1
+        else:
+            self.close_db()
+        
+        return 0
+    
+    
+"""
+
+    CLASS :: ImpressionTableLoader
+    
+    storage3.pmtpa.wmnet.faulkner.impression :
+        
+    +------------+------------------+------+-----+-------------------+-----------------------------+
+    | Field      | Type             | Null | Key | Default           | Extra                       |
+    +------------+------------------+------+-----+-------------------+-----------------------------+
+    | utm_source | varchar(128)     | NO   | MUL |                   |                             | 
+    | referrer   | varchar(128)     | NO   |     |                   |                             | 
+    | country    | varchar(20)      | NO   | MUL |                   |                             | 
+    | lang       | varchar(20)      | NO   |     |                   |                             | 
+    | counts     | int(10) unsigned | YES  | MUL | NULL              |                             | 
+    | on_minute  | timestamp        | NO   | MUL | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP | 
+    +------------+------------------+------+-----+-------------------+-----------------------------+
+            
+"""
+class ImpressionTableLoader(TableLoader):
+    
+    def process_kwargs(self, kwargs_dict):
+        
+        utm_source = 'NULL'
+        referrer = 'NULL'
+        country =  'NULL'
+        lang =  'NULL'
+        counts = 'NULL'
+        on_minute = 'NULL'
+
+        for key in kwargs_dict:
+            if key == 'utm_source':           
+                utm_source = Hlp.stringify(kwargs_dict[key])
+            elif key == 'referrer':
+                referrer = Hlp.stringify(kwargs_dict[key])
+            elif key == 'country':
+                country = Hlp.stringify(kwargs_dict[key])
+            elif key == 'lang':
+                lang = Hlp.stringify(kwargs_dict[key])
+            elif key == 'counts':
+                counts = Hlp.stringify(kwargs_dict[key])
+            elif key == 'on_minute':
+                on_minute = Hlp.stringify(kwargs_dict[key])
+        
+        return [utm_source, referrer, country, lang, counts, on_minute]
+    
+    
+    def insert_row(self, **kwargs):
+        
+        insert_stmnt = 'insert into impression values '
+        
+        utm_source, referrer, country, lang, counts, on_minute = self.process_kwargs(kwargs)
+    
+        insert_stmnt = insert_stmnt + '(' + utm_source + ',' + referrer + ',' + country + ',' + lang + ',' + counts + ',' + on_minute + ')'
+        
+        self.init_db()
+        
+        try:
+            self._cur_.execute(insert_stmnt)
+        except:
+            self._db_.rollback()
+            self.close_db()
+            print >> sys.stderr, 'Could not execute: ' + insert_stmnt
+            
+            return -1
+            # sys.exit('Could not execute: ' + insert_stmnt)
+        else:
+            self.close_db()
+
+        return 0
+    
+"""
+
+    CLASS :: LandingPageTableLoader
+    
+    storage3.pmtpa.wmnet.faulkner.landing_page :
+    
+    +--------------+---------------+------+-----+-------------------+-----------------------------+
+    | Field        | Type          | Null | Key | Default           | Extra                       |
+    +--------------+---------------+------+-----+-------------------+-----------------------------+
+    | utm_source   | varchar(128)  | YES  | MUL | NULL              |                             | 
+    | utm_campaign | varchar(128)  | YES  | MUL | NULL              |                             | 
+    | utm_medium   | varchar(128)  | YES  |     | NULL              |                             | 
+    | landing_page | varchar(128)  | YES  | MUL | NULL              |                             | 
+    | page_url     | varchar(1000) | YES  |     | NULL              |                             | 
+    | referrer_url | varchar(1000) | YES  |     | NULL              |                             | 
+    | browser      | varchar(50)   | YES  |     | NULL              |                             | 
+    | lang         | varchar(20)   | YES  |     | NULL              |                             | 
+    | country      | varchar(20)   | YES  | MUL | NULL              |                             | 
+    | project      | varchar(128)  | YES  |     | NULL              |                             | 
+    | ip           | varchar(20)   | YES  |     | NULL              |                             | 
+    | request_time | timestamp     | NO   | MUL | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP | 
+    | id           | int(11)       | NO   | PRI | NULL              | auto_increment              | 
+    +--------------+---------------+------+-----+-------------------+-----------------------------+
+
+            
+"""
+class LandingPageTableLoader(TableLoader):
+    
+    def process_kwargs(self, kwargs_dict):
+        
+        utm_source = 'NULL'
+        utm_campaign = 'NULL'
+        utm_medium = 'NULL'
+        landing_page = 'NULL'
+        page_url =  'NULL'
+        referrer_url =  'NULL'
+        browser = 'NULL'
+        lang = 'NULL'
+        country = 'NULL'
+        project = 'NULL'
+        ip = 'NULL'
+
+        for key in kwargs_dict:
+            if key == 'utm_source':           
+                utm_source = Hlp.stringify(kwargs_dict[key])
+            elif key == 'utm_campaign':
+                utm_campaign = Hlp.stringify(kwargs_dict[key])
+            elif key == 'utm_medium':
+                utm_medium = Hlp.stringify(kwargs_dict[key])
+            elif key == 'landing_page':
+                landing_page = Hlp.stringify(kwargs_dict[key])
+            elif key == 'page_url':
+                page_url = Hlp.stringify(kwargs_dict[key])
+            elif key == 'referrer_url':
+                referrer_url = Hlp.stringify(kwargs_dict[key])
+            elif key == 'browser':
+                browser = Hlp.stringify(kwargs_dict[key])
+            elif key == 'lang':
+                lang = Hlp.stringify(kwargs_dict[key])
+            elif key == 'country':
+                country = Hlp.stringify(kwargs_dict[key])
+            elif key == 'project':
+                project = Hlp.stringify(kwargs_dict[key])
+            elif key == 'ip':
+                ip = Hlp.stringify(kwargs_dict[key])
+        
+        return [utm_source, utm_campaign, utm_medium, landing_page, page_url, referrer_url, browser, lang, country, project, ip]
+    
+    
+    def insert_row(self, **kwargs):
+        
+        insert_stmnt = 'insert into landing_page values '
+        
+        utm_source, utm_campaign, utm_medium, landing_page, page_url, referrer_url, browser, lang, country, project, ip = self.process_kwargs(kwargs)
+    
+        insert_stmnt = insert_stmnt + '(' + utm_source + ',' + utm_campaign + ',' + utm_medium + ',' + landing_page + ',' + page_url + ',' + referrer_url + ',' + lang + ',' + country + ',' + project + ',' + ip + ')'
+        
+        self.init_db()
+        
+        try:
+            self._cur_.execute(insert_stmnt)
+        except:
+            self._db_.rollback()
+            self.close_db()
+            print >> sys.stderr, 'Could not execute: ' + insert_stmnt
+            
+            return -1
+            # sys.exit('Could not execute: ' + insert_stmnt)
+        else:
+            self.close_db()
+
+        return 0
