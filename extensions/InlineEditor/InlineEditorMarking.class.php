@@ -203,7 +203,7 @@ class InlineEditorMarking extends InlineEditorPiece {
 	 * @return bool 
 	 */
 	public function equals( InlineEditorPiece $piece, array $ignoreClasses = array() ) {
-		if( is_a( $piece, 'InlineEditorMarking' ) ) {
+		if( $piece instanceof InlineEditorMarking ) {
 			$classesA = array_diff( $this->classes, $ignoreClasses );
 			$classesB = array_diff( $piece->classes, $ignoreClasses );
 			$diffA    = array_diff( $classesA, $classesB);
