@@ -100,7 +100,4 @@ $wgResourceModules += array(
 	'jquery.elastic' => $inlineEditorTpl + array(
 		'scripts'      => 'jquery.elastic.js',
 	),
-	'jquery.json' => $inlineEditorTpl + array(
-		'scripts'      => 'jquery.json.js',
-	),
 );
