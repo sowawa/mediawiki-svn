@@ -19,18 +19,21 @@ class OggHandler extends MediaHandler {
 	}
 
 	function validateParam( $name, $value ) {
-		if ( isset( $params['thumbtime'] ) ) {
+		if ( in_array( $name, array( 'width', 'height' ) ) ) {
+                        if ( $value <= 0 ) {
+                                return false;
+                        }
+			return true;
+                }
+		if ( $name == 'thumbtime' ) {
 			$length = $this->getLength( $image );
-			$time = $this->parseTimeString( $params['thumbtime'] );
-			if ( $time === false ) {
+			$time = $this->parseTimeString( $value );
+			if ( $time === false || $time <= 0 ) {
 				return false;
-			} elseif ( $time > $length - 1 ) {
-				$params['thumbtime'] = $length - 1;
-			} elseif ( $time <= 0 ) {
-				$params['thumbtime'] = 0;
 			}
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 	function parseTimeString( $seekString, $length = false ) {
@@ -79,6 +82,32 @@ class OggHandler extends MediaHandler {
 	}
 
 	function normaliseParams( $image, &$params ) {
+		$srcWidth = $image->getWidth();
+		$srcHeight = $image->getHeight();
+		$params['playertype'] = "video";
+
+		if( $srcWidth == 0 || $srcHeight == 0 ) {
+			// We presume this is an audio clip
+			$params['playertype'] = "audio";
+			$params['height'] = empty( $params['height'] ) ? 20 : $params['height'];
+			$params['width'] = empty( $params['width'] ) ? 200 : $params['width'];
+		} else {
+			// Check for height param and adjust width accordingly
+			if ( isset( $params['height'] ) && $params['height'] != -1 ) {
+				if( $params['width'] * $srcHeight > $params['height'] * $srcWidth ) {
+					$params['width'] = wfFitBoxWidth( $srcWidth, $srcHeight, $params['height'] );
+				}
+			}
+
+			// Make it no wider than the original
+			//if( $params['width'] > $srcWidth ) {
+			//	$params['width'] = $srcWidth;
+			//}
+
+			// Calculate the corresponding height based on the adjusted width
+			$params['height'] = File::scaleHeight( $srcWidth, $srcHeight, $params['width'] );
+		}
+
 		if ( isset( $params['thumbtime'] ) ) {
 			$length = $this->getLength( $image );
 			$time = $this->parseTimeString( $params['thumbtime'] );
@@ -180,11 +209,13 @@ class OggHandler extends MediaHandler {
 	}
 
 	function doTransform( $file, $dstPath, $dstUrl, $params, $flags = 0 ) {
+                if ( !$this->normaliseParams( $file, $params ) ) {
+                        return new TransformParameterError( $params );
+                }
 
 		$width = $params['width'];
-		$srcWidth = $file->getWidth();
-		$srcHeight = $file->getHeight();
-		$height = $srcWidth == 0 ? $srcHeight : $width * $srcHeight / $srcWidth;
+		$height = $params['height'];
+
 		$length = $this->getLength( $file );
 		$noPlayer = isset( $params['noplayer'] );
 		$noIcon = isset( $params['noicon'] );
@@ -196,9 +227,8 @@ class OggHandler extends MediaHandler {
 			$this->setHeaders( $wgOut );
 		}
 
-		if ( $srcHeight == 0 || $srcWidth == 0 ) {
+		if ( $params['playertype'] == "audio" ) {
 			// Make audio player
-			$height = empty( $params['height'] ) ? 20 : $params['height'];
 			if ( $noPlayer ) {
 				if ( $height > 100 ) {
 					global $wgStylePath;
@@ -209,11 +239,6 @@ class OggHandler extends MediaHandler {
 					$iconUrl = "$scriptPath/info.png";
 					return new ThumbnailImage( $file, $iconUrl, 22, 22 );
 				}
-			}
-			if ( empty( $params['width'] ) ) {
-				$width = 200;
-			} else {
-				$width = $params['width'];
 			}
 			return new OggAudioDisplay( $file, $targetFileUrl, $width, $height, $length, $dstPath, $noIcon );
 		}
