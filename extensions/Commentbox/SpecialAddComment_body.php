@@ -60,8 +60,8 @@ class SpecialAddComment extends UnlistedSpecialPage {
 			$wgOut->setRobotPolicy( 'noindex,nofollow' );
 			$wgOut->setArticleRelated( false );
 
-			$wgOut->addWikiText( wfMsg( 'spamprotectiontext' ) );
-			$wgOut->addWikiText( wfMsg( 'spamprotectionmatch', "<nowiki>{$matches[0]}</nowiki>" ) );
+			$wgOut->addWikiMsg( 'spamprotectiontext' );
+			$wgOut->addWikiMsg( 'spamprotectionmatch', "<nowiki>{$matches[0]}</nowiki>" );
 			$wgOut->returnToMain( false, $title );
 			return;
 		}
@@ -111,7 +111,7 @@ class SpecialAddComment extends UnlistedSpecialPage {
 	function fail( $str, $title = null ) {
 		global $wgOut;
 		$wgOut->setPageTitle( wfMsg( 'commentbox-errorpage-title' ) );
-		$wgOut->addWikiText( "<div class='errorbox'>" . wfMsg( $str ) . "</div><br clear='both' />" );
+		$wgOut->wrapWikiMsg( "<div class='errorbox'>$1</div><br clear='both' />", $str );
 		if ( $title != null )
 			$wgOut->returnToMain( false, $title );
 		return;
