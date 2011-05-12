@@ -71,9 +71,9 @@ class CategorizeHooks {
 			else
 			{
 				$l__categorize_index += 1;
-				$l__key_value_to_print = utf8_encode(str_replace("_"," ",$l__label_key));
+				$l__key_value_to_print = utf8_encode(str_replace("_","&nbsp;",$l__label_key));
 				$l__xselected = (in_array($l__key_value_to_print,$arrExistingCats)) ? 'xselected' : '';
-				$m_pageObj->$m_place .= "document.write(\"<th style='text-align:left;'><span class='xlabel xcategorize$l__categorize_index $l__xselected'>$l__key_value_to_print</span> :</th><td> \");\n";
+				$m_pageObj->$m_place .= "document.write(\"<th style='text-align:left;'><span class='xlabel xmaster xcategorize$l__categorize_index $l__xselected'>$l__key_value_to_print</span></th><td> \");\n";
 				foreach($l__label_array as $l__label_value)
 				{
 					$l__label_value_to_print = utf8_encode(str_replace("_"," ",$l__label_value));
