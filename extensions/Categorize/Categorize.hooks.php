@@ -40,7 +40,7 @@ class CategorizeHooks {
 			
 		#ADD EXISTING CATEGORIES TO INPUT BOX 
 		$arrExistingCats = array();
-		$arrExistingCats = $m_pageCats;
+		$arrExistingCats = array_unique($m_pageCats);
 		#ADD JAVASCRIPT - use document.write so it is not presented if javascript is disabled.
 		$m_pageObj->$m_place .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"$wgScriptPath/extensions/Categorize/Categorize.css\" />
 	\n"; # provisoire
@@ -109,8 +109,7 @@ class CategorizeHooks {
 		#CHECK IF USER HAS SELECTED ANY CATEGORIES
 		if(strlen($strSelectedCats)>1){
 			$arrSelectedCats = array();
-			$arrSelectedCats = explode(";",$_POST['txtSelectedCategories2']);
-			# !!!!!!!!!!!!!!!!  TODO dédoublonner les catégories ICI !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			$arrSelectedCats = array_unique(explode(";",$_POST['txtSelectedCategories2']));
 			foreach( $arrSelectedCats as $m_cat ) {
 				if(strlen($m_cat)>0){
 					$m_text .= "\n[[$m_catString:" . mysql_escape_string(trim($m_cat)) . "]]";
