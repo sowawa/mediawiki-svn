@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Special page aliases for the Distribution extension.
  *
@@ -9,12 +8,12 @@
  * @author Chad Horohoe
  */
 
-$aliases = array();
+$specialPageAliases = array();
 
 /** English
  * @author Chad Horohoe
  */
-$aliases['en'] = array(
+$specialPageAliases['en'] = array(
 	'ReleaseManager' => array( 'ReleaseManager' ),
 	'DownloadMediaWiki' => array( 'DownloadMediaWiki' ),
 );

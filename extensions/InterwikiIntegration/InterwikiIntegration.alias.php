@@ -6,16 +6,21 @@
  * @ingroup Extensions
  */
 
-$aliases = array();
+$specialPageAliases = array();
 
 /** English
  * @author Tisane
  */
-$aliases['en'] = array(
+$specialPageAliases['en'] = array(
  	'PopulateInterwikiIntegrationTable' => array( 'PopulateInterwikiIntegrationTable' ),
 );
 
 /** Arabic (العربية) */
-$aliases['ar'] = array(
+$specialPageAliases['ar'] = array(
 	'PopulateInterwikiIntegrationTable'   => array( 'ملء_جدول_الإنترويكي' ),
 );
+
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

@@ -1,8 +1,5 @@
 <?php
-$aliases = array();
  
-/** English */
-
 $specialPageAliases = array();
 
 /** English (English) */

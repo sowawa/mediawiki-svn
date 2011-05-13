@@ -6,14 +6,19 @@
  * @ingroup Extensions
  */
 
-$aliases = array();
+$specialPageAliases = array();
 
 /** English */
-$aliases['en'] = array(
+$specialPageAliases['en'] = array(
 	'Poll' => array( 'Poll' ),
 );
 
 /** German(Deutsch) */
-$aliases['de'] = array(
-	'Poll' => array( 'Umfrage' , 'Poll' ),
+$specialPageAliases['de'] = array(
+	'Poll' => array( 'Umfrage' ),
 );
+
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

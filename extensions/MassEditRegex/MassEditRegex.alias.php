@@ -9,7 +9,7 @@
 $specialPageAliases = array();
 
 /** English (English) */
-$aliases['en'] = array(
+$specialPageAliases['en'] = array(
 	'MassEditRegex' => array('MassEditRegex'),
 );
 

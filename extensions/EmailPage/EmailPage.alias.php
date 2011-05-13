@@ -6,75 +6,79 @@
  * @ingroup Extensions
  */
 
-$aliases = array();
+$specialPageAliases = array();
 
 /** English
  * @author Jon Harald Søby
  */
-$aliases['en'] = array(
+$specialPageAliases['en'] = array(
 	'E-mailPage' => array( 'E-mailPage', 'EmailPage' ),
 );
 
 /** Arabic (العربية)
  * @author Meno25
  */
-$aliases['ar'] = array(
+$specialPageAliases['ar'] = array(
 	'E-mailPage' => array( 'مراسلة_الصفحة' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */
-$aliases['arz'] = array(
+$specialPageAliases['arz'] = array(
 	'E-mailPage' => array( 'مراسلة_الصفحة' ),
 );
 
 /** French (Français) */
-$aliases['fr'] = array(
+$specialPageAliases['fr'] = array(
 	'E-mailPage' => array( 'EnvoyerPage', 'Envoyer Page' ),
 );
 
 /** Galician (Galego) */
-$aliases['gl'] = array(
+$specialPageAliases['gl'] = array(
 	'E-mailPage' => array( 'Enviar páxinas por correo electrónico' ),
 );
 
 /** Hebrew (עברית)
  * @author Rotem Liss
  */
-$aliases['he'] = array(
+$specialPageAliases['he'] = array(
 	'E-mailPage' => array( 'שליחת_דף_בדואר' ),
 );
 
 /** Haitian (Kreyòl ayisyen) */
-$aliases['ht'] = array(
+$specialPageAliases['ht'] = array(
 	'E-mailPage' => array( 'EmèlAtik' ),
 );
 
 /** Hungarian (Magyar) */
-$aliases['hu'] = array(
+$specialPageAliases['hu'] = array(
 	'E-mailPage' => array( 'Szócikk elküldése e-mailben' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
-$aliases['lb'] = array(
+$specialPageAliases['lb'] = array(
 	'E-mailPage' => array( 'E-Mail-Säiten' ),
 );
 
 /** Dutch (Nederlands) */
-$aliases['nl'] = array(
+$specialPageAliases['nl'] = array(
 	'E-mailPage' => array( 'PaginaE-mailen', 'PaginaEmailen' ),
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$aliases['no'] = array(
+$specialPageAliases['no'] = array(
 	'E-mailPage' => array( 'Send side som e-post' ),
 );
 
 /** Pashto (پښتو) */
-$aliases['ps'] = array(
+$specialPageAliases['ps'] = array(
 	'E-mailPage' => array( 'د برېښليک مخونه' ),
 );
 
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

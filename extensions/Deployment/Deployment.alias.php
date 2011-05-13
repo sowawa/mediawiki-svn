@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Special page aliases for the Deployment extension.
  *
@@ -9,12 +8,12 @@
  * @author Jeroen De Dauw
  */
 
-$aliases = array();
+$specialPageAliases = array();
 
 /** English
  * @author Jeroen De Dauw
  */
-$aliases['en'] = array(
+$specialPageAliases['en'] = array(
 	'Dashboard' => array( 'Dashboard' ),
 	'Extensions' => array( 'Extensions' ),
 	'Install' => array( 'Install' ),
