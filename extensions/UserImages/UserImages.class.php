@@ -80,7 +80,6 @@ class UserImagesGallery {
 					$gallery = new ImageGallery();
 					#$gallery->setParsing( true ); # Fixme (?) undefined method ImageGallery::setParsing
 					$gallery->setCaption( $this->getCaption() );
-					$gallery->useSkin( $this->parser->getOptions()->getSkin() );
 					foreach( $images as $image ) {
 						$title = Title::makeTitleSafe( NS_IMAGE, $image->img_name );
 						$gallery->add( $title );
