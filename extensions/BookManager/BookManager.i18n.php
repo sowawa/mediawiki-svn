@@ -16,7 +16,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'bookmanager-desc'			=> 'Tools for books',
-	'bm-booktools-section'			=> 'Tools of book',
+	'bm-booktools-section'			=> 'Tools for book',
 	'bm-randomchapter-link'			=> 'Random chapter', 
 	'bm-printversion'			=> 'Print version',
 	'bm-printversion-desc'			=> 'Generates a [[Special:PrintVersion|print version]] of a book',

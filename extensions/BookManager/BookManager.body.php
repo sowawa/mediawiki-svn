@@ -351,7 +351,7 @@ class BookManagerNavBar extends BookManagerCore {
 		global $wgTitle, $wgParser;
 		$currenttitletext = $wgTitle->getText();
 		$randchapter = self::pageText( $wgParser, $currenttitletext, 'rand' );
-		# Add book tools section and all yours itens 
+		# Add book tools section and all your items 
 		if ( $randchapter ){
 			?><div class="portal" id='p-tb'><?php
 					?><h5><?php $sk->msg( 'bm-booktools-section' ); ?></h5><?php
