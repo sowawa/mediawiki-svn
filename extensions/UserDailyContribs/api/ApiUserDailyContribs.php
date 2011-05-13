@@ -16,13 +16,13 @@ class ApiUserDailyContribs extends ApiBase {
 		$now = time();
 		$result->addValue( $this->getModuleName() ,
 			'id', $user->getId() );
-		// returns YYYYMMDDHHMMSS format
+		// returns date of registration in YYYYMMDDHHMMSS format
 		$result->addValue( $this->getModuleName() ,
 			'registration', ($user->getRegistration() == NULL)?'0':$user->getRegistration() );
+		// returns number of edits since daysago param
 		$result->addValue( $this->getModuleName() ,
 			'timeFrameEdits', getUserEditCountSince( $now - ($days * 60 *60 *24), $user ) );
-		$result->addValue( $this->getModuleName() ,
-			'pastYearEdits', getUserEditCountSince( $now - (365 * 60 *60 *24), $user ) );
+		// returns total number of edits
 		$result->addValue( $this->getModuleName() ,
 			'totalEdits', ($user->getEditCount() == NULL)?0:$user->getEditCount() );
 	}
