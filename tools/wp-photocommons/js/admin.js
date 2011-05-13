@@ -13,9 +13,7 @@
 			'</a>'
 		));
 
-		var searchDialog = {};
-		$('<div id="photocommons-dialog"></div>').appendTo('body').load(PATH + '/search.php?standalone=1', function(){
-
+		$('<div id="photocommons-dialog"></div>').appendTo('body').load(PATH + '/search.php?standalone=1', function() {
 			PhotoCommons.init();
 
 			dialog = $('#photocommons-dialog').dialog({
@@ -24,13 +22,12 @@
 				height : 500,
 				autoOpen: false
 			});
-
 		});
 
 		$('#photocommons-add').live('click', function(e) {
 			e.preventDefault();
 
-			searchDialog.dialog('open');
+			$("#photocommons-dialog").dialog('open');
 
 			$('#wp-photocommons-images .image').live('click', function() {
 				var file = $(this).attr('data-filename'),
@@ -48,7 +45,7 @@
 					tinyMCE.execCommand('mceInsertContent', false, shortcode);
 				}
 
-				searchDialog.dialog('close');
+				$("#photocommons-dialog").dialog('close');
 			});
 		});
 	}
