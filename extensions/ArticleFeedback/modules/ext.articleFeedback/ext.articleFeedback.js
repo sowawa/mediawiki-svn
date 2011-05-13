@@ -29,6 +29,8 @@ function isPitchVisible( pitch ) {
 	return $.cookie( prefix( 'pitches-' + pitch ) ) != 'hide';
 }
 
+dknvlsdnvlsknvlsekvnseoivleskmvleskmvlesjk + 1 = sdsd();
+
 /**
  * Ensures a pitch will be muted for a given duration of time
  * 
