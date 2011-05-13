@@ -14,6 +14,8 @@ var showOptions = 'show' === mw.user.bucket(
 	'ext.articleFeedback-options', mw.config.get( 'wgArticleFeedbackOptions' )
 );
 
+var loadUserRatings = !mw.user.anonymous() || $.cookie( prefix( 'rated' ) ) === 'true';
+
 /**
  * Prefixes a key for cookies or events, with extension and version information
  * 
@@ -191,6 +193,8 @@ $.articleFeedback = {
 			// For anon users, keep a cookie around so we know they've rated before
 			if ( mw.user.anonymous() ) {
 				$.cookie( prefix( 'rated' ), 'true', { 'expires': 365, 'path': '/' } );
+				// Ensure that user ratings are loaded from now on
+				loadUserRatings = true;
 			}
 			$.articleFeedback.fn.enableSubmission.call( context, false );
 			context.$ui.find( '.articleFeedback-lock' ).show();
@@ -325,22 +329,21 @@ $.articleFeedback = {
 		},
 		'load': function() {
 			var context = this;
-			var userrating = !mw.user.anonymous() || $.cookie( prefix( 'rated' ) ) === 'true';
 			$.ajax( {
 				'url': mw.config.get( 'wgScriptPath' ) + '/api.php',
 				'type': 'GET',
 				'dataType': 'json',
 				'context': context,
-				'cache': !userrating,
+				'cache': !loadUserRatings,
 				'data': {
 					'action': 'query',
 					'format': 'json',
 					'list': 'articlefeedback',
 					'afpageid': mw.config.get( 'wgArticleId' ),
-					'afanontoken': userrating ? mw.user.id() : '',
-					'afuserrating': Number( userrating ),
+					'afanontoken': loadUserRatings ? mw.user.id() : '',
+					'afuserrating': Number( loadUserRatings ),
 					'maxage': 0,
-					'smaxage': userrating ? 0 : mw.config.get( 'wgArticleFeedbackSMaxage' )
+					'smaxage': loadUserRatings ? 0 : mw.config.get( 'wgArticleFeedbackSMaxage' )
 				},
 				'success': function( data ) {
 					var context = this;
@@ -782,10 +785,16 @@ $.articleFeedback = {
 			if ( !showOptions ) {
 				context.$ui.find( '.articleFeedback-options' ).hide();
 			}
-			// Show initial form and report values when the tool is visible
-			context.$ui.appear( function() {
-				$.articleFeedback.fn.load.call( context );
-			} );
+			if ( loadUserRatings ) {
+				// Show initial form and report values when the tool is visible
+				context.$ui.appear( function() {
+					$.articleFeedback.fn.load.call( context );
+				} );
+			} else {
+				context.$ui.find( '.articleFeedback-switch-report' ).one( 'click', function() {
+					$.articleFeedback.fn.load.call( context );
+				} );
+			}
 		}
 	}
 };
