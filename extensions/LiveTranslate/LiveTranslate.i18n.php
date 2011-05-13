@@ -291,6 +291,7 @@ $messages['eu'] = array(
  */
 $messages['fr'] = array(
 	'livetranslate-desc' => 'Permet la traduction immédiate du contenu de la page en utilisant le service de traduction de Google',
+	'right-managetms' => '[[Special:SpecialLiveTranslate|Modifier]] la liste des mémoires de traduction',
 	'livetranslate-translate-to' => 'Traduire cette page en',
 	'livetranslate-button-translate' => 'Traduire',
 	'livetranslate-button-translating' => 'Traduction en cours...',

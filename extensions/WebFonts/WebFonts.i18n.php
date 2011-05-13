@@ -92,11 +92,13 @@ $messages['es'] = array(
 
 /** French (Français)
  * @author IAlex
+ * @author Sherbrooke
  */
 $messages['fr'] = array(
 	'webfonts' => 'Polices web',
 	'webfonts-desc' => 'Incorpore les polices dans les pages',
 	'webfonts-load' => 'Sélectionnez une police',
+	'webfonts-reset' => 'Réinitialiser',
 	'webfonts-disable-preference' => "Désactiver l'incorporation des polices (Polices web)",
 );
 
@@ -128,6 +130,7 @@ $messages['ia'] = array(
 	'webfonts' => 'WebFonts',
 	'webfonts-desc' => 'Incorporar typos de litteras in paginas',
 	'webfonts-load' => 'Selige un typo de litteras',
+	'webfonts-reset' => 'Reinitialisar',
 	'webfonts-disable-preference' => 'Disactivar le incorporation de typos de litteras (WebFonts)',
 );
 
@@ -138,6 +141,7 @@ $messages['id'] = array(
 	'webfonts' => 'WebFonts',
 	'webfonts-desc' => 'Menyertakan fon (huruf) dalam halaman',
 	'webfonts-load' => 'Pilih fon',
+	'webfonts-reset' => 'Setel ulang',
 	'webfonts-disable-preference' => 'Nonaktifkan penyertaan fon (WebFonts)',
 );
 
@@ -262,6 +266,7 @@ $messages['sl'] = array(
 	'webfonts' => 'SpletnePisave',
 	'webfonts-desc' => 'Vdelaj pisave na strani',
 	'webfonts-load' => 'Izberite pisavo',
+	'webfonts-reset' => 'Ponastavi',
 	'webfonts-disable-preference' => 'Onemogoči vdelavo pisav (SpletnePisave)',
 );
 

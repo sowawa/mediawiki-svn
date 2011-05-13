@@ -570,6 +570,13 @@ $messages['mn'] = array(
 	'mwe-cancel' => 'Цуцлах',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'mwe-ok' => 'OK',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

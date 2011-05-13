@@ -1293,7 +1293,7 @@ $messages['fi'] = array(
  * @author Sherbrooke
  */
 $messages['fr'] = array(
-	'articlefeedback' => 'Évaluation d’article',
+	'articlefeedback' => "Tableau de bord de l'évaluation d’article",
 	'articlefeedback-desc' => 'Évaluation d’article (version pilote)',
 	'articlefeedback-survey-question-origin' => 'À quelle page étiez-vous lorsque vous avez commencé cette évaluation ?',
 	'articlefeedback-survey-question-whyrated' => 'Veuillez nous indiquer pourquoi vous avez évalué cette page aujourd’hui (cochez tout ce qui s’applique) :',
@@ -1315,11 +1315,11 @@ $messages['fr'] = array(
 	'articlefeedback-form-panel-instructions' => 'Veuillez prendre un moment pour évaluer cette page.',
 	'articlefeedback-form-panel-clear' => 'Supprimer cette évaluation',
 	'articlefeedback-form-panel-expertise' => 'Je suis très bien informé sur ce sujet (facultatif)',
-	'articlefeedback-form-panel-expertise-studies' => 'Je détient un diplôme collégial ou universitaire pertinent',
+	'articlefeedback-form-panel-expertise-studies' => "Je détiens un diplôme d'études supérieures (université ou grande école)",
 	'articlefeedback-form-panel-expertise-profession' => 'Cela fait partie de ma profession',
 	'articlefeedback-form-panel-expertise-hobby' => "C'est une passion profonde et personnelle",
 	'articlefeedback-form-panel-expertise-other' => "La source de ma connaissance n'est pas répertoriée ici",
-	'articlefeedback-form-panel-helpimprove' => "J'aimerais aider à améliorer Wikipedia, envoyez-moi un courriel (facultatif)",
+	'articlefeedback-form-panel-helpimprove' => "J'aimerais aider à améliorer Wikipédia, envoyez-moi un courriel (facultatif)",
 	'articlefeedback-form-panel-helpimprove-note' => 'Nous vous enverrons un courriel de confirmation. Nous ne partagerons votre adresse avec personne. $1',
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Politique de confidentialité',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Confidentialité',
@@ -1356,13 +1356,17 @@ $messages['fr'] = array(
 	'articlefeedback-survey-message-error' => 'Une erreur est survenue.
 Veuillez ré-essayer plus tard.',
 	'articleFeedback-table-caption-dailyhighsandlows' => "Les hauts et bas d'aujourd'hui",
+	'articleFeedback-table-caption-dailyhighs' => 'Pages avec les plus hautes cotes : $1',
+	'articleFeedback-table-caption-dailylows' => 'Pages avec cotes les plus basses : $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Les plus modifiés cette semaine',
-	'articleFeedback-table-caption-recentlows' => 'Dernières bas',
+	'articleFeedback-table-caption-recentlows' => 'Dernières cotes basses',
 	'articleFeedback-table-heading-page' => 'Page',
 	'articleFeedback-table-heading-average' => 'Moyenne',
+	'articleFeedback-copy-above-highlow-tables' => "Il s'agit d'une fonctionnalité expérimentale. Veuillez fournir des commentaires sur la [$1 page de discussion].",
+	'articleFeedback-copy-below-highlow-tables' => 'Ces tableaux contiennent des pages qui ont reçu au moins 10 votes au cours des 24 dernières heures. Les moyennes sont calculées en prenant la moyenne de toutes les notes présentées au cours des 24 dernières heures.',
 	'articlefeedback-emailcapture-response-body' => "Bonjour !
 
-Merci de votre à aider à améliorer {{SITENAME}}.
+Merci pour votre aider à améliorer {{SITENAME}}.
 
 Veuillez prendre un moment pour confirmer votre courriel en cliquant sur le lien ci-dessous :
 
@@ -1372,13 +1376,13 @@ Vous pouvez aussi visiter :
 
 $2
 
-Et entrer le code ce confirmation suivant :
+et entrer le code ce confirmation suivant :
 
 $3
 
 Nous serons en contact prochainement pour connaître la façon dont vous pouvez aider à améliorer {{SITENAME}}.
 
-Si vous n'avez pas initié cette demande, veuillez ignorer ce courriel et nous ne vous enverrons rien d’autre chose.
+Si vous n'avez pas initié cette demande, veuillez ignorer ce courriel et nous ne vous enverrons rien d’autre.
 
 Meilleurs vœux, et merci,
 
@@ -2029,6 +2033,8 @@ Silakan coba lagi.',
 	'articleFeedback-table-caption-recentlows' => 'Penurunan terbaru',
 	'articleFeedback-table-heading-page' => 'Halaman',
 	'articleFeedback-table-heading-average' => 'Rata-rata',
+	'articleFeedback-copy-above-highlow-tables' => 'Ini adalah fitur percobaan. Harap berikan masukan pada [$1 halaman pembicaraan].',
+	'articleFeedback-copy-below-highlow-tables' => 'Tabel berikut berisi halaman yang telah menerima sedikitnya 10 penilaian dalam 24 jam terakhir. Nilai rata-rata dihitung dengan mengambil rerata dari semua nilai yang dikirim dalam 24 jam terakhir.',
 	'articlefeedback-emailcapture-response-body' => 'Halo!
 
 Terima kasih atas minat Anda untuk membantu meningkatkan {{SITENAME}}.
@@ -3354,7 +3360,7 @@ Tente novamente mais tarde, por favor.',
 	'articleFeedback-table-caption-recentlows' => 'Os piores mais recentes',
 	'articleFeedback-table-heading-page' => 'Página',
 	'articleFeedback-table-heading-average' => 'Média',
-	'articleFeedback-copy-above-highlow-tables' => 'Esta funcionalidade é experimental. Deixe os seus comentários na página de discussão, por favor.',
+	'articleFeedback-copy-above-highlow-tables' => 'Esta funcionalidade é experimental. Deixe os seus comentários na [$1 página de discussão], por favor.',
 	'articleFeedback-copy-below-highlow-tables' => 'Estas tabelas contêm artigos que receberam pelo menos 10 avaliações nas últimas 24 horas. As médias são calculadas pela média aritmética de todas as avaliações enviadas nas últimas 24 horas.',
 	'articlefeedback-emailcapture-response-body' => 'Olá,
 

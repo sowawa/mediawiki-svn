@@ -71,6 +71,18 @@ $messages['ar'] = array(
 	'ts-kml-on-ol-wikipedia' => 'ويكيبيديا',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'ts-kml-on-ol-options' => 'Opciones',
+	'ts-kml-on-ol-languages' => 'Llingües',
+	'ts-kml-on-ol-thumbnails' => 'Miniatures',
+	'ts-kml-on-ol-help' => 'Ayuda',
+	'ts-kml-on-ol-all' => 'Toes',
+	'ts-kml-on-ol-map-by' => 'Mapa de',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Jim-by
  * @author Zedlik

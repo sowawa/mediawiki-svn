@@ -22,6 +22,13 @@ $messages['qqq'] = array(
 	'categorymembersonsidebar-desc' => '{{desc}}',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'categorymembersonsidebar-desc' => 'Amiesta miembros de la categoría na barra llateral',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */

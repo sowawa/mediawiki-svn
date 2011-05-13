@@ -951,6 +951,14 @@ $messages['ig'] = array(
 	'mwe-clipedit-layout' => 'Mgbásà',
 );
 
+/** Italian (Italiano)
+ * @author Rippitippi
+ */
+$messages['it'] = array(
+	'mwe-clipedit-crop' => 'Ritaglia immagine',
+	'mwe-clipedit-insert_image_page' => 'Inserire nella pagina',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author 青子守歌

@@ -41,6 +41,13 @@ $messages['arz'] = array(
 	'tooltip-desc' => 'يضيف وسم <code>&lt;tooltip&gt;</code> و <code>{{#tooltip:}}</code>',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'tooltip-desc' => 'Amiesta la etiqueta <code>&lt;tooltip&gt;</code> y <code>{{#tooltip:}}</code>',
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Wertuose
  */

@@ -89,9 +89,11 @@ Die aktuelle Bewertung eines Benutzers wird angezeigt, sofern er bereits eine vo
 
 /** French (Français)
  * @author IAlex
+ * @author Sherbrooke
  */
 $messages['fr'] = array(
 	'ratings-desc' => 'Permet aux utilisateurs de classer différentes « propriétés » des pages',
+	'right-rate' => "Classer une propriété d'une page",
 	'ratings-starsratings-desc' => "Affiche un simple contrôle de classement en étoile permettant à l'utilisateur de classer une certaine propriété d'une page.
 Le vote actuel de l'utilisateur s'affichera initialement lorsqu'il a déjà voté.",
 	'ratings-par-page' => "La page sur laquelle le classement s'applique.",

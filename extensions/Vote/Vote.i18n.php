@@ -173,6 +173,32 @@ $messages['arz'] = array(
 	'right-voteadmin' => 'شوف نتايج التصويت',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'vote' => 'Votación',
+	'vote-desc' => 'Ufre capacidá pa facer encuestes cencielles',
+	'vote-header' => "¡Equí pues votar pol '''Cabezaleru Supremu del Mundu'''!",
+	'vote-current' => "El to votu actual ye pa '''$1'''.",
+	'vote-legend' => 'Votar o camudar el votu',
+	'vote-caption' => 'La to seleición:',
+	'vote-choices' => 'joker|El Joker
+penguin|El Pingüín
+riddler|Riddler',
+	'vote-submit' => 'Votar',
+	'vote-registered' => 'Se rexistró el to votu.',
+	'vote-view-results' => 'Ver los resultaos',
+	'vote-results' => 'Resultaos de la votación',
+	'vote-results-choice' => 'Seleición',
+	'vote-results-count' => 'Recuentu',
+	'vote-results-none' => 'Entá nun se rexistró dengún votu.',
+	'vote-login' => "Tienes d'[$1 aniciar sesión] pa votar.",
+	'vote-invalid-choice' => "Tienes d'escoyer una de les opciones disponibles.",
+	'right-vote' => 'Votar',
+	'right-voteadmin' => "Ver los resultaos d'una votación",
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */

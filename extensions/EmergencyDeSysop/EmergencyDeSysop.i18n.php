@@ -656,6 +656,13 @@ $messages['ksh'] = array(
 	'right-emergencydesysop' => 'Kann enem andere Wiki-Köbes däm sing Rääsch affnämme.',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'emergencydesysop-submit' => 'Tomar bike',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

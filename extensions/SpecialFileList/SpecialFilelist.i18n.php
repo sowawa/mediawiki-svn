@@ -575,14 +575,22 @@ $messages['mn'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Htt
  * @author Kaustubh
  */
 $messages['mr'] = array(
 	'filelist' => 'संचिका यादी',
-	'filelist-desc' => 'चढविलेल्या संचिकांची यादी करण्यासाठी विशेष पान',
+	'filelist-desc' => 'चढविलेल्या संचिकांची यादी करण्यासाठी [[Special:Filelist|विशेष पान]]',
 	'filelist-show-list' => 'यादी दाखवा',
 	'filelist-show-gallery' => 'प्रदर्शन दाखवा',
 	'filelist-image-desc' => 'माहिती',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'filelist-image-desc' => 'ket',
 );
 
 /** Nahuatl (Nāhuatl)

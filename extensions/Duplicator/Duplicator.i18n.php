@@ -1039,6 +1039,7 @@ künne mer em Momang nit koppeere.',
  */
 $messages['ku-latn'] = array(
 	'duplicator-source' => 'Çavkanî:',
+	'duplicator-summary' => 'Ji [[$1]] hate kopîkirin',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

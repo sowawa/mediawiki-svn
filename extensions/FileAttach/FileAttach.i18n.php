@@ -27,6 +27,17 @@ $messages['qqq'] = array(
 	'fileattach-desc' => '{{desc}}',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'fileattach-desc' => 'Permite xubir ficheros a la páxina actual',
+	'fileattach-attachments' => 'Ficheros axuntos',
+	'fileattach-attachfile' => 'Axuntar ficheru',
+	'fileattach-uploadheading' => 'Axuntar un ficheru a $1',
+	'fileattach-editcomment' => "S'axuntó el ficheru [[File:$1|$1]]",
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
@@ -237,9 +248,14 @@ $messages['pt'] = array(
 
 /** Russian (Русский)
  * @author Sasha Blashenkov
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'fileattach-desc' => 'Позволяет работать с файлами для загрузки на текущую страницу',
+	'fileattach-attachments' => 'Прикреплённые файлы',
+	'fileattach-attachfile' => 'Прикрепить файл',
+	'fileattach-uploadheading' => 'Прикрепление файла к $1',
+	'fileattach-editcomment' => 'Файл [[File:$1|$1]] прикреплён',
 );
 
 /** Swedish (Svenska)

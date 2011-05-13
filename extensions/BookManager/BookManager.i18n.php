@@ -26,9 +26,11 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
 	'bookmanager-desc' => '{{desc}}',
+	'bm-booktools-section' => 'Section header (h5) for sidebar menu. It contains tools for the current book.',
 );
 
 /** Arabic (العربية)
@@ -134,7 +136,7 @@ $messages['cs'] = array(
  */
 $messages['de'] = array(
 	'bookmanager-desc' => 'Stellt Hilfsmittel für Bücher bereit',
-	'bm-booktools-section' => 'Hilfsmittel zum Buch',
+	'bm-booktools-section' => 'Hilfsmittel für Bücher',
 	'bm-randomchapter-link' => 'Zufälliges Kapitel',
 	'bm-printversion' => 'Druckversion',
 	'bm-printversion-desc' => 'Ergänzt eine Spezialseite zum [[Special:PrintVersion|Erstellen einer Druckversion]] eines Buchs',
@@ -196,9 +198,11 @@ $messages['fa'] = array(
  * @author Crochet.david
  * @author Faure.thomas
  * @author IAlex
+ * @author Sherbrooke
  */
 $messages['fr'] = array(
 	'bookmanager-desc' => 'Outils pour les livres',
+	'bm-booktools-section' => 'Outils du livre',
 	'bm-randomchapter-link' => 'Chapitre aléatoire',
 	'bm-printversion' => 'Version imprimable',
 	'bm-printversion-desc' => 'Génère une [[Special:PrintVersion|version imprimable]] d’un livre',
@@ -268,6 +272,8 @@ $messages['ia'] = array(
  */
 $messages['id'] = array(
 	'bookmanager-desc' => 'Peralatan untuk buku',
+	'bm-booktools-section' => 'Peralatan untuk buku',
+	'bm-randomchapter-link' => 'Bab sembarang',
 	'bm-printversion' => 'Versi cetak',
 	'bm-printversion-desc' => 'Menghasilkan [[Special:PrintVersion|versi cetak]] suatu buku',
 	'bm-printversion-no-book' => 'Silakan masukkan nama buku untuk mendapatkan versi cetaknya.',
@@ -287,6 +293,8 @@ $messages['it'] = array(
  */
 $messages['ksh'] = array(
 	'bookmanager-desc' => 'Wärkzüsh för Bööscher',
+	'bm-booktools-section' => 'Wärkzüsh för_t Booch',
+	'bm-randomchapter-link' => 'Zohfallskapittel',
 	'bm-printversion' => 'Dröck_Version',
 	'bm-printversion-desc' => 'Määd en [[Special:PrintVersion|Dröck_Version]] vun enem Booch.',
 	'bm-printversion-no-book' => 'Bes esu jood un donn dä  Name vun enem Booch aanjävve, öm aan däm sing Dröck_Version ze kumme.',
@@ -361,17 +369,18 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Helder.wiki
  * @author Raylton P. Sousa <raylton.sousa@gmail.com>
  */
 $messages['pt'] = array(
 	'bookmanager-desc' => 'Ferramentas para livros',
 	'bm-booktools-section' => 'Ferramentas do livro',
-	'bm-randomchapter-link' => 'Capítulo aleatório', 
+	'bm-randomchapter-link' => 'Capítulo aleatório',
 	'bm-printversion' => 'Versão para impressão',
 	'bm-printversion-desc' => 'Gera uma [[Special:PrintVersion|versão para impressão]] de um livro',
-	'bm-printversion-no-book' => 'Por favor informe o nome de um livro para obter sua versão para impressão.',
-	'bm-printversion-inexistent-book' => 'Livro não encontrado. Por favor informe o nome de um livro existente para obter sua versão para impressão.',
+	'bm-printversion-no-book' => 'Introduza o nome de um livro para obter a versão para impressão.',
+	'bm-printversion-inexistent-book' => 'O livro não foi encontrado. Introduza o nome de um livro existente para obter a versão para impressão.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

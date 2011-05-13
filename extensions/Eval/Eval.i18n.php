@@ -418,6 +418,13 @@ $messages['ksh'] = array(
 	'eval_code' => '<i lang="en">Code</i>',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'eval_code' => 'Kod',
+);
+
 /** Latin (Latina)
  * @author Omnipaedista
  */

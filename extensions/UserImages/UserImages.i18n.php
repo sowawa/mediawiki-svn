@@ -69,8 +69,10 @@ $messages['arz'] = array(
 
 /** Asturian (Asturianu)
  * @author Esbardu
+ * @author Xuacu
  */
 $messages['ast'] = array(
+	'userimages-desc' => "Xenerar galeríes d'imaxes xubíes pol usuariu con <code><nowiki><userimage /></nowiki></code>",
 	'userimages-caption' => 'Imáxenes xubíes por $1',
 	'userimages-noname' => "Nome d'usuariu non válidu o non conseñáu.",
 	'userimages-noimages' => '$1 nun tien nenguna imaxe xubida.',

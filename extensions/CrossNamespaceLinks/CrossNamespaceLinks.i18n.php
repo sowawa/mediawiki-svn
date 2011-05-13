@@ -1186,6 +1186,7 @@ $messages['vo'] = array(
 $messages['yi'] = array(
 	'crossnamespacelinks' => 'אריבער־נאמענטייל לינקען',
 	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|רשימה פון לינקען צווישן נאמענטיילן]] וואס דארפן נישט עקזיסטירן אויף {{SITENAME}}',
+	'crossnamespacelinks-summary' => "דער בלאַט פֿאַרזארגט א רשימה פֿון לינקס פֿון א בלאַט אינעם הויפט נאָמענטייל צו א בלאַט אין אַנדערע נאָמענטיילן (אַחוץ די {{ns:special}}, {{ns:talk}}, {{ns:project}}, אוון {{ns:template}} נאָמענטיילן), וואָס מ'זאל בעסער נישט ניצן.",
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|לינק|לינקען}} צו $3',
 );
 

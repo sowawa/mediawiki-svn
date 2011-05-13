@@ -1319,6 +1319,7 @@ $messages['mn'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Htt
  * @author Kaustubh
  */
 $messages['mr'] = array(
@@ -1340,7 +1341,7 @@ $messages['mr'] = array(
 	'importusers-log-summary-updated' => 'अपडेट केले',
 	'importusers-login-name' => 'सदस्य नाव',
 	'importusers-password' => 'परवलीचा शब्द',
-	'importusers-email' => 'इमेल',
+	'importusers-email' => 'विपत्र',
 	'importusers-realname' => 'खरे नाव',
 );
 
@@ -1522,7 +1523,7 @@ $messages['os'] = array(
  */
 $messages['pdc'] = array(
 	'importusers-uploadfile' => 'Feil ufflaade',
-	'importusers-log-summary-all' => 'All',
+	'importusers-log-summary-all' => 'All: $1',
 	'importusers-password' => 'Paesswatt',
 );
 

@@ -91,12 +91,15 @@ $messages['arz'] = array(
 
 /** Asturian (Asturianu)
  * @author Esbardu
+ * @author Xuacu
  */
 $messages['ast'] = array(
 	'findspam' => 'Atopar spam',
+	'findspam-desc' => 'Amiesta una [[Special:FindSpam|páxina especial]] que permite atopar corréu puxarra unviáu fai poco',
 	'findspam-ip' => 'Direición IP:',
 	'findspam-ok' => 'Aceutar',
 	'findspam-notextfound' => "Nun s'atoparon contribuciones",
+	'right-findspam' => 'Guetar corréu puxarra unviáu fai poco',
 );
 
 /** Azerbaijani (Azərbaycanca)

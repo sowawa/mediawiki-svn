@@ -269,6 +269,19 @@ Lihat [http://www.mediawiki.org/wiki/API dokumentasi API] untuk perincian lanjut
 	'apisb-query-meta' => 'Informasi meta',
 );
 
+/** Italian (Italiano)
+ * @author Rippitippi
+ */
+$messages['it'] = array(
+	'apisb-parameters' => 'Parametri',
+	'apisb-result' => 'Risultato',
+	'apisb-select-action' => 'Seleziona azione',
+	'apisb-select-value' => 'Selezionare il valore',
+	'apisb-loading' => 'Caricamento in corso ...',
+	'apisb-query-prop' => 'Proprietà',
+	'apisb-query-list' => 'Liste',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
@@ -427,6 +440,34 @@ $messages['or'] = array(
 	'apisb-ns-main' => '(ମୂଳ)',
 );
 
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'apisb-desc' => 'Permite depurar chamadas à [http://www.mediawiki.org/wiki/API API do MediaWiki] a partir do browser',
+	'apisandbox' => 'Testes da API',
+	'apisb-no-js' => "'''Erro''': Esta funcionalidade requer o JavaScript.",
+	'apisb-intro' => "Use esta página para fazer experiências com a '''API do MediaWiki'''.
+Consulte a [http://www.mediawiki.org/wiki/API documentação da API] para informações sobre o uso da API.",
+	'apisb-api-disabled' => 'A API está desactivada neste site.',
+	'apisb-parameters' => 'Parâmetros',
+	'apisb-result' => 'Resultado',
+	'apisb-request-url' => 'URL do pedido:',
+	'apisb-request-post' => 'Dados POST:',
+	'apisb-select-action' => 'Seleccionar acção',
+	'apisb-select-query' => 'O que pretende consultar?',
+	'apisb-select-value' => 'Seleccionar o valor',
+	'apisb-loading' => 'A carregar…',
+	'apisb-load-error' => 'Erro ao carregar a descrição da API',
+	'apisb-request-error' => 'Erro ao executar o pedido da API',
+	'apisb-namespaces-error' => 'Erro ao carregar os espaços nominais',
+	'apisb-ns-main' => '(Principal)',
+	'apisb-submit' => 'Fazer o pedido',
+	'apisb-query-prop' => 'Propriedades',
+	'apisb-query-list' => 'Listas',
+	'apisb-query-meta' => 'Meta informação',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
@@ -438,6 +479,7 @@ $messages['roa-tara'] = array(
 
 /** Russian (Русский)
  * @author KorneySan
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'apisb-desc' => 'Позволяет отлаживать вызовы [http://www.mediawiki.org/wiki/API MediaWiki API] из браузера',
@@ -450,6 +492,18 @@ $messages['ru'] = array(
 	'apisb-result' => 'Результат',
 	'apisb-request-url' => 'URL-адрес запроса:',
 	'apisb-request-post' => 'POST данные:',
+	'apisb-select-action' => 'Выберите действие',
+	'apisb-select-query' => 'Что запросить?',
+	'apisb-select-value' => 'Выберите значение',
+	'apisb-loading' => 'Загрузка…',
+	'apisb-load-error' => 'Ошибка при загрузке описания API',
+	'apisb-request-error' => 'Ошибка выполнения запроса API',
+	'apisb-namespaces-error' => 'Ошибка при загрузке пространств имен',
+	'apisb-ns-main' => '(Основная)',
+	'apisb-submit' => 'Сделать запрос',
+	'apisb-query-prop' => 'Свойства',
+	'apisb-query-list' => 'Списки',
+	'apisb-query-meta' => 'Мета-информация',
 );
 
 /** Telugu (తెలుగు)
@@ -499,8 +553,17 @@ Sumangguni sa [http://www.mediawiki.org/wiki/API dokumentasyon ng API] para sa k
  */
 $messages['vi'] = array(
 	'apisandbox' => 'Chỗ thử API',
+	'apisb-no-js' => "'''Lỗi''': Tính năng này yêu cầu JavaScript.",
+	'apisb-api-disabled' => 'API đã bị vô hiệu hóa trên trang web này.',
+	'apisb-parameters' => 'Các tham số',
 	'apisb-result' => 'Kết quả',
 	'apisb-request-url' => 'URL của yêu cầu:',
+	'apisb-select-action' => 'Chọn tác vụ',
+	'apisb-select-value' => 'Chọn giá trị',
+	'apisb-loading' => 'Đang tải…',
+	'apisb-ns-main' => '(Chính)',
+	'apisb-query-prop' => 'Thuộc tính',
+	'apisb-query-list' => 'Danh sách',
 	'apisb-query-meta' => 'Siêu thông tin',
 );
 

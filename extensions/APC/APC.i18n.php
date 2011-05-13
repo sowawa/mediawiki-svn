@@ -3551,6 +3551,7 @@ $messages['io'] = array(
  * @author Darth Kule
  * @author Melos
  * @author Pietrodn
+ * @author Rippitippi
  */
 $messages['it'] = array(
 	'apc' => 'informazioni APC',
@@ -3606,11 +3607,17 @@ APC non sembra essere in esecuzione.",
 	'viewapc-ls-header-deleted' => 'Cancellato',
 	'viewapc-ls-scope-active' => 'Attivo',
 	'viewapc-ls-scope-deleted' => 'Cancellato',
+	'viewapc-ls-scope-both' => 'Entrambi',
+	'viewapc-ls-sort-hits' => 'Accessi',
 	'viewapc-ls-sort-size' => 'Dimensione',
 	'viewapc-ls-sort-name' => 'Nome',
+	'viewapc-ls-sort-accessed' => 'Ultimo accesso',
+	'viewapc-ls-sort-modified' => 'Ultima modifica',
 	'viewapc-ls-sort-created' => 'Creato',
 	'viewapc-ls-sort-deleted' => 'Cancellato',
+	'viewapc-ls-sort-timeout' => 'Tempo scaduto',
 	'viewapc-ls-limit-none' => 'Tutti',
+	'viewapc-ls-nodata' => "''Nessun dato corrispondente''",
 );
 
 /** Japanese (日本語)

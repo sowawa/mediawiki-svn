@@ -607,6 +607,13 @@ $messages['oc'] = array(
 	'categoryintersection-results' => 'La recèrca a tornat $1 {{PLURAL:$1|títol|títols}}.',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Psubhashish
+ */
+$messages['or'] = array(
+	'categoryintersection-results' => 'ଆପଣଙ୍କ ଖୋଜା $1 {{PLURAL:$1|result|ଫଳ}} ଫେରାଇଲା ।',
+);
+
 /** Polish (Polski)
  * @author Marcin Łukasz Kiejzik
  * @author Sp5uhe

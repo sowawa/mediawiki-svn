@@ -79,6 +79,7 @@ Pues perder los cambios fechos nesta páxina si sales d'ella agora.",
 Los nomes d\'usuariu distinguen ente mayúscules y minúscules.
 Comprueba la escritura.',
 	'al-createblocked' => 'La to direición IP tien bloquiada la creación de cuentes.',
+	'al-throttled' => "Ficisti demasiaos intentos siguíos de contraseña. Tienes d'esperar $1 {{PLURAL:$1|segundu|segundos}} enantes de volver a probar.",
 );
 
 /** Bashkir (Башҡортса)

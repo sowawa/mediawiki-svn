@@ -135,6 +135,26 @@ $messages['gl'] = array(
  */
 $messages['ia'] = array(
 	'wikitweet-desc' => 'Crear un syndication Twitteresc a importar in MediaWiki',
+	'wikitweet-pleaselogin' => 'Per favor aperi session pro tweetar.',
+	'wikitweet-moretweets' => 'Plus tweets...',
+	'wikitweet-infoajax' => 'usa le technologia AJAX e se refresca cata 5 secundas sin recargar le pagina.',
+	'wikitweet-submit' => 'Tweet',
+	'wikitweet-submitandmail' => 'Tweet e e-mail',
+	'wikitweet-intheroom' => 'Tu es in le sala',
+	'wikitweet-subscribe' => 'subscriber',
+	'wikitweet-subscribed' => 'subscribite',
+	'wikitweet-unsubscribe' => 'cancellar subscription',
+	'wikitweet-delete' => 'deler',
+	'wikitweet-inform' => 'per le informator',
+	'wikitweet-private' => 'private',
+	'wikitweet-answer' => 'responsa a',
+	'wikitweet-anonymous' => 'anonyme',
+	'wikitweet-tweets-tagged' => 'Tweets etiquettate',
+	'wikitweet-back-timeline' => 'Retornar al chronologia',
+	'wikitweet-tweets-from-room' => 'Tweets del sala',
+	'wikitweet-timeago' => '$1 retro',
+	'wikitweet-inthefuture' => 'In le futuro !!',
+	'wikitweet-fewsecondsago' => 'Pauc secundas retro',
 );
 
 /** Colognian (Ripoarisch)

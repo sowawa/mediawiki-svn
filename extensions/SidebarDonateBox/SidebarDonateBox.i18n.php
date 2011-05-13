@@ -84,10 +84,12 @@ $messages['eu'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Peter17
  */
 $messages['fr'] = array(
 	'sidebardonatebox-desc' => 'Ajoute une boîte pour les dons personnalisés dans la barre latérale',
+	'DONATE' => 'Faire un don',
 );
 
 /** Galician (Galego)

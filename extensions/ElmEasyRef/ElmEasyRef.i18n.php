@@ -47,6 +47,15 @@ $messages['de'] = array(
 	'elm-easyref-close' => 'Schließen',
 );
 
+/** French (Français)
+ * @author Sherbrooke
+ */
+$messages['fr'] = array(
+	'elm-easyref-desc' => "Ajouter un menu contextuel qui affichera le contenu d'une référence",
+	'elm-easyref-ref' => 'Référence $1',
+	'elm-easyref-close' => 'Fermer',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

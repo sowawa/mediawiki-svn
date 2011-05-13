@@ -59,6 +59,13 @@ $messages['arz'] = array(
 	'userdailycontribs-desc' => 'مساهمات المستخدمين اليويمه لامتداد تتبع الضغطات',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'userdailycontribs-desc' => 'Contribuciones diaries de los usuarios pa la estensión de siguimientu de clics',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */

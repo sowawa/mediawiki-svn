@@ -50,6 +50,13 @@ $messages['arz'] = array(
 	'javascript-desc' => 'بيضيف uniwiki.js لكل صفحة فيها شفرة جافاسكربت مشاركة بين امتدادات يونيويكى',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'javascript-desc' => 'Amiesta uniwiki.js a cada páxina que contién códigu JavaScript compartíu ente estensiones Uniwiki',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */

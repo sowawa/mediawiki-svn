@@ -1397,10 +1397,11 @@ $messages['mn'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Htt
  * @author Kaustubh
  */
 $messages['mr'] = array(
-	'taggedimages' => 'खूणा केलेली चित्रे',
+	'taggedimages' => 'खुणा केलेली चित्रे',
 	'imagetagging-desc' => 'एखाद्या सदस्याला चित्रातील क्षेत्रे निवडणे व त्या क्षेत्राला एखादे पान जोडण्याची अनुमती देते',
 	'imagetagging-addimagetag' => 'या चित्रावर खूण करा',
 	'imagetagging-article' => 'पान:',
