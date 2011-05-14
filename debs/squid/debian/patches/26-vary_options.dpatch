@@ -379,5 +379,5 @@ diff -urNad squid-2.7.9~/src/store.c squid-2.7.9/src/store.c
 -#endif
 +	    String vary = httpHeaderGetVary(&mem->reply->header);
  	    /* Create or update the vary object */
- 	    vary_id = storeAddVary(mem->url, mem->method, newkey, httpHeaderGetStr(&mem->reply->header, HDR_ETAG), strBuf(vary), mem->vary_headers, mem->vary_encoding);
+ 	    vary_id = storeAddVary(mem->store_url, mem->url, mem->method, newkey, httpHeaderGetStr(&mem->reply->header, HDR_ETAG), strBuf(vary), mem->vary_headers, mem->vary_encoding);
  	    if (vary_id.create_time)  {
