@@ -8,7 +8,7 @@
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'WikimediaMobile',
-	'author' => array( 'Tim Starling', 'Brion Vibber', 'Hampton Catlin' ),
+	'author' => array( 'Tim Starling', 'Brion Vibber', 'Hampton Catlin', 'Patrick Reilly' ),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:WikimediaMobile',
 	'descriptionmsg' => 'wikimediamobile-desc',
 );
@@ -19,7 +19,7 @@ $wgExtensionMessagesFiles['WikimediaMobile'] = $dir . 'WikimediaMobile.i18n.php'
 /**
  * Increment this when the JS file changes
  */
-$wgWikimediaMobileVersion = '7';
+$wgWikimediaMobileVersion = '8';
 
 /**
  * The base URL of the mobile gateway
