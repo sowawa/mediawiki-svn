@@ -241,7 +241,7 @@ $wgWebFonts = array(
 		),
 
 	'languages' => array(
-		'en' => array( 'RufScript', 'Perizia', 'Ubuntu' ),
+		//'en' => array( 'RufScript', 'Perizia', 'Ubuntu' ),
 		'ml' => array( 'Meera', 'Rachana' , 'Dyuthi', 'RaghuMalayalam'),
 		'or' => array( 'Lohit Oriya'),
 		'ta' => array( 'Lohit Tamil'),

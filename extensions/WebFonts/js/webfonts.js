@@ -75,6 +75,10 @@
 		 */
 		reset: function(){
 			$("body").css('font-family', $.webfonts.oldconfig["font-family"]);
+			//we need to reset the fonts of Input and Select explicitly.
+			$("input").css('font-family', $.webfonts.oldconfig["font-family"]);
+			$("select").css('font-family', $.webfonts.oldconfig["font-family"]);
+			//reset the font size from old configuration
 			$("body").css('font-size', $.webfonts.oldconfig["font-size"]);
 			//remove the cookie
 			$.cookie( 'webfonts-font', 'none' );
