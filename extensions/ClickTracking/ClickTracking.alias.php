@@ -28,9 +28,24 @@ $specialPageAliases['br'] = array(
 	'ClickTracking' => array( 'HeuliañKlikoù' ),
 );
 
+/** Esperanto (Esperanto) */
+$specialPageAliases['eo'] = array(
+	'ClickTracking' => array( 'Klakkaptilo' ),
+);
+
 /** Persian (فارسی) */
 $specialPageAliases['fa'] = array(
 	'ClickTracking' => array( 'تعقیب_کلیک' ),
+);
+
+/** 湘语 (湘语) */
+$specialPageAliases['hsn'] = array(
+	'ClickTracking' => array( '点击跟踪' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'ClickTracking' => array( 'SwivKlik' ),
 );
 
 /** Interlingua (Interlingua) */
@@ -58,6 +73,11 @@ $specialPageAliases['lb'] = array(
 	'ClickTracking' => array( 'Opzeechne_vun_de_Klicken' ),
 );
 
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'ClickTracking' => array( 'СледењеНаСтискања' ),
+);
+
 /** Malayalam (മലയാളം) */
 $specialPageAliases['ml'] = array(
 	'ClickTracking' => array( 'ഞെക്കൽപിന്തുടരൽ' ),
@@ -81,6 +101,11 @@ $specialPageAliases['no'] = array(
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
 	'ClickTracking' => array( 'TıklamaTakibi' ),
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$specialPageAliases['zh-hans'] = array(
+	'ClickTracking' => array( '点击追踪' ),
 );
 
 /**

@@ -38,6 +38,11 @@ $specialPageAliases['fi'] = array(
 	'LastUserLogin' => array( 'Viimeinen_sisäänkirjautuminen' ),
 );
 
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'LastUserLogin' => array( 'KoneksyonDènyeItilizatè' ),
+);
+
 /** Interlingua (Interlingua) */
 $specialPageAliases['ia'] = array(
 	'LastUserLogin' => array( 'Ultime_session_de_usator' ),
@@ -68,6 +73,11 @@ $specialPageAliases['lb'] = array(
 	'LastUserLogin' => array( 'Leschte_Benotzer_Login' ),
 );
 
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'LastUserLogin' => array( 'ПоследнаКорисничкаНајава' ),
+);
+
 /** Malayalam (മലയാളം) */
 $specialPageAliases['ml'] = array(
 	'LastUserLogin' => array( 'അവസാന‌‌ഉപയോക്തൃപ്രവേശം' ),
@@ -81,6 +91,11 @@ $specialPageAliases['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $specialPageAliases['no'] = array(
 	'LastUserLogin' => array( 'Siste_brukerinnlogging' ),
+);
+
+/** Turkish (Türkçe) */
+$specialPageAliases['tr'] = array(
+	'LastUserLogin' => array( 'SonKullanıcıOturumAçma' ),
 );
 
 /** Simplified Chinese (‪中文(简体)‬) */

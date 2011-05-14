@@ -8,9 +8,7 @@
 
 $specialPageAliases = array();
 
-/** English
- * @author Jon Harald Søby
- */
+/** English (English) */
 $specialPageAliases['en'] = array(
 	'EditUser' => array( 'EditUser' ),
 );
@@ -67,7 +65,7 @@ $specialPageAliases['frp'] = array(
 
 /** Galician (Galego) */
 $specialPageAliases['gl'] = array(
-	'EditUser' => array( 'Editar o usuario' ),
+	'EditUser' => array( 'Editar_o_usuario' ),
 );
 
 /** Swiss German (Alemannisch) */
@@ -97,12 +95,12 @@ $specialPageAliases['hsb'] = array(
 
 /** Haitian (Kreyòl ayisyen) */
 $specialPageAliases['ht'] = array(
-	'EditUser' => array( 'EditeItilizatè' ),
+	'EditUser' => array( 'ModifyeItilizatè' ),
 );
 
 /** Hungarian (Magyar) */
 $specialPageAliases['hu'] = array(
-	'EditUser' => array( 'Szerkesztő szerkesztése' ),
+	'EditUser' => array( 'Szerkesztő_szerkesztése' ),
 );
 
 /** Interlingua (Interlingua) */
@@ -123,6 +121,11 @@ $specialPageAliases['ig'] = array(
 /** Japanese (日本語) */
 $specialPageAliases['ja'] = array(
 	'EditUser' => array( '利用者情報の編集' ),
+);
+
+/** Georgian (ქართული) */
+$specialPageAliases['ka'] = array(
+	'EditUser' => array( 'მომხმარებლის_რედაქტირება' ),
 );
 
 /** Khmer (ភាសាខ្មែរ) */
@@ -213,6 +216,11 @@ $specialPageAliases['sa'] = array(
 /** Slovak (Slovenčina) */
 $specialPageAliases['sk'] = array(
 	'EditUser' => array( 'ÚpravaPoužívateľa' ),
+);
+
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
+$specialPageAliases['sr-ec'] = array(
+	'EditUser' => array( 'Уреди_корисника' ),
 );
 
 /** Swedish (Svenska) */

@@ -23,6 +23,11 @@ $specialPageAliases['arz'] = array(
 	'DeleteQueue' => array( 'طابور_المسح' ),
 );
 
+/** Breton (Brezhoneg) */
+$specialPageAliases['br'] = array(
+	'DeleteQueue' => array( 'DiverkañLostennad' ),
+);
+
 /** Bosnian (Bosanski) */
 $specialPageAliases['bs'] = array(
 	'DeleteQueue' => array( 'RedZaBrisanje' ),
@@ -56,6 +61,11 @@ $specialPageAliases['fi'] = array(
 /** Upper Sorbian (Hornjoserbsce) */
 $specialPageAliases['hsb'] = array(
 	'DeleteQueue' => array( 'Lisćina_wušmórnjenjow' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'DeleteQueue' => array( 'LiyEfasman' ),
 );
 
 /** Hungarian (Magyar) */
@@ -160,7 +170,12 @@ $specialPageAliases['tl'] = array(
 
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
-	'DeleteQueue' => array( 'GrupSil' ),
+	'DeleteQueue' => array( 'KuyrukSil' ),
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$specialPageAliases['zh-hans'] = array(
+	'DeleteQueue' => array( '删除队列' ),
 );
 
 /**

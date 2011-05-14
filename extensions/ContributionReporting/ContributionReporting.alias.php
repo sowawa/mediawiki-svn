@@ -29,6 +29,13 @@ $specialPageAliases['arz'] = array(
 	'ContributionTotal' => array( 'مجموع_المساهمه' ),
 );
 
+/** Breton (Brezhoneg) */
+$specialPageAliases['br'] = array(
+	'ContributionHistory' => array( 'DegasadennoùIstor' ),
+	'ContributionStatistics' => array( 'DegasadennoùStadegoù' ),
+	'ContributionTotal' => array( 'DegasadennoùHollad' ),
+);
+
 /** Bosnian (Bosanski) */
 $specialPageAliases['bs'] = array(
 	'ContributionHistory' => array( 'DoprinosiHistorija' ),
@@ -41,6 +48,13 @@ $specialPageAliases['dsb'] = array(
 	'ContributionHistory' => array( 'Stawizny_pśinoskow' ),
 	'ContributionStatistics' => array( 'Statistika_pśinoskow' ),
 	'ContributionTotal' => array( 'Pśinoski_dogromady' ),
+);
+
+/** Esperanto (Esperanto) */
+$specialPageAliases['eo'] = array(
+	'ContributionHistory' => array( 'Kontribuhistorio' ),
+	'ContributionStatistics' => array( 'Kontribustatistiko' ),
+	'ContributionTotal' => array( 'Kontribusumo' ),
 );
 
 /** Persian (فارسی) */
@@ -70,11 +84,17 @@ $specialPageAliases['frp'] = array(
 	'ContributionTotal' => array( 'Soma_de_les_contribucions', 'SomaDeLesContribucions' ),
 );
 
+/** Gagauz (Gagauz) */
+$specialPageAliases['gag'] = array(
+	'ContributionHistory' => array( 'KatılmakGeçmişi' ),
+	'ContributionStatistics' => array( 'Katılmakİstatistikaları' ),
+);
+
 /** Galician (Galego) */
 $specialPageAliases['gl'] = array(
-	'ContributionHistory' => array( 'Historial das contribucións' ),
-	'ContributionStatistics' => array( 'Estatísticas das contribucions' ),
-	'ContributionTotal' => array( 'Contribucións totais' ),
+	'ContributionHistory' => array( 'Historial_das_contribucións' ),
+	'ContributionStatistics' => array( 'Estatísticas_das_contribucions' ),
+	'ContributionTotal' => array( 'Contribucións_totais' ),
 );
 
 /** Swiss German (Alemannisch) */
@@ -89,6 +109,13 @@ $specialPageAliases['hsb'] = array(
 	'ContributionHistory' => array( 'Stawizny_přinoškow' ),
 	'ContributionStatistics' => array( 'Statistika_přinoškow' ),
 	'ContributionTotal' => array( 'Přinoški_dohromady' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'ContributionHistory' => array( 'IstorikKontribisyon' ),
+	'ContributionStatistics' => array( 'EstatistikKontribisyon' ),
+	'ContributionTotal' => array( 'TotalKontribisyon' ),
 );
 
 /** Hungarian (Magyar) */
@@ -297,6 +324,19 @@ $specialPageAliases['vec'] = array(
 	'ContributionHistory' => array( 'StoriaContributi' ),
 	'ContributionStatistics' => array( 'StatìstegheContributi' ),
 	'ContributionTotal' => array( 'TotàlContributi' ),
+);
+
+/** Vietnamese (Tiếng Việt) */
+$specialPageAliases['vi'] = array(
+	'ContributionHistory' => array( 'Lịch_sử_quyên_góp' ),
+	'ContributionStatistics' => array( 'Thống_kê_quyên_góp' ),
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$specialPageAliases['zh-hans'] = array(
+	'ContributionHistory' => array( '贡献历史' ),
+	'ContributionStatistics' => array( '贡献统计数字' ),
+	'ContributionTotal' => array( '总的贡献' ),
 );
 
 /**

@@ -48,6 +48,11 @@ $specialPageAliases['hsb'] = array(
 	'ImageTagging' => array( 'Markěrowanje_wobrazow' ),
 );
 
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'ImageTagging' => array( 'EtiketajImaj' ),
+);
+
 /** Hungarian (Magyar) */
 $specialPageAliases['hu'] = array(
 	'ImageTagging' => array( 'Képcímkézés' ),

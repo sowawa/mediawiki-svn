@@ -23,6 +23,11 @@ $specialPageAliases['ar'] = array(
 	'Vote' => array( 'تصويت' ),
 );
 
+/** Aramaic (ܐܪܡܝܐ) */
+$specialPageAliases['arc'] = array(
+	'Vote' => array( 'ܗܒ_ܩܠܐ' ),
+);
+
 /** Egyptian Spoken Arabic (مصرى) */
 $specialPageAliases['arz'] = array(
 	'Vote' => array( 'تصويت' ),
@@ -31,6 +36,11 @@ $specialPageAliases['arz'] = array(
 /** Assamese (অসমীয়া) */
 $specialPageAliases['as'] = array(
 	'Vote' => array( 'ভোট' ),
+);
+
+/** Breton (Brezhoneg) */
+$specialPageAliases['br'] = array(
+	'Vote' => array( 'Mouezhiañ' ),
 );
 
 /** Bosnian (Bosanski) */
@@ -238,7 +248,7 @@ $specialPageAliases['sq'] = array(
 	'Vote' => array( 'Voto' ),
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица)) */
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
 $specialPageAliases['sr-ec'] = array(
 	'Vote' => array( 'Гласај' ),
 );
@@ -281,6 +291,11 @@ $specialPageAliases['tr'] = array(
 /** Vèneto (Vèneto) */
 $specialPageAliases['vec'] = array(
 	'Vote' => array( 'Vota' ),
+);
+
+/** Vietnamese (Tiếng Việt) */
+$specialPageAliases['vi'] = array(
+	'Vote' => array( 'Bỏ_phiếu' ),
 );
 
 /** Simplified Chinese (‪中文(简体)‬) */

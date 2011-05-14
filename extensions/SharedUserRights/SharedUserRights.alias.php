@@ -5,9 +5,7 @@
 
 $specialPageAliases = array();
 
-/** English
- * @author Charles Melbye
- */
+/** English (English) */
 $specialPageAliases['en'] = array(
 	'SharedUserRights' => array( 'SharedUserRights', 'GlobalUserRights' ),
 );
@@ -39,7 +37,7 @@ $specialPageAliases['dsb'] = array(
 
 /** Galician (Galego) */
 $specialPageAliases['gl'] = array(
-	'SharedUserRights' => array( 'Dereitos de usuario compartidos' ),
+	'SharedUserRights' => array( 'Dereitos_de_usuario_compartidos' ),
 );
 
 /** Swiss German (Alemannisch) */
@@ -52,9 +50,14 @@ $specialPageAliases['hsb'] = array(
 	'SharedUserRights' => array( 'Zhromadne wužiwarske prawa' ),
 );
 
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'SharedUserRights' => array( 'DwaItilizatèPataje', 'DwaItilizatèGlobal3' ),
+);
+
 /** Hungarian (Magyar) */
 $specialPageAliases['hu'] = array(
-	'SharedUserRights' => array( 'Megosztott felhasználói jogok' ),
+	'SharedUserRights' => array( 'Megosztott_felhasználói_jogok' ),
 );
 
 /** Interlingua (Interlingua) */
@@ -75,6 +78,11 @@ $specialPageAliases['ksh'] = array(
 /** Luxembourgish (Lëtzebuergesch) */
 $specialPageAliases['lb'] = array(
 	'SharedUserRights' => array( 'Gedeelte_Benotzerrechter' ),
+);
+
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'SharedUserRights' => array( 'ОпштиКорисничкиПрава' ),
 );
 
 /** Malayalam (മലയാളം) */
@@ -104,12 +112,17 @@ $specialPageAliases['nl'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $specialPageAliases['no'] = array(
-	'SharedUserRights' => array( 'Delte brukerrettigheter' ),
+	'SharedUserRights' => array( 'Delte_brukerrettigheter' ),
 );
 
 /** Slovak (Slovenčina) */
 $specialPageAliases['sk'] = array(
 	'SharedUserRights' => array( 'ZdieľanéPoužívateľskéPráva' ),
+);
+
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
+$specialPageAliases['sr-ec'] = array(
+	'SharedUserRights' => array( 'Дељена_корисничка_права' ),
 );
 
 /** Tagalog (Tagalog) */

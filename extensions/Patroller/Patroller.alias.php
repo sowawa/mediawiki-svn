@@ -78,6 +78,11 @@ $specialPageAliases['hsb'] = array(
 	'Patroller' => array( 'Dohladowar' ),
 );
 
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'Patroller' => array( 'Siveyan' ),
+);
+
 /** Interlingua (Interlingua) */
 $specialPageAliases['ia'] = array(
 	'Patroller' => array( 'Patruliator' ),
@@ -110,7 +115,7 @@ $specialPageAliases['lb'] = array(
 
 /** Macedonian (Македонски) */
 $specialPageAliases['mk'] = array(
-	'Patroller' => array( 'Патролирач' ),
+	'Patroller' => array( 'Патролер' ),
 );
 
 /** Malayalam (മലയാളം) */

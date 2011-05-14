@@ -8,9 +8,7 @@
 
 $specialPageAliases = array();
 
-/** English
- * @author Trevor Parscal
- */
+/** English (English) */
 $specialPageAliases['en'] = array(
 	'LogEntry' => array( 'LogEntry' ),
 );
@@ -47,7 +45,7 @@ $specialPageAliases['fa'] = array(
 
 /** Galician (Galego) */
 $specialPageAliases['gl'] = array(
-	'LogEntry' => array( 'Entrada no rexistro' ),
+	'LogEntry' => array( 'Entrada_no_rexistro' ),
 );
 
 /** Swiss German (Alemannisch) */
@@ -58,6 +56,11 @@ $specialPageAliases['gsw'] = array(
 /** Upper Sorbian (Hornjoserbsce) */
 $specialPageAliases['hsb'] = array(
 	'LogEntry' => array( 'Protokolowy_zapisk' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'LogEntry' => array( 'AntreJounal' ),
 );
 
 /** Hungarian (Magyar) */
@@ -142,7 +145,7 @@ $specialPageAliases['tl'] = array(
 
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
-	'LogEntry' => array( 'KayıtGirdisi' ),
+	'LogEntry' => array( 'GünlükGirdisi', 'KayıtGirdisi' ),
 );
 
 /**

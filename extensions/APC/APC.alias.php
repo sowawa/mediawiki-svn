@@ -28,6 +28,11 @@ $specialPageAliases['es'] = array(
 	'APC' => array( 'APC' ),
 );
 
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'APC' => array( 'ای‌پی‌سی' ),
+);
+
 /** Sanskrit (संस्कृत) */
 $specialPageAliases['sa'] = array(
 	'APC' => array( 'एपीसिपश्यति' ),

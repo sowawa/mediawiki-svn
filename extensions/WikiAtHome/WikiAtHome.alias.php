@@ -33,6 +33,16 @@ $specialPageAliases['bs'] = array(
 	'SpecialWikiAtHome' => array( 'WikiKodKuce' ),
 );
 
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'SpecialWikiAtHome' => array( 'ویکی_در_خانه' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'SpecialWikiAtHome' => array( 'WikiLakay' ),
+);
+
 /** Korean (한국어) */
 $specialPageAliases['ko'] = array(
 	'SpecialWikiAtHome' => array( '위키홈' ),
@@ -41,6 +51,11 @@ $specialPageAliases['ko'] = array(
 /** Luxembourgish (Lëtzebuergesch) */
 $specialPageAliases['lb'] = array(
 	'SpecialWikiAtHome' => array( 'WikiDoheem' ),
+);
+
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'SpecialWikiAtHome' => array( 'ВикиДома' ),
 );
 
 /** Malayalam (മലയാളം) */

@@ -3,6 +3,10 @@
 $specialPageAliases = array();
 
 /** English (English) */
+
+$specialPageAliases = array();
+
+/** English (English) */
 $specialPageAliases['en'] = array(
 	'PureWikiDeletion' => array( 'PureWikiDeletion' ),
 	'RandomExcludeBlank' => array( 'RandomExcludeBlank' ),
@@ -14,6 +18,13 @@ $specialPageAliases['ar'] = array(
 	'PureWikiDeletion' => array( 'حذف_الويكي_النقي' ),
 	'RandomExcludeBlank' => array( 'عشوائي_باستثناء_الفارغ' ),
 	'PopulateBlankedPagesTable' => array( 'ملء_جدول_الصفحات_المفرغة' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'PureWikiDeletion' => array( 'EfasmanPureWiki' ),
+	'RandomExcludeBlank' => array( 'OazaSofVièj' ),
+	'PopulateBlankedPagesTable' => array( 'FèTabloPajVièj' ),
 );
 
 /** Interlingua (Interlingua) */
@@ -28,6 +39,12 @@ $specialPageAliases['nl'] = array(
 	'PureWikiDeletion' => array( 'PureWikiverwijdering' ),
 	'RandomExcludeBlank' => array( 'WillekeurigZonderLeeg' ),
 	'PopulateBlankedPagesTable' => array( 'TabelLegePagina\'sVullen', 'TabelLegePaginasVullen' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$specialPageAliases['no'] = array(
+	'PureWikiDeletion' => array( 'Ren_wikisletting' ),
+	'RandomExcludeBlank' => array( 'Tilfeldig_ekskludert_tomme' ),
 );
 
 /**

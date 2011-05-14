@@ -15,6 +15,11 @@ $specialPageAliases['ar'] = array(
 	'RefHelper' => array( 'مساعد_المراجع' ),
 );
 
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'RefHelper' => array( 'ÈdRef' ),
+);
+
 /** Interlingua (Interlingua) */
 $specialPageAliases['ia'] = array(
 	'RefHelper' => array( 'Assistente_pro_referentias' ),
@@ -30,6 +35,11 @@ $specialPageAliases['lb'] = array(
 	'RefHelper' => array( 'Assistent_fir_Referenzen' ),
 );
 
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'RefHelper' => array( 'ПомошникЗаНаводи' ),
+);
+
 /** Malayalam (മലയാളം) */
 $specialPageAliases['ml'] = array(
 	'RefHelper' => array( 'അവലംബസഹായി' ),
@@ -38,6 +48,16 @@ $specialPageAliases['ml'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'RefHelper' => array( 'RefHulp' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$specialPageAliases['no'] = array(
+	'RefHelper' => array( 'Referansehjelper' ),
+);
+
+/** Turkish (Türkçe) */
+$specialPageAliases['tr'] = array(
+	'RefHelper' => array( 'RefYardımcısı' ),
 );
 
 /**

@@ -93,6 +93,16 @@ $specialPageAliases['hsb'] = array(
 	'Badimages' => array( 'Špatne_wobrazy' ),
 );
 
+/** 湘语 (湘语) */
+$specialPageAliases['hsn'] = array(
+	'Badimages' => array( '冇用个图片' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'Badimages' => array( 'MovèImaj' ),
+);
+
 /** Hungarian (Magyar) */
 $specialPageAliases['hu'] = array(
 	'Badimages' => array( 'Tiltott_képek', 'Rossz_képek' ),
@@ -120,7 +130,7 @@ $specialPageAliases['it'] = array(
 
 /** Japanese (日本語) */
 $specialPageAliases['ja'] = array(
-	'Badimages' => array( '好ましくない画像', '不良画像' ),
+	'Badimages' => array( '不良画像', '好ましくない画像' ),
 );
 
 /** Colognian (Ripoarisch) */
@@ -220,7 +230,7 @@ $specialPageAliases['tl'] = array(
 
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
-	'Badimages' => array( 'BozukResimler' ),
+	'Badimages' => array( 'BozukResimler', 'BozukDosyalar' ),
 );
 
 /** Simplified Chinese (‪中文(简体)‬) */

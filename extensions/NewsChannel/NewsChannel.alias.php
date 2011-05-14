@@ -83,6 +83,11 @@ $specialPageAliases['hsb'] = array(
 	'NewsChannel' => array( 'Kanal_powěsćow' ),
 );
 
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'NewsChannel' => array( 'KanalNouvèl' ),
+);
+
 /** Hungarian (Magyar) */
 $specialPageAliases['hu'] = array(
 	'NewsChannel' => array( 'Hírcsatorna' ),
@@ -201,6 +206,11 @@ $specialPageAliases['tl'] = array(
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
 	'NewsChannel' => array( 'HaberKanalı' ),
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$specialPageAliases['zh-hans'] = array(
+	'NewsChannel' => array( '新闻频道' ),
 );
 
 /**

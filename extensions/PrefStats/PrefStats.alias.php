@@ -38,6 +38,11 @@ $specialPageAliases['he'] = array(
 	'PrefStats' => array( 'סטטיסטיקת_העדפות' ),
 );
 
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'PrefStats' => array( 'EstatistikPreferans' ),
+);
+
 /** Interlingua (Interlingua) */
 $specialPageAliases['ia'] = array(
 	'PrefStats' => array( 'Statisticas_de_preferentias' ),
@@ -61,6 +66,11 @@ $specialPageAliases['ksh'] = array(
 /** Luxembourgish (Lëtzebuergesch) */
 $specialPageAliases['lb'] = array(
 	'PrefStats' => array( 'Statistike_vun_den_Astellungen' ),
+);
+
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'PrefStats' => array( 'СатистикиЗаНагодувања' ),
 );
 
 /** Malayalam (മലയാളം) */
@@ -101,6 +111,16 @@ $specialPageAliases['pt'] = array(
 /** Slovak (Slovenčina) */
 $specialPageAliases['sk'] = array(
 	'PrefStats' => array( 'ŠtatistikyNastavení' ),
+);
+
+/** Turkish (Türkçe) */
+$specialPageAliases['tr'] = array(
+	'PrefStats' => array( 'Tercİstatistikleri' ),
+);
+
+/** Vietnamese (Tiếng Việt) */
+$specialPageAliases['vi'] = array(
+	'PrefStats' => array( 'Thống_kê_tùy_chọn' ),
 );
 
 /** Yiddish (ייִדיש) */

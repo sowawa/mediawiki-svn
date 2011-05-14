@@ -24,7 +24,7 @@ $specialPageAliases['arz'] = array(
 
 /** French (Français) */
 $specialPageAliases['fr'] = array(
-	'RecordAdmin' => array( 'Gérer enregistrement', 'GérerEnregistrement', 'GererEnregistrement' ),
+	'RecordAdmin' => array( 'Gérer_enregistrement', 'GérerEnregistrement', 'GererEnregistrement' ),
 );
 
 /** Franco-Provençal (Arpetan) */
@@ -35,6 +35,11 @@ $specialPageAliases['frp'] = array(
 /** Swiss German (Alemannisch) */
 $specialPageAliases['gsw'] = array(
 	'RecordAdmin' => array( 'Ammann yytrage' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'RecordAdmin' => array( 'AdminAnrejistreman' ),
 );
 
 /** Interlingua (Interlingua) */
@@ -84,7 +89,7 @@ $specialPageAliases['tl'] = array(
 
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
-	'RecordAdmin' => array( 'HizmetliKaydı' ),
+	'RecordAdmin' => array( 'HizmetliKaydı', 'YöneticiKaydı' ),
 );
 
 /**

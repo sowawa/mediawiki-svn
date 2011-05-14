@@ -63,6 +63,16 @@ $specialPageAliases['frp'] = array(
 	'Index' => array( 'Endèxe' ),
 );
 
+/** Gagauz (Gagauz) */
+$specialPageAliases['gag'] = array(
+	'Index' => array( 'İndeks' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'Index' => array( 'Endèks' ),
+);
+
 /** Interlingua (Interlingua) */
 $specialPageAliases['ia'] = array(
 	'Index' => array( 'Indice' ),
@@ -88,7 +98,7 @@ $specialPageAliases['ja'] = array(
 	'Index' => array( '索引' ),
 );
 
-/** Cornish (Kernewek) */
+/** Cornish (Kernowek) */
 $specialPageAliases['kw'] = array(
 	'Index' => array( 'Menegva' ),
 );
@@ -143,9 +153,19 @@ $specialPageAliases['sl'] = array(
 	'Index' => array( 'Kazalo' ),
 );
 
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
+$specialPageAliases['sr-ec'] = array(
+	'Index' => array( 'Индекс', 'Попис' ),
+);
+
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
 	'Index' => array( 'Dizin', 'Endeks' ),
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$specialPageAliases['zh-hans'] = array(
+	'Index' => array( '指数' ),
 );
 
 /**

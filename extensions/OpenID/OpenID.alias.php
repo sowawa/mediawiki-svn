@@ -8,9 +8,7 @@
 
 $specialPageAliases = array();
 
-/** English
- * @author IAlex
- */
+/** English (English) */
 $specialPageAliases['en'] = array(
 	'OpenIDLogin' => array( 'OpenIDLogin' ),
 	'OpenIDConvert' => array( 'OpenIDConvert' ),
@@ -39,6 +37,13 @@ $specialPageAliases['fi'] = array(
 	'OpenIDLogin' => array( 'OpenID-kirjautuminen' ),
 	'OpenIDConvert' => array( 'OpenID-muunnos' ),
 	'OpenIDServer' => array( 'OpenID-palvelin' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'OpenIDLogin' => array( 'KoneksyonOpenID' ),
+	'OpenIDConvert' => array( 'KonvètiOpenID' ),
+	'OpenIDServer' => array( 'SèvèOpenID' ),
 );
 
 /** Interlingua (Interlingua) */
@@ -81,6 +86,13 @@ $specialPageAliases['lad'] = array(
 $specialPageAliases['lb'] = array(
 	'OpenIDLogin' => array( 'Login_fir_OpenID' ),
 	'OpenIDConvert' => array( 'OpenID_ëmwandelen' ),
+);
+
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'OpenIDLogin' => array( 'НајаваСоOpenID' ),
+	'OpenIDConvert' => array( 'ПретворањеНаOpenID' ),
+	'OpenIDServer' => array( 'ОпслужувачНаOpenID' ),
 );
 
 /** Malayalam (മലയാളം) */
@@ -139,6 +151,20 @@ $specialPageAliases['tr'] = array(
 	'OpenIDConvert' => array( 'AçıkKimlikDönüştürme' ),
 	'OpenIDServer' => array( 'AçıkKimlikSunucusu' ),
 	'OpenIDXRDS' => array( 'AçıkKimlikXRDS' ),
+);
+
+/** Vietnamese (Tiếng Việt) */
+$specialPageAliases['vi'] = array(
+	'OpenIDLogin' => array( 'Đăng_nhập_OpenID' ),
+	'OpenIDConvert' => array( 'Đổi_OpenID' ),
+	'OpenIDServer' => array( 'Máy_chủ_OpenID' ),
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$specialPageAliases['zh-hans'] = array(
+	'OpenIDLogin' => array( '用_OpenID_登录' ),
+	'OpenIDConvert' => array( '转换_OpenID' ),
+	'OpenIDServer' => array( 'OpenID_服务器' ),
 );
 
 /**

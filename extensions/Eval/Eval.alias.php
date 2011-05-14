@@ -8,9 +8,7 @@
 
 $specialPageAliases = array();
 
-/** English
- * @author Jon Harald Søby
- */
+/** English (English) */
 $specialPageAliases['en'] = array(
 	'Eval' => array( 'Eval' ),
 );
@@ -115,6 +113,11 @@ $specialPageAliases['lb'] = array(
 	'Eval' => array( 'Bewäertung' ),
 );
 
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'Eval' => array( 'Проц' ),
+);
+
 /** Malayalam (മലയാളം) */
 $specialPageAliases['ml'] = array(
 	'Eval' => array( 'മൂല്യനിർണ്ണയം' ),
@@ -168,6 +171,11 @@ $specialPageAliases['tl'] = array(
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
 	'Eval' => array( 'Değ' ),
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$specialPageAliases['zh-hans'] = array(
+	'Eval' => array( '热解' ),
 );
 
 /**

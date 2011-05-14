@@ -68,6 +68,11 @@ $specialPageAliases['hsb'] = array(
 	'ChemicalSources' => array( 'Chemiske_žórła' ),
 );
 
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'ChemicalSources' => array( 'SousChimik' ),
+);
+
 /** Hungarian (Magyar) */
 $specialPageAliases['hu'] = array(
 	'ChemicalSources' => array( 'Vegyszer_források' ),
@@ -181,6 +186,11 @@ $specialPageAliases['tr'] = array(
 /** Veps (Vepsan kel') */
 $specialPageAliases['vep'] = array(
 	'ChemicalSources' => array( 'HimižedPurtked' ),
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$specialPageAliases['zh-hans'] = array(
+	'ChemicalSources' => array( '化学源' ),
 );
 
 /**

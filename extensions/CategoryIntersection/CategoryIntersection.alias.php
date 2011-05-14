@@ -95,7 +95,7 @@ $specialPageAliases['frp'] = array(
 
 /** Galician (Galego) */
 $specialPageAliases['gl'] = array(
-	'CategoryIntersection' => array( 'Intersección de categorías' ),
+	'CategoryIntersection' => array( 'Intersección_de_categorías' ),
 );
 
 /** Swiss German (Alemannisch) */
@@ -116,6 +116,16 @@ $specialPageAliases['hi'] = array(
 /** Upper Sorbian (Hornjoserbsce) */
 $specialPageAliases['hsb'] = array(
 	'CategoryIntersection' => array( 'Kategorijowe_prěčnišćo' ),
+);
+
+/** 湘语 (湘语) */
+$specialPageAliases['hsn'] = array(
+	'CategoryIntersection' => array( '类别个交叉' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'CategoryIntersection' => array( 'KafouKategori' ),
 );
 
 /** Hungarian (Magyar) */
@@ -270,7 +280,7 @@ $specialPageAliases['tl'] = array(
 
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
-	'CategoryIntersection' => array( 'Kategori_kesişmesi', 'KategoriKesişmesi' ),
+	'CategoryIntersection' => array( 'Kategori_kesişmesi', 'KategoriKesişmesi', 'Ulam_kesişmesi', 'UlamKesişmesi' ),
 );
 
 /** Ukrainian (Українська) */

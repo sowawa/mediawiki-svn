@@ -18,6 +18,11 @@ $specialPageAliases['ar'] = array(
 	'Player' => array( 'لاعب' ),
 );
 
+/** Aramaic (ܐܪܡܝܐ) */
+$specialPageAliases['arc'] = array(
+	'Player' => array( 'ܛܐܠܢܐ' ),
+);
+
 /** Egyptian Spoken Arabic (مصرى) */
 $specialPageAliases['arz'] = array(
 	'Player' => array( 'لعيب' ),
@@ -78,6 +83,11 @@ $specialPageAliases['hsb'] = array(
 	'Player' => array( 'Wothrawak' ),
 );
 
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'Player' => array( 'Lektè' ),
+);
+
 /** Interlingua (Interlingua) */
 $specialPageAliases['ia'] = array(
 	'Player' => array( 'Reproductor' ),
@@ -101,6 +111,11 @@ $specialPageAliases['ko'] = array(
 /** Ladino (Ladino) */
 $specialPageAliases['lad'] = array(
 	'Player' => array( 'Jugador' ),
+);
+
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'Player' => array( 'Изведувач' ),
 );
 
 /** Malayalam (മലയാളം) */

@@ -21,6 +21,11 @@ $specialPageAliases['arz'] = array(
 	'WhoIsWatching' => array( 'مين_بيراقب' ),
 );
 
+/** Breton (Brezhoneg) */
+$specialPageAliases['br'] = array(
+	'WhoIsWatching' => array( 'PivZoSellet' ),
+);
+
 /** Bosnian (Bosanski) */
 $specialPageAliases['bs'] = array(
 	'WhoIsWatching' => array( 'KoPregleda' ),
@@ -53,7 +58,7 @@ $specialPageAliases['fi'] = array(
 
 /** French (Français) */
 $specialPageAliases['fr'] = array(
-	'WhoIsWatching' => array( 'Qui a en suivi', 'QuiAEnSuivi' ),
+	'WhoIsWatching' => array( 'Qui_a_en_suivi', 'QuiAEnSuivi' ),
 );
 
 /** Franco-Provençal (Arpetan) */
@@ -63,7 +68,7 @@ $specialPageAliases['frp'] = array(
 
 /** Galician (Galego) */
 $specialPageAliases['gl'] = array(
-	'WhoIsWatching' => array( 'Quen está vixiando' ),
+	'WhoIsWatching' => array( 'Quen_está_vixiando' ),
 );
 
 /** Swiss German (Alemannisch) */
@@ -81,9 +86,14 @@ $specialPageAliases['hsb'] = array(
 	'WhoIsWatching' => array( 'Štó wobkedźbuje' ),
 );
 
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'WhoIsWatching' => array( 'KiyèsKiVeye' ),
+);
+
 /** Hungarian (Magyar) */
 $specialPageAliases['hu'] = array(
-	'WhoIsWatching' => array( 'Ki figyel' ),
+	'WhoIsWatching' => array( 'Ki_figyel' ),
 );
 
 /** Interlingua (Interlingua) */
@@ -116,7 +126,7 @@ $specialPageAliases['ksh'] = array(
 	'WhoIsWatching' => array( 'Wä paß op op', 'WäPassOpOp', 'WäPaßOpOp' ),
 );
 
-/** Cornish (Kernewek) */
+/** Cornish (Kernowek) */
 $specialPageAliases['kw'] = array(
 	'WhoIsWatching' => array( 'PiwUsyOwColya' ),
 );
@@ -158,7 +168,7 @@ $specialPageAliases['nl'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $specialPageAliases['no'] = array(
-	'WhoIsWatching' => array( 'Hvem overvåker' ),
+	'WhoIsWatching' => array( 'Hvem_overvåker' ),
 );
 
 /** Polish (Polski) */

@@ -32,6 +32,12 @@ $specialPageAliases['arz'] = array(
 	'CreateSignDocument' => array( 'اعمل_امضة_الوثيقه' ),
 );
 
+/** Breton (Brezhoneg) */
+$specialPageAliases['br'] = array(
+	'SignDocument' => array( 'SinañTeul' ),
+	'CreateSignDocument' => array( 'KrouiñSinañTeul' ),
+);
+
 /** Bosnian (Bosanski) */
 $specialPageAliases['bs'] = array(
 	'SignDocument' => array( 'PotpisivanjeDokumenta' ),
@@ -49,6 +55,11 @@ $specialPageAliases['dsb'] = array(
 	'CreateSignDocument' => array( 'Signěrowany dokument napóraś' ),
 );
 
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'SignDocument' => array( 'امضای_سند' ),
+);
+
 /** Swiss German (Alemannisch) */
 $specialPageAliases['gsw'] = array(
 	'SignDocument' => array( 'Dokumänt signiere' ),
@@ -59,6 +70,12 @@ $specialPageAliases['gsw'] = array(
 $specialPageAliases['hsb'] = array(
 	'SignDocument' => array( 'Dokument signować' ),
 	'CreateSignDocument' => array( 'Signowany dokument wutworić' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'SignDocument' => array( 'SiyenDokiman' ),
+	'CreateSignDocument' => array( 'KreyeDokimanSiyen' ),
 );
 
 /** Interlingua (Interlingua) */
@@ -95,6 +112,12 @@ $specialPageAliases['lmo'] = array(
 	'SignDocument' => array( 'FirmaDocüment' ),
 );
 
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'SignDocument' => array( 'ПотпишиДокумент' ),
+	'CreateSignDocument' => array( 'ДоздајПотпишиДокумент' ),
+);
+
 /** Malayalam (മലയാളം) */
 $specialPageAliases['ml'] = array(
 	'SignDocument' => array( 'പ്രമാണത്തിലൊപ്പിടുക' ),
@@ -121,8 +144,8 @@ $specialPageAliases['nl'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $specialPageAliases['no'] = array(
-	'SignDocument' => array( 'Signer dokument' ),
-	'CreateSignDocument' => array( 'Opprett signaturdokument' ),
+	'SignDocument' => array( 'Signer_dokument' ),
+	'CreateSignDocument' => array( 'Opprett_signaturdokument' ),
 );
 
 /** Pashto (پښتو) */
@@ -138,8 +161,8 @@ $specialPageAliases['sk'] = array(
 
 /** Swedish (Svenska) */
 $specialPageAliases['sv'] = array(
-	'SignDocument' => array( 'Signera dokument' ),
-	'CreateSignDocument' => array( 'Skapa signeringsdokument' ),
+	'SignDocument' => array( 'Signera_dokument' ),
+	'CreateSignDocument' => array( 'Skapa_signeringsdokument' ),
 );
 
 /** Swahili (Kiswahili) */

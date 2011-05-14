@@ -61,6 +61,11 @@ $specialPageAliases['hsb'] = array(
 	'Form' => array( 'Formular' ),
 );
 
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'Form' => array( 'Fomilè' ),
+);
+
 /** Hungarian (Magyar) */
 $specialPageAliases['hu'] = array(
 	'Form' => array( 'Űrlap' ),
@@ -88,7 +93,7 @@ $specialPageAliases['ja'] = array(
 
 /** Khmer (ភាសាខ្មែរ) */
 $specialPageAliases['km'] = array(
-	'Form' => array( 'បែបបទ' ),
+	'Form' => array( 'សំនុំបែបបទ' ),
 );
 
 /** Korean (한국어) */
@@ -181,6 +186,11 @@ $specialPageAliases['sq'] = array(
 	'Form' => array( 'Formë' ),
 );
 
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
+$specialPageAliases['sr-ec'] = array(
+	'Form' => array( 'Образац' ),
+);
+
 /** Swedish (Svenska) */
 $specialPageAliases['sv'] = array(
 	'Form' => array( 'Formulär' ),
@@ -204,6 +214,16 @@ $specialPageAliases['tl'] = array(
 /** Татарча (Татарча) */
 $specialPageAliases['tt-cyrl'] = array(
 	'Form' => array( 'Форма' ),
+);
+
+/** Vietnamese (Tiếng Việt) */
+$specialPageAliases['vi'] = array(
+	'Form' => array( 'Biểu_mẫu' ),
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$specialPageAliases['zh-hans'] = array(
+	'Form' => array( '表格' ),
 );
 
 /**

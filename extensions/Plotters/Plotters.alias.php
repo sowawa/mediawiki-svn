@@ -8,9 +8,7 @@
 
 $specialPageAliases = array();
 
-/** English
- * @author Ryan Lane, rlane32+mwext@gmail.com
- */
+/** English (English) */
 $specialPageAliases['en'] = array(
 	'Plotters' => array( 'Plotters' ),
 );
@@ -33,6 +31,11 @@ $specialPageAliases['es'] = array(
 /** Persian (فارسی) */
 $specialPageAliases['fa'] = array(
 	'Plotters' => array( 'رسم‌کنندگان' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'Plotters' => array( 'Desinatè' ),
 );
 
 /** Japanese (日本語) */

@@ -73,6 +73,11 @@ $specialPageAliases['hsb'] = array(
 	'ImportFreeImages' => array( 'Swobodne_wobrazy_importować' ),
 );
 
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'ImportFreeImages' => array( 'EnpòteImajLib' ),
+);
+
 /** Hungarian (Magyar) */
 $specialPageAliases['hu'] = array(
 	'ImportFreeImages' => array( 'Szabad_képek_importálása' ),
@@ -185,7 +190,12 @@ $specialPageAliases['tl'] = array(
 
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
-	'ImportFreeImages' => array( 'ÖzgürResimAktar' ),
+	'ImportFreeImages' => array( 'ÖzgürResimAktar', 'ÖzgürResimİçeAktar' ),
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$specialPageAliases['zh-hans'] = array(
+	'ImportFreeImages' => array( '进口开放形象' ),
 );
 
 /**

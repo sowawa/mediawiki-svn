@@ -8,23 +8,17 @@
 
 $specialPageAliases = array();
 
-/** English
- * @author Jon Harald Søby
- */
+/** English (English) */
 $specialPageAliases['en'] = array(
 	'E-mailPage' => array( 'E-mailPage', 'EmailPage' ),
 );
 
-/** Arabic (العربية)
- * @author Meno25
- */
+/** Arabic (العربية) */
 $specialPageAliases['ar'] = array(
 	'E-mailPage' => array( 'مراسلة_الصفحة' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى)
- * @author Meno25
- */
+/** Egyptian Spoken Arabic (مصرى) */
 $specialPageAliases['arz'] = array(
 	'E-mailPage' => array( 'مراسلة_الصفحة' ),
 );
@@ -39,9 +33,7 @@ $specialPageAliases['gl'] = array(
 	'E-mailPage' => array( 'Enviar páxinas por correo electrónico' ),
 );
 
-/** Hebrew (עברית)
- * @author Rotem Liss
- */
+/** Hebrew (עברית) */
 $specialPageAliases['he'] = array(
 	'E-mailPage' => array( 'שליחת_דף_בדואר' ),
 );
@@ -66,9 +58,7 @@ $specialPageAliases['nl'] = array(
 	'E-mailPage' => array( 'PaginaE-mailen', 'PaginaEmailen' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $specialPageAliases['no'] = array(
 	'E-mailPage' => array( 'Send side som e-post' ),
 );

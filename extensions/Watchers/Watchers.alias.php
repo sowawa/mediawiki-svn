@@ -8,9 +8,7 @@
 
 $specialPageAliases = array();
 
-/** English
- * @author Magnus Manske
- */
+/** English (English) */
 $specialPageAliases['en'] = array(
 	'Watchers' => array( 'Watchers' ),
 );
@@ -18,6 +16,11 @@ $specialPageAliases['en'] = array(
 /** Arabic (العربية) */
 $specialPageAliases['ar'] = array(
 	'Watchers' => array( 'مراقبون' ),
+);
+
+/** Aramaic (ܐܪܡܝܐ) */
+$specialPageAliases['arc'] = array(
+	'Watchers' => array( 'ܪ̈ܗܝܢܐ' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
@@ -47,7 +50,7 @@ $specialPageAliases['fa'] = array(
 
 /** Finnish (Suomi) */
 $specialPageAliases['fi'] = array(
-	'Watchers' => array( 'Sivun tarkkailijat' ),
+	'Watchers' => array( 'Sivun_tarkkailijat' ),
 );
 
 /** French (Français) */
@@ -85,6 +88,11 @@ $specialPageAliases['hsb'] = array(
 	'Watchers' => array( 'Wobkedźbowarjo' ),
 );
 
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'Watchers' => array( 'Veyè' ),
+);
+
 /** Hungarian (Magyar) */
 $specialPageAliases['hu'] = array(
 	'Watchers' => array( 'Figyelők' ),
@@ -120,7 +128,7 @@ $specialPageAliases['ksh'] = array(
 	'Watchers' => array( 'Oppassere' ),
 );
 
-/** Cornish (Kernewek) */
+/** Cornish (Kernowek) */
 $specialPageAliases['kw'] = array(
 	'Watchers' => array( 'Golyoryon' ),
 );

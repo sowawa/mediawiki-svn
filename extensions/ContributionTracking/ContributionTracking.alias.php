@@ -33,6 +33,11 @@ $specialPageAliases['dsb'] = array(
 	'ContributionTracking' => array( 'Slědowanje_pśinoskow' ),
 );
 
+/** Esperanto (Esperanto) */
+$specialPageAliases['eo'] = array(
+	'ContributionTracking' => array( 'Kontribukontado' ),
+);
+
 /** Persian (فارسی) */
 $specialPageAliases['fa'] = array(
 	'ContributionTracking' => array( 'ردگیری_مشارکت' ),
@@ -45,7 +50,12 @@ $specialPageAliases['fi'] = array(
 
 /** Galician (Galego) */
 $specialPageAliases['gl'] = array(
-	'ContributionTracking' => array( 'Seguimento das contribucións' ),
+	'ContributionTracking' => array( 'Seguimento_das_contribucións' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'ContributionTracking' => array( 'SwiviKontribisyon' ),
 );
 
 /** Hungarian (Magyar) */
@@ -146,6 +156,11 @@ $specialPageAliases['tr'] = array(
 /** Vèneto (Vèneto) */
 $specialPageAliases['vec'] = array(
 	'ContributionTracking' => array( 'TraciamentoContributi' ),
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$specialPageAliases['zh-hans'] = array(
+	'ContributionTracking' => array( '跟踪贡献' ),
 );
 
 /**

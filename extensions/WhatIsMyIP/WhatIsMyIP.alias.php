@@ -53,6 +53,11 @@ $specialPageAliases['dv'] = array(
 	'WhatIsMyIP' => array( 'އަހަރެންގެ އައި.ޕީ އަކީ' ),
 );
 
+/** Esperanto (Esperanto) */
+$specialPageAliases['eo'] = array(
+	'WhatIsMyIP' => array( 'Ki_ests_mia_IP?' ),
+);
+
 /** Spanish (Español) */
 $specialPageAliases['es'] = array(
 	'WhatIsMyIP' => array( 'Mi_IP', 'Cuál_es_mi_IP' ),
@@ -70,7 +75,7 @@ $specialPageAliases['fi'] = array(
 
 /** French (Français) */
 $specialPageAliases['fr'] = array(
-	'WhatIsMyIP' => array( 'Quelle est mon IP', 'QuelleEstMonIP' ),
+	'WhatIsMyIP' => array( 'Quelle_est_mon_IP', 'QuelleEstMonIP' ),
 );
 
 /** Franco-Provençal (Arpetan) */
@@ -80,7 +85,7 @@ $specialPageAliases['frp'] = array(
 
 /** Galician (Galego) */
 $specialPageAliases['gl'] = array(
-	'WhatIsMyIP' => array( 'Cal é a miña IP' ),
+	'WhatIsMyIP' => array( 'Cal_é_a_miña_IP' ),
 );
 
 /** Swiss German (Alemannisch) */
@@ -98,9 +103,14 @@ $specialPageAliases['hsb'] = array(
 	'WhatIsMyIP' => array( 'Moja IP-adresa' ),
 );
 
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'WhatIsMyIP' => array( 'KisaKiIPMwen' ),
+);
+
 /** Hungarian (Magyar) */
 $specialPageAliases['hu'] = array(
-	'WhatIsMyIP' => array( 'Mi az IP-címem' ),
+	'WhatIsMyIP' => array( 'Mi_az_IP-címem' ),
 );
 
 /** Interlingua (Interlingua) */
@@ -128,7 +138,7 @@ $specialPageAliases['ksh'] = array(
 	'WhatIsMyIP' => array( 'Ming IP Address' ),
 );
 
-/** Cornish (Kernewek) */
+/** Cornish (Kernowek) */
 $specialPageAliases['kw'] = array(
 	'WhatIsMyIP' => array( 'PythYwOwIP' ),
 );
@@ -170,7 +180,7 @@ $specialPageAliases['nl'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $specialPageAliases['no'] = array(
-	'WhatIsMyIP' => array( 'Min IP' ),
+	'WhatIsMyIP' => array( 'Min_IP' ),
 );
 
 /** Occitan (Occitan) */

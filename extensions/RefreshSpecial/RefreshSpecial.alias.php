@@ -23,6 +23,11 @@ $specialPageAliases['arz'] = array(
 	'RefreshSpecial' => array( 'ريفريش_مخصوص' ),
 );
 
+/** Breton (Brezhoneg) */
+$specialPageAliases['br'] = array(
+	'RefreshSpecial' => array( 'FreskaatDibar' ),
+);
+
 /** Bosnian (Bosanski) */
 $specialPageAliases['bs'] = array(
 	'RefreshSpecial' => array( 'PosebnoOsvjezavanje' ),
@@ -35,12 +40,17 @@ $specialPageAliases['fi'] = array(
 
 /** Galician (Galego) */
 $specialPageAliases['gl'] = array(
-	'RefreshSpecial' => array( 'Actualizar a páxina especial' ),
+	'RefreshSpecial' => array( 'Actualizar_a_páxina_especial' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'RefreshSpecial' => array( 'EspesyalAjou' ),
 );
 
 /** Hungarian (Magyar) */
 $specialPageAliases['hu'] = array(
-	'RefreshSpecial' => array( 'Különleges frissítés' ),
+	'RefreshSpecial' => array( 'Különleges_frissítés' ),
 );
 
 /** Interlingua (Interlingua) */
@@ -80,7 +90,7 @@ $specialPageAliases['nl'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $specialPageAliases['no'] = array(
-	'RefreshSpecial' => array( 'Oppdater spesialsider' ),
+	'RefreshSpecial' => array( 'Oppdater_spesialsider' ),
 );
 
 /** Slovak (Slovenčina) */

@@ -28,6 +28,11 @@ $specialPageAliases['de'] = array(
 	'WebChat' => array( 'Web-Chat' ),
 );
 
+/** Esperanto (Esperanto) */
+$specialPageAliases['eo'] = array(
+	'WebChat' => array( 'Retbabili' ),
+);
+
 /** Spanish (Español) */
 $specialPageAliases['es'] = array(
 	'WebChat' => array( 'Chat_web' ),
@@ -36,6 +41,21 @@ $specialPageAliases['es'] = array(
 /** Estonian (Eesti) */
 $specialPageAliases['et'] = array(
 	'WebChat' => array( 'Jututuba' ),
+);
+
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'WebChat' => array( 'گفتگوی_تحت_وب', 'وب‌چت' ),
+);
+
+/** Gagauz (Gagauz) */
+$specialPageAliases['gag'] = array(
+	'WebChat' => array( 'VebSözleşmäk', 'VebSözleşmä', 'VebSözleşme' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'WebChat' => array( 'Klavardaj' ),
 );
 
 /** Interlingua (Interlingua) */
@@ -61,6 +81,11 @@ $specialPageAliases['ko'] = array(
 /** Luxembourgish (Lëtzebuergesch) */
 $specialPageAliases['lb'] = array(
 	'WebChat' => array( 'Web-Chat' ),
+);
+
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'WebChat' => array( 'МрежРазг' ),
 );
 
 /** Malayalam (മലയാളം) */
@@ -106,6 +131,11 @@ $specialPageAliases['tr'] = array(
 /** Татарча (Татарча) */
 $specialPageAliases['tt-cyrl'] = array(
 	'WebChat' => array( 'Веб-чат' ),
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$specialPageAliases['zh-hans'] = array(
+	'WebChat' => array( '网上聊天' ),
 );
 
 /**

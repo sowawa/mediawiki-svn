@@ -14,6 +14,12 @@ $specialPageAliases['en'] = array(
 	'PackageForceAdmin' => array( 'PackageForceAdmin' ),
 );
 
+/** Arabic (العربية) */
+$specialPageAliases['ar'] = array(
+	'PackageForce' => array( 'قوة_الحزمة' ),
+	'PackageForceAdmin' => array( 'إداري_قوة_الحزمة' ),
+);
+
 /** Japanese (日本語) */
 $specialPageAliases['ja'] = array(
 	'PackageForce' => array( 'パッケージ強化' ),
@@ -23,6 +29,12 @@ $specialPageAliases['ja'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'PackageForceAdmin' => array( 'PackageForceBeheer' ),
+);
+
+/** Turkish (Türkçe) */
+$specialPageAliases['tr'] = array(
+	'PackageForce' => array( 'PaketGücü' ),
+	'PackageForceAdmin' => array( 'PaketGücüHizmetlisi', 'PaketGücüYöneticisi' ),
 );
 
 /**

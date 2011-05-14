@@ -5,9 +5,7 @@
 
 $specialPageAliases = array();
 
-/** English
- * @author Bryan Tong Minh
- */
+/** English (English) */
 $specialPageAliases['en'] = array(
 	'AccountManager' => array( 'AccountManager' ),
 );
@@ -62,14 +60,24 @@ $specialPageAliases['frp'] = array(
 	'AccountManager' => array( 'Administrator_de_comptos', 'AdministratorDeComptos' ),
 );
 
+/** Gagauz (Gagauz) */
+$specialPageAliases['gag'] = array(
+	'AccountManager' => array( 'Esapİzmetli' ),
+);
+
 /** Galician (Galego) */
 $specialPageAliases['gl'] = array(
-	'AccountManager' => array( 'Xestor de contas' ),
+	'AccountManager' => array( 'Xestor_de_contas' ),
 );
 
 /** Upper Sorbian (Hornjoserbsce) */
 $specialPageAliases['hsb'] = array(
 	'AccountManager' => array( 'Kontowy_zrjadowak' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'AccountManager' => array( 'JesyònèKont' ),
 );
 
 /** Interlingua (Interlingua) */
@@ -189,7 +197,12 @@ $specialPageAliases['tl'] = array(
 
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
-	'AccountManager' => array( 'HesapYönetici' ),
+	'AccountManager' => array( 'HesapYöneticisi' ),
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$specialPageAliases['zh-hans'] = array(
+	'AccountManager' => array( '客户经理' ),
 );
 
 /**

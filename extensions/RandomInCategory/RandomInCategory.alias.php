@@ -53,7 +53,7 @@ $specialPageAliases['fi'] = array(
 
 /** French (Français) */
 $specialPageAliases['fr'] = array(
-	'RandomInCategory' => array( 'Page au hasard dans une catégorie' ),
+	'RandomInCategory' => array( 'Page_au_hasard_dans_une_catégorie' ),
 );
 
 /** Franco-Provençal (Arpetan) */
@@ -69,6 +69,11 @@ $specialPageAliases['gsw'] = array(
 /** Upper Sorbian (Hornjoserbsce) */
 $specialPageAliases['hsb'] = array(
 	'RandomInCategory' => array( 'Připadna strona w kategoriji' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'RandomInCategory' => array( 'OazaNanKategori' ),
 );
 
 /** Interlingua (Interlingua) */
@@ -101,6 +106,11 @@ $specialPageAliases['lb'] = array(
 	'RandomInCategory' => array( 'Zoufälleg_Säit_aus_der_Kategorie' ),
 );
 
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'RandomInCategory' => array( 'СлучајнаВоКатегорија' ),
+);
+
 /** Malayalam (മലയാളം) */
 $specialPageAliases['ml'] = array(
 	'RandomInCategory' => array( 'വർഗ്ഗത്തിൽനിന്ന്ക്രമരഹിതം' ),
@@ -118,7 +128,7 @@ $specialPageAliases['nl'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $specialPageAliases['no'] = array(
-	'RandomInCategory' => array( 'Tilfeldig fra kategori' ),
+	'RandomInCategory' => array( 'Tilfeldig_fra_kategori' ),
 );
 
 /** Occitan (Occitan) */
@@ -143,7 +153,7 @@ $specialPageAliases['tl'] = array(
 
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
-	'RandomInCategory' => array( 'RastgeleKategori' ),
+	'RandomInCategory' => array( 'RastgeleKategori', 'RastgeleUlam' ),
 );
 
 /**

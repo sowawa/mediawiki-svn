@@ -60,7 +60,7 @@ $specialPageAliases['es'] = array(
 
 /** Persian (فارسی) */
 $specialPageAliases['fa'] = array(
-	'ChangeAuthor' => array( 'تغییر_مولف' ),
+	'ChangeAuthor' => array( 'تغییر_مؤلف' ),
 );
 
 /** Finnish (Suomi) */
@@ -80,7 +80,7 @@ $specialPageAliases['frp'] = array(
 
 /** Galician (Galego) */
 $specialPageAliases['gl'] = array(
-	'ChangeAuthor' => array( 'Cambiar o autor' ),
+	'ChangeAuthor' => array( 'Cambiar_o_autor' ),
 );
 
 /** Swiss German (Alemannisch) */
@@ -108,6 +108,16 @@ $specialPageAliases['hsb'] = array(
 	'ChangeAuthor' => array( 'Awtora_změnić' ),
 );
 
+/** 湘语 (湘语) */
+$specialPageAliases['hsn'] = array(
+	'ChangeAuthor' => array( '变更作者' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'ChangeAuthor' => array( 'ModifyeOtè' ),
+);
+
 /** Hungarian (Magyar) */
 $specialPageAliases['hu'] = array(
 	'ChangeAuthor' => array( 'Szerző_megváltoztatása' ),
@@ -131,6 +141,11 @@ $specialPageAliases['it'] = array(
 /** Japanese (日本語) */
 $specialPageAliases['ja'] = array(
 	'ChangeAuthor' => array( '著者変更' ),
+);
+
+/** Georgian (ქართული) */
+$specialPageAliases['ka'] = array(
+	'ChangeAuthor' => array( 'ავტორის_შეცვლა' ),
 );
 
 /** Khmer (ភាសាខ្មែរ) */
@@ -261,6 +276,11 @@ $specialPageAliases['vec'] = array(
 /** Veps (Vepsan kel') */
 $specialPageAliases['vep'] = array(
 	'ChangeAuthor' => array( 'VajehtadaAvtorad' ),
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$specialPageAliases['zh-hans'] = array(
+	'ChangeAuthor' => array( '更改作者' ),
 );
 
 /** Traditional Chinese (‪中文(繁體)‬) */

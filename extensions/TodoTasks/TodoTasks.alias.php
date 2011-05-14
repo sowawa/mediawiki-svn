@@ -55,8 +55,8 @@ $specialPageAliases['fi'] = array(
 
 /** French (Français) */
 $specialPageAliases['fr'] = array(
-	'TaskList' => array( 'Liste des tâches', 'ListeTâches' ),
-	'TaskListByProject' => array( 'Liste des tâches par projet', 'ListeTâchesParProjet' ),
+	'TaskList' => array( 'Liste_des_tâches', 'ListeTâches' ),
+	'TaskListByProject' => array( 'Liste_des_tâches_par_projet', 'ListeTâchesParProjet' ),
 );
 
 /** Franco-Provençal (Arpetan) */
@@ -75,6 +75,12 @@ $specialPageAliases['gsw'] = array(
 $specialPageAliases['hsb'] = array(
 	'TaskList' => array( 'Lisćina nadawkow' ),
 	'TaskListByProject' => array( 'Lisćina nadawkow na projekt' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'TaskList' => array( 'LisTravayPouFè' ),
+	'TaskListByProject' => array( 'LisTravayPouFèPaPwojè' ),
 );
 
 /** Interlingua (Interlingua) */
@@ -125,13 +131,13 @@ $specialPageAliases['lb'] = array(
 
 /** Macedonian (Македонски) */
 $specialPageAliases['mk'] = array(
-	'TaskList' => array( 'ЛистаНаЗадачи' ),
-	'TaskListByProject' => array( 'ЛистаНаЗадачиПоПроект' ),
+	'TaskList' => array( 'СписокНаЗадачи' ),
+	'TaskListByProject' => array( 'СписокНаЗадачиПоПроект' ),
 );
 
 /** Malayalam (മലയാളം) */
 $specialPageAliases['ml'] = array(
-	'TaskList' => array( 'ചെയ്യേണ്ടവ' ),
+	'TaskList' => array( 'ചെയ്യേണ്ടവയുടെപട്ടിക' ),
 	'TaskListByProject' => array( 'പദ്ധതിയുടെക്രമത്തിൽചെയ്യേണ്ടവ' ),
 );
 
@@ -156,7 +162,7 @@ $specialPageAliases['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $specialPageAliases['no'] = array(
 	'TaskList' => array( 'Oppgaveliste' ),
-	'TaskListByProject' => array( 'Oppgaveliste per prosjekt' ),
+	'TaskListByProject' => array( 'Oppgaveliste_per_prosjekt' ),
 );
 
 /** Polish (Polski) */

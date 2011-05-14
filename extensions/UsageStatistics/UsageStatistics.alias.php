@@ -6,9 +6,7 @@
 
 $specialPageAliases = array();
 
-/** English
- * @author Paul Grinberg
- */
+/** English (English) */
 $specialPageAliases['en'] = array(
 	'SpecialUserStats' => array( 'UserStats', 'SpecialUserStats' ),
 );
@@ -25,7 +23,12 @@ $specialPageAliases['arz'] = array(
 
 /** Assamese (অসমীয়া) */
 $specialPageAliases['as'] = array(
-	'SpecialUserStats' => array( 'সদস্য পৰিসংখ্যা', 'বিশেষ সদস্য পৰিসংখ্যা' ),
+	'SpecialUserStats' => array( 'সদস্য_পৰিসংখ্যা', 'বিশেষ_সদস্য_পৰিসংখ্যা' ),
+);
+
+/** Breton (Brezhoneg) */
+$specialPageAliases['br'] = array(
+	'SpecialUserStats' => array( 'StadegoùImplijer' ),
 );
 
 /** Bosnian (Bosanski) */
@@ -43,6 +46,11 @@ $specialPageAliases['dsb'] = array(
 	'SpecialUserStats' => array( 'Wužywarska statistika' ),
 );
 
+/** Esperanto (Esperanto) */
+$specialPageAliases['eo'] = array(
+	'SpecialUserStats' => array( 'Statistikoj_pri_uzanto' ),
+);
+
 /** Persian (فارسی) */
 $specialPageAliases['fa'] = array(
 	'SpecialUserStats' => array( 'آمار_کاربر' ),
@@ -58,9 +66,14 @@ $specialPageAliases['frp'] = array(
 	'SpecialUserStats' => array( 'Statistiques utilisator', 'StatistiquesUtilisator' ),
 );
 
+/** Gagauz (Gagauz) */
+$specialPageAliases['gag'] = array(
+	'SpecialUserStats' => array( 'Kullanıcıİstatistikaları' ),
+);
+
 /** Galician (Galego) */
 $specialPageAliases['gl'] = array(
-	'SpecialUserStats' => array( 'Estatísticas do usuario' ),
+	'SpecialUserStats' => array( 'Estatísticas_do_usuario' ),
 );
 
 /** Swiss German (Alemannisch) */
@@ -78,9 +91,14 @@ $specialPageAliases['hsb'] = array(
 	'SpecialUserStats' => array( 'Wužiwarska statistika' ),
 );
 
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'SpecialUserStats' => array( 'EstatistikItilizatè', 'EstatistikItilizatèEspesyal' ),
+);
+
 /** Hungarian (Magyar) */
 $specialPageAliases['hu'] = array(
-	'SpecialUserStats' => array( 'Felhasználói statisztika', 'Felhasználóstatisztika' ),
+	'SpecialUserStats' => array( 'Felhasználói_statisztika', 'Felhasználóstatisztika' ),
 );
 
 /** Interlingua (Interlingua) */
@@ -101,6 +119,11 @@ $specialPageAliases['it'] = array(
 /** Japanese (日本語) */
 $specialPageAliases['ja'] = array(
 	'SpecialUserStats' => array( '利用統計' ),
+);
+
+/** Khmer (ភាសាខ្មែរ) */
+$specialPageAliases['km'] = array(
+	'SpecialUserStats' => array( 'ស្ថិតិអ្នកប្រើប្រាស់' ),
 );
 
 /** Colognian (Ripoarisch) */
@@ -166,6 +189,11 @@ $specialPageAliases['sa'] = array(
 /** Slovak (Slovenčina) */
 $specialPageAliases['sk'] = array(
 	'SpecialUserStats' => array( 'ŠtatistikyPoužívateľov' ),
+);
+
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
+$specialPageAliases['sr-ec'] = array(
+	'SpecialUserStats' => array( 'Статистика_корисника' ),
 );
 
 /** Swedish (Svenska) */

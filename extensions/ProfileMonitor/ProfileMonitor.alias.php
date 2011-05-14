@@ -33,6 +33,11 @@ $specialPageAliases['hsb'] = array(
 	'ProfileMonitor' => array( 'Profilowy monitor' ),
 );
 
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'ProfileMonitor' => array( 'MonitèProfil' ),
+);
+
 /** Interlingua (Interlingua) */
 $specialPageAliases['ia'] = array(
 	'ProfileMonitor' => array( 'Analyse_de_rendimento' ),
@@ -46,6 +51,11 @@ $specialPageAliases['id'] = array(
 /** Japanese (日本語) */
 $specialPageAliases['ja'] = array(
 	'ProfileMonitor' => array( 'プロファイリングデータ', 'プロファイルモニター', 'プロファイルモニタ' ),
+);
+
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'ProfileMonitor' => array( 'НадзорНаПрофили' ),
 );
 
 /** Dutch (Nederlands) */

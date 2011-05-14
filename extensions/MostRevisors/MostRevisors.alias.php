@@ -26,6 +26,11 @@ $specialPageAliases['fa'] = array(
 	'MostRevisors' => array( 'بیش‌ترین_تجدیدنظرکننده‌ها' ),
 );
 
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'MostRevisors' => array( 'PlisRevizè' ),
+);
+
 /** Interlingua (Interlingua) */
 $specialPageAliases['ia'] = array(
 	'MostRevisors' => array( 'Le_plus_revisores' ),
@@ -83,7 +88,7 @@ $specialPageAliases['sk'] = array(
 
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
-	'MostRevisors' => array( 'EnÇokİncelenilen' ),
+	'MostRevisors' => array( 'EnÇokİnceleyen' ),
 );
 
 /** Traditional Chinese (‪中文(繁體)‬) */

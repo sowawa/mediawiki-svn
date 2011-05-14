@@ -61,9 +61,14 @@ $specialPageAliases['hsb'] = array(
 	'ShowProcesslist' => array( 'Lisćinu procesow pokazać' ),
 );
 
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'ShowProcesslist' => array( 'MontreLisProsesus' ),
+);
+
 /** Hungarian (Magyar) */
 $specialPageAliases['hu'] = array(
-	'ShowProcesslist' => array( 'Folyamatlista mutatása' ),
+	'ShowProcesslist' => array( 'Folyamatlista_mutatása' ),
 );
 
 /** Interlingua (Interlingua) */
@@ -96,6 +101,11 @@ $specialPageAliases['lb'] = array(
 	'ShowProcesslist' => array( 'Weis_d\'Lëscht_vun_de_Prozesser' ),
 );
 
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'ShowProcesslist' => array( 'ПрикажиСписокНаПостапки' ),
+);
+
 /** Marathi (मराठी) */
 $specialPageAliases['mr'] = array(
 	'ShowProcesslist' => array( 'प्रक्रीयासूचीदाखवा' ),
@@ -113,7 +123,7 @@ $specialPageAliases['nl'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $specialPageAliases['no'] = array(
-	'ShowProcesslist' => array( 'Vis prosessliste' ),
+	'ShowProcesslist' => array( 'Vis_prosessliste' ),
 );
 
 /** Polish (Polski) */

@@ -53,7 +53,7 @@ $specialPageAliases['frp'] = array(
 
 /** Galician (Galego) */
 $specialPageAliases['gl'] = array(
-	'InspectCache' => array( 'Inspeccionar a caché' ),
+	'InspectCache' => array( 'Inspeccionar_a_caché' ),
 );
 
 /** Swiss German (Alemannisch) */
@@ -64,6 +64,11 @@ $specialPageAliases['gsw'] = array(
 /** Upper Sorbian (Hornjoserbsce) */
 $specialPageAliases['hsb'] = array(
 	'InspectCache' => array( 'Pufrowak_inspektować' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'InspectCache' => array( 'EnspekteKach' ),
 );
 
 /** Hungarian (Magyar) */
@@ -174,6 +179,11 @@ $specialPageAliases['tl'] = array(
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
 	'InspectCache' => array( 'ÖnbellekDenetle' ),
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$specialPageAliases['zh-hans'] = array(
+	'InspectCache' => array( '检查缓存' ),
 );
 
 /**

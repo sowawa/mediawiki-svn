@@ -60,7 +60,7 @@ $specialPageAliases['frp'] = array(
 
 /** Galician (Galego) */
 $specialPageAliases['gl'] = array(
-	'GlobalUserrights' => array( 'Dereitos de usuario globais' ),
+	'GlobalUserrights' => array( 'Dereitos_de_usuario_globais' ),
 );
 
 /** Gujarati (ગુજરાતી) */
@@ -76,6 +76,11 @@ $specialPageAliases['hr'] = array(
 /** Upper Sorbian (Hornjoserbsce) */
 $specialPageAliases['hsb'] = array(
 	'GlobalUserrights' => array( 'Globalne_wužwiarske_prawa' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'GlobalUserrights' => array( 'DwaItilizatèGlobal2', 'FèPatiGwoupGlobal2' ),
 );
 
 /** Interlingua (Interlingua) */
@@ -96,6 +101,11 @@ $specialPageAliases['it'] = array(
 /** Japanese (日本語) */
 $specialPageAliases['ja'] = array(
 	'GlobalUserrights' => array( 'グローバル利用者権限' ),
+);
+
+/** Georgian (ქართული) */
+$specialPageAliases['ka'] = array(
+	'GlobalUserrights' => array( 'გლობალური_მომხმარებლის_უფლებები' ),
 );
 
 /** Korean (한국어) */
@@ -191,6 +201,11 @@ $specialPageAliases['tl'] = array(
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
 	'GlobalUserrights' => array( 'KüreselKullanıcıHakları' ),
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$specialPageAliases['zh-hans'] = array(
+	'GlobalUserrights' => array( '全球用户权利' ),
 );
 
 /** Traditional Chinese (‪中文(繁體)‬) */

@@ -66,6 +66,16 @@ $specialPageAliases['gsw'] = array(
 	'MediaSearch' => array( 'Medie-Suech' ),
 );
 
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'MediaSearch' => array( 'ChacheMedya' ),
+	'MvExportAsk' => array( 'MvMandeEkspòte' ),
+	'MvExportSearch' => array( 'MvChacheEkspòte' ),
+	'MvExportSequence' => array( 'MvSekansEkspotasyon' ),
+	'MV_SpecialSearch' => array( 'MV_ChacheEspesyal' ),
+	'MvVideoFeed' => array( 'MvFilVideyo' ),
+);
+
 /** Interlingua (Interlingua) */
 $specialPageAliases['ia'] = array(
 	'MediaSearch' => array( 'Recerca_de_multimedia' ),
@@ -110,6 +120,11 @@ $specialPageAliases['lad'] = array(
 /** Luxembourgish (Lëtzebuergesch) */
 $specialPageAliases['lb'] = array(
 	'MediaSearch' => array( 'Medie_sichen' ),
+);
+
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'MediaSearch' => array( 'ПребарувањеНаПодатотеки' ),
 );
 
 /** Malayalam (മലയാളം) */
@@ -223,7 +238,7 @@ $specialPageAliases['tl'] = array(
 
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
-	'MediaSearch' => array( 'MedyaAra', 'OrtamDosyasıAra', 'DosyaAra' ),
+	'MediaSearch' => array( 'OrtamAra', 'OrtamArama' ),
 );
 
 /** Simplified Chinese (‪中文(简体)‬) */

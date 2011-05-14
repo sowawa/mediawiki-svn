@@ -70,7 +70,7 @@ $specialPageAliases['fi'] = array(
 
 /** Galician (Galego) */
 $specialPageAliases['gl'] = array(
-	'FindSpam' => array( 'Atopar spam' ),
+	'FindSpam' => array( 'Atopar_spam' ),
 );
 
 /** Swiss German (Alemannisch) */
@@ -86,6 +86,11 @@ $specialPageAliases['gu'] = array(
 /** Upper Sorbian (Hornjoserbsce) */
 $specialPageAliases['hsb'] = array(
 	'FindSpam' => array( 'Spam_namakać' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'FindSpam' => array( 'JwennPouryèl' ),
 );
 
 /** Hungarian (Magyar) */
@@ -111,6 +116,11 @@ $specialPageAliases['it'] = array(
 /** Japanese (日本語) */
 $specialPageAliases['ja'] = array(
 	'FindSpam' => array( 'スパムを探す' ),
+);
+
+/** Georgian (ქართული) */
+$specialPageAliases['ka'] = array(
+	'FindSpam' => array( 'სპამის_ძიება' ),
 );
 
 /** Korean (한국어) */

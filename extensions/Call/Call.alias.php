@@ -83,6 +83,16 @@ $specialPageAliases['hsb'] = array(
 	'Call' => array( 'Zawołanje' ),
 );
 
+/** 湘语 (湘语) */
+$specialPageAliases['hsn'] = array(
+	'Call' => array( '呼叫' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'Call' => array( 'Rele' ),
+);
+
 /** Hungarian (Magyar) */
 $specialPageAliases['hu'] = array(
 	'Call' => array( 'Hívás' ),
@@ -200,12 +210,17 @@ $specialPageAliases['tl'] = array(
 
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
-	'Call' => array( 'Çağrı' ),
+	'Call' => array( 'Çağrı', 'Çağır' ),
 );
 
 /** Veps (Vepsan kel') */
 $specialPageAliases['vep'] = array(
 	'Call' => array( 'SätaPagin' ),
+);
+
+/** Vietnamese (Tiếng Việt) */
+$specialPageAliases['vi'] = array(
+	'Call' => array( 'Gọi' ),
 );
 
 /**

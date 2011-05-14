@@ -43,6 +43,11 @@ $specialPageAliases['eo'] = array(
 	'Asksql' => array( 'Peti_per_SQL' ),
 );
 
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'Asksql' => array( 'درخواست_اس‌کیوال' ),
+);
+
 /** Finnish (Suomi) */
 $specialPageAliases['fi'] = array(
 	'Asksql' => array( 'SQL-kysely' ),
@@ -66,6 +71,11 @@ $specialPageAliases['gsw'] = array(
 /** Upper Sorbian (Hornjoserbsce) */
 $specialPageAliases['hsb'] = array(
 	'Asksql' => array( 'SQL_wotprašenje' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'Asksql' => array( 'MandeSQL' ),
 );
 
 /** Hungarian (Magyar) */
@@ -96,6 +106,11 @@ $specialPageAliases['ksh'] = array(
 /** Luxembourgish (Lëtzebuergesch) */
 $specialPageAliases['lb'] = array(
 	'Asksql' => array( 'SQL-Ufroen' ),
+);
+
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'Asksql' => array( 'ПрашајГоsql' ),
 );
 
 /** Marathi (मराठी) */

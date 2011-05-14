@@ -29,6 +29,12 @@ $specialPageAliases['arz'] = array(
 	'WhiteListEdit' => array( 'تعديل_اليسته_البيضا' ),
 );
 
+/** Breton (Brezhoneg) */
+$specialPageAliases['br'] = array(
+	'WhiteList' => array( 'RollGwenn' ),
+	'WhiteListEdit' => array( 'KemmRollGwenn' ),
+);
+
 /** Bosnian (Bosanski) */
 $specialPageAliases['bs'] = array(
 	'WhiteList' => array( 'BijeliSpisak' ),
@@ -53,6 +59,12 @@ $specialPageAliases['dv'] = array(
 	'WhiteListEdit' => array( 'ވައިޓް ލިސްޓަށް ބަދަލް ގެންނަވާ' ),
 );
 
+/** Esperanto (Esperanto) */
+$specialPageAliases['eo'] = array(
+	'WhiteList' => array( 'Blanka_listo' ),
+	'WhiteListEdit' => array( 'Redaktado_de_blanka_listo' ),
+);
+
 /** Persian (فارسی) */
 $specialPageAliases['fa'] = array(
 	'WhiteList' => array( 'فهرست_سفید' ),
@@ -73,7 +85,7 @@ $specialPageAliases['frp'] = array(
 
 /** Galician (Galego) */
 $specialPageAliases['gl'] = array(
-	'WhiteList' => array( 'Lista branca' ),
+	'WhiteList' => array( 'Lista_branca' ),
 );
 
 /** Swiss German (Alemannisch) */
@@ -92,6 +104,12 @@ $specialPageAliases['gu'] = array(
 $specialPageAliases['hsb'] = array(
 	'WhiteList' => array( 'Běła lisćina' ),
 	'WhiteListEdit' => array( 'Běłu lisćinu wobdźěłać' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'WhiteList' => array( 'LisPèmi' ),
+	'WhiteListEdit' => array( 'ModifyeLisPèmi' ),
 );
 
 /** Interlingua (Interlingua) */
@@ -118,6 +136,12 @@ $specialPageAliases['ja'] = array(
 	'WhiteListEdit' => array( 'ホワイトリストの編集', 'ホワイトリスト編集' ),
 );
 
+/** Georgian (ქართული) */
+$specialPageAliases['ka'] = array(
+	'WhiteList' => array( 'თეთრი_სია' ),
+	'WhiteListEdit' => array( 'თეთრი_სიის_რედაქტირება' ),
+);
+
 /** Khmer (ភាសាខ្មែរ) */
 $specialPageAliases['km'] = array(
 	'WhiteList' => array( 'បញ្ជីស' ),
@@ -138,8 +162,8 @@ $specialPageAliases['lb'] = array(
 
 /** Macedonian (Македонски) */
 $specialPageAliases['mk'] = array(
-	'WhiteList' => array( 'БелаЛиста' ),
-	'WhiteListEdit' => array( 'УредиБелаЛиста' ),
+	'WhiteList' => array( 'БелаСписок' ),
+	'WhiteListEdit' => array( 'УредиБелСписок' ),
 );
 
 /** Malayalam (മലയാളം) */
@@ -169,7 +193,7 @@ $specialPageAliases['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $specialPageAliases['no'] = array(
 	'WhiteList' => array( 'Hvitliste' ),
-	'WhiteListEdit' => array( 'Rediger hvitliste' ),
+	'WhiteListEdit' => array( 'Rediger_hvitliste' ),
 );
 
 /** Occitan (Occitan) */
@@ -228,6 +252,11 @@ $specialPageAliases['tl'] = array(
 $specialPageAliases['tr'] = array(
 	'WhiteList' => array( 'BeyazListe' ),
 	'WhiteListEdit' => array( 'BeyazListeyiDeğiştir', 'BeyazListeyiDüzenle' ),
+);
+
+/** Vietnamese (Tiếng Việt) */
+$specialPageAliases['vi'] = array(
+	'WhiteList' => array( 'Danh_sách_trắng' ),
 );
 
 /** Simplified Chinese (‪中文(简体)‬) */

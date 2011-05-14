@@ -53,9 +53,14 @@ $specialPageAliases['he'] = array(
 	'AdvancedRandom' => array( 'אקראי_מתקדם' ),
 );
 
+/** 湘语 (湘语) */
+$specialPageAliases['hsn'] = array(
+	'AdvancedRandom' => array( '高级随机' ),
+);
+
 /** Haitian (Kreyòl ayisyen) */
 $specialPageAliases['ht'] = array(
-	'AdvancedRandom' => array( 'RandonmAvanse' ),
+	'AdvancedRandom' => array( 'OazaAvanse' ),
 );
 
 /** Hungarian (Magyar) */
@@ -96,6 +101,11 @@ $specialPageAliases['lad'] = array(
 /** Luxembourgish (Lëtzebuergesch) */
 $specialPageAliases['lb'] = array(
 	'AdvancedRandom' => array( 'Zoufall' ),
+);
+
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'AdvancedRandom' => array( 'СлучајнаНапредна' ),
 );
 
 /** Malayalam (മലയാളം) */

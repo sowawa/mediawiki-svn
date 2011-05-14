@@ -3,6 +3,10 @@
 $specialPageAliases = array();
 
 /** English (English) */
+
+$specialPageAliases = array();
+
+/** English (English) */
 $specialPageAliases['en'] = array(
 	'EmergencyDeSysop' => array( 'EmergencyDeSysop', 'EmergencyDesysop' ),
 );
@@ -54,12 +58,17 @@ $specialPageAliases['frp'] = array(
 
 /** Galician (Galego) */
 $specialPageAliases['gl'] = array(
-	'EmergencyDeSysop' => array( 'Emerxencia de administrador' ),
+	'EmergencyDeSysop' => array( 'Emerxencia_de_administrador' ),
 );
 
 /** Upper Sorbian (Hornjoserbsce) */
 $specialPageAliases['hsb'] = array(
 	'EmergencyDeSysop' => array( 'Prawa_administratora_w_nuzowym_padźe_preč_wzać' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'EmergencyDeSysop' => array( 'RetireDwaSysopIjan' ),
 );
 
 /** Hungarian (Magyar) */
@@ -159,7 +168,7 @@ $specialPageAliases['tl'] = array(
 
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
-	'EmergencyDeSysop' => array( 'AcilHizmetlilikAlma' ),
+	'EmergencyDeSysop' => array( 'AcilHizmetliAzlet' ),
 );
 
 /** Traditional Chinese (‪中文(繁體)‬) */

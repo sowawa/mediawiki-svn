@@ -26,6 +26,11 @@ $specialPageAliases['br'] = array(
 	'CooperationStatistics' => array( 'Stadegoù_Kenlabourat' ),
 );
 
+/** Esperanto (Esperanto) */
+$specialPageAliases['eo'] = array(
+	'CooperationStatistics' => array( 'Kunlaborostatistiko' ),
+);
+
 /** Spanish (Español) */
 $specialPageAliases['es'] = array(
 	'CooperationStatistics' => array( 'Estadísticas_de_cooperación' ),
@@ -39,6 +44,11 @@ $specialPageAliases['fa'] = array(
 /** Finnish (Suomi) */
 $specialPageAliases['fi'] = array(
 	'CooperationStatistics' => array( 'Yhteistyötilastot' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'CooperationStatistics' => array( 'EstatistikKooperasyon' ),
 );
 
 /** Interlingua (Interlingua) */
@@ -123,7 +133,12 @@ $specialPageAliases['sk'] = array(
 
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
-	'CooperationStatistics' => array( 'İşbirliğiİstatistikleri' ),
+	'CooperationStatistics' => array( 'İşBirliğiİstatistikleri' ),
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$specialPageAliases['zh-hans'] = array(
+	'CooperationStatistics' => array( '合作统计' ),
 );
 
 /**

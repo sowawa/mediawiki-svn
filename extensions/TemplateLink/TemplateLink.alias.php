@@ -58,6 +58,11 @@ $specialPageAliases['hsb'] = array(
 	'TemplateLink' => array( 'Předłohowy wotkaz' ),
 );
 
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'TemplateLink' => array( 'LyenModèl' ),
+);
+
 /** Interlingua (Interlingua) */
 $specialPageAliases['ia'] = array(
 	'TemplateLink' => array( 'Ligamine_verso_patrono' ),
@@ -83,7 +88,7 @@ $specialPageAliases['ksh'] = array(
 	'TemplateLink' => array( 'Schabloonelengk' ),
 );
 
-/** Cornish (Kernewek) */
+/** Cornish (Kernowek) */
 $specialPageAliases['kw'] = array(
 	'TemplateLink' => array( 'KevrenScantlyn' ),
 );
@@ -156,6 +161,11 @@ $specialPageAliases['tr'] = array(
 /** Татарча (Татарча) */
 $specialPageAliases['tt-cyrl'] = array(
 	'TemplateLink' => array( 'Сылтама_үрнәкләре' ),
+);
+
+/** Vietnamese (Tiếng Việt) */
+$specialPageAliases['vi'] = array(
+	'TemplateLink' => array( 'Liên_kiết_bản_mẫu' ),
 );
 
 /**

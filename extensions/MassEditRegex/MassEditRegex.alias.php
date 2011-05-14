@@ -10,7 +10,12 @@ $specialPageAliases = array();
 
 /** English (English) */
 $specialPageAliases['en'] = array(
-	'MassEditRegex' => array('MassEditRegex'),
+	'MassEditRegex' => array( 'MassEditRegex' ),
+);
+
+/** Dutch (Nederlands) */
+$specialPageAliases['nl'] = array(
+	'MassEditRegex' => array( 'BulkRegexBewerken' ),
 );
 
 /**

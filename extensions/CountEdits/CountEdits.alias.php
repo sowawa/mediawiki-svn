@@ -40,7 +40,7 @@ $specialPageAliases['dsb'] = array(
 
 /** Esperanto (Esperanto) */
 $specialPageAliases['eo'] = array(
-	'CountEdits' => array( 'Konti_redaktojn' ),
+	'CountEdits' => array( 'Nombri_redaktojn' ),
 );
 
 /** Spanish (Español) */
@@ -70,7 +70,7 @@ $specialPageAliases['frp'] = array(
 
 /** Galician (Galego) */
 $specialPageAliases['gl'] = array(
-	'CountEdits' => array( 'Contador de edicións' ),
+	'CountEdits' => array( 'Número_de_edicións' ),
 );
 
 /** Swiss German (Alemannisch) */
@@ -81,6 +81,11 @@ $specialPageAliases['gsw'] = array(
 /** Upper Sorbian (Hornjoserbsce) */
 $specialPageAliases['hsb'] = array(
 	'CountEdits' => array( 'Přinoški_ličić' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'CountEdits' => array( 'KontèModifikasyon' ),
 );
 
 /** Hungarian (Magyar) */
@@ -165,7 +170,7 @@ $specialPageAliases['oc'] = array(
 
 /** Polish (Polski) */
 $specialPageAliases['pl'] = array(
-	'CountEdits' => array( 'Licznik_educji' ),
+	'CountEdits' => array( 'Podaj_liczbę_edycji' ),
 );
 
 /** Portuguese (Português) */
@@ -183,6 +188,11 @@ $specialPageAliases['sk'] = array(
 	'CountEdits' => array( 'PočítaniePríspevkov' ),
 );
 
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
+$specialPageAliases['sr-ec'] = array(
+	'CountEdits' => array( 'Број_измена' ),
+);
+
 /** Swahili (Kiswahili) */
 $specialPageAliases['sw'] = array(
 	'CountEdits' => array( 'HesabuUhariri' ),
@@ -195,12 +205,22 @@ $specialPageAliases['tl'] = array(
 
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
-	'CountEdits' => array( 'DeğişiklikSay' ),
+	'CountEdits' => array( 'DeğişiklikSay', 'DüzenlemeSay' ),
 );
 
 /** Vèneto (Vèneto) */
 $specialPageAliases['vec'] = array(
 	'CountEdits' => array( 'ContaContributi' ),
+);
+
+/** Vietnamese (Tiếng Việt) */
+$specialPageAliases['vi'] = array(
+	'CountEdits' => array( 'Đếm_sửa_đổi' ),
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$specialPageAliases['zh-hans'] = array(
+	'CountEdits' => array( '计数编辑' ),
 );
 
 /**

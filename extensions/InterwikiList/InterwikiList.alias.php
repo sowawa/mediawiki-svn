@@ -8,9 +8,7 @@
 
 $specialPageAliases = array();
 
-/** English
- * @author Jon Harald Søby
- */
+/** English (English) */
 $specialPageAliases['en'] = array(
 	'InterwikiList' => array( 'InterwikiList' ),
 );
@@ -80,9 +78,14 @@ $specialPageAliases['frp'] = array(
 	'InterwikiList' => array( 'Lista_entèrvouiqui', 'ListaEntèrvouiqui' ),
 );
 
+/** Gagauz (Gagauz) */
+$specialPageAliases['gag'] = array(
+	'InterwikiList' => array( 'İntervikiListası' ),
+);
+
 /** Galician (Galego) */
 $specialPageAliases['gl'] = array(
-	'InterwikiList' => array( 'Lista de interwikis' ),
+	'InterwikiList' => array( 'Lista_de_interwikis' ),
 );
 
 /** Swiss German (Alemannisch) */
@@ -103,6 +106,11 @@ $specialPageAliases['hr'] = array(
 /** Upper Sorbian (Hornjoserbsce) */
 $specialPageAliases['hsb'] = array(
 	'InterwikiList' => array( 'Lisćina_interwikijow' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'InterwikiList' => array( 'LisEntèwiki' ),
 );
 
 /** Hungarian (Magyar) */
@@ -238,6 +246,11 @@ $specialPageAliases['tl'] = array(
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
 	'InterwikiList' => array( 'İntervikiListesi' ),
+);
+
+/** Vietnamese (Tiếng Việt) */
+$specialPageAliases['vi'] = array(
+	'InterwikiList' => array( 'Danh_sách_liên_wiki' ),
 );
 
 /** Traditional Chinese (‪中文(繁體)‬) */

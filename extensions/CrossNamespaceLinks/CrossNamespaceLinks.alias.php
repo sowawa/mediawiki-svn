@@ -8,9 +8,7 @@
 
 $specialPageAliases = array();
 
-/** English
- * @author Jon Harald Søby
- */
+/** English (English) */
 $specialPageAliases['en'] = array(
 	'CrossNamespaceLinks' => array( 'CrossNamespaceLinks' ),
 );
@@ -33,6 +31,11 @@ $specialPageAliases['bs'] = array(
 /** Catalan (Català) */
 $specialPageAliases['ca'] = array(
 	'CrossNamespaceLinks' => array( 'Enllaços entre espais de noms' ),
+);
+
+/** Czech (Česky) */
+$specialPageAliases['cs'] = array(
+	'CrossNamespaceLinks' => array( 'Odkazy_napříč_jmennými_prostory' ),
 );
 
 /** German (Deutsch) */
@@ -87,7 +90,7 @@ $specialPageAliases['hsb'] = array(
 
 /** Haitian (Kreyòl ayisyen) */
 $specialPageAliases['ht'] = array(
-	'CrossNamespaceLinks' => array( 'KwazeNonespasLyen' ),
+	'CrossNamespaceLinks' => array( 'LyenAtravèEspasnon' ),
 );
 
 /** Hungarian (Magyar) */
@@ -217,7 +220,12 @@ $specialPageAliases['tl'] = array(
 
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
-	'CrossNamespaceLinks' => array( 'İsimAlanlarıArasıBağlantılar' ),
+	'CrossNamespaceLinks' => array( 'AdAlanlarıArasıBağlar', 'AdAlanlarıArasıBağlantılar' ),
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$specialPageAliases['zh-hans'] = array(
+	'CrossNamespaceLinks' => array( '跨名字空间链接' ),
 );
 
 /** Traditional Chinese (‪中文(繁體)‬) */

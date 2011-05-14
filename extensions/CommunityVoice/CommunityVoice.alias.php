@@ -38,6 +38,11 @@ $specialPageAliases['dsb'] = array(
 	'CommunityVoice' => array( 'Głos_zgromaźeństwa' ),
 );
 
+/** Esperanto (Esperanto) */
+$specialPageAliases['eo'] = array(
+	'CommunityVoice' => array( 'Komunuma_voĉo' ),
+);
+
 /** Persian (فارسی) */
 $specialPageAliases['fa'] = array(
 	'CommunityVoice' => array( 'صدای_انجمن' ),
@@ -46,6 +51,11 @@ $specialPageAliases['fa'] = array(
 /** Upper Sorbian (Hornjoserbsce) */
 $specialPageAliases['hsb'] = array(
 	'CommunityVoice' => array( 'Hłós_zhromadźenstwa' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'CommunityVoice' => array( 'VwaKominote' ),
 );
 
 /** Interlingua (Interlingua) */
@@ -146,6 +156,11 @@ $specialPageAliases['tl'] = array(
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
 	'CommunityVoice' => array( 'ToplulukSesi' ),
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$specialPageAliases['zh-hans'] = array(
+	'CommunityVoice' => array( '社会声音' ),
 );
 
 /**

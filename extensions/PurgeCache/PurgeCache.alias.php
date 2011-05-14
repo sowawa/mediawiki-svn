@@ -45,7 +45,7 @@ $specialPageAliases['fi'] = array(
 
 /** French (Français) */
 $specialPageAliases['fr'] = array(
-	'PurgeCache' => array( 'Purger le cache', 'Purger cache', 'PurgerLeCache', 'PurgerCache' ),
+	'PurgeCache' => array( 'Purger_le_cache', 'Purger_cache', 'PurgerLeCache', 'PurgerCache' ),
 );
 
 /** Franco-Provençal (Arpetan) */
@@ -55,7 +55,7 @@ $specialPageAliases['frp'] = array(
 
 /** Galician (Galego) */
 $specialPageAliases['gl'] = array(
-	'PurgeCache' => array( 'Purgar a caché' ),
+	'PurgeCache' => array( 'Purgar_a_caché' ),
 );
 
 /** Swiss German (Alemannisch) */
@@ -71,6 +71,11 @@ $specialPageAliases['hr'] = array(
 /** Upper Sorbian (Hornjoserbsce) */
 $specialPageAliases['hsb'] = array(
 	'PurgeCache' => array( 'Pufrowak wuprózdnić' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'PurgeCache' => array( 'EfaseKach' ),
 );
 
 /** Interlingua (Interlingua) */
@@ -135,7 +140,7 @@ $specialPageAliases['nl'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $specialPageAliases['no'] = array(
-	'PurgeCache' => array( 'Oppdater mellomlager' ),
+	'PurgeCache' => array( 'Oppdater_mellomlager' ),
 );
 
 /** Occitan (Occitan) */

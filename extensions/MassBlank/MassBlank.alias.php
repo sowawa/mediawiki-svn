@@ -8,9 +8,7 @@
 
 $specialPageAliases = array();
 
-/** English
- * @author Tisane
- */
+/** English (English) */
 $specialPageAliases['en'] = array(
 	'MassBlank' => array( 'MassBlank' ),
 );
@@ -23,6 +21,11 @@ $specialPageAliases['ar'] = array(
 /** Persian (فارسی) */
 $specialPageAliases['fa'] = array(
 	'MassBlank' => array( 'توده_خالی' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'MassBlank' => array( 'EfasmanMasif' ),
 );
 
 /** Interlingua (Interlingua) */
@@ -45,6 +48,11 @@ $specialPageAliases['lad'] = array(
 	'MassBlank' => array( 'Montón_de_vaziadura' ),
 );
 
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'MassBlank' => array( 'МасовноЧистење' ),
+);
+
 /** Malayalam (മലയാളം) */
 $specialPageAliases['ml'] = array(
 	'MassBlank' => array( 'കൂട്ടശൂന്യമാക്കൽ' ),
@@ -55,9 +63,24 @@ $specialPageAliases['nl'] = array(
 	'MassBlank' => array( 'MassaalLeegmaken' ),
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$specialPageAliases['no'] = array(
+	'MassBlank' => array( 'Masseblanking' ),
+);
+
 /** Polish (Polski) */
 $specialPageAliases['pl'] = array(
 	'MassBlank' => array( 'Masowe_czyszczenie' ),
+);
+
+/** Turkish (Türkçe) */
+$specialPageAliases['tr'] = array(
+	'MassBlank' => array( 'TopluBoşalt', 'TopluBoşaltma' ),
+);
+
+/** Vietnamese (Tiếng Việt) */
+$specialPageAliases['vi'] = array(
+	'MassBlank' => array( 'Tẩy_trống_hàng_loạt' ),
 );
 
 /**

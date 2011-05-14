@@ -10,9 +10,7 @@
 
 $specialPageAliases = array();
 
-/** English
- * @author Jeroen De Dauw
- */
+/** English (English) */
 $specialPageAliases['en'] = array(
 	'StoryReview' => array( 'StoryReview' ),
 	'Story' => array( 'Story' ),
@@ -31,10 +29,23 @@ $specialPageAliases['br'] = array(
 	'Story' => array( 'Istor' ),
 );
 
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'StoryReview' => array( 'بازبینی_داستان' ),
+	'Story' => array( 'داستان' ),
+);
+
 /** Finnish (Suomi) */
 $specialPageAliases['fi'] = array(
 	'Story' => array( 'Tarina' ),
 	'StorySubmission' => array( 'Tarinan_lisäys' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'StoryReview' => array( 'RevizyonIstwa' ),
+	'Story' => array( 'Istwa' ),
+	'StorySubmission' => array( 'SoumètIstwa' ),
 );
 
 /** Interlingua (Interlingua) */
@@ -51,6 +62,13 @@ $specialPageAliases['lb'] = array(
 	'StorySubmission' => array( 'Annekdot_aschécken' ),
 );
 
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'StoryReview' => array( 'ОценувањеНаПриказна' ),
+	'Story' => array( 'Приказна' ),
+	'StorySubmission' => array( 'ПоднесувањеНаПриказна' ),
+);
+
 /** Malayalam (മലയാളം) */
 $specialPageAliases['ml'] = array(
 	'StoryReview' => array( 'കഥസംശോധനം' ),
@@ -63,6 +81,16 @@ $specialPageAliases['nl'] = array(
 	'StoryReview' => array( 'Verhaalcontrole' ),
 	'Story' => array( 'Verhaal' ),
 	'StorySubmission' => array( 'VerhaalInzenden' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$specialPageAliases['no'] = array(
+	'Story' => array( 'Historie' ),
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$specialPageAliases['zh-hans'] = array(
+	'Story' => array( '故事' ),
 );
 
 /**

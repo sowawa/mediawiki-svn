@@ -8,9 +8,7 @@
 
 $specialPageAliases = array();
 
-/** English (English)
- * @author IAlex
- */
+/** English (English) */
 $specialPageAliases['en'] = array(
 	'Configure' => array( 'Configure' ),
 	'Extensions' => array( 'Extensions' ),
@@ -129,7 +127,7 @@ $specialPageAliases['frp'] = array(
 $specialPageAliases['gl'] = array(
 	'Configure' => array( 'Configurar' ),
 	'Extensions' => array( 'Extensións' ),
-	'ViewConfig' => array( 'Ver a configuración' ),
+	'ViewConfig' => array( 'Ver_a_configuración' ),
 );
 
 /** Swiss German (Alemannisch) */
@@ -363,9 +361,9 @@ $specialPageAliases['tl'] = array(
 
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
-	'Configure' => array( 'Konfigüre' ),
-	'Extensions' => array( 'Eklentiler' ),
-	'ViewConfig' => array( 'KonfigürasyonGör' ),
+	'Configure' => array( 'Yapılandır', 'Konfigüre', 'KonfigüreEt' ),
+	'Extensions' => array( 'Uzantılar', 'Eklentiler' ),
+	'ViewConfig' => array( 'YapılandırmaGör', 'KonfigürasyonGör' ),
 );
 
 /** Vèneto (Vèneto) */
@@ -373,6 +371,19 @@ $specialPageAliases['vec'] = array(
 	'Configure' => array( 'Configura' ),
 	'Extensions' => array( 'Estensioni' ),
 	'ViewConfig' => array( 'VardaConfigurassion' ),
+);
+
+/** Vietnamese (Tiếng Việt) */
+$specialPageAliases['vi'] = array(
+	'Configure' => array( 'Thiết_lập' ),
+	'Extensions' => array( 'Phần_mở_rộng' ),
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$specialPageAliases['zh-hans'] = array(
+	'Configure' => array( '配置' ),
+	'Extensions' => array( '扩展' ),
+	'ViewConfig' => array( '查看配置' ),
 );
 
 /** Traditional Chinese (‪中文(繁體)‬) */

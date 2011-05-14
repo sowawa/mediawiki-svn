@@ -9,9 +9,7 @@
 
 $specialPageAliases = array();
 
-/** English
- * @author Nike
- */
+/** English (English) */
 $specialPageAliases['en'] = array(
 	'UserOptionStats' => array( 'UserOptionStats' ),
 );
@@ -28,12 +26,17 @@ $specialPageAliases['arz'] = array(
 
 /** Czech (Česky) */
 $specialPageAliases['cs'] = array(
-	'UserOptionStats' => array( 'Statistika uživatelského nastavení' ),
+	'UserOptionStats' => array( 'Statistika_uživatelského_nastavení' ),
 );
 
 /** Lower Sorbian (Dolnoserbski) */
 $specialPageAliases['dsb'] = array(
 	'UserOptionStats' => array( 'Statistika wužywarskich opcijow' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'UserOptionStats' => array( 'EstatistikOpsyonItilizatè' ),
 );
 
 /** Interlingua (Interlingua) */
@@ -59,6 +62,11 @@ $specialPageAliases['ksh'] = array(
 /** Luxembourgish (Lëtzebuergesch) */
 $specialPageAliases['lb'] = array(
 	'UserOptionStats' => array( 'Statistike_vun_de_Benotzerastellungen' ),
+);
+
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'UserOptionStats' => array( 'СтатистикиЗаКорисничкиНагодувања' ),
 );
 
 /** Malayalam (മലയാളം) */

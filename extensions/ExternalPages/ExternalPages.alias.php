@@ -8,9 +8,7 @@
 
 $specialPageAliases = array();
 
-/** English
- * @author ArielGlenn
- */
+/** English (English) */
 $specialPageAliases['en'] = array(
 	'ExternalPages' => array( 'ExternalPages' ),
 );
@@ -40,6 +38,11 @@ $specialPageAliases['el'] = array(
 	'ExternalPages' => array( 'ΕξωτερικέςΣελίδες' ),
 );
 
+/** Esperanto (Esperanto) */
+$specialPageAliases['eo'] = array(
+	'ExternalPages' => array( 'Eksteraj_paĝoj' ),
+);
+
 /** Spanish (Español) */
 $specialPageAliases['es'] = array(
 	'ExternalPages' => array( 'PáginasExternas', 'Enlaces_externos' ),
@@ -48,6 +51,11 @@ $specialPageAliases['es'] = array(
 /** Persian (فارسی) */
 $specialPageAliases['fa'] = array(
 	'ExternalPages' => array( 'صفحات_خارجی' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'ExternalPages' => array( 'PajAndeyò' ),
 );
 
 /** Interlingua (Interlingua) */

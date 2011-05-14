@@ -8,9 +8,7 @@
 
 $specialPageAliases = array();
 
-/** English
- * @author Jon Harald Søby
- */
+/** English (English) */
 $specialPageAliases['en'] = array(
 	'MultipleUpload' => array( 'MultipleUpload' ),
 );
@@ -68,6 +66,11 @@ $specialPageAliases['hr'] = array(
 /** Upper Sorbian (Hornjoserbsce) */
 $specialPageAliases['hsb'] = array(
 	'MultipleUpload' => array( 'Wjacore_dataje_nahrać' ),
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'MultipleUpload' => array( 'PlizyèChajman' ),
 );
 
 /** Interlingua (Interlingua) */

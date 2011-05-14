@@ -41,6 +41,11 @@ $specialPageAliases['hr'] = array(
 	'PovWatch' => array( 'Predbilježeno_praćenje' ),
 );
 
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'PovWatch' => array( 'GadePov' ),
+);
+
 /** Interlingua (Interlingua) */
 $specialPageAliases['ia'] = array(
 	'PovWatch' => array( 'Observa_PdV' ),
@@ -84,6 +89,11 @@ $specialPageAliases['sv'] = array(
 /** Tagalog (Tagalog) */
 $specialPageAliases['tl'] = array(
 	'PovWatch' => array( 'Pagbantay sa POV' ),
+);
+
+/** Turkish (Türkçe) */
+$specialPageAliases['tr'] = array(
+	'PovWatch' => array( 'TBATakibi' ),
 );
 
 /**
