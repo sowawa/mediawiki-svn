@@ -1,4 +1,7 @@
 <?php
+/**
+ *
+ */
 
 $magicWords = array();
 
@@ -9,7 +12,7 @@ $magicWords['en'] = array(
 
 /** Arabic (العربية) */
 $magicWords['ar'] = array(
-	'MAG_NOTOCNUM' => array( 0, '__لا_أرقام_جدول__', '__NOTOCNUM__' ),
+	'MAG_NOTOCNUM' => array( 0, '__لا_أرقام_جدول__' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
@@ -32,6 +35,11 @@ $magicWords['ja'] = array(
 	'MAG_NOTOCNUM' => array( 0, '__目次番号無効__' ),
 );
 
+/** Macedonian (Македонски) */
+$magicWords['mk'] = array(
+	'MAG_NOTOCNUM' => array( 0, '__СОДРЖИНАБЕЗБРОЕВИ__' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $magicWords['nds-nl'] = array(
 	'MAG_NOTOCNUM' => array( 0, '__GIENINHOUDSOPGAVENUMMERING__', '__GEENINHOUDSOPGAVENUMMERING__', '__NOTOCNUM__' ),
@@ -40,4 +48,9 @@ $magicWords['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $magicWords['nl'] = array(
 	'MAG_NOTOCNUM' => array( 0, '__GEENINHOUDNUM__', '__GEENINHOUDSOPGAVENUMMERING__' ),
+);
+
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
+$magicWords['sr-ec'] = array(
+	'MAG_NOTOCNUM' => array( 0, '__БЕЗНАБРАЈАЊА__', 'БЕЗ_НАБРАЈАЊА' ),
 );

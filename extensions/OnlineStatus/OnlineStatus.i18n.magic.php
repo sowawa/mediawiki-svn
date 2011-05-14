@@ -1,4 +1,7 @@
 <?php
+/**
+ *
+ */
 
 $magicWords = array();
 
@@ -11,9 +14,9 @@ $magicWords['en'] = array(
 
 /** Arabic (العربية) */
 $magicWords['ar'] = array(
-	'onlinestatus_word' => array( '1', 'حالة_الاتصال', 'ONLINESTATUS' ),
-	'onlinestatus_word_raw' => array( '1', 'حالة_الاتصال_الخام', 'RAWONLINESTATUS' ),
-	'anyuseronlinestatus' => array( 0, 'حالة_الاتصال_لأي_مستخدم', 'anyuseronlinestatus' ),
+	'onlinestatus_word' => array( 'حالة_الاتصال' ),
+	'onlinestatus_word_raw' => array( 'حالة_الاتصال_الخام' ),
+	'anyuseronlinestatus' => array( 0, 'حالة_الاتصال_لأي_مستخدم' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
@@ -21,6 +24,11 @@ $magicWords['arz'] = array(
 	'onlinestatus_word' => array( '1', 'حالة_الاتصال', 'ONLINESTATUS' ),
 	'onlinestatus_word_raw' => array( '1', 'حالة_الاتصال_الخام', 'RAWONLINESTATUS' ),
 	'anyuseronlinestatus' => array( 0, 'حالة_الاتصال_لأى_مستخدم', 'حالة_الاتصال_لأي_مستخدم', 'anyuseronlinestatus' ),
+);
+
+/** Breton (Brezhoneg) */
+$magicWords['br'] = array(
+	'onlinestatus_word' => array( 'STATUDENLINENN' ),
 );
 
 /** Chechen (Нохчийн) */
@@ -35,6 +43,13 @@ $magicWords['ja'] = array(
 	'onlinestatus_word' => array( 'オンライン状況' ),
 	'onlinestatus_word_raw' => array( '生オンライン状況' ),
 	'anyuseronlinestatus' => array( 0, '匿名オンライン状況' ),
+);
+
+/** Macedonian (Македонски) */
+$magicWords['mk'] = array(
+	'onlinestatus_word' => array( 'ВКЛУЧЕНОСТ' ),
+	'onlinestatus_word_raw' => array( 'СИРОВАВКЛУЧЕНОСТ' ),
+	'anyuseronlinestatus' => array( 0, 'вклученостсекојкорисник' ),
 );
 
 /** Malayalam (മലയാളം) */
@@ -64,11 +79,16 @@ $magicWords['nl'] = array(
 	'anyuseronlinestatus' => array( 0, 'allegebruikersonlinestatus' ),
 );
 
+/** Oriya (ଓଡ଼ିଆ) */
+$magicWords['or'] = array(
+	'onlinestatus_word' => array( 'ଅନଲାଇନଅବସ୍ଥା' ),
+);
+
 /** Russian (Русский) */
 $magicWords['ru'] = array(
-	'onlinestatus_word' => array( '1', 'СТАТУСВСЕТИ', 'ONLINESTATUS' ),
-	'onlinestatus_word_raw' => array( '1', 'СТАТУСВСЕТИСЫР', 'RAWONLINESTATUS' ),
-	'anyuseronlinestatus' => array( 0, 'любойучастникстатусвсети', 'anyuseronlinestatus' ),
+	'onlinestatus_word' => array( 'СТАТУСВСЕТИ' ),
+	'onlinestatus_word_raw' => array( 'СТАТУСВСЕТИСЫР' ),
+	'anyuseronlinestatus' => array( 0, 'любойучастникстатусвсети' ),
 );
 
 /** Swedish (Svenska) */

@@ -9,7 +9,7 @@ $magicWords['en'] = array(
 
 /** Arabic (العربية) */
 $magicWords['ar'] = array(
-	'autoincrement' => array( 0, 'زيادة_تلقائية', 'AUTOINCREMENT' ),
+	'autoincrement' => array( 0, 'زيادة_تلقائية' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
@@ -37,6 +37,11 @@ $magicWords['ko'] = array(
 	'autoincrement' => array( 0, '번호' ),
 );
 
+/** Macedonian (Македонски) */
+$magicWords['mk'] = array(
+	'autoincrement' => array( 0, 'АВТОРАСТ' ),
+);
+
 /** Malayalam (മലയാളം) */
 $magicWords['ml'] = array(
 	'autoincrement' => array( 0, 'സ്വയംകൂടുക' ),
@@ -59,7 +64,12 @@ $magicWords['nl'] = array(
 
 /** Russian (Русский) */
 $magicWords['ru'] = array(
-	'autoincrement' => array( 0, 'АВТОИНКРЕМЕНТ', 'AUTOINCREMENT' ),
+	'autoincrement' => array( 0, 'АВТОИНКРЕМЕНТ' ),
+);
+
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
+$magicWords['sr-ec'] = array(
+	'autoincrement' => array( 0, 'САМОУВЕЋАЊЕ' ),
 );
 
 /** Swedish (Svenska) */

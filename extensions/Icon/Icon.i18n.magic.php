@@ -1,4 +1,7 @@
 <?php
+/**
+ *
+ */
 
 $magicWords = array();
 
@@ -14,7 +17,7 @@ $magicWords['af'] = array(
 
 /** Arabic (العربية) */
 $magicWords['ar'] = array(
-	'icon' => array( 0, 'أيقونة', 'icon' ),
+	'icon' => array( 0, 'أيقونة' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
@@ -24,7 +27,7 @@ $magicWords['arz'] = array(
 
 /** Breton (Brezhoneg) */
 $magicWords['br'] = array(
-	'icon' => array( 0, 'arlun', 'icon' ),
+	'icon' => array( 0, 'arlun' ),
 );
 
 /** Bosnian (Bosanski) */
@@ -39,7 +42,7 @@ $magicWords['ce'] = array(
 
 /** Esperanto (Esperanto) */
 $magicWords['eo'] = array(
-	'icon' => array( 0, 'ikono' ),
+	'icon' => array( 0, 'bildsimbolo' ),
 );
 
 /** Spanish (Español) */
@@ -54,7 +57,7 @@ $magicWords['et'] = array(
 
 /** French (Français) */
 $magicWords['fr'] = array(
-	'icon' => array( 0, 'icône', 'icon' ),
+	'icon' => array( 0, 'icône' ),
 );
 
 /** Italian (Italiano) */
@@ -89,12 +92,22 @@ $magicWords['no'] = array(
 
 /** Polish (Polski) */
 $magicWords['pl'] = array(
-	'icon' => array( 0, 'ikona', 'icon' ),
+	'icon' => array( 0, 'ikona' ),
 );
 
 /** Russian (Русский) */
 $magicWords['ru'] = array(
-	'icon' => array( 0, 'значок', 'icon' ),
+	'icon' => array( 0, 'значок' ),
+);
+
+/** Albanian (Shqip) */
+$magicWords['sq'] = array(
+	'icon' => array( 0, 'ikona' ),
+);
+
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
+$magicWords['sr-ec'] = array(
+	'icon' => array( 0, 'иконица', 'икона' ),
 );
 
 /** Swedish (Svenska) */
@@ -104,7 +117,7 @@ $magicWords['sv'] = array(
 
 /** Turkish (Türkçe) */
 $magicWords['tr'] = array(
-	'icon' => array( 0, 'simge', 'ikon', 'icon' ),
+	'icon' => array( 0, 'simge', 'ikon' ),
 );
 
 /** Ukrainian (Українська) */
@@ -114,5 +127,5 @@ $magicWords['uk'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬) */
 $magicWords['zh-hans'] = array(
-	'icon' => array( 0, '图标', 'icon' ),
+	'icon' => array( 0, '图示' ),
 );

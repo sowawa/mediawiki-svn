@@ -1,4 +1,7 @@
 <?php
+/**
+ *
+ */
 
 $magicWords = array();
 
@@ -9,12 +12,17 @@ $magicWords['en'] = array(
 
 /** Arabic (العربية) */
 $magicWords['ar'] = array(
-	'replaceset' => array( 0, 'استبدال_المجموعة', 'replaceset' ),
+	'replaceset' => array( 0, 'استبدال_المجموعة' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
 $magicWords['arz'] = array(
 	'replaceset' => array( 0, 'استبدال_المجموعة', 'replaceset' ),
+);
+
+/** Macedonian (Македонски) */
+$magicWords['mk'] = array(
+	'replaceset' => array( 0, 'заменимножество' ),
 );
 
 /** Malayalam (മലയാളം) */

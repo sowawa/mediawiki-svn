@@ -1,4 +1,7 @@
 <?php
+/**
+ *
+ */
 
 $magicWords = array();
 
@@ -9,7 +12,7 @@ $magicWords['en'] = array(
 
 /** Arabic (العربية) */
 $magicWords['ar'] = array(
-	'itemtags' => array( 0, 'وسوم_المدخلة', 'itemtags' ),
+	'itemtags' => array( 0, 'وسوم_المدخلة' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
@@ -20,6 +23,11 @@ $magicWords['arz'] = array(
 /** Japanese (日本語) */
 $magicWords['ja'] = array(
 	'itemtags' => array( 0, 'アイテムタグ' ),
+);
+
+/** Macedonian (Македонски) */
+$magicWords['mk'] = array(
+	'itemtags' => array( 0, 'ознакизаставки' ),
 );
 
 /** Marathi (मराठी) */
@@ -35,4 +43,9 @@ $magicWords['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $magicWords['nl'] = array(
 	'itemtags' => array( 0, 'itemlabels' ),
+);
+
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
+$magicWords['sr-ec'] = array(
+	'itemtags' => array( 0, 'ознакеставке', 'ознаке_ставке' ),
 );

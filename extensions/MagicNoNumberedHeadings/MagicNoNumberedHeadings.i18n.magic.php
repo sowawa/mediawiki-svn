@@ -9,7 +9,7 @@ $magicWords['en'] = array(
 
 /** Arabic (العربية) */
 $magicWords['ar'] = array(
-	'MAG_NONUMBEREDHEADINGS' => array( 0, 'لا_عناوين_مرقمة', '__NONUMBEREDHEADINGS__' ),
+	'MAG_NONUMBEREDHEADINGS' => array( 0, 'لا_عناوين_مرقمة' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
@@ -37,6 +37,11 @@ $magicWords['ksh'] = array(
 	'MAG_NONUMBEREDHEADINGS' => array( 0, '__ÖVERSCHRIFTENITNUMMERIERE__', '__KEINEÜERSCHRIFTENNUMMERIERUNG__', '__NONUMBEREDHEADINGS__' ),
 );
 
+/** Macedonian (Македонски) */
+$magicWords['mk'] = array(
+	'MAG_NONUMBEREDHEADINGS' => array( 0, '__БЕЗБРОЕВИВОЗАГЛАВИЈАТА__' ),
+);
+
 /** Malayalam (മലയാളം) */
 $magicWords['ml'] = array(
 	'MAG_NONUMBEREDHEADINGS' => array( 0, '__ക്രമസംഖ്യാരഹിതതലക്കെട്ടുകൾ__' ),
@@ -59,7 +64,7 @@ $magicWords['nl'] = array(
 
 /** Russian (Русский) */
 $magicWords['ru'] = array(
-	'MAG_NONUMBEREDHEADINGS' => array( 0, '__БЕЗНОМЕРОВЗАГОЛОВКОВ__', '__NONUMBEREDHEADINGS__' ),
+	'MAG_NONUMBEREDHEADINGS' => array( 0, '__БЕЗНОМЕРОВЗАГОЛОВКОВ__' ),
 );
 
 /** Swedish (Svenska) */
@@ -69,7 +74,7 @@ $magicWords['sv'] = array(
 
 /** Turkish (Türkçe) */
 $magicWords['tr'] = array(
-	'MAG_NONUMBEREDHEADINGS' => array( 0, '__NUMARALIBAŞLIKYOK__', '__NONUMBEREDHEADINGS__' ),
+	'MAG_NONUMBEREDHEADINGS' => array( 0, '__NUMARALIBAŞLIKYOK__' ),
 );
 
 /** Ukrainian (Українська) */

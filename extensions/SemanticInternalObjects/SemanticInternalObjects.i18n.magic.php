@@ -1,4 +1,7 @@
 <?php
+/**
+ *
+ */
 
 $magicWords = array();
 
@@ -9,7 +12,7 @@ $magicWords['en'] = array(
 
 /** Arabic (العربية) */
 $magicWords['ar'] = array(
-	'set_internal' => array( 0, 'ضبط_داخلي', 'set_internal' ),
+	'set_internal' => array( 0, 'ضبط_داخلي' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
@@ -20,6 +23,11 @@ $magicWords['arz'] = array(
 /** Japanese (日本語) */
 $magicWords['ja'] = array(
 	'set_internal' => array( 0, '内部設定' ),
+);
+
+/** Macedonian (Македонски) */
+$magicWords['mk'] = array(
+	'set_internal' => array( 0, 'задај_внатрешни' ),
 );
 
 /** Dutch (Nederlands) */

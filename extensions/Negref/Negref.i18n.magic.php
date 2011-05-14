@@ -1,4 +1,7 @@
 <?php
+/**
+ *
+ */
 
 $magicWords = array();
 
@@ -9,7 +12,7 @@ $magicWords['en'] = array(
 
 /** Arabic (العربية) */
 $magicWords['ar'] = array(
-	'negref' => array( 0, 'نيجريف', 'negref' ),
+	'negref' => array( 0, 'نيجريف' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
@@ -20,4 +23,9 @@ $magicWords['arz'] = array(
 /** Spanish (Español) */
 $magicWords['es'] = array(
 	'negref' => array( 0, 'refneg', 'negref' ),
+);
+
+/** Macedonian (Македонски) */
+$magicWords['mk'] = array(
+	'negref' => array( 0, 'нагодинав' ),
 );

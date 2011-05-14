@@ -1,4 +1,7 @@
 <?php
+/**
+ *
+ */
 
 $magicWords = array();
 
@@ -9,7 +12,7 @@ $magicWords['en'] = array(
 
 /** Arabic (العربية) */
 $magicWords['ar'] = array(
-	'todo' => array( 0, 'للعمل', 'todo' ),
+	'todo' => array( 0, 'للعمل' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
@@ -19,7 +22,7 @@ $magicWords['arz'] = array(
 
 /** Breton (Brezhoneg) */
 $magicWords['br'] = array(
-	'todo' => array( 0, 'daober', 'todo' ),
+	'todo' => array( 0, 'daober' ),
 );
 
 /** Esperanto (Esperanto) */
@@ -30,6 +33,11 @@ $magicWords['eo'] = array(
 /** Spanish (Español) */
 $magicWords['es'] = array(
 	'todo' => array( 0, 'porhacer', 'quehaceres', 'todo' ),
+);
+
+/** French (Français) */
+$magicWords['fr'] = array(
+	'todo' => array( 0, 'àfaire' ),
 );
 
 /** Igbo (Igbo) */
@@ -45,6 +53,11 @@ $magicWords['ja'] = array(
 /** Malagasy (Malagasy) */
 $magicWords['mg'] = array(
 	'todo' => array( 0, 'atao', 'todo' ),
+);
+
+/** Macedonian (Македонски) */
+$magicWords['mk'] = array(
+	'todo' => array( 0, 'задачи' ),
 );
 
 /** Malayalam (മലയാളം) */

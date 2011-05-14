@@ -1,4 +1,7 @@
 <?php
+/**
+ *
+ */
 
 $magicWords = array();
 
@@ -14,12 +17,12 @@ $magicWords['af'] = array(
 
 /** Arabic (العربية) */
 $magicWords['ar'] = array(
-	'languagename' => array( 0, 'اسم_اللغة', 'languagename' ),
+	'languagename' => array( 0, 'اسم_اللغة' ),
 );
 
 /** Aramaic (ܐܪܡܝܐ) */
 $magicWords['arc'] = array(
-	'languagename' => array( 0, 'ܫܡܐ_ܕܠܫܢܐ', 'languagename' ),
+	'languagename' => array( 0, 'ܫܡܐ_ܕܠܫܢܐ' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
@@ -29,7 +32,7 @@ $magicWords['arz'] = array(
 
 /** Breton (Brezhoneg) */
 $magicWords['br'] = array(
-	'languagename' => array( 0, 'anvyezh', 'languagename' ),
+	'languagename' => array( 0, 'anvyezh' ),
 );
 
 /** Bosnian (Bosanski) */
@@ -49,7 +52,7 @@ $magicWords['cs'] = array(
 
 /** Esperanto (Esperanto) */
 $magicWords['eo'] = array(
-	'languagename' => array( 0, 'nomolingvo', 'lingvonomo' ),
+	'languagename' => array( 0, 'lingvonomo' ),
 );
 
 /** Spanish (Español) */
@@ -64,7 +67,7 @@ $magicWords['et'] = array(
 
 /** French (Français) */
 $magicWords['fr'] = array(
-	'languagename' => array( 0, 'nomlangue', 'languagename' ),
+	'languagename' => array( 0, 'nomlangue' ),
 );
 
 /** Franco-Provençal (Arpetan) */
@@ -87,9 +90,19 @@ $magicWords['ksh'] = array(
 	'languagename' => array( 0, 'ShproocheName', 'languagename' ),
 );
 
+/** ‪Kurdî (latînî)‬ (‪Kurdî (latînî)‬) */
+$magicWords['ku-latn'] = array(
+	'languagename' => array( 0, 'navê_ziman' ),
+);
+
 /** Ladino (Ladino) */
 $magicWords['lad'] = array(
 	'languagename' => array( 0, 'nombredelingua', 'nombreidioma', 'nombredeidioma', 'languagename' ),
+);
+
+/** Macedonian (Македонски) */
+$magicWords['mk'] = array(
+	'languagename' => array( 0, 'именајазик' ),
 );
 
 /** Malayalam (മലയാളം) */
@@ -129,7 +142,17 @@ $magicWords['ro'] = array(
 
 /** Russian (Русский) */
 $magicWords['ru'] = array(
-	'languagename' => array( 0, 'названиеязыка', 'languagename' ),
+	'languagename' => array( 0, 'названиеязыка' ),
+);
+
+/** Albanian (Shqip) */
+$magicWords['sq'] = array(
+	'languagename' => array( 0, 'emriigjuhës' ),
+);
+
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
+$magicWords['sr-ec'] = array(
+	'languagename' => array( 0, 'имејезика', 'име_језика' ),
 );
 
 /** Swedish (Svenska) */
@@ -139,7 +162,7 @@ $magicWords['sv'] = array(
 
 /** Turkish (Türkçe) */
 $magicWords['tr'] = array(
-	'languagename' => array( 0, 'diladı', 'dilismi', 'lisanadı', 'lisanismi', 'languagename' ),
+	'languagename' => array( 0, 'diladı', 'dilismi', 'lisanadı', 'lisanismi' ),
 );
 
 /** Ukrainian (Українська) */
@@ -154,5 +177,5 @@ $magicWords['vi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬) */
 $magicWords['zh-hans'] = array(
-	'languagename' => array( 0, '语言名称', 'languagename' ),
+	'languagename' => array( 0, '语言名称' ),
 );

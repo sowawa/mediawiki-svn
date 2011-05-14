@@ -1,7 +1,7 @@
 <?php
 /**
  * Magic word localization for the MathStatFunction extension
-*/
+ */
 
 $magicWords = array();
 
@@ -35,30 +35,30 @@ $magicWords['en'] = array(
 
 /** Arabic (العربية) */
 $magicWords['ar'] = array(
-	'const' => array( 0, 'ثابت', 'const' ),
-	'median' => array( 0, 'مديان', 'median' ),
-	'mean' => array( 0, 'متوسط', 'mean' ),
-	'exp' => array( 0, 'أس', 'exp' ),
-	'log' => array( 0, 'لوغاريتم', 'log' ),
-	'ln' => array( 0, 'لوغاريتم_طبيعي', 'ln' ),
-	'tan' => array( 0, 'ظا', 'tan' ),
-	'atan' => array( 0, 'أتان', 'أركتان', 'atan', 'arctan' ),
-	'tanh' => array( 0, 'تانش', 'tanh' ),
-	'atanh' => array( 0, 'أتانش', 'أركتانش', 'atanh', 'arctanh' ),
-	'cot' => array( 0, 'كوتان', 'cot' ),
-	'acot' => array( 0, 'أكوتان', 'أرككوتان', 'acot', 'arccot' ),
-	'cos' => array( 0, 'جتا', 'cos' ),
-	'acos' => array( 0, 'أكوزين', 'أرككوزين', 'acos', 'arccos' ),
-	'cosh' => array( 0, 'كوشين', 'cosh' ),
-	'acosh' => array( 0, 'أكوشين', 'أرككوشين', 'acosh', 'arccosh' ),
-	'sec' => array( 0, 'سيك', 'sec' ),
-	'asec' => array( 0, 'أسيك', 'أركسيك', 'asec', 'arcsec' ),
-	'sin' => array( 0, 'جا', 'sin' ),
-	'asin' => array( 0, 'أسين', 'أركسين', 'asin', 'arcsin' ),
-	'sinh' => array( 0, 'شين', 'sinh' ),
-	'asinh' => array( 0, 'أشين', 'أركشين', 'asinh', 'arcsinh' ),
-	'csc' => array( 0, 'كوسيك', 'csc' ),
-	'acsc' => array( 0, 'أكوسيك', 'أرككوسيك', 'acsc', 'arccsc' ),
+	'const' => array( 0, 'ثابت' ),
+	'median' => array( 0, 'مديان' ),
+	'mean' => array( 0, 'متوسط' ),
+	'exp' => array( 0, 'أس' ),
+	'log' => array( 0, 'لوغاريتم' ),
+	'ln' => array( 0, 'لوغاريتم_طبيعي' ),
+	'tan' => array( 0, 'ظا' ),
+	'atan' => array( 0, 'أتان', 'أركتان' ),
+	'tanh' => array( 0, 'تانش' ),
+	'atanh' => array( 0, 'أتانش', 'أركتانش' ),
+	'cot' => array( 0, 'كوتان' ),
+	'acot' => array( 0, 'أكوتان', 'أرككوتان' ),
+	'cos' => array( 0, 'جتا' ),
+	'acos' => array( 0, 'أكوزين', 'أرككوزين' ),
+	'cosh' => array( 0, 'كوشين' ),
+	'acosh' => array( 0, 'أكوشين', 'أرككوشين' ),
+	'sec' => array( 0, 'سيك' ),
+	'asec' => array( 0, 'أسيك', 'أركسيك' ),
+	'sin' => array( 0, 'جا' ),
+	'asin' => array( 0, 'أسين', 'أركسين' ),
+	'sinh' => array( 0, 'شين' ),
+	'asinh' => array( 0, 'أشين', 'أركشين' ),
+	'csc' => array( 0, 'كوسيك' ),
+	'acsc' => array( 0, 'أكوسيك', 'أرككوسيك' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
@@ -87,6 +87,20 @@ $magicWords['arz'] = array(
 	'asinh' => array( 0, 'أشاين', 'أركشاين', 'أشين', 'أركشين', 'asinh', 'arcsinh' ),
 	'csc' => array( 0, 'كوسيك', 'csc' ),
 	'acsc' => array( 0, 'أكوسيك', 'أرككوسيك', 'acsc', 'arccsc' ),
+);
+
+/** Catalan (Català) */
+$magicWords['ca'] = array(
+	'median' => array( 0, 'mediana' ),
+	'mean' => array( 0, 'mitjana' ),
+	'tan' => array( 0, 'tg' ),
+	'atan' => array( 0, 'arctg', 'atg' ),
+	'tanh' => array( 0, 'tgh' ),
+	'atanh' => array( 0, 'arctgh', 'atgh' ),
+	'cot' => array( 0, 'cotg', 'cotan' ),
+	'acot' => array( 0, 'arccotg', 'acotg', 'arccotan', 'acotan' ),
+	'csc' => array( 0, 'cosec' ),
+	'acsc' => array( 0, 'arccosec', 'acosec' ),
 );
 
 /** Chechen (Нохчийн) */
@@ -140,7 +154,7 @@ $magicWords['es'] = array(
 
 /** French (Français) */
 $magicWords['fr'] = array(
-	'mean' => array( 0, 'moyenne', 'mean' ),
+	'mean' => array( 0, 'moyenne' ),
 );
 
 /** Italian (Italiano) */
@@ -208,6 +222,14 @@ $magicWords['ko'] = array(
 	'acsc' => array( 0, '아크코시컨트' ),
 );
 
+/** Macedonian (Македонски) */
+$magicWords['mk'] = array(
+	'const' => array( 0, 'конст' ),
+	'median' => array( 0, 'медијана' ),
+	'mean' => array( 0, 'средно' ),
+	'exp' => array( 0, 'изр' ),
+);
+
 /** Malayalam (മലയാളം) */
 $magicWords['ml'] = array(
 	'const' => array( 0, 'സ്ഥിര' ),
@@ -226,6 +248,18 @@ $magicWords['nl'] = array(
 	'mean' => array( 0, 'gemiddelde' ),
 );
 
+/** Oriya (ଓଡ଼ିଆ) */
+$magicWords['or'] = array(
+	'const' => array( 0, 'ଥିର' ),
+	'median' => array( 0, 'ମଧ୍ୟମା' ),
+	'log' => array( 0, 'ଲଗ' ),
+	'tan' => array( 0, 'ଟାନ' ),
+	'cot' => array( 0, 'କଟ' ),
+	'cos' => array( 0, 'କସ' ),
+	'sec' => array( 0, 'ସେକ' ),
+	'sin' => array( 0, 'ସାଇନ' ),
+);
+
 /** Portuguese (Português) */
 $magicWords['pt'] = array(
 	'median' => array( 0, 'mediana', 'median' ),
@@ -242,13 +276,13 @@ $magicWords['pt'] = array(
 
 /** Russian (Русский) */
 $magicWords['ru'] = array(
-	'const' => array( 0, 'конст', 'const' ),
-	'median' => array( 0, 'медиана', 'median' ),
-	'mean' => array( 0, 'среднее', 'mean' ),
-	'tan' => array( 0, 'tg', 'tan' ),
-	'atan' => array( 0, 'arctg', 'atan', 'arctan' ),
-	'cot' => array( 0, 'ctg', 'cot' ),
-	'acot' => array( 0, 'arcctg', 'acot', 'arccot' ),
+	'const' => array( 0, 'конст' ),
+	'median' => array( 0, 'медиана' ),
+	'mean' => array( 0, 'среднее' ),
+	'tan' => array( 0, 'tg' ),
+	'atan' => array( 0, 'arctg' ),
+	'cot' => array( 0, 'ctg' ),
+	'acot' => array( 0, 'arcctg' ),
 );
 
 /** Swedish (Svenska) */

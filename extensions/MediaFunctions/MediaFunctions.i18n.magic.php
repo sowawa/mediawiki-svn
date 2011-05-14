@@ -24,13 +24,13 @@ $magicWords['en'] = array(
 
 /** Arabic (العربية) */
 $magicWords['ar'] = array(
-	'mediamime' => array( 0, 'ميم_الميديا', 'mediamime' ),
-	'mediasize' => array( 0, 'حجم_الميديا', 'mediasize' ),
-	'mediaheight' => array( 0, 'ارتفاع_الميديا', 'mediaheight' ),
-	'mediawidth' => array( 0, 'عرض_الميديا', 'mediawidth' ),
-	'mediadimensions' => array( 0, 'أبعاد_الميديا', 'mediadimensions' ),
-	'mediaexif' => array( 0, 'إكسيف_الميديا', 'mediaexif' ),
-	'mediapages' => array( 0, 'صفحات_الميديا', 'mediapages' ),
+	'mediamime' => array( 0, 'ميم_الميديا' ),
+	'mediasize' => array( 0, 'حجم_الميديا' ),
+	'mediaheight' => array( 0, 'ارتفاع_الميديا' ),
+	'mediawidth' => array( 0, 'عرض_الميديا' ),
+	'mediadimensions' => array( 0, 'أبعاد_الميديا' ),
+	'mediaexif' => array( 0, 'إكسيف_الميديا' ),
+	'mediapages' => array( 0, 'صفحات_الميديا' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
@@ -53,6 +53,14 @@ $magicWords['ce'] = array(
 	'mediadimensions' => array( 0, 'медиабарамаш', 'размерымедиа', 'mediadimensions' ),
 );
 
+/** French (Français) */
+$magicWords['fr'] = array(
+	'mediasize' => array( 0, 'taillemédia' ),
+	'mediaheight' => array( 0, 'hauteurmédia' ),
+	'mediawidth' => array( 0, 'largeurmédia' ),
+	'mediadimensions' => array( 0, 'dimensionsmédia' ),
+);
+
 /** Japanese (日本語) */
 $magicWords['ja'] = array(
 	'mediamime' => array( 0, 'メディアマイム' ),
@@ -62,6 +70,17 @@ $magicWords['ja'] = array(
 	'mediadimensions' => array( 0, 'メディア寸法' ),
 	'mediaexif' => array( 0, 'メディアexif' ),
 	'mediapages' => array( 0, 'メディアページ' ),
+);
+
+/** Macedonian (Македонски) */
+$magicWords['mk'] = array(
+	'mediamime' => array( 0, 'снимкаmime' ),
+	'mediasize' => array( 0, 'снимкаголемина' ),
+	'mediaheight' => array( 0, 'снимкависина' ),
+	'mediawidth' => array( 0, 'снимкаширина' ),
+	'mediadimensions' => array( 0, 'снимкадимензии' ),
+	'mediaexif' => array( 0, 'снимкаexif' ),
+	'mediapages' => array( 0, 'снимкастраници' ),
 );
 
 /** Malayalam (മലയാളം) */
@@ -95,11 +114,11 @@ $magicWords['nl'] = array(
 
 /** Russian (Русский) */
 $magicWords['ru'] = array(
-	'mediamime' => array( 0, 'mimeмедиа', 'mediamime' ),
-	'mediasize' => array( 0, 'размермедиа', 'mediasize' ),
-	'mediaheight' => array( 0, 'высотамедиа', 'mediaheight' ),
-	'mediawidth' => array( 0, 'ширинамедиа', 'mediawidth' ),
-	'mediadimensions' => array( 0, 'размерымедиа', 'mediadimensions' ),
-	'mediaexif' => array( 0, 'exifмедиа', 'mediaexif' ),
-	'mediapages' => array( 0, 'медиастраницы', 'mediapages' ),
+	'mediamime' => array( 0, 'mimeмедиа' ),
+	'mediasize' => array( 0, 'размермедиа' ),
+	'mediaheight' => array( 0, 'высотамедиа' ),
+	'mediawidth' => array( 0, 'ширинамедиа' ),
+	'mediadimensions' => array( 0, 'размерымедиа' ),
+	'mediaexif' => array( 0, 'exifмедиа' ),
+	'mediapages' => array( 0, 'медиастраницы' ),
 );

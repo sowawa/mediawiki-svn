@@ -1,4 +1,7 @@
 <?php
+/**
+ *
+ */
 
 $magicWords = array();
 
@@ -9,7 +12,7 @@ $magicWords['en'] = array(
 
 /** Arabic (العربية) */
 $magicWords['ar'] = array(
-	'plot' => array( 0, 'رسم', 'plot' ),
+	'plot' => array( 0, 'رسم' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
@@ -30,4 +33,19 @@ $magicWords['es'] = array(
 /** Japanese (日本語) */
 $magicWords['ja'] = array(
 	'plot' => array( 0, 'プロット' ),
+);
+
+/** Macedonian (Македонски) */
+$magicWords['mk'] = array(
+	'plot' => array( 0, 'исцртај' ),
+);
+
+/** Russian (Русский) */
+$magicWords['ru'] = array(
+	'plot' => array( 0, 'рисовать' ),
+);
+
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
+$magicWords['sr-ec'] = array(
+	'plot' => array( 0, 'нацрт' ),
 );

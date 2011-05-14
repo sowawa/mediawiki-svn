@@ -1,4 +1,7 @@
 <?php
+/**
+ *
+ */
 
 $magicWords = array();
 
@@ -9,7 +12,7 @@ $magicWords['en'] = array(
 
 /** Arabic (العربية) */
 $magicWords['ar'] = array(
-	'sgallery' => array( 0, 'معرض_سلس', 'sgallery' ),
+	'sgallery' => array( 0, 'معرض_سلس' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
@@ -27,6 +30,11 @@ $magicWords['ja'] = array(
 	'sgallery' => array( 0, 'Sギャラリー' ),
 );
 
+/** Macedonian (Македонски) */
+$magicWords['mk'] = array(
+	'sgallery' => array( 0, 'мгалерија' ),
+);
+
 /** Marathi (मराठी) */
 $magicWords['mr'] = array(
 	'sgallery' => array( 0, 'मृदूदिर्घा', 'sgallery' ),
@@ -40,4 +48,9 @@ $magicWords['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $magicWords['nl'] = array(
 	'sgallery' => array( 0, 'sgalerij' ),
+);
+
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
+$magicWords['sr-ec'] = array(
+	'sgallery' => array( 0, 'сгалерија' ),
 );
