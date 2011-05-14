@@ -11,6 +11,11 @@ div#webfonts-fonts{
 }
 
 
+div#webfonts-menu .menu ul{
+	padding:5px!important;
+}
+
+
 div#webfonts-fonts li{
 	margin: 0;
 	padding:5px;
