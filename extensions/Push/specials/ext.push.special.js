@@ -50,20 +50,23 @@
 		}
 	}
 	
+	function appendAndScroll( item ) {
+		var box = $('#pushResultDiv');
+		var innerBox = $('#pushResultDiv > .innerResultBox');
+		var atBottom = Math.abs(innerBox.offset().top) + box.height() + box.offset().top >= innerBox.outerHeight();		
+		
+		resultList.append( item );
+		
+		if ( atBottom ) {
+			box.attr( {'scrollTop': box.attr( 'scrollHeight' )} );
+		}		
+	}
+	
 	function startPush( pageName, targetOffset, listItem ) {
 		if ( targetOffset == 0 ) {
 			var listItem = $( '<li />' );
 			listItem.text( mediaWiki.msg( 'push-special-item-pushing', pageName ) );
-			
-			var box = $('#pushResultDiv');
-			var innerBox = $('#pushResultDiv > .innerResultBox');
-			var atBottom = Math.abs(innerBox.offset().top) + box.height() + box.offset().top >= innerBox.outerHeight();
-			
-			resultList.append( listItem );
-			
-			if ( atBottom ) {
-				box.attr( {'scrollTop': box.attr( 'scrollHeight' )} );
-			}
+			appendAndScroll( listItem );
 		}
 		
 		var currentBatchLimit = Math.min( targetOffset + batchSize, targets.length );
@@ -222,7 +225,7 @@
 	}	
 	
 	function showCompletion() {
-		resultList.append( $( '<li />' ).append( $( '<b />' ).text( mediaWiki.msg( 'push-special-push-done' ) ) ) );
+		appendAndScroll( $( '<li />' ).append( $( '<b />' ).text( mediaWiki.msg( 'push-special-push-done' ) ) ) );
 	}
 	
 } ); })(jQuery);
