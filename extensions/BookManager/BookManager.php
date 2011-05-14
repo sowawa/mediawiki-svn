@@ -41,11 +41,12 @@ $wgParserTestFiles[] = $dir . "/BookManagerParserTests.txt";
 $wgAutoloadClasses['BookManagerCore'] = $dir . '/BookManager.body.php';
 $wgAutoloadClasses['BookManagerNavBar'] = $dir . '/BookManager.body.php';
 $wgAutoloadClasses['PrintVersion'] = $dir . '/BookManager.body.php';
-$wgExtensionMessagesFiles['BookManager'] = $dir . '/BookManager.i18n.php';
-$wgExtensionMessagesFiles['BookManagerMagic'] = $dir . '/BookManager.i18n.magic.php';
-$wgExtensionAliasesFiles['BookManager'] = $dir . '/BookManager.alias.php';
 $wgSpecialPages['PrintVersion'] = 'PrintVersion';
 $wgSpecialPageGroups['PrintVersion'] = 'other';
+
+$wgExtensionMessagesFiles['BookManager'] = $dir . '/languages/BookManager.i18n.php';
+$wgExtensionMessagesFiles['BookManagerMagic'] = $dir . '/languages/BookManager.i18n.magic.php';
+$wgExtensionAliasesFiles['BookManager'] = $dir . '/languages/BookManager.alias.php';
 
 
 
