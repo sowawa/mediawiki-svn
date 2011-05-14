@@ -13,7 +13,7 @@
  * @licence GNU General Public Licence 3.0 or later
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
 	die( -1 );
 }
@@ -21,12 +21,12 @@ if( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['parserhook'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'WebFonts',
-	'author'         => array( 'Santhosh Thottingal', 'Niklas Laxström'),
+	'author'         => array( 'Santhosh Thottingal', 'Niklas Laxström' ),
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:WebFonts',
 	'descriptionmsg' => 'webfonts-desc',
 );
 
-$dir = dirname(__FILE__);
+$dir = dirname( __FILE__ );
 // Internationalization
 $wgExtensionMessagesFiles['WebFonts'] = "$dir/WebFonts.i18n.php";
 
@@ -46,5 +46,5 @@ $wgResourceModules['webfonts'] = array(
 	'styles' => 'css/webfonts.css',
 	'localBasePath' => dirname( __FILE__ ),
 	'remoteExtPath' => 'WebFonts',
-	'messages' => array( 'webfonts-load', 'webfonts-reset'),
+	'messages' => array( 'webfonts-load', 'webfonts-reset' ),
 );

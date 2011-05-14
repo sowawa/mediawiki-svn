@@ -10,7 +10,7 @@
 				$.webfonts.reset();
 				return;
 			}
-					
+
 			var config = mw.config.get( "wgWebFonts" );
 			if ( !font in config.fonts ) {
 				console.log( "Requested unknown font", font );
@@ -18,8 +18,8 @@
 			} else {
 				config = config.fonts[font];
 			}
-			
-			var styleString = 
+
+			var styleString =
 				"<style type='text/css'>\n@font-face {\n"
 				+ "\tfont-family: '"+font+"';\n";
 			if ( 'eot' in config ) {
@@ -27,7 +27,7 @@
 			}
 			//If the font is present locally, use it.
 			styleString += "\tsrc: local('"+ font +"'),";
-			
+
 			if ( 'woff' in config ) {
 				styleString += "\t\turl('"+config.woff+"') format('woff'),";
 			}
@@ -37,10 +37,10 @@
 			if ( 'ttf' in config ) {
 				styleString += "\t\turl('"+config.ttf+"') format('truetype');\n";
 			}
-			
+
 			styleString += "\tfont-weight: normal;\n}\n</style>\n";
 			$(styleString).appendTo("head" );
-			
+
 			//save the current font and its size. Used for reset.
 			if ( !$.webfonts.oldconfig ) {
 				$.webfonts.oldconfig = {
@@ -48,19 +48,19 @@
 					"font-size":   $("body").css('font-size')
 				}
 			}
-			
+
 			//Set the font, fallback fonts
 			$("body").css('font-family',  font +", Helvetica, Arial, sans-serif");
 			//we need to change the fonts of Input and Select explicitly.
 			$("input").css('font-family',  font +", Helvetica, Arial, sans-serif");
 			$("select").css('font-family',  font +", Helvetica, Arial, sans-serif");
-			
+
 			//scale the font of the page. Scale is in percentage.
 			// For example scale = 1.2 means  scale the font by 120 percentage
 			if ( 'scale' in config ) {
 				$.webfonts.scale("body", config.scale);
 			}
-			
+
 			if ( 'normalization' in config ) {
 					$(document).ready(function() {
 						$.webfonts.normalize(config.normalization);
@@ -69,7 +69,7 @@
 			//set the font option in cookie
 			$.cookie( 'webfonts-font', font, { 'path': '/', 'expires': 30 } );
 		},
-		
+
 		/**
 		 * Reset the font with old configuration
 		 */
@@ -83,7 +83,7 @@
 			//remove the cookie
 			$.cookie( 'webfonts-font', 'none' );
 		},
-		
+
 		/**
 		 * Scale the font of the page by given percentage
 		 * @param selecter CSS selector
@@ -95,35 +95,35 @@
 				  $(this).css("font-size", Math.round( currentSize * percentage));
 			});
 		},
-		
+
 		/**
 		 * Does a find replace of string on the page.
 		 * @param normalization_rules hashmap of replacement rules.
 		 */
 		normalize: function(normalization_rules){
-			$.each(normalization_rules, function(search, replace) { 
+			$.each(normalization_rules, function(search, replace) {
 				var search_pattern = new RegExp(search,"g");
-				return $("*").each(function(){  
-				var node = this.firstChild,  
-				  val,  
+				return $("*").each(function(){
+				var node = this.firstChild,
+				  val,
 				  new_val;
-				if ( node ) {  
-				  do {  
-					if ( node.nodeType === 3 ) {  
-					  val = node.nodeValue;  
-					  new_val = val.replace(search_pattern, replace );  
-					  if ( new_val !== val ) {  
-						  node.nodeValue = new_val;  
-					  }  
-					}  
-				  } while ( node = node.nextSibling );  
-				}  
-			  });  
+				if ( node ) {
+				  do {
+					if ( node.nodeType === 3 ) {
+					  val = node.nodeValue;
+					  new_val = val.replace(search_pattern, replace );
+					  if ( new_val !== val ) {
+						  node.nodeValue = new_val;
+					  }
+					}
+				  } while ( node = node.nextSibling );
+				}
+			  });
 			});
 		},
-	
+
 		setup: function() {
-			
+
 			var config = mw.config.get( "wgWebFontsAvailable" );
 			// Build font dropdown
 			$fontsmenu = $( '<ul />' ).attr('id','webfonts-fontsmenu');
@@ -133,12 +133,12 @@
 					.attr("name","font")
 					.attr("id","webfont-"+config[scheme])
 					.attr("value",config[scheme] );
-						
+
 				$fontmenuitem = $( '<li />' )
 					.val( config[scheme] )
 					.append( $fontlink )
 					.append( config[scheme] );
-						
+
 				haveSchemes = true;
 				//some closure trick :)
 				(function (font) {
@@ -155,36 +155,36 @@
 					.attr("value","webfont-none")
 					.click( function( event ) {
 						$.webfonts.set( 'none');
-					});	
+					});
 			$resetlinkitem = $( '<li />' )
 				.val( 'none')
-				.append( $resetlink )	
+				.append( $resetlink )
 				.append( mw.msg("webfonts-reset"));
-				
+
 			$fontsmenu.append($resetlinkitem);
 
 			if ( !haveSchemes ) {
 				// No schemes available, don't show the tool
 				return;
 			}
-			
+
 			var $menudiv = $( '<div />' ).attr('id','webfonts-fonts')
 			.addClass( 'menu' )
 			.append( $fontsmenu )
 			.append();
-			
+
 			var $div = $( '<div />' ).attr('id','webfonts-menu')
 			.addClass( 'webfontMenu' )
 			.append( "<a href='#'>"+ mw.msg("webfonts-load")+"</a>")
 			.append( $menudiv );
-			
+
 			//this is the fonts link
 			var $li = $( '<li />' )
 			.append( $div );
-			
+
 			//add to the left of top personal links
 			$($( '#p-personal ul' )[0]).prepend( $li );
-			
+
 			//see if there is a font in cookie
 			cookie_font = $.cookie('webfonts-font');
 			if(cookie_font == null){
@@ -202,7 +202,7 @@
 		}
 
 	}
-	
+
 	$( document ).ready( function() {
 		$.webfonts.setup();
 	} );
