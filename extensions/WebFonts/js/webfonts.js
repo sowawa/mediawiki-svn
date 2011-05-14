@@ -133,11 +133,16 @@
 					.attr("name","font")
 					.attr("id","webfont-"+config[scheme])
 					.attr("value",config[scheme] );
-
+					
+				$fontlabel =  $( '<label />' )
+					.attr("for","webfont-"+config[scheme])
+					.append( $fontlink )
+					.append( config[scheme] )
+							
 				$fontmenuitem = $( '<li />' )
 					.val( config[scheme] )
-					.append( $fontlink )
-					.append( config[scheme] );
+					.append( $fontlabel )
+					
 
 				haveSchemes = true;
 				//some closure trick :)
@@ -153,14 +158,21 @@
 					.attr("type","radio")
 					.attr("name","font")
 					.attr("value","webfont-none")
+					.attr("id","webfont-none")
 					.click( function( event ) {
 						$.webfonts.set( 'none');
 					});
+					
+			$resetlabel =  $( '<label />' )
+					.attr("for","webfont-none")
+					.append( $resetlink )
+					.append( mw.msg("webfonts-reset"));
+					
 			$resetlinkitem = $( '<li />' )
 				.val( 'none')
-				.append( $resetlink )
-				.append( mw.msg("webfonts-reset"));
+				.append( $resetlabel )	
 
+				
 			$fontsmenu.append($resetlinkitem);
 
 			if ( !haveSchemes ) {
