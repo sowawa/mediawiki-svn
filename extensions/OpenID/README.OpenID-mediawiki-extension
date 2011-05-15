@@ -360,14 +360,14 @@ LocalSettings.php file. Please read carefully.
 == Setups of standard scenarios ==
 This section shows some settings for typical applications.
 
-Example 1
+Example 1:
 
 The following code in $IP/LocalSettings.php sets a MediaWiki for allowing
 user name account creations by Sysops only ("account creation by mail").
 
-So-defined users can login to their Sysop-created accounts but according
-to the settinf only with an OpenID identity. They need to associate their OpenID
-with their user name and user account. This step is only required once.
+Sysop-defined users can then login to their accounts but only with an OpenID
+identity. They need to associate their OpenID identity with their user name and
+user account; this step is only required once.
 
 The other setting allows user pages of this MediaWiki to serve as OpenID
 identities on another OpenID-aware site:
