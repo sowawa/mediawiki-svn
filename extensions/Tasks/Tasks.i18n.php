@@ -3496,6 +3496,13 @@ $messages['sl'] = array(
 	'tasks_table_header_page' => 'Stran',
 );
 
+/** Somali (Soomaaliga)
+ * @author Maax
+ */
+$messages['so'] = array(
+	'tasks_search_form_title' => 'Raadi',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић

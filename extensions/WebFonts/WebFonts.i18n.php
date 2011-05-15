@@ -187,6 +187,7 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Santhosh
  */
 $messages['ml'] = array(
@@ -194,7 +195,7 @@ $messages['ml'] = array(
 	'webfonts-desc' => 'മീഡിയവിക്കി താളുകളില്‍ ഫോണ്ടുകള്‍ എംബെഡ് ചെയ്യുക',
 	'webfonts-load' => 'ഫോണ്ടുകള്‍',
 	'webfonts-reset' => 'പഴയപടിയാക്കുക',
-	'webfonts-disable-preference' => 'ഫോണ്ട് എംബഡ് ചെയ്യാതിരിക്കുക(വെബ്ഫോണ്ട്)',
+	'webfonts-disable-preference' => 'ഫോണ്ട് എംബഡ് ചെയ്യാതിരിക്കുക (വെബ്ഫോണ്ട്)',
 );
 
 /** Dutch (Nederlands)
@@ -297,6 +298,7 @@ $messages['vi'] = array(
 	'webfonts' => 'Phông chữ Web',
 	'webfonts-desc' => 'Nhúng phông chữ vào các trang',
 	'webfonts-load' => 'Chọn phông chữ',
+	'webfonts-reset' => 'Mặc định lại',
 	'webfonts-disable-preference' => 'Tắt các phông chữ được nhúng vào (Phông chữ Web)',
 );
 

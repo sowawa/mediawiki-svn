@@ -432,7 +432,7 @@ $messages['de'] = array(
 	'vector-collapsiblenav-more' => 'Weitere Sprachen',
 	'vector-editwarning-warning' => 'Das Verlassen dieser Seite kann dazu führen, dass die Änderungen verloren gehen.
 Als angemeldeter Benutzer kann das Anzeigen dieser Warnung im „Bearbeiten“-Bereich der Einstellungen abgeschaltet werden.',
-	'vector-editwarning-preference' => 'Warnen, wenn eine zur Bearbeitung geöffnete Seite verlassen wird, die nicht gespeicherte Änderungen enthält',
+	'vector-editwarning-preference' => 'Warnen, sofern eine zur Bearbeitung geöffnete Seite verlassen wird, die nicht gespeicherte Änderungen enthält',
 	'vector-simplesearch-search' => 'Suche',
 	'vector-simplesearch-containing' => 'Volltextsuche nach …',
 	'vector-noexperiments-preference' => 'Nicht an Funktions-Experimenten teilnehmen',
@@ -1496,6 +1496,13 @@ To opozorilo lahko onemogočite v razdelku »Urejanje« svojih nastavitev.',
 	'vector-noexperiments-preference' => 'Izključi me iz prihodnjih preizkusov',
 );
 
+/** Somali (Soomaaliga)
+ * @author Maax
+ */
+$messages['so'] = array(
+	'vector-simplesearch-search' => 'Raadi',
+);
+
 /** Albanian (Shqip)
  * @author Mikullovci11
  * @author Olsi
@@ -1720,7 +1727,7 @@ $messages['vep'] = array(
  */
 $messages['vi'] = array(
 	'vector' => 'Giao diện tích hợp với Vectơ',
-	'vector-desc' => 'Hoàn thiện các phần giao diện để tích hợp với hình dạng Vectơ.',
+	'vector-desc' => 'Hoàn thiện các phần giao diện để tích hợp với hình dạng Vectơ',
 	'vector-collapsiblenav-preference' => 'Bật trình đơn chuyển hướng gấp lại được ở bên phải trong bề ngoài Vectơ',
 	'vector-collapsiblenav-more' => 'Thêm ngôn ngữ khác',
 	'vector-editwarning-warning' => 'Rời khỏi trang này sẽ khiến bạn mất các sửa đổi đã thực hiện.

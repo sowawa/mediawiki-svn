@@ -10270,6 +10270,14 @@ Prosimo, da jo za uporabo te razširitve ustvarite ali spremenite.',
 	'configure-farmer-extensions-list' => '[[Special:Extensions|Seznam razširitev, ki so na voljo za ta wiki]].',
 );
 
+/** Somali (Soomaaliga)
+ * @author Maax
+ */
+$messages['so'] = array(
+	'configure-js-search-legend' => 'Qaabka raadinta',
+	'configure-section-search' => 'Raadi',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic

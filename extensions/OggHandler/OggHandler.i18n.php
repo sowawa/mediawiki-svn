@@ -811,15 +811,6 @@ $messages['de'] = array(
 	'ogg-oggThumb-failed' => 'oggThumb konnte kein Miniaturbild erstellen.',
 );
 
-/** German (formal address) (‪Deutsch (Sie-Form)‬)
- * @author Raimond Spekking
- * @author Umherirrender
- */
-$messages['de-formal'] = array(
-	'ogg-no-player' => 'Ihr System scheint über keine Abspielsoftware zu verfügen. Bitte installieren Sie <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">eine Abspielsoftware</a>.',
-	'ogg-no-xiphqt' => 'Ihr System scheint nicht über die XiphQT-Komponente für QuickTime zu verfügen. QuickTime kann ohne diese Komponente keine Ogg-Dateien abspielen.Bitte <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">laden Sie XiphQT</a> oder wählen Sie eine andere Abspielsoftware.',
-);
-
 /** Zazaki (Zazaki)
  * @author Aspar
  * @author Xoser

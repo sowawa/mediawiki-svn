@@ -1261,6 +1261,13 @@ $messages['sl'] = array(
 	'right-edituser-exempt' => 'Drugi ne morejo urediti to uporabniško nastavitev',
 );
 
+/** Somali (Soomaaliga)
+ * @author Maax
+ */
+$messages['so'] = array(
+	'edituser-dosearch' => 'Raadi',
+);
+
 /** Albanian (Shqip)
  * @author Puntori
  */

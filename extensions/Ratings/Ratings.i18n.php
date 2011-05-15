@@ -105,6 +105,13 @@ Le vote actuel de l'utilisateur s'affichera initialement lorsqu'il a déjà vot�
 	'ratings-no-votes-yet' => "Personne n'a encore classé ceci.",
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'ratings-no-votes-yet' => 'Ninguén avaliou isto aínda.',
+);
+
 /** Hebrew (עברית)
  * @author Amire80
  */

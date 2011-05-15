@@ -114,11 +114,13 @@ $messages['gl'] = array(
 	'wikitweet-moretweets' => 'Máis chíos...',
 	'wikitweet-infoajax' => 'emprega tecnoloxía AJAX e actualízase automaticamente cada 5 segundos sen ter que recargar a páxina.',
 	'wikitweet-submit' => 'Chiar',
+	'wikitweet-submitandmail' => 'Chiar e enviar por correo electrónico',
 	'wikitweet-intheroom' => 'Está na sala',
 	'wikitweet-subscribe' => 'seguir',
 	'wikitweet-subscribed' => 'seguindo',
 	'wikitweet-unsubscribe' => 'deixar de seguir',
 	'wikitweet-delete' => 'borrar',
+	'wikitweet-inform' => 'polo informador',
 	'wikitweet-private' => 'privado',
 	'wikitweet-answer' => 'resposta a',
 	'wikitweet-anonymous' => 'anónimo',
@@ -172,7 +174,11 @@ $messages['lb'] = array(
 	'wikitweet-subscribe' => 'abonnéieren',
 	'wikitweet-delete' => 'läschen',
 	'wikitweet-private' => 'privat',
+	'wikitweet-answer' => 'Äntwert op',
 	'wikitweet-anonymous' => 'anonym',
+	'wikitweet-timeago' => 'viru(n) $1',
+	'wikitweet-inthefuture' => 'An Zukunft!',
+	'wikitweet-fewsecondsago' => 'Virun e puer Sekonnen',
 );
 
 /** Macedonian (Македонски)

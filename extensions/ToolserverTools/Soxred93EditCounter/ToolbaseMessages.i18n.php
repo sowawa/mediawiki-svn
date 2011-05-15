@@ -848,6 +848,7 @@ $messages['ku-latn'] = array(
 $messages['lb'] = array(
 	'toolbase-header-title' => 'Dem X! seng Tools (BETA)',
 	'toolbase-header-bugs' => 'Softwarefeeler (Bugs)',
+	'toolbase-header-sitenotice' => "'Global Toolserver' Notiz vum Site: $1",
 	'toolbase-replag' => 'De Retard vum Server ass $1',
 	'toolbase-replag-years' => 'Joer',
 	'toolbase-replag-months' => 'Méint',
@@ -874,6 +875,13 @@ $messages['lb'] = array(
 	'toolbase-autoedits-totalall' => 'Total vun den Ännerungen',
 	'toolbase-autoedits-pct' => 'Prozentsaz vun den automateschen Ännerungen',
 	'toolbase-main-title' => 'Wëllkomm!',
+	'toolbase-main-content' => 'Wëllkomm beim X! sengen Toolen!
+
+D\'Sammlung vun den Toole gi fir de <a href="$1">Symfony</a>-Framework adaptéiert. Dat dauert zwar e bësse, awer elo misst et goen!
+
+Eng Lëscht vun den Toolen déi elo mat deem Framework fonctionnéieren, kuckt an déi riets Säiteläischt.
+
+Feeler kënnen op <a href="$2">Google Code</a> gemellt ginn.',
 	'toolbase-main-404' => 'Fichier gouf net fonnt',
 	'toolbase-main-404-content' => 'Oups! Et gouf keng Säit fonnt!
 

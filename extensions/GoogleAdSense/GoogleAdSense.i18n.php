@@ -421,10 +421,11 @@ $messages['rue'] = array(
 );
 
 /** Sinhala (සිංහල)
+ * @author Singhalawap
  * @author නන්දිමිතුරු
  */
 $messages['si'] = array(
-	'googleadsense-desc' => '[http://www.google.com/adsense ගූගල් ප්‍රචාරකවේදිකාව] පැති කොටුවට එක් කරයි',
+	'googleadsense-desc' => '[http://www.google.com/adsense ගූගල් දැන්වීම්වේදිකාව] පැති කොටුවට එක් කරයි',
 );
 
 /** Slovak (Slovenčina)

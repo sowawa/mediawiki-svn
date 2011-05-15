@@ -5304,6 +5304,13 @@ $wgGoogleMapsMessages['sl'] = array(
 	'gm-back' => 'nazaj',
 );
 
+/** Somali (Soomaaliga)
+ * @author Maax
+ */
+$wgGoogleMapsMessages['so'] = array(
+	'gm-search' => 'Raadi',
+);
+
 /** Albanian (Shqip)
  * @author Puntori
  */

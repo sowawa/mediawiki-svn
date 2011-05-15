@@ -6301,6 +6301,18 @@ $messages['sl'] = array(
 	'deletequeue-case-reason' => 'Razlog:',
 );
 
+/** Somali (Soomaaliga)
+ * @author Maax
+ */
+$messages['so'] = array(
+	'deletequeue-list-search-legend' => 'Raadi boggaga',
+	'deletequeue-list-search' => 'Raadi',
+	'deletequeue-list-anyqueue' => '(wax kasto)',
+	'deletequeue-list-header-expiry' => 'waxoo dhacaa',
+	'deletequeue-case-reason' => 'Sababta:',
+	'deletequeue-case-expiry' => 'Waxoo dhacaa:',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Жељко Тодоровић

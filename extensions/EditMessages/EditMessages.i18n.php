@@ -1415,6 +1415,14 @@ $messages['scn'] = array(
 	'editmsg-search' => "Va' cerca",
 );
 
+/** Sinhala (සිංහල)
+ * @author Singhalawap
+ */
+$messages['si'] = array(
+	'editmsg-search' => 'සොයන්න',
+	'editmsg-new-search' => 'අලුත් සෙවීමක්',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -1435,6 +1443,14 @@ $messages['sk'] = array(
 	'editmsg-no-patch' => 'Nebolo možné vykonat príkaz „patch“',
 	'editmsg-patch-failed' => 'Použitie záplaty zlyhalo s návratovou hodnotou $1',
 	'editmsg-patch-success' => 'Záplata úspešne použitá.',
+);
+
+/** Somali (Soomaaliga)
+ * @author Maax
+ */
+$messages['so'] = array(
+	'editmsg-search' => 'Raadi',
+	'editmsg-new-search' => 'Raadin cusub',
 );
 
 /** Albanian (Shqip)

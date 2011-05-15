@@ -1002,6 +1002,13 @@ $messages['sl'] = array(
 	'abcdownload' => 'Prenos:',
 );
 
+/** Somali (Soomaaliga)
+ * @author Maax
+ */
+$messages['so'] = array(
+	'abcdownload' => 'Download:',
+);
+
 /** Albanian (Shqip)
  * @author Cradel
  * @author Puntori

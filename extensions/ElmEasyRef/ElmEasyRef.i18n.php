@@ -56,6 +56,15 @@ $messages['fr'] = array(
 	'elm-easyref-close' => 'Fermer',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'elm-easyref-desc' => 'Engadir un campo emerxente para mostrar o contido da referencia',
+	'elm-easyref-ref' => 'Referencia $1',
+	'elm-easyref-close' => 'Pechar',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -136,6 +145,13 @@ $messages['ru'] = array(
 	'elm-easyref-desc' => 'Добавляет всплывающее поле для отображения содержания страницы по ссылке',
 	'elm-easyref-ref' => 'Ссылка $1',
 	'elm-easyref-close' => 'Закрыть',
+);
+
+/** Somali (Soomaaliga)
+ * @author Maax
+ */
+$messages['so'] = array(
+	'elm-easyref-close' => 'xir',
 );
 
 /** Telugu (తెలుగు)

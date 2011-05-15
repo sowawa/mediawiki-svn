@@ -1234,6 +1234,13 @@ Napíšte niekoľko prvých znakov a stlačte tlačidlo odoslať. Vyhľadajú sa
 Po kliknutí na šípku sa zobrazia všetky stránky indexované pod daným názvom.',
 );
 
+/** Somali (Soomaaliga)
+ * @author Maax
+ */
+$messages['so'] = array(
+	'index-search' => 'Raadi:',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић

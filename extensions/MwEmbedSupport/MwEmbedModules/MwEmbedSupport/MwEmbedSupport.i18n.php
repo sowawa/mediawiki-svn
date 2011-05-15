@@ -867,7 +867,7 @@ $messages['vec'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'mwe-loading' => 'đang tải …',
+	'mwe-loading' => 'Đang tải…',
 	'mwe-size-kilobytes' => '$1 kB',
 	'mwe-error_load_lib' => 'Lỗi: JavaScript $1 không truy xuất được hoặc không định nghĩa $2',
 	'mwe-apiproxy-setup' => 'Đang thiết lập proxy API',

@@ -890,7 +890,6 @@ $messages['de-formal'] = array(
 	'articlefeedback-survey-question-useful' => 'Glauben Sie, dass die abgegebenen Einschätzungen nützlich und verständlich sind?',
 	'articlefeedback-survey-question-comments' => 'Haben Sie noch weitere Anmerkungen?',
 	'articlefeedback-survey-title' => 'Bitte beantworten Sie uns ein paar Fragen',
-	'articlefeedback-survey-thanks' => 'Vielen Dank für Ihre Rückmeldung.',
 	'articlefeedback-error' => 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.',
 	'articlefeedback-form-panel-instructions' => 'Bitte nehmen Sie sich kurz Zeit, diesen Seite einzuschätzen.',
 	'articlefeedback-field-trustworthy-tip' => 'Haben Sie den Eindruck, dass diese Seite über genügend Quellenangaben verfügt und diese zudem aus vertrauenswürdigen Quellen stammen?',
@@ -3175,6 +3174,8 @@ Proszę spróbować ponownie później.',
 	'articleFeedback-table-caption-recentlows' => 'Najniższe ostatnio',
 	'articleFeedback-table-heading-page' => 'Strona',
 	'articleFeedback-table-heading-average' => 'Średnio',
+	'articleFeedback-copy-above-highlow-tables' => 'To jest rozwiązanie eksperymentalne. Wyraź swoją opinię na jego temat na [$1 stronie dyskusji].',
+	'articleFeedback-copy-below-highlow-tables' => 'Tabele uwzględniają strony, które otrzymały co najmniej 10 głosów w ciągu ostatnich 24 godzin. Średnie są obliczane ze wszystkich ocen wystawionych w ciągu ostatnich 24 godzin.',
 );
 
 /** Piedmontese (Piemontèis)

@@ -164,6 +164,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'sidebardonatebox-desc' => 'Setzt eng personaliséiert Donatiouns-Këscht an de säitleche Menü derbäi',
+	'DONATE' => 'Maacht en Don',
 );
 
 /** Macedonian (Македонски)

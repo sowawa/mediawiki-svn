@@ -815,6 +815,13 @@ $messages['sk'] = array(
 	'searchbox-namespaces' => 'Menné priestory:',
 );
 
+/** Somali (Soomaaliga)
+ * @author Maax
+ */
+$messages['so'] = array(
+	'searchbox-search' => 'Raadi',
+);
+
 /** Albanian (Shqip)
  * @author Mikullovci11
  */

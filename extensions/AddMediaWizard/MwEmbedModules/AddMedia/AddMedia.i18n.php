@@ -4147,8 +4147,16 @@ $messages['ko'] = array(
 	'mwe-uploadwarning' => '파일 올리기 경고',
 	'mwe-unknown-error' => '알 수 없는 오류:',
 	'mwe-fileexists-thumb' => '이미 존재하는 파일',
+	'mwe-filestatus' => '저작권 정보:',
+	'mwe-loading-add-media-wiz' => '미디어 추가 마법사 로드',
+	'mwe-imported_from' => '$1는(은) [$2 $3]으로부터 추가되었습니다. 더 많은 정보는 원본 [$4 정보 페이지] 에서 확인하십시오.',
+	'mwe-import-description' => '$1, $2로부터 추가됨.',
+	'mwe-select_file' => '파일 선택',
+	'mwe-select_ownwork' => '나는 전적으로 내 소유의 작품을 업로드 하며, 다음과 같은 라이선스를 적용합니다:',
 	'mwe-upload' => '파일 올리기',
 	'mwe-destfilename' => '파일의 새 이름:',
+	'mwe-summary' => '편집 요약',
+	'mwe-date-of-work' => '작업 날짜',
 	'mwe-error_not_loggedin' => '로그인 되어있지 않거나 파일 올리기 권한이 없습니다',
 	'mwe-ignore-any-warnings' => '모든 경고를 무시하기',
 	'mwe-add_media_wizard' => '미디어 추가 마법사',
@@ -6586,6 +6594,14 @@ Lahko $1 in nato $2',
 	'mwe-am-this_wiki-title' => 'Ta wiki',
 	'mwe-am-this_wiki-desc' => 'Lokalni wiki',
 	'mwe-upload-multi' => 'Naloži {{PLURAL:$1|datoteko|datoteki|datoteke}}',
+);
+
+/** Somali (Soomaaliga)
+ * @author Maax
+ */
+$messages['so'] = array(
+	'mwe-am-no_results' => 'Wax natiijo ah maka soo bixin  <b>$1</b>',
+	'mwe-return-search-results' => 'Ku noqo natiijooyinka ka soo baxay raadinta',
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)

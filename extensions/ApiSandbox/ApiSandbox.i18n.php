@@ -553,7 +553,7 @@ Sumangguni sa [http://www.mediawiki.org/wiki/API dokumentasyon ng API] para sa k
  */
 $messages['vi'] = array(
 	'apisandbox' => 'Chỗ thử API',
-	'apisb-no-js' => "'''Lỗi''': Tính năng này yêu cầu JavaScript.",
+	'apisb-no-js' => "'''Lỗi:''' Tính năng này cần JavaScript.",
 	'apisb-api-disabled' => 'API đã bị vô hiệu hóa trên trang web này.',
 	'apisb-parameters' => 'Các tham số',
 	'apisb-result' => 'Kết quả',

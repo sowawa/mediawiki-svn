@@ -1393,6 +1393,13 @@ $messages['sl'] = array(
 	'refhelper-year' => 'Leto:',
 );
 
+/** Somali (Soomaaliga)
+ * @author Maax
+ */
+$messages['so'] = array(
+	'refhelper-search' => 'Raadi',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */

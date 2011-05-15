@@ -2069,6 +2069,13 @@ $messages['sl'] = array(
 	'recordadmin-buttonsave' => 'Shrani',
 );
 
+/** Somali (Soomaaliga)
+ * @author Maax
+ */
+$messages['so'] = array(
+	'recordadmin-buttonsearch' => 'Raadi',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић

@@ -26,9 +26,11 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
 	'bookmanager-desc' => '{{desc}}',
+	'bm-booktools-section' => 'Section header (h5) for sidebar menu. It contains tools for the current book.',
 );
 
 /** Arabic (العربية)
@@ -131,7 +133,9 @@ $messages['cs'] = array(
  * @author Purodha
  */
 $messages['de'] = array(
-	'bookmanager-desc' => 'Hilfsprogramme für Bücher',
+	'bookmanager-desc' => 'Stellt Hilfsmittel für Bücher bereit',
+	'bm-booktools-section' => 'Hilfsmittel für Bücher',
+	'bm-randomchapter-link' => 'Zufälliges Kapitel',
 	'bm-printversion' => 'Druckversion',
 	'bm-printversion-desc' => 'Ergänzt eine Spezialseite zum [[Special:PrintVersion|Erstellen einer Druckversion]] eines Buchs',
 	'bm-printversion-no-book' => 'Bitte den Namen des Buchs angeben, für das eine Druckversion erstellt werden soll.',
@@ -190,10 +194,14 @@ $messages['fa'] = array(
 
 /** French (Français)
  * @author Crochet.david
+ * @author Faure.thomas
  * @author IAlex
+ * @author Sherbrooke
  */
 $messages['fr'] = array(
 	'bookmanager-desc' => 'Outils pour les livres',
+	'bm-booktools-section' => 'Outils du livre',
+	'bm-randomchapter-link' => 'Chapitre aléatoire',
 	'bm-printversion' => 'Version imprimable',
 	'bm-printversion-desc' => 'Génère une [[Special:PrintVersion|version imprimable]] d’un livre',
 	'bm-printversion-no-book' => 'Veuillez entrer le nom d’un livre pour obtenir sa version imprimée.',
@@ -214,6 +222,8 @@ $messages['frp'] = array(
  */
 $messages['gl'] = array(
 	'bookmanager-desc' => 'Ferramentas para libros',
+	'bm-booktools-section' => 'Ferramentas para o libro',
+	'bm-randomchapter-link' => 'Capítulo ao chou',
 	'bm-printversion' => 'Versión para imprimir',
 	'bm-printversion-desc' => 'Xera a [[Special:PrintVersion|versión para imprimir]] dun libro',
 	'bm-printversion-no-book' => 'Introduza o nome dun libro para obter a súa versión para imprimir.',
@@ -277,6 +287,8 @@ $messages['it'] = array(
  */
 $messages['ksh'] = array(
 	'bookmanager-desc' => 'Wärkzüsh för Bööscher',
+	'bm-booktools-section' => 'Wärkzüsh för_t Booch',
+	'bm-randomchapter-link' => 'Zohfallskapittel',
 	'bm-printversion' => 'Dröck_Version',
 	'bm-printversion-desc' => 'Määd en [[Special:PrintVersion|Dröck_Version]] vun enem Booch.',
 	'bm-printversion-no-book' => 'Bes esu jood un donn dä  Name vun enem Booch aanjävve, öm aan däm sing Dröck_Version ze kumme.',

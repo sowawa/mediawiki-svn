@@ -9569,6 +9569,13 @@ $messages['sl'] = array(
 	'mv_history' => 'Zgodovina',
 );
 
+/** Somali (Soomaaliga)
+ * @author Maax
+ */
+$messages['so'] = array(
+	'mv_tool_search' => 'Raadi',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic
