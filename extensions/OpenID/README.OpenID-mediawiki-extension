@@ -385,8 +385,10 @@ $wgGroupPermissions['*'    ]['createtalk']      = false;
 
 Example 2:
 
-The follwing setting configures a MediaWiki so that anyone can create an account
-and can log in with either their userid/password - or with their OpenID identity.
+The following setting configures a MediaWiki so that anyone can create an
+account and can log in with either their userid/password - or with their OpenID
+identity.
+
 During first-time log-ins with OpenID, users see only a box where they can enter
 their wanted username for the account creation, or to be associated with the
 OpenID identity when they enter a username of an existing account (the
