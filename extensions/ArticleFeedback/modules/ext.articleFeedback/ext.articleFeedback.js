@@ -310,6 +310,9 @@ var config = {
 	}
 };
 
+// Do not show if we're viewing a redirect
+if(mw.util.getParamValue('redirect')=='no') return false;
+
 /* Load at the bottom of the article */
 var $aftDiv = $( '<div id="mw-articlefeedback"></div>' ).articleFeedback( config );
 
