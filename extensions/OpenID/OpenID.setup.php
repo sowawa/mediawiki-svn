@@ -114,6 +114,25 @@ $wgOpenIDConsumerForce = null;
 $wgOpenIDUseEmailAsNickname = false;
 
 /**
+ * when logging on:
+ * propose and allow new account names from OpenID SREG data such as fullname or nickname
+ *
+ */
+$wgOpenIDProposeUsernameFromSREG = true;
+
+/**
+ * when logging on:
+ * show option to enter and to allow a manually chosen username
+ */
+$wgOpenIDAllowManualUsername = true;
+
+/**
+ * when logging on:
+ * show option to choose and to allow an automatically generated username
+ */
+$wgOpenIDAllowAutomaticUsername = true;
+
+/**
  * Where to store transitory data.
  * Supported types are 'file', 'memcached', 'db'.
  */
@@ -144,6 +163,20 @@ $wgOpenIDOnly = false;
 $wgOpenIDClientOnly = false;
 
 /**
+ * Allow to use User pages as OpenIDs even if user is using OpenID already
+ *
+ * If true, users can use their user page URLs of this site A as OpenID
+ * on another site B even if user is using OpenID on A already.
+ *
+ * Some users might want to do that for vanity purposes or whatever.
+ *
+ * https://bugzilla.wikimedia.org/show_bug.cgi?id=18635
+ * If false, prevent serving OpenID accounts (TODO list item; done)
+ *
+ */
+$wgOpenIDAllowServingOpenIDUserAccounts = true;
+
+/**
  * If true, will show provider icons instead of the text.
  */
 $wgOpenIDShowProviderIcons = false;
@@ -162,7 +195,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'OpenID',
 	'version' => MEDIAWIKI_OPENID_VERSION,
 	'path' => __FILE__,
-	'author' => array( 'Evan Prodromou', 'Sergey Chernyshev', 'Alexandre Emsenhuber' ),
+	'author' => array( 'Evan Prodromou', 'Sergey Chernyshev', 'Alexandre Emsenhuber', 'Thomas Gries' ),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:OpenID',
 	'descriptiomsg' => 'openid-desc',
 );

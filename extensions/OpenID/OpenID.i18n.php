@@ -52,7 +52,7 @@ Please consult an [[Special:ListUsers/sysop|administrator]].',
 	'openidsuccess' => 'Verification succeeded',
 	'openidsuccesstext' => 'Verification of the OpenID URL succeeded.',
 	'openidusernameprefix' => 'OpenIDUser',
-	'openidserverlogininstructions' => 'Enter your password below to log in to $3 as user $2 (user page $1).',
+	'openidserverlogininstructions' => '$3 requests that you enter your password for your user $2 page $1 (OpenID URL)',
 	'openidtrustinstructions' => 'Check if you want to share data with $1.',
 	'openidallowtrust' => 'Allow $1 to trust this user account.',
 	'openidnopolicy' => 'Site has not specified a privacy policy.',
@@ -64,7 +64,7 @@ Please consult an [[Special:ListUsers/sysop|administrator]].',
 	'openidemail' => 'E-mail address',
 	'openidlanguage' => 'Language',
 	'openidtimezone' => 'Time zone',
-	'openidchooselegend' => 'Username choice',
+	'openidchooselegend' => 'Username and account choice',
 	'openidchooseinstructions' => 'All users need a nickname;
 you can choose one from the options below.',
 	'openidchoosenick' => 'Your nickname ($1)',
@@ -93,11 +93,10 @@ If not, try the "Continue" button.',
 	'openidlogininstructions' => '{{SITENAME}} supports the [http://openid.net/ OpenID] standard for single sign-on between websites.
 OpenID lets you log in to many different websites without using a different password for each.
 (See [http://en.wikipedia.org/wiki/OpenID Wikipedia\'s OpenID article] for more information.)
-
-If you already have an account on {{SITENAME}}, you can [[Special:UserLogin|log in]] with your username and password as usual.
-To use OpenID in the future, you can [[Special:OpenIDConvert|convert your account to OpenID]] after you have logged in normally.
-
 There are many [http://openid.net/get/ OpenID providers], and you may already have an OpenID-enabled account on another service.',
+	'openidlogininstructions-openidloginonly' => "{{SITENAME}} ''only'' allows you to log in with OpenID.",
+	'openidlogininstructions-passwordloginallowed' => 'If you already have an account on {{SITENAME}}, you can [[Special:UserLogin|log in]] with your username and password as usual.
+To use OpenID in the future, you can [[Special:OpenIDConvert|convert your account to OpenID]] after you have logged in normally.',
 	'openidupdateuserinfo' => 'Update my personal information:',
 
 	'openiddelete' => 'Delete OpenID',

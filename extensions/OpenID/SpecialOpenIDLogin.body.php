@@ -56,7 +56,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 			$this->chooseName();
 			break;
 
-		 case 'Finish': # Returning from a server
+		case 'Finish': # Returning from a server
 			$this->finish();
 			break;
 
@@ -96,7 +96,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	 * Displays the main login form
 	 */
 	function loginForm() {
-		global $wgOut, $wgOpenIDShowProviderIcons;
+		global $wgOut, $wgOpenIDShowProviderIcons, $wgOpenIDOnly;
 
 		$wgOut->addModules( $wgOpenIDShowProviderIcons ? 'ext.openid.icons' : 'ext.openid.plain' );
 
@@ -150,6 +150,11 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 			Xml::closeElement( 'fieldset' ) . Xml::closeElement( 'form' )
 		);
 		$wgOut->addWikiMsg( 'openidlogininstructions' );
+		if ( $wgOpenIDOnly ) {
+			$wgOut->addWikiMsg('openidlogininstructions-openidloginonly');
+		} else {
+			$wgOut->addWikiMsg('openidlogininstructions-passwordloginallowed');
+		}
 	}
 
 	/**
@@ -161,7 +166,8 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	 * @param $messagekey String or null: message name to display at the top
 	 */
 	function chooseNameForm( $openid, $sreg, $ax, $messagekey = null ) {
-		global $wgOut, $wgOpenIDOnly, $wgAllowRealName;
+		global $wgOut, $wgOpenIDOnly, $wgAllowRealName, $wgUser;
+		global $wgOpenIDProposeUsernameFromSREG, $wgOpenIDAllowAutomaticUsername, $wgOpenIDAllowManualUsername;
 
 		if ( $messagekey ) {
 			$wgOut->addWikiMsg( $messagekey );
@@ -218,7 +224,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 			$wgOut->addHTML(
 				Xml::openElement( 'tr' ) .
 				Xml::tags( 'td', array( 'class' => 'mw-label' ),
-					Xml::radio( 'wpNameChoice', 'existing', false, array( 'id' => 'wpNameChoiceExisting' ) )
+					Xml::radio( 'wpNameChoice', 'existing', !$def, array( 'id' => 'wpNameChoiceExisting' ) )
 				) . "\n" .
 				Xml::tags( 'td', array( 'class' => 'mw-input' ),
 					Xml::label( wfMsg( 'openidchooseexisting' ), 'wpNameChoiceExisting' ) . "<br />\n" .
@@ -230,72 +236,83 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 				) . "\n" .
 				Xml::closeElement( 'tr' ) . "\n"
 			);
-		}
-
-		# These options won't exist if we can't get them.
-		if ( array_key_exists( 'nickname', $sreg ) && $this->userNameOK( $sreg['nickname'] ) ) {
-			$wgOut->addHTML(
-				Xml::openElement( 'tr' ) .
-				Xml::tags( 'td', array( 'class' => 'mw-label' ),
-					Xml::radio( 'wpNameChoice', 'nick', !$def, array( 'id' => 'wpNameChoiceNick' ) )
-				) .
-				Xml::tags( 'td', array( 'class' => 'mw-input' ),
-					Xml::label( wfMsg( 'openidchoosenick', $sreg['nickname'] ), 'wpNameChoiceNick' )
-				) .
-				Xml::closeElement( 'tr' ) . "\n"
-			);
 			$def = true;
-		}
+		} // !$wgOpenIDOnly
 
-		# These options won't exist if we can't get them.
-		$fullname = null;
-		if ( array_key_exists( 'fullname', $sreg ) ) {
-			$fullname = $sreg['fullname'];
-		}
+		# These are only available if all visitors are allowed to create accounts
+		if ( $wgUser->isAllowed( 'createaccount' ) && !$wgUser->isBlockedFromCreateAccount() ) {
+
+		if ($wgOpenIDProposeUsernameFromSREG) {
+
+			# These options won't exist if we can't get them.
+			if ( array_key_exists( 'nickname', $sreg ) && $this->userNameOK( $sreg['nickname'] ) ) {
+				$wgOut->addHTML(
+					Xml::openElement( 'tr' ) .
+					Xml::tags( 'td', array( 'class' => 'mw-label' ),
+						Xml::radio( 'wpNameChoice', 'nick', !$def, array( 'id' => 'wpNameChoiceNick' ) )
+					) .
+					Xml::tags( 'td', array( 'class' => 'mw-input' ),
+						Xml::label( wfMsg( 'openidchoosenick', $sreg['nickname'] ), 'wpNameChoiceNick' )
+					) .
+					Xml::closeElement( 'tr' ) . "\n"
+				);
+			}
+
+			# These options won't exist if we can't get them.
+			$fullname = null;
+			if ( array_key_exists( 'fullname', $sreg ) ) {
+				$fullname = $sreg['fullname'];
+			}
                        
-		if ( array_key_exists( 'http://axschema.org/namePerson/first', $ax ) || array_key_exists( 'http://axschema.org/namePerson/last', $ax ) ) {
-			$fullname = $ax['http://axschema.org/namePerson/first'][0] . " " . $ax['http://axschema.org/namePerson/last'][0];
-		}
+			if ( array_key_exists( 'http://axschema.org/namePerson/first', $ax ) || array_key_exists( 'http://axschema.org/namePerson/last', $ax ) ) {
+				$fullname = $ax['http://axschema.org/namePerson/first'][0] . " " . $ax['http://axschema.org/namePerson/last'][0];
+			}
                
-		if ( $fullname && $this->userNameOK( $fullname ) ) {
+			if ( $fullname && $this->userNameOK( $fullname ) ) {
+				$wgOut->addHTML(
+					Xml::openElement( 'tr' ) .
+					Xml::tags( 'td', array( 'class' => 'mw-label' ),
+						Xml::radio( 'wpNameChoice', 'full', !$def, array( 'id' => 'wpNameChoiceFull' ) )
+					) .
+					Xml::tags( 'td', array( 'class' => 'mw-input' ),
+						Xml::label( wfMsg( 'openidchoosefull', $fullname ), 'wpNameChoiceFull' )
+					) .
+					Xml::closeElement( 'tr' ) . "\n"
+				);
+				$def = true;
+			}
+
+			$idname = $this->toUserName( $openid );
+			if ( $idname && $this->userNameOK( $idname ) ) {
+				$wgOut->addHTML(
+					Xml::openElement( 'tr' ) .
+					Xml::tags( 'td', array( 'class' => 'mw-label' ),
+						Xml::radio( 'wpNameChoice', 'url', !$def, array( 'id' => 'wpNameChoiceUrl' ) )
+					) .
+					Xml::tags( 'td', array( 'class' => 'mw-input' ),
+						Xml::label( wfMsg( 'openidchooseurl', $idname ), 'wpNameChoiceUrl' )
+					) .
+					Xml::closeElement( 'tr' ) . "\n"
+				);
+				$def = true;
+			}
+		} // if $wgOpenIDProposeUsernameFromSREG
+
+		if ($wgOpenIDAllowAutomaticUsername) {
 			$wgOut->addHTML(
 				Xml::openElement( 'tr' ) .
 				Xml::tags( 'td', array( 'class' => 'mw-label' ),
-					Xml::radio( 'wpNameChoice', 'full', !$def, array( 'id' => 'wpNameChoiceFull' ) )
+					Xml::radio( 'wpNameChoice', 'auto', !$def, array( 'id' => 'wpNameChoiceAuto' ) )
 				) .
 				Xml::tags( 'td', array( 'class' => 'mw-input' ),
-					Xml::label( wfMsg( 'openidchoosefull', $fullname ), 'wpNameChoiceFull' )
+					Xml::label( wfMsg( 'openidchooseauto', $this->automaticName( $sreg ) ), 'wpNameChoiceAuto' )
 				) .
-				Xml::closeElement( 'tr' ) . "\n"
-			);
-			$def = true;
+					Xml::closeElement( 'tr' ) . "\n"
+				);
 		}
 
-		$idname = $this->toUserName( $openid );
-		if ( $idname && $this->userNameOK( $idname ) ) {
+		if ($wgOpenIDAllowManualUsername) {
 			$wgOut->addHTML(
-				Xml::openElement( 'tr' ) .
-				Xml::tags( 'td', array( 'class' => 'mw-label' ),
-					Xml::radio( 'wpNameChoice', 'url', !$def, array( 'id' => 'wpNameChoiceUrl' ) )
-				) .
-				Xml::tags( 'td', array( 'class' => 'mw-input' ),
-					Xml::label( wfMsg( 'openidchooseurl', $idname ), 'wpNameChoiceUrl' )
-				) .
-				Xml::closeElement( 'tr' ) . "\n"
-			);
-			$def = true;
-		}
-
-		# These are always available
-		$wgOut->addHTML(
-			Xml::openElement( 'tr' ) .
-			Xml::tags( 'td', array( 'class' => 'mw-label' ),
-				Xml::radio( 'wpNameChoice', 'auto', !$def, array( 'id' => 'wpNameChoiceAuto' ) )
-			) .
-			Xml::tags( 'td', array( 'class' => 'mw-input' ),
-				Xml::label( wfMsg( 'openidchooseauto', $this->automaticName( $sreg ) ), 'wpNameChoiceAuto' )
-			) .
-			Xml::closeElement( 'tr' ) . "\n" .
 
 			Xml::openElement( 'tr' ) .
 			Xml::tags( 'td', array( 'class' => 'mw-label' ),
@@ -305,7 +322,14 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 				Xml::label( wfMsg( 'openidchoosemanual' ), 'wpNameChoiceManual' ) . '&#160;' .
 				Xml::input( 'wpNameValue', 16, false, array( 'id' => 'wpNameValue' ) )
 			) .
-			Xml::closeElement( 'tr' ) . "\n" .
+			Xml::closeElement( 'tr' ) . "\n"
+			);
+		}
+
+		} // These are only available if all visitors are allowed to create accounts
+
+		# These are always available
+                $wgOut->addHTML(
 
 			Xml::openElement( 'tr' ) . "\n" .
 			Xml::element( 'td', array(), '' ) . "\n" .
@@ -365,8 +389,6 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 
 			$this->updateUser( $user, $sreg, $ax );
 
-			$wgUser = $user;
-
 		} else {
 			$name = $this->getUserName( $openid, $sreg, $ax, $choice, $nameValue );
 
@@ -385,6 +407,8 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 			$wgOut->showErrorPage( 'openiderror', 'openiderrortext' );
 			return;
 		}
+
+		$wgUser = $user;
 
 		$this->clearValues();
 
@@ -453,7 +477,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 				if ($wgOpenIDUseEmailAsNickname) {
 					$name = $this->getNameFromEmail( $openid, $sreg, $ax );
 					if ( !empty($name) && $this->userNameOk( $name ) ) {
-						$user = $this->createUser( $openid, $sreg, $ax, $name );
+						$wgUser = $this->createUser( $openid, $sreg, $ax, $name );
 						$this->displaySuccessLogin( $openid );
 						return;
 					}
@@ -583,6 +607,15 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 
 		$user = User::newFromName( $name );
 
+          	# Check permissions
+		if ( !$user->isAllowed( 'createaccount' ) ) {
+			wfDebug( "OpenID: User is not allowed to create an account.\n" );
+			return null;
+		} elseif ( $user->isBlockedFromCreateAccount() ) {
+			wfDebug( "OpenID: User is blocked.\n" );
+			return null;
+		}
+
 		if ( !$user ) {
 			wfDebug( "OpenID: Error adding new user.\n" );
 			return null;
@@ -630,11 +663,14 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	# ----------------------------
 
 	function getUserName( $openid, $sreg, $ax, $choice, $nameValue ) {
+	global $wgOpenIDAllowAutomaticUsername, $wgOpenIDAllowManualUsername, $wgOpenIDProposeUsernameFromSREG;
+
 		switch ( $choice ) {
 		 case 'nick':
-		 	return ( ( array_key_exists( 'nickname', $sreg ) ) ? $sreg['nickname'] : null );
+		 	if ($wgOpenIDProposeUsernameFromSREG) return ( ( array_key_exists( 'nickname', $sreg ) ) ? $sreg['nickname'] : null );
 		 	break;
 		 case 'full':
+		        if (!$wgOpenIDProposeUsernameFromSREG) return;
 		 	# check the SREG first; only return a value if non-null
 		 	$fullname = ( ( array_key_exists( 'fullname', $sreg ) ) ? $sreg['fullname'] : null );
 		 	if (!is_null($fullname)) {
@@ -647,13 +683,13 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 		 	return $fullname;
 			break;
 		 case 'url':
-			return $this->toUserName( $openid );
+			if ($wgOpenIDProposeUsernameFromSREG) return $this->toUserName( $openid );
 			break;
 		 case 'auto':
-			return $this->automaticName( $sreg );
+		        if ($wgOpenIDAllowAutomaticUsername) return $this->automaticName( $sreg );
 			break;
 		 case 'manual':
-			return $nameValue;
+		        if ($wgOpenIDAllowManualUsername) return $nameValue;
 		 default:
 			return null;
 		}

@@ -188,7 +188,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 
 	function Check( $server, $request, $sreg, $imm = true ) {
 
-		global $wgUser, $wgOut;
+		global $wgUser, $wgOut, $wgOpenIDAllowServingOpenIDUserAccounts;
 
 		assert( isset( $wgUser ) && isset( $wgOut ) );
 		assert( isset( $server ) );
@@ -241,7 +241,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 
 		# Is the user an OpenID user?
 
-		if ( $this->getUserUrl( $user ) ) {
+		if ( !$wgOpenIDAllowServingOpenIDUserAccounts && $this->getUserUrl( $user ) ) {
 			wfDebug( "OpenID: Not one of our users; logs in with OpenID.\n" );
 			return $request->answer( false, $this->serverUrl() );
 		}
@@ -731,9 +731,12 @@ class SpecialOpenIDServer extends SpecialOpenID {
 		}
 
 		# Use regexps to extract user name
-
 		$pattern = str_replace( '$1', '(.*)', $wgArticlePath );
 		$pattern = str_replace( '?', '\?', $pattern );
+
+		/* remove "Special:OpenIDXRDS/" to allow construction of a valid user page name */
+		$relative = preg_replace("!Special:OpenIDXRDS/!", "", $relative);
+
 		# Can't have a pound-sign in the relative, since that's for fragments
 		if ( !preg_match( "#$pattern#", $relative, $matches ) ) {
 			return null;

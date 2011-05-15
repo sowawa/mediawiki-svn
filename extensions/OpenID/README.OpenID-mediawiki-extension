@@ -1,7 +1,7 @@
 MediaWiki OpenID extension
 
-version 0.9.0
-20 June 2009
+version 0.9.1
+15 May 2011
 
 This is the README file for the OpenID extension for MediaWiki software. The
 extension is only useful if you've got a MediaWiki installation; it can only be
@@ -15,9 +15,7 @@ OpenID.
 
 Typical uses:
 
-* Single-signon between multiple affiliated wikis and other sites. We have
-  almost 20 wikis that work together for Wikitravel, and users can login to
-  different Wikitravel wikis with their home wiki account.
+* Single-signon between multiple affiliated wikis and other sites.
 * Single-signon across the Internet. Many, many sites now support OpenID,
   including "big names" like Yahoo!, Google, and AOL. Allowing users to login
   with OpenID means one less step for them to contribute to your wiki.
@@ -26,7 +24,7 @@ Typical uses:
   with your OpenID from the old wiki does. Using OpenID can help build a
   distributed reputation across the wiki world.
 
-The software supports OpenID 2.0 and '''requires''' the openidenabled.com 2.x
+The software supports OpenID 2.0 and '''requires''' the openidenabled.com 2.2.2
 libraries. Users of previous versions should see [[#Upgrade]] for more
 information.
 
@@ -39,6 +37,7 @@ section below for info on how to report problems.
 
 Copyright 2006,2007 Internet Brands (http://www.internetbrands.com/)
 Copyright 2008 Evan Prodromou (http://vinismo.com/en/User:Evan)
+Copyright 2011 Thomas Gries
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -57,16 +56,12 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 == Author ==
 
 Evan Prodromou <evan@vinismo.com>
-
 Patches for YADIS support and FileStore storage by Jonathan Daugherty
 <cygnus@janrain.com>.
 
 == Pre-requisites ==
 
-This software has been tested in production with MediaWiki 1.11.x. It may or
-may not work with earlier or later versions, but I'm interested in making later
-versions work, and I'd be happy to make minor changes to make older, unsupported
-versions work too.
+This software has been tested with MediaWiki 1.19 rev. 88135
 
 The software depends on the OpenIDEnabled.com PHP library for OpenID, which in
 turn depends on the OpenIDEnabled.com PHP library for YADIS. At the time of this
@@ -74,9 +69,9 @@ writing, info on installing these libraries was available here:
 
 	  http://www.openidenabled.com/php-openid/
 
-The last version tested with is 2.0.1; '''versions below 2.0 will not work'''.
-If you must use version 1.x of the openidenabled.com library, you can use the
-unsupported version 0.7.0 or below of this extension.
+It requires patches when running with PHP 5.3.x and later.
+
+The version tested with is 2.2.2; '''versions below 2.0 will not work'''.
 
 There are also some required PHP extensions; see the OpenIDEnabled documentation
 for details. This software has been tested with the gmp and curl PHP extensions
@@ -87,10 +82,6 @@ LocalSettings.php. You may need to add the path to your PHP library directory
 to the $path variable, like "/usr/share/php" or "/usr/local/share/php".
 
 == Installation ==
-
-First, make sure that you have everytging listed at
-
-    http://www.mediawiki.org/wiki/Extension:OpenID/README#Pre-requisites
 
 To install, copy all the files in the archive you downloaded to the OpenID
 subdirectory of the extensions subdirectory of your MediaWiki installation. Note
@@ -246,6 +237,18 @@ LocalSettings.php file. Please read carefully.
   the e-mail address provided by your provider and use the user component
   as the MediaWiki username.
 
+* $wgOpenIDProposeUsernameFromSREG
+  defaults to true; when first-time logging in with OpenID, propose and
+  allow new account names from OpenID SREG data such as fullname or nickname
+
+* $wgOpenIDAllowManualUsername
+  defaults to true; when first-time logging in with OpenID, show option
+  to enter and to allow a manually chosen username
+
+* $wgOpenIDAllowAutomaticUsername
+  defaults to true; when first-time logging in with OpenID, show option
+  to choose and to allow an automatically generated username
+    
 * $wgOpenIDTrustEmailAddress -- trust the e-mail address sent by the 
   provider and don't require it to be verified.  If false (the default), 
   all new users will be required to validate their e-mail address.
@@ -290,14 +293,21 @@ LocalSettings.php file. Please read carefully.
   (lets the user decide). Default is 'user'.
 
 * $wgOpenIDOnly -- defaults to false. With this enabled, users can
-  ''only'' log in with OpenID. This is principally of interest to
-  OpenID advocacy sites like openid.net, but you may want it, too.
+  ''only'' log in with OpenID.
 
 * $wgOpenIDClientOnly -- defaults to false. With this enabled, users
   cannot use their accounts on the local wiki as OpenIDs on another
   site. Sucks for users, but some admins have emailed me about not
   wanting the responsibility of being an OpenID server, so this flag
   is for them.
+
+* $wgOpenIDAllowServingOpenIDUserAccounts -- defaults to false.
+  Having this enabled, it allows User page URLs from this wiki
+  as OpenID identities on other arbitrary OpenID-aware sites -
+  even when using OpenID to login on this wiki.
+  Some users might want to do that for vanity purposes or whatever.
+  False prevents the serving of User page URLs as OpenID accounts
+  on other sites (this was an TODO list item).
 
 * $wgOpenIDShowProviderIcons -- defaults to false due to potential
   brand issues. With this enabled, users will see button graphics
@@ -351,3 +361,8 @@ The big changes for the future:
 == CHANGES ==
 * [http://svn.wikimedia.org/viewvc/mediawiki/tags/extensions/OpenID/REL_0_8_4/ 0.8.4] (April 16, 2009) - Added provider buttons to the OpenID login page with optional icons ($wgOpenIDShowProviderIcons)
 * [http://svn.wikimedia.org/viewvc/mediawiki/tags/extensions/OpenID/REL_0_8_4_1/ 0.8.4.1] (April 16, 2009) - Post-release fix to broken icon on user's page.
+* 0.9.1 fixes for PHP > 5.3.x; fixed bugs
+  bug 27419 OpenID extension: disallow new account creation for those users without "createaccount" permission
+  bug 27581 3 new OpenID login page parameters: $wgOpenIDAllowManualUsername, AllowAutomaticUsername, ProposeUsernameFromSREG
+  bug 18635 Allow to use User pages as OpenIDs even if user is using OpenID already
+  

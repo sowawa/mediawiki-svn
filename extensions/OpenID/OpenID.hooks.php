@@ -42,7 +42,7 @@ class OpenIDHooks {
 
 	# Hook is called whenever an article is being viewed
 	public static function onArticleViewHeader( &$article, &$outputDone, &$pcache ) {
-		global $wgOut, $wgOpenIDClientOnly;
+		global $wgOut, $wgOpenIDClientOnly, $wgOpenIDAllowServingOpenIDUserAccounts;
 
 		$nt = $article->getTitle();
 
@@ -71,19 +71,20 @@ class OpenIDHooks {
 											"<a href='$url'>$disp</a>" .
 											"</span>" );
 					}
-				} else {
-					# Add OpenID data if its allowed
-					if ( !$wgOpenIDClientOnly ) {
-						$st = SpecialPage::getTitleFor( 'OpenIDServer' );
-						$wgOut->addLink( array( 'rel' => 'openid.server',
-												'href' => $st->getFullURL() ) );
-						$wgOut->addLink( array( 'rel' => 'openid2.provider',
-												'href' => $st->getFullURL() ) );
-						$rt = SpecialPage::getTitleFor( 'OpenIDXRDS', $user->getName() );
-						$wgOut->addMeta( 'http:X-XRDS-Location', $rt->getFullURL() );
-						header( 'X-XRDS-Location: ' . $rt->getFullURL() );
-					}
 				}
+
+				# Add OpenID data if its allowed
+				if ( !$wgOpenIDClientOnly && !( count( $openid ) && (strlen( $openid[0] ) != 0 ) && !$wgOpenIDAllowServingOpenIDUserAccounts ) ) {
+					$st = SpecialPage::getTitleFor( 'OpenIDServer' );
+					$wgOut->addLink( array( 'rel' => 'openid.server',
+											'href' => $st->getFullURL() ) );
+					$wgOut->addLink( array( 'rel' => 'openid2.provider',
+											'href' => $st->getFullURL() ) );
+					$rt = SpecialPage::getTitleFor( 'OpenIDXRDS', $user->getName() );
+					$wgOut->addMeta( 'http:X-XRDS-Location', $rt->getFullURL() );
+					header( 'X-XRDS-Location: ' . $rt->getFullURL() );
+				}
+
 			}
 		}
 
