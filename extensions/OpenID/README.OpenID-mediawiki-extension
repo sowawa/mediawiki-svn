@@ -1,5 +1,6 @@
 MediaWiki OpenID extension
 
+homepage and manual http://www.mediawiki.org/wiki/Extension:OpenID
 version 0.9.1
 15 May 2011
 
@@ -37,7 +38,6 @@ section below for info on how to report problems.
 
 Copyright 2006,2007 Internet Brands (http://www.internetbrands.com/)
 Copyright 2008 Evan Prodromou (http://vinismo.com/en/User:Evan)
-Copyright 2011 Thomas Gries
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -53,11 +53,12 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-== Author ==
+== Authors ==
 
 Evan Prodromou <evan@vinismo.com>
 Patches for YADIS support and FileStore storage by Jonathan Daugherty
 <cygnus@janrain.com>.
+Thomas Gries
 
 == Pre-requisites ==
 
@@ -69,7 +70,9 @@ writing, info on installing these libraries was available here:
 
 	  http://www.openidenabled.com/php-openid/
 
-It requires patches when running with PHP 5.3.x and later.
+Unfortunately, tt requires patches when running with PHP 5.3.x and later.
+The download from the above Url and the patch will be automatically done
+when you run "make" (see next section).
 
 The version tested with is 2.2.2; '''versions below 2.0 will not work'''.
 
@@ -77,20 +80,55 @@ There are also some required PHP extensions; see the OpenIDEnabled documentation
 for details. This software has been tested with the gmp and curl PHP extensions
 installed, and it's recommended that you install them, too.
 
+/* FIXME: */
 Note that some versions of MediaWiki overwrite the PHP library path in
 LocalSettings.php. You may need to add the path to your PHP library directory
 to the $path variable, like "/usr/share/php" or "/usr/local/share/php".
 
 == Installation ==
 
-To install, copy all the files in the archive you downloaded to the OpenID
-subdirectory of the extensions subdirectory of your MediaWiki installation. Note
-that the software depends on having its code all in the "OpenID" sub-directory;
-naming it "OpenID-Test" or "newextension1" or whatever won't work.
+The repository downloader can be accessed by:
+
+   http://www.mediawiki.org/wiki/Special:ExtensionDistributor/OpenID
+
+To install the MediaWiki extension, download the MediaWiki extension tarball
+to your extensions subdirectory $IP/extensions of your MediaWiki installation,
+$IP being the directory of your LocalSettings.php, and untar the package to
+the subdirectory $IP/extensions/OpenID.
+
+The following examples shows the step for extension revision r######:
+
+   cd $IP/extensions
+   wget http://upload.wikimedia.org/ext-dist/OpenID-trunk-r#####.tar.gz
+   tar -xzf http://upload.wikimedia.org/ext-dist/OpenID-trunk-r#####.tar.gz
+
+Remark:
+
+Note that the software currently depends on having all its code in the "OpenID"
+sub-directory; naming it "OpenID-Test" or "newextension1" or whatever
+won't work.
+
+A makefile is included which now automates the second step, the installation of
+the php-openid library (MediaWiki OpenID depends on the OpenIDEnabled.com PHP
+library for OpenID, which in turn depends on the OpenIDEnabled.com PHP library
+for YADIS).
+
+Download and patch of openid library:
+
+    cd $IP/extensions/OpenID
+    make
+
+The makefile downloads the openid-php library from http://www.openidenabled.com/php-openid/
+and applies a patch to avoid PHP errors because Call-time pass-by-reference is deprecated
+since PHP 5.3.x see https://github.com/openid/php-openid/issues#issue/8  and
+the patch and fork of user kost https://github.com/openid/php-openid/pull/44/files
 
 Run update.php script in in your MediaWiki maintenance folder to create
-necessary tables in MediaWiki database.
+necessary tables in MediaWiki database:
 
+    cd $IP/maintenance
+    php update.php
+    
 Version 0.3 and below of this extension used a different database structure
 that was pretty inefficient. If you installed this extension before, you should
 copy the optionToTable.php script to your MediaWiki "maintenance" directory and
@@ -302,12 +340,20 @@ LocalSettings.php file. Please read carefully.
   is for them.
 
 * $wgOpenIDAllowServingOpenIDUserAccounts -- defaults to false.
-  Having this enabled, it allows User page URLs from this wiki
-  as OpenID identities on other arbitrary OpenID-aware sites -
-  even when using OpenID to login on this wiki.
-  Some users might want to do that for vanity purposes or whatever.
+*
+  Having this enabled, it allows to use Urls of this wiki's users' pages
+  as OpenID identities on other OpenID-aware sites even when OpenID(s) are
+  associated with user accounts on this wiki. Some users might want to do that
+  for vanity purposes or whatever.
+
   False prevents the serving of User page URLs as OpenID accounts
-  on other sites (this was an TODO list item).
+  on other sites.
+  
+  Remark:
+
+  User page urls can (currently) only act as OpenID if the User page is existing,
+  i.e. has content, the mere existence of a user account is (currently) not
+  sufficient.
 
 * $wgOpenIDShowProviderIcons -- defaults to false due to potential
   brand issues. With this enabled, users will see button graphics
@@ -323,10 +369,9 @@ doesn't.
 
 == Translation ==
 
-The user interface strings for this extension are configurable through
-the same Special:Allmessages page as MediaWiki itself. They all start
-with "openid", and they're no more or less cryptic than MediaWiki's.
-You can look at OpenID.i18n.php for some details.
+The user interface strings for this extension are configurable and all start
+with "openid". See OpenID.i18n.php for details. Translation is done via
+translatenet wiki, as usual.
 
 == OpenID services ==
 
