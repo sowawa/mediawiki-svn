@@ -60,7 +60,7 @@ $wgResourceModules['ext.BookManager'] = array(
 $wgBookManagerNamespaces = array( NS_MAIN );
 $wgBookManagerVariables = true ;
 $wgBookManagerNavBar = true;
-
+$wgCategorizationByPrefix = true;
 /* Copyied from extensions/Collection/Collection.php */
 /** Namespace for "community books" */
 $wgBookManagerPrefixNamespace = NS_PROJECT;
@@ -77,7 +77,7 @@ $wgHooks['ParserGetVariableValueSwitch'][] = 'BookManagerVariables::AssignAValue
 /**** Navbar ****/
 
 $wgHooks['BeforePageDisplay'][] = 'BookManagerNavBar::addNavBar';
-/****  Rating Toolbox Section ***/
+/**** Toolbox Section ***/
 $wgHooks['BaseTemplateToolbox'][] = 'BookManagerNavBar::bookToolboxSection';
 
 $wgHooks['ParserAfterTidy'][] = 'BookManagerNavBar::CatByPrefix';

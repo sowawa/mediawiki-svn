@@ -352,10 +352,10 @@ class BookManagerNavBar extends BookManagerCore {
 		$out->addModules( 'ext.BookManager' );
  		return true;
  	}
-//known BUG: The category appears more than once when action is not 'view'
+	//known BUG: The category appears more than once when action is not 'view'
 	static function CatByPrefix( &$parser, &$text ) {
 		global $wgOut;
-		if ( !BookManagerNavBar::camDisplayNavBar( $wgOut ) ) {
+		if ( !BookManagerNavBar::camDisplayNavBar( $wgOut ) && $wgCategorizationByPrefix == false ) {
 			return true;
 		}
 		$catTitle = Title::newFromText( self::bookparts( $parser, $text, 0 ));
@@ -369,7 +369,7 @@ class BookManagerNavBar extends BookManagerCore {
 		global $wgTitle, $wgParser;
 		$currenttitletext = $wgTitle->getText();
 		$randchapter = self::pageText( $wgParser, $currenttitletext, 'rand' );
-		# Add book tools section and all yours itens 
+		# Add book tools section and all your items 
 		if ( $randchapter ){
 			?><div class="portal" id='p-tb'><?php
 					?><h5><?php $sk->msg( 'bm-booktools-section' ); ?></h5><?php
@@ -393,7 +393,7 @@ class BookManagerNavBar extends BookManagerCore {
 class PrintVersion extends BookManagerCore {
 
 	function __construct() {
-		parent::__construct( 'Book render' );
+		parent::__construct( 'PrintVersion' );
 	}
 	function execute( $book ) {
 		global $wgOut, $wgRequest;
