@@ -2,12 +2,13 @@
 /**
 * BookManager protected functions [Core]
 */
-$wgBookSidebarSection = false;
+
 class BookManagerCore extends SpecialPage {
 	const VERSION = "0.1.6 ";
 	private static $chapterList;
 	/**
 	 * Get Title
+	 * @param $text String Text for title of current page 
 	 * @return Object
 	 */
 	protected static function newTitleObject( &$parser, $text = null ) {
@@ -99,18 +100,22 @@ class BookManagerCore extends SpecialPage {
 		}
 		return $caps;
 	}
+
 	/**
-	* Get the book or chapter name
+	* Get the book or chapter name from page title 
+	* @param $text String Text for title of current page 
+	* @param $part Integer. Title like 'Foo/Bar/Baz' "0" is Foo , the book name, and "1" is Bar/Baz, the chapter name.
+	* @return String with book or chapter
 	*/
 	protected static function bookparts( &$parser, $text = null, $part = 1 ) {
 		$t = self::newTitleObject( $parser, $text );
 		// No book should have '/' in it's name, so...
-		$book = explode( "/", $t->getText(), 2 ); // ...given a page with title like 'Foo/Bar/Baz'...
+		$book = explode( "/", $t->getText(), 2 ); 
 		if ( count( $book ) > 1 ) {
-			return $book[$part];// ... $book[0] is Foo, the book name, and $book[1] is Bar/Baz, the chapter name.
+			return $book[$part];
 		}
 		else {
-			return $t;
+			return $t->getText();
 		}
 
 	}
@@ -142,7 +147,7 @@ class BookManagerCore extends SpecialPage {
 		if ( $p == 'rand' ){
 			$limit = count( self::$chapterList ) - 1;
 			$randPosition = rand( 0, $limit );
-			return Title::newFromText( self::$chapterList[ $randPosition ] );
+			return Title::newFromText( self::$chapterList[ $randPosition ] )->getText();
 		}
 		return wfEscapeWikiText( $otherpagetitle->getText() );
 	}
@@ -347,24 +352,37 @@ class BookManagerNavBar extends BookManagerCore {
 		$out->addModules( 'ext.BookManager' );
  		return true;
  	}
+//known BUG: The category appears more than once when action is not 'view'
+	static function CatByPrefix( &$parser, &$text ) {
+		global $wgOut;
+		if ( !BookManagerNavBar::camDisplayNavBar( $wgOut ) ) {
+			return true;
+		}
+		$catTitle = Title::newFromText( self::bookparts( $parser, $text, 0 ));
+		$parserOutput = $parser->getOutput();
+		$parserOutput->addCategory( $catTitle->getDBkey() , $catTitle->getText() );
+
+		return true;
+	}
+
 	static function bookToolboxSection( &$sk, &$toolbox ) {
 		global $wgTitle, $wgParser;
 		$currenttitletext = $wgTitle->getText();
 		$randchapter = self::pageText( $wgParser, $currenttitletext, 'rand' );
-		# Add book tools section and all your items 
+		# Add book tools section and all yours itens 
 		if ( $randchapter ){
 			?><div class="portal" id='p-tb'><?php
 					?><h5><?php $sk->msg( 'bm-booktools-section' ); ?></h5><?php
 					?><div class="body"><?php
 						?><ul><?php
 							?><li id="t-rating"><?php
-								?><a href="<?php echo htmlspecialchars( $randchapter->getLocalURL() ) ?>"><?php
+								?><a href="<?php echo htmlspecialchars( Title::newFromText( $randchapter )->getLocalURL() ) ?>"><?php
 								echo $sk->msg( 'bm-randomchapter-link' );
 								?></a><?php
 							?></li><?php
 						?></ul><?php
 					?></div><?php
-				?></div><?php
+			?></div><?php
 		}
 		return true;
 	}
@@ -375,7 +393,7 @@ class BookManagerNavBar extends BookManagerCore {
 class PrintVersion extends BookManagerCore {
 
 	function __construct() {
-		parent::__construct( 'PrintVersion' );
+		parent::__construct( 'Book render' );
 	}
 	function execute( $book ) {
 		global $wgOut, $wgRequest;
