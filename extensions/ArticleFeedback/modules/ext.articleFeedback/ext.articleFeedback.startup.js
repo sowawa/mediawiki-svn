@@ -13,6 +13,8 @@ jQuery( function( $ ) {
 		// Current revision
 		&& mw.util.getParamValue( 'diff' ) == null
 		&& mw.util.getParamValue( 'oldid' ) == null
+		// Not viewing a redirect
+		&& mw.util.getParamValue( 'redirect' ) != 'no'
 	) {
 		var trackingBucket = mw.user.bucket(
 			'ext.articleFeedback-tracking', mw.config.get( 'wgArticleFeedbackTracking' )
