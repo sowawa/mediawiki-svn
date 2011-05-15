@@ -1,3 +1,13 @@
+squid (2.7.9-7wm2) lucid-wikimedia; urgency=low
+
+   [ Ryan Lane ]
+   * Adding patch for udp multicast logging
+
+   [ Asher Feldman ]
+   * Port wmf vary patches to 2.7.9-7 
+
+ -- Asher Feldman <afeldman@wikimedia.org>  Sun, 15 May 2011 11:41:00 +0000
+
 squid (2.7.9-7wm1) lucid-wikimedia; urgency=low
 
   [ Ryan Lane ]
