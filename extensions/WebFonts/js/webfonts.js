@@ -123,7 +123,7 @@
 		},
 
 		setup: function() {
-
+			var haveSchemes = false;
 			var config = mw.config.get( "wgWebFontsAvailable" );
 			// Build font dropdown
 			$fontsmenu = $( '<ul />' ).attr('id','webfonts-fontsmenu');
