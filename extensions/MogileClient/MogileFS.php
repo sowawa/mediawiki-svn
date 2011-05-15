@@ -256,7 +256,8 @@ class MogileFS {
 			curl_setopt($ch,CURLOPT_INFILE, $fin);
 			curl_setopt($ch,CURLOPT_INFILESIZE, filesize($filename));
 			curl_setopt($ch,CURLOPT_TIMEOUT, 4);
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch,CURLOPT_HTTPHEADER, array('Expect: '));
 			if(!curl_exec($ch)) {
 				$this->error=curl_error($ch);
 				curl_close($ch);
