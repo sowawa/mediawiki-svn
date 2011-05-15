@@ -357,6 +357,58 @@ LocalSettings.php file. Please read carefully.
   brand issues. With this enabled, users will see button graphics
   instead of just links in OpenID provider UI.
 
+== Setups of standard scenarios ==
+This section shows some settings for typical applications.
+
+Example 1
+
+The following code in $IP/LocalSettings.php sets a MediaWiki for allowing
+user name account creations by Sysops only ("account creation by mail").
+
+So-defined users can login to their Sysop-created accounts but according
+to the settinf only with an OpenID identity. They need to associate their OpenID
+with their user name and user account. This step is only required once.
+
+The other setting allows user pages of this MediaWiki to serve as OpenID
+identities on another OpenID-aware site:
+
+require( "$IP/extensions/OpenID/OpenID.php" );
+$wgOpenIDOnly = true;
+$wgOpenIDAllowServingOpenIDUserAccounts = true;
+
+// Implicit group for all visitors
+$wgGroupPermissions['*'    ]['createaccount']   = false;
+$wgGroupPermissions['*'    ]['read']            = true;
+$wgGroupPermissions['*'    ]['edit']            = false;
+$wgGroupPermissions['*'    ]['createpage']      = false;
+$wgGroupPermissions['*'    ]['createtalk']      = false;
+
+Example 2:
+
+The follwing setting configures a MediaWiki so that anyone can create an account
+and can log in with either their userid/password - or with their OpenID identity.
+During first-time log-ins with OpenID, users see only a box where they can enter
+their wanted username for the account creation, or to be associated with the
+OpenID identity when they enter a username of an existing account (the
+corresponding account password must be then entered once).
+
+Subsequent log-ins can be then done with either the userid/password method or
+simply with the OpenID, which does not require any further password sub-
+mission to the MediaWiki.
+
+require_once("$IP/extensions/OpenID/OpenID.php");
+/**
+ * when logging on:
+ * show only the option to enter and to allow a manually chosen username
+ * do not propose new account names from their OpenID SREG data
+   (such as fullname or nickname on their OpenID server)
+ * do not propose an automatically generated username
+ */
+$wgOpenIDAllowManualUsername = true;
+$wgOpenIDProposeUsernameFromSREG = false;
+$wgOpenIDAllowAutomaticUsername = false;
+
+
 == Skins ==
 
 If you are customizing a skin, and you want to show the OpenID
