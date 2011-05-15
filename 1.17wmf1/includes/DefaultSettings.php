@@ -4815,11 +4815,6 @@ $wgLogActionsHandlers = array();
  */
 $wgNewUserLog = true;
 
-/**
- * Log the automatic creations of new users accounts?
- */
-$wgLogAutocreatedAccounts = false;
-
 /** @} */ # end logging }
 
 /*************************************************************************//**
