@@ -735,7 +735,9 @@ class SpecialOpenIDServer extends SpecialOpenID {
 		$pattern = str_replace( '?', '\?', $pattern );
 
 		/* remove "Special:OpenIDXRDS/" to allow construction of a valid user page name */
-		$relative = preg_replace("!Special:OpenIDXRDS/!", "", $relative);
+		$specialPagePrefix = SpecialPage::getTitleFor('OpenIDXRDS');
+		if ( $specialPagePrefix != "Special:OpenIDXRDS" ) $specialPagePrefix = "({$specialPagePrefix}|Special:OpenIDXRDS)";
+		$relative = preg_replace("!" . $specialPagePrefix . "/!", "", $relative);
 
 		# Can't have a pound-sign in the relative, since that's for fragments
 		if ( !preg_match( "#$pattern#", $relative, $matches ) ) {
