@@ -68,7 +68,7 @@ The software depends on the OpenIDEnabled.com PHP library for OpenID, which in
 turn depends on the OpenIDEnabled.com PHP library for YADIS. At the time of this
 writing, info on installing these libraries was available here:
 
-	  http://www.openidenabled.com/php-openid/
+   http://www.openidenabled.com/php-openid/
 
 Unfortunately, tt requires patches when running with PHP 5.3.x and later.
 The download from the above Url and the patch will be automatically done
@@ -340,7 +340,6 @@ LocalSettings.php file. Please read carefully.
   is for them.
 
 * $wgOpenIDAllowServingOpenIDUserAccounts -- defaults to false.
-*
   Having this enabled, it allows to use Urls of this wiki's users' pages
   as OpenID identities on other OpenID-aware sites even when OpenID(s) are
   associated with user accounts on this wiki. Some users might want to do that
@@ -350,10 +349,9 @@ LocalSettings.php file. Please read carefully.
   on other sites.
   
   Remark:
-
-  User page urls can (currently) only act as OpenID if the User page is existing,
-  i.e. has content, the mere existence of a user account is (currently) not
-  sufficient.
+  User page urls can (currently) only act as OpenID if the user page really
+  exists i.e. has content. The mere existence of a user account is (currently)
+  not sufficient.
 
 * $wgOpenIDShowProviderIcons -- defaults to false due to potential
   brand issues. With this enabled, users will see button graphics

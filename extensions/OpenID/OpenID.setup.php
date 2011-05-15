@@ -197,7 +197,7 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'author' => array( 'Evan Prodromou', 'Sergey Chernyshev', 'Alexandre Emsenhuber', 'Thomas Gries' ),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:OpenID',
-	'descriptiomsg' => 'openid-desc',
+	'descriptionmsg' => 'openid-desc',
 );
 
 function OpenIDGetServerPath() {
