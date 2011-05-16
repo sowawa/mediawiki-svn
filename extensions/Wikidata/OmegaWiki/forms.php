@@ -13,7 +13,8 @@ function getTextBox( $name, $value = "", $onChangeHandler = "" ) {
  
 function getTextArea( $name, $text = "", $rows = 5, $columns = 80, $disabled = false ) {
 	if ( $disabled ) {
-		return '<textarea name="' . $name . '" rows="' . $rows . '" cols="' . $columns . '" READONLY>' . htmlspecialchars( $text ) . '</textarea>';
+		// READONLY alone is not enough: apparently, some browsers ignore it
+		return '<textarea disabled="disabled" name="' . $name . '" rows="' . $rows . '" cols="' . $columns . '" READONLY>' . htmlspecialchars( $text ) . '</textarea>';
 	} else {
 		return '<textarea name="' . $name . '" rows="' . $rows . '" cols="' . $columns . '">' . htmlspecialchars( $text ) . '</textarea>';
 	}
