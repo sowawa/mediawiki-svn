@@ -439,9 +439,20 @@ all have free signup for identities if you want to test, too.
 
 == Bugs ==
 
-Please submit bugs into [https://bugzilla.wikimedia.org/enter_bug.cgi?product=MediaWiki%20extensions&component=OpenID Bugzilla under OpenID extenson component].
+The list of known bugs can be accessed by
+
+   http://preview.tinyurl.com/openid-bugs
+
+Bugs and important observations should be filed in
+
+   https://bugzilla.wikimedia.org/
+   Product: MediaWiki extensions
+   Component: OpenID
 
 == TODO ==
+
+* Code review http://preview.tinyurl.com/openid-codereview
+
 * Move TODO file and things below into Bugzilla
 
 The TODO file in this distribution has stuff I think needs to be
