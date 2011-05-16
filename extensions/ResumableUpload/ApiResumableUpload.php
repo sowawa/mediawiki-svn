@@ -156,7 +156,7 @@ class ApiResumableUpload extends ApiUpload {
 				$required[] = 'filesize';
 				break;
 			case  ResumableUploadHandler::CHUNK:
-				$required[] = 'byteoffset';
+				$required[] = 'offset';
 				$required[] = 'chunksession';
 				// The actual file payload:
 				$required[] = 'chunk';
@@ -180,7 +180,7 @@ class ApiResumableUpload extends ApiUpload {
 			'ignorewarnings' => false,
 			'chunksession' => null,
 			'chunk' => null,
-			'byteoffset' => null,
+			'offset' => null,
 			'done' => false,
 			'watchlist' => array(
 				ApiBase::PARAM_DFLT => 'preferences',
@@ -204,7 +204,7 @@ class ApiResumableUpload extends ApiUpload {
 			'ignorewarnings' => 'Ignore any warnings',
 			'chunksession' => 'The session key, established on the first contact during the chunked upload',
 			'chunk' => 'The data in this chunk of a chunked upload',
-			'byteoffset' => 'The byte offset range of the uploaded chunk, relative to the complete file',
+			'offset' => 'The start offset of the current chunk in bytes',
 			'done' => 'Set to 1 on the last chunk of a chunked upload',
 		
 			'sessionkey' => 'Session key that identifies a previous upload that was stashed temporarily.',

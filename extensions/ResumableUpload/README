@@ -7,3 +7,9 @@ Each chunk is uploaded with an offset to check on the backend that nothing is mi
 
 This extension needs client JavaScript support.
 This can be done with the HTML5 slice api or using the Firefogg extension.
+
+
+To install this extension, add the following line to your LocalSettings.php file:
+
+require_once( "$IP/extensions/ResumableUpload/ResumableUpload.php" );
+
