@@ -4860,7 +4860,7 @@ $messages['de'] = array(
 	'configure-setting-wgAllowExternalImagesFrom' => 'Ausnahmen für $wgAllowExternalImages = false',
 	'configure-setting-wgEnableImageWhitelist' => 'Die Verwendung von „MediaWiki:External file whitelist“ zulassen',
 	'configure-setting-wgAllowImageTag' => '<nowiki><img></nowiki>-Tags in Wikitext erlauben.',
-	'configure-setting-wgExpensiveParserFunctionLimit' => 'Maximale Anzahl an Aufrufen anspruchsvoller Parser-Funktionen pro Parse-Vorgang',
+	'configure-setting-wgExpensiveParserFunctionLimit' => 'Maximale Anzahl an Aufrufen anspruchsvoller Parserfunktionen pro Vorgang',
 	'configure-setting-wgExternalLinkTarget' => 'Voreingestelltes target-Attribut für externe Links',
 	'configure-setting-wgCleanSignatures' => 'Vorlagen in Signaturen substituieren',
 	'configure-setting-wgGalleryOptions' => 'Standard-Parameter für <nowiki><gallery></nowiki>-Tag',

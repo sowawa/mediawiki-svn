@@ -402,14 +402,17 @@ $messages['gl'] = array(
 	'ts-citegen-Skin-outputformat' => 'Formato de saída',
 	'ts-citegen-Template-lang' => 'Lingua do modelo',
 	'ts-citegen-Sources-title' => 'Fontes',
+	'ts-citegen-Sources-text' => 'A continuación está a lista de fontes empregadas.',
 	'ts-citegen-Sidebar-title' => 'Xerador de citas',
 	'ts-citegen-Sidebar-add-Firefox' => 'Engadir á barra lateral',
 	'ts-citegen-Sidebar-add-Opera' => 'Engadir á lista de preferencia',
 	'ts-citegen-Sidebar-add-IE-Mac' => 'Engadir ao marcador de páxinas',
+	'ts-citegen-Sidebar-add-IE-Mac-details' => 'Unha vez que cargue a páxina, abra a lista de favoritos, prema sobre "Engadir" e logo use o botón de favoritos para almacenar a páxina nos favoritos.',
 	'ts-citegen-Tools' => 'Ferramentas',
 	'ts-citegen-Other-languages' => 'Outras linguas',
 	'ts-citegen-Save-it' => 'Pescuda actual',
 	'ts-citegen-Errors-title' => 'Erros',
+	'ts-citegen-Unavailable-SQL' => 'Erro: A base de datos do Toolserver non está dispoñible. MySQL devolveu: %s',
 	'ts-citegen-base-disabled' => 'Error: A base de datos %s non está dispoñible',
 );
 

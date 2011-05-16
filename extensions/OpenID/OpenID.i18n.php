@@ -1108,6 +1108,7 @@ du kan vælge et fra nedenstående muligheder.',
  * @author ChrisiPK
  * @author Church of emacs
  * @author DaSch
+ * @author Kghbln
  * @author LWChris
  * @author Leithian
  * @author Tbleher
@@ -1115,7 +1116,7 @@ du kan vælge et fra nedenstående muligheder.',
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'openid-desc' => 'Anmeldung an dieses Wiki mit einer [http://openid.net/ OpenID] und anmelden an anderen Websites, die OpenID unterstützen, mit einem Wiki-Benutzerkonto.',
+	'openid-desc' => 'Ermöglicht die Anmeldung bei diesem Wiki mit einer [http://openid.net/ OpenID] sowie die Anmeldung mit dem Benutzerkonto dieses Wikis bei anderen Websites, die OpenID unterstützen',
 	'openidlogin' => 'Anmelden mit OpenID',
 	'openidserver' => 'OpenID-Server',
 	'openidxrds' => 'Yadis-Datei',
@@ -1134,7 +1135,7 @@ Bitte benachrichtige einen [[Special:ListUsers/sysop|Administrator]].',
 	'openidsuccess' => 'Überprüfung erfolgreich beendet',
 	'openidsuccesstext' => 'Die Überprüfung der OpenID-URL war erfolgreich.',
 	'openidusernameprefix' => 'OpenID-Benutzer',
-	'openidserverlogininstructions' => 'Gib dein Passwort unten ein, um dich als Benutzer $2 an $3 anzumelden (Benutzerseite $1).',
+	'openidserverlogininstructions' => '$3 erfordert die Eingabe deines Passworts für dein Benutzerkonto $2 auf der Seite $1 (OpenID-URL)',
 	'openidtrustinstructions' => 'Prüfe, ob du Daten mit $1 teilen möchtest.',
 	'openidallowtrust' => 'Erlaube $1, diesem Benutzerkonto zu vertrauen.',
 	'openidnopolicy' => 'Die Seite hat keine Datenschutzrichtlinie angegeben.',
@@ -1146,7 +1147,7 @@ Bitte benachrichtige einen [[Special:ListUsers/sysop|Administrator]].',
 	'openidemail' => 'E-Mail-Adresse:',
 	'openidlanguage' => 'Sprache',
 	'openidtimezone' => 'Zeitzone',
-	'openidchooselegend' => 'Wahl des Benutzernamens',
+	'openidchooselegend' => 'Wahl des Benutzernamens und Benutzerkontos',
 	'openidchooseinstructions' => 'Alle Benutzer benötigen einen Benutzernamen;
 du kannst einen aus der untenstehenden Liste auswählen.',
 	'openidchoosenick' => 'Dein Spitzname ($1)',
@@ -1171,14 +1172,13 @@ Wenn du OpenID für künftige Anmeldevorgänge nutzen möchtest, kannst du [[Spe
 	'openidautosubmit' => 'Diese Seite enthält ein Formular, das automatisch übertragen wird, wenn JavaSkript aktiviert ist. Falls nicht, klicke bitte auf „Continue“ (Weiter).',
 	'openidclientonlytext' => 'Du kannst keine Benutzerkonten aus diesem Wiki als OpenID für andere Seiten verwenden.',
 	'openidloginlabel' => 'OpenID-URL',
-	'openidlogininstructions' => '{{SITENAME}} unterstützt den [http://openid.net/ OpenID]-Standard für eine einheitliche Anmeldung für mehrere Websites.
-OpenID meldet dich bei vielen unterschiedlichen Webseiten an, ohne dass du für jede ein anderes Passwort verwenden musst.
-(Mehr Informationen bietet der [http://de.wikipedia.org/wiki/OpenID Wikipedia-Artikel zu OpenID].)
-
-Falls du bereits ein Benutzerkonto bei {{SITENAME}} hast, kannst du dich ganz normal mit Benutzername und Passwort [[Special:UserLogin|anmelden]].
-Wenn du in Zukunft OpenID verwenden möchtest, kannst du [[Special:OpenIDConvert|dein Benutzerkonto zu OpenID konvertieren]], nachdem du dich normal angemeldet hast.
-
-Es gibt viele [http://openid.net/get/ OpenID-Provider] und möglicherweise hast du bereits ein Benutzerkonto mit aktiviertem OpenID bei einem anderen Anbieter.',
+	'openidlogininstructions' => '{{SITENAME}} unterstützt den [http://openid.net/ OpenID-Standard] für eine einheitliche Anmeldung auf mehreren Websites.
+OpenID meldet dich bei vielen unterschiedlichen Websites an, ohne dass du für jede ein separates Passwort verwenden musst.
+(Mehr Informationen hierzu bietet der [http://de.wikipedia.org/wiki/OpenID Wikipedia-Artikel zu OpenID].)
+Es gibt viele [http://openid.net/get/ OpenID-Provider] und möglicherweise verfügst du bereits über ein OpenID-Benutzerkonto bei einer anderen Website.',
+	'openidlogininstructions-openidloginonly' => "Auf {{SITENAME}} kann man sich ''nur'' mit OpenID anmelden.",
+	'openidlogininstructions-passwordloginallowed' => 'Sofern du bereits über ein Benutzerkonto auf {{SITENAME}} verfügst, kannst du dich hier wie gewöhnlich mit deinem Benutzernamen und Passwort [[Special:UserLogin|anmelden]].
+Um OpenID zukünftig zu nutzen, kannst du dein Benutzerkonto für die Verwendung mit OpenID [[Special:OpenIDConvert|umwandeln]], nachdem du dich regulär angemeldet hast.',
 	'openidupdateuserinfo' => 'Persönliche Daten aktualisieren:',
 	'openiddelete' => 'OpenID löschen',
 	'openiddelete-text' => 'Wenn du auf den Button „{{int:openiddelete-button}}“ klickst, löschst du die OpenID $1 von deinem Benutzerkonto.
@@ -1839,7 +1839,7 @@ Veuillez vous mettre en rapport avec un [[Special:ListUsers/sysop|administrateur
 	'openidemail' => 'Adresse électronique',
 	'openidlanguage' => 'Langue',
 	'openidtimezone' => 'Zone horaire',
-	'openidchooselegend' => "Choix du nom d'utilisateur",
+	'openidchooselegend' => "Choix du nom d'utilisateur et du compte",
 	'openidchooseinstructions' => 'Tous les utilisateurs ont besoin d’un surnom ; vous pouvez en choisir un à partir des choix ci-dessous.',
 	'openidchoosenick' => 'Votre surnom ($1)',
 	'openidchoosefull' => 'Votre nom entier ($1)',
@@ -1864,13 +1864,14 @@ Vous vous désirez utiliser votre OpenID pour vous connecter ultérieurement, vo
 Si tel n’était pas le cas, essayez le bouton « Continue » (continuer).',
 	'openidclientonlytext' => 'Vous ne pouvez utiliser des comptes depuis ce wiki en tant qu’OpenID sur d’autres sites.',
 	'openidloginlabel' => 'Adresse OpenID',
-	'openidlogininstructions' => '{{SITENAME}} supporte le standard [http://openid.net/ OpenID] pour une seule signature entre des sites Internet.
+	'openidlogininstructions' => '{{SITENAME}} prend en charge la norme [http://openid.net/ OpenID] pour l’authentification unique entre les sites.
 OpenID vous permet de vous connecter sur plusieurs sites différents sans à avoir à utiliser un mot de passe différent pour chacun d’entre eux.
 (Voyez [http://fr.wikipedia.org/wiki/OpenID l’article de Wikipédia] pour plus d’informations.)
 
-Si vous avez déjà un compte sur {{SITENAME}}, vous pouvez vous [[Special:UserLogin|connecter]] avec votre nom d’utilisateur et son mot de pas comme d’habitude. Pour utiliser OpenID, à l’avenir, vous pouvez [[Special:OpenIDConvert|convertir votre compte en OpenID]] après que vous vous soyez connecté normallement.
-
-Il existe plusieurs [http://openid.net/get/ fournisseur d’OpenID], et vous pouvez déjà obtenir un compte OpenID activé sur un autre service.',
+Il y a de nombreux [http://openid.net/get/ fournisseurs OpenID], et vous avez peut-être déjà un compte OpenID activé sur un autre service.',
+	'openidlogininstructions-openidloginonly' => "{{SITENAME}} ne vous permet de vous connecter ''uniquement'' avec OpenID.",
+	'openidlogininstructions-passwordloginallowed' => "Si vous avez déjà un compte sur {{SITENAME}}, vous pouvez [[Special:UserLogin|connecter]] avec votre nom d'utilisateur et votre mot de passe comme d'habitude.
+Pour utiliser OpenID dans le futur vous pourrez [[Special:OpenIDConvert|convertir votre compte vers OpenID]] après vous être connecté normalement.",
 	'openidupdateuserinfo' => 'Mettre à jour mes données personnelles :',
 	'openiddelete' => "Supprimer l'OpenID",
 	'openiddelete-text' => "En cliquant sur le bouton « {{int:openiddelete-button}} », vous supprimez l'OpenID $1 de votre compte.
@@ -3448,7 +3449,7 @@ $messages['mk'] = array(
 	'openidsuccess' => 'Потврдувањето успеа',
 	'openidsuccesstext' => 'Потврдувањето на URL адресата на OpenID беше успешно.',
 	'openidusernameprefix' => 'OpenIDКорисник',
-	'openidserverlogininstructions' => 'Внесете ја лозинката подолу за да се најавите на $3 како корисник $2 (корисничка страница $1).',
+	'openidserverlogininstructions' => '$3 бара да ја внесете лозинката за вашиот корисник $2 страница $1 (OpenID URL)',
 	'openidtrustinstructions' => 'Штиклирајте ако сакате да споделувате податоци со $1.',
 	'openidallowtrust' => 'Дозволи му на $1 да ѝ верува на оваа корисничка сметка.',
 	'openidnopolicy' => 'Страницата нема назначено заштита на личните податоци.',
@@ -3460,7 +3461,7 @@ $messages['mk'] = array(
 	'openidemail' => 'Е-поштенска адреса',
 	'openidlanguage' => 'Јазик',
 	'openidtimezone' => 'Часовна зона',
-	'openidchooselegend' => 'Избор на корисничко име',
+	'openidchooselegend' => 'Избор на корисничко име и сметка',
 	'openidchooseinstructions' => 'Сите корисници треба да имаат прекар;
 можете да изберете едно од долунаведените предлози:',
 	'openidchoosenick' => 'Вашиот прекар ($1)',
@@ -3486,14 +3487,13 @@ $messages['mk'] = array(
 Ако ова не се случи, притиснете на копчето "Continue" (Продолжи).',
 	'openidclientonlytext' => 'Не можете да користите сметки од ова вики како OpenID за друго мрежно место.',
 	'openidloginlabel' => 'OpenID URL адреса',
-	'openidlogininstructions' => '{{SITENAME}} го поддржува [http://openid.net/ OpenID] стандардот за една сметка помеѓу мрежни места.
-OpenID ви овозможува да се најавувате на многу различни мрежни места без да ви треба различна лозинка за секоја поединечно.
-(Погледаје ја [http://mk.wikipedia.org/wiki/OpenID статијата за OpenID на Википедија] за повеќе информации.)
-
-Доколку веќе имате сметка на  {{SITENAME}}, можете да [[Special:UserLogin|се најавите]] со корисничкото име и лозинката по нормална постапка.
-За да користите OpenID во иднина, можете да [[Special:OpenIDConvert|ја претворите сметката во OpenID]] откога ќе се најавите нормално.
-
-Постојат многу [http://openid.net/get/ OpenID услужители], и вие можеби веќе да имате OpenID-овозможена сметка на друга служба.',
+	'openidlogininstructions' => '{{SITENAME}} го поддржува [http://openid.net/ OpenID] - стандард за една сметка за најава на разни мрежни места.
+OpenID ви овозможува да се најавувате на многу различни мрежни места без да ви треба различна лозинка за секое поединечно.
+(Повеќе информации на [http://mk.wikipedia.org/wiki/OpenID статијата за OpenID на Википедија].)
+Постојат многу [http://openid.net/get/ услужници за OpenID]. Можеби веќе имате сметка со овозможено OpenID на друга служба.',
+	'openidlogininstructions-openidloginonly' => "{{SITENAME}} ''само'' ви овозможува да се најавувате со OpenID.",
+	'openidlogininstructions-passwordloginallowed' => 'Ако веќе имате сметка на {{SITENAME}}, можете да се [[Special:UserLogin|најавите]] со корисничкото име и лозинката по редовен пат.
+За да користите OpenID во иднина, [[Special:OpenIDConvert|претворете ја вашата сметка во OpenID]] откако ќе се најавите нормално.',
 	'openidupdateuserinfo' => 'Поднови ги моите лични информации:',
 	'openiddelete' => 'Избриши го овој OpenID',
 	'openiddelete-text' => 'Со кликнување на копчето „{{int:openiddelete-button}}“ ќе го отстраните OpenID $1 од вашата сметка.
@@ -4387,7 +4387,7 @@ Por favor, consulte um [[Special:ListUsers/sysop|administrador]].',
 	'openidsuccess' => 'Verificação com sucesso',
 	'openidsuccesstext' => 'A verificação da URL OpenID foi bem sucedida.',
 	'openidusernameprefix' => 'UtilizadorOpenID',
-	'openidserverlogininstructions' => 'Introduza a sua palavra-chave abaixo para se autenticar em $3 como utilizador $2 (página de utilizador $1).',
+	'openidserverlogininstructions' => '$3 pede que introduza a palavra-chave do seu utilizador $2 página $1 (URL do OpenID)',
 	'openidtrustinstructions' => 'Verifique se pretender partilhar dados com $1.',
 	'openidallowtrust' => 'Permitir que $1 confie nesta conta de utilizador.',
 	'openidnopolicy' => 'O site não especificou uma política de privacidade.',
@@ -4399,7 +4399,7 @@ Por favor, consulte um [[Special:ListUsers/sysop|administrador]].',
 	'openidemail' => 'Correio electrónico',
 	'openidlanguage' => 'Língua',
 	'openidtimezone' => 'Fuso horário',
-	'openidchooselegend' => 'Escolha do nome de utilizador',
+	'openidchooselegend' => 'Escolha do nome de utilizador e da conta',
 	'openidchooseinstructions' => 'Todos os utilizadores precisam de uma alcunha;
 pode escolher uma das opções abaixo.',
 	'openidchoosenick' => 'A sua alcunha ($1)',
@@ -4425,14 +4425,12 @@ Se de futuro pretender usar o OpenID para se autenticar, pode [[Special:OpenIDCo
 Caso contrário, utilize o botão "Continue" (Continuar).',
 	'openidclientonlytext' => 'Pode usar contas desta wiki como OpenIDs noutro site.',
 	'openidloginlabel' => 'URL do OpenID',
-	'openidlogininstructions' => 'A {{SITENAME}} suporta o padrão [http://openid.net/ OpenID] para autenticação unificada entre vários sites na internet.
-O OpenID permite-lhe autenticar-se em vários sites sem usar uma palavra-chave diferente em cada um
-(veja [http://pt.wikipedia.org/wiki/OpenID o artigo OpenID na Wikipédia] para mais informações).
-
-Se já possui uma conta na {{SITENAME}}, pode [[Special:UserLogin|autenticar-se]] com o seu nome de utilizador e palavra-chave como habitualmente.
-Para utilizar o OpenID no futuro, pode [[Special:OpenIDConvert|converter a sua conta para OpenID]] depois de se ter autenticado normalmente.
-
-Existem vários [http://wiki.openid.net/Public_OpenID_providers fornecederes de OpenID] e poderá já ter uma conta activada para OpenID noutro serviço.',
+	'openidlogininstructions' => 'A {{SITENAME}} suporta o padrão [http://openid.net/ OpenID] para autenticação unificada entre sites na internet.
+O OpenID permite-lhe autenticar-se em vários sites sem usar uma palavra-chave diferente para cada um
+(consulte o [http://pt.wikipedia.org/wiki/OpenID artigo OpenID da Wikipédia] para mais informações). Existem vários [http://openid.net/get fornecederes de OpenID] e você pode já ter uma conta activada para OpenID noutro serviço.',
+	'openidlogininstructions-openidloginonly' => "A {{SITENAME}} ''só'' permite que se autentique com um OpenID.",
+	'openidlogininstructions-passwordloginallowed' => 'Se já tem uma conta na {{SITENAME}}, pode [[Special:UserLogin|entrar]] com o seu nome de utilizador e palavra-chave, como normalmente.
+Para usar o OpenID no futuro, pode [[Special:OpenIDConvert|converter a sua conta para OpenID]] depois de ter entrado normalmente.',
 	'openidupdateuserinfo' => 'Actualizar a minha informação pessoal:',
 	'openiddelete' => 'Eliminar OpenID',
 	'openiddelete-text' => 'Ao clicar o botão "{{int:openiddelete-button}}", irá eliminar o OpenID $1 da sua conta.
@@ -4585,7 +4583,7 @@ Vă rugăm să contactați un [[Special:ListUsers/sysop|administrator]].',
 	'openidsuccess' => 'Verificare cu succes',
 	'openidsuccesstext' => 'Verificarea URL-ului OpenID a reușit.',
 	'openidusernameprefix' => 'Utilizator OpenID',
-	'openidserverlogininstructions' => 'Introduceți parola mai jos pentru a vă conecta la $3 ca utilizator $2 (pagină de utilizator $1).',
+	'openidserverlogininstructions' => '$3 vă solicită să introduceți parola pentru pagina $2 dumneavoastră de utilizator $1 (URL OpenID)',
 	'openidtrustinstructions' => 'Verificați dacă doriți să partajați datele cu $1.',
 	'openidallowtrust' => 'Permite lui $1 să aibă încredere în acest cont de utilizator.',
 	'openidnopolicy' => 'Site-ul nu a specificat politica de confidențialitate.',
@@ -4597,7 +4595,7 @@ Vă rugăm să contactați un [[Special:ListUsers/sysop|administrator]].',
 	'openidemail' => 'Adresă e-mail',
 	'openidlanguage' => 'Limbă',
 	'openidtimezone' => 'Fus orar',
-	'openidchooselegend' => 'Alegeţi numele de utilizator',
+	'openidchooselegend' => 'Alegerea numelui de utilizator și a contului',
 	'openidchooseinstructions' => 'Toți utilizatorii necesită o poreclă;
 se poate alege una din opțiunile de mai jos.',
 	'openidchoosenick' => 'Porecla dvs. ($1)',
@@ -4964,7 +4962,7 @@ Posvetujte se z [[Special:ListUsers/sysop|administratorjem]].',
 	'openidsuccess' => 'Preverjanje je uspelo',
 	'openidsuccesstext' => 'Preverjanje URL OpenID je uspelo.',
 	'openidusernameprefix' => 'UporabnikOpenID',
-	'openidserverlogininstructions' => 'Spodaj vnesite svoje geslo za prijavo v $3 kot uporabnik $2 (uporabniška stran $1).',
+	'openidserverlogininstructions' => '$3 zahteva, da vnesete svoje geslo za vašega uporabnika $2, stran $1 (URL OpenID).',
 	'openidtrustinstructions' => 'Označite, če želite deliti podatke s $1.',
 	'openidallowtrust' => 'Dovoli $1, da zaupa temu uporabniškemuu računu.',
 	'openidnopolicy' => 'Stran ni določila pravilnika o zasebnosti.',
@@ -4976,7 +4974,7 @@ Posvetujte se z [[Special:ListUsers/sysop|administratorjem]].',
 	'openidemail' => 'E-poštni naslov',
 	'openidlanguage' => 'Jezik',
 	'openidtimezone' => 'Časovni pas',
-	'openidchooselegend' => 'Izbira uporabniškega imena',
+	'openidchooselegend' => 'Izbira uporabniškega imena in računa',
 	'openidchooseinstructions' => 'Vsi uporabniki potrebujejo vzdevek;
 svojega si lahko izberete med spodnjimi možnostmi.',
 	'openidchoosenick' => 'Vaš vzdevek ($1)',
@@ -5002,6 +5000,7 @@ svojega si lahko izberete med spodnjimi možnostmi.',
 Če ne, poskusite klikniti na gumb »Continue« (Nadaljuj).',
 	'openidclientonlytext' => 'Ne morete uporabiti računov s tega wikija kot OpenID-je na drugi strani.',
 	'openidloginlabel' => 'URL OpenID',
+	'openidlogininstructions-openidloginonly' => "{{SITENAME}} omogoča prijavo ''samo'' z OpenID.",
 	'openidupdateuserinfo' => 'Posodobi moje osebne podatke:',
 	'openiddelete' => 'Izbriši OpenID',
 	'openiddelete-text' => 'S klikom na gumb »{{int:openiddelete-button}}« boste odstranili OpenID $1 s svojega računa.
@@ -5682,6 +5681,7 @@ $messages['ug-latn'] = array(
  * @author Aleksandrit
  * @author NickK
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
 	'openid-desc' => 'Вхід у вікі за допомогою [http://openid.net/ OpenID], а також вхід на інші сайти, що підтримують OpenID за допомогою акаунта в вікі',
@@ -5715,7 +5715,7 @@ $messages['uk'] = array(
 	'openidemail' => 'Адреса ел. пошти',
 	'openidlanguage' => 'Мова',
 	'openidtimezone' => 'Часовий пояс',
-	'openidchooselegend' => 'Вибір імені користувача',
+	'openidchooselegend' => 'Вибір імені користувача та облікового запису',
 	'openidchooseinstructions' => 'Кожен користувач повинен мати псевдонім;
 ви можете вибрати один з представлених нижче.',
 	'openidchoosenick' => 'Ваш нік ($1)',

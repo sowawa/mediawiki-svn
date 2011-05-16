@@ -590,6 +590,7 @@ $messages['io'] = array(
  * @author Beta16
  * @author BrokenArrow
  * @author Darth Kule
+ * @author Rippitippi
  */
 $messages['it'] = array(
 	'contributiontracking-desc' => 'Monitoraggio donazioni per la raccolta fondi Wikimedia',
@@ -600,6 +601,7 @@ $messages['it'] = array(
 	'contrib-tracking-continue' => 'Se il collegamento non avviene automaticamente, fare clic sul pulsante per completare la donazione con PayPal.',
 	'contrib-tracking-redirect' => 'Verrai reindirizzato automaticamente su PayPal per completare la donazione.',
 	'contrib-tracking-button' => 'Continua',
+	'contrib-tracking-item-name-onetime' => 'Donazione singola',
 	'contrib-tracking-item-name-recurring' => 'Donazione ricorrente mensile',
 );
 

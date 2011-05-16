@@ -118,10 +118,11 @@ $messages['cy'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'oai-desc' => 'Stellt eine [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]-Repositorium-Schnittstelle bereit',
+	'oai-desc' => 'Stellt eine Schnittstelle für das [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]-Repositorium bereit',
 );
 
 /** Zazaki (Zazaki)

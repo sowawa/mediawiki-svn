@@ -49,6 +49,33 @@ $messages['bg'] = array(
 	'wikitweet-delete' => 'изтриване',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'wikitweet-desc' => 'Krouiñ ul lanvad mod Twitter e diabarzh MediaWiki',
+	'wikitweet-pleaselogin' => 'Kevreit evit gallout twitañ.',
+	'wikitweet-moretweets' => 'Twitoù all...',
+	'wikitweet-infoajax' => 'ober a ra gant teknologiezh AJAX ha freskaat a ra e-unan bep 5 eilenn hep kaout ezhomm da adkargañ ar bajenn.',
+	'wikitweet-submit' => 'Twitañ',
+	'wikitweet-submitandmail' => 'Twitañ ha kas posteloù',
+	'wikitweet-intheroom' => "Emaoc'h er sal",
+	'wikitweet-subscribe' => 'koumanantiñ',
+	'wikitweet-subscribed' => 'koumanantet',
+	'wikitweet-unsubscribe' => 'digoumanantiñ',
+	'wikitweet-delete' => 'diverkañ',
+	'wikitweet-inform' => 'dre an titourer',
+	'wikitweet-private' => 'prevez',
+	'wikitweet-answer' => 'respont da',
+	'wikitweet-anonymous' => 'dizanv',
+	'wikitweet-tweets-tagged' => 'Twitoù tikedennet',
+	'wikitweet-back-timeline' => "Distreiñ d'al lanvad",
+	'wikitweet-tweets-from-room' => 'Twitoù a-berzh ar saliad',
+	'wikitweet-timeago' => '$1 zo',
+	'wikitweet-inthefuture' => 'En dazont !!',
+	'wikitweet-fewsecondsago' => 'Un nebeud eilennoù zo',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  * @author MF-Warburg

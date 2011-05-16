@@ -698,6 +698,7 @@ $messages['io'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author BrokenArrow
  * @author Darth Kule
  */
@@ -709,7 +710,7 @@ $messages['it'] = array(
 	'scanset_opendir_error' => 'Errore: impossibile aprire la directory $1',
 	'scanset_no_files' => 'Scanset: nella directory indicata non è presente alcun file.',
 	'scanset_no_volumes' => 'Errore: directory di volume non trovate',
-	'scanset_missing_index_file' => 'Error: file indice $1 non trovato',
+	'scanset_missing_index_file' => 'Errore: file indice $1 non trovato',
 	'scanset_index_file_error' => 'Errore: errore nel formato del file indice alla riga $1',
 	'scanset_invalid_volume' => 'Errore: volume non valido',
 	'scanset_next' => 'Successivo &gt;',

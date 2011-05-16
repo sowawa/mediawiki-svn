@@ -198,6 +198,15 @@ $messages['ml'] = array(
 	'webfonts-disable-preference' => 'ഫോണ്ട് എംബഡ് ചെയ്യാതിരിക്കുക (വെബ്ഫോണ്ട്)',
 );
 
+/** Marathi (मराठी)
+ * @author Htt
+ */
+$messages['mr'] = array(
+	'webfonts' => 'जालटंक',
+	'webfonts-load' => 'टंक',
+	'webfonts-reset' => 'पूर्ववत करा',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

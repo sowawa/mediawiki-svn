@@ -288,7 +288,7 @@ $messages['et'] = array(
 $messages['eu'] = array(
 	'mwe-loading' => 'Kargatzen ...',
 	'mwe-ok' => 'Ados',
-	'mwe-cancel' => 'Ezeztatu',
+	'mwe-cancel' => 'Utzi',
 );
 
 /** Finnish (Suomi)

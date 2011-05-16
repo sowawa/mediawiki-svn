@@ -472,6 +472,7 @@ vers $2
  */
 $messages['gl'] = array(
 	'wikisync' => 'Sincronización de wikis',
+	'wikisync-desc' => 'Proporciona unha [[Special:WikiSync|páxina especial]] para sincronizar os cambios recentes de dous wikis: un local e outro remoto',
 	'wikisync_direction' => 'Seleccione a dirección da sincronización',
 	'wikisync_local_root' => 'Raíz do sitio wiki local',
 	'wikisync_remote_root' => 'Raíz do sitio wiki remoto',
@@ -485,6 +486,7 @@ $messages['gl'] = array(
 	'wikisync_remote_login_button' => 'Rexistro',
 	'wikisync_sync_files' => 'Sincronizar os ficheiros',
 	'wikisync_store_password' => 'Almacenar o contrasinal do wiki remoto',
+	'wikisync_storing_password_warning' => 'Almacenar o contrasinal remoto é inseguro e non está recomendado',
 	'wikisync_synchronization_button' => 'Sincronizar',
 	'wikisync_scheduler_log' => 'Rexistro do programador',
 	'wikisync_scheduler_setup' => 'Configuración do programador',
@@ -516,6 +518,10 @@ $messages['gl'] = array(
 	'wikisync_js_revision' => 'Revisión $1',
 	'wikisync_js_invalid_scheduler_time' => 'A hora do programador debe ser un número enteiro positivo',
 	'wikisync_js_scheduler_countdown' => '{{PLURAL:$1|queda un minuto|quedan $1 minutos}}',
+	'wikisync_js_sync_start_ltr' => 'Inicio da sincronización do wiki local co wiki remoto ás $1',
+	'wikisync_js_sync_start_rtl' => 'Inicio da sincronización do wiki remoto co wiki local ás $1',
+	'wikisync_js_sync_end_ltr' => 'Fin da sincronización do wiki local co wiki remoto ás $1',
+	'wikisync_js_sync_end_rtl' => 'Fin da sincronización do wiki remoto co wiki local ás $1',
 );
 
 /** Swiss German (Alemannisch)

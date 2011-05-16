@@ -93,10 +93,11 @@ $messages['bs'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Melancholie
  */
 $messages['de'] = array(
-	'rightfunctions-desc' => 'Erlaubnisbasierte Parser-Funktionen',
+	'rightfunctions-desc' => 'Ermöglicht von Berechtigungen abhängige Parserfunktionen',
 	'rightfunctions-casc' => '(von kaskadierenden Quellen)',
 	'rightfunctions-local' => '(von lokalen Seiten)',
 	'rightfunctions-ns' => '(von Namensraumsperrungen)',
@@ -404,10 +405,11 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'rightfunctions-desc' => 'Funções do "parser" baseadas em permissões',
+	'rightfunctions-desc' => 'Funções do analisador sintáctico baseadas em permissões',
 	'rightfunctions-casc' => '(de fontes em cascata)',
 	'rightfunctions-local' => '(de página local)',
 	'rightfunctions-ns' => '(de protecção de espaços nominais)',
