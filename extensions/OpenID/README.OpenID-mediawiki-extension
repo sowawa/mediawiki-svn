@@ -423,7 +423,7 @@ doesn't.
 
 The user interface strings for this extension are configurable and all start
 with "openid". See OpenID.i18n.php for details. Translation is done via
-translatenet wiki, as usual.
+translatewiki.net, as usual.
 
 == OpenID services ==
 
