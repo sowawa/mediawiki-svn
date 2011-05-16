@@ -439,15 +439,14 @@ all have free signup for identities if you want to test, too.
 
 == Bugs ==
 
-The list of known bugs can be accessed by
+List of known bugs is
 
    http://preview.tinyurl.com/openid-bugs
 
-Bugs and important observations should be filed in
+Bugs and important observations should be filed as
+Product: MediaWiki extensions, Component: OpenID in bugzilla via
 
-   https://bugzilla.wikimedia.org/
-   Product: MediaWiki extensions
-   Component: OpenID
+   http://preview.tinyurl.com/openid-filebug
 
 == TODO ==
 
