@@ -31,7 +31,7 @@ $messages = array();
  * @author Alexandre Emsenhuber
  */
 $messages['en'] = array(
-	'openid-desc' => 'Lets users login to the wiki with an [http://openid.net/ OpenID] and login to other OpenID-aware Web sites with their wiki user account',
+	'openid-desc' => 'Lets users log in to the wiki with an [http://openid.net/ OpenID] and log in to other OpenID-aware Web sites with their wiki user account',
 	'openidlogin' => 'Log in with OpenID',
 	'openidserver' => 'OpenID server',
 	'openidxrds' => 'Yadis file',
