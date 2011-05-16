@@ -66,9 +66,10 @@ class ResumableUploadHandler extends UploadBase {
 	 *
 	 * @return mixed True if there was no error, otherwise an error description suitable for passing to dieUsage()
 	 */
-	public function initialize( $done, $filename, $sessionKey, $path, $chunkSize, $sessionData ) {
+	public function initialize( $done, $chunkOffset, $filename, $sessionKey, $path, $chunkSize, $sessionData ) {
 		if( $filename ) $this->mDesiredDestName = $filename;
 		$this->mTempPath = $path;
+		$this->mChunkOffset = $chunkOffset;
 
 		if ( $sessionKey !== null ) {
 			$status = $this->initFromSessionKey( $sessionKey, $sessionData, $chunkSize );
@@ -144,10 +145,13 @@ class ResumableUploadHandler extends UploadBase {
 		}
 		
 		if ( $this->getRealPath( $this->repoPath ) ) {
-			$this->status = $this->appendToUploadFile( $this->repoPath, $this->mTempPath );
-
-			if ( $this->mFileSize >	$wgMaxUploadSize )
-				$this->status = Status::newFatal( 'largefileserver' );
+		    if ( $this->getSize( $this->repoPath ) == $this->mChunkOffset ) {
+			    $this->status = $this->appendToUploadFile( $this->repoPath, $this->mTempPath );
+			    if ( $this->mFileSize >	$wgMaxUploadSize )
+				    $this->status = Status::newFatal( 'largefileserver' );
+		    } else {
+			    $this->status = Status::newFatal( 'failed, chunk offset does not match file' );
+		    }
 
 		} else {
 			$this->status = Status::newFatal( 'filenotfound', $this->repoPath );
