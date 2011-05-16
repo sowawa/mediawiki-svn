@@ -73,7 +73,9 @@ class ConfigureHandlerDb implements ConfigureHandler {
 			return null;
 
 		# Suppress errors, if there's an error, it'll just be null and we'll do it again.
-		$data = @unserialize( file_get_contents( $path ) );
+		wfSuppressWarnings();
+		$data = unserialize( file_get_contents( $path ) );
+		wfRestoreWarnings();
 
 		return $data;
 	}
@@ -85,7 +87,11 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	protected function cacheToFS( $data ) {
 		global $wgConfigureFileSystemCache;
 
-		return @file_put_contents( $wgConfigureFileSystemCache, serialize( $data ) );
+		wfSuppressWarnings();
+		$ret = file_put_contents( $wgConfigureFileSystemCache, serialize( $data ) );
+		wfRestoreWarnings();
+
+		return $ret;
 	}
 
 	/**

@@ -106,8 +106,13 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 		);
 
 		$cont = '<?php $settings = '.var_export( $settings, true ).";";
-		@file_put_contents( $arch, $cont );
-		return ( @file_put_contents( $cur, $cont ) !== false );
+
+		wfSuppressWarnings();
+		file_put_contents( $arch, $cont );
+		$ret = file_put_contents( $cur, $cont ) !== false;
+		wfRestoreWarnings();
+
+		return $ret;
 	}
 
 	/**
