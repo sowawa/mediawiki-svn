@@ -5,7 +5,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-class FirefoggChunkedUploadHandler extends UploadBase {
+class ResumableUploadHandler extends UploadBase {
 	const INIT = 1;
 	const CHUNK = 2;
 	const DONE = 3;
@@ -18,7 +18,7 @@ class FirefoggChunkedUploadHandler extends UploadBase {
 	protected $watchlist;
 
 	public $status;
-
+ 
 	public function initializeFromRequest(&$request) {}
 	public function getChunkMode() {return $this->chunkMode;}
 	public function getDesiredName() {return $this->mDesiredDestName;}
@@ -142,6 +142,7 @@ class FirefoggChunkedUploadHandler extends UploadBase {
 			}
 			return $this->status;
 		}
+		
 		if ( $this->getRealPath( $this->repoPath ) ) {
 			$this->status = $this->appendToUploadFile( $this->repoPath, $this->mTempPath );
 

@@ -5,8 +5,8 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-class ApiFirefoggChunkedUpload extends ApiUpload {
-	private $mUpload = null, $mParams = null;
+class ApiResumableUpload extends ApiUpload {
+	protected $mUpload = null, $mParams = null;
 
 	public function execute() {
 		global $wgUser;
@@ -21,7 +21,7 @@ class ApiFirefoggChunkedUpload extends ApiUpload {
 		$this->validateParams( $this->mParams );
 
 		$request = $this->getMain()->getRequest();
-		$this->mUpload = new FirefoggChunkedUploadHandler;
+		$this->mUpload = new ResumableUploadHandler;
 
 		$status = $this->mUpload->initialize(
 			$request->getVal( 'done', null ),
@@ -47,24 +47,49 @@ class ApiFirefoggChunkedUpload extends ApiUpload {
 		}
 	}
 
-	public function getUpload() { return $this->mUpload; }
+	public function getUpload() { 
+		return $this->mUpload; 
+	}
 
 	public function performUploadInit($comment, $pageText, $watchlist, $user) {
-		$check = $this->mUpload->validateNameAndOverwrite();
-		if( $check !== true ) {
-			$this->getVerificationError( $check );
-		}
-
+		// Verify the initial upload request
+		$this->verifyUploadInit();
+		
 		$session = $this->mUpload->setupChunkSession( $comment, $pageText, $watchlist );
 		return array('uploadUrl' =>
 			wfExpandUrl( wfScript( 'api' ) ) . "?" .
 			wfArrayToCGI( array(
-				'action' => 'firefoggupload',
+				'action' => 'resumableupload',
 				'token' => $user->editToken(),
 				'format' => 'json',
 				'chunksession' => $session,
 				'filename' => $this->mUpload->getDesiredName(),
 			) ) );
+	}
+	
+	/**
+	 * Check the upload 
+	 */
+	public function verifyUploadInit(){
+
+		// Check for valid name: 
+		$check = $this->mUpload->validateName();
+		if( $check !== true ) {
+			return $this->getVerificationError( $check );
+		}
+		
+		// Check proposed file size
+		$maxSize = $this->getMaxUploadSize( '*' );
+		if( $this->mFileSize > $maxSize ) {
+			// We have to return an array here instead of getVerificationError so that we can include
+			// the max size info. 
+			return array(
+				'status' => self::FILE_TOO_LARGE,
+				'max' => $maxSize,
+			);
+		}
+		
+		return true;
 	}
 
 	public function performUploadChunk() {
@@ -73,10 +98,10 @@ class ApiFirefoggChunkedUpload extends ApiUpload {
 		if ( !$status->isOK() ) {
 			$this->dieUsage($status->getWikiText(), 'error');
 		}
-		return array('result' => 1, 'filesize' => $this->mUpload->getFileSize() );
+		return array( 'result' => 1, 'filesize' => $this->mUpload->getFileSize() );
 	}
 
-	public function performUploadDone($user) {
+	public function performUploadDone( $user ) {
 		$this->mUpload->finalizeFile();
 		$status = parent::performUpload( $this->comment, $this->pageText, $this->watchlist, $user );
 
@@ -88,9 +113,7 @@ class ApiFirefoggChunkedUpload extends ApiUpload {
 	}
 
 	/**
-	 * Handle a chunk of the upload.  Overrides the parent method
-	 * because Chunked Uploading clients (i.e. Firefogg) require
-	 * specific API responses.
+	 * Handle a chunk of the upload.  
 	 * @see UploadBase::performUpload
 	 */
 	public function performUpload( ) {
@@ -99,14 +122,17 @@ class ApiFirefoggChunkedUpload extends ApiUpload {
 		$ret = "unknown error";
 
 		global $wgUser;
-		if ( $this->mUpload->getChunkMode() == FirefoggChunkedUploadHandler::INIT ) {
-			$ret = $this->performUploadInit($this->comment, $this->pageText, $this->watchlist, $wgUser);
-		} else if ( $this->mUpload->getChunkMode() == FirefoggChunkedUploadHandler::CHUNK ) {
-			$ret = $this->performUploadChunk();
-		} else if ( $this->mUpload->getChunkMode() == FirefoggChunkedUploadHandler::DONE ) {
-			$ret = $this->performUploadDone($wgUser);
+		switch( $this->mUpload->getChunkMode() ){
+			case ResumableUploadHandler::INIT:
+				return $this->performUploadInit($this->comment, $this->pageText, $this->watchlist, $wgUser);
+				break;
+			case  ResumableUploadHandler::CHUNK:
+				return $this->performUploadChunk();
+				break;
+			case ResumableUploadHandler::DONE:
+				return $this->performUploadDone($wgUser);;
+				break;
 		}
-
 		return $ret;
 	}
 
@@ -119,16 +145,25 @@ class ApiFirefoggChunkedUpload extends ApiUpload {
 	}
 
 	protected function validateParams( $params ) {
-		if( $params['done'] ) {
-			$required[] = 'chunksession';
+		$required = array();
+		// Check required params for each upload mode:
+		switch( $this->mUpload->getChunkMode() ){
+			case ResumableUploadHandler::INIT:
+				$required[] = 'filename';
+				$required[] = 'comment';
+				$required[] = 'token';
+				$required[] = 'filesize';
+				break;
+			case  ResumableUploadHandler::CHUNK:
+				$required[] = 'byteoffset';
+				$required[] = 'chunksession';
+				// The actual file payload:
+				$required[] = 'chunk';
+				break;
+			case ResumableUploadHandler::DONE:
+				$required[] = 'chunksession';
+				break;
 		}
-		if( $params['chunksession'] === null ) {
-			$required[] = 'filename';
-			$required[] = 'comment';
-			$required[] = 'watchlist';
-			$required[] = 'ignorewarnings';
-		}
-
 		foreach( $required as $arg ) {
 			if ( !isset( $params[$arg] ) ) {
 				$this->dieUsageMsg( array( 'missingparam', $arg ) );
@@ -144,6 +179,7 @@ class ApiFirefoggChunkedUpload extends ApiUpload {
 			'ignorewarnings' => false,
 			'chunksession' => null,
 			'chunk' => null,
+			'byteoffset' => null,
 			'done' => false,
 			'watchlist' => array(
 				ApiBase::PARAM_DFLT => 'preferences',
@@ -157,22 +193,27 @@ class ApiFirefoggChunkedUpload extends ApiUpload {
 		);
 	}
 
-	public function getParamDescription() {
+	public function getParamDescription() {		
 		return array(
 			'filename' => 'Target filename',
+			'filesize' => 'The total size of the file being uploaded',
 			'token' => 'Edit token. You can get one of these through prop=info',
 			'comment' => 'Upload comment',
 			'watchlist' => 'Unconditionally add or remove the page from your watchlist, use preferences or do not change watch',
 			'ignorewarnings' => 'Ignore any warnings',
 			'chunksession' => 'The session key, established on the first contact during the chunked upload',
 			'chunk' => 'The data in this chunk of a chunked upload',
+			'byteoffset' => 'The byte offset range of the uploaded chunk, relative to the complete file',
 			'done' => 'Set to 1 on the last chunk of a chunked upload',
+		
+			'sessionkey' => 'Session key that identifies a previous upload that was stashed temporarily.',
+			'stash' => 'If set, the server will not add the file to the repository and stash it temporarily.',
 		);
 	}
 
 	public function getDescription() {
 		return array(
-			'Upload a file in chunks using the protocol documented at http://firefogg.org/dev/chunk_post.html'
+			'Upload a file in chunks'
 		);
 	}
 
@@ -190,11 +231,11 @@ class ApiFirefoggChunkedUpload extends ApiUpload {
 
 	public function getExamples() {
 		return array(
-			'api.php?action=firefoggupload&filename=Wiki.png',
+			'api.php?action=resumableupload&filename=Wiki.png',
 		);
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id$';
+		return __CLASS__ . ': $Id: ApiResumableUpload.php 83770 2011-03-12 18:09:59Z reedy $';
 	}
 }

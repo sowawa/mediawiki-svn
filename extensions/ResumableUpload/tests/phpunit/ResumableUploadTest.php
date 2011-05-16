@@ -4,7 +4,7 @@ global $IP;
 require_once( "$IP/maintenance/tests/ApiSetup.php" );
 require_once( "$IP/maintenance/deleteArchivedFiles.inc" );
 require_once( "$IP/maintenance/deleteArchivedRevisions.inc" );
-require_once( dirname( dirname( __FILE__ ) ) . '/FirefoggChunkedUpload.php' );
+require_once( dirname( dirname( __FILE__ ) ) . '/ResumableUpload.php' );
 
 class nullClass {
 	public function handleOutput(){}
@@ -69,11 +69,11 @@ class UploadFromChunksTest extends ApiSetup {
 
 	/* function testGetTitle() { */
 	/* 	$filename = tempnam( wfTempDir(), "" ); */
-	/* 	$c = new ApiFirefoggChunkedUpload; */
+	/* 	$c = new ApiResumableUpload; */
 	/* 	$c->initialize( false, "temp.txt", null, $filename, 0, null ); */
 	/* 	$this->assertEquals( null, $c->getUpload()->getTitle() ); */
 
-	/* 	$c = new ApiFirefoggChunkedUpload; */
+	/* 	$c = new ApiResumableUpload; */
 	/* 	$c->initialize( false, "Temp.png", null, $filename, 0, null ); */
 	/* 	$this->assertEquals( Title::makeTitleSafe( NS_FILE, "Temp.png" ), $c->getUpload()->getTitle() ); */
 	/* } */
@@ -115,7 +115,7 @@ class UploadFromChunksTest extends ApiSetup {
 
 		try {
 			$this->doApiRequest( array(
-				'action' => 'firefoggupload',
+				'action' => 'resumableupload',
 				'comment' => 'test',
 				'watchlist' => 'watch',
 				'filename' => 'tmp.txt',
@@ -139,14 +139,14 @@ class UploadFromChunksTest extends ApiSetup {
 		$token = md5( $data[2]['wsToken'] ) . EDIT_TOKEN_SUFFIX;
 
 		$data = $this->doApiRequest( array(
-			'action' => 'firefoggupload',
+			'action' => 'resumableupload',
 			'comment' => 'test',
 			'watchlist' => 'watch',
 			'filename' => 'TestPic.png',
 			'token' => $token ), $data );
 
 		$this->assertArrayHasKey( 'uploadUrl', $data[0] );
-		$this->assertRegexp( '/action=firefoggupload/', $data[0]['uploadUrl'] );
+		$this->assertRegexp( '/action=resumableupload/', $data[0]['uploadUrl'] );
 		$this->assertRegexp( '/chunksession=/', $data[0]['uploadUrl'] );
 		$this->assertRegexp( '/token=/', $data[0]['uploadUrl'] );
 
@@ -166,7 +166,7 @@ class UploadFromChunksTest extends ApiSetup {
 
 		try {
 			$this->doApiRequest( array(
-				'action' => 'firefoggupload',
+				'action' => 'resumableupload',
 				'enablechunks' => true,
 				'token' => $token,
 				'chunksession' => 'bogus' ), $data );
@@ -184,7 +184,7 @@ class UploadFromChunksTest extends ApiSetup {
 
 		$req = new FauxRequest(
 			array(
-				'action' => 'firefoggupload',
+				'action' => 'resumableupload',
 				'sessionkey' => '1',
 				'filename' => 'test.png',
 			) );
@@ -214,7 +214,7 @@ class UploadFromChunksTest extends ApiSetup {
 
 		$this->makeChunk( "123" );
 		$data = $this->doApiRequest( array(
-			'action' => 'firefoggupload',
+			'action' => 'resumableupload',
 			'comment' => 'test',
 			'watchlist' => 'watch',
 			'filename' => 'tmp.png',
@@ -282,7 +282,7 @@ class UploadFromChunksTest extends ApiSetup {
 		$data[2]['wsEditToken'] = $data[2]['wsToken'];
 		$token = md5( $data[2]['wsToken'] ) . EDIT_TOKEN_SUFFIX;
 		$data = $this->doApiRequest( array(
-			'action' => 'firefoggupload',
+			'action' => 'resumableupload',
 			'comment' => 'test',
 			'watchlist' => 'watch',
 			'filename' => 'twar.png',
@@ -336,7 +336,7 @@ class UploadFromChunksTest extends ApiSetup {
 		$token = md5( $data[2]['wsToken'] ) . EDIT_TOKEN_SUFFIX;
 		$data = $this->doApiRequest( array(
 			'filename' => 'twar.png',
-			'action' => 'firefoggupload',
+			'action' => 'resumableupload',
 			'token' => $token ), $data );
 
 		$url = $data[0]['uploadUrl'];
