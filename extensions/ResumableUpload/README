@@ -1,2 +1,0 @@
-Adds Resumable upload support to MediaWiki upload api based on Googles resumable upload protocol:
-http://code.google.com/apis/gdata/docs/resumable_upload.html
