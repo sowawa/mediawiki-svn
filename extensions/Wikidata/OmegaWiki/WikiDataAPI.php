@@ -1593,24 +1593,20 @@ function definedMeaningExpression( $definedMeaningId ) {
 	
 	list( $definingExpressionId, $definingExpression, $definingExpressionLanguage ) = definingExpressionRow( $definedMeaningId );
 	
-	if ( $definingExpressionLanguage == $userLanguageId && expressionIsBoundToDefinedMeaning( $definedMeaningId, $definingExpressionId ) )
-		return $definingExpression;
-	else {
-		if ( $userLanguageId > 0 )
-			$result = definedMeaningExpressionForLanguage( $definedMeaningId, $userLanguageId );
-		else
-			$result = "";
+	if ( $userLanguageId > 0 )
+		$result = definedMeaningExpressionForLanguage( $definedMeaningId, $userLanguageId );
+	else
+		$result = "";
+
+	if ( $result == "" ) {
+		// if no expression exists for the specified language : look for an expression in English
+		$result = definedMeaningExpressionForLanguage( $definedMeaningId, 85 );
 		
 		if ( $result == "" ) {
-			// if no expression exists for the specified language : look for an expression in English
-			$result = definedMeaningExpressionForLanguage( $definedMeaningId, 85 );
+			$result = definedMeaningExpressionForAnyLanguage( $definedMeaningId );
 			
-			if ( $result == "" ) {
-				$result = definedMeaningExpressionForAnyLanguage( $definedMeaningId );
-				
-				if ( $result == "" )
-					$result = $definingExpression;
-			}
+			if ( $result == "" )
+				$result = $definingExpression;
 		}
 	}
 

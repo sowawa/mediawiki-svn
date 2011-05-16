@@ -20,7 +20,8 @@ class SpecialOWStatistics extends SpecialPage {
 			. $this->linkHeader ( wfMsg('ow_DefinedMeaning'), "dm", $showstat ) . " — "
 			. $this->linkHeader ( wfMsg('ow_Definition'), "def", $showstat ) . " — "
 			. $this->linkHeader ( wfMsg('ow_Expression'), "exp", $showstat ) . " — "
-			. $this->linkHeader ( "Syntrans", "syntrans", $showstat )
+			. $this->linkHeader ( "Syntrans", "syntrans", $showstat ) . " — "
+			. $this->linkHeader ( wfMsg('ow_Annotation'), "annot", $showstat )
 			. "</big></div><br /><br />" ;
 
 		$wgOut->addHTML( $headerText ) ;
@@ -33,6 +34,8 @@ class SpecialOWStatistics extends SpecialPage {
 			$wgOut->addHTML( $this->getSyntransPerLanguage () );
 		else if ( $showstat == 'exp' )
 			$wgOut->addHTML ( $this->getExpressionPerLanguage () ) ;
+		else if ( $showstat == 'annot' )
+			$wgOut->addHTML ( $this->getAnnotationStats () ) ;
 	}
 
 	function linkHeader ( $text, $val , $showstat ) {
@@ -251,4 +254,33 @@ class SpecialOWStatistics extends SpecialPage {
 		return $output ;
 	}
 
+	function getAnnotationStats () {
+		$dc = wdGetDataSetContext();
+		$dbr = wfGetDB( DB_SLAVE );
+
+		// at the moment only link attributes
+		$sql = "SELECT attribute_mid, count(DISTINCT value_id) as tot ";
+		$sql .= " FROM {$dc}_url_attribute_values" ;
+		$sql .= " WHERE remove_transaction_id IS NULL " ;
+		$sql .= " group by attribute_mid " ;
+
+		$queryResult = $dbr->query( $sql );
+
+		while ( $row = $dbr->fetchObject( $queryResult ) ) {
+			$att = $row->attribute_mid ;
+			$nbAtt[$att] = $row->tot ;
+		}
+		arsort ( $nbAtt ) ;
+
+		$table = "<center><table class=\"sortable\">" ;
+		$table .= "<tr><th><b>" . wfMsg('ow_Annotation') . "</b></th><th><b>" . '#' . "</b></th></tr>\n";
+		foreach ($nbAtt as $att => $nb) {
+			$attname = definedMeaningExpression ( $att ) ;
+			if ( $attname == "" ) $attname = $att ;
+			$table .= "<tr><td alt=$att>$attname</td><td align=right>$nb</td></tr>\n" ;
+		}
+		$table .= "</table></center>" ;
+		$output = "<p>$table</p>"  ;
+		return $output ;
+	}
 }
