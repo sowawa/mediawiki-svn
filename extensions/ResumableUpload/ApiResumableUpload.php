@@ -25,6 +25,7 @@ class ApiResumableUpload extends ApiUpload {
 
 		$status = $this->mUpload->initialize(
 			$request->getVal( 'done', null ),
+			$request->getVal( 'offset', null ),
 			$request->getVal( 'filename', null ),
 			$request->getVal( 'chunksession', null ),
 			$request->getFileTempName( 'chunk' ),
