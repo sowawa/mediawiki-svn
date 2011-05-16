@@ -166,8 +166,8 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	 * @param $messagekey String or null: message name to display at the top
 	 */
 	function chooseNameForm( $openid, $sreg, $ax, $messagekey = null ) {
-		global $wgOut, $wgOpenIDOnly, $wgAllowRealName, $wgUser;
-		global $wgOpenIDProposeUsernameFromSREG, $wgOpenIDAllowAutomaticUsername, $wgOpenIDAllowManualUsername;
+		global $wgOut, $wgOpenIDAllowExistingAccountSelection, $wgAllowRealName, $wgUser;
+		global $wgOpenIDProposeUsernameFromSREG, $wgOpenIDAllowAutomaticUsername, $wgOpenIDAllowNewAccountname;
 
 		if ( $messagekey ) {
 			$wgOut->addWikiMsg( $messagekey );
@@ -182,7 +182,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 		);
 		$def = false;
 
-		if ( !$wgOpenIDOnly ) {
+		if ( $wgOpenIDAllowExistingAccountSelection ) {
 			# Let them attach it to an existing user
 
 			# Grab the UserName in the cookie if it exists
@@ -237,7 +237,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 				Xml::closeElement( 'tr' ) . "\n"
 			);
 			$def = true;
-		} // !$wgOpenIDOnly
+		} // $wgOpenIDAllowExistingAccountSelection
 
 		# These are only available if all visitors are allowed to create accounts
 		if ( $wgUser->isAllowed( 'createaccount' ) && !$wgUser->isBlockedFromCreateAccount() ) {
@@ -311,7 +311,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 				);
 		}
 
-		if ($wgOpenIDAllowManualUsername) {
+		if ($wgOpenIDAllowNewAccountname) {
 			$wgOut->addHTML(
 
 			Xml::openElement( 'tr' ) .
@@ -663,7 +663,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	# ----------------------------
 
 	function getUserName( $openid, $sreg, $ax, $choice, $nameValue ) {
-	global $wgOpenIDAllowAutomaticUsername, $wgOpenIDAllowManualUsername, $wgOpenIDProposeUsernameFromSREG;
+	global $wgOpenIDAllowAutomaticUsername, $wgOpenIDAllowNewAccountname, $wgOpenIDProposeUsernameFromSREG;
 
 		switch ( $choice ) {
 		 case 'nick':
@@ -689,7 +689,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 		        if ($wgOpenIDAllowAutomaticUsername) return $this->automaticName( $sreg );
 			break;
 		 case 'manual':
-		        if ($wgOpenIDAllowManualUsername) return $nameValue;
+		        if ($wgOpenIDAllowNewAccountname) return $nameValue;
 		 default:
 			return null;
 		}

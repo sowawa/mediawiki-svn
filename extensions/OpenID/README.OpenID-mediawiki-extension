@@ -279,9 +279,13 @@ LocalSettings.php file. Please read carefully.
   defaults to true; when first-time logging in with OpenID, propose and
   allow new account names from OpenID SREG data such as fullname or nickname
 
-* $wgOpenIDAllowManualUsername
+* $wgOpenIDAllowNewAccountname
   defaults to true; when first-time logging in with OpenID, show option
-  to enter and to allow a manually chosen username
+  to enter and to allow a manually chosen username for a new wiki account
+
+* $wgOpenIDAllowExistingAccountSelection
+  defaults to true; whether associating an existing account with OpenID is
+  allowed
 
 * $wgOpenIDAllowAutomaticUsername
   defaults to true; when first-time logging in with OpenID, show option
@@ -349,6 +353,7 @@ LocalSettings.php file. Please read carefully.
   on other sites.
   
   Remark:
+
   User page urls can (currently) only act as OpenID if the user page really
   exists i.e. has content. The mere existence of a user account is (currently)
   not sufficient.

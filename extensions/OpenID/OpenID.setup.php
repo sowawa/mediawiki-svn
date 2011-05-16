@@ -115,11 +115,16 @@ $wgOpenIDConsumerForce = null;
  */
 
 /**
- * when creating a new account or associating an existing account with OpenID:
- * show users a text input field to enter an arbitrary username and a select
- * box for it.
+ * whether associating an existing account with OpenID is allowed:
+ * show a wiki account username text input and password field
  */
-$wgOpenIDAllowManualUsername = true;
+$wgOpenIDAllowExistingAccountSelection = true;
+
+/**
+ * when creating a new account with OpenID:
+ * show users a text input field to enter an arbitrary username
+ */
+$wgOpenIDAllowNewAccountname = true;
 
 /**
  * when creating a new account or associating an existing account with OpenID:
@@ -144,14 +149,13 @@ $wgOpenIDUseEmailAsNickname = false;
 /**
  * when creating a new account or associating an existing account with OpenID:
  * propose and allow new account names from OpenID SREG data such as
- * fullname or nickname
+ * fullname or nickname (if such data is available)
  */
 $wgOpenIDProposeUsernameFromSREG = true;
 
 /**
  * when creating a new account or associating an existing account with OpenID:
  * propose an auto-generated fixed unique username "OpenIDUser#" (#=1, 2, ..)
- * and show a select box for it.
  */
 $wgOpenIDAllowAutomaticUsername = true;
 
