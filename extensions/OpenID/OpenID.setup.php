@@ -106,31 +106,46 @@ $wgOpenIDConsumerDeny = array();
 $wgOpenIDConsumerForce = null;
 
 /**
- * Use the part before the @ in any given e-mail address as the username
- * if a nickname is not given by the OP.
+ * when creating an account with OpenID:
+ * Use the username part left of "@" in an OpenID e-mail address as username
+ * for account creation, or log in - if no nickname is supplied in the OpenID
+ * SREG data set. In other words: if available, nickname takes precedence
+ * over username from e-mail.
+ *
+ * Example:
+ *
+ * When your OpenID is http://me.yahoo.com/my.name and your e-mail address is
+ * my.name@yahoo.com, then "my.name" will be used for account creation, or for
+ * log in.
+ *
  * This works well with $wgOpenIDConsumerForce where all users have a unique
  * e-mail address at the same domain.
+ *
+ * The e-mail address associated with the OpenID identity becomes
+ * the (unconfirmed) users' wiki account e-mail address.
+ *
  */
 $wgOpenIDUseEmailAsNickname = false;
 
 /**
- * when logging on:
- * propose and allow new account names from OpenID SREG data such as fullname or nickname
- *
+ * when creating an account with OpenID:
+ * propose and allow new account names from OpenID SREG data such as
+ * fullname or nickname
  */
 $wgOpenIDProposeUsernameFromSREG = true;
 
 /**
- * when logging on:
- * show option to enter and to allow a manually chosen username
- */
-$wgOpenIDAllowManualUsername = true;
-
-/**
- * when logging on:
- * show option to choose and to allow an automatically generated username
+ * when creating an account with OpenID:
+ * propose an auto-generated fixed unique username "OpenIDUser#" (#=1, 2, ..)
+ * and show a select box for it.
  */
 $wgOpenIDAllowAutomaticUsername = true;
+
+/**
+ * when creating an account with OpenID:
+ * show users a text input field to enter a username and a select box for it.
+ */
+$wgOpenIDAllowManualUsername = true;
 
 /**
  * Where to store transitory data.
