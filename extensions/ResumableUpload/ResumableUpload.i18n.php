@@ -9,5 +9,6 @@
 $messages = array();
 
 $messages['en'] = array(
-	'resumableupload-desc' => "Resumable Uploading support",
+	'resumableupload-desc' => 'Resumable uploading support',
 );
+
