@@ -18,29 +18,35 @@ __date__ = '2011-04-20'
 __version__ = '0.1'
 
 import sys
+import os
 from datetime import datetime
 if '..' not in sys.path:
-    sys.path.append('../../')
-    
+    sys.path.append('..%s..%s' % (os.sep, os.sep))
+
 from classes import storage
+from classes import settings
 
-location  = '/Users/diederik/Desktop/d_20110502.tsv'
-fh = open(location, 'r')
+rts = settings.Settings()
 db = storage.init_database('mongo', 'wikilytics', 'enwiki_editors_dataset')
+location = os.path.join(rts.csv_location, 'd_20110502.tsv')
 
+fh = open(location, 'r')
 for i, line in enumerate(fh):
-    if i ==0:
+    if i == 0:
         continue
     line = line.strip()
-    line = line.replace("'",'')
+    line = line.replace("'", '')
     line = line.split('\t')
-    id =line[0]
-    id = int(id[:-1])
-    #date1=eval(line[1])
+    id = line[0]
+    id = id[:-1]
     if line[1] == 'None':
         continue
     date = datetime.strptime(line[1][:8], '%Y%m%d')
-    db.update('id', id, {'reg_date': date})
-    
-
+    if i % 1000 == 0:
+        print 'Updated user %s' % i
+    db.update('editor', id, {'reg_date': date})
 fh.close()
+
+print 'Adding index'
+db_dataset.add_index('reg_date')
+print 'Done.'
