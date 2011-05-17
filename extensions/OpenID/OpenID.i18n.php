@@ -1837,7 +1837,7 @@ Veuillez vous mettre en rapport avec un [[Special:ListUsers/sysop|administrateur
 	'openidsuccess' => 'Vérification réussie',
 	'openidsuccesstext' => 'Vérification de l’adresse OpenID réussie.',
 	'openidusernameprefix' => 'Utilisateur OpenID',
-	'openidserverlogininstructions' => "Entrez votre mot de passe ci-dessous pour vous connecter sur $3 comme utilisateur '''$2''' (page utilisateur $1).",
+	'openidserverlogininstructions' => '$3 demande que vous entriez votre mot de passe pour votre page $1 utilisateur $2 (URL OpenID)',
 	'openidtrustinstructions' => 'Cochez si vous désirez partager les données avec $1.',
 	'openidallowtrust' => 'Autorise $1 à faire confiance à ce compte utilisateur.',
 	'openidnopolicy' => 'Le site n’a pas indiqué une politique des données personnelles.',
@@ -2619,7 +2619,7 @@ Per favor contacta un [[Special:ListUsers/sysop|administrator]].',
 	'openidemail' => 'Adresse de e-mail',
 	'openidlanguage' => 'Lingua',
 	'openidtimezone' => 'Fuso horari',
-	'openidchooselegend' => 'Selection del nomine de usator',
+	'openidchooselegend' => 'Selection del nomine de usator e del conto',
 	'openidchooseinstructions' => 'Tote le usatores require un pseudonymo;
 tu pote seliger un del optiones in basso.',
 	'openidchoosenick' => 'Tu pseudonymo ($1)',
@@ -2646,13 +2646,12 @@ Si non, prova le button "Continue" (Continuar).',
 	'openidclientonlytext' => 'Tu non pote usar contos ab iste wiki como contos OpenID in un altere sito.',
 	'openidloginlabel' => 'Adresse URL de OpenID',
 	'openidlogininstructions' => '{{SITENAME}} supporta le standard [http://openid.net/ OpenID] pro contos unificate inter sitos web.
-OpenID te permitte aperir un session in multe diverse sitos web sin usar un differente contrasigno pro cata un.
+OpenID permitte aperir session in multe diverse sitos web sin usar un contrasigno differente pro cata un.
 (Vide [http://ia.wikipedia.org/wiki/OpenID le articulo super OpenID in Wikipedia] pro plus informationes.)
-
-Si tu possede ja un conto in {{SITENAME}}, tu pote [[Special:UserLogin|aperir un session]] con tu nomine de usator e contrasigno como normal.
-Pro usar OpenID in le futuro, tu pote [[Special:OpenIDConvert|converter tu conto a OpenID]] post que tu ha aperite un session normal.
-
-Il ha multe [http://openid.net/get/ providitores de OpenID], e tu pote ja disponer de un conto con capacitate OpenID in un altere servicio.',
+Il ha multe [http://openid.net/get/ fornitores de OpenID], e tu pote jam disponer de un conto con capacitate OpenID in un altere servicio.',
+	'openidlogininstructions-openidloginonly' => "{{SITENAME}} ''solmente'' permitte aperir session con OpenID.",
+	'openidlogininstructions-passwordloginallowed' => 'Si tu ha jam un conto in {{SITENAME}}, tu pote [[Special:UserLogin|aperir session]] con tu nomine de usator e contrasigno como de costume.
+Pro usar OpenID in le futuro, tu pote [[Special:OpenIDConvert|converter tu conto a OpenID]] post haber aperite session del modo normal.',
 	'openidupdateuserinfo' => 'Actualisar mi informationes personal:',
 	'openiddelete' => 'Deler OpenID',
 	'openiddelete-text' => 'Per cliccar le button "{{int:openiddelete-button}}", tu removera le OpenID $1 de tu conto.
@@ -3758,6 +3757,7 @@ $messages['ne'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author McDutchie
  * @author Siebrand
  */
 $messages['nl'] = array(
@@ -3780,7 +3780,7 @@ Raadpleeg een  [[Special:ListUsers/sysop|beheerder]].",
 	'openidsuccess' => 'Verificatie uitgevoerd',
 	'openidsuccesstext' => 'De OpenID-URL is geverifieerd.',
 	'openidusernameprefix' => 'OpenIDGebruiker',
-	'openidserverlogininstructions' => 'Voer uw wachtwoord hieronder in om aan te melden bij $3 als gebruiker $2 (gebruikerspagina $1).',
+	'openidserverlogininstructions' => '$3 vraag om het invoeren van uw wachtwoord voor uw gebruiker $2 pagina $1 (URL voor OpenID).',
 	'openidtrustinstructions' => 'Controleer of u gegevens wilt delen met $1.',
 	'openidallowtrust' => 'Toestaan dat $1 deze gebruiker vertrouwt.',
 	'openidnopolicy' => 'De site heeft geen privacybeleid.',
@@ -3820,10 +3820,10 @@ Als dat niet werkt, klik dan op de knop "Continue" (Doorgaan).',
 	'openidlogininstructions' => '{{SITENAME}} ondersteunt de standaard [http://openid.net/ OpenID] voor maar een keer hoeven aanmelden voor meerdere websites.
 Met OpenID kunt u aanmelden bij veel verschillende websites zonder voor iedere site opnieuw een wachtwoord te moeten opgeven.
 Zie het [http://nl.wikipedia.org/wiki/OpenID Wikipedia-artikel over OpenID] voor meer informatie.
-
-Als u al een gebruiker hebt op {{SITENAME}}, dan kunt u aanmelden met uw gebruikersnaam en wachtwoord zoals u normaal doet. Om in de toekomst OpenID te gebruiken, kunt u uw [[Special:OpenIDConvert|gebruiker naar OpenID omzetten]] nadat u hebt aangemeld.
-
-Er zijn veel [http://wiki.openid.net/Public_OpenID_providers publieke OpenID-providers], en wellicht hebt u al een gebruiker voor OpenID bij een andere dienst.',
+Er zijn veel [http://wiki.openid.net/Public_OpenID_providers OpenID-providers] en wellicht hebt u al een gebruiker voor OpenID bij een andere dienst.',
+	'openidlogininstructions-openidloginonly' => "Bij {{SITENAME}} kunt u zich ''alleen'' aanmelden via OpenID.",
+	'openidlogininstructions-passwordloginallowed' => 'Als u al een gebruiker hebt bij op {{SITENAME}}, kunt u [[Special:UserLogin|aanmelden]] met uw gebruikersnaam en wachtwoord zoals gewoonlijk.
+Om in de toekomst OpenID te gebruiken, kunt u uw [[Special:OpenIDConvert|gebruiker omzetten naar OpenID]] nadat u bent aangemeld.',
 	'openidupdateuserinfo' => 'Mijn persoonlijke gegevens bijwerken:',
 	'openiddelete' => 'OpenID verwijderen',
 	'openiddelete-text' => 'Door te klikken op de knop "{{int:openiddelete-button}}", verwijdert u de OpenID $1 uit uw gebruiker.
