@@ -39,7 +39,7 @@
 	 * @return {Function} function suitable for assigning to window.gM
 	 */
 	mw.language.getMessageFunction = function( options ) { 
-		var parser = new mw.language.parser( options ); 
+		var parser = new mw.language.parser( options );
 		/** 
 		 * Note replacements are gleaned from 2nd parameter, or variadic args starting with 2nd parameter.
 		 * @param {String} message key
@@ -611,6 +611,17 @@
 		}
 		
 	};
-
+	
+	
+	// Alias gM to getMessageFunction ( note in upload wizard this is done on the page but we need
+	// to have it globally available, it should not affect other messages because it acts the same 
+	// as mediaWiki.message.get
+	var options = { 
+		magic: { 
+			'SITENAME' : mw.config.get('wgSitename') 
+		}
+	};
+	window.gM = mediaWiki.language.getMessageFunction( options );
+	$j.fn.msg = mediaWiki.language.getJqueryMessagePlugin( options );
 
 } )( mediaWiki, jQuery );
