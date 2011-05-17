@@ -323,6 +323,7 @@ def add_indexes(rts):
     print '\nCreating indexes...'
     db_dataset.add_index('editor')
     db_dataset.add_index('new_wikipedian')
+    db_dataset.add_index('username')
     print 'Finished creating indexes...'
 
 
