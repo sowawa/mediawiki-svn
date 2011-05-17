@@ -25,23 +25,6 @@ $wgWebFonts = array(
 			'woff' => "$fontsPath/en/ubuntu-r-webfont.woff",
 			'svg' => "$fontsPath/en/ubuntu-r-webfont.svg",
 			),
-		'Dyuthi' => array(
-			'eot' => "$fontsPath/ml/Dyuthi.eot",
-			'ttf' => "$fontsPath/ml/Dyuthi.ttf",
-			'woff' => "$fontsPath/ml/Dyuthi.woff",
-			'scale' => 2.0,
-			'normalization' => array(
-				"ൾ" => "ള്‍",
-				"ൻ" => "ന്‍",
-				"ർ" => "ര്‍",
-				"ൺ " => "ണ്‍",
-				"ൽ" => "ല്‍",
-				"ൿ" => "ക്‍ ",
-				"ൻ‍റ" => "ന്റ",
-				"ന്‍റെ" => "ന്റെ"
-				)
-				),
-
 		'Meera' => array(
 			'eot' => "$fontsPath/ml/Meera.eot",
 			'ttf' => "$fontsPath/ml/Meera.ttf",
@@ -238,11 +221,16 @@ $wgWebFonts = array(
 			'ttf' => "$fontsPath/saz/Pagul.ttf",
 			'woff' => "$fontsPath/saz/Pagul.woff",
 		),
+		'AbyssinicaSIL'=> array(
+			'eot' => "$fontsPath/gez/AbyssinicaSIL-R.eot",
+			'ttf' => "$fontsPath/gez/AbyssinicaSIL-R.ttf",
+			'woff' => "$fontsPath/gez/AbyssinicaSIL-R.woff",
+		),
 		),
 
 	'languages' => array(
 		// 'en' => array( 'RufScript', 'Perizia', 'Ubuntu' ),
-		'ml' => array( 'Meera', 'Rachana' , 'Dyuthi', 'RaghuMalayalam' ),
+		'ml' => array( 'Meera', 'Rachana', 'RaghuMalayalam' ),
 		'or' => array( 'Lohit Oriya' ),
 		'ta' => array( 'Lohit Tamil' ),
 		'te' => array( 'Lohit Telugu' ),
@@ -257,5 +245,7 @@ $wgWebFonts = array(
 		'my' => array( 'Masterpiece Uni Sans', 'Padauk-Regular', 'Myanmar3', 'Yunghkio' ),
 		'km' => array( 'KhmerOSbattambang', 'KhmerOSsiemreap', 'KhmerOS', 'KhmerOSbokor', 'KhmerOSmuollight', 'KhmerOSmuol', 'KhmerOSmuolpali', 'KhmerOSfreehand', 'KhmerOSfasthand' ),
 		'saz' => array( 'Pagul' ),
+		'am' => array( 'AbyssinicaSIL' ),
+		'ti' => array( 'AbyssinicaSIL' ),
 		),
 	);
