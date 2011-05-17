@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.net.Authenticator;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
@@ -65,7 +66,11 @@ public class OAIHarvester {
 		for(int tryNum = 1; tryNum <= this.retries; tryNum++){
 			try{
 				collector = new IndexUpdatesCollector(iid);
-				InputStream in = new BufferedInputStream(url.openStream());
+				URLConnection urlConn = url.openConnection();
+				// set some timeouts
+				urlConn.setReadTimeout(60 * 1000); // 60 seconds
+				urlConn.setConnectTimeout(60 * 1000); // 60 seconds
+				InputStream in = new BufferedInputStream(urlConn.getInputStream());
 				parser = new OAIParser(in,collector);
 				parser.parse();
 				resumptionToken = parser.getResumptionToken();
