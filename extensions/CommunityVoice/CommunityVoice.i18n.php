@@ -320,6 +320,7 @@ $messages['et'] = array(
 );
 
 /** Basque (Euskara)
+ * @author An13sa
  * @author Theklan
  */
 $messages['eu'] = array(
@@ -328,7 +329,7 @@ $messages['eu'] = array(
 	'communityvoice-ratings' => 'Balorazioak',
 	'communityvoice-ratings-scale-status-sending' => 'Bidaltzen...',
 	'communityvoice-ratings-scale-status-error' => 'Bidaltzen akatsa suertatu da!',
-	'communityvoice-ratings-scale-status-thanks' => 'Eskerrik asko bozkatzeagatik!',
+	'communityvoice-ratings-scale-status-thanks' => 'Milesker bozkatzeagatik!',
 	'communityvoice-ratings-error-no-category' => 'Kategoria falta da balorazio etiketan.',
 );
 

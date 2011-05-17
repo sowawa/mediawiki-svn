@@ -332,7 +332,7 @@ $messages['es'] = array(
  */
 $messages['eu'] = array(
 	'showprocesslist-id' => 'NA',
-	'showprocesslist-user' => 'Lankidea',
+	'showprocesslist-user' => 'Erabiltzailea',
 	'showprocesslist-db' => 'Datu-basea',
 	'showprocesslist-time' => 'Ordua',
 	'showprocesslist-state' => 'Egoera',

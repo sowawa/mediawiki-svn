@@ -3393,7 +3393,7 @@ A equipa da {{SITENAME}}',
  * @author Raylton P. Sousa
  */
 $messages['pt-br'] = array(
-	'articlefeedback' => 'Avaliação do artigo',
+	'articlefeedback' => 'Painel de avaliação de artigos',
 	'articlefeedback-desc' => 'Avaliação do artigo (versão de testes)',
 	'articlefeedback-survey-question-origin' => 'Em que página você estava quando começou a responder esta pesquisa?',
 	'articlefeedback-survey-question-whyrated' => 'Diga-nos porque é que classificou esta página hoje, por favor (marque todas as opções as quais se aplicam):',
@@ -3424,6 +3424,7 @@ $messages['pt-br'] = array(
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Política de privacidade',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Política de privacidade',
 	'articlefeedback-form-panel-submit' => 'Enviar avaliações',
+	'articlefeedback-form-panel-pending' => 'As suas avaliações não foram enviadas',
 	'articlefeedback-form-panel-success' => 'Gravado com sucesso',
 	'articlefeedback-form-panel-expiry-title' => 'As suas avaliações expiraram',
 	'articlefeedback-form-panel-expiry-message' => 'Volte a avaliar esta página e envie as novas avaliações, por favor.',
@@ -3455,10 +3456,14 @@ $messages['pt-br'] = array(
 	'articlefeedback-survey-message-error' => 'Ocorreu um erro. 
 Tente novamente mais tarde, por favor.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Os melhores e piores de hoje',
+	'articleFeedback-table-caption-dailyhighs' => 'Artigos com as avaliações mais elevadas: $1',
+	'articleFeedback-table-caption-dailylows' => 'Artigos com as avaliações mais baixas: $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Os mais alterados da semana',
 	'articleFeedback-table-caption-recentlows' => 'Os piores mais recentes',
 	'articleFeedback-table-heading-page' => 'Página',
 	'articleFeedback-table-heading-average' => 'Média',
+	'articleFeedback-copy-above-highlow-tables' => 'Esta funcionalidade é experimental. Deixe os seus comentários na [$1 página de discussão], por favor.',
+	'articleFeedback-copy-below-highlow-tables' => 'Estas tabelas contêm artigos que receberam pelo menos 10 avaliações nas últimas 24 horas. As médias são calculadas pela média aritmética de todas as avaliações enviadas nas últimas 24 horas.',
 	'articlefeedback-emailcapture-response-body' => 'Olá,
 
 Obrigado por expressar interesse em ajudar a melhorar a {{SITENAME}}.

@@ -88,6 +88,8 @@ $messages['af'] = array(
  */
 $messages['ar'] = array(
 	'slippymap_desc' => 'يسمح باستخدام وسم <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> لعرض خريطة OpenLayers لزقة. الخرائط من [http://openstreetmap.org openstreetmap.org]',
+	'slippymap_extname' => 'سليبي ماب',
+	'slippymap_tagname' => 'سليبي ماب',
 	'slippymap_error' => 'خطأ $1: $2',
 	'slippymap_errors' => 'أخطاء $1:',
 	'slippymap_error_missing_arguments' => 'لم تعطِ أي خاصية للوسم &lt;$1&gt;، راجع [http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax معلومات الاستخدام] لكيفية استدعائه.',

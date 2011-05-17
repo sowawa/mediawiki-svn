@@ -312,7 +312,7 @@ $messages['eu'] = array(
 	'findspam' => 'Spama bilatu',
 	'findspam-desc' => '[[Special:FindSpam|Orrialde berezi]] bat gehitzen du azken aldian gehitutako spama bilatu ahal izateko',
 	'findspam-ip' => 'IP helbidea:',
-	'findspam-ok' => 'Ondo',
+	'findspam-ok' => 'Ados',
 	'findspam-notextfound' => 'Ez da ekarpenik aurkitu',
 	'right-findspam' => 'Bilatu duela gutxi jarritako spama',
 );

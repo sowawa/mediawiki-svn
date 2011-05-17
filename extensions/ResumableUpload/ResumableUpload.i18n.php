@@ -19,10 +19,52 @@ $messages['de'] = array(
 	'resumableupload-desc' => 'Ermöglicht das Wiederaufnehmen des Hochladens',
 );
 
+/** French (Français)
+ * @author IAlex
+ */
+$messages['fr'] = array(
+	'resumableupload-desc' => 'Support de téléversement qui peut être repris',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
 $messages['gl'] = array(
 	'resumableupload-desc' => 'Soporte para continuar cargas',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'resumableupload-desc' => 'Supporto pro reprender incargamentos',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'resumableupload-desc' => 'Поддршка за одложено подигање',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'resumableupload-desc' => 'Ondersteuning voor het hervatten van uploads',
+);
+
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'resumableupload-desc' => 'Recuperação de interrupções no envio de ficheiros',
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'resumableupload-desc' => 'Поддержка возобновляемых загрузок',
 );
 

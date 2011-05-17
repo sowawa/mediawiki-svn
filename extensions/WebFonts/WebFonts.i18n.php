@@ -38,6 +38,17 @@ $messages['be-tarask'] = array(
 	'webfonts-disable-preference' => 'Забараніць убудаваньне шрыфтоў (WebFonts)',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'webfonts' => 'ওয়েবফন্টস',
+	'webfonts-desc' => 'পাতায় ফন্ট সন্নিবেশ',
+	'webfonts-load' => 'ফন্ট নির্বাচন করুন',
+	'webfonts-reset' => 'পুনরায় আরম্ভ',
+	'webfonts-disable-preference' => 'ফন্ট সন্নিবেশ (ওয়েবফন্টস) নিস্ক্রিয়',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
