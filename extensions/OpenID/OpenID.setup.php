@@ -27,7 +27,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	exit( 1 );
 }
 
-define( 'MEDIAWIKI_OPENID_VERSION', '0.920-dev' );
+define( 'MEDIAWIKI_OPENID_VERSION', '0.920-beta' );
 
 # CONFIGURATION VARIABLES
 
