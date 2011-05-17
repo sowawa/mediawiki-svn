@@ -45,9 +45,10 @@ $wgOpenIDLoginLogoUrl = $wgScriptPath . '/extensions/OpenID/skin/icons/openid-in
 
 /**
  * Whether to show the OpenID identity URL on a user's home page. Possible
- * values are 'always', 'never', or 'user'. 'user' lets the user decide.
+ * values are 'always', 'never' (default), or 'user'.
+ * 'user' lets the user decide in their preferences.
  */
-$wgOpenIDShowUrlOnUserPage = 'user';
+$wgOpenIDShowUrlOnUserPage = 'never';
 
 /**
  * These are trust roots that we don't bother asking users whether the trust
