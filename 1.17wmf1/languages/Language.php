@@ -196,6 +196,14 @@ class Language {
 	}
 
 	/**
+	 * Returns true if a language code is of a valid form for the purposes of 
+	 * internal customisation of MediaWiki, via Messages*.php.
+	 */
+	public static function isValidBuiltInCode( $code ) {
+		return preg_match( '/^[a-z0-9-]*$/i', $code );
+	}	
+
+	/**
 	 * Get the LocalisationCache instance
 	 */
 	public static function getLocalisationCache() {
