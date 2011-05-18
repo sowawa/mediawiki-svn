@@ -25,6 +25,11 @@ $wgWebFonts = array(
 			'woff' => "$fontsPath/en/ubuntu-r-webfont.woff",
 			'svg' => "$fontsPath/en/ubuntu-r-webfont.svg",
 			),
+		'AnjaliOldLipi'	=> array(
+			'eot' => "$fontsPath/ml/AnjaliOldLipi.eot",
+			'ttf' => "$fontsPath/ml/AnjaliOldLipi.ttf",
+			'woff' => "$fontsPath/ml/AnjaliOldLipi.woff",
+		),
 		'Meera' => array(
 			'eot' => "$fontsPath/ml/Meera.eot",
 			'ttf' => "$fontsPath/ml/Meera.ttf",
@@ -230,7 +235,7 @@ $wgWebFonts = array(
 
 	'languages' => array(
 		// 'en' => array( 'RufScript', 'Perizia', 'Ubuntu' ),
-		'ml' => array( 'Meera', 'Rachana', 'RaghuMalayalam' ),
+		'ml' => array( 'AnjaliOldLipi', 'Meera', 'Rachana', 'RaghuMalayalam' ),
 		'or' => array( 'Lohit Oriya' ),
 		'ta' => array( 'Lohit Tamil' ),
 		'te' => array( 'Lohit Telugu' ),
