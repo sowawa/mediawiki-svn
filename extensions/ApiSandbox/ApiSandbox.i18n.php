@@ -76,6 +76,15 @@ $messages['be-tarask'] = array(
 	'apisb-query-meta' => 'Мэтазьвесткі',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'apisb-no-js' => "'''Грешка''': тази функционалност изисква Джаваскрипт.",
+	'apisb-result' => 'Резултат',
+	'apisb-loading' => 'Зареждане...',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

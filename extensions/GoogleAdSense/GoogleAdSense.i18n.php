@@ -314,6 +314,13 @@ $messages['mk'] = array(
 	'googleadsense-desc' => 'Го додава [http://www.google.com/adsense Google AdSense] во страничната лента',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'googleadsense-desc' => 'സൈഡ്ബാറിൽ [http://www.google.com/adsense ഗൂഗിൾ ആഡ്സെൻസ്] ചേർക്കുന്നു',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Diagramma Della Verita
  */

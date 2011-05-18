@@ -138,12 +138,17 @@ You would not able to log in without an OpenID.',
  * @author Siebrand
  * @author The Evil IP address
  * @author Thomas Gries
+ * @author Wikinaut
  */
 $messages['qqq'] = array(
 	'openid-desc' => '{{desc}}',
-	'openidserverlogininstructions' => 'The message is shown to users when they want to log in on another site ($3) with their MediaWiki userpage url (this wiki as OpenID server) acting as OpenID identity. If not logged in by cookie or session, the MediaWiki prompts the user to log in as user $2. After a successful login to the MediaWiki which acts as OpenID server, the process flow is redirected to the other OpenID consumer site, where the user will be logged via their (MediaWiki userpage) OpenID.
-Example:
-http://www.consumer.org/foo requests that you enter your password for your user MeMyself page http://www.server.org/mediawiki/index.php/User:MeMyself (this is your OpenID url)
+	'openidserverlogininstructions' => 'The message is shown to users when they want to log in on another site ($3) with their MediaWiki userpage url (this MediaWiki as OpenID server) acting as OpenID identity. 
+
+If not logged in by cookie or session, the MediaWiki prompts the user to log in as user $2. After a successful login to the MediaWiki which acts as OpenID server, the process flow is redirected to the other OpenID consumer site, where the user will be logged via their (MediaWiki userpage) OpenID.
+
+System message output example after parameter substitution:
+
+"http://www.consumer.org/foo requests that you enter your password for your user MeMyself page http://www.server.org/mediawiki/index.php/User:MeMyself (this is your OpenID url)"
 
 Parameters:
 * $1 is the fully specified user page url which acts as OpenID identity. This is the OpenID identity for log-ins on the other, requesting site $3 (the OpenID consumer site $3)
@@ -1218,6 +1223,7 @@ Ohne OpenID könntest du dich nicht mehr anmelden.',
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author ChrisiPK
  * @author Imre
+ * @author Kghbln
  * @author LWChris
  * @author The Evil IP address
  * @author Umherirrender
@@ -1225,7 +1231,7 @@ Ohne OpenID könntest du dich nicht mehr anmelden.',
 $messages['de-formal'] = array(
 	'openidconfigerrortext' => 'Die OpenID-Speicherkonfiguarion für dieses Wiki ist fehlerhaft.
 Bitte benachrichtigen Sie einen [[Special:ListUsers/sysop|Administrator]].',
-	'openidserverlogininstructions' => 'Geben Sie Ihr Passwort unten ein, um sich als Benutzer $2 an $3 anzumelden (Benutzerseite $1).',
+	'openidserverlogininstructions' => '$3 erfordert die Eingabe Ihres Passworts für Ihr Benutzerkonto $2 auf der Seite $1 (OpenID-URL)',
 	'openidtrustinstructions' => 'Prüfen Sie, ob Sie Daten mit $1 teilen möchten.',
 	'openidchooseinstructions' => 'Alle Benutzer benötigen einen Benutzernamen;
 Sie können einen aus der untenstehenden Liste auswählen.',
@@ -1241,14 +1247,12 @@ Sie können einen aus der untenstehenden Liste auswählen.',
 Wenn Sie OpenID für künftige Anmeldevorgänge nutzen möchten, können Sie [[Special:OpenIDConvert|Ihr Benutzerkonto nach OpenID konvertieren]].",
 	'openidautosubmit' => 'Diese Seite enthält ein Formular, das automatisch übertragen wird, wenn JavaSkript aktiviert ist. Falls nicht, klicken Sie bitte auf „Continue“ (Weiter).',
 	'openidclientonlytext' => 'Sie können keine Benutzerkonten aus diesem Wiki als OpenID für andere Seiten verwenden.',
-	'openidlogininstructions' => '{{SITENAME}} unterstützt den [http://openid.net/ OpenID]-Standard für eine einheitliche Anmeldung für mehrere Websites.
-OpenID meldet Sie bei vielen unterschiedlichen Webseiten an, ohne dass Sie für jede ein anderes Passwort verwenden müssen.
-(Mehr Informationen bietet der [http://de.wikipedia.org/wiki/OpenID Wikipedia-Artikel zu OpenID].)
-
-Falls Sie bereits ein Benutzerkonto bei {{SITENAME}} haben, können Sie sich ganz normal mit Benutzername und Passwort [[Special:UserLogin|anmelden]].
-Wenn Sie in Zukunft OpenID verwenden möchten, können Sie [[Special:OpenIDConvert|Ihr Benutzerkonto zu OpenID konvertieren]], nachdem Sie sich normal angemeldet haben.
-
-Es gibt viele [http://openid.net/get/ OpenID-Provider] und möglicherweise haben Sie bereits ein Benutzerkonto mit aktiviertem OpenID bei einem anderen Anbieter.',
+	'openidlogininstructions' => '{{SITENAME}} unterstützt den [http://openid.net/ OpenID-Standard] für eine einheitliche Anmeldung auf mehreren Websites.
+OpenID meldet Sie bei vielen unterschiedlichen Websites an, ohne dass Sie für jede ein separates Passwort verwenden müssen.
+(Mehr Informationen hierzu bietet der [http://de.wikipedia.org/wiki/OpenID Wikipedia-Artikel zu OpenID].)
+Es gibt viele [http://openid.net/get/ OpenID-Provider] und möglicherweise verfügen Sie bereits über ein OpenID-Benutzerkonto bei einer anderen Website.',
+	'openidlogininstructions-passwordloginallowed' => 'Sofern Sie bereits über ein Benutzerkonto auf {{SITENAME}} verfügen, können Sie sich hier wie gewöhnlich mit Ihrem Benutzernamen und Passwort [[Special:UserLogin|anmelden]].
+Um OpenID auf diesem Wiki zukünftig zu nutzen, können Sie Ihr Benutzerkonto für die Verwendung mit OpenID [[Special:OpenIDConvert|umwandeln]], nachdem Sie sich regulär angemeldet haben.',
 	'openiddelete-text' => 'Wenn Sie auf den Button „{{int:openiddelete-button}}“ klicken, löschen Sie die OpenID $1 von Ihrem Benutzerkonto.
 Sie werden sich nicht mehr mit dieser OpenID anmelden können.',
 	'openiddeleteerrornopassword' => 'Sie können nicht alle Ihre OpenIDs löschen, da Sie kein Passwort gesetzt haben.
@@ -1964,7 +1968,7 @@ Por favor, consúlteo cun [[Special:ListUsers/sysop|administrador]] do sitio.',
 	'openidemail' => 'Enderezo de correo electrónico',
 	'openidlanguage' => 'Lingua',
 	'openidtimezone' => 'Zona horaria',
-	'openidchooselegend' => 'Elección do nome de usuario',
+	'openidchooselegend' => 'Elección do nome de usuario e da conta',
 	'openidchooseinstructions' => 'Todos os usuarios precisan un alcume; pode escoller un de entre as opcións de embaixo.',
 	'openidchoosenick' => 'O seu alcume ($1)',
 	'openidchoosefull' => 'O seu nome completo ($1)',
@@ -2156,6 +2160,7 @@ $messages['haw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotemliss
  * @author YaronSh
  */
@@ -2179,7 +2184,7 @@ $messages['he'] = array(
 	'openidsuccess' => 'האימות הושלם בהצלחה',
 	'openidsuccesstext' => 'אימות כתובת ה־OpenID הושלם בהצלחה.',
 	'openidusernameprefix' => 'משתמשOpenID',
-	'openidserverlogininstructions' => 'כתבו את סיסמתכם להלן כדי להיכנס לחשבון באתר $3 בתור המשתמש $2 (דף המשתמש: $1).',
+	'openidserverlogininstructions' => 'אתר $3 דורש שתכתבו את סיסמתכם לדף המשתמש $2 בכתובת $1 (זוהי כתובת ה־OpenID שלכם)',
 	'openidtrustinstructions' => 'סמנו אם ברצונכם לשתף מידע עם $1.',
 	'openidallowtrust' => 'מתן האפשרות ל־$1 לבטוח בחשבון משתמש זה.',
 	'openidnopolicy' => 'האתר לא ציין מדיניות פרטיות.',
@@ -2191,7 +2196,7 @@ $messages['he'] = array(
 	'openidemail' => 'כתובת דוא"ל',
 	'openidlanguage' => 'שפה',
 	'openidtimezone' => 'אזור זמן',
-	'openidchooselegend' => 'בחירת שם המשתמש',
+	'openidchooselegend' => 'בחירה של שם המשתמש וחשבון',
 	'openidchooseinstructions' => 'כל המשתמשים זקוקים לכינוי;
 תוכלו לבחור אחת מהאפשרויות שלהלן.',
 	'openidchoosenick' => 'הכינוי שלך ($1)',
@@ -2217,14 +2222,13 @@ $messages['he'] = array(
 אם זה לא פועל, נסו את הכפתור "Continue" (המשך).',
 	'openidclientonlytext' => 'אינכם יכולים להשתמש בחשבונות משתמש מוויקי זה כזהויות OpenID באתר אחר.',
 	'openidloginlabel' => 'כתובת OpenID',
-	'openidlogininstructions' => 'ב{{grammar:תחילית|{{SITENAME}}}} מותקנת תמיכה בתקן ה־[http://openid.net/ OpenID] לחשבון משתמש מאוחד בין אתרי אינטרנט.
+	'openidlogininstructions' => '{{SITENAME}} תומך בתקן [http://openid.net/ OpenID] לחשבון משתמש מאוחד בין אתרי אינטרנט.
 OpenID מאפשר לכם להיכנס לחשבון במגוון אתרים מבלי להשתמש בסיסמה שונה עבור כל אחד מהם.
 (עיינו ב[http://he.wikipedia.org/wiki/OpenID ערך על OpenID בוויקיפדיה העברית] למידע נוסף.)
-
-אם כבר יש ברשותכם חשבון במערכת {{SITENAME}}, תוכלו [[Special:UserLogin|להיכנס לחשבון]] עם שם המשתמש והסיסמה שלכם כרגיל.
-על מנת להשתמש ב־OpenID בעתיד, תוכלו [[Special:OpenIDConvert|להמיר את חשבונכם ל־OpenID]] לאחר שנכנסתם לחשבון באופן הרגיל.
-
-ישנם [http://wiki.openid.net/Public_OpenID_providers ספקי OpenID ציבוריים] רבים, ויתכן שכבר יש לכם חשבון התומך ב־OpenID בשירות אחר.',
+ישנם [http://wiki.openid.net/Public_OpenID_providers ספקי OpenID ציבוריים] רבים, וייתכן שכבר יש לכם חשבון התומך ב־OpenID בשירות אחר.',
+	'openidlogininstructions-openidloginonly' => "אתר {{SITENAME}} מאפשר כניסה ''רק'' באמצעות OpenID",
+	'openidlogininstructions-passwordloginallowed' => 'אם כבר יש לכם חשבון באתר {{SITENAME}}, אפשר [[Special:UserLogin|להיכנס]] אליו עם שם המשתמש והססמה הרגילים.
+כדי להשתמש ב־OpenID בעתיד, אפשר [[Special:OpenIDConvert|להמיר את חשבונכם ל־OpenID]] אחרי שיצאתם באופן רגיל.',
 	'openidupdateuserinfo' => 'עדכון הפרטים האישיים שלי:',
 	'openiddelete' => 'מחיקת OpenID',
 	'openiddelete-text' => 'אם תלחצו על הכפתור "{{int:openiddelete-button}}", חשבון ה־OpenID בשם $1 יוסר מחשבונכם.
@@ -2607,7 +2611,7 @@ Per favor contacta un [[Special:ListUsers/sysop|administrator]].',
 	'openidsuccess' => 'Verification succedite',
 	'openidsuccesstext' => 'Le verification del adresse URL de OpenID ha succedite.',
 	'openidusernameprefix' => 'Usator OpenID',
-	'openidserverlogininstructions' => 'Entra tu contrasigno in basso pro aperir un session in $3 como le usator $2 (pagina de usator: $1).',
+	'openidserverlogininstructions' => 'Le sito $3 requesta que tu entra le contrasigno de tu conto "$2", pagina $1 (isto es tu URL de OpenID).',
 	'openidtrustinstructions' => 'Controla si tu vole repartir datos con $1.',
 	'openidallowtrust' => 'Permitte que $1 se fide a iste conto de usator.',
 	'openidnopolicy' => 'Le sito non ha specificate un politica de confidentialitate.',
@@ -2707,7 +2711,7 @@ Pesan kesalahan: "$1"',
 	'openidsuccess' => 'Verifikasi berhasil',
 	'openidsuccesstext' => 'Verifikasi dari URL OpenID tersebut berhasil.',
 	'openidusernameprefix' => 'PenggunaOpenID',
-	'openidserverlogininstructions' => 'Masukkan kata sandi Anda di bawah ini untuk masuk log ke $3 sebagai pengguna $2 (halaman pengguna $1).',
+	'openidserverlogininstructions' => '$3 meminta Anda memasukkan sandi untuk halaman pengguna $2 Anda di $1 (ini adalah URL OpenID Anda)',
 	'openidtrustinstructions' => 'Berikan tanda cek jika Anda ingin berbagi data dengan $1.',
 	'openidallowtrust' => 'Izinkan $1 untuk mempercayai akun pengguna ini.',
 	'openidnopolicy' => 'Situs ini tidak memiliki kebijakan privasi.',
@@ -2719,7 +2723,7 @@ Pesan kesalahan: "$1"',
 	'openidemail' => 'Alamat surel',
 	'openidlanguage' => 'Bahasa',
 	'openidtimezone' => 'Zona waktu',
-	'openidchooselegend' => 'Pilihan nama pengguna',
+	'openidchooselegend' => 'Pilihan nama pengguna dan akun',
 	'openidchooseinstructions' => 'Semua pengguna memerlukan sebuah nama panggilan;
 Anda dapat memilih dari salah satu opsi berikut.',
 	'openidchoosenick' => 'Nama panggilan anda ($1)',
@@ -2745,14 +2749,13 @@ Jika Anda ingin menggunakan OpenID untuk masuk log di masa yang akan datang, And
 Jika tidak, coba tombol "Continue" (Lanjutkan).',
 	'openidclientonlytext' => 'Anda tidak dapat menggunakan akun dari wiki ini sebagai OpenID di situs lain.',
 	'openidloginlabel' => 'URL OpenID',
-	'openidlogininstructions' => '{{SITENAME}} ini mendukung standar [http://openid.net/ OpenID] untuk masuk log lintas situs Web.
-OpenID mengizinkan Anda untuk masuk log di berbagai situs Web tanpa harus memasukkan kata sandi yang berbeda.
+	'openidlogininstructions' => '{{SITENAME}} mendukung standar [http://openid.net/ OpenID] untuk info masuk tunggal lintas situs web.
+OpenID mengizinkan Anda untuk masuk log di berbagai situs web tanpa harus memasukkan kata sandi yang berbeda.
 (Lihat [http://id.wikipedia.org/wiki/OpenID artikel Wikipedia mengenai OpenID] untuk informasi lebih lanjut.)
-
-Jika Anda telah memiliki akun di {{SITENAME}}, Anda dapat [[Special:UserLogin|masuk log]] dengan nama pengguna dan kata sandi Anda seperti biasa.
-Untuk menggunakan OpenID di masa yang akan datang, Anda dapat [[Special:OpenIDConvert|mengkonversi akun Anda menjadi OpenID]] setelah Anda masuk log seperti biasa.
-
-Ada banyak [http://openid.net/get penyedia OpenID], dan Anda mungkin telah memiliki akun OpenID di salah satu layanan situs lain.',
+Ada banyak [http://openid.net/get penyedia OpenID] dan Anda mungkin telah memiliki akun OpenID di salah satu layanan situs lain.',
+	'openidlogininstructions-openidloginonly' => "{{SITENAME}} ''hanya'' mengizinkan untuk masuk log dengan OpenID.",
+	'openidlogininstructions-passwordloginallowed' => 'Jika Anda sudah memiliki akun di {{SITENAME}}, Anda dapat [[Special:UserLogin|masuk]] dengan nama pengguna dan sandi Anda seperti biasa.
+Untuk menggunakan OpenID selanjutnya, Anda dapat [[Special:OpenIDConvert|mengubah akun menjadi OpenID]] setelah Anda masuk seperti biasa.',
 	'openidupdateuserinfo' => 'Mutakhirkan informasi pribadi saya:',
 	'openiddelete' => 'Hapus OpenID',
 	'openiddelete-text' => 'Dengan menekan tombol "{{int:openiddelete-button}}", Anda akan menghapuskan OpenID $1 dari akun Anda.
@@ -3341,7 +3344,7 @@ Kontaktéiert w.e.g. een [[Special:ListUsers/sysop|Administrateur]].",
 	'openidemail' => 'E-Mailadress',
 	'openidlanguage' => 'Sprooch',
 	'openidtimezone' => 'Zäitzone',
-	'openidchooselegend' => 'Eraussiche vum Benotzernumm',
+	'openidchooselegend' => 'Eraussiche vum Benotzernumm a vum Benotzerkont',
 	'openidchooseinstructions' => 'All Benotzer brauchen e Spëtznumm; Dir kënnt iech ee vun de Méiglechkeeten ënnendrënner auswielen.',
 	'openidchoosenick' => 'Äre Spëtznumm ($1)',
 	'openidchoosefull' => 'Äre ganzen Numm ($1)',
@@ -4397,7 +4400,7 @@ Por favor, consulte um [[Special:ListUsers/sysop|administrador]].',
 	'openidsuccess' => 'Verificação com sucesso',
 	'openidsuccesstext' => 'A verificação da URL OpenID foi bem sucedida.',
 	'openidusernameprefix' => 'UtilizadorOpenID',
-	'openidserverlogininstructions' => '$3 pede que introduza a palavra-chave do seu utilizador $2 página $1 (URL do OpenID)',
+	'openidserverlogininstructions' => '$3 pede que introduza a palavra-chave do seu utilizador $2 página $1 (a URL do seu OpenID)',
 	'openidtrustinstructions' => 'Verifique se pretender partilhar dados com $1.',
 	'openidallowtrust' => 'Permitir que $1 confie nesta conta de utilizador.',
 	'openidnopolicy' => 'O site não especificou uma política de privacidade.',

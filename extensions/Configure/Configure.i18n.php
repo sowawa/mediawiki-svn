@@ -1368,6 +1368,7 @@ $messages['bg'] = array(
 	'configure-condition-name-5' => 'Потребителски IP адрес',
 	'configure-farmer-settings' => '[[Special:Configure|Конфигуриране на уикито]].',
 	'configure-farmer-extensions' => '[[Special:Extensions|Конфигуриране на разширенията за това уики]].',
+	'configure-farmer-extensions-list' => '[[Special:Extensions|Списък с разширенията, достъпни за това уики]].',
 );
 
 /** Bahasa Banjar (Bahasa Banjar)

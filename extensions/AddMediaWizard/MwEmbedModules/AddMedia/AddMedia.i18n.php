@@ -1169,6 +1169,7 @@ $messages['bg'] = array(
 	'mwe-upload-misc-error' => 'Неизвестна грешка при качване',
 	'mwe-filesource' => 'Източник:',
 	'mwe-select_file' => 'Избиране на файл',
+	'mwe-license_cc-by-sa' => 'Криейтив Комънс Споделяне на споделеното (3.0)',
 	'mwe-upload' => 'Качване на файл',
 	'mwe-destfilename' => 'Целево име на файл:',
 	'mwe-summary' => 'Резюме',

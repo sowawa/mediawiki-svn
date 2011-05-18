@@ -108,10 +108,12 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author YaronSh
  */
 $messages['he'] = array(
 	'sidebardonatebox-desc' => 'הוספת תיבת תרומה מותאמת אישית לסרגל הצד',
+	'DONATE' => 'תרומה',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

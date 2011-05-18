@@ -4170,6 +4170,37 @@ $messages['ru'] = array(
 	'voctrain_other' => 'Другой',
 );
 
+/** Sinhala (සිංහල)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['si'] = array(
+	'voctrain_Hello_World' => 'කොහොමද විකී!',
+	'voctrain_Permission_Denied' => 'අවසරය ලබා නොදේ',
+	'voctrain_try_again_' => 'නැවත උත්සහ කරමුද?',
+	'voctrain_Hello_username_welcome_to_the_omega_language_trainer' => 'කොහොමද, %username, welcome to the omega language trainer',
+	'voctrain_continue' => 'දිගටම කරගෙන යන්න',
+	'voctrain_bye' => 'සුභ ගමන්',
+	'voctrain_Languages' => 'භාෂා',
+	'voctrain_Questions' => 'ප්‍රශ්ණ',
+	'voctrain_Answers' => 'පිළිතුරු',
+	'voctrain_collection' => 'එකතුව',
+	'voctrain_Definition' => 'නිර්වචනය',
+	'voctrain_Word' => 'වචනය',
+	'voctrain_peek' => 'හොරෙන් බලන්න',
+	'voctrain_skip' => 'මඟ හරින්න',
+	'voctrain_Answer' => 'පිළිතුරු දෙන්න',
+	'voctrain_logout' => 'නික්මීම',
+	'voctrain_User_name' => 'පරිශීලක නාමය',
+	'voctrain_Password' => 'මුරපදය',
+	'voctrain_Login' => 'පිවිසීම',
+	'voctrain_Switch_language' => 'භාෂාව මාරු කරන්න',
+	'voctrain_Language' => 'භාෂාව',
+	'voctrain_Log_in' => 'ප්‍රවිෂ්ට වන්න',
+	'voctrain_Definitions' => 'නිර්වචන',
+	'voctrain_Translation' => 'පරිවර්තනය',
+	'voctrain_other' => 'වෙනත්',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

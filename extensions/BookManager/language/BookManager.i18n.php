@@ -359,17 +359,18 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Helder.wiki
  * @author Raylton P. Sousa <raylton.sousa@gmail.com>
  */
 $messages['pt'] = array(
 	'bookmanager-desc' => 'Ferramentas para livros',
 	'bm-booktools-section' => 'Ferramentas do livro',
-	'bm-randomchapter-link' => 'Capítulo aleatório', 
+	'bm-randomchapter-link' => 'Capítulo aleatório',
 	'bm-printversion' => 'Versão para impressão',
-	'bm-printversion-desc' => 'Gera uma [[Special:PrintVersion|versão para impressão]] de um livro',
-	'bm-printversion-no-book' => 'Por favor informe o nome de um livro para obter sua versão para impressão.',
-	'bm-printversion-inexistent-book' => 'Livro não encontrado. Por favor informe o nome de um livro existente para obter sua versão para impressão.',
+	'bm-printversion-desc' => 'Gera a [[Special:PrintVersion|versão para impressão]] de um livro',
+	'bm-printversion-no-book' => 'Introduza o nome de um livro para obter a versão para impressão.',
+	'bm-printversion-inexistent-book' => 'O livro não foi encontrado. Introduza o nome de um livro existente para obter a versão para impressão.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

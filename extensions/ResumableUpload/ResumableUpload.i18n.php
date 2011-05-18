@@ -33,11 +33,25 @@ $messages['gl'] = array(
 	'resumableupload-desc' => 'Soporte para continuar cargas',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'resumableupload-desc' => 'תמיכה בהעלאה שאפשר להפסיק ולהמשיך',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
 $messages['ia'] = array(
 	'resumableupload-desc' => 'Supporto pro reprender incargamentos',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'resumableupload-desc' => 'Dukungan pengunggahan berlanjut',
 );
 
 /** Macedonian (Македонски)

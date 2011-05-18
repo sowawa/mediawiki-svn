@@ -504,6 +504,8 @@ $messages['bg'] = array(
 	'fogg-license-title' => 'Лиценз',
 	'fogg-select_file' => 'Избиране на файл',
 	'fogg-select_new_file' => 'Избиране на нов файл',
+	'fogg-installed' => 'Firefogg е инсталиран.',
+	'fogg-not-installed' => 'Firefogg не е инсталиран или не е активиран.',
 	'fogg-please-install-install-linktext' => 'Инсталиране на Firefogg',
 );
 

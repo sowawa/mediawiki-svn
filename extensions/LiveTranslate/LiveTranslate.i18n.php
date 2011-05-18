@@ -386,6 +386,7 @@ $messages['gsw'] = array(
  */
 $messages['he'] = array(
 	'livetranslate-desc' => 'הפעלת תרגום חי של תוכן הדף באמצעות שירות התרגום של גוגל',
+	'right-managetms' => '[[Special:SpecialLiveTranslate|לשנות]] את רשימת זיכרונות התרגום',
 	'livetranslate-translate-to' => 'לתרגם דף זה ל',
 	'livetranslate-button-translate' => 'תרגום',
 	'livetranslate-button-translating' => 'מתבצע תרגום...',

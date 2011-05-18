@@ -886,23 +886,50 @@ Das {{SITENAME}}-Team',
  * @author Kghbln
  */
 $messages['de-formal'] = array(
+	'articlefeedback-survey-question-origin' => 'Auf welcher Seite befanden Sie sich zu Anfang dieser Umfrage?',
 	'articlefeedback-survey-question-whyrated' => 'Bitte lassen Sie uns wissen, warum Sie diese Seite heute eingeschätzt haben (Zutreffendes bitte ankreuzen):',
 	'articlefeedback-survey-question-useful' => 'Glauben Sie, dass die abgegebenen Einschätzungen nützlich und verständlich sind?',
 	'articlefeedback-survey-question-comments' => 'Haben Sie noch weitere Anmerkungen?',
 	'articlefeedback-survey-title' => 'Bitte beantworten Sie uns ein paar Fragen',
 	'articlefeedback-error' => 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.',
 	'articlefeedback-form-panel-instructions' => 'Bitte nehmen Sie sich kurz Zeit, diesen Seite einzuschätzen.',
+	'articlefeedback-form-panel-helpimprove' => 'Ich möchte dabei helfen, {{SITENAME}} zu verbessern. Senden Sie mir bitte eine E-Mail. (optional)',
+	'articlefeedback-form-panel-helpimprove-note' => 'Wir werden Ihnen eine Bestätigungs-E-Mail senden. Wir geben Ihre E-Mail-Adresse an niemanden weiter. $1',
+	'articlefeedback-form-panel-pending' => 'Ihre Bewertung wurde noch nicht übertragen',
+	'articlefeedback-form-panel-expiry-title' => 'Ihre Einschätzung liegt zu lange zurück.',
+	'articlefeedback-form-panel-expiry-message' => 'Bitte beurteilen Sie die Seite erneut und speichern Sie eine neue Einschätzung.',
 	'articlefeedback-field-trustworthy-tip' => 'Haben Sie den Eindruck, dass diese Seite über genügend Quellenangaben verfügt und diese zudem aus vertrauenswürdigen Quellen stammen?',
 	'articlefeedback-field-complete-tip' => 'Haben Sie den Eindruck, dass diese Seite alle wichtigen Aspekte enthält, die mit dessen Inhalt zusammenhängen?',
 	'articlefeedback-field-objective-tip' => 'Haben Sie den Eindruck, dass diese Seite eine ausgewogene Darstellung aller mit dessen Inhalt verbundenen Aspekte enthält?',
 	'articlefeedback-field-wellwritten-tip' => 'Haben Sie den Eindruck, dass diese Seite gut strukturiert sowie geschrieben wurde?',
 	'articlefeedback-pitch-thanks' => 'Vielen Dank! Ihre Einschätzung wurde gespeichert.',
 	'articlefeedback-pitch-survey-message' => 'Bitte nehmen Sie sich einen Moment Zeit, um an einer kurzen Umfrage teilzunehmen.',
-	'articlefeedback-pitch-join-message' => 'Wussten Sie, dass Sie auch ein Benutzerkonto anlegen können? Ein Benutzerkonto hilft Ihnen Ihre Bearbeitungen nachzuvollziehen, sich einfacher an Diskussionen zu beteiligen sowie ein Teil der Wikipedia zu werden.',
+	'articlefeedback-pitch-join-message' => 'Wollten Sie ein Benutzerkonto anlegen?',
 	'articlefeedback-pitch-edit-message' => 'Wussten Sie, dass Sie diesen Artikel bearbeiten können?',
-	'articlefeedback-expert-assessment-question' => 'Besitzen Sie Kenntnisse bezüglich dieses Themas?',
 	'articlefeedback-survey-message-error' => 'Ein Fehler ist aufgetreten.
 Bitte versuchen Sie es später erneut.',
+	'articlefeedback-emailcapture-response-body' => 'Hallo!
+
+Vielen Dank für Ihr Interesse an der Verbesserung von {{SITENAME}}.
+
+Bitte nehmen Sie sich einen Moment Zeit, Ihre E-Mail-Adresse zu bestätigen, indem Sie auf den folgenden Link klicken:
+
+$1
+
+Sie können auch die folgende Seite besuchen:
+
+$2
+
+Geben Sie dort den nachfolgenden Bestätigungscode ein:
+
+$3
+
+Wir melden uns in Kürze dazu, wie Sie helfen können, {{SITENAME}} zu verbessern.
+
+Sofern Sie diese Anfrage nicht ausgelöst haben, ignorieren Sie einfach diese E-Mail. Wir werden Ihnen dann nichts mehr zusenden.
+
+Viele Grüße und vielen Dank,
+Das {{SITENAME}}-Team',
 );
 
 /** Lower Sorbian (Dolnoserbski)

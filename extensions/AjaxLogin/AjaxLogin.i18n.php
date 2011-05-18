@@ -373,6 +373,7 @@ Kontrolas vian literumon.',
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Juan David Ruiz
+ * @author VegaDark
  */
 $messages['es'] = array(
 	'ajaxlogin-desc' => 'Tabla dinámica la cual permite a los usuario iniciar sesión y recordar contraseña',
@@ -384,6 +385,8 @@ Podrías perder tus ediciones si abandonas esta página ahora.',
 	'al-nosuchuser' => 'No existe usuario con el nombre "$1".
 Los nombres de usuario son sensibles a las mayúsculas.
 Verifique su escritura.',
+	'al-createblocked' => 'Tu dirección IP está bloqueada para crear cuentas.',
+	'al-throttled' => 'Has tenido demasiados intentos de contraseña. Espera $1 {{PLURAL:$1|segundo|segundos}} antes de intentarlo nuevamente.',
 );
 
 /** Estonian (Eesti)
