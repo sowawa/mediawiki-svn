@@ -149,10 +149,10 @@ $wgLocalFileRepo = array(
         'hashLevels' => $wgHashedUploadDirectory ? 2 : 0,
         'thumbScriptUrl' => $wgThumbnailScriptPath,
         'transformVia404' => !$wgGenerateThumbnailOnParse,
-        'deletedDir' => $wgDeletedDirectory,
-        'deletedHashLevels' => 3 
+        #'deletedDir' => $wgDeletedDirectory,
+        #'deletedHashLevels' => 3 
 );
 }
 
 $wgDebugLogFile = "/var/www/debug/abcd";
-
+$wgShowExceptionDetails = true;

@@ -110,7 +110,7 @@ class WMFRewrite(object):
             req.host = '127.0.0.1'
             url = req.url[:]
             # Create a path to our object's name.
-            req.path_info = "/v1/%s/%s/%s" % (self.account, container, obj)
+            req.path_info = "/v1/%s/%s/%s" % (self.account, container, urllib2.unquote(obj))
 
             controller = ObjectController()
             # do_start_response just remembers what it got called with, because we may want to generate a different response.

@@ -551,22 +551,25 @@ class SwiftFile extends LocalFile {
 			$thumbTemp = tempnam( $wgTmpDirectory, 'transform_out_' );
 
 			/* Fetch the image out of Swift */
-			$auth = new CF_Authentication($this->swiftuser, $this->key, NULL, $this->authurl);
-			wfDebug(  __METHOD__ . "Auth ", $this->swiftuser . "," . $this->key . "," . $this->authurl . "\n");
+			$auth = new CF_Authentication($this->repo->swiftuser, $this->repo->key, NULL, $this->repo->authurl);
 			$auth->authenticate();
 			$conn = new CF_Connection($auth);
-			$container = $conn->get_container($this->container);
+			$container = $conn->get_container($this->repo->container);
 
-			// how does this return failure??
-			$obj = $container->get_object($this->getRel());
-			// we need to do a try here
+			// What do we do if the original doesn't exist??
+			try {
+				$obj = $container->get_object($this->getRel());
+			} catch (NoSuchObjectException $e) {
+				$obj = NULL;
+			}
+			// we need to do a try here, but let's see how it fails first.
 			wfDebug(  __METHOD__ . " writing to " . $this->temp_path . "\n");
 			$obj->save_to_filename( $this->temp_path);
 
 			$thumb = $this->handler->doTransform( $this, $thumbTemp, $thumbUrl, $params );
 
 			// Store the thumbnail into Swift, but in the thumb version of the container.
-			$container = $conn->get_container($this->container . "%2Fthumb");
+			$container = $conn->get_container($this->repo->container . "%2Fthumb");
 			wfDebug(  __METHOD__ . "Creating thumb " . $this->getRel() . "/" . $thumbName . "\n");
 			$obj = $container->create_object($this->getRel() . "/" . $thumbName);
 			$thumbRel = $obj->load_from_filename($thumbTemp);
@@ -585,33 +588,18 @@ class SwiftFile extends LocalFile {
 
 	/**
 	 * Fix thumbnail files from 1.4 or before, with extreme prejudice
+	 * Upgrading directly from 1.4 to 1.8/SwiftMedia is not supported.
 	 */
 	function migrateThumbFile( $thumbName ) {
-		$thumbDir = $this->getThumbPath();
-		$thumbPath = "$thumbDir/$thumbName";
-
-		if ( is_dir( $thumbPath ) ) {
-			// Directory where file should be
-			// This happened occasionally due to broken migration code in 1.5
-			// Rename to broken-*
-			for ( $i = 0; $i < 100 ; $i++ ) {
-				$broken = $this->repo->getZonePath( 'public' ) . "/broken-$i-$thumbName";
-				if ( !file_exists( $broken ) ) {
-					rename( $thumbPath, $broken );
-					break;
-				}
-			}
-			// Doesn't exist anymore
-			clearstatcache();
-		}
-
-		if ( is_file( $thumbDir ) ) {
-			// File where directory should be
-			unlink( $thumbDir );
-			// Doesn't exist anymore
-			clearstatcache();
-		}
+		throw new MWException( __METHOD__.': not implemented' );
 	}
+	/**
+	 * Get the public root directory of the repository.
+	 */
+	function getRootDirectory() {
+		throw new MWException( __METHOD__.': not implemented' );
+	}
+
 
 	/** getHandler inherited */
 	/** iconThumb inherited */
@@ -623,23 +611,13 @@ class SwiftFile extends LocalFile {
 	function getThumbnails() {
 		$this->load();
 
-		$files = array();
-		$dir = $this->getThumbPath();
-
-		if ( is_dir( $dir ) ) {
-			$handle = opendir( $dir );
-
-			if ( $handle ) {
-				while ( false !== ( $file = readdir( $handle ) ) ) {
-					if ( $file { 0 } != '.' ) {
-						$files[] = $file;
-					}
-				}
-
-				closedir( $handle );
-			}
-		}
-
+		$dir = $this->getRel();
+		$auth = new CF_Authentication($this->repo->swiftuser, $this->repo->key, NULL, $this->repo->authurl);
+		$auth->authenticate();
+		$conn = new CF_Connection($auth);
+		$container = $conn->get_container($this->repo->container . "%2Fthumb");
+		$files = $container->list_objects(0, NULL, $dir);
+		wfDebug(  __METHOD__ . var_export($files, true) . "\n");
 		return $files;
 	}
 
@@ -688,23 +666,24 @@ class SwiftFile extends LocalFile {
 
 		// Delete thumbnails
 		$files = $this->getThumbnails();
-		$dir = $this->getThumbPath();
 		$urls = array();
 
+		$auth = new CF_Authentication($this->repo->swiftuser, $this->repo->key, NULL, $this->repo->authurl);
+		$auth->authenticate();
+		$conn = new CF_Connection($auth);
+		$container = $conn->get_container($this->repo->container . "%2Fthumb");
 		foreach ( $files as $file ) {
+			// I have no idea how to implement this given that we don't have paths in Swift
 			// Only remove files not in the $wgExcludeFromThumbnailPurge configuration variable
-			$ext = pathinfo( "$dir/$file", PATHINFO_EXTENSION );
-			if ( in_array( $ext, $wgExcludeFromThumbnailPurge ) ) {
-				continue;
-			}
+			// $ext = pathinfo( "$dir/$file", PATHINFO_EXTENSION );
+			//if ( in_array( $ext, $wgExcludeFromThumbnailPurge ) ) {
+			//	continue;
+			//}
 			
+			$urls[] = $this->getThumbUrl($file);
 			# Check that the base file name is part of the thumb name
 			# This is a basic sanity check to avoid erasing unrelated directories
-			if ( strpos( $file, $this->getName() ) !== false ) {
-				$url = $this->getThumbUrl( $file );
-				$urls[] = $url;
-				@unlink( "$dir/$file" );
-			}
+			$container->delete_object($file);
 		}
 
 		// Purge the squid
@@ -719,7 +698,7 @@ class SwiftFile extends LocalFile {
 	function getHistory( $limit = null, $start = null, $end = null, $inc = true ) {
 		$dbr = $this->repo->getSlaveDB();
 		$tables = array( 'oldimage' );
-		$fields = OldLocalFile::selectFields();
+		$fields = OldSwiftFile::selectFields();
 		$conds = $opts = $join_conds = array();
 		$eq = $inc ? '=' : '';
 		$conds[] = "oi_name = " . $dbr->addQuotes( $this->title->getDBkey() );
@@ -741,7 +720,7 @@ class SwiftFile extends LocalFile {
 		$opts['ORDER BY'] = "oi_timestamp $order";
 		$opts['USE INDEX'] = array( 'oldimage' => 'oi_name_timestamp' );
 
-		wfRunHooks( 'LocalFile::getHistory', array( &$this, &$tables, &$fields,
+		wfRunHooks( 'SwiftFile::getHistory', array( &$this, &$tables, &$fields,
 			&$conds, &$opts, &$join_conds ) );
 
 		$res = $dbr->select( $tables, $fields, $conds, __METHOD__, $opts, $join_conds );
@@ -751,7 +730,7 @@ class SwiftFile extends LocalFile {
 			if ( $this->repo->oldFileFromRowFactory ) {
 				$r[] = call_user_func( $this->repo->oldFileFromRowFactory, $row, $this->repo );
 			} else {
-				$r[] = OldLocalFile::newFromRow( $row, $this->repo );
+				$r[] = OldSwiftFile::newFromRow( $row, $this->repo );
 			}
 		}
 
@@ -2040,14 +2019,14 @@ class SwiftFileMoveBatch {
 			$bits = explode( '!', $oldName, 2 );
 
 			if ( count( $bits ) != 2 ) {
-				wfDebug( "Invalid old file name: $oldName \n" );
+				wfDebug( "Old file name missing !: '$oldName' \n" );
 				continue;
 			}
 
 			list( $timestamp, $filename ) = $bits;
 
 			if ( $this->oldName != $filename ) {
-				wfDebug( "Invalid old file name: $oldName \n" );
+				wfDebug( "Old file name doesn't match: '$oldName' \n" );
 				continue;
 			}
 
@@ -2156,7 +2135,7 @@ class SwiftFileMoveBatch {
 	}
 
 	/**
-	 * Generate triplets for FSRepo::storeBatch().
+	 * Generate triplets for storeBatch().
 	 */
 	function getMoveTriplets() {
 		$moves = array_merge( array( $this->cur ), $this->olds );
@@ -2236,10 +2215,10 @@ class SwiftFileMoveBatch {
 class SwiftRepo extends LocalRepo {
         var $fileFactory = array( 'SwiftFile', 'newFromTitle' );
         var $fileFactoryKey = array( 'SwiftFile', 'newFromKey' );
-        var $oldFileFactory = array( 'OldLocalFile', 'newFromTitle' );
-        var $oldFileFactoryKey = array( 'OldLocalFile', 'newFromKey' );
         var $fileFromRowFactory = array( 'SwiftFile', 'newFromRow' );
-        var $oldFileFromRowFactory = array( 'OldLocalFile', 'newFromRow' );
+        var $oldFileFactory = array( 'OldSwiftFile', 'newFromTitle' );
+        var $oldFileFactoryKey = array( 'OldSwiftFile', 'newFromKey' );
+        var $oldFileFromRowFactory = array( 'OldSwiftFile', 'newFromRow' );
 
 	function __construct( $info ) {
 		parent::__construct( $info );
@@ -2251,9 +2230,108 @@ class SwiftRepo extends LocalRepo {
 		$this->container= $info['container'];
 	}
 
+	/**
+	 * Store a batch of files
+	 *
+	 * @param $triplets Array: (src,zone,dest) triplets as per store()
+	 * @param $flags Integer: bitwise combination of the following flags:
+	 *     self::DELETE_SOURCE     Delete the source file after upload
+	 *     self::OVERWRITE         Overwrite an existing destination file instead of failing
+	 *     self::OVERWRITE_SAME    Overwrite the file if the destination exists and has the
+	 *                             same contents as the source
+	 */
 	function storeBatch( $triplets, $flags = 0 ) {
-		wfDebug( __METHOD__ . " $triplets\n" );
-		return parent::storeBatch( $triplets, $flags);
+		wfDebug( __METHOD__  . ': Storing ' . count( $triplets ) . 
+			" triplets; flags: {$flags}\n" );
+		
+		// Validate each triplet 
+		$status = $this->newGood();
+		foreach ( $triplets as $i => $triplet ) {
+			list( $srcPath, $dstZone, $dstRel ) = $triplet;
+
+			if ( !$this->validateFilename( $dstRel ) ) {
+				throw new MWException( 'Validation error in $dstRel' );
+			}
+
+			// Check overwriting
+			if (0) { #FIXME
+			if ( !( $flags & self::OVERWRITE ) && file_exists( $dstPath ) ) {
+				if ( $flags & self::OVERWRITE_SAME ) {
+					$hashSource = sha1_file( $srcPath );
+					$hashDest = sha1_file( $dstPath );
+					if ( $hashSource != $hashDest ) {
+						$status->fatal( 'fileexistserror', $dstPath );
+					}
+				} else {
+					$status->fatal( 'fileexistserror', $dstPath );
+				}
+			}
+			}
+		}
+
+		// Abort now on failure
+		if ( !$status->ok ) {
+			return $status;
+		}
+
+		// Execute the store operation for each triplet
+		$auth = new CF_Authentication($this->swiftuser, $this->key, NULL, $this->authurl);
+		$auth->authenticate();
+		$conn = new CF_Connection($auth);
+
+		foreach ( $triplets as $i => $triplet ) {
+			list( $srcPath, $dstZone, $dstRel ) = $triplet;
+
+			if (!self::isVirtualUrl( $srcPath )) {
+				throw new MWException( 'We require a virtual URL here: $srcPath' );
+			}
+			$src = $this->resolveVirtualUrl( $srcPath );
+			list ($srcContainer, $srcRel) = $src;
+			$dstContainer = $this->getZoneContainer( $dstZone );
+			$good = true;
+
+			// Create the destination object.
+			$dstc = $conn->get_container($dstContainer);
+			$obj = $dstc->create_object($dstRel);
+			$obj->content_type = "text/plain";
+			$obj->write(".");
+
+			// FIXME: not sure if we need to re-open it, but let's not take any chances.
+			$obj = $dstc->get_object($dstRel);
+			// FIXME: errors are returned as exceptions.
+			$obj->copy("$srcContainer/$srcRel");
+			if (0) { // handle exceptions
+				$status->error( 'filecopyerror', $srcPath, $dstPath );
+				$good = false;
+			}
+
+			if ( $flags & self::DELETE_SOURCE ) {
+				$dstc = $conn->get_container($srcContainer);
+				// FIXME: handle exceptions.
+				$dstc->delete_object($srcRel);
+				if (0) { // handle exceptions.
+					$status->error( 'filerenameerror', $srcPath, $dstPath );
+					$good = false;
+				}
+			}
+			if ( !( $flags & self::SKIP_VALIDATION ) ) {
+				// FIXME: Swift will return the MD5 of the data written.
+				if (0) { // ( $hashDest === false || $hashSource !== $hashDest ) {
+					wfDebug( __METHOD__ . ': File copy validation failed: ' . 
+						"$srcPath ($hashSource) to $dstPath ($hashDest)\n" );
+					
+					$status->error( 'filecopyerror', $srcPath, $dstPath );
+					$good = false;
+				}
+			}
+			if ( $good ) {
+				$status->successCount++;
+			} else {
+				$status->failCount++;
+			}
+			$status->success[$i] = $good;
+		}
+		return $status;
 	}
 
 	function storeTemp( $originalName, $srcPath ) {
@@ -2268,10 +2346,46 @@ class SwiftRepo extends LocalRepo {
 		wfDebug( __METHOD__ . " $sourceDestPairs\n" );
 		return parent::deleteBatch( $sourceDestPairs );
 	}
-	function fileExistsBatch( $files, $flags = 0 ) {
-		wfDebug( __METHOD__ . " $files\n" );
-		return parent::fileExistsBatch( $files, $flags );
+
+        function newFromArchiveName( $title, $archiveName ) {
+        	return OldSwiftFile::newFromArchiveName( $title, $this, $archiveName );
 	}
+
+	/**
+	 * Checks existence of specified array of files.
+	 *
+	 * @param $files Array: URLs of files to check
+	 * @param $flags Integer: bitwise combination of the following flags:
+	 *     self::FILES_ONLY     Mark file as existing only if it is a file (not directory)
+	 * @return Either array of files and existence flags, or false
+	 */
+	function fileExistsBatch( $files, $flags = 0 ) {
+		// we ONLY support when $flags & self::FILES_ONLY is set!
+		wfDebug(  __METHOD__ . var_export($files, true) . " " . $flags. "\n");
+		$result = array();
+		$auth = new CF_Authentication($this->swiftuser, $this->key, NULL, $this->authurl);
+		$auth->authenticate();
+		$conn = new CF_Connection($auth);
+		$container = $conn->get_container($this->container);
+
+		foreach ( $files as $key => $file ) {
+			if ( self::isVirtualUrl( $file ) ) {
+				$rvu = $this->resolveVirtualUrl( $file );
+				list ($cont, $rel) = $rvu;
+				$container = $conn->get_container($cont);
+			}
+			try {
+				$obj = $container->get_object($rel);
+				$result[$key] = true;
+			} catch (NoSuchObjectException $e) {
+				$result[$key] = false;
+			}
+		}
+
+		return $result;
+	}
+
+
 	function getFileProps( $virtualUrl ) {
 		wfDebug( __METHOD__ . " $virtualUrl\n" );
 		return parent::getFileProps( $virtualUrl );
@@ -2280,27 +2394,26 @@ class SwiftRepo extends LocalRepo {
 		if ( empty($title) ) { return null; }
 		wfDebug( __METHOD__ . " $title, $time " . var_export($this->fileFactory, true) ."\n" );
 		$f = parent::newFile( $title, $time );
-		$f->key= $this->key;
-		$f->swiftuser= $this->swiftuser;
-		$f->authurl= $this->authurl;
-		$f->container= $this->container;
 		return $f;
 	}
 	function findFile( $title, $options = array() ) {
-		global $wgLocalFileRepo;
-		wfDebug( __METHOD__ . " finding $title\n" );
-		wfDebug(  __METHOD__ . var_export($wgLocalFileRepo, true) . "\n" );
-		return parent::findFile( $title, $options );
+		wfDebug( __METHOD__ . " finding $title" . var_export($options, true) . "\n" );
+		$found = parent::findFile( $title, $options );
+		wfDebug( __METHOD__ . " found " . var_export($found, true) . "\n" );
+		return  $found;
 	}
 
-	function swiftcopy($container, $dstRel, $archiveRel ) {
+	function swiftcopy($container, $srcRel, $archiveRel ) {
 		// Note the assumption that we're not doing cross-container copies.
 		// The destination must exist already.
 		$obj = $container->create_object($archiveRel);
+		$obj->content_type = "text/plain";
 		$obj->write(".");
-		$obj->close();
-		$obj = $container->get_object($dstRel);
-		$success = $obj->copy($container->name . "/" . $archiveRel);
+		// FIXME: not sure if we need to re-open it, but let's not take any chances.
+		$obj = $container->get_object($archiveRel);
+		// Errors are returned as exceptions.
+		wfDebug( __METHOD__ . " copying to $archiveRel from " . $container->name . "/" . $srcRel . "\n");
+		$success = $obj->copy($container->name . "/" . $srcRel);
 		return $success;
 	}
 
@@ -2312,7 +2425,6 @@ class SwiftRepo extends LocalRepo {
 	 */
 	function publishBatch( $triplets, $flags = 0 ) {
 		$auth = new CF_Authentication($this->swiftuser, $this->key, NULL, $this->authurl);
-		wfDebug(  __METHOD__ . $this->swiftuser . "," . $this->key . "," . $this->authurl . "\n");
 		$auth->authenticate();
 		$conn = new CF_Connection($auth);
 		$container = $conn->get_container($this->container);
@@ -2346,8 +2458,6 @@ class SwiftRepo extends LocalRepo {
 
 		foreach ( $triplets as $i => $triplet ) {
 			list( $srcPath, $dstRel, $archiveRel ) = $triplet;
-			$dstPath = "{$this->directory}/$dstRel";
-			$archivePath = "{$this->directory}/$archiveRel";
 
 			// Archive destination file if it exists
 			try {
@@ -2356,11 +2466,7 @@ class SwiftRepo extends LocalRepo {
 				$pic = NULL;
 			}
 			if( $pic ) {
-				// Check if the archive file exists
-				// This is a sanity check to avoid data loss. In UNIX, the rename primitive
-				// unlinks the destination file if it exists. DB-based synchronisation in
-				// publishBatch's caller should prevent races. In Windows there's no
-				// problem because the rename primitive fails if the destination exists.
+				// this shouldn't fail, but we'll catch it anyway.
 				try {
 					$success = $this->swiftcopy($container, $dstRel, $archiveRel );
 				} catch (NoSuchObjectException $e) {
@@ -2368,11 +2474,11 @@ class SwiftRepo extends LocalRepo {
 				}
 
 				if( !$success ) {
-					$status->error( 'filerenameerror',$dstPath, $archivePath );
+					$status->error( 'filerenameerror',$dstRel, $archiveRel );
 					$status->failCount++;
 					continue;
 				} else {
-					wfDebug(__METHOD__.": moved file $dstPath to $archivePath\n");
+					wfDebug(__METHOD__.": moved file $dstRel to $archiveRel\n");
 				}
 				$status->value[$i] = 'archived';
 			} else {
@@ -2380,11 +2486,11 @@ class SwiftRepo extends LocalRepo {
 			}
 
 			$good = true;
-			// how does this return failure??
+			// FIXME: how does this return failure??
 			$obj = $container->create_object($dstRel);
-			// we need to do a try here
+			// FIXME: we need to do a try here
 			$obj->load_from_filename( $srcPath, True);
-			// $status->error( 'filecopyerror', $srcPath, $dstPath );
+			// $status->error( 'filecopyerror', $srcPath, $dstRel );
 			// $good = false;
 			#if ( $flags & self::DELETE_SOURCE ) {
 				#delete ( $srcPath );
@@ -2392,15 +2498,95 @@ class SwiftRepo extends LocalRepo {
 
 			if ( $good ) {
 				$status->successCount++;
-				wfDebug(__METHOD__.": wrote tempfile $srcPath to $dstPath\n");
-				// Thread-safe override for umask
-				$this->chmod( $dstPath );
+				wfDebug(__METHOD__.": wrote tempfile $srcPath to $dstRel\n");
 			} else {
 				$status->failCount++;
 			}
 		}
 		return $status;
 	}
+
+	/**
+	 * Deletes a batch of files. Each file can be a (zone, rel) pairs, a
+	 * virtual url or a real path. It will try to delete each file, but 
+	 * ignores any errors that may occur
+	 * 
+	 * @param $pairs array List of files to delete
+	 */
+	function cleanupBatch( $files ) {
+		$auth = new CF_Authentication($this->swiftuser, $this->key, NULL, $this->authurl);
+		$auth->authenticate();
+		$conn = new CF_Connection($auth);
+		foreach ( $files as $file ) {
+			if ( is_array( $file ) ) {
+				// This is a pair, extract it
+				list( $zone, $rel ) = $file;
+				$cont = $this->getZonePath( $zone );
+			} else {
+				if ( self::isVirtualUrl( $file ) ) {
+					// This is a virtual url, resolve it 
+					$path = $this->resolveVirtualUrl( $file );
+					list( $zone, $rel) = $path;
+					$cont = $this->getZonePath( $zone );
+				} else {
+					// FIXME: This is a full file name
+					throw new MWException( __METHOD__.': $file' );
+				}
+			}
+			
+			wfDebug( __METHOD__.": $cont/$rel\n" );
+			$container = $conn->get_container($cont);
+			$container->delete_object($rel);
+		}
+	}
+	/**
+	 * Makes no sense in our context -- don't let anybody call it.
+	 */
+	function getZonePath( $zone ) {
+		throw new MWException( __METHOD__.': not implemented' );
+	}
+
+	/**
+	 * Get the Swift container corresponding to one of the three basic zones
+	 */
+	function getZoneContainer( $zone ) {
+		switch ( $zone ) {
+			case 'public':
+				return $this->container;
+			case 'temp':
+				return $this->container . "%2Ftemp";
+			case 'deleted':
+				return $this->container . "%2Fdeleted";
+			case 'thumb':
+				return $this->container . "%2Fthumb";
+			default:
+				return false;
+		}
+	}
+	/**
+	 * Get the ($container, $object) corresponding to a virtual URL
+	 */
+	function resolveVirtualUrl( $url ) {
+		if ( substr( $url, 0, 9 ) != 'mwrepo://' ) {
+			throw new MWException( __METHOD__.': unknown protoocl' );
+		}
+
+		$bits = explode( '/', substr( $url, 9 ), 3 );
+		if ( count( $bits ) != 3 ) {
+			throw new MWException( __METHOD__.": invalid mwrepo URL: $url" );
+		}
+		list( $repo, $zone, $rel ) = $bits;
+		if ( $repo !== $this->name ) {
+			throw new MWException( __METHOD__.": fetching from a foreign repo is not supported" );
+		}
+		$container = $this->getZoneContainer( $zone );
+		if ( $container === false) {
+			throw new MWException( __METHOD__.": invalid zone: $zone" );
+		}
+		return array($container, rawurldecode( $rel ));
+	}
+
+
 
 
 }
@@ -2409,7 +2595,6 @@ class SwiftRepo extends LocalRepo {
 class Junkyjunk {
 	var $directory, $deletedDir, $deletedHashLevels, $fileMode;
 	var $fileFactory = array( 'UnregisteredLocalFile', 'newFromTitle' );
-	var $oldFileFactory = false;
 	var $pathDisclosureProtection = 'simple';
 
 	function __construct( $info ) {
@@ -2438,13 +2623,6 @@ class Junkyjunk {
 	}
 
 	/**
-	 * Get the public root directory of the repository.
-	 */
-	function getRootDirectory() {
-		return $this->directory;
-	}
-
-	/**
 	 * Get the public root URL of the repository
 	 */
 	function getRootUrl() {
@@ -2456,24 +2634,6 @@ class Junkyjunk {
 	 */
 	function isHashed() {
 		return (bool)$this->hashLevels;
-	}
-
-	/**
-	 * Get the local directory corresponding to one of the three basic zones
-	 */
-	function getZonePath( $zone ) {
-		switch ( $zone ) {
-			case 'public':
-				return $this->directory;
-			case 'temp':
-				return "{$this->directory}/temp";
-			case 'deleted':
-				return $this->deletedDir;
-			case 'thumb':
-				return $this->thumbDir;
-			default:
-				return false;
-		}
 	}
 
 	/**
@@ -2507,185 +2667,7 @@ class Junkyjunk {
 		return $path;
 	}
 
-	/**
-	 * Get the local path corresponding to a virtual URL
-	 */
-	function resolveVirtualUrl( $url ) {
-		if ( substr( $url, 0, 9 ) != 'mwrepo://' ) {
-			throw new MWException( __METHOD__.': unknown protoocl' );
-		}
-
-		$bits = explode( '/', substr( $url, 9 ), 3 );
-		if ( count( $bits ) != 3 ) {
-			throw new MWException( __METHOD__.": invalid mwrepo URL: $url" );
-		}
-		list( $repo, $zone, $rel ) = $bits;
-		if ( $repo !== $this->name ) {
-			throw new MWException( __METHOD__.": fetching from a foreign repo is not supported" );
-		}
-		$base = $this->getZonePath( $zone );
-		if ( !$base ) {
-			throw new MWException( __METHOD__.": invalid zone: $zone" );
-		}
-		return $base . '/' . rawurldecode( $rel );
-	}
-
-	/**
-	 * Store a batch of files
-	 *
-	 * @param $triplets Array: (src,zone,dest) triplets as per store()
-	 * @param $flags Integer: bitwise combination of the following flags:
-	 *     self::DELETE_SOURCE     Delete the source file after upload
-	 *     self::OVERWRITE         Overwrite an existing destination file instead of failing
-	 *     self::OVERWRITE_SAME    Overwrite the file if the destination exists and has the
-	 *                             same contents as the source
-	 */
-	function storeBatch( $triplets, $flags = 0 ) {
-		wfDebug( __METHOD__  . ': Storing ' . count( $triplets ) . 
-			" triplets; flags: {$flags}\n" );
-		
-		// Try creating directories
-		if ( !wfMkdirParents( $this->directory ) ) {
-			return $this->newFatal( 'upload_directory_missing', $this->directory );
-		}
-		if ( !is_writable( $this->directory ) ) {
-			return $this->newFatal( 'upload_directory_read_only', $this->directory );
-		}
-		
-		// Validate each triplet 
-		$status = $this->newGood();
-		foreach ( $triplets as $i => $triplet ) {
-			list( $srcPath, $dstZone, $dstRel ) = $triplet;
-
-			// Resolve destination path
-			$root = $this->getZonePath( $dstZone );
-			if ( !$root ) {
-				throw new MWException( "Invalid zone: $dstZone" );
-			}
-			if ( !$this->validateFilename( $dstRel ) ) {
-				throw new MWException( 'Validation error in $dstRel' );
-			}
-			$dstPath = "$root/$dstRel";
-			$dstDir = dirname( $dstPath );
-
-			// Create destination directories for this triplet
-			if ( !is_dir( $dstDir ) ) {
-				if ( !wfMkdirParents( $dstDir ) ) {
-					return $this->newFatal( 'directorycreateerror', $dstDir );
-				}
-				if ( $dstZone == 'deleted' ) {
-					$this->initDeletedDir( $dstDir );
-				}
-			}
-
-			// Resolve source 
-			if ( self::isVirtualUrl( $srcPath ) ) {
-				$srcPath = $triplets[$i][0] = $this->resolveVirtualUrl( $srcPath );
-			}
-			if ( !is_file( $srcPath ) ) {
-				// Make a list of files that don't exist for return to the caller
-				$status->fatal( 'filenotfound', $srcPath );
-				continue;
-			}
-			
-			// Check overwriting
-			if ( !( $flags & self::OVERWRITE ) && file_exists( $dstPath ) ) {
-				if ( $flags & self::OVERWRITE_SAME ) {
-					$hashSource = sha1_file( $srcPath );
-					$hashDest = sha1_file( $dstPath );
-					if ( $hashSource != $hashDest ) {
-						$status->fatal( 'fileexistserror', $dstPath );
-					}
-				} else {
-					$status->fatal( 'fileexistserror', $dstPath );
-				}
-			}
-		}
-
-		// Windows does not support moving over existing files, so explicitly delete them
-		$deleteDest = wfIsWindows() && ( $flags & self::OVERWRITE );
-
-		// Abort now on failure
-		if ( !$status->ok ) {
-			return $status;
-		}
-
-		// Execute the store operation for each triplet
-		foreach ( $triplets as $i => $triplet ) {
-			list( $srcPath, $dstZone, $dstRel ) = $triplet;
-			$root = $this->getZonePath( $dstZone );
-			$dstPath = "$root/$dstRel";
-			$good = true;
-
-			if ( $flags & self::DELETE_SOURCE ) {
-				if ( $deleteDest ) {
-					unlink( $dstPath );
-				}
-				if ( !rename( $srcPath, $dstPath ) ) {
-					$status->error( 'filerenameerror', $srcPath, $dstPath );
-					$good = false;
-				}
-			} else {
-				if ( !copy( $srcPath, $dstPath ) ) {
-					$status->error( 'filecopyerror', $srcPath, $dstPath );
-					$good = false;
-				}
-				if ( !( $flags & self::SKIP_VALIDATION ) ) {
-					wfSuppressWarnings();
-					$hashSource = sha1_file( $srcPath );
-					$hashDest = sha1_file( $dstPath );
-					wfRestoreWarnings();
-					
-					if ( $hashDest === false || $hashSource !== $hashDest ) {
-						wfDebug( __METHOD__ . ': File copy validation failed: ' . 
-							"$srcPath ($hashSource) to $dstPath ($hashDest)\n" );
-						
-						$status->error( 'filecopyerror', $srcPath, $dstPath );
-						$good = false;
-					}
-				}
-			}
-			if ( $good ) {
-				$this->chmod( $dstPath );
-				$status->successCount++;
-			} else {
-				$status->failCount++;
-			}
-			$status->success[$i] = $good;
-		}
-		return $status;
-	}
 	
-	/**
-	 * Deletes a batch of files. Each file can be a (zone, rel) pairs, a
-	 * virtual url or a real path. It will try to delete each file, but 
-	 * ignores any errors that may occur
-	 * 
-	 * @param $pairs array List of files to delete
-	 */
-	function cleanupBatch( $files ) {
-		foreach ( $files as $file ) {
-			if ( is_array( $file ) ) {
-				// This is a pair, extract it
-				list( $zone, $rel ) = $file;
-				$root = $this->getZonePath( $zone );
-				$path = "$root/$rel";
-			} else {
-				if ( self::isVirtualUrl( $file ) ) {
-					// This is a virtual url, resolve it 
-					$path = $this->resolveVirtualUrl( $file );
-				} else {
-					// This is a full file name
-					$path = $file;
-				}
-			}
-			
-			wfSuppressWarnings();
-			unlink( $path );
-			wfRestoreWarnings();
-		}
-	}
-
 	function append( $srcPath, $toAppendPath, $flags = 0 ) {
 		$status = $this->newGood();
 
@@ -2724,44 +2706,11 @@ class Junkyjunk {
 	}
 
 	/**
-	 * Checks existence of specified array of files.
-	 *
-	 * @param $files Array: URLs of files to check
-	 * @param $flags Integer: bitwise combination of the following flags:
-	 *     self::FILES_ONLY     Mark file as existing only if it is a file (not directory)
-	 * @return Either array of files and existence flags, or false
-	 */
-	function fileExistsBatch( $files, $flags = 0 ) {
-		if ( !file_exists( $this->directory ) || !is_readable( $this->directory ) ) {
-			return false;
-		}
-		$result = array();
-		foreach ( $files as $key => $file ) {
-			if ( self::isVirtualUrl( $file ) ) {
-				$file = $this->resolveVirtualUrl( $file );
-			}
-			if( $flags & self::FILES_ONLY ) {
-				$result[$key] = is_file( $file );
-			} else {
-				$result[$key] = file_exists( $file );
-			}
-		}
-
-		return $result;
-	}
-
-	/**
 	 * Take all available measures to prevent web accessibility of new deleted
 	 * directories, in case the user has not configured offline storage
 	 */
 	protected function initDeletedDir( $dir ) {
-		// Add a .htaccess file to the root of the deleted zone
-		$root = $this->getZonePath( 'deleted' );
-		if ( !file_exists( "$root/.htaccess" ) ) {
-			file_put_contents( "$root/.htaccess", "Deny from all\n" );
-		}
-		// Seed new directories with a blank index.html, to prevent crawling
-		file_put_contents( "$dir/index.html", '' );
+		return; // we just don't make it public.
 	}
 
 	/**
@@ -2880,98 +2829,219 @@ class Junkyjunk {
 		}
 		return $status;
 	}
+}
+
+/**
+ * Old file in the in the oldimage table
+ *
+ * @file
+ * @ingroup FileRepo
+ */
+
+/**
+ * Class to represent a file in the oldimage table
+ *
+ * @ingroup FileRepo
+ */
+class OldSwiftFile extends SwiftFile {
+	var $requestedTime, $archive_name;
+
+	const CACHE_VERSION = 1;
+	const MAX_CACHE_ROWS = 20;
+
+	static function newFromTitle( $title, $repo, $time = null ) {
+		# The null default value is only here to avoid an E_STRICT
+		if( $time === null )
+			throw new MWException( __METHOD__.' got null for $time parameter' );
+		return new self( $title, $repo, $time, null );
+	}
+
+	static function newFromArchiveName( $title, $repo, $archiveName ) {
+		return new self( $title, $repo, null, $archiveName );
+	}
+
+	static function newFromRow( $row, $repo ) {
+		$title = Title::makeTitle( NS_FILE, $row->oi_name );
+		$file = new self( $title, $repo, null, $row->oi_archive_name );
+		$file->loadFromRow( $row, 'oi_' );
+		return $file;
+	}
 
 	/**
-	 * Get a relative path for a deletion archive key,
-	 * e.g. s/z/a/ for sza251lrxrc1jad41h5mgilp8nysje52.jpg
+	 * @static
+	 * @param  $sha1
+	 * @param $repo LocalRepo
+	 * @param bool $timestamp
+	 * @return bool|OldLocalFile
 	 */
-	function getDeletedHashPath( $key ) {
-		$path = '';
-		for ( $i = 0; $i < $this->deletedHashLevels; $i++ ) {
-			$path .= $key[$i] . '/';
+	static function newFromKey( $sha1, $repo, $timestamp = false ) {
+		$conds = array( 'oi_sha1' => $sha1 );
+		if( $timestamp ) {
+			$conds['oi_timestamp'] = $timestamp;
 		}
-		return $path;
+		$dbr = $repo->getSlaveDB();
+		$row = $dbr->selectRow( 'oldimage', self::selectFields(), $conds, __METHOD__ );
+		if( $row ) {
+			return self::newFromRow( $row, $repo );
+		} else {
+			return false;
+		}
+	}
+	
+	/**
+	 * Fields in the oldimage table
+	 */
+	static function selectFields() {
+		return array(
+			'oi_name',
+			'oi_archive_name',
+			'oi_size',
+			'oi_width',
+			'oi_height',
+			'oi_metadata',
+			'oi_bits',
+			'oi_media_type',
+			'oi_major_mime',
+			'oi_minor_mime',
+			'oi_description',
+			'oi_user',
+			'oi_user_text',
+			'oi_timestamp',
+			'oi_deleted',
+			'oi_sha1',
+		);
 	}
 
 	/**
-	 * Call a callback function for every file in the repository.
-	 * Uses the filesystem even in child classes.
+	 * @param $title Title
+	 * @param $repo FileRepo
+	 * @param $time String: timestamp or null to load by archive name
+	 * @param $archiveName String: archive name or null to load by timestamp
 	 */
-	function enumFilesInFS( $callback ) {
-		$numDirs = 1 << ( $this->hashLevels * 4 );
-		for ( $flatIndex = 0; $flatIndex < $numDirs; $flatIndex++ ) {
-			$hexString = sprintf( "%0{$this->hashLevels}x", $flatIndex );
-			$path = $this->directory;
-			for ( $hexPos = 0; $hexPos < $this->hashLevels; $hexPos++ ) {
-				$path .= '/' . substr( $hexString, 0, $hexPos + 1 );
-			}
-			if ( !file_exists( $path ) || !is_dir( $path ) ) {
-				continue;
-			}
-			$dir = opendir( $path );
-			while ( false !== ( $name = readdir( $dir ) ) ) {
-				call_user_func( $callback, $path . '/' . $name );
-			}
+	function __construct( $title, $repo, $time, $archiveName ) {
+		parent::__construct( $title, $repo );
+		$this->requestedTime = $time;
+		$this->archive_name = $archiveName;
+		if ( is_null( $time ) && is_null( $archiveName ) ) {
+			throw new MWException( __METHOD__.': must specify at least one of $time or $archiveName' );
 		}
 	}
 
-	/**
-	 * Call a callback function for every file in the repository
-	 * May use either the database or the filesystem
-	 */
-	function enumFiles( $callback ) {
-		$this->enumFilesInFS( $callback );
+	function getCacheKey() {
+		return false;
+	}
+
+	function getArchiveName() {
+		if ( !isset( $this->archive_name ) ) {
+			$this->load();
+		}
+		return $this->archive_name;
+	}
+
+	function isOld() {
+		return true;
+	}
+
+	function isVisible() {
+		return $this->exists() && !$this->isDeleted(File::DELETED_FILE);
+	}
+
+	function loadFromDB() {
+		wfProfileIn( __METHOD__ );
+		$this->dataLoaded = true;
+		$dbr = $this->repo->getSlaveDB();
+		$conds = array( 'oi_name' => $this->getName() );
+		if ( is_null( $this->requestedTime ) ) {
+			$conds['oi_archive_name'] = $this->archive_name;
+		} else {
+			$conds[] = 'oi_timestamp = ' . $dbr->addQuotes( $dbr->timestamp( $this->requestedTime ) );
+		}
+		$row = $dbr->selectRow( 'oldimage', $this->getCacheFields( 'oi_' ),
+			$conds, __METHOD__, array( 'ORDER BY' => 'oi_timestamp DESC' ) );
+		if ( $row ) {
+			$this->loadFromRow( $row, 'oi_' );
+		} else {
+			$this->fileExists = false;
+		}
+		wfProfileOut( __METHOD__ );
+	}
+
+	function getCacheFields( $prefix = 'img_' ) {
+		$fields = parent::getCacheFields( $prefix );
+		$fields[] = $prefix . 'archive_name';
+		$fields[] = $prefix . 'deleted';
+		return $fields;
+	}
+
+	function getRel() {
+		return 'archive/' . $this->getHashPath() . $this->getArchiveName();
+	}
+
+	function getUrlRel() {
+		return 'archive/' . $this->getHashPath() . rawurlencode( $this->getArchiveName() );
+	}
+
+	function upgradeRow() {
+		wfProfileIn( __METHOD__ );
+		$this->loadFromFile();
+
+		# Don't destroy file info of missing files
+		if ( !$this->fileExists ) {
+			wfDebug( __METHOD__.": file does not exist, aborting\n" );
+			wfProfileOut( __METHOD__ );
+			return;
+		}
+
+		$dbw = $this->repo->getMasterDB();
+		list( $major, $minor ) = self::splitMime( $this->mime );
+
+		wfDebug(__METHOD__.': upgrading '.$this->archive_name." to the current schema\n");
+		$dbw->update( 'oldimage',
+			array(
+				'oi_width' => $this->width,
+				'oi_height' => $this->height,
+				'oi_bits' => $this->bits,
+				'oi_media_type' => $this->media_type,
+				'oi_major_mime' => $major,
+				'oi_minor_mime' => $minor,
+				'oi_metadata' => $this->metadata,
+				'oi_sha1' => $this->sha1,
+			), array(
+				'oi_name' => $this->getName(),
+				'oi_archive_name' => $this->archive_name ),
+			__METHOD__
+		);
+		wfProfileOut( __METHOD__ );
 	}
 
 	/**
-	 * Get properties of a file with a given virtual URL
-	 * The virtual URL must refer to this repo
+	 * @param $field Integer: one of DELETED_* bitfield constants
+	 *               for file or revision rows
+	 * @return bool
 	 */
-	function getFileProps( $virtualUrl ) {
-		$path = $this->resolveVirtualUrl( $virtualUrl );
-		return File::getPropsFromPath( $path );
+	function isDeleted( $field ) {
+		$this->load();
+		return ($this->deleted & $field) == $field;
 	}
 
 	/**
-	 * Path disclosure protection functions
+	 * Returns bitfield value
+	 * @return int
+	 */
+	function getVisibility() {
+		$this->load();
+		return (int)$this->deleted;
+	}
+
+	/**
+	 * Determine if the current user is allowed to view a particular
+	 * field of this image file, if it's marked as deleted.
 	 *
-	 * Get a callback function to use for cleaning error message parameters
+	 * @param $field Integer
+	 * @return bool
 	 */
-	function getErrorCleanupFunction() {
-		switch ( $this->pathDisclosureProtection ) {
-			case 'simple':
-				$callback = array( $this, 'simpleClean' );
-				break;
-			default:
-				$callback = parent::getErrorCleanupFunction();
-		}
-		return $callback;
+	function userCan( $field ) {
+		$this->load();
+		return Revision::userCanBitfield( $this->deleted, $field );
 	}
-
-	function simpleClean( $param ) {
-		if ( !isset( $this->simpleCleanPairs ) ) {
-			global $IP;
-			$this->simpleCleanPairs = array(
-				$this->directory => 'public',
-				"{$this->directory}/temp" => 'temp',
-				$IP => '$IP',
-				dirname( __FILE__ ) => '$IP/extensions/WebStore',
-			);
-			if ( $this->deletedDir ) {
-				$this->simpleCleanPairs[$this->deletedDir] = 'deleted';
-			}
-		}
-		return strtr( $param, $this->simpleCleanPairs );
-	}
-
-	/**
-	 * Chmod a file, supressing the warnings.
-	 * @param $path String: the path to change
-	 */
-	protected function chmod( $path ) {
-		wfSuppressWarnings();
-		chmod( $path, $this->fileMode );
-		wfRestoreWarnings();
-	}
-
 }
