@@ -32,7 +32,7 @@ $messages = array();
  * @author Thomas Gries
  */
 $messages['en'] = array(
-	'openid-desc' => 'Let users log in to the wiki with an [http://openid.net/ OpenID]. If this is enabled on the wiki, they can also use their user account url of this wiki as OpenID to log in to other OpenID-aware web sites.',
+	'openid-desc' => 'Let users log in to the wiki with an [http://openid.net/ OpenID]. If this is enabled on the wiki, they can also use their user account URL of this wiki as OpenID to log in to other OpenID-aware web sites',
 	'openidlogin' => 'Log in with OpenID',
 	'openidserver' => 'OpenID server',
 	'openidxrds' => 'Yadis file',
