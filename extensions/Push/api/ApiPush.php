@@ -29,6 +29,12 @@ class ApiPush extends ApiBase {
 	}
 	
 	public function execute() {
+		global $wgUser;
+		
+		if ( !$wgUser->isAllowed( 'push' ) || $wgUser->isBlocked() ) {
+			$this->dieUsageMsg( array( 'badaccess-groups' ) );
+		}
+		
 		global $egPushLoginUser, $egPushLoginPass, $egPushLoginUsers, $egPushLoginPasswords;
 		
 		$params = $this->extractRequestParams();
