@@ -20,6 +20,10 @@ class ApiImportTranslationMemories extends ApiBase {
 	public function execute() {
 		global $wgUser;
 		
+		if ( !$wgUser->isAllowed( 'managetms' ) || $wgUser->isBlocked() ) {
+			$this->dieUsageMsg( array( 'badaccess-groups' ) );
+		}
+		
 		$params = $this->extractRequestParams();
 		
 		// In MW 1.17 and above ApiBase::PARAM_REQUIRED can be used, this is for b/c with 1.16.
