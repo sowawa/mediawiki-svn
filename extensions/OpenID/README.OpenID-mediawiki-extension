@@ -1,8 +1,10 @@
-MediaWiki OpenID extension
-
-homepage and manual http://www.mediawiki.org/wiki/Extension:OpenID
+MediaWiki OpenID extension README.OpenID-mediawiki-extension file
 version 0.921-beta
 19 May 2011
+
+Homepage and manual http://www.mediawiki.org/wiki/Extension:OpenID
+
+Please check OpenID.setup.php for the current program version number
 
 This is the README file for the OpenID extension for MediaWiki software. The
 extension is only useful if you've got a MediaWiki installation; it can only be

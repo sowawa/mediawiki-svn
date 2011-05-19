@@ -61,7 +61,13 @@ class SpecialOpenIDDashboard extends SpecialPage {
 		global $wgOpenIDAllowServingOpenIDUserAccounts;
 		global $wgOpenIDShowProviderIcons;
 
+                if ( !$wgUser->isAllowed( 'openid-dashboard-access' ) ) {
+			$wgOut->permissionRequired( 'openid' );
+			return;
+		}
+
 		$out = "<table class='openiddashboard wikitable'><tr><th>Parameter</th><th>Value</th></tr>";
+		$out .= show( 'MEDIAWIKI_OPENID_VERSION', MEDIAWIKI_OPENID_VERSION );
 		$out .= show( '$wgOpenIDOnly', $wgOpenIDOnly );
 		$out .= show( '$wgOpenIDClientOnly', $wgOpenIDClientOnly );
 		$out .= show( '$wgOpenIDAllowServingOpenIDUserAccounts', $wgOpenIDAllowServingOpenIDUserAccounts );
