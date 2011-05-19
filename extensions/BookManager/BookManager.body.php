@@ -354,23 +354,21 @@ class BookManagerNavBar extends BookManagerCore {
  	}
 	//known BUG: The category appears more than once when action is not 'view'
 	static function CatByPrefix( &$parser, &$text ) {
-		global $wgOut;
-		if ( !BookManagerNavBar::camDisplayNavBar( $wgOut ) && $wgCategorizationByPrefix == false ) {
-			return true;
+		global $wgOut, $wgCategorizationByPrefix ;
+		if ( $wgCategorizationByPrefix && BookManagerNavBar::camDisplayNavBar( $wgOut )   ) {
+			$catTitle = Title::newFromText( self::bookparts( $parser, $text, 0 ));
+			$parserOutput = $parser->getOutput();
+			$parserOutput->addCategory( $catTitle->getDBkey() , $catTitle->getText() );
 		}
-		$catTitle = Title::newFromText( self::bookparts( $parser, $text, 0 ));
-		$parserOutput = $parser->getOutput();
-		$parserOutput->addCategory( $catTitle->getDBkey() , $catTitle->getText() );
-
 		return true;
 	}
 
 	static function bookToolboxSection( &$sk, &$toolbox ) {
-		global $wgTitle, $wgParser;
+		global $wgTitle, $wgParser, $wgBookSidebarSection ;
 		$currenttitletext = $wgTitle->getText();
 		$randchapter = self::pageText( $wgParser, $currenttitletext, 'rand' );
 		# Add book tools section and all your items 
-		if ( $randchapter ){
+		if ( $wgBookSidebarSection && $randchapter ){
 			?><div class="portal" id='p-tb'><?php
 					?><h5><?php $sk->msg( 'bm-booktools-section' ); ?></h5><?php
 					?><div class="body"><?php
