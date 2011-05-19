@@ -37,7 +37,6 @@ $messages['en'] = array(
 	'openidserver' => 'OpenID server',
 	'openidxrds' => 'Yadis file',
 	'openidconvert' => 'OpenID converter',
-
 	'openiderror' => 'Verification error',
 	'openiderrortext' => 'An error occured during verification of the OpenID URL.',
 	'openidconfigerror' => 'OpenID configuration error',
@@ -98,7 +97,6 @@ There are many [http://openid.net/get/ OpenID providers], and you may already ha
 	'openidlogininstructions-passwordloginallowed' => 'If you already have an account on {{SITENAME}}, you can [[Special:UserLogin|log in]] with your username and password as usual.
 To use OpenID in the future, you can [[Special:OpenIDConvert|convert your account to OpenID]] after you have logged in normally.',
 	'openidupdateuserinfo' => 'Update my personal information:',
-
 	'openiddelete' => 'Delete OpenID',
 	'openiddelete-text' => 'By clicking the "{{int:openiddelete-button}}" button, you will remove the OpenID $1 from your account.
 You will no longer be able to log in with this OpenID.',
@@ -126,6 +124,14 @@ You would not able to log in without an OpenID.',
 	'openid-provider-label-yahoo' => 'Log in using your Yahoo account',
 	'openid-provider-label-aol' => 'Enter your AOL screenname',
 	'openid-provider-label-other-username' => 'Enter your $1 username',
+
+	'specialpages-group-openid' => 'OpenID service pages and status information',
+	'right-openid-dashboard-access' => 'Standard access to the OpenID dashboard',
+	'right-openid-dashboard-admin' => 'Administrator access to the OpenID dashboard',
+
+	'openid-dashboard-title' => 'OpenID dashboard',
+	'openid-dashboard-title-admin' => 'OpenID dashboard (administrator)',
+	'openid-dashboard-introduction' => 'The current OpenID extension settings ([$1 help])',
 );
 
 /** Message documentation (Message documentation)
@@ -171,6 +177,14 @@ OpenID preferences tab title',
 	'openid-pref-update-userinfo-on-login' => 'OpenID preference label for updating fron OpenID persona upon login',
 	'openid-urls-action' => '{{Identical|Action}}',
 	'openid-urls-delete' => '{{identical|Delete}}',
+	
+	'specialpages-group-openid' => 'Display group name for OpenID-extension related special pages for Special:SpecialPages',
+	'right-openid-dashboard-access' => 'the standard access right for the OpenID dashboard, which is a restricted special page',
+	'right-openid-dashboard-admin' => 'the special adminstrator access right for the OpenID dashboard, which is a restricted special page',
+	'openid-dashboard-title' => 'Display name and page title for the OpenID dashboard (non-admin) on Special:SpecialPages',
+	'openid-dashboard-title-admin' => 'Display name and page title for the adminstrator OpenID dashboard on Special:SpecialPages',
+	'openid-dashboard-introduction' => 'Intro text for the special OpenID dashboard page: the user gets status information about the current OpenID settings of this wiki.
+* $1 is the url of the help page explaining the parameters',
 );
 
 /** Faeag Rotuma (Faeag Rotuma)

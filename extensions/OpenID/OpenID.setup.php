@@ -254,6 +254,7 @@ $wgAutoloadClasses['SpecialOpenIDLogin'] = $dir . 'SpecialOpenIDLogin.body.php';
 $wgAutoloadClasses['SpecialOpenIDConvert'] = $dir . 'SpecialOpenIDConvert.body.php';
 $wgAutoloadClasses['SpecialOpenIDServer'] = $dir . 'SpecialOpenIDServer.body.php';
 $wgAutoloadClasses['SpecialOpenIDXRDS'] = $dir . 'SpecialOpenIDXRDS.body.php';
+$wgAutoloadClasses['SpecialOpenIDDashboard'] = $dir . 'SpecialOpenIDDashboard.body.php';
 
 # UI class
 $wgAutoloadClasses['OpenIDProvider'] = $dir . 'OpenIDProvider.body.php';
@@ -282,6 +283,11 @@ $wgHooks['SavePreferences'][] = 'OpenIDHooks::onSavePreferences';
 
 # FIXME, function does not exist
 # $wgHooks['UserLoginForm'][] = 'OpenIDHooks::onUserLoginForm';
+
+# new user rights
+$wgAvailableRights[] = array( 'openid-dashboard-access', 'openid-dashboard-admin' );
+$wgGroupPermissions['user']['openid-dashboard-access'] = true;
+$wgGroupPermissions['sysop']['openid-dashboard-admin'] = true;
 
 $myResourceTemplate = array(
 	'localBasePath' => dirname( __FILE__ ) . '/skin',

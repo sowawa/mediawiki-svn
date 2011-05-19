@@ -25,9 +25,9 @@ class OpenIDHooks {
 			$list['CreateAccount'] = 'SpecialOpenIDCreateAccount';
 		}
 
-		# Special pages are added at global scope; remove server-related ones
-		# if client-only flag is set
-		$addList = array( 'Login', 'Convert' );
+		# Special pages are added at global scope;
+		# remove server-related ones if client-only flag is set
+		$addList = array( 'Login', 'Convert', 'Dashboard' );
 		if ( !$wgOpenIDClientOnly ) {
 			$addList[] = 'Server';
 			$addList[] = 'XRDS';
@@ -35,6 +35,7 @@ class OpenIDHooks {
 
 		foreach ( $addList as $sp ) {
 			$list['OpenID' . $sp] = 'SpecialOpenID' . $sp;
+			SpecialPageFactory::setGroup( 'OpenID' . $sp, 'openid' );
 		}
 
 		return true;
