@@ -594,7 +594,7 @@ Skipailh {{SITENAME}}",
  * @author CERminator
  */
 $messages['bs'] = array(
-	'articlefeedback' => 'Ocjenjivanje članaka',
+	'articlefeedback' => 'Tabla za ocjenjivanje članaka',
 	'articlefeedback-desc' => 'Ocjenjivanje članaka (probna verzija)',
 	'articlefeedback-survey-question-origin' => 'Koja je stranica na kojoj ste bili kada ste počeli ovu anketu?',
 	'articlefeedback-survey-question-whyrated' => 'Molimo recite nam zašto se ocijenili danas ovu stranicu (označite sve koje se može primijeniti):',
@@ -652,6 +652,8 @@ $messages['bs'] = array(
 	'articlefeedback-survey-message-success' => 'Hvala vam na popunjavanju ankete.',
 	'articlefeedback-survey-message-error' => 'Desila se greška.
 Molimo pokušajte kasnije.',
+	'articleFeedback-table-heading-page' => 'Stranica',
+	'articleFeedback-table-heading-average' => 'Prosjek',
 );
 
 /** Catalan (Català)
@@ -2162,6 +2164,7 @@ Riprova più tardi.',
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author Marine-Blue
  * @author Ohgi
  * @author Whym
@@ -2210,7 +2213,7 @@ $messages['ja'] = array(
 	'articlefeedback-field-trustworthy-tip' => 'このページは、十分な出典があり、それらの出典は信頼できる情報源によるものですか？',
 	'articlefeedback-field-complete-label' => '完成度',
 	'articlefeedback-field-complete-tip' => 'この記事は、不可欠な話題を、説明していると思いますか？',
-	'articlefeedback-field-objective-label' => '公平な',
+	'articlefeedback-field-objective-label' => '客観性',
 	'articlefeedback-field-objective-tip' => 'このページは、ある問題に対する全ての観点を平等に説明していると思いますか？',
 	'articlefeedback-field-wellwritten-label' => 'よく書けている',
 	'articlefeedback-field-wellwritten-tip' => 'この記事は、良く整理され、良く書かれていると思いますか？',
@@ -4285,6 +4288,7 @@ Ang pangkat ng {{SITENAME}}',
  * @author Emperyan
  * @author Joseph
  * @author Karduelis
+ * @author Stultiwikia
  */
 $messages['tr'] = array(
 	'articlefeedback' => 'Madde değerlendirmesi',
@@ -4299,6 +4303,7 @@ $messages['tr'] = array(
 	'articlefeedback-pitch-join-accept' => 'Yeni hesap edin',
 	'articlefeedback-pitch-join-login' => 'Oturum aç',
 	'articlefeedback-survey-message-success' => 'Anketi doldurduğunuz için teşekkür ederiz.',
+	'articleFeedback-table-heading-page' => 'Madde',
 );
 
 /** Ukrainian (Українська)

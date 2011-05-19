@@ -177,7 +177,6 @@ OpenID preferences tab title',
 	'openid-pref-update-userinfo-on-login' => 'OpenID preference label for updating fron OpenID persona upon login',
 	'openid-urls-action' => '{{Identical|Action}}',
 	'openid-urls-delete' => '{{identical|Delete}}',
-	
 	'specialpages-group-openid' => 'Display group name for OpenID-extension related special pages for Special:SpecialPages',
 	'right-openid-dashboard-access' => 'the standard access right for the OpenID dashboard, which is a restricted special page',
 	'right-openid-dashboard-admin' => 'the special adminstrator access right for the OpenID dashboard, which is a restricted special page',
@@ -1219,7 +1218,7 @@ Ohne OpenID könntest du dich nicht mehr anmelden.',
 Ohne OpenID könntest du dich nicht mehr anmelden.',
 	'openiddelete-sucess' => 'Die OpenID wurde erfolgreich von deinem Benutzerkonto entfernt.',
 	'openiddelete-error' => 'Beim Entfernen der OpenID von deinem Benutzerkonto ist ein Fehler aufgetreten.',
-	'openid-prefstext' => '[http://openid.net/ OpenID]-Einstellungen',
+	'openid-prefstext' => 'Einstellungen zur [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Verstecke deine OpenID auf deiner Benutzerseite, wenn du dich mit OpenID anmeldest.',
 	'openid-pref-update-userinfo-on-login' => 'Nachfolgende Daten anhand des OpenID-Kontos bei jeder Anmeldung aktualisieren:',
 	'openid-urls-desc' => 'Mit deinem Benutzerkonto verbundene OpenIDs:',
@@ -1232,6 +1231,12 @@ Ohne OpenID könntest du dich nicht mehr anmelden.',
 	'openid-provider-label-yahoo' => 'Mit deinem Yahoo-Benutzerkonto anmelden',
 	'openid-provider-label-aol' => 'Gib deinen AOL-Namen an',
 	'openid-provider-label-other-username' => 'Gib deinen „$1“-Benutzernamen an',
+	'specialpages-group-openid' => 'Websites von OpenID-Diensten und Statusinformationen',
+	'right-openid-dashboard-access' => 'Standardzugang zur Administrations- und Übersichtsseite der OpenIDs',
+	'right-openid-dashboard-admin' => 'Administratorzugang zur Administrations- und Übersichtsseite der OpenIDs',
+	'openid-dashboard-title' => 'Administrations- und Übersichtsseite der OpenIDs',
+	'openid-dashboard-title-admin' => 'Administrations- und Übersichtsseite der OpenIDs (Administrator)',
+	'openid-dashboard-introduction' => 'Die aktuellen Einstellungen zu OpenID ([$1 Hilfe])',
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
@@ -1924,6 +1929,12 @@ Vous ne pourriez pas vous connecter sans un OpenID.",
 	'openid-provider-label-yahoo' => 'Vous connecter en utilisant votre compte Yahoo',
 	'openid-provider-label-aol' => 'Entrez votre nom AOL',
 	'openid-provider-label-other-username' => 'Entrez votre nom d’utilisateur $1',
+	'specialpages-group-openid' => "Pages de service OpenID et d'information sur le statut",
+	'right-openid-dashboard-access' => 'Accès standard au tableau de bord OpenID',
+	'right-openid-dashboard-admin' => 'Accès administrateur au tableau de bord OpenID',
+	'openid-dashboard-title' => 'Tableau de bord OpenID',
+	'openid-dashboard-title-admin' => 'Tableau de bord OpenID (administrateur)',
+	'openid-dashboard-introduction' => "Les paramètres actuels de l'extension OpenID ([$1 aide])",
 );
 
 /** Franco-Provençal (Arpetan)
@@ -2039,6 +2050,8 @@ Non podería conectarse sen un OpenID.',
 	'openid-provider-label-yahoo' => 'Acceder usando a súa conta do Yahoo',
 	'openid-provider-label-aol' => 'Insira o seu nome AOL',
 	'openid-provider-label-other-username' => 'Insira o seu nome de usuario $1',
+	'openid-dashboard-title' => 'Taboleiro de OpenID',
+	'openid-dashboard-title-admin' => 'Taboleiro de OpenID (administrador)',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -2694,6 +2707,12 @@ Il esserea impossibile aperir un session sin OpenID.',
 	'openid-provider-label-yahoo' => 'Aperir session con tu conto de Yahoo',
 	'openid-provider-label-aol' => 'Entra tu pseudonymo de AOL',
 	'openid-provider-label-other-username' => 'Entra tu nomine de usator de $1',
+	'specialpages-group-openid' => 'Paginas de servicio OpenID e informationes de stato',
+	'right-openid-dashboard-access' => 'Accesso standard al pannello de instrumentos OpenID',
+	'right-openid-dashboard-admin' => 'Accesso administrator al pannello de instrumentos OpenID',
+	'openid-dashboard-title' => 'Pannello de instrumentos OpenID',
+	'openid-dashboard-title-admin' => 'Pannello de instrumentos OpenID (administrator)',
+	'openid-dashboard-introduction' => 'Le configuration actual del extension OpenID ([$1 adjuta])',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -3545,6 +3564,12 @@ OpenID ви овозможува да се најавувате на многу 
 	'openid-provider-label-yahoo' => 'Најавете се со вашата Yahoo сметка',
 	'openid-provider-label-aol' => 'Внесете го вашето име на AOL',
 	'openid-provider-label-other-username' => 'Внесете го вашето $1 корисничко име',
+	'specialpages-group-openid' => 'Службени страници и статусни информации на OpenID',
+	'right-openid-dashboard-access' => 'Стандарден пристап до таблата на OpenID',
+	'right-openid-dashboard-admin' => 'Администраторски пристап до таблата на OpenID',
+	'openid-dashboard-title' => 'Табла на OpenID',
+	'openid-dashboard-title-admin' => 'Табла на OpenID (администратор)',
+	'openid-dashboard-introduction' => 'Тековни нагодувања на додатокот за OpenID ([$1 помош])',
 );
 
 /** Malayalam (മലയാളം)

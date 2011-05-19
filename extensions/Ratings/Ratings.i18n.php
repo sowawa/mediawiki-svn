@@ -109,6 +109,16 @@ Le vote actuel de l'utilisateur s'affichera initialement lorsqu'il a déjà vot�
  * @author Toliño
  */
 $messages['gl'] = array(
+	'ratings-desc' => 'Permite aos usuarios valorar diferentes "propiedades" das páxinas',
+	'right-rate' => 'Valorar certas propiedades dunha páxina',
+	'ratings-starsratings-desc' => 'Mostra un simple control de avaliación con estrelas que permite ao usuario valorar unha determinada propiedade dunha páxina.
+O voto actual do usuario aparecerá inicialmente unha vez que xa votase.',
+	'ratings-par-page' => 'A páxina á que se aplican as valoracións.',
+	'ratings-par-tag' => 'A etiqueta de valoración. Indica a "propiedade" da páxina que recibe as valoracións.',
+	'ratings-par-showdisabled' => 'Mostrar as valoración cando o usuario non pode votar (en modo de só lectura).',
+	'ratings-par-incsummary' => 'Quere mostrar un resumo dos votos actuais enriba do elemento de avaliación?',
+	'ratings-votesummary-desc' => 'Mostra un breve resumo dos votos sobre a páxina e o par de propiedades especificados.',
+	'ratings-current-score' => 'Avaliación actual do usuario: $1 ($2 {{PLURAL:$2|valoración|valoracións}})',
 	'ratings-no-votes-yet' => 'Ninguén avaliou isto aínda.',
 );
 

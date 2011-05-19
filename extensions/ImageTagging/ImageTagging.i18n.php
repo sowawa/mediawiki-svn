@@ -2225,12 +2225,13 @@ Pakihintay lamang na mabuo muna ang umiiral na kilos.',
  * @author Joseph
  * @author Karduelis
  * @author Manco Capac
+ * @author Stultiwikia
  * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'taggedimages' => 'Etiketlenmiş resimler',
 	'imagetagging-addimagetag' => 'Bu resmi etiketle',
-	'imagetagging-article' => 'Sayfa:',
+	'imagetagging-article' => 'Madde:',
 	'imagetagging-articletotag' => 'Etiketlenecek sayfa',
 	'imagetagging-imghistory' => 'Geçmiş',
 	'imagetagging-images' => 'Resimler',

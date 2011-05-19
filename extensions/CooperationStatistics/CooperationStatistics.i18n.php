@@ -898,6 +898,7 @@ Tingnan din ang [[Special:MostRevisors|'''mga pahinang may pinakamaraming mga ta
 );
 
 /** Turkish (Türkçe)
+ * @author Stultiwikia
  * @author Vito Genovese
  */
 $messages['tr'] = array(
@@ -908,7 +909,7 @@ $messages['tr'] = array(
 Ayrıca [[Special:MostRevisors|'''en fazla inceleyene sahip sayfalar''']] ve [[Special:MostRevisions|en fazla sürüme sahip sayfaları]] da inceleyin.",
 	'cooperationstatistics-tablearticle' => 'Sayfa sayısı',
 	'cooperationstatistics-tablevalue' => 'Editör sayısı',
-	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|sayfa|sayfa}}',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|madde|madde}}',
 	'cooperationstatistics-nbusers' => '$2, $1 {{PLURAL:$1|editöre|editöre}} sahip',
 	'cooperationstatistics-nblessusers' => '$2, $1 {{PLURAL:$1|editöre|veya daha az editöre}} sahip',
 	'cooperationstatistics-nbmoreusers' => '$2, $1 veya daha fazla editöre sahip',

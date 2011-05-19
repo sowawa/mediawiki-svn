@@ -194,6 +194,7 @@ $messages['bs'] = array(
 	'narayam-si-wijesekara' => 'Sinhala Wijesekara',
 	'narayam-ta99' => 'Tamil99',
 	'narayam-ta' => 'Tamil transliteracija',
+	'narayam-te-inscript' => 'Telugu InScript',
 	'narayam-bn-avro' => 'Bengali Avro',
 	'narayam-bn-inscript' => 'InScript za bengalski',
 	'narayam-bn-nkb' => 'Bengalski NKB',
