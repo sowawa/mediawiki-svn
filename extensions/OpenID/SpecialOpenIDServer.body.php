@@ -202,6 +202,8 @@ class SpecialOpenIDServer extends SpecialOpenID {
 
 		assert( isset( $url ) && strlen( $url ) > 0 );
 
+		wfDebug( "OpenID: OpenIDServer received: '$url'.\n" );
+
 		$name = $this->UrlToUserName( $url );
 
 		if ( !isset( $name ) || strlen( $name ) == 0 ) {
