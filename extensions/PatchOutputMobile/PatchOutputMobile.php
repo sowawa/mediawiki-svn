@@ -27,13 +27,13 @@ $wgHooks['OutputPageBeforeHTML'][] = array( &$wgExtPatchOutputMobile,
 											'onOutputPageBeforeHTML' );
 
 class ExtPatchOutputMobile {
-	const VERSION = '0.2.8';
+	const VERSION = '0.2.9';
 
 	private $doc;
 	
 	public static $messages = array();
 	
-	public $contentFormat = 'XHTML'; //'WML'
+	public $contentFormat = '';
 	public $WMLSectionSeperator = '***************************************************************************';
 	public static $dir;
 	public static $code;
@@ -85,6 +85,12 @@ class ExtPatchOutputMobile {
 		$device = new Device();
 		$formatName = $device->formatName( $userAgent, $acceptHeader );
 		ExtPatchOutputMobile::$device = $device->format( $formatName );
+		
+		if ( ExtPatchOutputMobile::$device['view_format'] === 'wml' ) {
+			$this->contentFormat = 'WML';
+		} elseif ( ExtPatchOutputMobile::$device['view_format'] === 'html' ) {
+			$this->contentFormat = 'XHTML';
+		}
 		
 		ob_start( array( $this, 'parse' ) );
 		return true;
