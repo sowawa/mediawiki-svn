@@ -27,7 +27,7 @@ $wgHooks['OutputPageBeforeHTML'][] = array( &$wgExtPatchOutputMobile,
 											'onOutputPageBeforeHTML' );
 
 class ExtPatchOutputMobile {
-	const VERSION = '0.2.9';
+	const VERSION = '0.3.0';
 
 	private $doc;
 	
@@ -74,9 +74,9 @@ class ExtPatchOutputMobile {
 	public function onOutputPageBeforeHTML( &$out, &$text ) {
 		// Need to stash the results of the "wfMsg" call before the Output Buffering handler
 		// because at this point the database connection is shut down, etc.
-		ExtPatchOutputMobile::$messages['patch-output-mobile-show'] = wfMsg( 'patch-output-mobile-show' );
-		ExtPatchOutputMobile::$messages['patch-output-mobile-hide'] = wfMsg( 'patch-output-mobile-hide' );
-		ExtPatchOutputMobile::$messages['patch-output-mobile-back-to-top'] = wfMsg( 'patch-output-mobile-back-to-top' );
+		ExtPatchOutputMobile::$messages['patch-output-mobile-show'] = wfMsg( 'show_button' );
+		ExtPatchOutputMobile::$messages['patch-output-mobile-hide'] = wfMsg( 'hide_button' );
+		ExtPatchOutputMobile::$messages['patch-output-mobile-back-to-top'] = wfMsg( 'back_to_top_of_section' );
 		ExtPatchOutputMobile::$dir = $GLOBALS['wgContLang']->isRTL()  ? "rtl" : "ltr";
 		ExtPatchOutputMobile::$code = $GLOBALS['wgContLang']->getCode();
 		
