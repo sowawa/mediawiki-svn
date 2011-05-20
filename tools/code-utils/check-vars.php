@@ -638,25 +638,29 @@ class CheckVars {
 							/* Try prepending the script folder, for maintenance scripts (but see Maintenance.php:758) */
 							$requirePath = dirname( $this->mFilename ) . "/" . $requirePath;
 						}
+						
 						if ( !file_exists( $requirePath ) ) {
 							if ( strpos( $requirePath, '$' ) === false ) {
 								$this->warning( "Did not found the expected require of $requirePath" );
 							}
-						} else if ( isset( self::$mRequireKnownClasses[$requirePath] ) ) {
-							$this->mKnownFileClasses = array_merge( $this->mKnownFileClasses, self::$mRequireKnownClasses[$requirePath] );
-							$this->mKnownFunctions = array_merge( $this->mKnownFunctions, self::$mRequireKnownFunctions[$requirePath] );
-							$this->mConstants = array_merge( $this->mConstants, self::$mRequireKnownConstants[$requirePath] );
 						} else {
-							$newCheck = new CheckVars;
-							$newCheck->load( $requirePath, false );
-							$newCheck->execute();
-							/* Get the classes defined there */
-							$this->mKnownFileClasses = array_merge( $this->mKnownFileClasses, $newCheck->mKnownFileClasses );
-							$this->mKnownFunctions = array_merge( $this->mKnownFunctions, $newCheck->mKnownFunctions );
-							$this->mConstants = array_merge( $this->mConstants, $newCheck->mConstants );
-							self::$mRequireKnownClasses[$requirePath] = $newCheck->mKnownFileClasses;
-							self::$mRequireKnownFunctions[$requirePath] = $newCheck->mKnownFunctions;
-							self::$mRequireKnownConstants[$requirePath] = $newCheck->mConstants;
+							$requirePath = realpath( $requirePath );
+							if ( isset( self::$mRequireKnownClasses[$requirePath] ) ) {
+								$this->mKnownFileClasses = array_merge( $this->mKnownFileClasses, self::$mRequireKnownClasses[$requirePath] );
+								$this->mKnownFunctions = array_merge( $this->mKnownFunctions, self::$mRequireKnownFunctions[$requirePath] );
+								$this->mConstants = array_merge( $this->mConstants, self::$mRequireKnownConstants[$requirePath] );
+							} else {
+								$newCheck = new CheckVars;
+								$newCheck->load( $requirePath, false );
+								$newCheck->execute();
+								/* Get the classes defined there */
+								$this->mKnownFileClasses = array_merge( $this->mKnownFileClasses, $newCheck->mKnownFileClasses );
+								$this->mKnownFunctions = array_merge( $this->mKnownFunctions, $newCheck->mKnownFunctions );
+								$this->mConstants = array_merge( $this->mConstants, $newCheck->mConstants );
+								self::$mRequireKnownClasses[$requirePath] = $newCheck->mKnownFileClasses;
+								self::$mRequireKnownFunctions[$requirePath] = $newCheck->mKnownFunctions;
+								self::$mRequireKnownConstants[$requirePath] = $newCheck->mConstants;
+							}
 						}
 						$this->mStatus = $this->mStatus - self::IN_REQUIRE_WAITING;
 						continue;
