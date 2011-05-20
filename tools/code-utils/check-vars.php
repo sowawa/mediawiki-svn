@@ -16,6 +16,7 @@ require_once( "$IP/includes/Defines.php" ); # Faster than parsing
 require_once( "$IP/includes/AutoLoader.php" );
 $wgAutoloadClasses = &$wgAutoloadLocalClasses;
 include_once( "$IP/tests/TestsAutoLoader.php" );
+$wgAutoloadClasses['MWInit'] = "$IP/includes/Init.php";
 
 $mwDeprecatedFunctions = false;
 @include( dirname( __FILE__ ) . "/deprecated.functions" );
@@ -684,7 +685,9 @@ class CheckVars {
 					} else if ( $token[0] == T_CURLY_OPEN || $token == '}' ) {
 						continue;
 					} else if ( !is_array( $token ) ) {
-						if ( ( $token != '(' ) || $requirePath != '' ) {
+						if ( $token == '(' && ( $requirePath == 'MWInit::compiledPath' || $requirePath == 'MWInit::interpretedPath' ) ) {
+							$requirePath = "$IP/";
+						} elseif ( ( $token != '(' ) || $requirePath != '' ) {
 							$requirePath .= $token[0];
 						}
 					} else if ( in_array( $token[0], array( T_CONSTANT_ENCAPSED_STRING, T_ENCAPSED_AND_WHITESPACE ) ) ) {
@@ -895,7 +898,7 @@ class CheckVars {
 			if ( $globalData[1] <= $this->mBraces )
 				continue; # In scope
 
-			#  global $x  still affects the variable after the endo of the
+			#  global $x  still affects the variable after the end of the
 			# conditional, but only if the condition was true.
 			#  We keep in the safe side and only consider it defined inside
 			# the if block (see r69883).
