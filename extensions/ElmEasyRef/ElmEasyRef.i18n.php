@@ -128,6 +128,14 @@ $messages['nl'] = array(
 	'elm-easyref-close' => 'Sluiten',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'elm-easyref-ref' => 'Referanse $1',
+	'elm-easyref-close' => 'Lukk',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

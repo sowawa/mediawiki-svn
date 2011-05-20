@@ -131,6 +131,7 @@ $messages['he'] = array(
 	'webfonts' => 'גופני רשת',
 	'webfonts-desc' => 'הטמעת גופנים בדפים',
 	'webfonts-load' => 'בחירת גופן',
+	'webfonts-reset' => 'ביטול גופן רשת',
 	'webfonts-disable-preference' => 'ביטול הטמעת גופנים (גופני רשת)',
 );
 

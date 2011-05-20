@@ -41,6 +41,13 @@ $messages['gl'] = array(
 	'whitelistpages-desc' => 'Permite incluír páxinas [[MediaWiki:Public read whitelist|na lista branca]] dun wiki privado, de xeito que os usuarios anónimos poidan ler esas páxinas',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'whitelistpages-desc' => 'הפעלת [[MediaWiki:Public read whitelist|רשימה לבנה]] של דפים בוויקי פרטי כדי שמשתמשים אלמוניים יוכלו לקרוא את הדפים האמורים',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

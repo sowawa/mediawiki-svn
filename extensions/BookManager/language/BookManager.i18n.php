@@ -341,6 +341,8 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'bookmanager-desc' => 'Verktøy for bøker',
+	'bm-booktools-section' => 'Verktøy for bok',
+	'bm-randomchapter-link' => 'Tilfeldig kapittel',
 	'bm-printversion' => 'Utskriftsversjon',
 	'bm-printversion-desc' => 'Genererer en [[Special:PrintVersion|utskriftsversjon]] av en bok',
 	'bm-printversion-no-book' => 'Skriv inn navnet på en bok for å få dens utskriftsversjon.',
@@ -403,6 +405,14 @@ $messages['ru'] = array(
 	'bm-printversion-desc' => 'Создает [[Special:PrintVersion|печатную версию]] книги',
 	'bm-printversion-no-book' => 'Пожалуйста, введите название книги, чтобы получить её печатную версию.',
 	'bm-printversion-inexistent-book' => 'Книга не найдена. Пожалуйста, введите название существующей книги, чтобы получить её печатную версию.',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Lesko987
+ */
+$messages['sl'] = array(
+	'bm-printversion' => 'Različica za tisk',
+	'bm-printversion-no-book' => 'Prosim vnesite ime knjige, da dobite različico za tiskanje le te.',
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)

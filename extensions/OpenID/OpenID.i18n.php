@@ -2280,6 +2280,12 @@ OpenID מאפשר לכם להיכנס לחשבון במגוון אתרים מב�
 	'openid-provider-label-yahoo' => 'היכנסו באמצעות חשבונכם ב־Yahoo',
 	'openid-provider-label-aol' => 'כתבו את כינוי המסך שלכם ב־AOL',
 	'openid-provider-label-other-username' => 'כתבו את שם המשתמש שלכם ב־$1',
+	'specialpages-group-openid' => 'דפי שירות ומידע על המצב של OpenID',
+	'right-openid-dashboard-access' => 'גישה רגילה ללוח הבקרה של OpenID',
+	'right-openid-dashboard-admin' => 'גישת מפעיל ללוח הבקרה של OpenID',
+	'openid-dashboard-title' => 'לוח הבקרה של OpenID',
+	'openid-dashboard-title-admin' => 'לוח הבקרה של OpenID (מפעיל)',
+	'openid-dashboard-introduction' => 'הגדרות נוכחיות של OpenID ([$1 עזרה])',
 );
 
 /** Hindi (हिन्दी)
@@ -3365,7 +3371,7 @@ Kontaktéiert w.e.g. een [[Special:ListUsers/sysop|Administrateur]].",
 	'openidsuccess' => 'Iwwerpréifung huet geklappt',
 	'openidsuccesstext' => "D'Iwwerpréifung vun der OpenID-URL huet geklappt.",
 	'openidusernameprefix' => 'OpenIDBenotzer',
-	'openidserverlogininstructions' => 'Gitt Äert Passwuert hei drënner an, fir Iech als Benotzer $2 op $3 unzemellen (Benotzersäit $1).',
+	'openidserverlogininstructions' => '$3 freet datt Dir Äert Passwuert agitt fir Är $2-Benotzersäit (dëst ass Är OpenID URL).',
 	'openidtrustinstructions' => 'Klickt un wann Dir Donnéeën mat $1 deele wellt.',
 	'openidallowtrust' => 'Erlaabt $1 fir dësem Benotzerkont ze vertrauen.',
 	'openidnopolicy' => 'De Site huet keng Richtlinne fir den Dateschutz uginn.',
@@ -3800,6 +3806,7 @@ $messages['ne'] = array(
 
 /** Dutch (Nederlands)
  * @author McDutchie
+ * @author SPQRobin
  * @author Siebrand
  */
 $messages['nl'] = array(
@@ -3890,6 +3897,11 @@ Dan zou u niet langer kunnen aanmelden zonder een OpenID.",
 	'openid-provider-label-yahoo' => 'Aanmelden met uw Yahoo-gebruiker',
 	'openid-provider-label-aol' => 'Aanmelden met uw AOL-gebruiker',
 	'openid-provider-label-other-username' => 'Geef uw gebruikersnaam bij $1 in',
+	'right-openid-dashboard-access' => 'Standaard toegang tot het OpenID-dashboard',
+	'right-openid-dashboard-admin' => 'Beheerderstoegang tot het OpenID-dashboard',
+	'openid-dashboard-title' => 'OpenID-dashboard',
+	'openid-dashboard-title-admin' => 'OpenID-dashboard (beheerder)',
+	'openid-dashboard-introduction' => 'De huidige instellingen van de OpenID-uitbreiding ([$1 hulp])',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)

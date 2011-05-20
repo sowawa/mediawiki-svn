@@ -3100,6 +3100,8 @@ Prøv igjen senere.',
 	'articleFeedback-table-caption-recentlows' => 'Ukens nedturer',
 	'articleFeedback-table-heading-page' => 'Side',
 	'articleFeedback-table-heading-average' => 'Gjennomsnitt',
+	'articleFeedback-copy-above-highlow-tables' => 'Dette er en eksperimentell funksjon.  Vennligst gi tilbakemelding på [$1 diskusjonssiden].',
+	'articleFeedback-copy-below-highlow-tables' => 'Disse tabellene inneholder sider som har mottatt minst 10 vurderinger i løpet av de siste 24 timene.  Gjennomsnittene beregnes ved å ta gjennomsnittet av alle vurderingene som er sendt inn i løpet av de siste 24 timene.',
 	'articlefeedback-emailcapture-response-body' => 'Hei!
 
 Takk for din interesse i å hjelpe oss med å forbedre {{SITENAME}}. Vennligst bekreft e-posten din ved å klikke på lenken under:
