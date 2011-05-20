@@ -429,6 +429,8 @@ class CheckVars {
 							// This way we don't complay about missing return in internal wfProfile sections.
 							$this->mAfterProfileOut = 3;
 						}
+					} elseif ( $token == '@' ) {
+						$this->warning( "Use of @ operator in function {$this->mFunction}" );
 					} elseif ( is_array ( $token ) ) {
 						if ( $token[0] == T_GLOBAL ) {
 							$this->mStatus = self::IN_GLOBAL;
