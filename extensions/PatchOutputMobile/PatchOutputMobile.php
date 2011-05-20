@@ -27,11 +27,16 @@ $wgHooks['OutputPageBeforeHTML'][] = array( &$wgExtPatchOutputMobile,
 											'onOutputPageBeforeHTML' );
 
 class ExtPatchOutputMobile {
-	const VERSION = '0.2.6';
+	const VERSION = '0.2.7';
 
 	private $doc;
 	
 	public static $messages = array();
+	
+	public $contentFormat = 'XHTML'; //'WML'
+	public $WMLSectionSeperator = '***************************************************************************';
+	public static $dir;
+	public static $code;
 
 	public $itemsToRemove = array(
 		'#contentSub',		  # redirection notice
@@ -71,12 +76,29 @@ class ExtPatchOutputMobile {
 		ExtPatchOutputMobile::$messages['patch-output-mobile-show'] = wfMsg( 'patch-output-mobile-show' );
 		ExtPatchOutputMobile::$messages['patch-output-mobile-hide'] = wfMsg( 'patch-output-mobile-hide' );
 		ExtPatchOutputMobile::$messages['patch-output-mobile-back-to-top'] = wfMsg( 'patch-output-mobile-back-to-top' );
+		ExtPatchOutputMobile::$dir = $GLOBALS['wgContLang']->isRTL()  ? "rtl" : "ltr";
+		ExtPatchOutputMobile::$code = $GLOBALS['wgContLang']->getCode();
 		
 		ob_start( array( $this, 'parse' ) );
 		return true;
 	}
+	
+	private function showHideCallbackWML( $matches ) {
+		static $headings = 0;
+		$show = ExtPatchOutputMobile::$messages['patch-output-mobile-show'];
+		$hide = ExtPatchOutputMobile::$messages['patch-output-mobile-hide'];
+		$backToTop = ExtPatchOutputMobile::$messages['patch-output-mobile-back-to-top'];
+		++$headings;
 
-	private function showHideCallback( $matches ) {
+		$base = $this->WMLSectionSeperator .
+			"<h2 class='section_heading' id='section_{$headings}'>{$matches[2]}</h2>";
+
+		$GLOBALS['headings'] = $headings;
+
+		return $base;
+	}
+
+	private function showHideCallbackXHTML( $matches ) {
 		static $headings = 0;
 		$show = ExtPatchOutputMobile::$messages['patch-output-mobile-show'];
 		$hide = ExtPatchOutputMobile::$messages['patch-output-mobile-hide'];
@@ -87,8 +109,10 @@ class ExtPatchOutputMobile {
 			"'><a href='#section_" . intval( $headings - 1 ) .
 			"' class='back_to_top'>&uarr; {$backToTop}</a></div>";
 		// generate the HTML we are going to inject
-		$buttons = "<button class='section_heading show' section_id='{$headings}'>{$show}</button><button class='section_heading hide' section_id='{$headings}'>{$hide}</button>";
-		$base .= "<h2 class='section_heading' id='section_{$headings}'{$matches[1]}{$buttons} <span>{$matches[2]}</span></h2><div class='content_block' id='content_{$headings}'>";
+		$buttons = "<button class='section_heading show' section_id='{$headings}'>{$show}</button>" .
+			"<button class='section_heading hide' section_id='{$headings}'>{$hide}</button>";
+		$base .= "<h2 class='section_heading' id='section_{$headings}'{$matches[1]}{$buttons} <span>" .
+			"{$matches[2]}</span></h2><div class='content_block' id='content_{$headings}'>";
 
 		if ( $headings > 1 ) {
 			// Close it up here
@@ -101,12 +125,15 @@ class ExtPatchOutputMobile {
 	}
 
 	public function javascriptize( $s ) {
+		$callback = 'showHideCallback';
+		$callback .= $this->contentFormat;
+		
 		// Closures are a PHP 5.3 feature.
 		// MediaWiki currently requires PHP 5.2.3 or higher.
 		// So, using old style for now.
 		$s = preg_replace_callback(
 			'/<h2(.*)<span class="mw-headline" [^>]*>(.+)<\/span>\w*<\/h2>/',
-			array( $this, 'showHideCallback' ),
+			array( $this, $callback ),
 			$s
 		);
 
@@ -120,6 +147,30 @@ class ExtPatchOutputMobile {
 		}
 
 		return $s;
+	}
+	
+	private function createWMLCard( $s, $title = '' ) {
+		$segments = explode( $this->WMLSectionSeperator, $s );
+		$card = '';
+		$idx = 0;
+
+		$requestedSegment = isset( $_GET['seg'] ) ? $_GET['seg'] : 0;
+		$card .= "<card id='{$idx}' title='{$title}'><p>{$segments[$requestedSegment]}</p>";
+		$idx = $requestedSegment + 1;
+		$segmentsCount = count($segments);
+		$card .= $idx . "/" . $segmentsCount;
+
+		if ( $idx < $segmentsCount ) {
+			$card .= "<p><a href='{$_SERVER['PHP_SELF']}?seg={$idx}'>Continue ...</a></p>";
+		}
+
+		if ( $idx > 1 ) {
+			$back_idx = $requestedSegment - 1;
+			$card .= "<p><a href='{$_SERVER['PHP_SELF']}?seg={$back_idx}'>Back ...</a></p>";
+		}
+
+		$card .= '</card>';
+		return $card;
 	}
 
 	public function parse( $s ) {
@@ -141,10 +192,11 @@ class ExtPatchOutputMobile {
 
 	public function DOMParse( $html ) {
 		libxml_use_internal_errors( true );
-		$this->doc = DOMDocument::loadHTML( $html );
+		$this->doc = DOMDocument::loadHTML( '<?xml encoding="UTF-8">' . $html );
 		libxml_use_internal_errors( false );
 		$this->doc->preserveWhiteSpace = false;
 		$this->doc->strictErrorChecking = false;
+		$this->doc->encoding = 'UTF-8';
 
 		$itemToRemoveRecords = $this->parseItemsToRemove();
 
@@ -223,7 +275,6 @@ class ExtPatchOutputMobile {
 
 			$redLink->parentNode->replaceChild( $spanNode, $redLink );
 		}
-
 		$content = $this->doc->getElementById( 'content' );
 
 		$contentHtml = $this->doc->saveXML( $content, LIBXML_NOEMPTYTAG );
@@ -231,13 +282,26 @@ class ExtPatchOutputMobile {
 		if ( empty( $title ) ) {
 			$title = 'Wikipedia';
 		}
-
-		require( 'views/notices/_donate.html.php' );
-		require( 'views/layout/_search_webkit.html.php' );
-		require( 'views/layout/_footmenu_default.html.php' );
-		require( 'views/layout/application.html.php' );
-
-		return ( strlen( $contentHtml ) > 4000 ) ? $this->javascriptize( $applicationHtml ) : $applicationHtml;
+		
+		$dir = ExtPatchOutputMobile::$dir;
+		$code = ExtPatchOutputMobile::$code;
+		
+		if ( strlen( $contentHtml ) > 4000 && $this->contentFormat == 'XHTML' ) {
+			$contentHtml =	$this->javascriptize( $contentHtml );
+		} else if ( $this->contentFormat == 'WML' ) {
+			$contentHtml = $this->javascriptize( $contentHtml );
+			$contentHtml = $this->createWMLCard( $contentHtml, $title );
+			require( 'views/layout/application.wml.php' );
+		}
+		
+		if ( $this->contentFormat == 'XHTML' ) {
+			require( 'views/notices/_donate.html.php' );
+			require( 'views/layout/_search_webkit.html.php' );
+			require( 'views/layout/_footmenu_default.html.php' );
+			require( 'views/layout/application.html.php' );
+		}
+		
+		return $applicationHtml;
 	}
 }
 
