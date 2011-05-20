@@ -161,22 +161,11 @@ class SIOSQLStore extends SMWSQLStore2 {
 		foreach ( $internalObject->getPropertyValuePairs() as $propertyValuePair ) {
 			list( $property, $value ) = $propertyValuePair;
 
-			// handling changed in SMW 1.5
-			$realFunction = array( 'SMWSQLStore2', 'findPropertyTableID' );
-			if ( is_callable( $realFunction ) ) {
-				$tableid = SMWSQLStore2::findPropertyTableID( $property );
-				$isRelation = ( $tableid == 'smw_rels2' );
-				$isAttribute = ( $tableid == 'smw_atts2' );
-				$isText = ( $tableid == 'smw_text2' );
-				// new with SMW 1.5.1 / SM 0.6
-				$isCoords = ( $tableid == 'smw_coords' );
-			} else {
-				$mode = SMWSQLStore2::getStorageMode( $property->getPropertyTypeID() );
-				$isRelation = ( $mode == SMW_SQL2_RELS2 );
-				$isAttribute = ( $mode == SMW_SQL2_ATTS2 );
-				$isText = ( $mode == SMW_SQL2_TEXT2 );
-				$isCoords = false;
-			}
+			$tableid = SMWSQLStore2::findPropertyTableID( $property );
+			$isRelation = ( $tableid == 'smw_rels2' );
+			$isAttribute = ( $tableid == 'smw_atts2' );
+			$isText = ( $tableid == 'smw_text2' );
+			$isCoords = ( $tableid == 'smw_coords' );
 			
 			if ( $isRelation ) {
 				$upRels2[] = array(
