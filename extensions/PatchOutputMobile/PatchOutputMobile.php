@@ -27,7 +27,7 @@ $wgHooks['OutputPageBeforeHTML'][] = array( &$wgExtPatchOutputMobile,
 											'onOutputPageBeforeHTML' );
 
 class ExtPatchOutputMobile {
-	const VERSION = '0.3.0';
+	const VERSION = '0.3.1';
 
 	private $doc;
 	
@@ -77,6 +77,11 @@ class ExtPatchOutputMobile {
 		ExtPatchOutputMobile::$messages['patch-output-mobile-show'] = wfMsg( 'show_button' );
 		ExtPatchOutputMobile::$messages['patch-output-mobile-hide'] = wfMsg( 'hide_button' );
 		ExtPatchOutputMobile::$messages['patch-output-mobile-back-to-top'] = wfMsg( 'back_to_top_of_section' );
+		ExtPatchOutputMobile::$messages['regular_wikipedia'] = wfMsg( 'regular_wikipedia' );
+		ExtPatchOutputMobile::$messages['perm_stop_redirect'] = wfMsg( 'perm_stop_redirect' );
+		ExtPatchOutputMobile::$messages['copyright'] = wfMsg( 'copyright' );
+		ExtPatchOutputMobile::$messages['home_button'] = wfMsg( 'home_button' );
+		ExtPatchOutputMobile::$messages['random_button'] = wfMsg( 'random_button' );
 		ExtPatchOutputMobile::$dir = $GLOBALS['wgContLang']->isRTL()  ? "rtl" : "ltr";
 		ExtPatchOutputMobile::$code = $GLOBALS['wgContLang']->getCode();
 		
@@ -298,6 +303,11 @@ class ExtPatchOutputMobile {
 		
 		$dir = ExtPatchOutputMobile::$dir;
 		$code = ExtPatchOutputMobile::$code;
+		$regular_wikipedia = ExtPatchOutputMobile::$messages['regular_wikipedia'];
+		$perm_stop_redirect = ExtPatchOutputMobile::$messages['perm_stop_redirect'];
+		$copyright = ExtPatchOutputMobile::$messages['copyright'];
+		$home_button = ExtPatchOutputMobile::$messages['home_button'];
+		$random_button = ExtPatchOutputMobile::$messages['random_button'];
 		
 		if ( strlen( $contentHtml ) > 4000 && $this->contentFormat == 'XHTML' 
 			&& ExtPatchOutputMobile::$device['supports_javascript'] === true ) {
