@@ -1,7 +1,7 @@
 Status: 0.924-beta 20110521
 
 ? more details are needed to understand the "to do"
-* resolved, wontfix
+* resolved, or partially resolved, wontfix
 - open
 + fixed
 
@@ -10,7 +10,9 @@ Status: 0.924-beta 20110521
 ? Optionally redirect User: page to OpenID URL
 ? AJAX login, rather than klutzy JS form
 ? Provider-driven identifier selection (eh? do we care?)
-
+? Auto-login if you've logged in before with an OpenID,
+  and are logged into that account now
+  
 - allow user to set a password in case of !$wgOpenIDClientOnly && $wgOpenIDOnly
   (https://bugzilla.wikimedia.org/show_bug.cgi?id=29027)
   = case Server/OpenID-Only
@@ -32,6 +34,8 @@ Status: 0.924-beta 20110521
 * warn if a user account has been used as a login before attaching an
   OpenID (I think, this is solved; marked with * instead of +)
 * add a public-domain Help:OpenID.wiki (resolved, wontfix)
+* Configure some stuff through Special:Preferences or a dedicated control panel
+  (under construction, see Special:OpenIDDashboard)
 
 + Add a Storage class for $wgMemc
 + Prevent running OpenIDLogin when you're already logged in
