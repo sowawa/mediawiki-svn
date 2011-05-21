@@ -27,7 +27,7 @@ $wgHooks['OutputPageBeforeHTML'][] = array( &$wgExtPatchOutputMobile,
 											'onOutputPageBeforeHTML' );
 
 class ExtPatchOutputMobile {
-	const VERSION = '0.3.1';
+	const VERSION = '0.3.2';
 
 	private $doc;
 	
@@ -72,6 +72,7 @@ class ExtPatchOutputMobile {
 	);
 
 	public function onOutputPageBeforeHTML( &$out, &$text ) {
+		global $wgContLang;
 		// Need to stash the results of the "wfMsg" call before the Output Buffering handler
 		// because at this point the database connection is shut down, etc.
 		ExtPatchOutputMobile::$messages['patch-output-mobile-show'] = wfMsg( 'show_button' );
@@ -82,8 +83,8 @@ class ExtPatchOutputMobile {
 		ExtPatchOutputMobile::$messages['copyright'] = wfMsg( 'copyright' );
 		ExtPatchOutputMobile::$messages['home_button'] = wfMsg( 'home_button' );
 		ExtPatchOutputMobile::$messages['random_button'] = wfMsg( 'random_button' );
-		ExtPatchOutputMobile::$dir = $GLOBALS['wgContLang']->isRTL()  ? "rtl" : "ltr";
-		ExtPatchOutputMobile::$code = $GLOBALS['wgContLang']->getCode();
+		ExtPatchOutputMobile::$dir = $wgContLang->getDir();
+		ExtPatchOutputMobile::$code = $wgContLang->getCode();
 		
 		$userAgent = $_SERVER['HTTP_USER_AGENT'];
 		$acceptHeader = $_SERVER["HTTP_ACCEPT"];
