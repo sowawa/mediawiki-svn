@@ -500,10 +500,12 @@ $messages['gl'] = array(
 	'wikisync_api_result_exception' => 'Houbo unha excepción na chamada API local',
 	'wikisync_api_result_noaccess' => 'Só os membros {{PLURAL:$2|do seguinte grupo|dos seguintes grupos}} poden levar a cabo esta acción: $1',
 	'wikisync_api_result_invalid_parameter' => 'O valor do parámetro é inválido',
+	'wikisync_api_result_http' => 'Houbo un erro HTTP ao consultar datos da API remota',
 	'wikisync_api_result_Unsupported' => 'A súa versión de MediaWiki non está soportada (anterior á 1.15)',
 	'wikisync_api_result_NoName' => 'Non definiu o parámetro lgname',
 	'wikisync_api_result_Illegal' => 'Deu un nome de usuario inadecuado',
 	'wikisync_api_result_NotExists' => 'O nome de usuario que deu non existe',
+	'wikisync_api_result_EmptyPass' => 'Non definiu o parámetro lgpassword ou deixouno baleiro',
 	'wikisync_api_result_WrongPass' => 'O contrasinal dado é incorrecto',
 	'wikisync_api_result_WrongPluginPass' => 'A clave dada é incorrecta',
 	'wikisync_api_result_Throttled' => 'Accedeu ao sistema demasiadas veces nun curto espazo de tempo.',
@@ -511,11 +513,26 @@ $messages['gl'] = array(
 	'wikisync_api_result_mustbeposted' => 'O módulo de rexistro necesita unha solicitude POST',
 	'wikisync_api_result_no_import_rights' => 'Este usuario non ten os permisos necesarios para importar ficheiros de descarga XML',
 	'wikisync_api_result_Success' => 'Accedeu ao sistema correctamente no sitio wiki remoto',
+	'wikisync_js_last_op_error' => 'A última operación devolveu un erro.
+
+Código: $1
+
+Mensaxe: $2
+
+Prema sobre [OK] para repetir a última operación',
+	'wikisync_js_synchronization_confirmation' => 'Está seguro de querer sincronizar
+
+desde $1
+
+cara a $2
+
+comezando a partir da revisión $3?',
 	'wikisync_js_synchronization_success' => 'A sincronización completouse correctamente',
 	'wikisync_js_already_synchronized' => 'O wiki de orixe e mais o de destino semellan estar xa sincronizados',
 	'wikisync_js_sync_to_itself' => 'Non pode sincronizar o wiki consigo mesmo',
 	'wikisync_js_diff_search' => 'Buscando as diferenzas nas revisións de destino',
 	'wikisync_js_revision' => 'Revisión $1',
+	'wikisync_js_file_size_mismatch' => 'O tamaño do ficheiro temporal "$1" ($2 {{PLURAL:$2|byte|bytes}}) non coincide co tamaño necesario ($3 {{PLURAL:$3|byte|bytes}}). Asegúrese de que o ficheiro "$4" non foi sobrescrito manualmente no repositorio do wiki de orixe.',
 	'wikisync_js_invalid_scheduler_time' => 'A hora do programador debe ser un número enteiro positivo',
 	'wikisync_js_scheduler_countdown' => '{{PLURAL:$1|queda un minuto|quedan $1 minutos}}',
 	'wikisync_js_sync_start_ltr' => 'Inicio da sincronización do wiki local co wiki remoto ás $1',

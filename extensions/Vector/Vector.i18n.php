@@ -1591,10 +1591,12 @@ Unaweza kuondoa ilani hii ukienda kwenye sehemu ya "Kuhariri" kwenye mapendekezo
 );
 
 /** Tamil (தமிழ்)
+ * @author Sodabottle
  * @author TRYPPN
  */
 $messages['ta'] = array(
 	'vector-collapsiblenav-more' => 'மேலும் அதிகமான மொழிகள்',
+	'vector-editwarning-preference' => 'தொகுத்துக் கொண்டிருக்கும் பக்கத்தை சேமிக்காமல் வெளியேறினால் எனக்கு எச்சரிக்கை செய்',
 	'vector-simplesearch-search' => 'தேடு',
 );
 

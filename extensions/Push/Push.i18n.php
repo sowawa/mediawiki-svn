@@ -458,6 +458,8 @@ $messages['gl'] = array(
 	'push-tab-used-templates' => '({{PLURAL:$2|Modelo empregado|Modelos empregados}}: $1)',
 	'push-tab-no-used-templates' => '(Nesta páxina non se empregan modelos.)',
 	'push-tab-inc-files' => 'Incluír ficheiros',
+	'push-tab-err-filepush-unknown' => 'O empuxe do ficheiro fallou por unha razón descoñecida.',
+	'push-tab-err-filepush' => 'O empuxe do ficheiro fallou: $1',
 	'push-tab-embedded-files' => 'Ficheiros embelecidos:',
 	'push-tab-no-embedded-files' => '(Non hai ningún ficheiro nesta páxina.)',
 	'push-tab-files-override' => 'Estes ficheiros xa existen: $1',
@@ -471,10 +473,16 @@ $messages['gl'] = array(
 	'push-special-item-completed' => '$1: Empuxe completado',
 	'push-special-item-failed' => '$1: Erro no empuxe: $2',
 	'push-special-push-done' => 'Empuxe completado',
+	'push-special-err-token-failed' => 'Non se puido obter un pase de edición no wiki de destino.',
+	'push-special-err-pageget-failed' => 'Non se puido obter o contido actual da páxina local.',
+	'push-special-err-push-failed' => 'O wiki de destino rexeitou a páxina empurrada.',
 	'push-special-inc-files' => 'Incluír ficheiros',
+	'push-special-err-imginfo-failed' => 'Non se puido determinar se hai algún ficheiro que necesite ser empurrado.',
 	'push-special-obtaining-fileinfo' => '$1: Obtendo a información do ficheiro...',
 	'push-special-pushing-file' => '$1: Empurrando o ficheiro "$2"...',
 	'push-special-return' => 'Empurrar máis páxinas',
+	'push-api-err-nocurl' => 'cURL non está instalado.
+Poña $egPushDirectFileUploads como falso nos wikis públicos ou instale cURL nos wikis privados',
 );
 
 /** Swiss German (Alemannisch)

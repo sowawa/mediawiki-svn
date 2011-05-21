@@ -171,6 +171,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'livetranslate-desc' => 'Aotren a ra treiñ danvez ur bajenn war-eeun en ur ober gant servij treiñ Google',
+	'right-managetms' => '[[Special:SpecialLiveTranslate|Kemmañ]] roll ar memorioù treiñ',
 	'livetranslate-translate-to' => 'Treiñ ar bajenn-mañ e',
 	'livetranslate-button-translate' => 'Treiñ',
 	'livetranslate-button-translating' => 'O treiñ...',

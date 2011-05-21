@@ -193,6 +193,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'ratings-desc' => 'Erméiglecht et Benotzer fir verschidden "Eegeschaften" vu Säiten ze bewäerten',
+	'right-rate' => 'Bestëmmten Eegeschafte vun enger Säit bewäerten',
 	'ratings-par-page' => "D'Säit op déi sech d'Bewäertung bezitt.",
 	'ratings-par-showdisabled' => 'Bewäertunge weisen wann de Benotzer net mat ofstëmme kann (Read-Only Modus)',
 	'ratings-current-score' => 'Aktuell Benotzerbewäertung: $1 ($2 {{PLURAL:$2|Bewäertung|Bewäertungen}})',

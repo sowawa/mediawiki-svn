@@ -88,6 +88,8 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'bookmanager-desc' => 'Ostilhoù evit levrioù',
+	'bm-booktools-section' => 'Ostilhoù a levr',
+	'bm-randomchapter-link' => 'Ranbennad dre zegouezh',
 	'bm-printversion' => 'Stumm da voullañ',
 	'bm-printversion-desc' => 'Genel a ra ur [[Special:PrintVersion|stumm da voullañ]] evit ul levr',
 	'bm-printversion-no-book' => 'Merkit anv ul levr da gaout e stumm moullet.',

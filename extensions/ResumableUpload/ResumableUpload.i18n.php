@@ -12,6 +12,13 @@ $messages['en'] = array(
 	'resumableupload-desc' => 'Resumable uploading support',
 );
 
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author Wizardist
+ */
+$messages['be-tarask'] = array(
+	'resumableupload-desc' => 'Падтрымка аднаўленьня загрузак',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
