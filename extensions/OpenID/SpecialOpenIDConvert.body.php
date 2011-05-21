@@ -30,18 +30,18 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class SpecialOpenIDConvert extends SpecialOpenID {
 
 	function __construct() {
-		parent::__construct( 'OpenIDConvert' );
+		parent::__construct( 'OpenIDConvert', 'openid-converter-access' );
 	}
 
 	function execute( $par ) {
 		global $wgRequest, $wgUser, $wgOut;
 
-		$this->setHeaders();
+		if ( !$this->userCanExecute($wgUser) ) {
+                	$this->displayRestrictionError();
+        	        return;
+	        }
 
-		if ( $wgUser->getID() == 0 ) {
-			$wgOut->showErrorPage( 'openiderror', 'notloggedin' );
-			return;
-		}
+		$this->setHeaders();
 
 		$this->outputHeader();
 

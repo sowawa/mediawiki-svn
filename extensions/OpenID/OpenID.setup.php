@@ -27,7 +27,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	exit( 1 );
 }
 
-define( 'MEDIAWIKI_OPENID_VERSION', '0.923-beta' );
+define( 'MEDIAWIKI_OPENID_VERSION', '0.924-beta' );
 
 # CONFIGURATION VARIABLES
 
@@ -286,7 +286,10 @@ $wgHooks['SavePreferences'][] = 'OpenIDHooks::onSavePreferences';
 
 # new user rights
 $wgAvailableRights[] = array( 'openid-dashboard-access', 'openid-dashboard-admin' );
+# allow logged-in users to read access the dashboard,
+# and to add or convert OpenIDs to their accounts
 $wgGroupPermissions['user']['openid-dashboard-access'] = true;
+$wgGroupPermissions['user']['openid-converter-access'] = true;
 $wgGroupPermissions['sysop']['openid-dashboard-admin'] = true;
 
 $myResourceTemplate = array(

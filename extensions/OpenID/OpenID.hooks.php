@@ -20,9 +20,11 @@ class OpenIDHooks {
 		global $wgOpenIDOnly, $wgOpenIDClientOnly;
 
 		if ( $wgOpenIDOnly ) {
-			$list['Userlogin'] = 'SpecialOpenIDUserLogin';
-			# Used in 1.12.x and above
-			$list['CreateAccount'] = 'SpecialOpenIDCreateAccount';
+			$list['Userlogin'] = 'SpecialOpenIDLogin';
+			
+			# as Special:CreateAccount is an alias for Special:UserLogin/signup
+			# we show our own OpenID page here, too
+			$list['CreateAccount'] = 'SpecialOpenIDLogin';
 		}
 
 		# Special pages are added at global scope;

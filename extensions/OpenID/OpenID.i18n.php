@@ -33,7 +33,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'openid-desc' => 'Let users log in to the wiki with an [http://openid.net/ OpenID]. If this is enabled on the wiki, they can also use their user account URL of this wiki as OpenID to log in to other OpenID-aware web sites',
-	'openidlogin' => 'Log in with OpenID',
+	'openidlogin' => 'Log in / create account with OpenID',
 	'openidserver' => 'OpenID server',
 	'openidxrds' => 'Yadis file',
 	'openidconvert' => 'OpenID converter',
@@ -118,7 +118,7 @@ You would not able to log in without an OpenID.',
 	'openid-urls-delete' => 'Delete',
 	'openid-add-url' => 'Add a new OpenID',
 
-	'openidsigninorcreateaccount' => 'Sign in or create new account',
+	'openidsigninorcreateaccount' => 'Log in or create a new account',
 	'openid-provider-label-openid' => 'Enter your OpenID URL',
 	'openid-provider-label-google' => 'Log in using your Google account',
 	'openid-provider-label-yahoo' => 'Log in using your Yahoo account',
