@@ -118,7 +118,7 @@ You would not able to log in without an OpenID.',
 	'openid-urls-delete' => 'Delete',
 	'openid-add-url' => 'Add a new OpenID',
 
-	'openidsigninorcreateaccount' => 'Log in or create a new account',
+	'openid-login-or-create-account' => 'Log in or create a new account',
 	'openid-provider-label-openid' => 'Enter your OpenID URL',
 	'openid-provider-label-google' => 'Log in using your Google account',
 	'openid-provider-label-yahoo' => 'Log in using your Yahoo account',

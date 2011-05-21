@@ -141,7 +141,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 
 		$wgOut->addHTML(
 			Xml::openElement( 'form', array( 'id' => 'openid_form', 'action' => $this->getTitle()->getLocalUrl(), 'method' => 'post', 'onsubmit' => 'openid.update()' ) ) .
-			Xml::fieldset( wfMsg( 'openidsigninorcreateaccount' ) ) .
+			Xml::fieldset( wfMsg( 'openid-login-or-create-account' ) ) .
 			$largeButtonsHTML .
 			'<div id="openid_input_area">' .
 			$formsHTML .
