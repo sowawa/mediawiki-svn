@@ -310,7 +310,7 @@ function wfWikiArticleFeedsToolboxLinks( $template ) {
  * Injects handling of the 'feed' action.
  * Usage: $wgHooks['UnknownAction'][] = 'wfWikiArticleFeedsAction';
  * @param $action Handle to an action string (presumably same as global $action).
- * @param $article Article to be converted to rss or atom feed  (presumably same as $wgArticle).
+ * @param $article Article to be converted to rss or atom feed
  */
 function wfWikiArticleFeedsAction( $action, $article ) {
 	
