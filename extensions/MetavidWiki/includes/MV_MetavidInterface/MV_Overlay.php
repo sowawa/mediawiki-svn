@@ -886,8 +886,7 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 			//clear cache for title:
 			//$nt->invalidateCache();
 			//Article::onArticleEdit($nt);
-			global $wgDeferredUpdateList, $mediaWiki;
-			$mediaWiki->doUpdates( $wgDeferredUpdateList );
+			wfDoUpdates( 'commit' );
 			//try again:
 			$newTitle = Title::newFromText($nt->getText(), MV_NS_MVD);
 			$na = new Article($newTitle);
