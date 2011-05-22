@@ -184,8 +184,7 @@
 							'border': 0,
 							'src' : embedPlayer.poster
 						} ).css( {
-							'width' : imgWidth,
-							'height': parseInt( imgWidth * ( embedPlayer.height / embedPlayer.width ) )
+							'width' : imgWidth
 						} )
 					)
 				)
