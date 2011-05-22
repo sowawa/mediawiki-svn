@@ -48,7 +48,7 @@ class WahJobManager {
 	function getSet(){
 		if( isset( $this->mSetRow ) )
 			return $this->mSetRow;
-		$dbr = &wfGetDb( DB_READ );
+		$dbr = &wfGetDB( DB_SLAVE );
 		//grab the jobset
 		$this->mSetRow = $dbr->selectRow('wah_jobset',
 			'*',
@@ -72,7 +72,7 @@ class WahJobManager {
 			//return 0 percent done
 			return 0;
 		}else{
-			$dbr = &wfGetDb( DB_READ );
+			$dbr = wfGetDB( DB_SLAVE );
 			//quick check if we are done at the set level:
 			if( $setRow->set_done_time ){
 				if( $this->doSetFileCheck() ){
@@ -122,7 +122,7 @@ class WahJobManager {
 	 */
 	static function getNewJob( $jobset_id = false , $reqMode = 'AtHome'){
 		global $wgNumberOfClientsPerJobSet, $wgJobTimeOut, $wgUser, $wgJobTypeConfig;
-		$dbr = wfGetDb( DB_READ );
+		$dbr = wfGetDB( DB_SLAVE );
 
 		//its always best to assigning from jobset (since the user already has the data)
 		if( $jobset_id ){
@@ -235,8 +235,8 @@ class WahJobManager {
 	 */
 	static function assignJob( & $job, $jobSet = false, $doUpdate=true ){
 		global $wgUser;
-		$dbr = wfGetDb( DB_READ );
-		$dbw = wfGetDb( DB_WRITE );
+		$dbr = wfGetDB( DB_SLAVE );
+		$dbw = wfGetDB( DB_MASTER );
 		if( $jobSet == false ){
 			$jobSet = self::getJobSetById( $job->job_set_id );
 		}
@@ -281,7 +281,7 @@ class WahJobManager {
 		return $job;
 	}
 	static function getJobSetById( $set_id ){
-		$dbr = wfGetDb( DB_READ );
+		$dbr = wfGetDB( DB_SLAVE );
 		return  $dbr->selectRow('wah_jobset', '*',
 			array(
 				'set_id' => $set_id
@@ -290,7 +290,7 @@ class WahJobManager {
 		);
 	}
 	static function getJobById( $job_id ){
-		$dbr = wfGetDb( DB_READ );
+		$dbr = wfGetDB( DB_SLAVE );
 		return $dbr->selectRow('wah_jobqueue', '*',
 			array(
 				'job_id' => $job_id
@@ -304,7 +304,7 @@ class WahJobManager {
 	function doJobSetup(){
 		global $wgDerivativeSettings, $wgJobTypeConfig;
 		$fname = 'WahJobManager::doJobSetup';
-		$dbw = &wfGetDb( DB_WRITE );
+		$dbw = wfGetDB( DB_MASTER );
 
 		if( $wgJobTypeConfig[ $this->getJobTypeKey() ]['chunkDuration'] == 0){
 			$set_job_count = 1;
@@ -380,7 +380,7 @@ class WahJobManager {
 		//if its in the "sequence" namespace then its a flatten job
 	}
 	function updateSetDone($jobSet, $user_id=0){
-		$dbw = &wfGetDb( DB_WRITE );
+		$dbw = wfGetDB( DB_MASTER );
 		$dbw->update('wah_jobset',
 			array(
 				'set_done_time' => time()
@@ -395,7 +395,7 @@ class WahJobManager {
 		);
 	}
 	function updateJobDone(&$job, $user_id=0){
-		$dbw = &wfGetDb( DB_WRITE );
+		$dbw = wfGetDB( DB_MASTER );
 		//update the jobqueue table with job done time & user
 		$dbw->update('wah_jobqueue',
 			array(

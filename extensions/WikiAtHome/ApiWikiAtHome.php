@@ -159,7 +159,7 @@ class ApiWikiAtHome extends ApiBase {
 		}
 		//issue the jobDone to the Manager:
 		WahJobManager :: updateJobDone($job, $wgUser->getId());
-		$dbw = &wfGetDb( DB_READ );
+		$dbw = wfGetDB( DB_SLAVE );
 
 		//check if its the "last" job shell out a Join command
 		$wjm = WahJobManager::newFromSet( $jobSet );
