@@ -53,7 +53,7 @@ class CodeStatusChangeTablePager extends SvnTablePager {
 		);
 
 		if ( $this->mView->mAuthor ) {
-			$query['conds']['cpc_user_text'] = $this->mView->mAuthor;
+			$query['conds']['cpc_user_text'] = User::newFromName( $this->mView->mAuthor )->getName();
 		}
 
 		return $query;
