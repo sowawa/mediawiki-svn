@@ -27,7 +27,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	exit( 1 );
 }
 
-define( 'MEDIAWIKI_OPENID_VERSION', '0.924-beta' );
+define( 'MEDIAWIKI_OPENID_VERSION', '0.925-beta' );
+
+$path = dirname( __FILE__ );
+set_include_path( implode( PATH_SEPARATOR, array( $path ) ) . PATH_SEPARATOR . get_include_path() );
 
 # CONFIGURATION VARIABLES
 
@@ -240,7 +243,7 @@ function OpenIDGetServerPath() {
 	return $rel;
 }
 
-$dir = dirname( __FILE__ ) . '/';
+$dir = $path . '/';
 
 $wgExtensionMessagesFiles['OpenID'] = $dir . 'OpenID.i18n.php';
 $wgExtensionAliasesFiles['OpenID'] = $dir . 'OpenID.alias.php';
@@ -293,7 +296,7 @@ $wgGroupPermissions['user']['openid-converter-access'] = true;
 $wgGroupPermissions['sysop']['openid-dashboard-admin'] = true;
 
 $myResourceTemplate = array(
-	'localBasePath' => dirname( __FILE__ ) . '/skin',
+	'localBasePath' => $path . '/skin',
 	'remoteExtPath' => 'OpenID/skin',
 	'group' => 'ext.openid',
 );

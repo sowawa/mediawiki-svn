@@ -1,4 +1,4 @@
-Status: 0.924-beta 20110521
+Status: 0.925-beta 20110523
 
 ? more details are needed to understand the "to do"
 * resolved, or partially resolved, wontfix
@@ -12,7 +12,11 @@ Status: 0.924-beta 20110521
 ? Provider-driven identifier selection (eh? do we care?)
 ? Auto-login if you've logged in before with an OpenID,
   and are logged into that account now
-  
+
+- redesign MediaWiki extension and php-openid library paths to avoid
+  $path=array( dirname( __FILE__ ) );
+  set_include_path(implode(PATH_SEPARATOR,$path).PATH_SEPARATOR.get_include_path());
+  in OpenID.setup.php. I don't know, if it can be avoided.
 - allow user to set a password in case of !$wgOpenIDClientOnly && $wgOpenIDOnly
   (https://bugzilla.wikimedia.org/show_bug.cgi?id=29027)
   = case Server/OpenID-Only
