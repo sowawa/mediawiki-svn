@@ -21,6 +21,8 @@ Status: 0.924-beta 20110521
 - be aware of user deletions done by extension UserMerge and Delete (and others)
   https://bugzilla.wikimedia.org/show_bug.cgi?id=28993
 - participate in account-creation throttle
+- Execute MediaWiki hook 'AddNewAccount' when new account is added
+  https://bugzilla.wikimedia.org/show_bug.cgi?id=21711
 - audit to prevent circumventing blocks/bans
 - share timezone when/if available
 - Manage allow-to-trust settings in User preferences
@@ -30,6 +32,7 @@ Status: 0.924-beta 20110521
 - configurable regexps for finding a user ID from an OpenID.
 - deal with difference between canonical ID and "display ID" with XRIs
 - support RP discovery
+- README (always keep README up to date)
 
 * warn if a user account has been used as a login before attaching an
   OpenID (I think, this is solved; marked with * instead of +)
@@ -58,7 +61,6 @@ Status: 0.924-beta 20110521
 + change trust data separators from , and | to FS and RS
 + User preferences tab for OpenID
 + Have some $trust_root values that we _always_ allow to trust
-+ README
 + form to choose user ID if not sreg.nickname or sreg.fullname
 + try to guess user name from URL with /
   like http://getopenid.com/evanprodromou or
