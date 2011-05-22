@@ -145,11 +145,14 @@
 				$author.find('br').remove();
 				
 				// Update link to be absolute per page url context: 
-				var authUrl = $author.find('a').attr('href');
-				authUrl = mw.absoluteUrl( authUrl,  articleUrl );
-				$author.find('a').attr('href', 
-					authUrl
-				)
+				var $links = $author.find('a');
+				if( $links.length ) {
+					var authUrl = $author.find('a').attr('href');
+					authUrl = mw.absoluteUrl( authUrl,  articleUrl );
+					$author.find('a').attr('href', 
+						authUrl
+					)
+				}
 				$creditLine.append( $( '<br />' ),
 					gM('mwe-embedplayer-credit-author', $author.html() )
 				)
