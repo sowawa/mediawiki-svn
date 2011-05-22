@@ -322,6 +322,13 @@ class CheckVars {
 					if ( $token == ';' )
 						$this->mFunctionQualifiers = array();
 
+					if ( $token[0] == T_COMMENT ) {
+						if ( substr( $token[1], 0, 2 ) == '/*' && substr( $token[1], 0, 3 ) != '/**' 
+							&& preg_match( '/^\s+\*(?!\/)/m', $token[1] ) && strpos( $token[1], "\$separatorTransformTable = array( ',' => '' )" ) === false ) {
+							$this->warning( "Multiline comment with /* in line $token[2]" );
+						}
+					}
+
 					if ( $token[0] == T_DOC_COMMENT ) {
 						if ( strpos( $token[1], '@deprecated' ) !== false ) {
 							$this->mFunctionQualifiers[] = self::FUNCTION_DEPRECATED;
