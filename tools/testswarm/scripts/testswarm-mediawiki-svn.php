@@ -118,7 +118,6 @@ $browsers = "popularbeta";
  */
 
 # Get latest revision number of HEAD for QUnit tests dir and Resources dir
-$tmpCmd = array();
 $svnHeadRevs = array(
 	'tests' => null,
 	'resources' => null,
@@ -128,23 +127,28 @@ $svnHeadRevTop = null;
 foreach ( array( 
 	'tests' => $svnCoRepoInfo['rootBase'] . '/' . $svnCoRepoInfo['qunitDir'],
 	'resources' => $svnCoRepoInfo['rootBase'] . '/' . $svnCoRepoInfo['resourcesDir'],
-) as $key => $url ) {
+) as $dirKey => $dirUrl ) {
 
-	exec( "svn info $url", $tmpCmd['output'], $tmpCmd['return'] );
+	$tmpCmd = array();
+
+	exec( "svn info $dirUrl", $tmpCmd['output'], $tmpCmd['return'] );
 	
 	if ( is_array( $tmpCmd['output'] ) && count( $tmpCmd['output'] ) ) {
-		foreach( $tmpCmd['output'] as $line ) {
-			$lineParts = explode( ':', $line, 2 );
+
+		foreach( $tmpCmd['output'] as $cmdLine ) {
+
+			$lineParts = explode( ':', $cmdLine, 2 );
 			if ( trim( $lineParts[0] ) == 'Last Changed Rev' ) {
-				$svnHeadRevs[$key] = trim( $lineParts[1] );
+
+				$svnHeadRevs[$dirKey] = trim( $lineParts[1] );
 				break;
 			}
+
+			unset( $cmdLine, $lineParts );
 		}
-		unset( $line, $lineParts );
 	}
-	
+	unset( $tmpCmd, $key, $dirUrl );
 }
-unset( $tmpCmd, $key, $url );
 
 if ( empty( $svnHeadRevs['tests'] ) || empty( $svnHeadRevs['resources'] ) ) {
 	die("Problem getting svn info.");
