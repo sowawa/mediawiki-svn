@@ -27,7 +27,7 @@ $wgHooks['OutputPageBeforeHTML'][] = array( &$wgExtPatchOutputMobile,
 											'onOutputPageBeforeHTML' );
 
 class ExtPatchOutputMobile {
-	const VERSION = '0.3.2';
+	const VERSION = '0.3.3';
 
 	private $doc;
 	
@@ -75,14 +75,14 @@ class ExtPatchOutputMobile {
 		global $wgContLang;
 		// Need to stash the results of the "wfMsg" call before the Output Buffering handler
 		// because at this point the database connection is shut down, etc.
-		ExtPatchOutputMobile::$messages['patch-output-mobile-show'] = wfMsg( 'show_button' );
-		ExtPatchOutputMobile::$messages['patch-output-mobile-hide'] = wfMsg( 'hide_button' );
-		ExtPatchOutputMobile::$messages['patch-output-mobile-back-to-top'] = wfMsg( 'back_to_top_of_section' );
-		ExtPatchOutputMobile::$messages['regular_wikipedia'] = wfMsg( 'regular_wikipedia' );
-		ExtPatchOutputMobile::$messages['perm_stop_redirect'] = wfMsg( 'perm_stop_redirect' );
-		ExtPatchOutputMobile::$messages['copyright'] = wfMsg( 'copyright' );
-		ExtPatchOutputMobile::$messages['home_button'] = wfMsg( 'home_button' );
-		ExtPatchOutputMobile::$messages['random_button'] = wfMsg( 'random_button' );
+		ExtPatchOutputMobile::$messages['patch-output-mobile-show'] = wfMsg( 'patch-output-mobile-show-button' );
+		ExtPatchOutputMobile::$messages['patch-output-mobile-hide'] = wfMsg( 'patch-output-mobile-hide-button' );
+		ExtPatchOutputMobile::$messages['patch-output-mobile-back-to-top'] = wfMsg( 'patch-output-mobile-back-to-top-of-section' );
+		ExtPatchOutputMobile::$messages['regular_wikipedia'] = wfMsg( 'patch-output-mobile-regular-wikipedia' );
+		ExtPatchOutputMobile::$messages['perm_stop_redirect'] = wfMsg( 'patch-output-mobile-perm-stop-redirect' );
+		ExtPatchOutputMobile::$messages['copyright'] = wfMsg( 'patch-output-mobile-copyright' );
+		ExtPatchOutputMobile::$messages['home_button'] = wfMsg( 'patch-output-mobile-home-button' );
+		ExtPatchOutputMobile::$messages['random_button'] = wfMsg( 'patch-output-mobile-random-button' );
 		ExtPatchOutputMobile::$dir = $wgContLang->getDir();
 		ExtPatchOutputMobile::$code = $wgContLang->getCode();
 		
