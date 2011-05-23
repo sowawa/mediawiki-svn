@@ -220,6 +220,15 @@ Exemples :
 	'flagpage-tab' => 'Marquer',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'flagpage' => 'Marcar una pâge',
+	'flagpage-nopageselectedtitle' => 'Gins de pâge chouèsia',
+	'flagpage-tab' => 'Marcar',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

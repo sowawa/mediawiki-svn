@@ -28,6 +28,13 @@ $messages['qqq'] = array(
 	'arrayext-desc' => '{{desc}}',
 );
 
+/** Arabic (العربية)
+ * @author Ciphers
+ */
+$messages['ar'] = array(
+	'arrayext-desc' => 'تخزين وحساب مصفوفات مسماة',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */

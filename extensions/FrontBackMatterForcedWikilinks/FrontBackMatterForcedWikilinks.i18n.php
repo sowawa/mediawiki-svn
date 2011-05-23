@@ -108,6 +108,15 @@ $messages['fr'] = array(
 	'frontbackforced-forced' => '_(wikiliens forcés)',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'frontbackforced-front' => '_(premiére_sèccion)',
+	'frontbackforced-back' => '_(dèrriére_sèccion)',
+	'frontbackforced-forced' => '_(vouiquilims_forciês)',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

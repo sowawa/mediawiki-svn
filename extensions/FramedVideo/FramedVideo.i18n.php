@@ -374,6 +374,13 @@ $messages['fr'] = array(
 	'framedvideo-desc' => "Permet d'intégrer des vidéos de différents sites web en utilisant la balise <code>&lt;video&gt;</code>",
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'framedvideo_helppage' => 'Help:Vidèô',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

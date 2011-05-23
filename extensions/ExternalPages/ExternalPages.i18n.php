@@ -434,6 +434,16 @@ $messages['ml'] = array(
 	'externalpages-no-page' => 'താളുകളൊന്നും വ്യക്തമാക്കിയിട്ടില്ല',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'externalpages' => 'Laman Luaran',
+	'externalpages-desc' => 'Menerima dan memaparkan laman-laman dari tapak-tapak Yayasan Wikimedia yang berjauhan',
+	'externalpages-bad-page' => 'Laman tidak elok dinyatakan',
+	'externalpages-no-page' => 'Laman tidak dinyatakan',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

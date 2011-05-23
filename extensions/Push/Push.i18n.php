@@ -435,6 +435,12 @@ Sur les wikis privés, appliquer le patch <code>linkd</code> tel qu'expliqué da
  */
 $messages['gl'] = array(
 	'push-desc' => 'Extensión lixeira para empurrar contidos ata outros wikis',
+	'right-push' => 'Autorización para usar a funcionalidade de empuxe.',
+	'right-bulkpush' => 'Autorización para usar a funcionalidade de empuxe en masa (é dicir, Special:Push).',
+	'right-pushadmin' => 'Autorización para modificar os destinos e a configuración de empuxe.',
+	'push-err-captacha' => 'Non se puido empurrar cara a $1 por mor do CAPTCHA.',
+	'push-err-captcha-page' => 'Non se puido empurrar a páxina "$1" cara a todos os destinos por mor do CAPTCHA.',
+	'push-err-authentication' => 'Fallou a autenticación en $1. $2',
 	'push-tab-text' => 'Empurrar',
 	'push-button-text' => 'Empurrar',
 	'push-button-pushing' => 'Empurrando',

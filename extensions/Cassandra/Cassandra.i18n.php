@@ -25,6 +25,13 @@ $messages['af'] = array(
 	'cassandra-desc' => "Stoor teks van wysigings in 'n [http://cassandra.apache.org/ Apache Cassandra] databasis",
 );
 
+/** Arabic (العربية)
+ * @author Ciphers
+ */
+$messages['ar'] = array(
+	'cassandra-desc' => 'تخزين نص النسخة في قاعدة بيانات [http://cassandra.apache.org/ أباتشي كاساندرا]',
+);
+
 /** Asturian (Asturianu)
  * @author Xuacu
  */

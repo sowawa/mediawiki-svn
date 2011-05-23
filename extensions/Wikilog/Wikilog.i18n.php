@@ -6585,6 +6585,13 @@ $messages['sl'] = array(
 	'wikilog-doc-import-comment' => 'Uvožena dokumentacija Wikiloga',
 );
 
+/** Somali (Soomaaliga)
+ * @author Maax
+ */
+$messages['so'] = array(
+	'wikilog-form-category' => 'Qeybta:',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Жељко Тодоровић

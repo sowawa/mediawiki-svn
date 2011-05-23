@@ -1447,6 +1447,14 @@ Dodajte jih nekaj z uporabo orodij v menijski vrstici.',
 	'gep-nocategories' => 'Prosimo, pred shranjevanjem izberite vsaj eno kategorijo',
 );
 
+/** Somali (Soomaaliga)
+ * @author Maax
+ */
+$messages['so'] = array(
+	'gep-addcategory' => 'Ku dar qeyb',
+	'gep-addcategorybutton' => 'Ku dar',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић

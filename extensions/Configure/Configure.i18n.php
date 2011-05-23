@@ -10753,6 +10753,7 @@ $messages['su'] = array(
  * @author Najami
  * @author Per
  * @author Sertion
+ * @author WikiPhoenix
  */
 $messages['sv'] = array(
 	'configure' => 'Konfigurera wikin',
@@ -10832,6 +10833,7 @@ För att använda det här programtillägget måste du skapa den eller byta den.
 	'configure-section-profiling' => 'Profilering',
 	'configure-section-site' => 'Anpassning av sajten',
 	'configure-section-css-js' => 'CSS och JavaScript',
+	'configure-section-resourceloader' => 'Resursläsare',
 	'configure-section-namespaces' => 'Namnrymder',
 	'configure-section-stats' => 'Sajtstatistik',
 	'configure-section-skin' => 'Utseenden',

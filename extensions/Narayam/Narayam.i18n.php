@@ -758,7 +758,29 @@ $messages['pt'] = array(
  * @author Giro720
  */
 $messages['pt-br'] = array(
+	'narayam-desc' => 'Permite a adição de métodos de entrada personalizados para os campos de entrada',
+	'narayam-toggle-ime' => 'Alternar o método de entrada ($1)',
+	'narayam-help-page' => 'Help:Digitação',
+	'narayam-checkbox-tooltip' => 'Para alternar o método de entrada entre ligado e desligado',
+	'narayam-disable-preference' => 'Desativar o Editor do Método de Entrada (IME) do Narayam',
 	'narayam-eo' => 'Esperanto',
+	'narayam-hi-inscript' => 'InScript para hindi',
+	'narayam-kn' => 'Transliteração do canarim',
+	'narayam-kn-inscript' => 'InScript para canarim',
+	'narayam-ml' => 'Transliteração do malaiala',
+	'narayam-ml-inscript' => 'InScript para malaiala',
+	'narayam-or' => 'Transliteração do oriá',
+	'narayam-or-inscript' => 'InScript para oriá',
+	'narayam-sa' => 'Transliteração do sânscrito',
+	'narayam-sa-inscript' => 'InScript para sânscrito',
+	'narayam-si-singlish' => 'Singlish para cingalês',
+	'narayam-si-wijesekara' => 'Wijesekara para cingalês',
+	'narayam-ta99' => 'Tamil99 para tâmil',
+	'narayam-ta' => 'Transliteração do tâmil',
+	'narayam-te-inscript' => 'InScript para télego',
+	'narayam-bn-avro' => 'Avro para bengali',
+	'narayam-bn-inscript' => 'InScript para bengali',
+	'narayam-bn-nkb' => 'NKB para bengali',
 );
 
 /** Tarandíne (Tarandíne)

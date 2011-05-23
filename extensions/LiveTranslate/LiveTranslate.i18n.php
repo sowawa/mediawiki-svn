@@ -634,6 +634,7 @@ $messages['mk'] = array(
  */
 $messages['ms'] = array(
 	'livetranslate-special-location' => 'Lokasi',
+	'livetranslate-special-remove' => 'Buang',
 );
 
 /** Dutch (Nederlands)

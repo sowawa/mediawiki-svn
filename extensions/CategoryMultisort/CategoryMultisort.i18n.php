@@ -664,6 +664,13 @@ $messages['sl'] = array(
 	'prefs-category' => 'Kategorija',
 );
 
+/** Somali (Soomaaliga)
+ * @author Maax
+ */
+$messages['so'] = array(
+	'prefs-category' => 'Qeybta',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић

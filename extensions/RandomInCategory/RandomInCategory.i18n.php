@@ -923,6 +923,14 @@ $messages['sk'] = array(
 	'randomincategory-submit' => 'Vykonať',
 );
 
+/** Somali (Soomaaliga)
+ * @author Maax
+ */
+$messages['so'] = array(
+	'randomincategory-nocategory' => 'Qeybta $1 ma jiro ama waa ebar',
+	'randomincategory-label' => 'Qeybta:',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Жељко Тодоровић

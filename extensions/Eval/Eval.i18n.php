@@ -248,6 +248,18 @@ $messages['fr'] = array(
 	'eval_code' => 'Code',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'eval' => 'Èstimar',
+	'eval-desc' => 'Apond una [[Special:Eval|entèrface]] a la fonccion <code>eval()</code>.',
+	'eval_submit' => 'Èstimar',
+	'eval_escape' => 'Arrètar la sortia',
+	'eval_out' => 'Sortia',
+	'eval_code' => 'Code',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Toliño

@@ -19,6 +19,13 @@ $messages['be-tarask'] = array(
 	'resumableupload-desc' => 'Падтрымка аднаўленьня загрузак',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'resumableupload-desc' => "Skor enporzhiañ a c'hall bezañ adkemeret",
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

@@ -1083,6 +1083,13 @@ $messages['sk'] = array(
 	'security-restricttogroup' => 'Prístup k obsahu obmedzenému len pre členov skupiny „$1“',
 );
 
+/** Somali (Soomaaliga)
+ * @author Maax
+ */
+$messages['so'] = array(
+	'security-type-category' => 'qeybta',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */

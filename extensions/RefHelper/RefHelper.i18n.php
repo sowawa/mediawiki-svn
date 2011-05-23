@@ -1397,6 +1397,7 @@ $messages['sl'] = array(
  * @author Maax
  */
 $messages['so'] = array(
+	'refhelper-category' => 'Qeybta $1:',
 	'refhelper-search' => 'Raadi',
 );
 

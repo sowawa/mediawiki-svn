@@ -1683,6 +1683,13 @@ $messages['mr'] = array(
 	'storyboard-publish' => 'प्रकाशित करा',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'storyboard-deletestory' => 'Padamkan',
+);
+
 /** Maltese (Malti)
  * @author Chrisportelli
  */

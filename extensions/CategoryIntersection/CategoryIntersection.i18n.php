@@ -39,6 +39,7 @@ $messages['af'] = array(
 
 /** Arabic (العربية)
  * @author Alnokta
+ * @author Ciphers
  * @author Meno25
  * @author ترجمان05
  */
@@ -47,6 +48,7 @@ $messages['ar'] = array(
 	'categoryintersection-desc' => 'يصون جدول بقيم الهاش ل[[Special:CategoryIntersection|تقاطعات التصنيف]] في صفحة',
 	'categoryintersection-doit' => 'اعرض الصفحات في كل هذه التصنيفات',
 	'categoryintersection-maxcategories' => 'أقصى عدد مسموح به للتصنيفات المتقاطعة هو $1.',
+	'categoryintersection-mincategories' => 'تحتاج إلى تضمين ما لا يقل عن تصنيفين.',
 	'categoryintersection-results' => 'البحث أرجع $1 {{PLURAL:$1|نتيجة|نتيجة}}.',
 );
 

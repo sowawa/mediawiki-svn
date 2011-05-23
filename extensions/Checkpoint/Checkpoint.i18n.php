@@ -33,12 +33,14 @@ $messages['af'] = array(
 );
 
 /** Arabic (العربية)
+ * @author Ciphers
  * @author Moemin05
  */
 $messages['ar'] = array(
 	'checkpoint' => 'احفظ واستمرّ في التحرير',
 	'checkpoint-desc' => 'يُتيح حفظ المراجعة والإستمرار في التحرير',
 	'checkpoint-tooltip' => 'إحفظ هذه المرحلة واستمرّ في تحرير الصفحة',
+	'checkpoint-notice' => '([[{{ns:project}}:نقطة علام|حفظ نقطة علام]])',
 );
 
 /** Asturian (Asturianu)

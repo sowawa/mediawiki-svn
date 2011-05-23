@@ -23,6 +23,13 @@ $messages['qqq'] = array(
 	'customusersignup-desc' => '{{desc}}',
 );
 
+/** Arabic (العربية)
+ * @author Ciphers
+ */
+$messages['ar'] = array(
+	'customusersignup-desc' => 'ويسمح للرسائل المخصصة أثناء عملية إنشاء الحساب',
+);
+
 /** Asturian (Asturianu)
  * @author Xuacu
  */
@@ -146,6 +153,13 @@ $messages['pms'] = array(
  * @author Hamilton Abreu
  */
 $messages['pt'] = array(
+	'customusersignup-desc' => 'Permite apresentar mensagens personalizadas durante o processo de criação de conta',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
 	'customusersignup-desc' => 'Permite apresentar mensagens personalizadas durante o processo de criação de conta',
 );
 

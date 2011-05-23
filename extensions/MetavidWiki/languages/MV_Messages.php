@@ -6892,6 +6892,7 @@ $mvMVDTypeDefaultDisp हा $mvMVDTypeAllAvailable चा सबसेट अ�
 $messages['ms'] = array(
 	'mv_remove_reason' => 'Sebab penghapusan:',
 	'mv_upload_file' => 'Muat naik fail',
+	'mv_remove' => 'buang',
 	'mv_existing_categories' => '{{PLURAL:$1|kategori|kategori}}:',
 	'mv_search_date_range' => 'Julat tarikh',
 	'mv_date_range' => 'julat tarikh',
@@ -9574,6 +9575,9 @@ $messages['sl'] = array(
  */
 $messages['so'] = array(
 	'mv_tool_search' => 'Raadi',
+	'mv_existing_categories' => '{{PLURAL:$1|qeybta|qeybaha}}:',
+	'mv_search_category' => 'Qeybta',
+	'mv_category' => 'qeybta',
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)

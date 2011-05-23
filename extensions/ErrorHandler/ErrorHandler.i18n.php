@@ -535,10 +535,23 @@ $messages['frp'] = array(
 	'errorhandler-errors' => 'Èrrors :',
 	'errorhandler-error-fatal' => 'Èrror fatala',
 	'errorhandler-error-warning' => 'Avèrtissement',
+	'errorhandler-error-parse' => 'Èrror du parsor',
+	'errorhandler-error-notice' => 'Nota',
 	'errorhandler-error-deprecated' => 'Dèpassâ',
 	'errorhandler-error-core-error' => 'Èrror du gremél',
 	'errorhandler-error-core-warning' => 'Avèrtissement du gremél',
 	'errorhandler-error-compile-error' => 'Èrror de compilacion',
+	'errorhandler-error-compile-warning' => 'Avèrtissement de compilacion',
+	'errorhandler-error-user-error' => 'Èrror a l’utilisator',
+	'errorhandler-error-user-warning' => 'Avèrtissement a l’utilisator',
+	'errorhandler-error-user-notice' => 'Nota a l’utilisator',
+	'errorhandler-error-strict' => 'Estandârds rêdos',
+	'errorhandler-error-recoverable' => 'Èrror fatala que pôt étre atrapâ',
+	'errorhandler-msg-text' => '$1 : $2 dens $3 (legne $4)',
+	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> dens <b>$3</b> (legne <b>$4</b>)',
+	'errorhandler-trace' => 'trace :',
+	'errorhandler-trace-line' => '$1 (legne $2) : $3',
+	'errorhandler-trace-line-internal' => '[fonccion de dedens] : $1',
 );
 
 /** Galician (Galego)

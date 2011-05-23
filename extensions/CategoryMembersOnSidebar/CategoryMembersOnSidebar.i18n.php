@@ -22,6 +22,13 @@ $messages['qqq'] = array(
 	'categorymembersonsidebar-desc' => '{{desc}}',
 );
 
+/** Arabic (العربية)
+ * @author Ciphers
+ */
+$messages['ar'] = array(
+	'categorymembersonsidebar-desc' => 'يضيف أعضاء التصنيف على الشريط الجانبي',
+);
+
 /** Asturian (Asturianu)
  * @author Xuacu
  */
@@ -251,6 +258,13 @@ $messages['sk'] = array(
  */
 $messages['sl'] = array(
 	'categorymembersonsidebar-desc' => 'Doda člane kategorije v stransko vrstico',
+);
+
+/** Swedish (Svenska)
+ * @author WikiPhoenix
+ */
+$messages['sv'] = array(
+	'categorymembersonsidebar-desc' => 'Lägger till kategorimedlemmar på sidpanelen',
 );
 
 /** Tagalog (Tagalog)

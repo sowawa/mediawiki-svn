@@ -443,7 +443,7 @@ $messages['arc'] = array(
 	'openidemail' => 'ܦܪܫܓܢܐ ܕܒܝܠܕܪܐ ܐܠܩܛܪܘܢܝܐ',
 	'openidlanguage' => 'ܠܫܢܐ',
 	'openidtimezone' => 'ܙܘܢܐ ܙܒܢܝܐ:',
-	'openidchooselegend' => 'ܓܒܝܐ ܕܫܡܐ ܕܡܦܠܚܢܐ',
+	'openidchooselegend' => 'ܓܒܝܐ ܕܚܘܫܒܢܐ ܘܫܡܐ ܕܡܦܠܚܢܐ',
 	'openidchoosefull' => 'ܫܡܐ ܓܡܝܪܐ ܕܝܠܟ($1)',
 	'openidchoosepassword' => 'ܡܠܬܐ ܕܥܠܠܐ:',
 	'openidloginlabel' => 'URL ܕܗܝܝܘܬܐ ܦܬܝܚܬܐ',
@@ -756,7 +756,7 @@ $messages['bn'] = array(
 	'openid-urls-action' => 'অ্যাকশন',
 	'openid-urls-delete' => 'অপসারণ',
 	'openid-add-url' => 'একটি নতুন ওপেনআইডি যোগ করুন',
-	'openid-login-or-create-account' => 'আপনার গুগল অ্যাকাউন্ট ব্যবহার করে প্রবেশ করুন',
+	'openid-login-or-create-account' => 'প্রবেশ করুন অথবা নতুন অ্যকাউন্ট তৈরি করুন',
 	'openid-provider-label-openid' => 'আপনার ওপেনআইডি ইউআরএল প্রবেশ করান',
 	'openid-provider-label-google' => 'আপনার গুগল অ্যাকাউন্ট ব্যবহার করে প্রবেশ করুন',
 	'openid-provider-label-yahoo' => 'আপনার ইয়াহু অ্যাকাউন্ট ব্যবহার করে প্রবেশ করুন',
@@ -1145,7 +1145,7 @@ du kan vælge et fra nedenstående muligheder.',
  */
 $messages['de'] = array(
 	'openid-desc' => 'Ermöglicht die Anmeldung bei diesem Wiki mit einer [http://openid.net/ OpenID] sowie die Anmeldung mit dem Benutzerkonto dieses Wikis bei anderen Websites, die OpenID unterstützen',
-	'openidlogin' => 'Anmelden mit OpenID',
+	'openidlogin' => 'Anmelden / Benutzerkonto erstellen mit OpenID',
 	'openidserver' => 'OpenID-Server',
 	'openidxrds' => 'Yadis-Datei',
 	'openidconvert' => 'OpenID-Konverter',
@@ -1232,10 +1232,10 @@ Ohne OpenID könntest du dich nicht mehr anmelden.',
 	'openid-provider-label-aol' => 'Gib deinen AOL-Namen an',
 	'openid-provider-label-other-username' => 'Gib deinen „$1“-Benutzernamen an',
 	'specialpages-group-openid' => 'Websites von OpenID-Diensten und Statusinformationen',
-	'right-openid-dashboard-access' => 'Standardzugang zur Administrations- und Übersichtsseite der OpenIDs',
-	'right-openid-dashboard-admin' => 'Administratorzugang zur Administrations- und Übersichtsseite der OpenIDs',
-	'openid-dashboard-title' => 'Administrations- und Übersichtsseite der OpenIDs',
-	'openid-dashboard-title-admin' => 'Administrations- und Übersichtsseite der OpenIDs (Administrator)',
+	'right-openid-dashboard-access' => 'Standardzugang zur OpenID-Übersichts- und Einstellungsseite',
+	'right-openid-dashboard-admin' => 'Administratorzugang zur OpenID-Übersichts- und Einstellungsseite',
+	'openid-dashboard-title' => 'OpenID - Übersicht',
+	'openid-dashboard-title-admin' => 'OpenID - Übersicht und Einstellungen',
 	'openid-dashboard-introduction' => 'Die aktuellen Einstellungen zu OpenID ([$1 Hilfe])',
 );
 
@@ -1838,11 +1838,12 @@ Et kykenisi kirjautumaan ilman OpenID-tunnusta.',
  * @author McDutchie
  * @author Od1n
  * @author Peter17
+ * @author Sherbrooke
  * @author Zetud
  */
 $messages['fr'] = array(
 	'openid-desc' => 'Se connecter au wiki avec [http://openid.net/ OpenID] et se connecter à d’autres sites internet OpenID avec un compte utilisateur du wiki.',
-	'openidlogin' => 'Se connecter avec OpenID',
+	'openidlogin' => 'Se connecter ou créer un compte avec OpenID',
 	'openidserver' => 'Serveur OpenID',
 	'openidxrds' => 'Fichier Yadis',
 	'openidconvert' => 'Convertisseur OpenID',
@@ -3349,7 +3350,7 @@ $messages['ku-latn'] = array(
  */
 $messages['lb'] = array(
 	'openid-desc' => "Sech an d'Wiki matt enger [http://openid.net/ OpenID] aloggen, a sech op aneren Internetsiten, déi OpenID ënerstetzen, matt engem Wiki-Benotzerkont aloggen.",
-	'openidlogin' => 'Umellen mat OpenID',
+	'openidlogin' => 'Umellen /OpenID-Benotzerkont uleeën',
 	'openidserver' => 'OpenID-Server',
 	'openidxrds' => 'Yadis Fichier',
 	'openidconvert' => 'OpenID-Ëmwandler',
@@ -3430,7 +3431,7 @@ Dir kéint Iech ouni OpenID net aloggen.',
 	'openid-urls-action' => 'Aktioun',
 	'openid-urls-delete' => 'Läschen',
 	'openid-add-url' => 'Eng nei OpenID derbäisetzen',
-	'openid-login-or-create-account' => 'Loggt Iech an oder Maacht en neie Benotzerkont op',
+	'openid-login-or-create-account' => 'Loggt Iech an oder maacht en neie Benotzerkont op',
 	'openid-provider-label-openid' => 'Gitt Är OpenID URL un',
 	'openid-provider-label-google' => 'Loggt Iech mat Ärem Goggle-Benotzerkont an',
 	'openid-provider-label-yahoo' => 'Loggt Iech mat Ärem Yahoo-Benotzerkont an',
@@ -3478,7 +3479,7 @@ $messages['mhr'] = array(
  */
 $messages['mk'] = array(
 	'openid-desc' => 'Најавувајте се на викито со [http://openid.net/ OpenID], и најавувајте се со други OpenID-поддржни страници со вики-корисничка сметка',
-	'openidlogin' => 'Најавување со OpenID',
+	'openidlogin' => 'Најава / создај сметка со OpenID',
 	'openidserver' => 'OpenID опслужувач',
 	'openidxrds' => 'Yadis податотека',
 	'openidconvert' => 'OpenID претворач',
@@ -3560,7 +3561,7 @@ OpenID ви овозможува да се најавувате на многу 
 	'openid-urls-action' => 'Дејство',
 	'openid-urls-delete' => 'Избриши',
 	'openid-add-url' => 'Додај нов OpenID',
-	'openid-login-or-create-account' => 'Најавете се или создајте сметка',
+	'openid-login-or-create-account' => 'Најавете се или создајте нова сметка',
 	'openid-provider-label-openid' => 'Внесете ја вашата OpenID URL адреса',
 	'openid-provider-label-google' => 'Најавете се со вашата Google сметка',
 	'openid-provider-label-yahoo' => 'Најавете се со вашата Yahoo сметка',
@@ -3807,7 +3808,7 @@ $messages['ne'] = array(
  */
 $messages['nl'] = array(
 	'openid-desc' => 'Aanmelden bij de wiki met een [http://openid.net/ OpenID] en aanmelden bij andere websites die OpenID ondersteunen met een wikigebruiker',
-	'openidlogin' => 'Aanmelden met OpenID',
+	'openidlogin' => 'Aanmelden / registreren met OpenID',
 	'openidserver' => 'OpenID-server',
 	'openidxrds' => 'Yadis-bestand',
 	'openidconvert' => 'OpenID-convertor',
@@ -3893,6 +3894,7 @@ Dan zou u niet langer kunnen aanmelden zonder een OpenID.",
 	'openid-provider-label-yahoo' => 'Aanmelden met uw Yahoo-gebruiker',
 	'openid-provider-label-aol' => 'Aanmelden met uw AOL-gebruiker',
 	'openid-provider-label-other-username' => 'Geef uw gebruikersnaam bij $1 in',
+	'specialpages-group-openid' => "OpenID-servicepagina's en statusinformatie",
 	'right-openid-dashboard-access' => 'Standaard toegang tot het OpenID-dashboard',
 	'right-openid-dashboard-admin' => 'Beheerderstoegang tot het OpenID-dashboard',
 	'openid-dashboard-title' => 'OpenID-dashboard',
@@ -4429,7 +4431,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'openid-desc' => 'Autentique-se na wiki com um [http://openid.net/ OpenID] e autentique-se noutros sites que usem OpenID com uma conta de utilizador wiki',
-	'openidlogin' => 'Autenticação com OpenID',
+	'openidlogin' => 'Entrar ou criar conta com OpenID',
 	'openidserver' => 'Servidor OpenID',
 	'openidxrds' => 'Ficheiro Yadis',
 	'openidconvert' => 'Conversor de OpenID',
@@ -4515,6 +4517,12 @@ Sem um OpenID não se poderia autenticar.',
 	'openid-provider-label-yahoo' => 'Entrar usando a sua conta do Yahoo',
 	'openid-provider-label-aol' => 'Introduza o seu nome de utilizador AOL',
 	'openid-provider-label-other-username' => 'Introduza o seu nome de utilizador $1',
+	'specialpages-group-openid' => 'Páginas de serviço e informação do estado do OpenID',
+	'right-openid-dashboard-access' => 'Acesso normal ao painel do OpenID',
+	'right-openid-dashboard-admin' => 'Acesso de administrador ao painel do OpenID',
+	'openid-dashboard-title' => 'Painel do OpenID',
+	'openid-dashboard-title-admin' => 'Painel do OpenID (administrador)',
+	'openid-dashboard-introduction' => 'As configurações actuais da extensão OpenID ([$1 ajuda])',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -4625,7 +4633,7 @@ Você não poderia entrar sem um OpenID.',
  */
 $messages['ro'] = array(
 	'openid-desc' => 'Autentificați-vă pe acest wiki folosind un [http://openid.net/ OpenID] și conectați-vă la alte site-uri web OpenID cu un cont de utilizator wiki',
-	'openidlogin' => 'Autentificare cu OpenID',
+	'openidlogin' => 'Autentificare / creare cont cu OpenID',
 	'openidserver' => 'Server OpenID',
 	'openidxrds' => 'Fișier Yadis',
 	'openidconvert' => 'Convertor OpenID',
@@ -4714,6 +4722,8 @@ $messages['roa-tara'] = array(
 	'openid-provider-label-yahoo' => "Tràse ausanne 'u cunde utende de Yahoo",
 	'openid-provider-label-aol' => "Mitte 'u tue nome utende AOL",
 	'openid-provider-label-other-username' => "Mitte 'u tue $1 nome utende",
+	'openid-dashboard-title' => 'Cruscotte de OpenID',
+	'openid-dashboard-title-admin' => 'Cruscotte de OpenID (amministratore)',
 );
 
 /** Russian (Русский)
@@ -5004,7 +5014,7 @@ Bez OpenID by ste sa nemohli prihlásiť.',
  */
 $messages['sl'] = array(
 	'openid-desc' => 'Prijavite se v wiki z [http://openid.net/ OpenID] in prijavite se v druge spletne strani s podporo OpenID z uporabniškim računom wiki',
-	'openidlogin' => 'Prijavite se z OpenID',
+	'openidlogin' => 'Prijavite se / ustvarite račun z OpenID',
 	'openidserver' => 'Strežnik OpenID',
 	'openidxrds' => 'Datoteka Yadis',
 	'openidconvert' => 'Pretvornik OpenID',
@@ -5085,6 +5095,7 @@ Brez OpenID se ne boste mogli prijaviti.',
 	'openid-provider-label-yahoo' => 'Prijavite se s svojim računom Yahoo',
 	'openid-provider-label-aol' => 'Vnesite svoje prikazno ime AOL',
 	'openid-provider-label-other-username' => 'Vnesite svoje uporabniško ime $1',
+	'openid-dashboard-introduction' => 'Trenutne nastavitve razširitve OpenID ([$1 pomoč])',
 );
 
 /** Lower Silesian (Schläsch)
@@ -5306,10 +5317,11 @@ $messages['su'] = array(
  * @author Najami
  * @author Nghtwlkr
  * @author Per
+ * @author WikiPhoenix
  */
 $messages['sv'] = array(
 	'openid-desc' => 'Logga in på wikin med en [http://openid.net/ OpenID] och logga in på andra sidor som använder OpenID med konton härifrån',
-	'openidlogin' => 'Logga in med OpenID',
+	'openidlogin' => 'Logga in / skapa konto med OpenID',
 	'openidserver' => 'OpenID-server',
 	'openidxrds' => 'Yadis-fil',
 	'openidconvert' => 'OpenID-konvertering',
@@ -5365,14 +5377,13 @@ Om du vill använda OpenID att logga in i framtiden, kan du [[Special:OpenIDConv
 Om inte, tryck på "Continue" (Fortsätt).',
 	'openidclientonlytext' => 'Du kan inte använda konton från denna wikin som OpenID på en annan sida.',
 	'openidloginlabel' => 'OpenID-adress',
-	'openidlogininstructions' => '{{SITENAME}} stödjer [http://openid.net/ OpenID]-standarden för enhetlig inlogging på många webbsidor.
+	'openidlogininstructions' => '{{SITENAME}} stödjer [http://openid.net/ OpenID]-standarden för enhetlig inloggning på många webbsidor.
 OpenID låter dig logga in på många webbsidor utan att använda olika lösenord för varje. 
 (Se [http://en.wikipedia.org/wiki/OpenID Wikipedia-artikeln om OpenID] för mer information.)
-
-Om du redan har ett konto på {{SITENAME}}, kan du [[Special:UserLogin|logga in]] som vanligt med ditt användarnamn och lösenord.
-För att använda OpenID i framtiden kan du [[Special:OpenIDConvert|konvertera ditt konton till OpenID]] efter att du har loggat in på normalt sätt.
-
 Det finns många [http://openid.net/get/ leverantörer av OpenID], och du kan redan ha ett OpenID-aktiverat konto på en annan plats.',
+	'openidlogininstructions-openidloginonly' => "{{SITENAME}} låter dig ''endast'' logga in med OpenID.",
+	'openidlogininstructions-passwordloginallowed' => 'Om du redan har ett konto på {{SITENAME}} kan du [[Special:UserLogin|logga in]] med ditt användarnamn och lösenord som vanligt.
+För att använda OpenID i framtiden, kan du [[Special:OpenIDConvert|konvertera ditt konto till OpenID]] efter du har loggat in normalt.',
 	'openidupdateuserinfo' => 'Uppdatera min personliga information:',
 	'openiddelete' => 'Ta bort OpenID',
 	'openiddelete-text' => 'Genom att klicka på knappen "{{int:openiddelete-button}}" kommer du att ta bort OpenID $1 från ditt konto. Du kommer inte att kunna använda detta OpenID för att logga in.',
@@ -5383,7 +5394,7 @@ Du skulle inte kunna logga in utan ett OpenID.',
 Du skulle inte kunna logga in utan ett OpenID.',
 	'openiddelete-sucess' => 'OpenID-kopplingen har tagits bort från ditt konto.',
 	'openiddelete-error' => 'Ett fel uppstod när OpenID-kopplingen skulle tas bort från ditt konto.',
-	'openid-prefstext' => '[http://openid.net/ OpenID] inställningar',
+	'openid-prefstext' => '[http://openid.net/ OpenID]-inställningar',
 	'openid-pref-hide' => 'Dölj OpenID på din användarsida, om du loggar in med OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Uppdatera följande information från min OpenID-profil varje gång jag loggar in',
 	'openid-urls-desc' => 'OpenID som är kopplade till ditt konto:',

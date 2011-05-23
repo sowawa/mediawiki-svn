@@ -541,9 +541,17 @@ Vous devez le{{PLURAL:$2||s}} remplir.',
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'form' => 'Formulèro',
+	'formnoname' => 'Gins de nom de formulèro',
+	'formbadname' => 'Crouyo nom de formulèro',
+	'formpattern' => 'formulèro-$1',
+	'formtitlepattern' => 'Apondre un novél $1',
 	'formsave' => 'Sôvar',
+	'formarticleexists' => 'La pâge ègziste',
+	'formbadpagename' => 'Crouyo nom de pâge',
 );
 
 /** Western Frisian (Frysk)

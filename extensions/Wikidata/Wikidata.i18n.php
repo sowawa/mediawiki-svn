@@ -8948,8 +8948,10 @@ $messages['mr'] = array(
  */
 $messages['ms'] = array(
 	'datasearch_language' => 'Bahasa:',
+	'ow_transaction_remove' => 'Buang',
 	'ow_transaction_summary' => 'Ringkasan',
 	'ow_dm_OK' => 'OK',
+	'ow_Remove' => 'Buang',
 	'ow_Source' => 'Sumber',
 	'ow_Link' => 'Pautan',
 	'ow_LinkAttributeValues' => 'Pautan',

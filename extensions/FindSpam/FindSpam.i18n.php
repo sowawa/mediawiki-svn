@@ -361,6 +361,16 @@ $messages['fr'] = array(
 	'right-findspam' => 'Rechercher des spam récemment ajoutés',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'findspam' => 'Trovar lo spame',
+	'findspam-ip' => 'Adrèce IP :',
+	'findspam-ok' => 'D’acôrd',
+	'findspam-notextfound' => 'Gins de contribucion trovâ',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Toliño

@@ -284,6 +284,7 @@ $messages['nl'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'wikitweet-moretweets' => 'మరిన్ని ట్వీట్లు...',
 	'wikitweet-subscribe' => 'చందాచేరండి',
 	'wikitweet-subscribed' => 'చందాచేరారు',
 	'wikitweet-unsubscribe' => 'చందావిరమించు',
@@ -291,6 +292,8 @@ $messages['te'] = array(
 	'wikitweet-private' => 'అంతరంగికం',
 	'wikitweet-anonymous' => 'అజ్ఞాత',
 	'wikitweet-back-timeline' => 'తిరిగి కాలరేఖకి',
+	'wikitweet-timeago' => '$1 క్రితం',
+	'wikitweet-fewsecondsago' => 'కొన్ని క్షణాల క్రితం',
 );
 
 /** Tagalog (Tagalog)

@@ -648,6 +648,14 @@ $messages['sl'] = array(
 	'categorystepper-start' => '(Začetek kategorije)',
 );
 
+/** Somali (Soomaaliga)
+ * @author Maax
+ */
+$messages['so'] = array(
+	'categorystepper-end' => '(Qeybta dhamaadkeeda)',
+	'categorystepper-start' => '(Qeybta bilaawgeeda)',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић

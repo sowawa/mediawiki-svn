@@ -99,6 +99,16 @@ $messages['fr'] = array(
 	'fileattach-editcomment' => 'Fichier [[Fichier:$1|$1]] joint',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'fileattach-attachments' => 'Apondilyes de fichiérs',
+	'fileattach-attachfile' => 'Apondre un fichiér',
+	'fileattach-uploadheading' => 'Apondre un fichiér a $1',
+	'fileattach-editcomment' => 'Fichiér [[File:$1|$1]] apondu',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

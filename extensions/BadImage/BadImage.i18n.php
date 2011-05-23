@@ -1778,10 +1778,13 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Aurora
  */
 $messages['ms'] = array(
 	'badimages-reason' => 'Sebab:',
+	'badimages-remove' => '(buang)',
+	'badimages-remove-btn' => 'Buang',
 );
 
 /** Maltese (Malti)

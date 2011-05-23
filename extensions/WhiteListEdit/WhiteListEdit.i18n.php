@@ -2426,6 +2426,7 @@ $2',
  */
 $messages['ms'] = array(
 	'whitelisttablemodifynone' => 'Tiada',
+	'whitelisttableremove' => 'Buang',
 );
 
 /** Maltese (Malti)

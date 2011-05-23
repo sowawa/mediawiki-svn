@@ -38,10 +38,12 @@ $messages['anp'] = array(
 );
 
 /** Arabic (العربية)
+ * @author Ciphers
  * @author Moemin05
  */
 $messages['ar'] = array(
 	'addmediawizard-desc' => 'معالج إضافة الوسائط، طَوَّرَاه بالشراكة كالتورا و مؤسّسة ويكيميديا',
+	'addmediawizard-loading' => 'تحميل معالج إضافة الوسائط',
 );
 
 /** Asturian (Asturianu)

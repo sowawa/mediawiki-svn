@@ -5248,6 +5248,7 @@ $messages['tg-latn'] = array(
 );
 
 /** Thai (ไทย)
+ * @author Korrawit
  * @author Woraponboonkerd
  */
 $messages['th'] = array(
@@ -5283,9 +5284,9 @@ $messages['th'] = array(
 	'contribstats-conversion' => 'อัตราแลกเปลี่ยน (%)',
 	'contribstats-template' => 'แม่แบบ',
 	'contribstats-average' => 'ค่าเฉลี่ย',
-	'contribstats-paypal-donations' => 'การยริจาคผ่านทาง PayPal',
+	'contribstats-paypal-donations' => 'การบริจาคผ่านทาง PayPal',
 	'contribstats-credit-card' => 'บัตรเครดิต',
-	'contribstats-fraud-note' => 'มีการบริจาคบางอย่างที่ปรากฎการฉ้อโกงเกิดขึ้น',
+	'contribstats-fraud-note' => 'มีการบริจาคที่มีการฉ้อโกงเกิดขึ้น',
 	'fundraiserstats-contributions' => 'การบริจาค',
 	'fundraiserstats-total' => 'ยอดรวม (ดอลลาร์สหรัฐ)',
 	'fundraiserstats-avg' => 'ค่าเฉลี่ย (ดอลลาร์สหรัฐ)',

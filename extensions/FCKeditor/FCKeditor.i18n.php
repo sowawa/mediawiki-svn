@@ -511,6 +511,15 @@ $messages['fr'] = array(
 	'tog-riched_toggle_remember_state' => "Se souvenir de la dernière selection de l'éditeur",
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'textrichditor' => 'Èditor enrechiê',
+	'prefs-fckeditor' => 'Èditor enrechiê',
+	'tog-riched_disable' => 'Dèsactivar l’èditor enrechiê',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -966,6 +975,37 @@ $messages['mr'] = array(
 	'tog-riched_disable_ns_help_talk' => '"{{ns:Help_talk}}" नामविश्वात वाढीव संपादक रद्द करा',
 	'tog-riched_disable_ns_category' => '"{{ns:Category}}" नामविश्वात वाढीव संपादक रद्द करा',
 	'tog-riched_disable_ns_category_talk' => '"{{ns:Category_talk}}" नामविश्वात वाढीव संपादक रद्द करा',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'fckeditor-desc' => 'Membolehkan penggunaan editor WYSIWYG, FCKeditor',
+	'textrichditor' => 'Editor Teks Beraneka',
+	'prefs-fckeditor' => 'Editor Teks Beraneka',
+	'tog-riched_disable' => 'Matikan editor teks beraneka',
+	'tog-riched_disable_ns_main' => 'Matikan editor teks beraneka di dalam ruang nama utama',
+	'tog-riched_disable_ns_talk' => 'Matikan editor teks beraneka di dalam ruang nama "{{ns:talk}}"',
+	'tog-riched_disable_ns_user' => 'Matikan editor teks beraneka di dalam ruang nama "{{ns:user}}"',
+	'tog-riched_disable_ns_user_talk' => 'Matikan editor teks beraneka di dalam ruang nama "{{ns:user_talk}}"',
+	'tog-riched_disable_ns_project' => 'Matikan editor teks beraneka di dalam ruang nama "{{ns:project}}"',
+	'tog-riched_disable_ns_project_talk' => 'Matikan editor teks beraneka di dalam ruang nama "{{ns:project_talk}}"',
+	'tog-riched_disable_ns_image' => 'Matikan editor teks beraneka di dalam ruang nama "{{ns:file}}"',
+	'tog-riched_disable_ns_image_talk' => 'Matikan editor teks beraneka di dalam ruang nama "{{ns:file_talk}}"',
+	'tog-riched_disable_ns_mediawiki' => 'Matikan editor teks beraneka di dalam ruang nama "{{ns:mediawiki}}"',
+	'tog-riched_disable_ns_mediawiki_talk' => 'Matikan editor teks beraneka di dalam ruang nama "{{ns:mediawiki_talk}}"',
+	'tog-riched_disable_ns_template' => 'Matikan editor teks beraneka di dalam ruang nama "{{ns:template}}"',
+	'tog-riched_disable_ns_template_talk' => 'Matikan editor teks beraneka di dalam ruang nama "{{ns:template_talk}}"',
+	'tog-riched_disable_ns_help' => 'Matikan editor teks beraneka di dalam ruang nama "{{ns:help}}"',
+	'tog-riched_disable_ns_help_talk' => 'Matikan editor teks beraneka di dalam ruang nama "{{ns:help_talk}}"',
+	'tog-riched_disable_ns_category' => 'Matikan editor teks beraneka di dalam ruang nama "{{ns:category}}"',
+	'tog-riched_disable_ns_category_talk' => 'Matikan editor teks beraneka di dalam ruang nama "{{ns:category_talk}}"',
+	'rich_editor_new_window' => 'Buka Editor teks beraneka dalam tetingkap baru',
+	'tog-riched_start_disabled' => 'Mulakan tanpa menghidupkan editor teks beraneka',
+	'tog-riched_use_popup' => 'Buka editor teks beraneka dalam tetimbul (pop-up)',
+	'tog-riched_use_toggle' => 'Gunakan togol untuk beralih antara teks wiki dan editor teks beraneka (gantikan ruangan teks dengan editor teks beraneka)',
+	'tog-riched_toggle_remember_state' => 'Ingati keadaan togol terkini',
 );
 
 /** Dutch (Nederlands)

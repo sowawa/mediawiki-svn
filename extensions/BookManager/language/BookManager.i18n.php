@@ -215,6 +215,8 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'bookmanager-desc' => 'Outils por los lévros.',
+	'bm-booktools-section' => 'Outils du lévro',
+	'bm-randomchapter-link' => 'Chapitro a l’hasârd',
 	'bm-printversion' => 'Vèrsion emprimâbla',
 	'bm-printversion-desc' => 'Fât una [[Special:PrintVersion|vèrsion emprimâbla]] d’un lévro.',
 );

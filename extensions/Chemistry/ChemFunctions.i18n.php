@@ -70,11 +70,13 @@ $messages['af'] = array(
 );
 
 /** Arabic (العربية)
+ * @author Ciphers
  * @author Meno25
  */
 $messages['ar'] = array(
 	'chemicalsources' => 'مصادر كيميائية',
 	'chemicalsource-desc' => 'يضيف الوسم <nowiki><chemform></nowiki>، للصيغ الكيميائية',
+	'chemicalsources-desc' => '[[خاص:ChemicalSources|صفحة خاصة]] عن المصادر الكيميائية',
 	'chemFunctions_ListPage' => 'مصادر كيميائية',
 	'chemFunctions_DataList' => 'بالأسفل قائمة بوصلات إلى مواقع قد تحتوي على معلومات عن المادة الكيميائية التي تبحث عنها.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula at NIST</a><br />

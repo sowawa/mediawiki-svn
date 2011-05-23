@@ -38,6 +38,15 @@ $messages['be-tarask'] = array(
 	'elm-easyref-close' => 'Закрыць',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'elm-easyref-desc' => 'Ouzhpennañ ur vaezienn a zeuio war ar skramm da ziskouez ar boued zo en un daveenn',
+	'elm-easyref-ref' => 'Daveenn $1',
+	'elm-easyref-close' => 'Serriñ',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -54,6 +63,14 @@ $messages['fr'] = array(
 	'elm-easyref-desc' => "Ajouter un menu contextuel qui affichera le contenu d'une référence",
 	'elm-easyref-ref' => 'Référence $1',
 	'elm-easyref-close' => 'Fermer',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'elm-easyref-ref' => 'Refèrence $1',
+	'elm-easyref-close' => 'Cllôre',
 );
 
 /** Galician (Galego)

@@ -194,6 +194,29 @@ Reportez-vous sur [http://www.mediawiki.org/wiki/API la documentation de l’API
 	'apisb-query-meta' => 'Méta-information',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'apisandbox' => 'Bouèta de sabla API',
+	'apisb-api-disabled' => 'API est dèsactivâ sur ceti seto.',
+	'apisb-parameters' => 'Paramètres',
+	'apisb-result' => 'Rèsultat',
+	'apisb-request-url' => 'Requéta URL :',
+	'apisb-request-post' => 'Balyês POST :',
+	'apisb-select-action' => 'Chouèsir una accion',
+	'apisb-select-value' => 'Chouèsir la valor',
+	'apisb-loading' => 'Chargement...',
+	'apisb-load-error' => 'Èrror pendent lo chargement de la dèscripcion de l’API',
+	'apisb-request-error' => 'Èrror pendent l’ègzécucion d’una requéta API',
+	'apisb-namespaces-error' => 'Èrror pendent lo chargement des èspâços de noms',
+	'apisb-ns-main' => '(Principâl)',
+	'apisb-submit' => 'Fâre la demanda',
+	'apisb-query-prop' => 'Propriètâts',
+	'apisb-query-list' => 'Listes',
+	'apisb-query-meta' => 'Mèta-enformacions',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -513,6 +536,34 @@ $messages['ru'] = array(
 	'apisb-query-prop' => 'Свойства',
 	'apisb-query-list' => 'Списки',
 	'apisb-query-meta' => 'Мета-информация',
+);
+
+/** Swedish (Svenska)
+ * @author WikiPhoenix
+ */
+$messages['sv'] = array(
+	'apisb-desc' => 'Gör det möjligt att felsöka [http://www.mediawiki.org/wiki/API MediaWiki API]-samtal från webbläsaren',
+	'apisandbox' => 'API-sandlåda',
+	'apisb-no-js' => "'''Fel''': Denna funktion kräver JavaScript.",
+	'apisb-intro' => "Använd denna sida för att experimentera med '''MediaWiki API'''.
+Kolla på [http://www.mediawiki.org/wiki/API API-dokumentationen] för fler detaljer om API-användning.",
+	'apisb-api-disabled' => 'API är inaktiverat på denna webbplats.',
+	'apisb-parameters' => 'Parametrar',
+	'apisb-result' => 'Resultat',
+	'apisb-request-url' => 'Begär URL:',
+	'apisb-request-post' => 'POST-data:',
+	'apisb-select-action' => 'Välj handling',
+	'apisb-select-query' => 'Vad ska begäras?',
+	'apisb-select-value' => 'Välj värde',
+	'apisb-loading' => 'Läser in...',
+	'apisb-load-error' => 'Fel uppstod när API-beskrivningen skulle läsas in',
+	'apisb-request-error' => 'Fel uppstod när API skulle begäras',
+	'apisb-namespaces-error' => 'Fel uppstod när namnrymden skulle läsas in',
+	'apisb-ns-main' => '(Huvud)',
+	'apisb-submit' => 'Göra en begäran',
+	'apisb-query-prop' => 'Egenskaper',
+	'apisb-query-list' => 'Listor',
+	'apisb-query-meta' => 'Metainformation',
 );
 
 /** Telugu (తెలుగు)

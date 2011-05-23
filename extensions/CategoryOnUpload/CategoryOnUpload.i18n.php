@@ -676,6 +676,13 @@ $messages['sl'] = array(
 	'categoryonupload-label' => 'Kategorija:',
 );
 
+/** Somali (Soomaaliga)
+ * @author Maax
+ */
+$messages['so'] = array(
+	'categoryonupload-label' => 'Qeybta:',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */

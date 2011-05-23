@@ -58,10 +58,12 @@ $messages['af'] = array(
 );
 
 /** Arabic (العربية)
+ * @author Ciphers
  * @author Meno25
  */
 $messages['ar'] = array(
 	'wikibhasha' => 'ويكي باشا',
+	'wikibhasha-desc' => 'تطبيق لإنشاء محتوى متعدد اللغات بالاستفادة من محتوى ويكيبيديا الإنجليزية',
 	'wikiBhashaLink' => 'ويكي باشا (بيتا)',
 );
 

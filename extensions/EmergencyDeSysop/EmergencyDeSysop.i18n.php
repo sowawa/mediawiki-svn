@@ -397,6 +397,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'emergencydesysop-reason' => 'Rêson du retrèt',
 	'emergencydesysop-submit' => 'Sometre',
 	'emergencydesysop-nogroups' => 'Niona',
 );

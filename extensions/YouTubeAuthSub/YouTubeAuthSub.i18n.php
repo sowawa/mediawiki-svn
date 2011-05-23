@@ -3148,6 +3148,13 @@ $messages['sli'] = array(
 	'youtubeauthsub_category' => 'Heetgruppe',
 );
 
+/** Somali (Soomaaliga)
+ * @author Maax
+ */
+$messages['so'] = array(
+	'youtubeauthsub_category' => 'Qeybta',
+);
+
 /** Albanian (Shqip)
  * @author Puntori
  */

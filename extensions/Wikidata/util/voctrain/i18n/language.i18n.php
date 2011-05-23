@@ -4767,6 +4767,7 @@ $messages['tt-cyrl'] = array(
 	'voctrain_list_of_questions_and_answers' => 'сораулар һәм җаваплар исемлеге',
 	'voctrain_Answer_s_' => 'Җавап(лар)',
 	'voctrain_logout' => 'чыгу',
+	'voctrain_Powered_by' => 'Нигезе:',
 	'voctrain_Exercise_complete' => 'Күнегү ясалды',
 	'voctrain_Exercise_terminated' => 'Күнегү туктатылды',
 	'voctrain_Start_a_new_exercise' => 'Яңа күнегү башларга',
