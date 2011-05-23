@@ -383,12 +383,58 @@ class SwiftFile extends LocalFile {
 	/** getTitle inherited */
 	/** getURL inherited */
 	/** getViewURL inherited */
-	/** isVisible inhereted */
+	/** isVisible inherited */
 
 	function getPath() {
-		// kinda kludgey, but we'll leave it this way until we're sure that we never need the "real" path.
+		return $this->getLocalCopy($this->repo->container, $this->getRel());
+	}
+
+	/** Get the path of the archive directory, or a particular file if $suffix is specified */
+	function getArchivePath( $suffix = false ) {
+		return $this->getLocalCopy($this->repo->getZoneContainer('public'), $this->getArchiveRel( $suffix ));
+	}
+
+	/** Get the path of the thumbnail directory, or a particular file if $suffix is specified */
+	function getThumbPath( $suffix = false ) {
+		$path = $this->getRel();
+		if ( $suffix !== false ) {
+			$path .= '/' . $suffix;
+		}
+		return $this->getLocalCopy($this->repo->getZoneContainer('thumb'), $path);
+	}
+
+	/** Given a container and relative path, return an absolute path pointing at a copy of the file */
+	function getLocalCopy($container, $rel) {
+		// if we already have a local copy, return it.
 		if ($this->temp_path) { return $this->temp_path; }
-		else { return parent::getPath(); }
+
+		// get a temporary place to put the original.
+		$this->temp_path = tempnam( wfTempDir(), 'swift_in_' );
+
+		/* Fetch the image out of Swift */
+		$auth = new CF_Authentication($this->repo->swiftuser, $this->repo->key, NULL, $this->repo->authurl);
+		$auth->authenticate();
+		$conn = new CF_Connection($auth);
+		$cont = $conn->get_container($container);
+
+		try {
+			$obj = $cont->get_object($rel);
+		} catch (NoSuchObjectException $e) {
+			throw new MWException( 'Unable to open original file at $container/$rel');
+		}
+		// FIXME we need to do a try here, but let's see how it fails first.
+		wfDebug(  __METHOD__ . " writing to " . $this->temp_path . "\n");
+		$obj->save_to_filename( $this->temp_path);
+
+		return $this->temp_path;
+	}
+
+	function __destruct() {
+		if ($this->temp_path) {
+			// Clean up temporary data.
+			unlink($this->temp_path);
+			$this->temp_path = null;
+		}
 	}
 
 	function isMissing() {
@@ -547,36 +593,20 @@ class SwiftFile extends LocalFile {
 			$thumbUrl = $this->getThumbUrl( $thumbName );
 
 			// get a temporary place to put the original.
-			$this->temp_path = tempnam( $wgTmpDirectory, 'transform_in_' );
 			$thumbTemp = tempnam( $wgTmpDirectory, 'transform_out_' );
-
-			/* Fetch the image out of Swift */
-			$auth = new CF_Authentication($this->repo->swiftuser, $this->repo->key, NULL, $this->repo->authurl);
-			$auth->authenticate();
-			$conn = new CF_Connection($auth);
-			$container = $conn->get_container($this->repo->container);
-
-			// What do we do if the original doesn't exist??
-			try {
-				$obj = $container->get_object($this->getRel());
-			} catch (NoSuchObjectException $e) {
-				$obj = NULL;
-			}
-			// we need to do a try here, but let's see how it fails first.
-			wfDebug(  __METHOD__ . " writing to " . $this->temp_path . "\n");
-			$obj->save_to_filename( $this->temp_path);
 
 			$thumb = $this->handler->doTransform( $this, $thumbTemp, $thumbUrl, $params );
 
 			// Store the thumbnail into Swift, but in the thumb version of the container.
+			$auth = new CF_Authentication($this->repo->swiftuser, $this->repo->key, NULL, $this->repo->authurl);
+			$auth->authenticate();
+			$conn = new CF_Connection($auth);
 			$container = $conn->get_container($this->repo->container . "%2Fthumb");
 			wfDebug(  __METHOD__ . "Creating thumb " . $this->getRel() . "/" . $thumbName . "\n");
 			$obj = $container->create_object($this->getRel() . "/" . $thumbName);
 			$thumbRel = $obj->load_from_filename($thumbTemp);
 			
 			// Clean up temporary data.
-			unlink($this->temp_path);
-			$this->temp_path = null;
 			unlink($thumbTemp);
 
 		} while (false);
@@ -611,12 +641,12 @@ class SwiftFile extends LocalFile {
 	function getThumbnails() {
 		$this->load();
 
-		$dir = $this->getRel();
+		$prefix = $this->getRel();
 		$auth = new CF_Authentication($this->repo->swiftuser, $this->repo->key, NULL, $this->repo->authurl);
 		$auth->authenticate();
 		$conn = new CF_Connection($auth);
 		$container = $conn->get_container($this->repo->container . "%2Fthumb");
-		$files = $container->list_objects(0, NULL, $dir);
+		$files = $container->list_objects(0, NULL, $prefix);
 		wfDebug(  __METHOD__ . var_export($files, true) . "\n");
 		return $files;
 	}
@@ -800,8 +830,6 @@ class SwiftFile extends LocalFile {
 	/** getUrlRel inherited */
 	/** getArchiveRel inherited */
 	/** getThumbRel inherited */
-	/** getArchivePath inherited */
-	/** getThumbPath inherited */
 	/** getArchiveUrl inherited */
 	/** getThumbUrl inherited */
 	/** getArchiveVirtualUrl inherited */
@@ -891,7 +919,7 @@ class SwiftFile extends LocalFile {
 
 		# Fail now if the file isn't there
 		if ( !$this->fileExists ) {
-			wfDebug( __METHOD__ . ": File " . $this->getPath() . " went missing!\n" );
+			wfDebug( __METHOD__ . ": File " . $this->getRel() . " went missing!\n" );
 			return false;
 		}
 
@@ -2282,38 +2310,48 @@ class SwiftRepo extends LocalRepo {
 		foreach ( $triplets as $i => $triplet ) {
 			list( $srcPath, $dstZone, $dstRel ) = $triplet;
 
-			if (!self::isVirtualUrl( $srcPath )) {
-				throw new MWException( 'We require a virtual URL here: $srcPath' );
-			}
-			$src = $this->resolveVirtualUrl( $srcPath );
-			list ($srcContainer, $srcRel) = $src;
-			$dstContainer = $this->getZoneContainer( $dstZone );
-			$good = true;
-
 			// Create the destination object.
+			$dstContainer = $this->getZoneContainer( $dstZone );
 			$dstc = $conn->get_container($dstContainer);
 			$obj = $dstc->create_object($dstRel);
-			$obj->content_type = "text/plain";
-			$obj->write(".");
 
-			// FIXME: not sure if we need to re-open it, but let's not take any chances.
-			$obj = $dstc->get_object($dstRel);
-			// FIXME: errors are returned as exceptions.
-			$obj->copy("$srcContainer/$srcRel");
-			if (0) { // handle exceptions
-				$status->error( 'filecopyerror', $srcPath, $dstPath );
-				$good = false;
-			}
+			$good = true;
 
-			if ( $flags & self::DELETE_SOURCE ) {
-				$dstc = $conn->get_container($srcContainer);
-				// FIXME: handle exceptions.
-				$dstc->delete_object($srcRel);
-				if (0) { // handle exceptions.
-					$status->error( 'filerenameerror', $srcPath, $dstPath );
+			// Where are we copying this from?
+			if (self::isVirtualUrl( $srcPath )) {
+				$src = $this->resolveVirtualUrl( $srcPath );
+				list ($srcContainer, $srcRel) = $src;
+
+				$obj->content_type = "text/plain";
+				$obj->write(".");
+
+				// FIXME: not sure if we need to re-open it, but let's not take any chances.
+				$obj = $dstc->get_object($dstRel);
+				// FIXME: errors are returned as exceptions.
+				$obj->copy("$srcContainer/$srcRel");
+				if (0) { // handle exceptions
+					$status->error( 'filecopyerror', $srcPath, $dstPath );
 					$good = false;
 				}
+				if ( $flags & self::DELETE_SOURCE ) {
+					$srcc = $conn->get_container($srcContainer);
+					// FIXME: handle exceptions.
+					$srcc->delete_object($srcRel);
+					if (0) { // handle exceptions.
+						$status->error( 'filerenameerror', $srcPath, $dstPath );
+						$good = false;
+					}
+				}
+			} else {
+				// write an ordinary file into Swift.
+				$obj->load_from_filename( $srcPath, True);
+				// $status->error( 'filecopyerror', $srcPath, $dstRel );
+				// $good = false;
+				if ( $flags & self::DELETE_SOURCE ) {
+					delete ( $srcPath );
+				}		
 			}
+
 			if ( !( $flags & self::SKIP_VALIDATION ) ) {
 				// FIXME: Swift will return the MD5 of the data written.
 				if (0) { // ( $hashDest === false || $hashSource !== $hashDest ) {
@@ -2334,18 +2372,84 @@ class SwiftRepo extends LocalRepo {
 		return $status;
 	}
 
+	/**
+	 * Pick a random name in the temp zone and store a file to it.
+	 * @param $originalName String: the base name of the file as specified
+	 *     by the user. The file extension will be maintained.
+	 * @param $srcPath String: the current location of the file.
+	 * @return FileRepoStatus object with the URL in the value.
+	 */
 	function storeTemp( $originalName, $srcPath ) {
-		wfDebug( __METHOD__ . " $originalName, $srcPath\n" );
-		return parent::storeTemp( $originalName, $srcPath);
+		$date = gmdate( "YmdHis" );
+		$hashPath = $this->getHashPath( $originalName );
+		$dstRel = "$hashPath$date!$originalName";
+		$dstUrlRel = $hashPath . $date . '!' . rawurlencode( $originalName );
+
+		$result = $this->store( $srcPath, 'temp', $dstRel );
+		$result->value = $this->getVirtualUrl( 'temp' ) . '/' . $dstUrlRel;
+		return $result;
 	}
+
 	function append( $srcPath, $toAppendPath, $flags = 0 ){
-		wfDebug( __METHOD__ . " $srcPath, $toAppendPath, $flags\n" );
-		return parent::append( $srcPath, $toAppendPath, $flags );
+		throw new MWException( __METHOD__.': Not yet implemented.' );
 	}
+	function appendFinish( $toAppendPath ){
+		throw new MWException( __METHOD__.': Not yet implemented.' );
+	}
+
+	/**
+	 * Move a group of files to the deletion archive.
+	 * If no valid deletion archive is configured, this may either delete the
+	 * file or throw an exception, depending on the preference of the repository.
+	 *
+	 * @param $sourceDestPairs Array of source/destination pairs. Each element
+	 *        is a two-element array containing the source file path relative to the
+	 *        public root in the first element, and the archive file path relative
+	 *        to the deleted zone root in the second element.
+	 * @return FileRepoStatus
+	 */
 	function deleteBatch( $sourceDestPairs ) {
-		wfDebug( __METHOD__ . " $sourceDestPairs\n" );
-		return parent::deleteBatch( $sourceDestPairs );
+		wfDebug(  __METHOD__ . " deleting " . var_export($sourceDestPairs, true) . "\n");
+		$status = $this->newGood();
+
+		/**
+		 * Validate filenames and create archive directories
+		 */
+		foreach ( $sourceDestPairs as $pair ) {
+			list( $srcRel, $archiveRel ) = $pair;
+			if ( !$this->validateFilename( $srcRel ) ) {
+				throw new MWException( __METHOD__.':Validation error in $srcRel' );
+			}
+			if ( !$this->validateFilename( $archiveRel ) ) {
+				throw new MWException( __METHOD__.':Validation error in $archiveRel' );
+			}
+		}
+		if ( !$status->ok ) {
+			// Abort early
+			return $status;
+		}
+
+		/**
+		 * Move the files
+		 * We're now committed to returning an OK result, which will lead to
+		 * the files being moved in the DB also.
+		 */
+		foreach ( $sourceDestPairs as $pair ) {
+			list( $srcRel, $archiveRel ) = $pair;
+			$srcPath = "{$this->directory}/$srcRel";
+			$archivePath = "{$this->deletedDir}/$archiveRel";
+			$good = true;
+			// FIXME we need to copy $this->container/$srcPath to $this->container%2Fdeleted/$archivePath
+			// FIXME then delete $this->container/$srcPath
+			if ( $good ) {
+				$status->successCount++;
+			} else {
+				$status->failCount++;
+			}
+		}
+		return $status;
 	}
+
 
         function newFromArchiveName( $title, $archiveName ) {
         	return OldSwiftFile::newFromArchiveName( $title, $this, $archiveName );
@@ -2360,7 +2464,10 @@ class SwiftRepo extends LocalRepo {
 	 * @return Either array of files and existence flags, or false
 	 */
 	function fileExistsBatch( $files, $flags = 0 ) {
-		// we ONLY support when $flags & self::FILES_ONLY is set!
+		if (flags != self::FILES_ONLY) {
+			// we ONLY support when $flags & self::FILES_ONLY is set!
+			throw new MWException( 'Swift Media Store doesn\'t have directories');
+		}
 		wfDebug(  __METHOD__ . var_export($files, true) . " " . $flags. "\n");
 		$result = array();
 		$auth = new CF_Authentication($this->swiftuser, $this->key, NULL, $this->authurl);
@@ -2405,6 +2512,7 @@ class SwiftRepo extends LocalRepo {
 
 	function swiftcopy($container, $srcRel, $archiveRel ) {
 		// Note the assumption that we're not doing cross-container copies.
+		//
 		// The destination must exist already.
 		$obj = $container->create_object($archiveRel);
 		$obj->content_type = "text/plain";
@@ -2492,9 +2600,9 @@ class SwiftRepo extends LocalRepo {
 			$obj->load_from_filename( $srcPath, True);
 			// $status->error( 'filecopyerror', $srcPath, $dstRel );
 			// $good = false;
-			#if ( $flags & self::DELETE_SOURCE ) {
-				#delete ( $srcPath );
-			#}		
+			//if ( $flags & self::DELETE_SOURCE ) {
+			//	delete ( $srcPath );
+			//}		
 
 			if ( $good ) {
 				$status->successCount++;
@@ -2589,246 +2697,6 @@ class SwiftRepo extends LocalRepo {
 
 
 
-}
-
-
-class Junkyjunk {
-	var $directory, $deletedDir, $deletedHashLevels, $fileMode;
-	var $fileFactory = array( 'UnregisteredLocalFile', 'newFromTitle' );
-	var $pathDisclosureProtection = 'simple';
-
-	function __construct( $info ) {
-		parent::__construct( $info );
-
-		// Required settings
-		$this->directory = $info['directory'];
-		$this->url = $info['url'];
-
-		// Optional settings
-		$this->hashLevels = isset( $info['hashLevels'] ) ? $info['hashLevels'] : 2;
-		$this->deletedHashLevels = isset( $info['deletedHashLevels'] ) ?
-			$info['deletedHashLevels'] : $this->hashLevels;
-		$this->deletedDir = isset( $info['deletedDir'] ) ? $info['deletedDir'] : false;
-		$this->fileMode = isset( $info['fileMode'] ) ? $info['fileMode'] : 0644;
-		if ( isset( $info['thumbDir'] ) ) {
-			$this->thumbDir =  $info['thumbDir'];
-		} else {
-			$this->thumbDir = "{$this->directory}/thumb";
-		}
-		if ( isset( $info['thumbUrl'] ) ) {
-			$this->thumbUrl = $info['thumbUrl'];
-		} else {
-			$this->thumbUrl = "{$this->url}/thumb";
-		}
-	}
-
-	/**
-	 * Get the public root URL of the repository
-	 */
-	function getRootUrl() {
-		return $this->url;
-	}
-
-	/**
-	 * Returns true if the repository uses a multi-level directory structure
-	 */
-	function isHashed() {
-		return (bool)$this->hashLevels;
-	}
-
-	/**
-	 * @see FileRepo::getZoneUrl()
-	 */
-	function getZoneUrl( $zone ) {
-		switch ( $zone ) {
-			case 'public':
-				return $this->url;
-			case 'temp':
-				return "{$this->url}/temp";
-			case 'deleted':
-				return parent::getZoneUrl( $zone ); // no public URL
-			case 'thumb':
-				return $this->thumbUrl;
-			default:
-				return parent::getZoneUrl( $zone );
-		}
-	}
-
-	/**
-	 * Get a URL referring to this repository, with the private mwrepo protocol.
-	 * The suffix, if supplied, is considered to be unencoded, and will be
-	 * URL-encoded before being returned.
-	 */
-	function getVirtualUrl( $suffix = false ) {
-		$path = 'mwrepo://' . $this->name;
-		if ( $suffix !== false ) {
-			$path .= '/' . rawurlencode( $suffix );
-		}
-		return $path;
-	}
-
-	
-	function append( $srcPath, $toAppendPath, $flags = 0 ) {
-		$status = $this->newGood();
-
-		// Resolve the virtual URL
-		if ( self::isVirtualUrl( $srcPath ) ) {
-			$srcPath = $this->resolveVirtualUrl( $srcPath );
-		}
-		// Make sure the files are there
-		if ( !is_file( $srcPath ) )
-			$status->fatal( 'filenotfound', $srcPath );
-
-		if ( !is_file( $toAppendPath ) )
-			$status->fatal( 'filenotfound', $toAppendPath );
-
-		if ( !$status->isOk() ) return $status;
-
-		// Do the append
-		$chunk = file_get_contents( $toAppendPath );
-		if( $chunk === false ) {
-			$status->fatal( 'fileappenderrorread', $toAppendPath );
-		}
-
-		if( $status->isOk() ) {
-			if ( file_put_contents( $srcPath, $chunk, FILE_APPEND ) ) {
-				$status->value = $srcPath;
-			} else {
-				$status->fatal( 'fileappenderror', $toAppendPath,  $srcPath);
-			}
-		}
-
-		if ( $flags & self::DELETE_SOURCE ) {
-			unlink( $toAppendPath );
-		}
-
-		return $status;
-	}
-
-	/**
-	 * Take all available measures to prevent web accessibility of new deleted
-	 * directories, in case the user has not configured offline storage
-	 */
-	protected function initDeletedDir( $dir ) {
-		return; // we just don't make it public.
-	}
-
-	/**
-	 * Pick a random name in the temp zone and store a file to it.
-	 * @param $originalName String: the base name of the file as specified
-	 *     by the user. The file extension will be maintained.
-	 * @param $srcPath String: the current location of the file.
-	 * @return FileRepoStatus object with the URL in the value.
-	 */
-	function storeTemp( $originalName, $srcPath ) {
-		$date = gmdate( "YmdHis" );
-		$hashPath = $this->getHashPath( $originalName );
-		$dstRel = "$hashPath$date!$originalName";
-		$dstUrlRel = $hashPath . $date . '!' . rawurlencode( $originalName );
-
-		$result = $this->store( $srcPath, 'temp', $dstRel );
-		$result->value = $this->getVirtualUrl( 'temp' ) . '/' . $dstUrlRel;
-		return $result;
-	}
-
-	/**
-	 * Remove a temporary file or mark it for garbage collection
-	 * @param $virtualUrl String: the virtual URL returned by storeTemp
-	 * @return Boolean: true on success, false on failure
-	 */
-	function freeTemp( $virtualUrl ) {
-		$temp = "mwrepo://{$this->name}/temp";
-		if ( substr( $virtualUrl, 0, strlen( $temp ) ) != $temp ) {
-			wfDebug( __METHOD__.": Invalid virtual URL\n" );
-			return false;
-		}
-		$path = $this->resolveVirtualUrl( $virtualUrl );
-		wfSuppressWarnings();
-		$success = unlink( $path );
-		wfRestoreWarnings();
-		return $success;
-	}
-
-	/**
-	 * Move a group of files to the deletion archive.
-	 * If no valid deletion archive is configured, this may either delete the
-	 * file or throw an exception, depending on the preference of the repository.
-	 *
-	 * @param $sourceDestPairs Array of source/destination pairs. Each element
-	 *        is a two-element array containing the source file path relative to the
-	 *        public root in the first element, and the archive file path relative
-	 *        to the deleted zone root in the second element.
-	 * @return FileRepoStatus
-	 */
-	function deleteBatch( $sourceDestPairs ) {
-		$status = $this->newGood();
-		if ( !$this->deletedDir ) {
-			throw new MWException( __METHOD__.': no valid deletion archive directory' );
-		}
-
-		/**
-		 * Validate filenames and create archive directories
-		 */
-		foreach ( $sourceDestPairs as $pair ) {
-			list( $srcRel, $archiveRel ) = $pair;
-			if ( !$this->validateFilename( $srcRel ) ) {
-				throw new MWException( __METHOD__.':Validation error in $srcRel' );
-			}
-			if ( !$this->validateFilename( $archiveRel ) ) {
-				throw new MWException( __METHOD__.':Validation error in $archiveRel' );
-			}
-			$archivePath = "{$this->deletedDir}/$archiveRel";
-			$archiveDir = dirname( $archivePath );
-			if ( !is_dir( $archiveDir ) ) {
-				if ( !wfMkdirParents( $archiveDir ) ) {
-					$status->fatal( 'directorycreateerror', $archiveDir );
-					continue;
-				}
-				$this->initDeletedDir( $archiveDir );
-			}
-			// Check if the archive directory is writable
-			// This doesn't appear to work on NTFS
-			if ( !is_writable( $archiveDir ) ) {
-				$status->fatal( 'filedelete-archive-read-only', $archiveDir );
-			}
-		}
-		if ( !$status->ok ) {
-			// Abort early
-			return $status;
-		}
-
-		/**
-		 * Move the files
-		 * We're now committed to returning an OK result, which will lead to
-		 * the files being moved in the DB also.
-		 */
-		foreach ( $sourceDestPairs as $pair ) {
-			list( $srcRel, $archiveRel ) = $pair;
-			$srcPath = "{$this->directory}/$srcRel";
-			$archivePath = "{$this->deletedDir}/$archiveRel";
-			$good = true;
-			if ( file_exists( $archivePath ) ) {
-				# A file with this content hash is already archived
-				if ( !@unlink( $srcPath ) ) {
-					$status->error( 'filedeleteerror', $srcPath );
-					$good = false;
-				}
-			} else{
-				if ( !@rename( $srcPath, $archivePath ) ) {
-					$status->error( 'filerenameerror', $srcPath, $archivePath );
-					$good = false;
-				} else {
-					$this->chmod( $archivePath );
-				}
-			}
-			if ( $good ) {
-				$status->successCount++;
-			} else {
-				$status->failCount++;
-			}
-		}
-		return $status;
-	}
 }
 
 /**
@@ -3045,3 +2913,151 @@ class OldSwiftFile extends SwiftFile {
 		return Revision::userCanBitfield( $this->deleted, $field );
 	}
 }
+
+class Junkyjunk {
+	function __construct( $info ) {
+		parent::__construct( $info );
+
+		// Required settings
+		$this->directory = $info['directory'];
+		$this->url = $info['url'];
+
+		// Optional settings
+		$this->hashLevels = isset( $info['hashLevels'] ) ? $info['hashLevels'] : 2;
+		$this->deletedHashLevels = isset( $info['deletedHashLevels'] ) ?
+			$info['deletedHashLevels'] : $this->hashLevels;
+		$this->fileMode = isset( $info['fileMode'] ) ? $info['fileMode'] : 0644;
+		if ( isset( $info['thumbDir'] ) ) {
+			$this->thumbDir =  $info['thumbDir'];
+		} else {
+			$this->thumbDir = "{$this->directory}/thumb";
+		}
+		if ( isset( $info['thumbUrl'] ) ) {
+			$this->thumbUrl = $info['thumbUrl'];
+		} else {
+			$this->thumbUrl = "{$this->url}/thumb";
+		}
+	}
+
+	function append( $srcPath, $toAppendPath, $flags = 0 ) {
+		$status = $this->newGood();
+
+		// Resolve the virtual URL
+		if ( self::isVirtualUrl( $srcPath ) ) {
+			$srcPath = $this->resolveVirtualUrl( $srcPath );
+		}
+		// Make sure the files are there
+		if ( !is_file( $srcPath ) )
+			$status->fatal( 'filenotfound', $srcPath );
+
+		if ( !is_file( $toAppendPath ) )
+			$status->fatal( 'filenotfound', $toAppendPath );
+
+		if ( !$status->isOk() ) return $status;
+
+		// Do the append
+		$chunk = file_get_contents( $toAppendPath );
+		if( $chunk === false ) {
+			$status->fatal( 'fileappenderrorread', $toAppendPath );
+		}
+
+		if( $status->isOk() ) {
+			if ( file_put_contents( $srcPath, $chunk, FILE_APPEND ) ) {
+				$status->value = $srcPath;
+			} else {
+				$status->fatal( 'fileappenderror', $toAppendPath,  $srcPath);
+			}
+		}
+
+		if ( $flags & self::DELETE_SOURCE ) {
+			unlink( $toAppendPath );
+		}
+
+		return $status;
+	}
+
+	/**
+	 * Remove a temporary file or mark it for garbage collection
+	 * @param $virtualUrl String: the virtual URL returned by storeTemp
+	 * @return Boolean: true on success, false on failure
+	 */
+	function freeTemp( $virtualUrl ) {
+		$temp = "mwrepo://{$this->name}/temp";
+		if ( substr( $virtualUrl, 0, strlen( $temp ) ) != $temp ) {
+			wfDebug( __METHOD__.": Invalid virtual URL\n" );
+			return false;
+		}
+		$path = $this->resolveVirtualUrl( $virtualUrl );
+		$success = unlink( $path );
+		return $success;
+	}
+
+
+
+	/**
+	 * Removes non-existent files from move batch.
+	 */
+	function move_removeNonexistentFiles( $triplets ) {
+		$files = array();
+
+		foreach ( $triplets as $file ) {
+			$files[$file[0]] = $file[0];
+		}
+
+		$result = $this->file->repo->fileExistsBatch( $files, FSRepo::FILES_ONLY );
+		$filteredTriplets = array();
+
+		foreach ( $triplets as $file ) {
+			if ( $result[$file[0]] ) {
+				$filteredTriplets[] = $file;
+			} else {
+				wfDebugLog( 'imagemove', "File {$file[0]} does not exist" );
+			}
+		}
+
+		return $filteredTriplets;
+	}
+		/**
+	 * Removes non-existent files from a store batch.
+	 */
+	function store_removeNonexistentFiles( $triplets ) {
+		$files = $filteredTriplets = array();
+
+		foreach ( $triplets as $file )
+			$files[$file[0]] = $file[0];
+
+		$result = $this->file->repo->fileExistsBatch( $files, FSRepo::FILES_ONLY );
+
+		foreach ( $triplets as $file ) {
+			if ( $result[$file[0]] ) {
+				$filteredTriplets[] = $file;
+			}
+		}
+
+		return $filteredTriplets;
+	}
+
+	/**
+	 * Removes non-existent files from a deletion batch.
+	 */
+	function deletion_removeNonexistentFiles( $triplets ) {
+		$files = $filteredTriplets = array();
+
+		foreach ( $triplets as $file) {
+			list( $src, $dest ) = $file;
+			$files[$src] = $this->file->repo->getVirtualUrl( 'public' ) . '/' . rawurlencode( $src );
+		}
+
+		$result = $this->file->repo->fileExistsBatch( $files, FSRepo::FILES_ONLY );
+
+		foreach ( $triplets as $file ) {
+			if ( $result[$file[0]] ) {
+				$filteredTriplets[] = $file;
+			}
+		}
+
+		return $filteredTriplets;
+	}
+
+}
+
