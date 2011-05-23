@@ -1,4 +1,13 @@
 <?php
+/**
+ * Extension PatchOutputMobile — Patch HTML output for mobile
+ *
+ * @file
+ * @ingroup Extensions
+ * @author Patrick Reilly
+ * @copyright © 2011 Patrick Reilly
+ * @licence GNU General Public Licence 2.0 or later
+ */
 
 // Needs to be called within MediaWiki; not standalone
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -27,7 +36,7 @@ $wgHooks['OutputPageBeforeHTML'][] = array( &$wgExtPatchOutputMobile,
 											'onOutputPageBeforeHTML' );
 
 class ExtPatchOutputMobile {
-	const VERSION = '0.3.3';
+	const VERSION = '0.3.4';
 
 	private $doc;
 	
@@ -38,6 +47,7 @@ class ExtPatchOutputMobile {
 	public static $dir;
 	public static $code;
 	public static $device;
+	public static $headings;
 
 	public $itemsToRemove = array(
 		'#contentSub',		  # redirection notice
@@ -68,60 +78,64 @@ class ExtPatchOutputMobile {
 		'.hiddenStructure',
 		'.noprint',
 		'.medialist',
-		'.mw-search-createlink'
+		'.mw-search-createlink',
+		'#ogg_player_1',
+		'.nomobile',
 	);
 
 	public function onOutputPageBeforeHTML( &$out, &$text ) {
 		global $wgContLang;
+		
 		// Need to stash the results of the "wfMsg" call before the Output Buffering handler
 		// because at this point the database connection is shut down, etc.
-		ExtPatchOutputMobile::$messages['patch-output-mobile-show'] = wfMsg( 'patch-output-mobile-show-button' );
-		ExtPatchOutputMobile::$messages['patch-output-mobile-hide'] = wfMsg( 'patch-output-mobile-hide-button' );
-		ExtPatchOutputMobile::$messages['patch-output-mobile-back-to-top'] = wfMsg( 'patch-output-mobile-back-to-top-of-section' );
-		ExtPatchOutputMobile::$messages['regular_wikipedia'] = wfMsg( 'patch-output-mobile-regular-wikipedia' );
-		ExtPatchOutputMobile::$messages['perm_stop_redirect'] = wfMsg( 'patch-output-mobile-perm-stop-redirect' );
-		ExtPatchOutputMobile::$messages['copyright'] = wfMsg( 'patch-output-mobile-copyright' );
-		ExtPatchOutputMobile::$messages['home_button'] = wfMsg( 'patch-output-mobile-home-button' );
-		ExtPatchOutputMobile::$messages['random_button'] = wfMsg( 'patch-output-mobile-random-button' );
-		ExtPatchOutputMobile::$dir = $wgContLang->getDir();
-		ExtPatchOutputMobile::$code = $wgContLang->getCode();
+		self::$messages['patch-output-mobile-show']               = wfMsg( 'patch-output-mobile-show-button' );
+		self::$messages['patch-output-mobile-hide']               = wfMsg( 'patch-output-mobile-hide-button' );
+		self::$messages['patch-output-mobile-back-to-top']        = wfMsg( 'patch-output-mobile-back-to-top-of-section' );
+		self::$messages['patch-output-mobile-regular-wikipedia']  = wfMsg( 'patch-output-mobile-regular-wikipedia' );
+		self::$messages['patch-output-mobile-perm-stop-redirect'] = wfMsg( 'patch-output-mobile-perm-stop-redirect' );
+		self::$messages['patch-output-mobile-copyright']          = wfMsg( 'patch-output-mobile-copyright' );
+		self::$messages['patch-output-mobile-home-button']        = wfMsg( 'patch-output-mobile-home-button' );
+		self::$messages['patch-output-mobile-random-button']      = wfMsg( 'patch-output-mobile-random-button' );
+		
+		self::$dir = $wgContLang->getDir();
+		self::$code = $wgContLang->getCode();
 		
 		$userAgent = $_SERVER['HTTP_USER_AGENT'];
 		$acceptHeader = $_SERVER["HTTP_ACCEPT"];
 		$device = new Device();
 		$formatName = $device->formatName( $userAgent, $acceptHeader );
-		ExtPatchOutputMobile::$device = $device->format( $formatName );
+		self::$device = $device->format( $formatName );
 		
-		if ( ExtPatchOutputMobile::$device['view_format'] === 'wml' ) {
+		if ( self::$device['view_format'] === 'wml' ) {
 			$this->contentFormat = 'WML';
-		} elseif ( ExtPatchOutputMobile::$device['view_format'] === 'html' ) {
+		} elseif ( self::$device['view_format'] === 'html' ) {
 			$this->contentFormat = 'XHTML';
 		}
 		
-		ob_start( array( $this, 'parse' ) );
+		ob_start( array( $this, 'DOMParse' ) );
 		return true;
 	}
 	
 	private function showHideCallbackWML( $matches ) {
 		static $headings = 0;
-		$show = ExtPatchOutputMobile::$messages['patch-output-mobile-show'];
-		$hide = ExtPatchOutputMobile::$messages['patch-output-mobile-hide'];
-		$backToTop = ExtPatchOutputMobile::$messages['patch-output-mobile-back-to-top'];
+		$show = self::$messages['patch-output-mobile-show'];
+		$hide = self::$messages['patch-output-mobile-hide'];
+		$backToTop = self::$messages['patch-output-mobile-back-to-top'];
 		++$headings;
 
 		$base = $this->WMLSectionSeperator .
 			"<h2 class='section_heading' id='section_{$headings}'>{$matches[2]}</h2>";
 
-		$GLOBALS['headings'] = $headings;
+		self::$headings = $headings;
 
 		return $base;
 	}
 
 	private function showHideCallbackXHTML( $matches ) {
 		static $headings = 0;
-		$show = ExtPatchOutputMobile::$messages['patch-output-mobile-show'];
-		$hide = ExtPatchOutputMobile::$messages['patch-output-mobile-hide'];
-		$backToTop = ExtPatchOutputMobile::$messages['patch-output-mobile-back-to-top'];
+		$show = self::$messages['patch-output-mobile-show'];
+		$hide = self::$messages['patch-output-mobile-hide'];
+		$backToTop = self::$messages['patch-output-mobile-back-to-top'];
 		++$headings;
 		// Back to top link
 		$base = "<div class='section_anchors' id='anchor_" . intval( $headings - 1 ) .
@@ -138,7 +152,7 @@ class ExtPatchOutputMobile {
 			$base = '</div>' . $base;
 		}
 
-		$GLOBALS['headings'] = $headings;
+		self::$headings = $headings;
 
 		return $base;
 	}
@@ -157,7 +171,7 @@ class ExtPatchOutputMobile {
 		);
 
 		// if we had any, make sure to close the whole thing!
-		if ( isset( $GLOBALS['headings'] ) && $GLOBALS['headings'] > 0 ) {
+		if ( isset( self::$headings ) && self::$headings > 0 ) {
 			$s = str_replace(
 				'<div class="visualClear">',
 				'</div><div class="visualClear">',
@@ -190,10 +204,6 @@ class ExtPatchOutputMobile {
 
 		$card .= '</card>';
 		return $card;
-	}
-
-	public function parse( $s ) {
-		return $this->DOMParse( $s );
 	}
 
 	private function parseItemsToRemove() {
@@ -302,16 +312,16 @@ class ExtPatchOutputMobile {
 			$title = 'Wikipedia';
 		}
 		
-		$dir = ExtPatchOutputMobile::$dir;
-		$code = ExtPatchOutputMobile::$code;
-		$regular_wikipedia = ExtPatchOutputMobile::$messages['regular_wikipedia'];
-		$perm_stop_redirect = ExtPatchOutputMobile::$messages['perm_stop_redirect'];
-		$copyright = ExtPatchOutputMobile::$messages['copyright'];
-		$home_button = ExtPatchOutputMobile::$messages['home_button'];
-		$random_button = ExtPatchOutputMobile::$messages['random_button'];
+		$dir = self::$dir;
+		$code = self::$code;
+		$regular_wikipedia = self::$messages['patch-output-mobile-regular-wikipedia'];
+		$perm_stop_redirect = self::$messages['patch-output-mobile-perm-stop-redirect'];
+		$copyright = self::$messages['patch-output-mobile-copyright'];
+		$home_button = self::$messages['patch-output-mobile-home-button'];
+		$random_button = self::$messages['patch-output-mobile-random-button'];
 		
 		if ( strlen( $contentHtml ) > 4000 && $this->contentFormat == 'XHTML' 
-			&& ExtPatchOutputMobile::$device['supports_javascript'] === true ) {
+			&& self::$device['supports_javascript'] === true ) {
 			$contentHtml =	$this->javascriptize( $contentHtml );
 		} else if ( $this->contentFormat == 'WML' ) {
 			$contentHtml = $this->javascriptize( $contentHtml );
