@@ -1,1 +1,7 @@
-A collection of alternate MediaWiki wikitext parsers. The one that is actually used by MediaWiki is in phase3/includes/parser/Parser.php.
+A collection of alternate MediaWiki wikitext parsers. The parser currently being used in MediaWiki
+can be found in phase3/includes/parser/Parser.php.
+
+== Contents of this directory ==
+
+* graveyard -- Parsers which are no longer under active development
+* wikidom -- Wikitext Document Object Model library
