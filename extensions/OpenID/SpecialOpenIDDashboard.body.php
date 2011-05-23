@@ -66,6 +66,10 @@ class SpecialOpenIDDashboard extends SpecialPage {
         	        return;
 	        }
 
+		$totalUsers = SiteStats::users();
+		$OpenIDdistinctUsers = $this->getOpenIDUsers( 'distinctusers' );
+		$OpenIDUsers = $this->getOpenIDUsers();
+
 		$out = "<table class='openiddashboard wikitable'><tr><th>Parameter</th><th>Value</th></tr>";
 		$out .= show( 'MEDIAWIKI_OPENID_VERSION', MEDIAWIKI_OPENID_VERSION );
 		$out .= show( '$wgOpenIDOnly', $wgOpenIDOnly );
@@ -79,6 +83,11 @@ class SpecialOpenIDDashboard extends SpecialPage {
 		$out .= show( '$wgOpenIDProposeUsernameFromSREG', $wgOpenIDProposeUsernameFromSREG );
 		$out .= show( '$wgOpenIDShowUrlOnUserPage', $wgOpenIDShowUrlOnUserPage );
 		$out .= show( '$wgOpenIDShowProviderIcons', $wgOpenIDShowProviderIcons );
+		
+		$out .= show( 'Number of users (total)', $totalUsers );
+		$out .= show( 'Number of users with OpenID', $OpenIDdistinctUsers  );
+		$out .= show( 'Number of OpenIDs (total)', $OpenIDUsers );
+		$out .= show( 'Number of users without OpenID', $totalUsers - $OpenIDdistinctUsers );
 		$out .= '</table>';
 
 		$this->setHeaders();
@@ -91,6 +100,23 @@ class SpecialOpenIDDashboard extends SpecialPage {
 		global $wgOut;
 		$args = func_get_args();
 		$wgOut->wrapWikiMsg( "<p class='error'>$1</p>", $args );
+	}
+
+
+	function getOpenIDUsers ( $distinctusers = '' ) {
+		wfProfileIn( __METHOD__ );
+		$distinct = ( $distinctusers == 'distinctusers' ) ? 'COUNT(DISTINCT uoi_user)' : 'COUNT(*)' ;
+
+		$dbr = wfGetDB( DB_SLAVE );
+		$OpenIDUserCount = (int)$dbr->selectField(
+			'user_openid',
+			$distinct,
+			null,
+			__METHOD__,
+			null
+		);
+		wfProfileOut( __METHOD__ );
+		return $OpenIDUserCount;
 	}
 
 }
