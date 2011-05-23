@@ -12,18 +12,28 @@
  * - CHAPTERNAME		(get chapter)
  * - CHAPTERNAMEE		(get chapter encode)
  * - RANDOMCHAPTER		(get random page)
- * - RANDOMCHAPTERE		(get random page encode) 
+ * - RANDOMCHAPTERE		(get random page encode)
  * @addtogroup Extensions
  * @author Raylton P. Sousa
  * @author Helder.wiki
  * @copyright Copyright © 2011 Raylton P. Sousa <raylton.sousa@gmail.com>
- * @copyright Copyright © 2011 Helder.wiki 
+ * @copyright Copyright © 2011 Helder.wiki
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 3.0 or later
 */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'This file is a MediaWiki extension, it is not a valid entry point' );
 }
+$wgBookSidebarSection = true;
+$wgBookManagerNamespaces = array( NS_MAIN );
+$wgBookManagerVariables = true ;
+$wgBookManagerNavBar = true;
+$wgCategorizeSubPages = true;
+$wgCategorizeRootPages = true;
+/* Copyied from extensions/Collection/Collection.php */
+/** Namespace for "community books" */
+$wgBookManagerPrefixNamespace = NS_PROJECT;
+
 $dir = dirname( __FILE__ );
 $wgParserTestFiles[] = $dir . "/BookManagerParserTests.txt";
 $wgAutoloadClasses['BookManagerCore'] = $dir . '/BookManager.body.php';
@@ -53,17 +63,10 @@ $wgResourceModules['ext.BookManager'] = array(
 	'styles'	=> 'bookmanager.css',
 	'messages'	=> array( 'BookManager', 'BookManager-top', 'BookManager-bottom' ),
 	'dependencies'	=> array( 'jquery', 'mediawiki.util' ),
-	'localBasePath'	=> $dir. '/client',
+	'localBasePath'	=> $dir . '/client',
 	'remoteExtPath'	=> 'BookManager/client'
 );
 
-$wgBookManagerNamespaces = array( NS_MAIN );
-$wgBookManagerVariables = true ;
-$wgBookManagerNavBar = true;
-$wgCategorizationByPrefix = true;
-/* Copyied from extensions/Collection/Collection.php */
-/** Namespace for "community books" */
-$wgBookManagerPrefixNamespace = NS_PROJECT;
 /**** Register magic words ****/
 if ( $wgBookManagerVariables ) {
 $wgAutoloadClasses['BookManagerVariables'] = $dir . '/BookManager.body.php';
@@ -77,8 +80,9 @@ $wgHooks['ParserGetVariableValueSwitch'][] = 'BookManagerVariables::AssignAValue
 /**** Navbar ****/
 
 $wgHooks['BeforePageDisplay'][] = 'BookManagerNavBar::addNavBar';
-/**** Toolbox Section ***/
+/****  Toolbox Section ***/
+// $wgHooks['SkinTemplateToolboxEnd'][] = 'BookManagerNavBar::bookToolboxSection';
 $wgHooks['BaseTemplateToolbox'][] = 'BookManagerNavBar::bookToolboxSection';
-
+/*** Cat ***/
 $wgHooks['ParserAfterTidy'][] = 'BookManagerNavBar::CatByPrefix';
 
