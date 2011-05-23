@@ -145,7 +145,7 @@ class ClickTrackingHooks {
 		global $wgRequest;
 		
 		//JSON-encoded because it's simple, can be replaced with any other encoding scheme
-		return json_decode($wgRequest->getCookie('userbuckets',""), true);
+		return FormatJson::decode( $wgRequest->getCookie( 'userbuckets', "" ), true );
 	}
 	
 	/**
@@ -156,7 +156,7 @@ class ClickTrackingHooks {
 	public static function packBucketInfo( $buckets ){
 		global $wgRequest;
 		//Can be another encoding scheme, just needs to match unpackBucketInfo
-		$packedBuckets = json_encode( $buckets );
+		$packedBuckets = FormatJson::encode( $buckets );
 		
 		//NOTE: $wgRequest->response setCookie sets it with a prefix and httponly by default
 		setcookie( 'userbuckets' , $packedBuckets , 
