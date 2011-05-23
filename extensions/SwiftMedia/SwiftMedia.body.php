@@ -2464,7 +2464,7 @@ class SwiftRepo extends LocalRepo {
 	 * @return Either array of files and existence flags, or false
 	 */
 	function fileExistsBatch( $files, $flags = 0 ) {
-		if (flags != self::FILES_ONLY) {
+		if ($flags != self::FILES_ONLY) {
 			// we ONLY support when $flags & self::FILES_ONLY is set!
 			throw new MWException( 'Swift Media Store doesn\'t have directories');
 		}
@@ -2628,17 +2628,15 @@ class SwiftRepo extends LocalRepo {
 		foreach ( $files as $file ) {
 			if ( is_array( $file ) ) {
 				// This is a pair, extract it
-				list( $zone, $rel ) = $file;
-				$cont = $this->getZonePath( $zone );
+				list( $cont, $rel ) = $file;
 			} else {
 				if ( self::isVirtualUrl( $file ) ) {
 					// This is a virtual url, resolve it 
 					$path = $this->resolveVirtualUrl( $file );
-					list( $zone, $rel) = $path;
-					$cont = $this->getZonePath( $zone );
+					list( $cont, $rel) = $path;
 				} else {
 					// FIXME: This is a full file name
-					throw new MWException( __METHOD__.': $file' );
+					throw new MWException( __METHOD__.': $file needs an unlink()' );
 				}
 			}
 			
