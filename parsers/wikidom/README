@@ -1,0 +1,44 @@
+= WikiDom =
+
+WikiDom is a document object model for Wikitext.
+
+== Contents of this directory ==
+
+* demos - A variety of demonstrative web pages
+* lib - Common dependencies
+* tests - QUnit tests
+* wikidom.js - WikiDom library
+
+== Status of components ==
+
+* Parsers
+** Wikitext: not yet started
+* Processors
+** Templates: not yet started
+** Hooks: not yet started
+* Renderers
+** HTML: basic functionaltiy
+** Wikitext: basic functionaltiy
+
+== DOM Specification ==
+
+Once parsed, Wikitext is stored in a syntax-agnostic structured form. This structure is built from
+a variety of objects.
+
+; Document
+: A series of one or more blocks.
+; Block
+: A discreet portion of a document, such as a paragraph, list or table.
+; Line
+: A single line of text with annotation information to describe formatting, rendering and meaning.
+; Item
+: A line of text and optionally a series of nested lists.
+
+=== Blocks ===
+
+; Paragraph
+: A series of line objects.
+; List
+: A series of item objects.
+; Table
+: A series of rows, each a series of document objects.
