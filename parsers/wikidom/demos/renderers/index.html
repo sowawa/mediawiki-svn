@@ -60,15 +60,16 @@
 		<script>
 			$( document ).ready( function() {
 				$.getJSON( 'document.js', function( data ) {
+					// HTML
 					var htmlRenderer = new wiki.HtmlRenderer();
 					var html = htmlRenderer.render( data );
 					$( '#html-rendering' ).append( html );
 					$( '#html-source' ).text( html );
-					
+					// Wikitext
 					var wikitextRenderer = new wiki.WikitextRenderer();
 					var wikitext = wikitextRenderer.render( data );
 					$( '#wikitext-source' ).text( wikitext );
-					
+					// JSON
 					var json = $.toJSON( data );
 					$( '#json-source' ).text( json );
 				} );
