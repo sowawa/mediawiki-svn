@@ -1,8 +1,8 @@
 module( 'Wikidom Serialization' );
 
 function assertSerializations( tests ) {
-	var htmlRenderer = new HtmlRenderer();
-	var wikitextRenderer = new WikitextRenderer();
+	var htmlRenderer = new wiki.HtmlRenderer();
+	var wikitextRenderer = new wiki.WikitextRenderer();
 	for ( var i = 0; i < tests.length; i++ ) {
 		equals(
 			htmlRenderer.render( tests[i].dom ),
@@ -38,7 +38,7 @@ test( 'Horizontal rules', function() {
 		{
 			'subject': 'horizontal rule',
 			'dom': { 'blocks': [ {
-				'type': 'rule',
+				'type': 'horizontal-rule',
 			} ] },
 			'html': '<hr />',
 			'wikitext': '----'

@@ -60,12 +60,12 @@
 		<script>
 			$( document ).ready( function() {
 				$.getJSON( 'document.js', function( data ) {
-					var htmlRenderer = new HtmlRenderer();
+					var htmlRenderer = new wiki.HtmlRenderer();
 					var html = htmlRenderer.render( data );
 					$( '#html-rendering' ).append( html );
 					$( '#html-source' ).text( html );
 					
-					var wikitextRenderer = new WikitextRenderer();
+					var wikitextRenderer = new wiki.WikitextRenderer();
 					var wikitext = wikitextRenderer.render( data );
 					$( '#wikitext-source' ).text( wikitext );
 					
