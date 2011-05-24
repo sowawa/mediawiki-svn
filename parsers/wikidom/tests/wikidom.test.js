@@ -238,7 +238,7 @@ test( 'Tables', function() {
 	assertSerializations( [
 		{
 			'subject': 'table with headings and data',
-			'dom': { 'blocks': [ {
+			'dom': { 'blocks': [{
 				'type': 'table',
 				'rows': [
 					[
@@ -274,10 +274,35 @@ test( 'Tables', function() {
 						}
 			        ]
 				]
-			} ] },
+			}] },
 			'html': '<table>\n<tr>\n<th>A</th>\n<th>B</th>\n</tr>\n<tr>\n'
 				+ '<td>1</td>\n<td>2</td>\n</tr>\n</table>',
 			'wikitext': '{|\n!A\n!B\n|-\n|1\n|2\n|}'
+		},
+		{
+			'subject': 'table with attributes',
+			'dom': { 'blocks': [{
+				'type': 'table',
+				'attributes': {
+					'class': 'wikitable'
+				},
+				'rows': [
+					[
+						{
+							'type': 'data',
+							'attributes': {
+								'class': 'abc'
+							},
+							'document': { 'blocks': [{
+								'type': 'paragraph',
+								'lines': [{ 'text': 'abc' }]
+							}] }
+						}
+					]
+				]
+			}] },
+			'html': '<table class="wikitable">\n<tr>\n<td class="abc">abc</td>\n</tr>\n</table>',
+			'wikitext': '{|class="wikitable"\n|class="abc"|abc\n|}'
 		}
 	] );
 } );
