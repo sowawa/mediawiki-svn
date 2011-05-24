@@ -264,6 +264,7 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 			// First, we use the system preprocessor to break down the text
 			// into text, templates, extensions, and comments:
 			global $wgParser;
+			$wgParser->setTitle( $title ); // force an unstub before the below...
 			$wgParser->mOptions = new ParserOptions();
 			$wgParser->clearState();
 			$frame = $wgParser->getPreprocessor()->newFrame();
