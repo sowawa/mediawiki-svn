@@ -1,4 +1,4 @@
-module( 'Wikidom Serialization' );
+module( 'Wiki DOM Serialization' );
 
 function assertSerializations( tests ) {
 	var htmlRenderer = new wiki.HtmlRenderer();
