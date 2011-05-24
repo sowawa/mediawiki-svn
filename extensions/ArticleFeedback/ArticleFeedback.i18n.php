@@ -1460,6 +1460,8 @@ $messages['frp'] = array(
 	'articlefeedback-survey-message-error' => 'Una èrror est arrevâ.
 Volyéd tornar èprovar ples târd.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Los hôts et bâs d’houé',
+	'articleFeedback-table-caption-dailyhighs' => 'Pâges avouéc quotes les ples hôtes : $1',
+	'articleFeedback-table-caption-dailylows' => 'Pâges avouéc quotes les ples bâsses : $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Los ples changiês de cela semana',
 	'articleFeedback-table-caption-recentlows' => 'Dèrriérs bâs',
 	'articleFeedback-table-heading-page' => 'Pâge',
@@ -2262,7 +2264,7 @@ $messages['ka'] = array(
 	'articlefeedback-form-panel-title' => 'ამ გვერდის შეფასება',
 	'articlefeedback-form-panel-instructions' => 'გთხოვთ, გამონახეთ დრო ამ გვერდის შეფასებისათვის.',
 	'articlefeedback-form-panel-clear' => 'შეფასება წაიშალა',
-	'articlefeedback-form-panel-expertise' => 'მე მაქვს წინასწარი ცოდნა ამ თემის შესახებ',
+	'articlefeedback-form-panel-expertise' => 'მე მაქვს წინასწარი ცოდნა ამ თემის შესახებ (არასავალდებულო)',
 	'articlefeedback-form-panel-expertise-studies' => 'მე ეს უმაღლეს სასწავლებელში ვისწავლე',
 	'articlefeedback-form-panel-expertise-profession' => 'ეს ჩემი პროფესიის ნაწილია',
 	'articlefeedback-form-panel-expertise-hobby' => 'ეს ჩემს ჰობისა და ინტერესებს მოიცავს',

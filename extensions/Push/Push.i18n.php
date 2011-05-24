@@ -443,6 +443,7 @@ $messages['gl'] = array(
 	'push-err-authentication' => 'Fallou a autenticación en $1. $2',
 	'push-tab-text' => 'Empurrar',
 	'push-button-text' => 'Empurrar',
+	'push-tab-desc' => 'Esta lapela permite empurrar a revisión actual desta páxina ata un ou máis wikis.',
 	'push-button-pushing' => 'Empurrando',
 	'push-button-pushing-files' => 'Empurrando os ficheiros',
 	'push-button-completed' => 'Empuxe completado',
@@ -451,6 +452,7 @@ $messages['gl'] = array(
 	'push-targets' => 'Destinos para o empuxe',
 	'push-add-target' => 'Engadir un destino',
 	'push-import-revision-message' => 'Empurrado desde $1.',
+	'push-tab-no-targets' => 'Non hai obxectivos ata os que empurrar. Engada algúns ao seu ficheiro LocalSettings.php.',
 	'push-tab-push-to' => 'Empurrar a $1',
 	'push-remote-pages' => 'Páxinas remotas',
 	'push-remote-page-link' => '"$1" en $2',
@@ -464,13 +466,18 @@ $messages['gl'] = array(
 	'push-tab-used-templates' => '({{PLURAL:$2|Modelo empregado|Modelos empregados}}: $1)',
 	'push-tab-no-used-templates' => '(Nesta páxina non se empregan modelos.)',
 	'push-tab-inc-files' => 'Incluír ficheiros',
+	'push-tab-err-fileinfo' => 'Non se puideron obter os ficheiros empregados ​​nesta páxina. Ningún deles foi empurrado.',
 	'push-tab-err-filepush-unknown' => 'O empuxe do ficheiro fallou por unha razón descoñecida.',
 	'push-tab-err-filepush' => 'O empuxe do ficheiro fallou: $1',
 	'push-tab-embedded-files' => 'Ficheiros embelecidos:',
 	'push-tab-no-embedded-files' => '(Non hai ningún ficheiro nesta páxina.)',
 	'push-tab-files-override' => 'Estes ficheiros xa existen: $1',
 	'push-tab-template-override' => 'Estes modelos xa existen: $1',
+	'push-tab-err-uploaddisabled' => 'As cargas non están habilitadas. Asegúrese de que as configuracións $wgEnableUploads e mais $wgAllowCopyUploads estean definidas como "true" no ficheiro LocalSettings.php do wiki de destino.',
 	'special-push' => 'Empurrar as páxinas',
+	'push-special-description' => 'Esta páxina permite empurrar o contido dunha ou máis páxinas ata un ou máis wikis de MediaWiki.
+
+Para empurrar páxinas, insira os títulos na caixa de texto de embaixo (un título por liña) e prema no botón para empurralas todas. Isto pode levar uns intres ata que termine.',
 	'push-special-pushing-desc' => 'Empurrando $2 {{PLURAL:$2|páxina|páxinas}} a $1...',
 	'push-special-button-text' => 'Empurrar as páxinas',
 	'push-special-target-is' => 'Wiki de destino: $1',
@@ -489,6 +496,9 @@ $messages['gl'] = array(
 	'push-special-return' => 'Empurrar máis páxinas',
 	'push-api-err-nocurl' => 'cURL non está instalado.
 Poña $egPushDirectFileUploads como falso nos wikis públicos ou instale cURL nos wikis privados',
+	'push-api-err-nofilesupport' => 'O MediaWiki local non ten soporte para publicar ficheiros.
+En wikis públicos, defina $egPushDirectFileUploads como "false".
+En wikis privados, aplique o parche linkd da documentación do Push ou actualice o propio MediaWiki.',
 );
 
 /** Swiss German (Alemannisch)

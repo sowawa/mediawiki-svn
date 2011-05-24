@@ -346,6 +346,13 @@ $messages['lv'] = array(
 	'didyoumean-desc' => 'Pievieno saites uz lapām ar līdzīgiem nosaukumiem',
 );
 
+/** Maithili (मैथिली)
+ * @author Vinitutpal
+ */
+$messages['mai'] = array(
+	'didyoumean-desc' => 'एकहि तरहे शीर्षक बला पन्नाक कड़ी जोडू',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */

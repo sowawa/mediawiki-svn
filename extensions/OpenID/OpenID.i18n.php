@@ -1964,7 +1964,7 @@ $messages['ga'] = array(
  */
 $messages['gl'] = array(
 	'openid-desc' => 'Acceder ao sistema do wiki cun [http://openid.net/ OpenID] e acceder a outras páxinas web OpenID cunha conta de usuario dun wiki',
-	'openidlogin' => 'Acceder ao sistema co OpenID',
+	'openidlogin' => 'Acceder ao sistema ou crear unha conta co OpenID',
 	'openidserver' => 'Servidor do OpenID',
 	'openidxrds' => 'Ficheiro Yadis',
 	'openidconvert' => 'Transformador OpenID',
@@ -2023,6 +2023,9 @@ Se non é así, probe a premer no botón "Continue" (Continuar).',
 OpenID permítelle rexistrarse en diferentes sitios web sen usar un contrasinal diferente para cada un.
 (Consulte o [http://en.wikipedia.org/wiki/OpenID artigo sobre o OpenID na Wikipedia en inglés] para obter máis información.)
 Hai moitos [http://openid.net/get/ provedores de OpenID] e xa pode ter unha conta co OpenID activado noutro servizo.',
+	'openidlogininstructions-openidloginonly' => "{{SITENAME}} permite ''unicamente'' o acceso mediante OpenID.",
+	'openidlogininstructions-passwordloginallowed' => 'Se xa ten unha conta en {{SITENAME}}, pode [[Special:UserLogin|acceder ao sistema]] co seu nome de usuario e contrasinal, como de costume.
+Para utilizar o OpenID no futuro, pode [[Special:OpenIDConvert|converter súa conta nun OpenID]] despois de acceder normalmente.',
 	'openidupdateuserinfo' => 'Actualizar a miña información persoal:',
 	'openiddelete' => 'Borrar o OpenID',
 	'openiddelete-text' => 'Ao premer no botón "{{int:openiddelete-button}}", borrará o OpenID $1 da súa conta.
@@ -2047,8 +2050,12 @@ Non podería conectarse sen un OpenID.',
 	'openid-provider-label-yahoo' => 'Acceder usando a súa conta do Yahoo',
 	'openid-provider-label-aol' => 'Insira o seu nome AOL',
 	'openid-provider-label-other-username' => 'Insira o seu nome de usuario $1',
+	'specialpages-group-openid' => 'Páxinas de servizo e información sobre o estado do OpenID',
+	'right-openid-dashboard-access' => 'Acceso estándar ao taboleiro do OpenID',
+	'right-openid-dashboard-admin' => 'Acceso de administrador ao taboleiro do OpenID',
 	'openid-dashboard-title' => 'Taboleiro de OpenID',
 	'openid-dashboard-title-admin' => 'Taboleiro de OpenID (administrador)',
+	'openid-dashboard-introduction' => 'A configuración actual da extensión OpenID ([$1 axuda])',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -2190,7 +2197,7 @@ $messages['haw'] = array(
  */
 $messages['he'] = array(
 	'openid-desc' => 'כניסה לחשבון בוויקי באמצעות [http://openid.net/ OpenID], והתחברות לאתרים נוספים הפועלים עם OpenID באמצעות חשבון משתמש בוויקי',
-	'openidlogin' => 'כניסה לחשבון עם OpenID',
+	'openidlogin' => 'כניסה או יצירת חשבון עם OpenID',
 	'openidserver' => 'שרת OpenID',
 	'openidxrds' => 'קובץ Yadis',
 	'openidconvert' => 'ממיר OpenID',
@@ -2623,7 +2630,7 @@ Nem tudnál bejelentkezni OpenID nélkül.',
  */
 $messages['ia'] = array(
 	'openid-desc' => 'Aperir un session in le wiki con [http://openid.net/ OpenID], e aperir un session in altere sitos web usante OpenID con un conto de usator del wiki',
-	'openidlogin' => 'Aperir un session con OpenID',
+	'openidlogin' => 'Aperir session / crear conto con OpenID',
 	'openidserver' => 'Servitor OpenID',
 	'openidxrds' => 'File Yadis',
 	'openidconvert' => 'Convertitor de OpenID',

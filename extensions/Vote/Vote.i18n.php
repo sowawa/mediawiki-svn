@@ -625,14 +625,20 @@ $messages['ext'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Ebraminio
  * @author Huji
  * @author Mjbmr
  */
 $messages['fa'] = array(
 	'vote' => 'رای‌گیری',
+	'vote-desc' => 'امکاناتی برای رای‌گیری ساده فراهم می‌کند',
+	'vote-header' => "شما می‌توانید برا '''خداوندگار عالی‌مرتبهٔ دنیا''' اینجا رأی دهید!",
 	'vote-current' => "رای فعلی شما '''$1''' است.",
 	'vote-legend' => 'رای خود را وارد یا اصلاح نمایید',
 	'vote-caption' => 'انتخاب شما:',
+	'vote-choices' => 'شوخ|جناب شوخ
+پنگوئن|جنا پنگوئن
+معماگو|جناب معما طرح‌کن',
 	'vote-submit' => 'ثبت رای',
 	'vote-registered' => 'رای شما ثبت شد.',
 	'vote-view-results' => 'مشاهده نتایج',

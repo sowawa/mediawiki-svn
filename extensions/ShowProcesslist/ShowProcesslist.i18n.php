@@ -357,6 +357,7 @@ $messages['fi'] = array(
 /** French (Français)
  * @author McDutchie
  * @author Urhixidur
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'showprocesslist' => 'Voir la liste des processus',
@@ -367,7 +368,7 @@ $messages['fr'] = array(
 	'showprocesslist-db' => 'Base de données',
 	'showprocesslist-command' => 'Commande',
 	'showprocesslist-time' => 'Durée',
-	'showprocesslist-state' => 'État',
+	'showprocesslist-state' => 'Statut',
 	'showprocesslist-info' => 'Informations',
 );
 

@@ -2349,7 +2349,7 @@ APC semble ne pas fonctionner.',
 	'viewapc-shared-memory' => 'Mémoire partagée',
 	'viewapc-shared-memory-details' => '{{PLURAL:$1|1 segment de $2|$1 segments de $2 chacun}}.<br />
 (mémoire $3, verrouillage $4)',
-	'viewapc-start-time' => 'Heure de démarrage',
+	'viewapc-start-time' => 'Heure de début',
 	'viewapc-uptime' => 'Temps de fonctionnement',
 	'viewapc-upload-support' => 'Support du téléversement de fichiers',
 	'viewapc-filecache-info' => 'Informations du cache des fichiers',

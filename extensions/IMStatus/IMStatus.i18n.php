@@ -578,6 +578,27 @@ L’identifiant à fournir ici est composé des chiffres et lettres entre « $2 
 	'imstatus_yahoo_style' => 'le style du bouton, de $1 (le plus petit) à $2 (le plus grand), $3 et $4 sont pour les messages vocaux.',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'imstatus_syntax' => 'Sintaxa',
+	'imstatus_default' => 'Per dèfôt',
+	'imstatus_example' => 'Ègzemplo',
+	'imstatus_possible_val' => 'Valors possibles',
+	'imstatus_max' => 'u més',
+	'imstatus_min' => 'u muens',
+	'imstatus_or' => 'ou ben',
+	'imstatus_style' => 'stilo de l’endiquior d’ètat',
+	'imstatus_action' => 'accion quand lo boton est clicâ',
+	'imstatus_your_name' => 'voutron nom $1',
+	'imstatus_gtalk_code' => 'voutron code Google Talk',
+	'imstatus_gtalk_get_code' => 'voutron code Google Talk : avéd-lo dessus $1.',
+	'imstatus_gtalk_height' => 'hôtior de la bouèta, en pixèls.',
+	'imstatus_gtalk_width' => 'largior de la bouèta, en pixèls.',
+	'imstatus_icq_id' => 'voutron numerô ICQ',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

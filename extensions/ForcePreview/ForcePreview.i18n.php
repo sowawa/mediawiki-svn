@@ -209,6 +209,15 @@ $messages['fr'] = array(
 	'right-forcepreviewexempt' => 'Peut publier sans utiliser la prévisualisation',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'forcepreview' => 'Sôvar la pâge (prèvisualisar d’abôrd)',
+	'forcepreview-desc' => 'Fôrce la prèvisualisacion por los utilisators pas privilègiyês.',
+	'right-forcepreviewexempt' => 'Pôt sôvar sen utilisar la prèvisualisacion',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Toliño

@@ -129,6 +129,13 @@ $messages['fr'] = array(
 	'flv-long-desc' => 'Vidéo flash, $1 × $2 pixels, taille du fichier : $3',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'flv-long-desc' => 'Vidèô Flash, $1 × $2 pixèls, talye du fichiér : $3',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

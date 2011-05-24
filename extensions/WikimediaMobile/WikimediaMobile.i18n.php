@@ -131,6 +131,13 @@ $messages['es'] = array(
 	'wikimediamobile-desc' => 'Funciones de apoyo de MediaWiki para el proyecto Wikimedia-mobile hospedado en http://github.com/hcatlin/wikimedia-mobile',
 );
 
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'wikimediamobile-desc' => 'مدیاویکی از توابع پروژه ویکی‌مدیا-همراه که در http://github.com/hcatlin/wikimedia-mobile میزبانی شده حمایت می‌کند',
+);
+
 /** French (Français)
  * @author Peter17
  */

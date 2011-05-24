@@ -159,6 +159,16 @@ $messages['fr'] = array(
 	'includewp-include-par-height' => 'La hauteur maximum (en px) de la balise div dans lequel le contenu est chargé. Mettre à 0 pour aucune limite.',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'includewp-loading-page' => 'Chargement de la pâge...',
+	'includewp-show-full-page' => 'Fâre vêre la pâge entiére',
+	'includewp-show-fragment' => 'Fâre vêre ren que lo premiér paragrafo',
+	'includewp-loading-failed' => 'Falyita du chargement de pâge.',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

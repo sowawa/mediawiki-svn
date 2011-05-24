@@ -263,6 +263,13 @@ $messages['fr'] = array(
 	'right-userrights-global' => 'Gérer les droits utilisateurs globaux',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'gur-rightslog-name' => 'Jornal des drêts globâls',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

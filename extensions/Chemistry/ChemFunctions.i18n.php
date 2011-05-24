@@ -411,10 +411,23 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Ebraminio
  * @author Mjbmr
  */
 $messages['fa'] = array(
+	'chemicalsources' => 'منابع شیمیایی',
+	'chemicalsource-desc' => 'افزودن تگ <nowiki><chemform></nowiki>، برای فرمول‌های شیمیایی',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|صفحهٔ ویژه]] برای منابع شیمیایی',
+	'chemFunctions_ListPage' => 'منابع شیمیایی',
+	'chemFunctions_DataList' => 'در زیر فهرستی از پیوندها به وب‌گاه‌هایی است که اطلاعاتی در رابطه با ماده‌های شیمایی که شما ممکن است به دنبال آن باشید وجود دارد.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">ترکیبات $MIXCASNameFormula در NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS در دانشگاه آکسفورد (بریتانیا) (غیرقابل جستجو)</a><br />',
+	'chemFunctions_CAS' => 'عدد CAS',
+	'chemFunctions_ATCCode' => 'ATCCode',
+	'chemFunctions_ECNumber' => 'ECNumber',
+	'chemFunctions_Formula' => 'فرمول',
 	'chemFunctions_Name' => 'نام آیوپاک',
+	'chemFunctions_ChemFormInputError' => 'Chemform: خطای در ورودی!',
 );
 
 /** Finnish (Suomi)

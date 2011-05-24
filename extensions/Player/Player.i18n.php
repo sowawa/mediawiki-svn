@@ -459,13 +459,14 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Grondin
  * @author Urhixidur
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'player' => 'Lecteur',
 	'player-desc' => 'Lecteur multimédia incorporé utilisant les plugiciels courants du navigateur ainsi qu’une [[Special:Player|page spéciale]]',
 	'player-title' => 'Lecteur',
 	'player-playertitle' => 'Lecteur : $1',
-	'player-file' => 'Nom de fichier',
+	'player-file' => 'Nom du fichier',
 	'player-play' => 'Lire',
 	'player-not-allowed' => 'format non autorisé',
 	'player-not-found' => 'fichier introuvable',

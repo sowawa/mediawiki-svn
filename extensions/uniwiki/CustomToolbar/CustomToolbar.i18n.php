@@ -1063,7 +1063,7 @@ $messages['fr'] = array(
 	'ct_user_user' => 'Utilisateur',
 	'ct_user_tip' => 'Insérer un lien vers une page utilisateur',
 	'ct_user_caption' => 'Lien de l’utilisateur',
-	'ct_user_sample' => 'Nom de l’utilisateur',
+	'ct_user_sample' => 'Nom d’utilisateur',
 );
 
 /** Franco-Provençal (Arpetan)

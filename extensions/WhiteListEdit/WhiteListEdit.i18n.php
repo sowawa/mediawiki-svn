@@ -2735,6 +2735,7 @@ Aquesta pagina s’aplica pas qu’als utilizaires disposant de dreches restrenc
 
 /** Ossetic (Иронау)
  * @author Amikeco
+ * @author Bouron
  */
 $messages['os'] = array(
 	'whitelist' => 'Урс номхыгъды фæрстæ',
@@ -2742,7 +2743,7 @@ $messages['os'] = array(
 	'whitelisttablemodify' => 'Баив',
 	'whitelisttablemodifyall' => 'Æппæт',
 	'whitelisttablemodifynone' => 'Нæй',
-	'whitelisttableedit' => 'Баив æй',
+	'whitelisttableedit' => 'Ивын',
 	'whitelistnever' => 'никуы',
 );
 

@@ -494,9 +494,20 @@ Tapez les premiers caractères et pressez sur le bouton de soumission pour cherc
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'indexfunc-badtitle' => 'Titro envalido : « $1 »',
+	'indexfunc-index-exists' => 'La pâge « $1 » ègziste ja',
+	'index' => 'Rechèrche per endèxe',
+	'index-legend' => 'Rechèrchiér dens l’endèxe',
 	'index-search' => 'Chèrchiér :',
+	'index-submit' => 'Sometre',
+	'index-disambig-start' => "'''$1''' sè pôt refèrar a un mouél de pâges :",
+	'index-emptylist' => 'Y at gins de pâge liyê a « $1 »',
+	'index-expand-detail' => 'Fâre vêre les pâges endèxâs desot ceti titro',
+	'index-hide-detail' => 'Cachiér la lista de les pâges',
+	'index-no-results' => 'La rechèrche at retornâ gins de rèsultat',
 );
 
 /** Galician (Galego)

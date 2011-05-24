@@ -667,12 +667,27 @@ Mise à jour effectuée.",
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'importusers' => 'Importar des utilisators',
+	'importusers-uploadfile' => 'Tèlèchargiér lo fichiér',
+	'importusers-form-caption' => 'Buchiéd un fichiér CVS (UTF-8) :',
+	'importusers-form-file' => 'Format du fichiér utilisator (CSV) :',
+	'importusers-form-replace-present' => 'Remplaciér los utilisators ègzistents',
+	'importusers-form-button' => 'Importar',
+	'importusers-user-added' => "L’utilisator '''$1''' at étâ apondu.",
+	'importusers-user-present-update' => "L’utilisator '''$1''' ègziste ja.
+Betâ a jorn.",
+	'importusers-user-present-not-update' => "L’utilisator '''$1''' ègziste ja.
+Pas betâ a jorn.",
+	'importusers-log' => 'Jornal de les importacions d’utilisators',
 	'importusers-log-summary' => 'Rèsumâ',
 	'importusers-log-summary-all' => 'Tôs : $1',
+	'importusers-log-summary-added' => 'Apondu : $1',
+	'importusers-log-summary-updated' => 'Betâ a jorn : $1',
 	'importusers-login-name' => 'Nom d’utilisator',
 	'importusers-password' => 'mot de pâssa',
 	'importusers-email' => 'adrèce èlèctronica',
 	'importusers-realname' => 'veré nom',
+	'right-import_users' => 'Importar des utilisators en massa',
 );
 
 /** Western Frisian (Frysk)

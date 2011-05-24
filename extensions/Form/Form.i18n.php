@@ -544,14 +544,21 @@ Vous devez le{{PLURAL:$2||s}} remplir.',
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'form-desc' => 'Una [[Special:Form|entèrface de formulèro]] por comenciér des pâges novèles.',
 	'form' => 'Formulèro',
 	'formnoname' => 'Gins de nom de formulèro',
 	'formbadname' => 'Crouyo nom de formulèro',
+	'formbadnametext' => 'Nion formulèro ègziste desot cél nom.',
 	'formpattern' => 'formulèro-$1',
 	'formtitlepattern' => 'Apondre un novél $1',
 	'formsave' => 'Sôvar',
 	'formarticleexists' => 'La pâge ègziste',
+	'formarticleexiststext' => 'La pâge [[$1]] ègziste ja.',
 	'formbadpagename' => 'Crouyo nom de pâge',
+	'formbadrecaptcha' => 'Valor fôssa por reCaptcha. Tornâd èprovar.',
+	'formbadpagenametext' => 'Les balyês buchiês fôrmont un crouyo nom de pâge, « $1 ».',
+	'formrequiredfielderror' => '{{PLURAL:$2|Lo champ $1 est nècèssèro|Los champs $1 sont nècèssèros}} dens ceti formulèro.
+Vos lo{{PLURAL:$2||s}} dête remplir.',
 );
 
 /** Western Frisian (Frysk)

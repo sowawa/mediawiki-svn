@@ -3339,8 +3339,8 @@ Ou bien être autorisé à <a href="$3">Ajouter le flux</a>',
 	'mv_adjust_default_reason' => 'Ajustement de l’interface metavid',
 	'mv_adjust_old_title_missing' => 'La page que vous êtes en train d’essayer de quitter ($1) n’existe pas.',
 	'mv_adjust_ok_move' => 'Succès, ajustement...',
-	'mv_start_desc' => 'Durée au départ',
-	'mv_end_desc' => 'Durée à la fin',
+	'mv_start_desc' => 'Heure de début',
+	'mv_end_desc' => 'Heure de fin',
 	'mv_edit_metadata' => 'Modifier les métadonnées',
 	'mv_advanced_edit' => 'Modification avancée',
 	'mv_basic_edit' => 'Modification de base',
@@ -7967,11 +7967,12 @@ $messages['or'] = array(
 
 /** Ossetic (Иронау)
  * @author Amikeco
+ * @author Bouron
  */
 $messages['os'] = array(
 	'mv_upload_file' => 'Ног файл сæвæр',
 	'mv_tool_search' => 'Агур',
-	'mv_edit' => 'Баив æй',
+	'mv_edit' => 'Ивын',
 	'mv_history' => 'Истори',
 	'mv_adjust_preview_stop' => 'Разæркаст бауром',
 	'mv_search_categories' => 'Категоритæ',

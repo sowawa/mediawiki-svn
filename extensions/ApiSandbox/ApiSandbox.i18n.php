@@ -165,9 +165,22 @@ $messages['es'] = array(
 	'apisb-query-list' => 'Listas',
 );
 
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'apisb-desc' => 'اشکال‌یابی فراخوانی‌های [http://www.mediawiki.org/wiki/API رابط برنامه‌نویسی مدیاویکی] را از طریق مرورگر اجازه می‌دهد',
+	'apisandbox' => 'گودال ماسه‌بازی رابط برنامه‌نویسی',
+	'apisb-no-js' => "'''خطا''': این قابلیت نیازمند جاوااسکریپت است.",
+	'apisb-api-disabled' => 'رابط برنامه‌نویسی در این وب‌گاه غیرفعال شده‌است.',
+	'apisb-parameters' => 'پارامترها',
+	'apisb-result' => 'نتیجه',
+);
+
 /** French (Français)
  * @author Balzac 40
  * @author Crochet.david
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'apisb-desc' => 'Permet de déboguer les appels de l’[http://www.mediawiki.org/wiki/API API de MediaWiki] à partir du navigateur',
@@ -183,7 +196,7 @@ Reportez-vous sur [http://www.mediawiki.org/wiki/API la documentation de l’API
 	'apisb-select-action' => 'Sélectionner une action',
 	'apisb-select-query' => 'Que faut-il interroger ?',
 	'apisb-select-value' => 'Sélectionnez la valeur',
-	'apisb-loading' => 'Chargement …',
+	'apisb-loading' => 'Chargement...',
 	'apisb-load-error' => 'Erreur lors du chargement de description de l’API',
 	'apisb-request-error' => "Erreur lors de l'exécution d'une requête API",
 	'apisb-namespaces-error' => 'Erreur lors du chargement des espaces de noms',

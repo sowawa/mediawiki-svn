@@ -228,6 +228,14 @@ $messages['fr'] = array(
 	'icon-desc' => 'Vous autorise l’utilisation des images comme icônes ou de liens sous forme d’icônes',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'icon-badimage' => 'Émâge corrompua',
+	'icon-badwidth' => 'Largior fôssa',
+);
+
 /** Galician (Galego)
  * @author Toliño
  * @author Xosé

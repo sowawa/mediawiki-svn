@@ -226,6 +226,13 @@ Exemples :
 $messages['frp'] = array(
 	'flagpage' => 'Marcar una pâge',
 	'flagpage-nopageselectedtitle' => 'Gins de pâge chouèsia',
+	'flagpage-nopageselected' => 'Vos éd pas spècefiâ una pâge',
+	'flagpage-emptylisttitle' => 'Gins de modèlo configurâ',
+	'flagpage-preview' => 'Apèrçu du modèlo chouèsi :',
+	'flagpage-confirmsave' => 'Volyéd confirmar voutros changements.',
+	'flagpage-submitbutton' => 'Sôvar la pâge avouéc cél modèlo',
+	'flagpage-summary' => 'Aponsa du modèlo [[$1]] avouéc FlagPage',
+	'flagpage-success' => '[[$1]] at étâ apondu a la pâge [[$2]].',
 	'flagpage-tab' => 'Marcar',
 );
 

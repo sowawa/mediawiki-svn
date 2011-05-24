@@ -280,6 +280,33 @@ $messages['nl'] = array(
 	'wikitweet-fewsecondsago' => 'Een paar seconden geleden',
 );
 
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'wikitweet-desc' => 'Cria um feed semelhante ao Twitter no MediaWiki',
+	'wikitweet-pleaselogin' => 'Para enviar tweets, autentique-se.',
+	'wikitweet-moretweets' => 'Mais tweets...',
+	'wikitweet-infoajax' => 'usa a tecnologia AJAX e actualiza-se a cada 5 segundos sem ter de recarregar a página.',
+	'wikitweet-submit' => 'Enviar tweet',
+	'wikitweet-submitandmail' => 'Enviar tweet e mensagem por correio electrónico',
+	'wikitweet-intheroom' => 'Está na sala',
+	'wikitweet-subscribe' => 'subscrever',
+	'wikitweet-subscribed' => 'subscrito',
+	'wikitweet-unsubscribe' => 'cancelar subscrição',
+	'wikitweet-delete' => 'apagar',
+	'wikitweet-inform' => 'pelo informador',
+	'wikitweet-private' => 'privado',
+	'wikitweet-answer' => 'resposta a',
+	'wikitweet-anonymous' => 'anónimo',
+	'wikitweet-tweets-tagged' => 'Tweets marcados',
+	'wikitweet-back-timeline' => 'Voltar ao historial',
+	'wikitweet-tweets-from-room' => 'Tweets da sala',
+	'wikitweet-timeago' => 'hà $1',
+	'wikitweet-inthefuture' => 'No futuro !!',
+	'wikitweet-fewsecondsago' => 'Hà poucos segundos',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

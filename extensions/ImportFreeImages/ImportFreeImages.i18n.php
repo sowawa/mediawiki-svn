@@ -521,9 +521,19 @@ $messages['fr'] = array(
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'importfreeimages' => 'Importar des émâges abades',
 	'importfreeimages_owner' => 'Ôtor',
+	'importfreeimages_importthis' => 'l’importar',
+	'importfreeimages_next' => '$1 aprés',
+	'importfreeimages_size_square' => 'Carrâ',
+	'importfreeimages_size_thumbnail' => 'Figura',
+	'importfreeimages_size_small' => 'Petiôt',
+	'importfreeimages_size_medium' => 'Moyen',
+	'importfreeimages_size_large' => 'Grant',
+	'importfreeimages_size_original' => 'Originâl',
 );
 
 /** Western Frisian (Frysk)

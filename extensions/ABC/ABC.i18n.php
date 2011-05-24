@@ -670,6 +670,13 @@ $messages['lv'] = array(
 	'abcdownload' => 'Ielādēt:',
 );
 
+/** Maithili (मैथिली)
+ * @author Vinitutpal
+ */
+$messages['mai'] = array(
+	'abcdownload' => 'डाऊनलोड करू',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */

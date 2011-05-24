@@ -761,10 +761,27 @@ Veuillez attendre la fin de l’action en cours.',
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'taggedimages' => 'Émâges balisâs',
+	'imagetagging-addimagetag' => 'Balisar ceta émâge',
 	'imagetagging-article' => 'Pâge :',
+	'imagetagging-articletotag' => 'Pâge a balisar',
 	'imagetagging-imghistory' => 'Historico',
 	'imagetagging-images' => 'émâges',
+	'imagetagging-inthisimage' => 'Dens ceta émâge : $1',
+	'imagetagging-logentry' => 'Balisa enlevâ de la pâge [[$1]] per $2',
+	'imagetagging-log-tagged' => 'L’émâge [[$1|$2]] at étâ balisâ por la pâge [[$3]] per $4',
+	'imagetagging-new' => '<sup><span style="color:red">Novél !</span></sup>',
+	'imagetagging-removetag' => 'enlevar la balisa',
+	'imagetagging-done-button' => 'Balisâjo fêt',
+	'imagetagging-tag-button' => 'Balisa',
+	'imagetagging-tagcancel-button' => 'Anular',
+	'imagetagging-addingtag' => 'Balisa en cors d’aponsa…',
+	'imagetagging-removingtag' => 'Balisa en cors de retrèt…',
+	'imagetagging-addtagsuccess' => 'Balisa apondua.',
+	'imagetagging-removetagsuccess' => 'Balisa enlevâ.',
+	'imagetagging-imagetag-seemoreimages' => 'Vêde més d’émâges de « $1 » ($2)',
 	'imagetagging-taggedimages-title' => 'Émâges de « $1 »',
+	'tag-logpagename' => 'Jornal du balisâjo',
 );
 
 /** Western Frisian (Frysk)

@@ -352,6 +352,21 @@ $messages['fr'] = array(
 	'right-inspectcache' => 'Afficher et supprimer les entrées du cache',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'inspectcache' => 'Controlar lo cache',
+	'inspectcache-general' => 'Cache g·ènèral',
+	'inspectcache-parser' => 'Cache du parsor',
+	'inspectcache-message' => 'Cache des mèssâjos',
+	'inspectcache-get' => 'Avêr',
+	'inspectcache-delete' => 'Suprimar',
+	'inspectcache-deleted' => 'Cache suprimâ',
+	'inspectcache-list' => 'Lista',
+	'right-inspectcache' => 'Fâre vêre et suprimar les entrâs du cache',
+);
+
 /** Western Frisian (Frysk)
  * @author Snakesteuben
  */
