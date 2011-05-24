@@ -36,7 +36,7 @@ $wgHooks['OutputPageBeforeHTML'][] = array( &$wgExtPatchOutputMobile,
 											'onOutputPageBeforeHTML' );
 
 class ExtPatchOutputMobile {
-	const VERSION = '0.3.4';
+	const VERSION = '0.3.5';
 
 	private $doc;
 	
@@ -118,9 +118,6 @@ class ExtPatchOutputMobile {
 	
 	private function showHideCallbackWML( $matches ) {
 		static $headings = 0;
-		$show = self::$messages['patch-output-mobile-show'];
-		$hide = self::$messages['patch-output-mobile-hide'];
-		$backToTop = self::$messages['patch-output-mobile-back-to-top'];
 		++$headings;
 
 		$base = $this->WMLSectionSeperator .
