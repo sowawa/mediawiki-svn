@@ -41,4 +41,4 @@ a variety of objects.
 ; List
 : A series of item objects.
 ; Table
-: A series of rows, each a series of document objects.
+: A series of rows, each a series of columns, which contain document objects.

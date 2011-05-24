@@ -118,13 +118,8 @@ test( 'Headings', function() {
 					'annotations': [
 						{
 							'type': 'ilink',
-							'range': {
-								'offset': 15,
-								'length': 4
-							},
-							'data': {
-								'title': 'Main_Page'
-							}
+							'range': { 'offset': 15, 'length': 4 },
+							'data': { 'title': 'Main_Page' }
 						}
 					]
 				}
@@ -166,20 +161,8 @@ test( 'Paragraphs', function() {
 					{
 						'text': 'Line with bold and italic text',
 						'annotations': [
-							{
-								'type': 'bold',
-								'range': {
-									'offset': 10,
-									'length': 4
-								}
-							},
-							{
-								'type': 'italic',
-								'range': {
-									'offset': 19,
-									'length': 6
-								}
-							}
+							{ 'type': 'bold', 'range': { 'offset': 10, 'length': 4 } },
+							{ 'type': 'italic', 'range': { 'offset': 19, 'length': 6 } }
 						]
 					}
 				]
@@ -192,10 +175,109 @@ test( 'Paragraphs', function() {
 
 // Lists
 test( 'Lists', function() {
-	assertSerializations( [] );
+	assertSerializations( [
+  		{
+			'subject': 'numbered list',
+			'dom': { 'blocks': [ {
+				'type': 'list',
+				'style': 'number',
+				'items': [
+					{ 'line': { 'text': '1' } },
+					{ 'line': { 'text': '2' } },
+					{ 'line': { 'text': '3' } }
+				]
+			} ] },
+			'html': '<ol>\n<li>1</li>\n<li>2</li>\n<li>3</li>\n</ol>',
+			'wikitext': '# 1\n# 2\n# 3'
+		},
+  		{
+			'subject': 'bulleted list',
+			'dom': { 'blocks': [ {
+				'type': 'list',
+				'style': 'bullet',
+				'items': [
+					{ 'line': { 'text': '1' } },
+					{ 'line': { 'text': '2' } },
+					{ 'line': { 'text': '3' } }
+				]
+			} ] },
+			'html': '<ul>\n<li>1</li>\n<li>2</li>\n<li>3</li>\n</ul>',
+			'wikitext': '* 1\n* 2\n* 3'
+		},
+  		{
+			'subject': 'mixed-style nested lists',
+			'dom': { 'blocks': [ {
+				'type': 'list',
+				'style': 'bullet',
+				'items': [
+					{
+						'line': { 'text': '1' },
+						'lists': [
+							{
+								'style': 'number',
+								'items': [
+									{ 'line': { 'text': '1.1' } },
+									{ 'line': { 'text': '1.2' } },
+									{ 'line': { 'text': '1.3' } }
+								]
+							}
+						]
+					},
+					{ 'line': { 'text': '2' } }
+				]
+			} ] },
+			'html': '<ul>\n<li>1\n<ol>\n<li>1.1</li>\n<li>1.2</li>\n<li>1.3</li>\n</ol>'
+				+ '\n</li>\n<li>2</li>\n</ul>',
+			'wikitext': '* 1\n*# 1.1\n*# 1.2\n*# 1.3\n* 2'
+		}
+	] );
 } );
 
 // Tables
 test( 'Tables', function() {
-	assertSerializations( [] );
+	assertSerializations( [
+		{
+			'subject': 'table with headings and data',
+			'dom': { 'blocks': [ {
+				'type': 'table',
+				'rows': [
+					[
+				        {
+							'type': 'heading',
+							'document': { 'blocks': [{
+								'type': 'paragraph',
+								'lines': [{ 'text': 'A' }]
+							}] }
+						},
+				        {
+							'type': 'heading',
+							'document': { 'blocks': [{
+								'type': 'paragraph',
+								'lines': [{ 'text': 'B' }]
+							}] }
+						}
+			        ],
+					[
+				        {
+							'type': 'data',
+							'document': { 'blocks': [{
+								'type': 'paragraph',
+								'lines': [{ 'text': '1' }]
+							}] }
+						},
+				        {
+							'type': 'data',
+							'document': { 'blocks': [{
+								'type': 'paragraph',
+								'lines': [{ 'text': '2' }]
+							}] }
+						}
+			        ]
+				]
+			} ] },
+			'html': '<table>\n<tr>\n<th>A</th>\n<th>B</th>\n</tr>\n<tr>\n'
+				+ '<td>1</td>\n<td>2</td>\n</tr>\n</table>',
+			'wikitext': '{|\n!A\n!B\n|-\n|1\n|2\n|}'
+		}
+	] );
 } );
