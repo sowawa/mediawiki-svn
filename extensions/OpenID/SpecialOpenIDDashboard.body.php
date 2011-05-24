@@ -31,6 +31,16 @@ class SpecialOpenIDDashboard extends SpecialPage {
         		'openid-dashboard-title-admin' : 'openid-dashboard-title' ) ;
 	}
 
+	function show( $string, $value ) {
+		if  ( $value === null ) {
+			$value = 'null';
+		} elseif ( is_bool( $value ) ) {
+			$value = wfBoolToStr( $value );
+		} else {
+			$value = htmlspecialchars( $value );
+		}
+		return "<tr><td>$string</td><td>$value</td></tr>\n";
+	}
 
 	/**
 	 * Show the special page
@@ -38,16 +48,6 @@ class SpecialOpenIDDashboard extends SpecialPage {
 	 * @param $par Mixed: parameter passed to the page or null
 	 */
 	function execute( $par ) {
-
-		function show( $string, $value ) {
-			if  ( isset($value) ) {
-				$value = ( $value===false ) ? 'false' : $value;
-			} else {
-			        $value = 'undefined';
-			}
-			return "<tr><td>$string</td><td>$value</td></tr>";
-		}
-
 		global $wgOut, $wgUser;
 		global $wgOpenIDShowUrlOnUserPage;
 		global $wgOpenIDTrustEmailAddress;
@@ -62,32 +62,32 @@ class SpecialOpenIDDashboard extends SpecialPage {
 		global $wgOpenIDShowProviderIcons;
 
 		if ( !$this->userCanExecute($wgUser) ) {
-                	$this->displayRestrictionError();
-        	        return;
-	        }
+			$this->displayRestrictionError();
+			return;
+		}
 
 		$totalUsers = SiteStats::users();
 		$OpenIDdistinctUsers = $this->getOpenIDUsers( 'distinctusers' );
 		$OpenIDUsers = $this->getOpenIDUsers();
 
 		$out = "<table class='openiddashboard wikitable'><tr><th>Parameter</th><th>Value</th></tr>";
-		$out .= show( 'MEDIAWIKI_OPENID_VERSION', MEDIAWIKI_OPENID_VERSION );
-		$out .= show( '$wgOpenIDOnly', $wgOpenIDOnly );
-		$out .= show( '$wgOpenIDClientOnly', $wgOpenIDClientOnly );
-		$out .= show( '$wgOpenIDAllowServingOpenIDUserAccounts', $wgOpenIDAllowServingOpenIDUserAccounts );
-		$out .= show( '$wgOpenIDTrustEmailAddress', $wgOpenIDTrustEmailAddress );
-		$out .= show( '$wgOpenIDAllowExistingAccountSelection', $wgOpenIDAllowExistingAccountSelection );
-		$out .= show( '$wgOpenIDAllowAutomaticUsername', $wgOpenIDAllowAutomaticUsername );
-		$out .= show( '$wgOpenIDAllowNewAccountname', $wgOpenIDAllowNewAccountname );
-		$out .= show( '$wgOpenIDUseEmailAsNickname', $wgOpenIDUseEmailAsNickname );
-		$out .= show( '$wgOpenIDProposeUsernameFromSREG', $wgOpenIDProposeUsernameFromSREG );
-		$out .= show( '$wgOpenIDShowUrlOnUserPage', $wgOpenIDShowUrlOnUserPage );
-		$out .= show( '$wgOpenIDShowProviderIcons', $wgOpenIDShowProviderIcons );
+		$out .= $this->show( 'MEDIAWIKI_OPENID_VERSION', MEDIAWIKI_OPENID_VERSION );
+		$out .= $this->show( '$wgOpenIDOnly', $wgOpenIDOnly );
+		$out .= $this->show( '$wgOpenIDClientOnly', $wgOpenIDClientOnly );
+		$out .= $this->show( '$wgOpenIDAllowServingOpenIDUserAccounts', $wgOpenIDAllowServingOpenIDUserAccounts );
+		$out .= $this->show( '$wgOpenIDTrustEmailAddress', $wgOpenIDTrustEmailAddress );
+		$out .= $this->show( '$wgOpenIDAllowExistingAccountSelection', $wgOpenIDAllowExistingAccountSelection );
+		$out .= $this->show( '$wgOpenIDAllowAutomaticUsername', $wgOpenIDAllowAutomaticUsername );
+		$out .= $this->show( '$wgOpenIDAllowNewAccountname', $wgOpenIDAllowNewAccountname );
+		$out .= $this->show( '$wgOpenIDUseEmailAsNickname', $wgOpenIDUseEmailAsNickname );
+		$out .= $this->show( '$wgOpenIDProposeUsernameFromSREG', $wgOpenIDProposeUsernameFromSREG );
+		$out .= $this->show( '$wgOpenIDShowUrlOnUserPage', $wgOpenIDShowUrlOnUserPage );
+		$out .= $this->show( '$wgOpenIDShowProviderIcons', $wgOpenIDShowProviderIcons );
 		
-		$out .= show( 'Number of users (total)', $totalUsers );
-		$out .= show( 'Number of users with OpenID', $OpenIDdistinctUsers  );
-		$out .= show( 'Number of OpenIDs (total)', $OpenIDUsers );
-		$out .= show( 'Number of users without OpenID', $totalUsers - $OpenIDdistinctUsers );
+		$out .= $this->show( 'Number of users (total)', $totalUsers );
+		$out .= $this->show( 'Number of users with OpenID', $OpenIDdistinctUsers  );
+		$out .= $this->show( 'Number of OpenIDs (total)', $OpenIDUsers );
+		$out .= $this->show( 'Number of users without OpenID', $totalUsers - $OpenIDdistinctUsers );
 		$out .= '</table>';
 
 		$this->setHeaders();
