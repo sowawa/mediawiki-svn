@@ -631,8 +631,8 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 
 			$wgUser = $user;
 			
-			# new user account: not opened by mail, opened by OpenID
-   			wfRunHooks( 'AddNewAccount', array( $user, false, true ) );
+			# new user account: not opened by mail
+   			wfRunHooks( 'AddNewAccount', array( $user, false ) );
 			$user->addNewUserLogEntry();
 
 			# Update site stats
