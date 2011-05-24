@@ -43,6 +43,9 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 	}
 
 	protected function validateFormat() {
+		// We can't use $this->getMan()->getParameter('format') as this
+		// seems to override our specified limits and defaults, picking
+		// 'xmlfm' instead of 'json' as default.
 		$params = $this->extractRequestParams();
 		$format = $params['format'];
 		$allowed = array( 'json', 'jsonfm', 'xml', 'xmlfm' );
@@ -84,10 +87,25 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 		$result->addValue( null, 'Section', $items );
 	}
 
+
 	public function getAllowedParams() {
 		$params = parent::getAllowedParams();
-		$params['format'] = null;
+		$params['format'] = array(
+			ApiBase::PARAM_DFLT => 'json',
+			ApiBase::PARAM_TYPE => array(
+				'json',
+				'jsonfm',
+				'xml',
+				'xmlfm'
+			)
+		);
 		return $params;
+	}
+
+	public function getParamDescription() {
+		return parent::getParamDescription() + array(
+			'format' => 'Output format defaults to JSON, with expanded XML optional.',
+		);
 	}
 
 	protected function formatItem( $name ) {
