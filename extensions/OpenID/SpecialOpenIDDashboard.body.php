@@ -39,7 +39,10 @@ class SpecialOpenIDDashboard extends SpecialPage {
 		} else {
 			$value = htmlspecialchars( $value );
 		}
-		return "<tr><td>$string</td><td>$value</td></tr>\n";
+		return Html::openElement( 'tr' ) .
+			Html::openElement( 'td' ) . $string . Html::closeElement( 'td' ) .
+			Html::openElement( 'td' ) . $value . Html::closeElement( 'td' ) .
+			Html::closeElement( 'tr' ) . "\n";
 	}
 
 	/**
@@ -48,6 +51,7 @@ class SpecialOpenIDDashboard extends SpecialPage {
 	 * @param $par Mixed: parameter passed to the page or null
 	 */
 	function execute( $par ) {
+
 		global $wgOut, $wgUser;
 		global $wgOpenIDShowUrlOnUserPage;
 		global $wgOpenIDTrustEmailAddress;
@@ -70,8 +74,16 @@ class SpecialOpenIDDashboard extends SpecialPage {
 		$OpenIDdistinctUsers = $this->getOpenIDUsers( 'distinctusers' );
 		$OpenIDUsers = $this->getOpenIDUsers();
 
-		$out = "<table class='openiddashboard wikitable'><tr><th>Parameter</th><th>Value</th></tr>";
-		$out .= $this->show( 'MEDIAWIKI_OPENID_VERSION', MEDIAWIKI_OPENID_VERSION );
+		$this->setHeaders();
+		$this->outputHeader();
+		
+		$wgOut->addWikiMsg( 'openid-dashboard-introduction', 'http://www.mediawiki.org/wiki/Extension:OpenID' );
+
+		$wgOut->addHTML(
+			Html::openElement( 'table', array( 'style' => 'width:50%;', 'class' => 'mw-openiddashboard-table wikitable' ) )
+		);
+
+		$out  = $this->show( 'MEDIAWIKI_OPENID_VERSION', MEDIAWIKI_OPENID_VERSION );
 		$out .= $this->show( '$wgOpenIDOnly', $wgOpenIDOnly );
 		$out .= $this->show( '$wgOpenIDClientOnly', $wgOpenIDClientOnly );
 		$out .= $this->show( '$wgOpenIDAllowServingOpenIDUserAccounts', $wgOpenIDAllowServingOpenIDUserAccounts );
@@ -88,12 +100,9 @@ class SpecialOpenIDDashboard extends SpecialPage {
 		$out .= $this->show( 'Number of users with OpenID', $OpenIDdistinctUsers  );
 		$out .= $this->show( 'Number of OpenIDs (total)', $OpenIDUsers );
 		$out .= $this->show( 'Number of users without OpenID', $totalUsers - $OpenIDdistinctUsers );
-		$out .= '</table>';
 
-		$this->setHeaders();
-		$this->outputHeader();
-		$wgOut->addWikiMsg( 'openid-dashboard-introduction', 'http://www.mediawiki.org/wiki/Extension:OpenID' );
-		$wgOut->addHTML( $out );
+		$wgOut->addHTML( $out . Html::closeElement( 'table' ) . "\n" );
+
 	}
 
 	function error() {

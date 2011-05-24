@@ -289,10 +289,14 @@ $wgHooks['SavePreferences'][] = 'OpenIDHooks::onSavePreferences';
 
 # new user rights
 $wgAvailableRights[] = array( 'openid-dashboard-access', 'openid-dashboard-admin' );
-# allow logged-in users to read access the dashboard,
-# and to add or convert OpenIDs to their accounts
+
+# allow users to read access the dashboard
 $wgGroupPermissions['user']['openid-dashboard-access'] = true;
+
+# allow users to add or convert OpenIDs to their accounts
 $wgGroupPermissions['user']['openid-converter-access'] = true;
+
+# allow sysops to adminster the OpenID settings (under construction)
 $wgGroupPermissions['sysop']['openid-dashboard-admin'] = true;
 
 $myResourceTemplate = array(
