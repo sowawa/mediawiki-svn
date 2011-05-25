@@ -33,6 +33,7 @@ import Fundraiser_Tools.classes.TimestampProcessor as TP
 import Fundraiser_Tools.classes.DataLoader as DL
 import Fundraiser_Tools.classes.HypothesisTest as HT
 
+
 matplotlib.use('Agg')
 
         
@@ -53,7 +54,7 @@ matplotlib.use('Agg')
 """
 class DataReporting(object):    
     
-    """ CLASS MEMBERS: Store the results of a query"""
+    """ CLASS MEMBERS: Store the results of a query """
     _counts_ = None
     _times_ = None
     
@@ -67,7 +68,10 @@ class DataReporting(object):
     _file_path_ = './tests/'
     
     _data_loader_ = None
-     
+    _table_html_ = ''       # Stores the table html
+    _data_plot_ = None      # Stores the plot object
+
+
 
     def __init__(self, **kwargs):
         
@@ -174,7 +178,7 @@ class DataReporting(object):
                 return_status        - integer, 0 indicates un-exceptional execution
     
     """
-    def gen_plot(self,x, y_lists, labels, title, xlabel, ylabel, subplot_index, fname):
+    def _gen_plot(self,x, y_lists, labels, title, xlabel, ylabel, subplot_index, fname):
         return 0
 
     """
@@ -189,7 +193,7 @@ class DataReporting(object):
                 return_status        - integer, 0 indicates un-exceptional execution
     
     """
-    def write_to_html_table(self):
+    def _write_to_html_table(self):
         return 0
     
     
@@ -226,7 +230,6 @@ class DataReporting(object):
 
 class IntervalReporting(DataReporting):
     
-
     
     
     """
@@ -239,16 +242,19 @@ class IntervalReporting(DataReporting):
     """
     def __init__(self, **kwargs):
         
-        self._data_loader_ = DL.IntervalReportingLoader()
+        self._data_loader_ = DL.IntervalReportingLoader('')
         
         for key in kwargs:
-            if key == 'data_loader':                          # Set custom data loaders
+            if key == 'query_type':                          # Set custom data loaders
                 if kwargs[key] == 'campaign':
-                    self._data_loader_ = DL.CampaignIntervalReportingLoader()
-        
+                    self._data_loader_ = DL.CampaignIntervalReportingLoader(kwargs[key])
+                else:
+                    self._data_loader_ = DL.IntervalReportingLoader(kwargs[key])
+                
+        """ Call constructor of parent """
         DataReporting.__init__(self, **kwargs)
         
-  
+
         
          
     """
@@ -263,8 +269,8 @@ class IntervalReporting(DataReporting):
         print '    (2) LP'
         print ''
         print 'e.g.'
-        print "    run('20101230160400', '20101230165400', 2, 'banner', 'imp', '20101230JA091_US')"
-        print "    run('20101230160400', '20101230165400', 2, 'LP', 'views', '20101230JA091_US')"
+        print "    run('20101230160400', '20101230165400', 2, 'banner', 'imp', '20101230JA091_US', ['banner1', 'banner2'])"
+        print "    run('20101230160400', '20101230165400', 2, 'LP', 'views', '20101230JA091_US', [])"
         print ''
         
         return
@@ -290,15 +296,14 @@ class IntervalReporting(DataReporting):
         return new_dict_lists
         
     """
-        Execute reporting query and generate plots       
-        <description>
+        Protected method.  Execute reporting query and generate plots.       
         
         INPUT:
                         
         RETURN:
         
     """        
-    def gen_plot(self, metrics, times, title, xlabel, ylabel, ranges, subplot_index, fname, labels):
+    def _gen_plot(self, metrics, times, title, xlabel, ylabel, ranges, subplot_index, fname, labels):
         
         pylab.subplot(subplot_index)
         pylab.figure(num=None,figsize=[26,14])    
@@ -346,24 +351,73 @@ class IntervalReporting(DataReporting):
         pylab.ylabel(ylabel)
 
         pylab.title(title)
-        pylab.savefig(self._file_path_ + fname + '.' + self._fig_file_format_, format=self._fig_file_format_)
+        _data_plot_ = pylab.savefig(self._file_path_ + fname + '.' + self._fig_file_format_, format=self._fig_file_format_)
+
+        
+    """
+    
+        Protected method.  Takes the sum of interval metrics over time and writes them to an html table.
+        
+        RETURN:
+            
+            html    - html text for the resulting table
+    """ 
+    def _write_html_table(self):
+        
+        """ Combine the interval data """
+        if self._data_loader_.combine_rows() == 0:
+            print >> sys.stderr, 'No summary data for this reporting object.\n'
+            return 0
+        
+        data = self._data_loader_._summary_data_
+        index = self._data_loader_._summary_data_.keys()[0]
+        col_names = self._data_loader_._summary_data_[index].keys()
+        
+        html = '<table border=\"1\" cellpadding=\"5\"><tr>'
+        
+        
+        """ Build headers """
+        html = html + '<th>' + self._data_loader_._query_type_ + '</th>'
+        for i in col_names:
+            html = html + '<th>' + i + '</th>'
+        html = html + '</tr>'
+        
+
+        """ Build rows """
+        for item in data.keys():
+            html = html + '<tr>'
+            html = html + '<td>' + item + '</td>'
+            for elem in data[item].keys():
+                html = html + '<td>' + str(data[item][elem]) + '</td>'
+            html = html + '</tr>'
+        
+        html = html + '</table>'
+        
+        self._table_html_ = html
+        
 
 
     """
-        Execute reporting query and generate plots       
-        <description>
+        Use dataloader to produce object state - counts and times.  
+        
+        The general flow comprises of:
+        
+        <generate state> -> <post processing of state data> -> <generate plot>
         
         INPUT:
-                        
-        RETURN:
+                start_time     - 
+                end_time       - 
+                interval       -
+                query_type     -
+                metric_name    -
+                campaign       - 
+                labels         -
          
     """        
-    def run(self, start_time, end_time, interval, query_type, metric_name, campaign, labels):
-        
-        # print '\nGenerating ' + query_type +', start and end times are: ' + start_time + ' - ' + end_time +' ... \n'
+    def run(self, start_time, end_time, interval, metric_name, campaign, labels):
         
         """ Execute the query that generates interval reporting data """
-        return_val = self._data_loader_.run_query(start_time, end_time, interval, query_type, metric_name, campaign)
+        return_val = self._data_loader_.run_query(start_time, end_time, interval, metric_name, campaign)
         self._counts_ = return_val[0]
         self._times_ = return_val[1]
         
@@ -384,7 +438,7 @@ class IntervalReporting(DataReporting):
         
         xlabel = 'MINUTES'
         subplot_index = 111
-        fname = campaign + '_' + query_type + '_' + metric_name
+        fname = campaign + '_' + self._data_loader_._query_type_ + '_' + metric_name
         
         metric_full_name = QD.get_metric_full_name(metric_name)
         title = campaign + ':  ' + metric_full_name + ' -- ' + TP.timestamp_convert_format(start_time,1,2) + ' - ' + TP.timestamp_convert_format(end_time,1,2)
@@ -411,11 +465,14 @@ class IntervalReporting(DataReporting):
         ranges.append(metrics_max * 1.1)
         
         """ Generate plots given data """
-        self.gen_plot(self._counts_, self._times_, title, xlabel, ylabel, ranges, subplot_index, fname, labels)
+        self._gen_plot(self._counts_, self._times_, title, xlabel, ylabel, ranges, subplot_index, fname, labels)
         
+        """ Generate table html """
+        # self._write_html_table()
+
     
-
-
+    
+    
 """
 
     CLASS :: ConfidenceReporting
@@ -475,7 +532,7 @@ class ConfidenceReporting(DataReporting):
         RETURN:
              
     """
-    def gen_plot(self,means_1, means_2, std_devs_1, std_devs_2, times_indices, title, xlabel, ylabel, ranges, subplot_index, labels, fname):
+    def _gen_plot(self,means_1, means_2, std_devs_1, std_devs_2, times_indices, title, xlabel, ylabel, ranges, subplot_index, labels, fname):
                 
         pylab.subplot(subplot_index)
         pylab.figure(num=None,figsize=[26,14])    
@@ -516,7 +573,50 @@ class ConfidenceReporting(DataReporting):
         
         pylab.title(title)
         pylab.savefig(self._file_path_ + fname + '.' + self._fig_file_format_, format=self._fig_file_format_)
+    
+    
+    def _gen_box_plot(self, data, title, ylabel, subplot_index, labels, fname):
+                
+        print data
+        print labels
         
+        pylab.subplot(subplot_index)
+        pylab.figure(num=None,figsize=[26,14])    
+        
+        bp = pylab.boxplot(data)
+        pylab.xticks(range(1, len(labels) + 1), labels)
+        
+        """ Set the figure and font size """
+        fig_width_pt = 246.0  # Get this from LaTeX using \showthe\columnwidth
+        inches_per_pt = 1.0/72.27               # Convert pt to inch
+        golden_mean = (math.sqrt(5)-1.0)/2.0         # Aesthetic ratio
+        fig_width = fig_width_pt*inches_per_pt  # width in inches
+        fig_height = fig_width*golden_mean      # height in inches
+        fig_size =  [fig_width,fig_height]
+        
+        font_size = 20
+        
+        params = { 'axes.labelsize': font_size,
+          'text.fontsize': font_size,
+          'xtick.labelsize': font_size,
+          'ytick.labelsize': font_size,
+          'legend.pad': 0.1,     # empty space around the legend box
+          'legend.fontsize': font_size,
+          'font.size': font_size,
+          'text.usetex': False,
+          'figure.figsize': fig_size}
+        
+        pylab.rcParams.update(params)
+        
+        pylab.grid()
+        #pylab.ylim(ranges[2], ranges[3])
+        #pylab.xlim(ranges[0], ranges[1])
+        # pylab.legend([e1[0], e2[0]], labels,loc=2)
+        
+        pylab.ylabel(ylabel)
+        
+        pylab.title(title)
+        pylab.savefig(self._file_path_ + fname + '.' + self._fig_file_format_, format=self._fig_file_format_)
         
     """ 
         Print in Tabular form the means and standard deviation of each group over each 
@@ -646,10 +746,11 @@ class ConfidenceReporting(DataReporting):
         max_x = max(times_indices) + min(times_indices)
         ranges = [0.0, max_x, 0, max_y]
         
-        ylabel = metric_name
+        ylabel = QD.get_metric_full_name(metric_name)
         labels = [label_1, label_2]
         
-        self.gen_plot(means_1, means_2, std_devs_1, std_devs_2, times_indices, title, xlabel, ylabel, ranges, subplot_index, labels, fname)
+        # self._gen_plot(means_1, means_2, std_devs_1, std_devs_2, times_indices, title, xlabel, ylabel, ranges, subplot_index, labels, fname)
+        self._gen_box_plot([metrics_1, metrics_2], title, ylabel, subplot_index, labels, fname)
         
         """ Print out results """ 
         test_call = "run('" + test_name + "', '" + query_name + "', '" + metric_name + "', '" + campaign + "', '" + \
