@@ -37,7 +37,7 @@ if ( ! defined( 'SMW_VERSION' ) ) {
 }
 
 if ( version_compare( SMW_VERSION, '1.6', '>=' ) ) {
-	die( '<b>Error:</b> This version of Semantic Maps requires Semantic MediaWiki 1.5.x; use Semantic Maps 0.8 or above for SMW 1.6 or later.' );
+	die( '<b>Error:</b> This version of Semantic Maps requires Semantic MediaWiki 1.5.x; use Semantic Maps 1.0 or above for SMW 1.6 or later.' );
 }
 
 define( 'SM_VERSION', '0.7.6.1' );
