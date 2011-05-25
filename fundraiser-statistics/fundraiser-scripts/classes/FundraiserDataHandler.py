@@ -15,7 +15,6 @@ __date__ = "May 8th, 2011"
 
 
 import sys
-import Fundraiser_Tools.classes.DataLoader as DL
 
 
 """ Test Types """
@@ -30,10 +29,6 @@ _COLTYPE_KEY_ = 'key'
 _COLTYPE_TIME_ = 'time'
 
 
-_interval_reporting_loader_ = DL.IntervalReportingLoader()
-_campaign_reporting_loader_ = DL.CampaignReportingLoader()  
-""" !! MODIFY -- Bring this class right in here !! """
-
 """ """
 _banner_interval_reporting_col_types_ = [_COLTYPE_TIME_, _COLTYPE_KEY_, _COLTYPE_AMOUNT_, _COLTYPE_AMOUNT_, _COLTYPE_AMOUNT_, _COLTYPE_AMOUNT_, _COLTYPE_AMOUNT_, _COLTYPE_AMOUNT_, _COLTYPE_RATE_, _COLTYPE_RATE_, _COLTYPE_RATE_, _COLTYPE_RATE_, _COLTYPE_RATE_]
 _lp_interval_reporting_col_types_ = [_COLTYPE_TIME_, _COLTYPE_KEY_, _COLTYPE_AMOUNT_, _COLTYPE_AMOUNT_, _COLTYPE_AMOUNT_, _COLTYPE_AMOUNT_, _COLTYPE_RATE_, _COLTYPE_RATE_, _COLTYPE_RATE_, _COLTYPE_RATE_] 
@@ -46,16 +41,19 @@ def get_col_types(query_type):
     if query_type == _TESTTYPE_LP_:
         return _lp_interval_reporting_col_types_
     
-    return 
+    return []
 
 """
     Get Test type from campaign.  The logic in this method will evolve as new ways to classify test types are developed
             
 """
-def get_test_type(utm_campaign, start_time, end_time):
+def get_test_type(utm_campaign, start_time, end_time, campaign_reporting_loader):
     
-    banner_list = _campaign_reporting_loader_.run_query('banners', {'utm_campaign' : utm_campaign, 'start_time' : start_time, 'end_time' : end_time})
-    lp_list = _campaign_reporting_loader_.run_query('lps', {'utm_campaign' : utm_campaign, 'start_time' : start_time, 'end_time' : end_time})
+    campaign_reporting_loader._query_type_ = _TESTTYPE_BANNER_
+    banner_list = campaign_reporting_loader.run_query({'utm_campaign' : utm_campaign, 'start_time' : start_time, 'end_time' : end_time})
+    
+    campaign_reporting_loader._query_type_ = _TESTTYPE_LP_
+    lp_list = campaign_reporting_loader.run_query({'utm_campaign' : utm_campaign, 'start_time' : start_time, 'end_time' : end_time})
     
     if len(banner_list) > 1:
         return _TESTTYPE_BANNER_, banner_list
