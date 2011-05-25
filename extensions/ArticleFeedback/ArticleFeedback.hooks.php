@@ -232,12 +232,14 @@ class ArticleFeedbackHooks {
 	public static function resourceLoaderGetConfigVars( &$vars ) {
 		global $wgArticleFeedbackSMaxage,
 			$wgArticleFeedbackCategories,
+			$wgArticleFeedbackBlacklistCategories,
 			$wgArticleFeedbackLotteryOdds,
 			$wgArticleFeedbackTracking,
 			$wgArticleFeedbackOptions,
 			$wgArticleFeedbackNamespaces;
 		$vars['wgArticleFeedbackSMaxage'] = $wgArticleFeedbackSMaxage;
 		$vars['wgArticleFeedbackCategories'] = $wgArticleFeedbackCategories;
+		$vars['wgArticleFeedbackBlacklistCategories'] = $wgArticleFeedbackBlacklistCategories;
 		$vars['wgArticleFeedbackLotteryOdds'] = $wgArticleFeedbackLotteryOdds;
 		$vars['wgArticleFeedbackTracking'] = $wgArticleFeedbackTracking;
 		$vars['wgArticleFeedbackOptions'] = $wgArticleFeedbackOptions;

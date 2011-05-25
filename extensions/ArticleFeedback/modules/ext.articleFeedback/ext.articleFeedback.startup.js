@@ -16,29 +16,42 @@ jQuery( function( $ ) {
 		// Not viewing a redirect
 		&& mw.util.getParamValue( 'redirect' ) != 'no'
 	) {
-		var trackingBucket = mw.user.bucket(
+		// Assign a tracking bucket using options from wgArticleFeedbackTracking
+		mw.user.bucket(
 			'ext.articleFeedback-tracking', mw.config.get( 'wgArticleFeedbackTracking' )
 		);
-		// Category activation
-		var articleFeedbackCategories = mw.config.get( 'wgArticleFeedbackCategories', [] );
-		var articleCategories = mw.config.get( 'wgCategories', [] );
-		var inCategory = false;
-		for ( var i = 0; i < articleCategories.length; i++ ) {
-			for ( var j = 0; j < articleFeedbackCategories.length; j++ ) {
-				if ( articleCategories[i] == articleFeedbackCategories[j] ) {
-					inCategory = true;
-					// Break 2 levels - could do this with a label, but eww.
-					i = articleCategories.length;
-					j = articleFeedbackCategories.length;
-				}
+
+		// Collect categories for intersection tests
+		var categories = {
+			'include': mw.config.get( 'wgArticleFeedbackCategories', [] ),
+			'exclude': mw.config.get( 'wgArticleFeedbackBlacklistCategories', [] ),
+			'current': mw.config.get( 'wgCategories', [] )
+		};
+
+		// Category exclusion
+		var disable = false;
+		for ( var i = 0; i < categories.current.length; i++ ) {
+			if ( $.inArray( categories.current[i], categories.exclude ) > -1 ) {
+				disable = true;
+				break;
 			}
 		}
-		// Lottery activation
+
+		// Category inclusion
+		var enable = false;
+		for ( var i = 0; i < categories.current.length; i++ ) {
+			if ( $.inArray( categories.current[i], categories.include ) > -1 ) {
+				enable = true;
+				break;
+			}
+		}
+
+		// Lottery inclusion
 		var wonLottery = ( Number( mw.config.get( 'wgArticleId', 0 ) ) % 1000 )
 				< Number( mw.config.get( 'wgArticleFeedbackLotteryOdds', 0 ) ) * 10;
-		
+
 		// Lazy loading
-		if ( wonLottery || inCategory ) {
+		if ( !disable && ( wonLottery || enable ) ) {
 			mw.loader.load( 'ext.articleFeedback' );
 		}
 	}

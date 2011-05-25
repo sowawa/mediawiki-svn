@@ -31,6 +31,9 @@ $wgArticleFeedbackRatings = array( 1, 2, 3, 4 );
 // Extension is "disabled" if this field is an empty array (as per default configuration)
 $wgArticleFeedbackCategories = array();
 
+// Which categories the pages must not belong to have the rating widget added (with _ in text)
+$wgArticleFeedbackBlacklistCategories = array();
+
 // Only load the module / enable the tool in these namespaces
 // Default to $wgContentNamespaces (defaults to array( NS_MAIN ) ).
 $wgArticleFeedbackNamespaces = $wgContentNamespaces;
