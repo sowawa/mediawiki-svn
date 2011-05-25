@@ -154,6 +154,7 @@ class OpenIDHooks {
 
 	public static function onGetPreferences( $user, &$preferences ) {
 		global $wgOpenIDShowUrlOnUserPage, $wgAllowRealName;
+		global $wgAuth,$wgUser,$wgLang;
 
 		if ( $wgOpenIDShowUrlOnUserPage == 'user' ) {
 			$preferences['openid-hide'] =
@@ -189,7 +190,46 @@ class OpenIDHooks {
 					'raw' => true,
 					'section' => 'openid',
 				);
-		
+
+       		if ( $wgAuth->allowPasswordChange() ) {
+
+			$resetlink = $wgUser->getSkin()->link( SpecialPage::getTitleFor( 'PasswordReset' ),
+				wfMsgHtml( 'passwordreset' ), array(),
+				array( 'returnto' => SpecialPage::getTitleFor( 'Preferences' ) ) );
+
+			if ( empty( $wgUser->mPassword ) && empty( $wgUser->mNewpassword ) ) {
+ 				$preferences['password'] = array(
+					'type' => 'info',
+					'raw' => true,
+					'default' => $resetlink,
+					'label-message' => 'yourpassword',
+					'section' => 'personal/info',
+				);
+			} else {
+				$preferences['resetpassword'] = array(
+					'type' => 'info',
+					'raw' => true,
+					'default' => $resetlink,
+					'label-message' => null,
+					'section' => 'personal/info',
+				);
+			}
+
+			global $wgCookieExpiration;
+			if ( $wgCookieExpiration > 0 ) {
+				unset( $preferences['rememberpassword'] );
+				$preferences['rememberpassword'] = array(
+					'type' => 'toggle',
+					'label' => wfMsgExt(
+						'tog-rememberpassword',
+						array( 'parsemag' ),
+						$wgLang->formatNum( ceil( $wgCookieExpiration / ( 3600 * 24 ) ) )
+						),
+					'section' => 'personal/info',
+				);
+			}
+
+		}
 
 		return true;
 	}
