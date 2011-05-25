@@ -4,10 +4,12 @@ Extension page on mediawiki.org: http://www.mediawiki.org/wiki/Extension:Live_Tr
 Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/LiveTranslate/RELEASE-NOTES?view=co
 
 
-=== Version 0.7 ===
-2011-xx-xx
+=== Version 0.1 ===
+2011-05-26
 
-* 
+* Fixed bug in the API.
+* Fixed some JavaScript issues causing problems for IE users.
+* Added missing right declaration. 
 
 === Version 0.6 ===
 2011-04-21
