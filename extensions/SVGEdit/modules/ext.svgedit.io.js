@@ -56,7 +56,8 @@ var mwSVG = window.mwSVG = {
 			url: url,
 			success: callback,
 			error: onerror,
-			dataType: 'text'
+			dataType: 'text',
+			cache: false
 		});
 	},
 
