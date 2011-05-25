@@ -447,9 +447,9 @@ def get_plot_ylabel(query_name):
     
 def get_metric_full_name(metric_name):
     if metric_name == 'imp':
-        return 'IMPRESSIONS'
+        return 'BANNER IMPRESSIONS'
     elif metric_name == 'views':
-        return 'VIEWS'
+        return 'LANDING PAGE VIEWS'
     elif metric_name == 'don_per_imp':
         return 'DONATIONS PER IMPRESSION'
     elif metric_name == 'don_per_view':
@@ -462,5 +462,11 @@ def get_metric_full_name(metric_name):
         return 'AMOUNT50'
     elif metric_name == 'donations':
         return 'DONATIONS'
+    elif metric_name == 'amt_per_imp':
+        return 'AMOUNT PER IMPRESSION'
+    elif metric_name == 'amt_per_view':
+        return 'AMOUNT PER VIEW'
+    elif metric_name == 'amount':
+        return 'AMOUNT'
     else:
-        return'no such table'
+        return'no such metric'
