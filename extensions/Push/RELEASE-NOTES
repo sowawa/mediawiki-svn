@@ -4,11 +4,13 @@ Extension page on mediawiki.org: http://www.mediawiki.org/wiki/Extension:Push
 Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/Push/RELEASE-NOTES?view=co
 
 
-=== Version 0.9 ===
-2011-xx-xx
+=== Version 1.0 ===
+2011-05-26
 
 * Fixed compatibility with MediaWiki 1.18.
 * Use of FormatJson::encode instead of json_encode for compatibility with PHP5 < 5.2.
+* Fixed some JavaScript issues causing problems for IE users.
+* Fixed bug in API modules.
 
 === Version 0.8 ===
 2011-02-27
