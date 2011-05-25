@@ -1,7 +1,7 @@
 /**
  * Serializes a WikiDom into Wikitext.
  */
-wiki.WikitextRenderer = function() {
+wiki.WikitextRenderer = function( context ) {
 
 	/* Private Members */
 
@@ -12,7 +12,9 @@ wiki.WikitextRenderer = function() {
 		'heading': renderHeading,
 		'paragraph': renderParagraph,
 		'list': renderList,
-		'table': renderTable
+		'table': renderTable,
+		'transclusion': renderTransclusion,
+		'parameter': renderParameter
 	};
 
 	/* Private Methods */
@@ -97,6 +99,21 @@ wiki.WikitextRenderer = function() {
 		}
 		out.push( '|}' );
 		return out.join( '\n' );
+	}
+
+	function renderTransclusion( transclusion ) {
+		var title = [];
+		if ( transclusion.namespace === 'Main' ) {
+			title.push( '' );
+		} else if ( transclusion.namespace !== 'Template' ) {
+			title.push( transclusion.namespace )
+		}
+		title.push( transclusion.title );
+		return '{{' + title.join( ':' ) + '}}';
+	}
+
+	function renderParameter( parameter ) {
+		return '{{{' + parameter.name + '}}}';
 	}
 
 	function renderItem( item, path ) {

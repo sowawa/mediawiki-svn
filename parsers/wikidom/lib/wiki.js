@@ -21,6 +21,13 @@
  * table
  *   rows: Array of arrays of cell objects
  *   attributes: Plain object
+ * transclusion
+ *   namespace: String
+ *   title: String
+ *   parameters: Array of documents
+ * parameter
+ *   name: String or integer
+ *   default: Document object
  * 
  * // Components
  * 

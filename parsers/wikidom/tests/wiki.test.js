@@ -119,7 +119,7 @@ test( 'Headings', function() {
 						{
 							'type': 'ilink',
 							'range': { 'offset': 15, 'length': 4 },
-							'data': { 'title': 'Main_Page' }
+							'data': { 'namespace': 'Main', 'title': 'Main_Page' }
 						}
 					]
 				}
@@ -303,6 +303,35 @@ test( 'Tables', function() {
 			}] },
 			'html': '<table class="wikitable">\n<tr>\n<td class="abc">abc</td>\n</tr>\n</table>',
 			'wikitext': '{|class="wikitable"\n|class="abc"|abc\n|}'
+		}
+	] );
+} );
+
+test( 'Transclusion', function() {
+	assertSerializations( [
+		{
+			'subject': 'transclusion',
+			'dom': { 'blocks': [ {
+				'type': 'transclusion',
+				'namespace': 'Template',
+				'title': 'Test'
+			} ] },
+			'html': '<a href="/wiki/Template:Test">Template:Test</a>',
+			'wikitext': '{{Test}}'
+		}
+	] );
+} );
+
+test( 'Parameter', function() {
+	assertSerializations( [
+		{
+			'subject': 'transclusion',
+			'dom': { 'blocks': [ {
+				'type': 'parameter',
+				'name': '1'
+			} ] },
+			'html': '{{{1}}}',
+			'wikitext': '{{{1}}}'
 		}
 	] );
 } );
