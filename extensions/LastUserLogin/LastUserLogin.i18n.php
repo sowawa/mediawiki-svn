@@ -308,6 +308,20 @@ $messages['fr'] = array(
 	'right-lastlogin' => "Voir la dernière fois qu'un utilisateur s'est connecté",
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'lastuserlogin' => 'Dèrriér branchement ux utilisators',
+	'lastuserlogin-desc' => 'Montre lo dèrriér côp qu’un utilisator s’est branchiê.',
+	'lastuserlogin_userid' => 'Nom d’utilisator',
+	'lastuserlogin_username' => 'Veré nom',
+	'lastuserlogin_useremail' => 'Adrèce èlèctronica a l’utilisator',
+	'lastuserlogin_lastlogin' => 'Dèrriér branchement',
+	'lastuserlogin_daysago' => 'Jorns passâs',
+	'right-lastlogin' => 'Vêre lo dèrriér côp qu’un utilisator s’est branchiê',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

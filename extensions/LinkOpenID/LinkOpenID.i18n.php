@@ -213,6 +213,15 @@ Ceci vous permet aussi d'utiliser votre page utilisateur comme OpenID.",
 	'linkopenid-prefstext-xrdsurl' => 'XRDS-URL :',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'linkopenid-prefstext-openid' => 'Voutron OpenID :',
+	'linkopenid-prefstext-v1url' => 'URL du sèrvor por OpenID vèrsion 1.1 :',
+	'linkopenid-prefstext-v2url' => 'URL du sèrvor por OpenID vèrsion 2 :',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

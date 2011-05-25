@@ -1145,11 +1145,15 @@ $messages['mn'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Diagramma Della Verita
  */
 $messages['ms'] = array(
+	'amazonplus-desc' => 'Sambungan yang mudah disuaikan untuk memaparkan maklumat Amazon',
 	'amazonplus-nores' => 'Ralat : Carian tidak menyamai mana-mana dokumen',
 	'amazonplus-noidres' => 'Ralat : ID barang tidak terdapat dalam pangkalan data',
+	'amazonplus-fgcerr' => 'Ralat: Data tidak dapat diterima dari Amazon!',
+	'amazonplus-slserr' => 'Ralat: Data tidak dapat dihurai dari Amazon!',
 	'amazonplus-used' => 'terpakai',
 	'amazonplus-german' => 'German',
 	'amazonplus-french' => 'Perancis',
@@ -1158,6 +1162,8 @@ $messages['ms'] = array(
 	'amazonplus-new' => 'baru',
 	'amazonplus-none' => 'Tiada salinan barang ini yang dipaparkan untuk dijual.',
 	'amazonplus-cp-none' => 'Tiada',
+	'amazonplus-more' => 'lagi',
+	'amazonplus-less' => 'kurang',
 );
 
 /** Erzya (Эрзянь)

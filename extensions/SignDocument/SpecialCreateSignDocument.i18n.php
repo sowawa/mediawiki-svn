@@ -745,30 +745,33 @@ $messages['ga'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'createsigndocument' => 'Habilitar a Sinatura de Documentos',
-	'createsigndoc-head' => "Empregue este formulario para crear unha páxina \"Asinar o documento\" para a páxina relacionada, de tal xeito que os usuarios [[Special:SignDocument|o poidan asinar]].
-Por favor, especifique o nome da páxina na que quere activar a sinatura dixital, os membros de que grupo de usuarios poden asinalo, que campos lles resultan visíbeis aos usuarios e cales han de ser optativos, a idade mínima que se lles esixe aos usuarios para asinar o documento (sen mínimo se se omitise);
+	'createsigndocument' => 'Habilitar o asinado de documentos',
+	'createsigndoc-head' => "Empregue este formulario para crear unha páxina \"Asinar o documento\", de tal xeito que os usuarios [[Special:SignDocument|a poidan asinar]].
+Por favor, especifique o nome da páxina na que quere activar a sinatura dixital, os membros de que grupo de usuarios poden asinalo, que campos lles resultan visíbeis aos usuarios e cales han ser optativos, a idade mínima que se lles esixe aos usuarios para asinar o documento (sen mínimo se se omitise);
 e un texto introdutorio breve que describa o documento e lles dea instrucións aos usuarios.
 
-'''Actualmente non resulta posíbel eliminar ou modificar os documentos de sinatura unha vez que sexan creados''' sen acceso directo á base de datos. Ademais, o texto da páxina que se amosa na páxina de sinaturas será o texto ''actual'' da páxina, independentemente das modificacións que se lle fagan despois de hoxe. Asegúrese ben de que o documento está en situación de estabilidade antes de asinalo e asegúrese tamén de que especifica todos os campos exactamente como han de ser ''antes de enviar este formulario''.",
+'''Actualmente non resulta posíbel eliminar ou modificar os documentos de sinatura unha vez que sexan creados''' sen acceso directo á base de datos.
+Ademais, o texto da páxina que se amosa na páxina de sinaturas será o texto ''actual'' da páxina, independentemente das modificacións que se lle fagan despois de hoxe.
+Asegúrese ben de que o documento está en situación de estabilidade antes de asinalo.
+Asegúrese tamén de que especifica todos os campos exactamente como han de ser ''antes de enviar este formulario''.",
 	'createsigndoc-pagename' => 'Páxina:',
 	'createsigndoc-allowedgroup' => 'Grupo permitido:',
-	'createsigndoc-email' => 'Enderezo electrónico:',
+	'createsigndoc-email' => 'Enderezo de correo electrónico:',
 	'createsigndoc-address' => 'Enderezo familiar:',
-	'createsigndoc-extaddress' => 'Cidade, Estado, País:',
+	'createsigndoc-extaddress' => 'Cidade, estado, país:',
 	'createsigndoc-phone' => 'Número de teléfono:',
-	'createsigndoc-bday' => 'Aniversario:',
-	'createsigndoc-minage' => 'Idade minima:',
+	'createsigndoc-bday' => 'Data de nacemento:',
+	'createsigndoc-minage' => 'Idade mínima:',
 	'createsigndoc-introtext' => 'Introdución:',
 	'createsigndoc-hidden' => 'Oculto',
 	'createsigndoc-optional' => 'Opcional',
 	'createsigndoc-create' => 'Crear',
 	'createsigndoc-error-generic' => 'Erro: $1',
-	'createsigndoc-error-pagenoexist' => 'Erro: A páxina [[$1]] non existe.',
-	'createsigndoc-success' => 'O documento asinado foi activado con éxito en [[$1]].
+	'createsigndoc-error-pagenoexist' => 'Erro: A páxina "[[$1]]" non existe.',
+	'createsigndoc-success' => 'O asinado de documentos foi activado con éxito en [[$1]].
 Pode [{{fullurl:{{#Special:SignDocument}}|doc=$2}} probalo].',
-	'createsigndoc-error-alreadycreated' => 'O documento asinado "$1" xa existe.
-Isto non pode ser feito unha segunda vez.',
+	'createsigndoc-error-alreadycreated' => 'O asinado do documento "$1" xa existe.
+Isto non se pode facer unha segunda vez.',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)

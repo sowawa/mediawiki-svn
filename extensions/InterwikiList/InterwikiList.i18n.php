@@ -324,6 +324,17 @@ $messages['fr'] = array(
 	'interwikilist-prefix' => 'Préfixe interwiki :',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'interwikilist' => 'Lista entèrvouiqui',
+	'interwikilist-linkname' => 'Lim entèrvouiqui',
+	'interwikilist-target' => 'URL ciba',
+	'interwikilist-filter' => 'Lista des filtros',
+	'interwikilist-prefix' => 'Prèfixo entèrvouiqui :',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

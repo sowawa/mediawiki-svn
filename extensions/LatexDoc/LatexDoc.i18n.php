@@ -349,6 +349,24 @@ $3',
 	'latexdoc-desc' => 'Modification collaborative de documents LaTeX.',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'latexdoc_no_text' => 'La pâge contint gins de tèxto, empossiblo de fâre DVI',
+	'latexdoc_cant_create_dir' => 'Empossiblo de fâre lo rèpèrtouèro temporèro $1',
+	'latexdoc_cant_write' => 'Empossiblo d’ècrire dens lo fichiér $1',
+	'latexdoc_error' => 'Èrror LaTeX
+
+Comanda : $1
+
+Sortia : $2
+
+$3',
+	'latexdoc_get_dvi' => 'Avêr DVI',
+	'latexdoc_get_pdf' => 'Avêr PDF',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Toliño

@@ -349,7 +349,7 @@ This is visible when a SynTrans is annotated, or while editing a page.
 	'ow_TextAttribute' => '{{Identical|Property}}',
 	'ow_TranslatedTextAttribute' => '{{Identical|Property}}',
 	'ow_TranslatedTextAttributeValue' => '{{Identical|Text}}',
-	'ow_Link' => '{{identical|Link}}',
+	'ow_Link' => '{{Identical|Link}}',
 	'ow_LinkAttribute' => '{{Identical|Property}}',
 	'ow_LinkAttributeValues' => '{{Identical|Links}}',
 	'ow_URL' => '{{optional}}',
@@ -360,7 +360,7 @@ This is visible when a SynTrans is annotated, or while editing a page.
 	'ow_Permission_denied' => "Visible on [http://www.omegawiki.org/Special:Copy this OmegaWiki page] (make sure you're not logged in)
 {{Identical|Permission denied}}",
 	'copy' => '{{Identical|Copy}}',
-	'ow_class_attr_type_link' => '{{identical|Link}}',
+	'ow_class_attr_type_link' => '{{Identical|Link}}',
 	'ow_needs_xlation_title' => 'Visible on this [http://www.omegawiki.org/Special:NeedsTranslation OmegaWiki page].',
 	'ow_needs_xlation_source_lang' => 'Visible on this [http://www.omegawiki.org/Special:NeedsTranslation OmegaWiki page].',
 	'ow_needs_xlation_dest_lang' => 'Visible on this [http://www.omegawiki.org/Special:NeedsTranslation OmegaWiki page].',
