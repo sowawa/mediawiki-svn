@@ -54,19 +54,19 @@ def download_wiki_file(task_queue, properties):
                                                 properties.dump_relative_path,
                                                 filename)
         mod_date = text_utils.convert_timestamp_to_datetime_naive(mod_date, properties.timestamp_server)
-        if file_utils.check_file_exists(properties.location, filename):
-            mod_loc = file_utils.get_modified_date(properties.location, filename)
+        if file_utils.check_file_exists(properties.input_location, filename):
+            mod_loc = file_utils.get_modified_date(properties.input_location, filename)
             if mod_loc == mod_date and (properties.force == False or properties.force == None):
                 print 'You already have downloaded the most recent %s%s dumpfile.' % (properties.language.code, properties.project.name)
                 continue
 
         if filemode == 'w':
-            fh = file_utils.create_txt_filehandle(properties.location,
+            fh = file_utils.create_txt_filehandle(properties.input_location,
                                                   filename,
                                                   filemode,
                                                   properties.encoding)
         else:
-            fh = file_utils.create_binary_filehandle(properties.location, filename, 'wb')
+            fh = file_utils.create_binary_filehandle(properties.input_location, filename, 'wb')
 
         if filesize != -1:
             pbar = progressbar.ProgressBar(widgets=widgets, maxval=filesize).start()
