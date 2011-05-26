@@ -8,7 +8,8 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => "Dublin Core RDF-metadata"
 );
 
-$wgHooks['MediaWikiPerformAction'][] = 'efDublinCorePerformAction';
+$wgHooks['MediaWikiPerformAction'][] = 'efDublinCoreBeforePageDisplay';
+$wgHooks['BeforePageDisplay'][] = 'efCreativeCommonsRdfBeforePageDisplay';
 
 $wgAutoloadClasses['DublinCoreRdf'] = $dir . 'DublinCoreRdf_body.php';
 
@@ -20,4 +21,20 @@ function efDublinCorePerformAction( $output, $article, $title, $user, $request, 
 	$rdf = new DublinCoreRdf( $article );
 	$rdf->show();
 	return false;
+}
+
+/**
+ * @param $out OutputPage
+ * @param $skin Skin
+ * @return bool
+ */
+function efDublinCoreBeforePageDisplay( $out, $skin ) {
+	$out->addHeadItem( 'dublincore',
+						Html::element( 'link', array(
+							'rel' => $out->getMetadataAttribute(),
+							'title' => 'Dublin Core',
+							'type' => 'application/rdf+xml',
+							'href' => $out->getTitle()->getLocalURL( 'action=dublincore' ) )
+						));
+	return true;
 }
