@@ -363,6 +363,7 @@ $messages['ky'] = array(
  */
 $messages['lad'] = array(
 	'addmediawizard-desc' => 'Ajusta el hechizero de medya, desvelepado con la jhaverança de Kaltura i la Fondasyón de Vikimedya',
+	'addmediawizard-loading' => 'Cargando el asistente para àjustar elementos multimedia',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

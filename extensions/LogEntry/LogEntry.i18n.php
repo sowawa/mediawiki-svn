@@ -232,6 +232,16 @@ $messages['fr'] = array(
 	'logentry-invalidtoken' => 'Prise incorrecte',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'logentry-append' => 'Apondre',
+	'logentry' => 'Entrâ du jornal',
+	'logentry-invalidpage' => 'Pâge fôssa',
+	'logentry-invalidtoken' => 'Prêsa fôssa',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

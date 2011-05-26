@@ -964,6 +964,7 @@ Pilihan yang tersedia adalah "plain", "normal", dan "wiki".',
 
 /** Italian (Italiano)
  * @author Beta16
+ * @author Minerva Titani
  * @author Rippitippi
  */
 $messages['it'] = array(
@@ -980,6 +981,7 @@ $messages['it'] = array(
 	'article-comments-failure-reasons' => "Siamo spiacenti, l'inserimento del vostro commento non è riuscito per {{PLURAL:$1|il seguente motivo|i seguenti motivi}}",
 	'article-comments-no-comments' => 'Siamo spiacenti, la pagina "[[$1]]" non accetta commenti in questo momento.',
 	'article-comments-commenter-said' => '$1 ha detto ...',
+	'article-comments-submission-succeeded' => 'Invio commento riuscito',
 );
 
 /** Japanese (日本語)

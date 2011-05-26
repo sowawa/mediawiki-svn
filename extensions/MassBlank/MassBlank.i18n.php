@@ -268,6 +268,17 @@ Entrez le nom d'utilisateur ou l'adresse IP pour obtenir une liste de pages à b
 	'right-massblank' => 'Blanchir en masse des pages',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'massblank' => 'Blanchiment en massa',
+	'massblank-submit-user' => 'Alar',
+	'massblank-submit-blank' => 'Blanchir les pâges chouèsies',
+	'massblank-blankcomment' => 'Rêson :',
+	'right-massblank' => 'Blanchir des pâges en massa',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

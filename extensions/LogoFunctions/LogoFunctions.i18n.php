@@ -105,6 +105,14 @@ $messages['fr'] = array(
 	'logofunctions-filenotexist' => 'Erreur: [[File:$1]] n’existe pas',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'logofunctions-desc' => 'Apond una fonccion du parsor por dèfenir lo logô du vouiqui.',
+	'logofunctions-filenotexist' => 'Èrror : [[File:$1]] ègziste pas',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

@@ -288,6 +288,17 @@ $messages['fr'] = array(
 	'lua_overflow_time' => 'Durée maximale d’exécution atteinte',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'lua_error' => 'Èrror dens la legne $1',
+	'lua_extension_notfound' => 'Èxtension Lua pas configurâ',
+	'lua_interp_notfound' => 'Entèrprètor Lua entrovâblo',
+	'lua_error_internal' => 'Èrror de dedens',
+	'lua_overflow_recursion' => 'Limita de la rècursion avengiê',
+);
+
 /** Western Frisian (Frysk)
  * @author Snakesteuben
  */

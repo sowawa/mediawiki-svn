@@ -246,6 +246,13 @@ $messages['fr'] = array(
 	'msfunc_div_zero' => 'Division par zéro',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'msfunc_div_zero' => 'Division per zérô',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Toliño

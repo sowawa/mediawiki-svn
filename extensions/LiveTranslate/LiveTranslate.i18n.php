@@ -319,6 +319,31 @@ $messages['fr'] = array(
 	'livetranslate-importtms-param-miscmatch' => "Incompatibilité entre la quantité d'emplacements et les types",
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'livetranslate-translate-to' => 'Traduire ceta pâge en',
+	'livetranslate-button-translate' => 'Traduire',
+	'livetranslate-button-translating' => 'Traduccion en cors...',
+	'livetranslate-button-revert' => 'Fâre vêre l’originâl',
+	'livetranslate-dictionary-goto-edit' => 'Changiér les mèmouères de traduccion.',
+	'special-livetranslate' => 'Traduccion en dirèct',
+	'livetranslate-tmtype-ltf' => 'Format de la traduccion en dirèct',
+	'livetranslate-tmtype-tmx' => 'Translation Memory eXchange',
+	'livetranslate-tmtype-gcsv' => 'Google CSV',
+	'livetranslate-special-no-tms-yet' => 'Y at gins de mèmouère de traduccion por lo moment.',
+	'livetranslate-special-button' => 'Encartar et betar a jorn',
+	'livetranslate-special-type' => 'Tipo',
+	'livetranslate-special-location' => 'Localisacion',
+	'livetranslate-special-remove' => 'Enlevar',
+	'livetranslate-special-local' => 'Local',
+	'livetranslate-special-add-tm' => 'Apondre una novèla mèmouère de traduccion',
+	'livetranslate-special-current-tms' => 'Mèmouères de traduccion ègzistentes',
+	'livetranslate-special-tms-update' => 'Betar a jorn des mèmouères de traduccion',
+	'livetranslate-special-update' => 'Betar a jorn des mèmouères de traduccion',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

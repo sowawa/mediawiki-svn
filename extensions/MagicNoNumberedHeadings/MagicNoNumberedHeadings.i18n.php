@@ -139,6 +139,13 @@ $messages['fr'] = array(
 	'magicnonumberedheadings-desc' => 'Ajoute le mot magique « <nowiki>__NONUMBEREDHEADINGS__</nowiki> »',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'magicnonumberedheadings-desc' => 'Apond lo mot magico « <nowiki>__NONUMBEREDHEADINGS__</nowiki> ».',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

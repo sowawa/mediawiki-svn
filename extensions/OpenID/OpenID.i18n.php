@@ -555,7 +555,7 @@ $messages['be'] = array(
  */
 $messages['be-tarask'] = array(
 	'openid-desc' => 'Уваход ў {{GRAMMAR:вінавальны|{{SITENAME}}}} з дапамогай [http://openid.net/ OpenID], а так сама ў іншыя сайты, якія падтрымліваюць OpenID з вікі-рахунка',
-	'openidlogin' => 'Уваход у сыстэму з дапамогай OpenID',
+	'openidlogin' => 'Уваход у сыстэму / стварэньне рахунку з дапамогай OpenID',
 	'openidserver' => 'Сэрвэр OpenID',
 	'openidxrds' => 'Файл Yadis',
 	'openidconvert' => 'Канвэртар OpenID',
@@ -618,6 +618,7 @@ $messages['be-tarask'] = array(
 Каб выкарыстоўваць OpenID у будучыні, Вы можаце [[Special:OpenIDConvert|пераўтварыць Ваш рахунак у OpenID]] пасьля таго, як увайшлі звычайным чынам.
 
 Існуе шмат [http://openid.net/get/ OpenID сэрвісаў], у Вы, магчыма, ужо маеце OpenID рахунак у іншым сэрвісе.",
+	'openidlogininstructions-openidloginonly' => "{{SITENAME}} дазваляе Вам уваход ''толькі'' з дапамогай OpenID.",
 	'openidupdateuserinfo' => 'Абнавіць маю асабістую інфармацыю:',
 	'openiddelete' => 'Выдаліць OpenID',
 	'openiddelete-text' => 'Націснуўшы кнопку «{{int:openiddelete-button}}» Вы выдаліце OpenID $1 з Вашага рахунку.

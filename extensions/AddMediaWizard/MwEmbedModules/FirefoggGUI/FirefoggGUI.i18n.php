@@ -1560,7 +1560,7 @@ $messages['eu'] = array(
 	'fogg-select_new_file' => 'Fitxategi berria aukeratu',
 	'fogg-select_url' => 'URLa aukeratu',
 	'fogg-preview' => 'Bideoa aurreikusi',
-	'fogg-hidepreview' => 'Aurreikuspena ezkutatu',
+	'fogg-hidepreview' => 'Aurrebista ezkutatu',
 );
 
 /** Persian (فارسی)
@@ -2589,6 +2589,7 @@ $messages['it'] = array(
 	'fogg-date-title' => 'Data',
 	'fogg-location-title' => 'Località',
 	'fogg-license-title' => 'Licenza',
+	'fogg-select_new_file' => 'Seleziona nuovo file',
 	'fogg-installed' => 'Firefogg è installato.',
 	'fogg-preview' => 'Anteprima video',
 	'fogg-hidepreview' => 'Nascondi anteprima',

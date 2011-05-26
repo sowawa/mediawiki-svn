@@ -878,11 +878,14 @@ $messages['la'] = array(
  */
 $messages['lad'] = array(
 	'player' => 'Jugador',
+	'player-desc' => 'Reproduksión multimedia empotrada usando plugins de navigadores comunes, y una [[Special:Player|hoja especial]]',
 	'player-title' => 'Jugador',
 	'player-playertitle' => 'Jugador: $1',
 	'player-file' => 'Nombre de dosya',
 	'player-play' => 'Juga',
+	'player-not-allowed' => 'formato no permitido',
 	'player-not-found' => 'dosya que no se topó',
+	'player-invalid-title' => 'títůlo inválido',
 	'player-clicktoplay' => 'Juga $1',
 	'player-goto-player' => 'jugador',
 	'player-goto-page' => 'Hoja',

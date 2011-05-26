@@ -604,6 +604,26 @@ $messages['fr'] = array(
 	'masseditregex-tooltip-execute' => 'Appliquer ces changements à chaque page',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'masseditregex-matchtxt' => 'Rechèrchiér :',
+	'masseditregex-replacetxt' => 'Remplaciér avouéc :',
+	'masseditregex-executebtn' => 'Ègzécutar',
+	'masseditregex-before' => 'Devant',
+	'masseditregex-after' => 'Aprés',
+	'masseditregex-num-changes' => '$1 : $2 changement{{PLURAL:$2||s}}',
+	'masseditregex-page-not-exists' => '$1 ègziste pas',
+	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|pâge changiê|pâges changiês}}',
+	'masseditregex-hint-headmatch' => 'Corrèspondance',
+	'masseditregex-hint-headreplace' => 'Remplaciér',
+	'masseditregex-hint-headeffect' => 'Èfèt',
+	'masseditregex-listtype-intro' => 'Vê-que una lista de :',
+	'masseditregex-badregex' => 'Èxprèssion racionèla fôssa :',
+	'masseditregex-editfailed' => 'Èrror pendent l’èdicion :',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
