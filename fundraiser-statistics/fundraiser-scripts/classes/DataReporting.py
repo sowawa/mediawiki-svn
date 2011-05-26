@@ -28,7 +28,6 @@ import math
 
 import Fundraiser_Tools.classes.QueryData as QD
 import Fundraiser_Tools.classes.Helper as Hlp
-import Fundraiser_Tools.miner_help as mh
 import Fundraiser_Tools.classes.TimestampProcessor as TP
 import Fundraiser_Tools.classes.DataLoader as DL
 import Fundraiser_Tools.classes.HypothesisTest as HT

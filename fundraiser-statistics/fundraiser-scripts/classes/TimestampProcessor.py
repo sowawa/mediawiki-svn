@@ -43,7 +43,7 @@ import sys
 
 import datetime
 import math
-import Fundraiser_Tools.miner_help as mh
+import Fundraiser_Tools.classes.Helper as mh
 
     
 """
