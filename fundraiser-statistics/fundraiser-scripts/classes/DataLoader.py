@@ -1246,6 +1246,46 @@ class SquidLogTableLoader(TableLoader):
         return 0
     
     
+    def get_all_rows_unique_start_time(self):
+        
+        select_stmnt = 'select type, log_copy_time, start_time, end_time, log_completion_pct, total_rows from ' \
+        '(select max(log_copy_time) as max_copy_time from squid_log_record group by start_time) as temp join squid_log_record on max_copy_time = squid_log_record.log_copy_time'
+        
+        self.init_db()
+        
+        try:
+            self._cur_.execute(select_stmnt)
+            results = self._cur_.fetchall()
+        except:
+            self._db_.rollback()
+            self.close_db()
+            print >> sys.stderr, 'Could not execute: ' + update_stmnt
+            return -1
+        else:
+            self.close_db()
+            
+        return results
+    
+    def get_completion_rate_of_latest_log(self):
+        
+        select_stmnt = 'select type, start_time, log_completion_pct, log_completion_pct from (select max(log_copy_time) as max_copy_time from squid_log_record) as temp join squid_log_record on max_copy_time = squid_log_record.log_copy_time'
+        
+        self.init_db()
+        
+        try:
+            self._cur_.execute(select_stmnt)
+            results = self._cur_.fetchall()
+        except:
+            self._db_.rollback()
+            self.close_db()
+            print >> sys.stderr, 'Could not execute: ' + update_stmnt
+            return -1
+        else:
+            self.close_db()
+        
+        return results
+    
+    
 """
 
     CLASS :: ImpressionTableLoader
