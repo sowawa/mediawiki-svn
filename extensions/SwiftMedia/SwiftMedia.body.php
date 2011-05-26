@@ -1171,6 +1171,7 @@ class SwiftFile extends LocalFile {
 		foreach ( $result as $row ) {
 			$batch->addOld( $row->oi_archive_name );
 		}
+		//wfDebug(__METHOD__ . var_export($batch, true) . "\n"); 
 		$status = $batch->execute();
 
 		if ( $status->ok ) {
@@ -2410,43 +2411,18 @@ class SwiftRepo extends LocalRepo {
 	 */
 	function deleteBatch( $sourceDestPairs ) {
 		wfDebug(  __METHOD__ . " deleting " . var_export($sourceDestPairs, true) . "\n");
-		$status = $this->newGood();
-
-		/**
-		 * Validate filenames and create archive directories
-		 */
-		foreach ( $sourceDestPairs as $pair ) {
-			list( $srcRel, $archiveRel ) = $pair;
-			if ( !$this->validateFilename( $srcRel ) ) {
-				throw new MWException( __METHOD__.':Validation error in $srcRel' );
-			}
-			if ( !$this->validateFilename( $archiveRel ) ) {
-				throw new MWException( __METHOD__.':Validation error in $archiveRel' );
-			}
-		}
-		if ( !$status->ok ) {
-			// Abort early
-			return $status;
-		}
 
 		/**
 		 * Move the files
-		 * We're now committed to returning an OK result, which will lead to
-		 * the files being moved in the DB also.
 		 */
+		$triplets = array();
 		foreach ( $sourceDestPairs as $pair ) {
 			list( $srcRel, $archiveRel ) = $pair;
-			$srcPath = "{$this->directory}/$srcRel";
-			$archivePath = "{$this->deletedDir}/$archiveRel";
-			$good = true;
-			// FIXME we need to copy $this->container/$srcPath to $this->container%2Fdeleted/$archivePath
-			// FIXME then delete $this->container/$srcPath
-			if ( $good ) {
-				$status->successCount++;
-			} else {
-				$status->failCount++;
-			}
+
+			$triplets[] = array( "mwrepo://{$this->name}/public/$srcRel", 'deleted', $archiveRel );
+			
 		}
+		$status = $this->storeBatch( $triplets, FileRepo::OVERWRITE_SAME | FileRepo::DELETE_SOURCE );
 		return $status;
 	}
 
@@ -2499,14 +2475,14 @@ class SwiftRepo extends LocalRepo {
 	}
 	function newFile( $title, $time = false ) {
 		if ( empty($title) ) { return null; }
-		wfDebug( __METHOD__ . " $title, $time " . var_export($this->fileFactory, true) ."\n" );
+		//wfDebug( __METHOD__ . " $title, $time " . var_export($this->fileFactory, true) ."\n" );
 		$f = parent::newFile( $title, $time );
 		return $f;
 	}
 	function findFile( $title, $options = array() ) {
-		wfDebug( __METHOD__ . " finding $title" . var_export($options, true) . "\n" );
+		//wfDebug( __METHOD__ . " finding $title" . var_export($options, true) . "\n" );
 		$found = parent::findFile( $title, $options );
-		wfDebug( __METHOD__ . " found " . var_export($found, true) . "\n" );
+		//wfDebug( __METHOD__ . " found " . var_export($found, true) . "\n" );
 		return  $found;
 	}
 
@@ -2539,9 +2515,6 @@ class SwiftRepo extends LocalRepo {
 		#wfDebug( "Number of Objects: " . $container->object_count . "\n" );
 		#wfDebug( "Bytes stored in container: " . $container->bytes_used . "\n" );
 		#wfDebug( "Object: " . var_export($pic, true) . "\n" );
-
-		# Delete specific object
-		#$container->delete_object("disco_dancing.jpg");
 
 		# paranoia
 		$status = $this->newGood( array() );
@@ -2645,6 +2618,57 @@ class SwiftRepo extends LocalRepo {
 			$container->delete_object($rel);
 		}
 	}
+
+	/**
+	 * Delete files in the deleted directory if they are not referenced in the
+	 * filearchive table. This needs to be done in the repo because it needs to
+	 * interleave database locks with file operations, which is potentially a
+	 * remote operation.
+	 * @return FileRepoStatus
+	 */
+	function cleanupDeletedBatch( $storageKeys ) {
+		$auth = new CF_Authentication($this->swiftuser, $this->key, NULL, $this->authurl);
+		$auth->authenticate();
+		$conn = new CF_Connection($auth);
+		$cont = $this->getZoneContainer( 'deleted' );
+		$container = $conn->get_container($cont);
+
+		$dbw = $this->getMasterDB();
+		$status = $this->newGood();
+		$storageKeys = array_unique($storageKeys);
+		foreach ( $storageKeys as $key ) {
+			$hashPath = $this->getDeletedHashPath( $key );
+			$rel = "$hashPath$key";
+			$dbw->begin();
+			$inuse = $dbw->selectField( 'filearchive', '1',
+				array( 'fa_storage_group' => 'deleted', 'fa_storage_key' => $key ),
+				__METHOD__, array( 'FOR UPDATE' ) );
+			if( !$inuse ) {
+				$sha1 = self::getHashFromKey( $key );
+				$ext = substr( $key, strcspn( $key, '.' ) + 1 );
+				$ext = File::normalizeExtension($ext);
+				$inuse = $dbw->selectField( 'oldimage', '1',
+					array( 'oi_sha1' => $sha1,
+						'oi_archive_name ' . $dbw->buildLike( $dbw->anyString(), ".$ext" ),
+						$dbw->bitAnd('oi_deleted', File::DELETED_FILE) => File::DELETED_FILE ),
+					__METHOD__, array( 'FOR UPDATE' ) );
+			}
+			if ( !$inuse ) {
+				wfDebug( __METHOD__ . ": deleting $key\n" );
+				$container->delete_object($rel);
+				if ( 0 ) {
+					$status->error( 'undelete-cleanup-error', $rel );
+					$status->failCount++;
+				}
+			} else {
+				wfDebug( __METHOD__ . ": $key still in use\n" );
+				$status->successCount++;
+			}
+			$dbw->commit();
+		}
+		return $status;
+	}
+
 	/**
 	 * Makes no sense in our context -- don't let anybody call it.
 	 */
@@ -2911,6 +2935,7 @@ class OldSwiftFile extends SwiftFile {
 		return Revision::userCanBitfield( $this->deleted, $field );
 	}
 }
+
 
 class Junkyjunk {
 	function __construct( $info ) {

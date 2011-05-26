@@ -126,8 +126,6 @@ $wgDiff3 = "/usr/bin/diff3";
 # End of automatically generated settings.
 # Add more configuration options below.
 
-if (1) {
-
 require_once( "$IP/extensions/SwiftMedia/SwiftMedia.php" );
 
 $wgUploadDirectory = "$IP/images/swift";
@@ -135,24 +133,24 @@ $wgDeletedDirectory = "{$wgUploadDirectory}/deleted";
 $wgUploadPath = "http://alsted.wikimedia.org/images/swift";
 
 $wgLocalFileRepo = array(
-        'class' => 'SwiftRepo',
-        'name' => 'swift',
-        #'directory' => 'http://alsted.wikimedia.org/images', #$wgUploadDirectory,
-        'directory' => $wgUploadDirectory,
+	'class' => 'SwiftRepo',
+	// $wgLocalFileRepo must be named 'local' for $repo->isLocal() to work
+	'name' => 'local',
+	#'directory' => 'http://alsted.wikimedia.org/images', #$wgUploadDirectory,
+	'directory' => $wgUploadDirectory,
 	'user' => 'system:media',
-	'key' => '8lksg0p',
+	'key' => 'secret',
 	'authurl' => 'http://alsted.wikimedia.org/auth/v1.0',
 	'container' => 'images%2Fswift',
-        'scriptDirUrl' => $wgScriptPath,
-        'scriptExtension' => $wgScriptExtension,
-        'url' => $wgUploadBaseUrl ? $wgUploadBaseUrl . $wgUploadPath : $wgUploadPath,
-        'hashLevels' => $wgHashedUploadDirectory ? 2 : 0,
-        'thumbScriptUrl' => $wgThumbnailScriptPath,
-        'transformVia404' => !$wgGenerateThumbnailOnParse,
-        #'deletedDir' => $wgDeletedDirectory,
-        #'deletedHashLevels' => 3 
+	'scriptDirUrl' => $wgScriptPath,
+	'scriptExtension' => $wgScriptExtension,
+	'url' => $wgUploadBaseUrl ? $wgUploadBaseUrl . $wgUploadPath : $wgUploadPath,
+	'hashLevels' => $wgHashedUploadDirectory ? 2 : 0,
+	'thumbScriptUrl' => $wgThumbnailScriptPath,
+	'transformVia404' => !$wgGenerateThumbnailOnParse,
+	 'deletedDir' => $wgDeletedDirectory,
+	 'deletedHashLevels' => 3 
 );
-}
 
 $wgDebugLogFile = "/var/www/debug/abcd";
 $wgShowExceptionDetails = true;
