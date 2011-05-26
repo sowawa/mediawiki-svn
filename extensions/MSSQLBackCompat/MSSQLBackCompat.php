@@ -5,7 +5,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'MSSQLBackCompat',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:MSSQLBackCompat',
 	'author' => 'Sam Reed',
-	'descriptionmsg' => 'Back compat hack for those that need non core MSSQL support (SMW, ED or something)',
+	'description' => 'Back compat hack for those that need non core MSSQL support (SMW, ED or something)',
 );
 
 $dir = dirname( __FILE__ ) . '/';
