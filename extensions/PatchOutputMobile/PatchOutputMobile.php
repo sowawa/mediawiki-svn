@@ -27,11 +27,11 @@ $wgExtensionCredits['other'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:PatchOutputMobile',
 );
 
-$dir = dirname(__FILE__) . DIRECTORY_SEPARATOR;
-$wgExtensionMessagesFiles['PatchOutputMobile'] = $dir . 'PatchOutputMobile.i18n.php';
+$cwd = dirname(__FILE__) . DIRECTORY_SEPARATOR;
+$wgExtensionMessagesFiles['PatchOutputMobile'] = $cwd . 'PatchOutputMobile.i18n.php';
 //autoload extension classes
-$wgAutoloadClasses['DeviceDetection'] = $dir . 'DeviceDetection.php';
-$wgAutoloadClasses['CssDetection']    = $dir . 'CssDetection.php';
+$wgAutoloadClasses['DeviceDetection'] = $cwd . 'DeviceDetection.php';
+$wgAutoloadClasses['CssDetection']    = $cwd . 'CssDetection.php';
 
 $wgExtPatchOutputMobile = new ExtPatchOutputMobile();
 
@@ -39,7 +39,7 @@ $wgHooks['OutputPageBeforeHTML'][] = array( &$wgExtPatchOutputMobile,
 											'onOutputPageBeforeHTML' );
 
 class ExtPatchOutputMobile {
-	const VERSION = '0.3.6';
+	const VERSION = '0.3.7';
 
 	private $doc;
 	
@@ -99,6 +99,10 @@ class ExtPatchOutputMobile {
 		self::$messages['patch-output-mobile-copyright']          = wfMsg( 'patch-output-mobile-copyright' );
 		self::$messages['patch-output-mobile-home-button']        = wfMsg( 'patch-output-mobile-home-button' );
 		self::$messages['patch-output-mobile-random-button']      = wfMsg( 'patch-output-mobile-random-button' );
+		self::$messages['patch-output-mobile-are-you-sure']       = wfMsg( 'patch-output-mobile-are-you-sure' );
+		self::$messages['patch-output-mobile-explain-disable']    = wfMsg( 'patch-output-mobile-explain-disable' );
+		self::$messages['patch-output-mobile-disable-button']     = wfMsg( 'patch-output-mobile-disable-button' );
+		self::$messages['patch-output-mobile-back-button']        = wfMsg( 'patch-output-mobile-back-button' );
 		
 		self::$dir = $wgContLang->getDir();
 		self::$code = $wgContLang->getCode();
@@ -115,8 +119,43 @@ class ExtPatchOutputMobile {
 			$this->contentFormat = 'XHTML';
 		}
 		
-		ob_start( array( $this, 'DOMParse' ) );
+		$m_action = isset( $_GET['m_action'] ) ? $_GET['m_action'] : '';
+
+		if ( $m_action == 'disable_mobile_site' ) {
+			if ( $this->contentFormat == 'XHTML' ) {
+				echo $this->renderDisableMobileSiteXHTML();
+				exit();
+			}
+		}
+		
+		if ( $m_action != 'view_normal_site' ) {
+			ob_start( array( $this, 'DOMParse' ) );
+		}
 		return true;
+	}
+	
+	private function renderDisableMobileSiteXHTML() {
+		if ( $this->contentFormat == 'XHTML' ) {
+			$dir = self::$dir;
+			$code = self::$code;
+			$regular_wikipedia = self::$messages['patch-output-mobile-regular-wikipedia'];
+			$perm_stop_redirect = self::$messages['patch-output-mobile-perm-stop-redirect'];
+			$copyright = self::$messages['patch-output-mobile-copyright'];
+			$home_button = self::$messages['patch-output-mobile-home-button'];
+			$random_button = self::$messages['patch-output-mobile-random-button'];
+			$are_you_sure = self::$messages['patch-output-mobile-are-you-sure'];
+			$explain_disable = self::$messages['patch-output-mobile-explain-disable'];
+			$disable_button = self::$messages['patch-output-mobile-disable-button'];
+			$back_button = self::$messages['patch-output-mobile-back-button'];
+			$title = $are_you_sure;
+			require( 'views/notices/_donate.html.php' );
+			require( 'views/layout/_search_webkit.html.php' );
+			require( 'views/layout/_footmenu_default.html.php' );
+			require( 'views/information/disable.html.php' );
+			$contentHtml = $disableHtml;
+			require( 'views/layout/application.html.php' );
+			return $applicationHtml;
+		}
 	}
 	
 	private function showHideCallbackWML( $matches ) {
