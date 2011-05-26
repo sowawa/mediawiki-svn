@@ -10,9 +10,6 @@ if(!defined('MEDIAWIKI')) {
 
 $dir = dirname(__FILE__) . '/';
 
-#in case we're running a maintenance script and GlobalFunctions.php isn't loaded...
-require_once("$IP/includes/GlobalFunctions.php");
-
 $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'EditUser',
