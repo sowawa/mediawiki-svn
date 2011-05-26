@@ -3,15 +3,16 @@
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'CreativeCoreRdf',
-	'url' => '',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:CreativeCoreRdf',
 	'author' => 'Evan Prodromou',
+	'descriptionmsg' => "CreativeCommons RDF-metadata"
 );
 
-$wgHooks['MediaWikiPerformAction'][] = 'efCreativeCoreRdfPreformAction';
+$wgHooks['MediaWikiPerformAction'][] = 'efCreativeCommonsRdfPreformAction';
 
-$wgAutoloadClasses['CreativeCoreRdf'] = $dir . 'CreativeCoreRdf_body.php';
+$wgAutoloadClasses['CreativeCommonsRdf'] = $dir . 'CreativeCommonsRdf_body.php';
 
-function efCreativeCoreRdfPreformAction( $output, $article, $title, $user, $request, $mediaWiki ) {
+function efCreativeCommonsRdfPreformAction( $output, $article, $title, $user, $request, $mediaWiki ) {
 	if ( $mediaWiki->getAction() !== 'creativecommons' ) {
 		return true;
 	}

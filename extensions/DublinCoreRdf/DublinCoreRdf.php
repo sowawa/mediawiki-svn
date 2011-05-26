@@ -3,8 +3,9 @@
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'DublinCoreRdf',
-	'url' => '',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:DublinCoreRdf',
 	'author' => 'Evan Prodromou',
+	'descriptionmsg' => "Dublin Core RDF-metadata"
 );
 
 $wgHooks['MediaWikiPerformAction'][] = 'efDublinCorePerformAction';
