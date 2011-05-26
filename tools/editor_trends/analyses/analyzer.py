@@ -153,18 +153,20 @@ def generate_chart_data(rts, func, **kwargs):
 
 
     ppills = rts.number_of_processes
-    while ppills > 0:
-        try:
-            res = result.get()
-            if res == True:
-                pbar.update(pbar.currval + 1)
-            else:
-                ppills -= 1
-                var = res
-                print 'ppills: %s' % ppills
-        except Empty:
-            pass
-
+    while True:
+        while ppills > 0:
+            try:
+                res = result.get()
+                if res == True:
+                    pbar.update(pbar.currval + 1)
+                else:
+                    ppills -= 1
+                    var = res
+                    print ppills
+            except Empty:
+                pass
+        break
+    print 'Waiting for tasks...'
     tasks.join()
 
     var = reconstruct_observations(var)

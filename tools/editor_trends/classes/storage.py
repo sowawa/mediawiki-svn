@@ -86,7 +86,7 @@ class AbstractDatabase:
         '''Find multiple observations in a collection'''
 
     @abstractmethod
-    def find_one(self, key, value):
+    def find_one(self, key, value, var=False):
         '''Find a single observation in a collection'''
 
     @abstractmethod
@@ -145,7 +145,7 @@ class Mongo(AbstractDatabase):
 
     def update(self, key, value, data):
         assert isinstance(data, dict), 'You need to feed me dictionaries.'
-        self.db[self.collection].update({key: value}, data, upsert=True)
+        self.db[self.collection].update({key: value}, {'$set': data})
 
     def find(self, key=None, qualifier=None):
         if qualifier == 'min':
@@ -154,13 +154,23 @@ class Mongo(AbstractDatabase):
         elif qualifier == 'max':
             return self.db[self.collection].find({
                 key : {'$ne' : False}}).sort(key, pymongo.DESCENDING).limit(1)[0]
+        elif qualifier:
+            return self.db[self.collection].find({key : qualifier})
         elif key != None:
             return self.db[self.collection].find({}, fields=[key])
         else:
             return self.db[self.collection].find()
 
-    def find_one(self, key, value):
-        return self.db[self.collection].find_one({key: value})
+    def find_one(self, key, value, vars=None):
+        if vars:
+            #if you only want to retrieve a specific variable(s) then you need to
+            #specify vars, if vars is None then you will get the entire BSON object
+            vars = vars.split(',')
+            vars = dict([(var, 1) for var in vars])
+            return self.db[self.collection].find_one({key: value}, vars)
+        else:
+            return self.db[self.collection].find_one({key: value})
+
 
     def drop_collection(self):
         self.db.drop_collection(self.collection)

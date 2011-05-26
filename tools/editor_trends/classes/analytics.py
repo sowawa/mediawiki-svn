@@ -92,7 +92,6 @@ class Analyzer(consumers.BaseConsumer):
         project and then calls the plugin that does the actual mapping.
         '''
         db = storage.init_database(self.rts.storage, self.rts.dbname, self.rts.editors_dataset)
-        x = 0
         while True:
             try:
                 editor_id = self.tasks.get(block=False)

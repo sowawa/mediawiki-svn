@@ -1,3 +1,17 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+'''
+Copyright (C) 2010 by Diederik van Liere (dvanliere@gmail.com)
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License version 2
+as published by the Free Software Foundation.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU General Public License for more details, at
+http://www.fsf.org/licenses/gpl.html
+'''
+
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)'])
 __email__ = 'dvanliere at gmail dot com'
 __date__ = '2011-05-17'
@@ -106,6 +120,10 @@ def calculate_distance_matrix(vars, obs_a, obs_b):
 
 
 def normalize_dataset(vars, obs):
+    '''
+    This function rescales a dataset by dividing the observation by the standard
+    deviation (which results in a Z-score)
+    '''
     editors = obs.keys()
     data = []
     for var in vars:
@@ -142,6 +160,7 @@ def find_partner(distances):
         max_d = max(data.keys())
         match = data[max_d]
         matches.append((ppi_editor, match))
+        #remove match to make sure that every matched pair is unique
         for editor in distances:
             try:
                 distances[editor].pop(match)

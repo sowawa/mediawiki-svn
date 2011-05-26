@@ -179,6 +179,7 @@ def determine_number_edits(edits, first_year, final_year):
     dc = cleanup_datacontainer(dc, {})
     return dc
 
+
 def calculate_cum_edits(edits):
     cum_edit_count_main_ns = 0
     cum_edit_count_other_ns = 0
@@ -190,6 +191,7 @@ def calculate_cum_edits(edits):
                 cum_edit_count_other_ns += 1
 
     return cum_edit_count_main_ns, cum_edit_count_other_ns
+
 
 def determine_articles_workedon(edits, first_year, final_year):
     '''

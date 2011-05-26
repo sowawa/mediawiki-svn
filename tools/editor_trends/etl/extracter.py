@@ -133,7 +133,7 @@ def parse_xml(fh, rts, cache, process_id, file_id):
                 '''
                 This function determines the title of an article and the
                 namespace to which it belongs. Then, if the namespace is one
-                which we are interested set parse to True so that we start
+                which we are interested in set parse to True so that we start
                 parsing this article, else it will skip this article. 
                 '''
                 title = variables.parse_title(elem)

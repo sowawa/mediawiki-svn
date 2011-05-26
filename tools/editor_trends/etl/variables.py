@@ -254,6 +254,7 @@ def determine_past_revert(hash, revert, reverts):
         past_revert['reverted_contributor'] = -1
     return past_revert
 
+
 def is_revision_reverted(hash_cur, hashes):
     '''
     Determine whether an edit was reverted or not based on md5 hashes
@@ -314,7 +315,7 @@ def determine_xml_namespace(siteinfo):
     '''
     This function determines the xml_namespace version
     '''
-    for elem in siteinfo    :
+    for elem in siteinfo:
         if elem.tag.endswith('sitename'):
             xml_namespace = elem.tag
             pos = xml_namespace.find('sitename')
