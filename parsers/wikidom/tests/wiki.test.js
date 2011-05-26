@@ -1,8 +1,10 @@
 module( 'Wiki DOM Serialization' );
 
+var context = new wiki.Context();
+
 function assertSerializations( tests ) {
-	var htmlRenderer = new wiki.HtmlRenderer();
-	var wikitextRenderer = new wiki.WikitextRenderer();
+	var htmlRenderer = new wiki.HtmlRenderer( context );
+	var wikitextRenderer = new wiki.WikitextRenderer( context );
 	for ( var i = 0; i < tests.length; i++ ) {
 		equals(
 			htmlRenderer.render( tests[i].dom ),
