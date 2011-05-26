@@ -2,16 +2,16 @@
 
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
-	'name' => 'DublinCore',
+	'name' => 'DublinCoreRdf',
 	'url' => '',
 	'author' => 'Evan Prodromou',
 );
 
-$wgHooks['MediaWikiPerformAction'][] = 'efDublinCorePreformAction';
+$wgHooks['MediaWikiPerformAction'][] = 'efDublinCorePerformAction';
 
 $wgAutoloadClasses['DublinCoreRdf'] = $dir . 'DublinCoreRdf_body.php';
 
-function efDublinCorePreformAction( $output, $article, $title, $user, $request, $mediaWiki ) {
+function efDublinCorePerformAction( $output, $article, $title, $user, $request, $mediaWiki ) {
 	if ( $mediaWiki->getAction() !== 'dublincore' ) {
 		return true;
 	}
