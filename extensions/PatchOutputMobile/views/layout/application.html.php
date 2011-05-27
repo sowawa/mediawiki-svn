@@ -18,8 +18,8 @@ $applicationHtml = <<<EOT
         }
       //]]>
     </script> 
-    <script type="text/javascript" language="javascript" SRC="http://en.m.wikipedia.org/javascripts/jquery.js"></script> 
-    <script type="text/javascript" language="javascript" SRC="http://en.m.wikipedia.org/javascripts/application.js"></script> 
+    <script type="text/javascript" language="javascript" SRC="/extensions/PatchOutputMobile/javascripts/jquery.js"></script> 
+    <script type="text/javascript" language="javascript" SRC="/extensions/PatchOutputMobile/javascripts/application.js"></script> 
   </head>
   <body>
 	{$searchWebkitHtml}
