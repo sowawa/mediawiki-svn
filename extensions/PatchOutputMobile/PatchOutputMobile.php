@@ -39,7 +39,7 @@ $wgHooks['OutputPageBeforeHTML'][] = array( &$wgExtPatchOutputMobile,
 											'onOutputPageBeforeHTML' );
 
 class ExtPatchOutputMobile {
-	const VERSION = '0.4.0';
+	const VERSION = '0.4.1';
 
 	private $doc;
 	
@@ -147,7 +147,7 @@ class ExtPatchOutputMobile {
 			$explainDisable = self::$messages['patch-output-mobile-explain-disable'];
 			$disableButton = self::$messages['patch-output-mobile-disable-button'];
 			$backButton = self::$messages['patch-output-mobile-back-button'];
-			$title = $are_you_sure;
+			$title = $areYouSure;
 			$cssFileName = ( isset( self::$device['css_file_name'] ) ) ? self::$device['css_file_name'] : 'default';
 			require( 'views/notices/_donate.html.php' );
 			require( 'views/layout/_search_webkit.html.php' );
