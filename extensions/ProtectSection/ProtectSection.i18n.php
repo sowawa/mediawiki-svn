@@ -224,6 +224,14 @@ $messages['fr'] = array(
 	'right-protectsection' => 'Protéger les sections de page',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'protectsection_forbidden' => 'Dèfendu',
+	'right-protectsection' => 'Protègiér les sèccions de pâge',
+);
+
 /** Galician (Galego)
  * @author Toliño
  * @author Xosé

@@ -2629,7 +2629,7 @@ Bitte erstelle sie und führe configure.sql darin aus oder korrigiere ihren Name
 	'configure-throttle-summary' => '$1 Aktionen in $2 Sekunden.',
 	'configure-throttle-group' => 'Typ',
 	'configure-throttle-limit' => 'Limit',
-	'configure-throttle-none' => 'Kein Limit',
+	'configure-throttle-none' => 'Keine Begrenzung',
 	'configure-condition-operator' => 'Operator:',
 	'configure-condition-operator-or' => 'Oder',
 	'configure-condition-operator-and' => 'Und',

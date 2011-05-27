@@ -832,6 +832,7 @@ $messages['frp'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Nion « $1 »',
+	'recordadmin-properties' => 'Propriètâts',
 );
 
 /** Traditional Gan script (‪贛語(繁體)‬)

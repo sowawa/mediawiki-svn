@@ -206,6 +206,13 @@ $messages['fr'] = array(
 	'donationform-submit' => 'Faire un don avec PayPal',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'donationform-submit' => 'Balyér avouéc PayPal',
+);
+
 /** Galician (Galego)
  * @author Toliño
  * @author Xosé

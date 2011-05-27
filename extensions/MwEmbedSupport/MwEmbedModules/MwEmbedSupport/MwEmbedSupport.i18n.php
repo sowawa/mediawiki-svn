@@ -323,6 +323,16 @@ $messages['fr'] = array(
 	'mwe-test-plural' => "J'ai exécuté {{PLURAL:$1|$1 test|$1 tests}}",
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'mwe-loading' => 'Chargement ...',
+	'mwe-ok' => 'D’acôrd',
+	'mwe-cancel' => 'Anular',
+	'mwe-test-plural' => 'J’é ègzécutâ $1 èprôv{{PLURAL:$1|a|es}}',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

@@ -91,6 +91,17 @@ $messages['fr'] = array(
 	'researchtools-page-prefs' => 'Statistiques des préférences',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'researchtools' => 'Outils de rechèrche',
+	'researchtools-page-dashboard' => 'Tablô de bôrd',
+	'researchtools-page-surveys' => 'Rèponses u sondâjo',
+	'researchtools-page-clicks' => 'Survelyence des clics',
+	'researchtools-page-prefs' => 'Statistiques de les prèferences',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -224,6 +235,7 @@ $messages['nl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
@@ -231,7 +243,7 @@ $messages['pms'] = array(
 	'researchtools-desc' => "Ansema d'utiss ch'a van bin për fé dë studi d'arserca dj'utent",
 	'researchtools-page-dashboard' => 'Cruscòt',
 	'researchtools-page-surveys' => "Arspòsta a l'Anterogassion",
-	'researchtools-page-clicks' => 'Sgnaca Trassé',
+	'researchtools-page-clicks' => 'Trassa dle selession',
 	'researchtools-page-prefs' => 'Statìstiche dle Preferense',
 );
 

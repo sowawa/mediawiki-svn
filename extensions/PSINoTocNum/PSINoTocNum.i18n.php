@@ -134,6 +134,13 @@ $messages['fr'] = array(
 	'psinotocnum-desc' => 'Nouveau mot magique « <nowiki>__NOTOCNUM__</nowiki> »',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'psinotocnum-desc' => 'Mot magico novél « <nowiki>__NOTOCNUM__</nowiki> »',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

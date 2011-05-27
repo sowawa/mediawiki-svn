@@ -150,6 +150,14 @@ $messages['fr'] = array(
 	'htmlets-loadfailed' => 'Impossible de charger le fichier HTML $1',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'htmlets-filenotfound' => 'Empossiblo de trovar lo fichiér HTML $1',
+	'htmlets-loadfailed' => 'Empossiblo de chargiér lo fichiér HTML $1',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

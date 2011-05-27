@@ -510,6 +510,7 @@ $messages['pt'] = array(
  */
 $messages['pt-br'] = array(
 	'addmediawizard-desc' => 'Assistente para o carregamento de multimídias, desenvolvido em parceria pela Kagura e a Wikimedia Foundation',
+	'addmediawizard-loading' => 'Carregando o assistente de carregamento de mídia',
 );
 
 /** Tarandíne (Tarandíne)

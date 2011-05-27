@@ -270,6 +270,16 @@ $messages['fr'] = array(
 	'right-viewpiwik' => 'Voir les [[Special:Piwik|statistiques de Piwik]]',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'piwik-lastvisits' => 'Dèrriéres visites',
+	'piwik-countries' => 'Payis',
+	'piwik-browsers' => 'Navigators',
+	'right-viewpiwik' => 'Vêre les [[Special:Piwik|statistiques de Piwik]]',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

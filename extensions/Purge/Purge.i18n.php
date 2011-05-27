@@ -169,6 +169,13 @@ $messages['fr'] = array(
 	'purge-desc' => 'Ajoute un onglet « Purger » sur toutes les pages normales et active sa sélection pour les utilisateurs anonymes pour une purge rapide du cache.',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'purge' => 'purgiér',
+);
+
 /** Galician (Galego)
  * @author Toliño
  * @author Xosé

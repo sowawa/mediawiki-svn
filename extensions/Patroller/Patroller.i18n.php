@@ -740,9 +740,26 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'patrol' => 'Contrôlo des changements',
+	'patrol-endorse' => 'Accèptar',
+	'patrol-revert' => 'Rètablir',
 	'patrol-revert-reason' => 'Rêson :',
+	'patrol-skip' => 'Passar',
+	'patrol-reverting' => 'Anulacion : $1',
+	'patrol-endorsed-ok' => 'Lo changement at étâ marcâ coment controlâ.',
+	'patrol-endorsed-failed' => 'Lo changement at pas possu étre controlâ.',
+	'patrol-reverted-ok' => 'Lo changement at étâ anulâ.',
+	'patrol-reverted-failed' => 'Lo changement at pas possu étre anulâ.',
+	'patrol-skipped-ok' => 'Ignorar lo changement.',
+	'patrol-reasons' => '* Simplo vandalismo
+* Èprôva de comencient
+* Vêde la pâge de discussion',
+	'patrol-another' => 'Fâre vêre un ôtro changement, se disponiblo.',
+	'patrol-resume' => 'Clicar ique por reprendre.',
 	'group-patroller' => 'Patrolyors',
 	'group-patroller-member' => 'Patrolyor',
+	'grouppage-patroller' => '{{ns:project}}:Patrolyors',
+	'right-patroller' => 'Controlar des pâges',
 );
 
 /** Northern Frisian (Nordfriisk)

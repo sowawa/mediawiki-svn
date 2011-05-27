@@ -283,6 +283,30 @@ $messages['fr'] = array(
 	'narayam-bn-nkb' => 'NKB bengali',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'narayam-eo' => 'Èsperanto',
+	'narayam-hi-inscript' => 'InScript hindi',
+	'narayam-kn' => 'Translitèracion canadâ',
+	'narayam-kn-inscript' => 'InScript canadâ',
+	'narayam-ml' => 'Translitèracion malayâlame',
+	'narayam-ml-inscript' => 'InScript malayâlame',
+	'narayam-or' => 'Translitèracion oriyâ',
+	'narayam-or-inscript' => 'InScript oriyâ',
+	'narayam-sa' => 'Translitèracion sanscrite',
+	'narayam-sa-inscript' => 'InScript sanscrite',
+	'narayam-si-singlish' => 'Singlish cingalês',
+	'narayam-si-wijesekara' => 'Wijesekara cingalês',
+	'narayam-ta99' => 'Tamil99',
+	'narayam-ta' => 'Translitèracion tamoule',
+	'narayam-te-inscript' => 'InScript tèlougou',
+	'narayam-bn-avro' => 'Avro bengali',
+	'narayam-bn-inscript' => 'InScript bengali',
+	'narayam-bn-nkb' => 'NKB bengali',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

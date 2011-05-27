@@ -482,7 +482,16 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'player' => 'Liésor',
+	'player-title' => 'Liésor',
+	'player-playertitle' => 'Liésor : $1',
+	'player-file' => 'Nom du fichiér',
 	'player-play' => 'Jouyér',
+	'player-not-allowed' => 'format pas ôtorisâ',
+	'player-not-found' => 'fichiér entrovâblo',
+	'player-invalid-title' => 'titro envalido',
+	'player-clicktoplay' => 'Liére $1',
+	'player-goto-player' => 'liésor',
 	'player-goto-page' => 'Pâge',
 	'player-goto-file' => 'fichiér',
 );

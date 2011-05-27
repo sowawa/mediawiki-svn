@@ -547,8 +547,8 @@ $messages['pms'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Crea',
 	'articletocategory2-create-category-under-category-text' => 'Gionta na categorìa a sta categorìa',
 	'articletocategory2-create-category-under-category-button' => 'Crea',
-	'right-ArticleToCategory2' => 'Gionta pàgina a la categorìa',
-	'right-ArticleToCategory2AddCat' => 'Gionta categorìa a la categorìa',
+	'right-ArticleToCategory2' => 'Gionté la pàgina a la categorìa',
+	'right-ArticleToCategory2AddCat' => 'Gionté na categorìa a la categorìa',
 );
 
 /** Pashto (پښتو)

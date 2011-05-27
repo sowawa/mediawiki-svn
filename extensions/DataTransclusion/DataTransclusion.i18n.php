@@ -241,6 +241,14 @@ Le premier argument ou « modèle » est obligatoire.',
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> n’existe pas.',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'datatransclusion-bad-template-name' => 'Crouyo nom de modèlo : $1.',
+	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> ègziste pas.',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

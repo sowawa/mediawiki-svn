@@ -40,6 +40,13 @@ $messages['fr'] = array(
 	'resumableupload-desc' => 'Support de téléversement qui peut être repris',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'resumableupload-desc' => 'Assistance de tèlèchargement que pôt étre reprês',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -66,6 +73,13 @@ $messages['ia'] = array(
  */
 $messages['id'] = array(
 	'resumableupload-desc' => 'Dukungan pengunggahan berlanjut',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'resumableupload-desc' => 'Ënnerstëtzung fir mam Eropluede weiderzefueren',
 );
 
 /** Macedonian (Македонски)

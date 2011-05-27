@@ -773,10 +773,21 @@ Cliquez sur le bouton ci-dessous pour vous abonner.',
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'povwatch' => 'PovWatch',
+	'povwatch_invalid_title' => 'Lo titro spècefiâ est fôx.',
+	'povwatch_subscriber_list_intro' => '<strong>Lista ux abonâs</strong>',
+	'povwatch_unknown_subpage' => 'Sot-pâge encognua.',
+	'povwatch_push' => 'Enscrire',
 	'povwatch_title' => 'Titro :',
 	'povwatch_comment' => 'Comentèro por lo jornal :',
+	'povwatch_no_log' => 'Ègziste gins d’entrâ dens lo jornal.',
+	'povwatch_no_subscribers' => 'Pas més nion est abonâ.',
+	'povwatch_unsubscribe' => 'Anular l’abonement',
+	'povwatch_subscribe' => 'S’abonar',
+	'povwatch_added' => 'apondu',
 );
 
 /** Galician (Galego)

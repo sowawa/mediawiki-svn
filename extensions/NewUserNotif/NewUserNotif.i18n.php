@@ -248,6 +248,13 @@ $messages['fr'] = array(
 Un nouveau compte utilisateur, $2, a été créé sur $3 le $4.',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'newusernotifsubj' => 'Notificacion a un novél utilisator por $1',
+);
+
 /** Irish (Gaeilge)
  * @author Alison
  */

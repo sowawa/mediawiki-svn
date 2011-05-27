@@ -116,6 +116,18 @@ $messages['fr'] = array(
 	'right-searchlog-read' => "Voir l'historique de recherches",
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'searchlog' => 'Historico de les rechèrches',
+	'searchlog-unicode' => 'Montrar d’ense l’Unicode',
+	'searchlog-timeperiod' => 'Chouèsésséd un temps :',
+	'searchlog-entire' => 'Tot l’historico',
+	'searchlog-phrase' => 'Frâsa de rechèrche',
+	'right-searchlog-read' => 'Vêre l’historico de les rechèrches',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

@@ -378,6 +378,10 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'framedvideo_errors' => 'Un mouél d’èrrors sont arrevâs !',
+	'framedvideo_error' => 'Una èrror est arrevâ !',
+	'framedvideo_error_unknown_type' => 'Numerô de sèrviço vidèô encognu (« $1 ») : controlâd lo paramètre « type ».',
+	'framedvideo_error_no_id_given' => 'Paramètre « id » manquent.',
 	'framedvideo_helppage' => 'Help:Vidèô',
 );
 

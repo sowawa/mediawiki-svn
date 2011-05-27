@@ -3742,6 +3742,13 @@ $messages['ig'] = array(
 	'mwe-link-login' => 'banyé',
 );
 
+/** Ingush (ГІалгІай Ğalğaj)
+ * @author Sapral Mikail
+ */
+$messages['inh'] = array(
+	'mwe-link' => 'Iинк',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -5781,7 +5788,7 @@ $messages['pt-br'] = array(
 	'mwe-thumbnail-more' => 'Ampliar',
 	'mwe-filesource' => 'Fonte:',
 	'mwe-filestatus' => 'Estado dos direitos de autor:',
-	'mwe-loading-add-media-wiz' => 'Carregando o assistente de upload de multimídia',
+	'mwe-loading-add-media-wiz' => 'Carregando o assistente de carregamento de mídia',
 	'mwe-imported_from' => '$1 importado de [$2 $3]. Consulte a [$4 página do recurso] original para mais informações.',
 	'mwe-import-description' => '$1, importado de $2',
 	'mwe-select_file' => 'Selecionar arquivo',
@@ -5834,6 +5841,7 @@ Você pode $1 e depois $2',
 	'mwe-results_from' => 'Resultados de $1',
 	'mwe-missing_desc_see_source' => 'Este recurso não tem uma descrição. Verifique a [$1 fonte] e ajude a descrevê-lo, por favor.',
 	'mwe-am-config_error' => 'Erro de configuração do assistente de carregamento de multimídia: $1',
+	'mwe-your-recent-uploads' => 'Os seus uploads',
 	'mwe-your-recent-uploads-to' => 'Os seus uploads recentes para $1',
 	'mwe-no_recent_uploads' => 'Nenhum carregamento recente',
 	'mwe-not-logged-in-uploads' => 'Você pode não estar autenticado, por isso os carregamentos recentes podem não ser exibidos. [$1 Por favor autentique-se] e [$2 tente novamente].',

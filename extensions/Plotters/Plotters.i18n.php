@@ -315,6 +315,20 @@ Cette vue d’ensemble permet d’accéder facilement aux messages système qui 
 	'plotters-errors' => '{{PLURAL:$1|Erreur|Erreurs}} de traceurs :',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'plotters' => 'Traciors',
+	'plotters-title' => 'Traciors',
+	'plotters-uses' => 'Usâjos',
+	'plotters-missing-script' => 'Nion scripte at étâ dèfeni.',
+	'plotters-missing-arguments' => 'Nion argument at étâ spècefiâ.',
+	'plotters-no-data' => 'Niona balyê at étâ balyê.',
+	'plotters-invalid-renderer' => 'Un motor de rendu envalido at étâ chouèsi.',
+	'plotters-errors' => 'Èrror{{PLURAL:$1||s}} de traciors :',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

@@ -354,14 +354,15 @@ $messages['no'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'bookmanager-desc' => 'Utiss për lìber',
 	'bm-printversion' => 'Version dë stampa',
-	'bm-printversion-desc' => "A génera na [[Special:PrintVersion|vërsion dë stampa]] d'un lìber",
-	'bm-printversion-no-book' => "Për piasì ansëriss ël nòm d'un lìber për pijé la soa vërsion dë stampa.",
-	'bm-printversion-inexistent-book' => "Lìber pa trovà. Për piasì ansëriss ël nòm d'un lìber esistent për pijé soa vërsion dë stampa.",
+	'bm-printversion-desc' => "A génera na [[Special:PrintVersion|version dë stampa]] d'un lìber",
+	'bm-printversion-no-book' => "Për piasì, ch'a anserissa ël nòm d'un lìber për pijé soa version dë stampa.",
+	'bm-printversion-inexistent-book' => "Lìber pa trovà. Për piasì, ch'a anserissa ël nòm d'un lìber esistent për pijé soa version dë stampa.",
 );
 
 /** Portuguese (Português)

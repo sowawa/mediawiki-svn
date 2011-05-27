@@ -143,6 +143,14 @@ $messages['fr'] = array(
 	'pdfbook-desc' => 'Compose un livre à partir des pages d’une catégorie et exporte comme un livre au format PDF',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'pdfbook-action' => 'Emprimar u format PDF',
+	'pdfbook-log' => '$1 èxportâ desot fôrma de lévro PDF',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

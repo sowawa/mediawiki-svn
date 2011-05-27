@@ -234,6 +234,17 @@ $messages['fr'] = array(
 	'right-purgecache' => 'Vider la table objectcache',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'purgecache' => 'Purgiér lo cache',
+	'purgecache-warning' => 'Cen purgierat les trâbles du cache.',
+	'purgecache-purged' => 'Lo cache at étâ purgiê.',
+	'purgecache-button' => 'Purgiér',
+	'right-purgecache' => 'Vouedar la trâbla OBJECTCACHE',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Toliño

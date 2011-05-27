@@ -328,9 +328,19 @@ $messages['fr'] = array(
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'mostrevisors' => 'Pâges avouéc lo més de rèvisors',
+	'mostrevisors-limitlinks' => 'Fâre vêre tant qu’a $1 pâges',
+	'mostrevisors-namespace' => 'Èspâço de noms :',
+	'mostrevisors-none' => 'Gins d’entrâ trovâ.',
+	'mostrevisors-showing' => 'Visualisacion de l{{PLURAL:$1|a pâge|es $1 pâges}} :',
 	'mostrevisors-submit' => 'Sometre',
+	'mostrevisors-showredir' => 'Fâre vêre les pâges de redirèccion',
+	'mostrevisors-hideredir' => 'Cachiér les pâges de redirèccion',
+	'mostrevisors-users' => '- $1 changior{{PLURAL:$1||s}}',
+	'mostrevisors-viewcontributors' => 'Vêre los contributors principâls',
 );
 
 /** Galician (Galego)

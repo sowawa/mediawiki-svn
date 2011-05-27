@@ -240,6 +240,17 @@ $messages['fr'] = array(
 	'multiboilerplate-special-define-in-interface' => 'Les modèles sont définis dans [[MediaWiki:Multiboilerplate]].',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'multiboilerplate-legend' => 'Chouèsir la pâge a apondre',
+	'multiboilerplate-submit' => 'Chargiér',
+	'boilerplates' => 'Modèlos disponiblos',
+	'multiboilerplate-special-define-in-localsettings' => 'Los modèlos sont dèfenis dens LocalSettings.',
+	'multiboilerplate-special-define-in-interface' => 'Los modèlos sont dèfenis dens [[MediaWiki:Multiboilerplate]].',
+);
+
 /** Western Frisian (Frysk)
  * @author Snakesteuben
  */

@@ -124,6 +124,15 @@ $messages['fr'] = array(
 	'specialarc2admin' => 'Page d’administration du dépôt RDF ARC2',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'rdfimport' => 'Importacion RDF',
+	'sparqlendpoint' => 'Pouent final SPARQL',
+	'specialarc2admin' => 'Pâge d’administracion du dèpôt RDF ARC2',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

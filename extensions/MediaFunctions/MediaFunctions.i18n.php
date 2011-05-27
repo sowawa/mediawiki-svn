@@ -206,6 +206,14 @@ $messages['fr'] = array(
 	'mediafunctions-not-exist' => '« $1 » n’existe pas',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'mediafunctions-invalid-title' => '« $1 » est pas un titro valido',
+	'mediafunctions-not-exist' => '« $1 » ègziste pas',
+);
+
 /** Galician (Galego)
  * @author Toliño
  * @author Xosé

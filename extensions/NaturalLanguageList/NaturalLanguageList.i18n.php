@@ -143,6 +143,13 @@ $messages['fr'] = array(
 	'nll-lastseparator' => '&#32;et&#32;',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'nll-lastseparator' => '&#32;et&#32;',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

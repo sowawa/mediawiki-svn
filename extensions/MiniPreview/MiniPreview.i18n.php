@@ -305,6 +305,16 @@ $messages['fr'] = array(
 * Self',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'minipreview-files_in_category' => "Ceta catègorie contint '''$1''' fichiér{{PLURAL:$1||s}}.",
+	'minipreview-files_in_gallery' => "Ceta galerie contint '''$1''' fichiér{{PLURAL:$1||s}}.",
+	'minipreview-no_more_files_here' => 'Pas més gins de fichiér dens ceta dirèccion.',
+	'minipreview-no_category_gallery' => 'Gins de catègorie ni de galerie !',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Toliño

@@ -302,9 +302,12 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'newschannel' => 'Chêna de novèles',
 	'newschannel_format' => 'Format :',
 	'newschannel_limit' => 'Limita :',
 	'newschannel_include_category' => 'Catègorie(s) de ples :',
+	'newschannel_exclude_category' => 'Catègorie èxcllua :',
+	'newschannel_submit_button' => 'Fâre lo flux',
 );
 
 /** Irish (Gaeilge)

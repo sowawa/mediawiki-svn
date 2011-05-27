@@ -400,9 +400,13 @@ $messages['frp'] = array(
 	'accountmanager' => 'Administrator de comptos',
 	'am-username' => 'Nom d’utilisator',
 	'am-email' => 'mèssâjo',
+	'am-active' => 'actif',
+	'nss-rights' => 'drêts',
 	'nss-save-changes' => 'Sôvar los changements',
 	'nss-create-account-header' => 'Fâre un compto novél',
 	'nss-create-account' => 'Fâre lo compto',
+	'nss-no-mail' => 'Pas mandar de mèssâjo',
+	'nss-welcome-mail-subject' => 'Crèacion de compto',
 );
 
 /** Irish (Gaeilge)

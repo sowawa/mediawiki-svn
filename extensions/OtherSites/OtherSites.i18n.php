@@ -193,6 +193,13 @@ $messages['fr'] = array(
 	'othersites-desc' => 'Déplace dans leurs propres composants d’interface les liens interwiki autres que les liens vers d’autres langues',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'othersites' => 'Ôtros setos',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

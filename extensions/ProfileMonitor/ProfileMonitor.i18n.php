@@ -344,7 +344,14 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'profiling' => 'Balyês d’èstimacion',
+	'profiling-wildcard' => 'Utilisar un pâssa-pertot',
 	'profiling-ok' => 'Accèptar',
+	'profiling-data' => 'Balyês d’èstimacion de « $1 »',
+	'profiling-data-count' => 'Compto',
+	'profiling-data-time' => 'Temps (totâl)',
+	'profiling-data-average' => 'Temps (moyen)',
+	'profiling-no-data' => 'Gins de balyê que corrèspond trovâ.',
 );
 
 /** Galician (Galego)

@@ -614,6 +614,18 @@ Les images non pertinentes pourront être supprimées immédiatement. Voyez la p
 	'multiupload-blank' => 'Aucun fichier sélectionné',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'multipleupload' => 'Tèlèchargiér un mouél de fichiérs',
+	'multipleupload-saveallfiles' => 'Sôvar tôs los fichiérs',
+	'multipleupload-page' => '{{ns:project}}:Règlles de suprèssion de fichiérs',
+	'multiupload-fileuploaded' => 'Fichiér tèlèchargiê.',
+	'multiupload-toolbox' => 'Tèlèchargiér un mouél de fichiérs',
+	'multiupload-blank' => 'Gins de fichiér chouèsi',
+);
+
 /** Western Frisian (Frysk)
  * @author SK-luuut
  * @author Snakesteuben

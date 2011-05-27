@@ -209,6 +209,10 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'semanticformsinputs-wrongformat' => 'Crouyo format.',
+	'semanticformsinputs-close' => 'Cllôre',
+	'semanticformsinputs-prev' => 'Devant',
+	'semanticformsinputs-next' => 'Aprés',
+	'semanticformsinputs-today' => 'Houé',
 );
 
 /** Galician (Galego)

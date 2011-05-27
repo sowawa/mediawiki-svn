@@ -334,6 +334,13 @@ $messages['ksh'] = array(
 	'apisb-desc' => 'Hellef noh Fähler ze söhke bei [http://www.mediawiki.org/wiki/API MediaWiki <i lang="en">API</i>] Oprohfe uss_em Brauser.',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'apisb-parameters' => 'Parametre',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -410,7 +417,7 @@ $messages['ms'] = array(
 	'apisb-select-action' => 'Pilih tindakan',
 	'apisb-select-query' => 'Apa untuk ditanya?',
 	'apisb-select-value' => 'Pilih nilai',
-	'apisb-loading' => 'Sedang dimuatkan...',
+	'apisb-loading' => 'Memuatkan...',
 	'apisb-load-error' => 'Ralat ketika memuatkan keterangan API',
 	'apisb-request-error' => 'Ralat ketika melakukan permohonan API',
 	'apisb-namespaces-error' => 'Ralat ketika memuatkan ruang nama',
@@ -511,6 +518,13 @@ Consulte a [http://www.mediawiki.org/wiki/API documentação da API] para inform
 	'apisb-query-prop' => 'Propriedades',
 	'apisb-query-list' => 'Listas',
 	'apisb-query-meta' => 'Meta informação',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'apisb-desc' => 'Permite depurar chamadas do [http://www.mediawiki.org/wiki/API API do MediaWiki] a partir do navegador',
 );
 
 /** Tarandíne (Tarandíne)

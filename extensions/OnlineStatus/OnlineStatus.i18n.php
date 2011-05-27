@@ -480,9 +480,13 @@ $messages['fr'] = array(
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
 	'onlinestatus-tab' => 'Statut',
+	'onlinestatus-toggles-desc' => 'Voutron statut :',
+	'onlinestatus-toggle-offline' => 'Absent',
+	'onlinestatus-toggle-online' => 'Present',
 );
 
 /** Galician (Galego)

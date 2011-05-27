@@ -309,6 +309,25 @@ Voyez le $2 pour un journal des blanchissements récents.',
 	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|Remplir]] la table des pages blanchies',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'purewikideletion' => 'Pura suprèssion vouiqui',
+	'randomexcludeblank' => 'Pâge a l’hasârd (èxcllure les pâges blanchies)',
+	'populateblankedpagestable' => 'Remplir la trâbla de les pâges blanchies',
+	'purewikideletion-pref-watchblank' => 'Apondre les pâges que blanchésso a ma lista de survelyence',
+	'purewikideletion-pref-watchunblank' => 'Apondre les pâges que dè-blanchésso a ma lista de survelyence',
+	'blank-log' => 'blanchiments',
+	'blank-log-name' => 'Jornal des blanchiments',
+	'blank-log-entry-blank' => 'at blanchi $1',
+	'blank-log-entry-unblank' => 'at dè-blanchi $1',
+	'blank-log-link' => '[[{{#Special:Log}}/blank|jornal des blanchiments]]',
+	'purewikideletion-blanknologin' => 'Pas branchiê',
+	'purewikideletion-population-done' => 'Remplissâjo de la trâbla blanked_page fêt.',
+	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|Remplir]] la trâbla de les pâges blanchies',
+);
+
 /** Galician (Galego)
  * @author Gallaecio
  * @author Toliño

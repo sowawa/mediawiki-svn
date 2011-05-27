@@ -307,6 +307,26 @@ $messages['fr'] = array(
 	'pf-header-approve' => 'Approuver',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'packageforce' => 'PackageForce',
+	'packageforceadmin' => 'Administracion de PackageForce',
+	'pf-desc' => '[[Special:PackageForce|Tèlècharge des paquèts]] de modèlos utilos, ....',
+	'pf-admin-menu-default' => 'Per dèfôt',
+	'pf-admin-menu-unsortedtemplates' => 'Modèlos p’oncor triyês',
+	'pf-admin-link-view-documentation' => 'Vêre la documentacion liyê a la pâge.',
+	'pf-admin-link-editlink-page' => 'Changiér la pâge',
+	'pf-admin-link-approve' => 'Aprovar la pâge',
+	'pf-header-documentation' => 'Documentacion',
+	'pf-header-in_packages' => 'Paquèts',
+	'pf-header-edit' => 'Lim por changiér',
+	'pf-header-type' => 'Tipo de pâge',
+	'pf-header-page_title' => 'Titro',
+	'pf-header-approve' => 'Aprovar',
+);
+
 /** Galician (Galego)
  * @author McDutchie
  * @author Toliño

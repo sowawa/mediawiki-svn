@@ -243,9 +243,13 @@ $messages['fr'] = array(
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'pageby-first' => 'Pâge fêta per $1, $2',
+	'pageby-last' => 'Dèrriér <a href="$3">changement</a> lo $1, $2',
 	'pageby-contributors' => 'Contributors :',
+	'pageby-anon' => '<i>anonimo</i>',
 );
 
 /** Galician (Galego)

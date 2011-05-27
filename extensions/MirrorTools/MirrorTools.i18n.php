@@ -124,6 +124,16 @@ $messages['fr'] = array(
 	'grouppage-MirrorTools' => '{{ns:project}}:Utilisateurs de l’outil miroir',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'mirrortools' => 'OutilsMerior',
+	'group-MirrorTools' => 'Utilisators de l’outil merior',
+	'group-MirrorTools-member' => 'utilisator de l’outil merior',
+	'grouppage-MirrorTools' => '{{ns:project}}:Utilisators de l’outil merior',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
