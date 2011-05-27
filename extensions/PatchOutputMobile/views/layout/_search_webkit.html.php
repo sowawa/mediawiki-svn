@@ -15,8 +15,8 @@ $searchWebkitHtml = <<<EOD
     </form> 
   </div> 
   <div class='nav' id='nav'> 
-    <form method="get" action="/"><button type="submit" id="homeButton">{$home_button}</button></form> 
-    <form method="get" action="/wiki/::Random"><button type="submit" id="randomButton">{$random_button}</button></form> 
+    <form method="get" action="/"><button type="submit" id="homeButton">{$homeButton}</button></form> 
+    <form method="get" action="/wiki/::Random"><button type="submit" id="randomButton">{$randomButton}</button></form> 
   </div> 
 </div>
 EOD;

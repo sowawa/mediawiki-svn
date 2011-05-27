@@ -39,7 +39,7 @@ $wgHooks['OutputPageBeforeHTML'][] = array( &$wgExtPatchOutputMobile,
 											'onOutputPageBeforeHTML' );
 
 class ExtPatchOutputMobile {
-	const VERSION = '0.3.7';
+	const VERSION = '0.3.8';
 
 	private $doc;
 	
@@ -138,16 +138,17 @@ class ExtPatchOutputMobile {
 		if ( $this->contentFormat == 'XHTML' ) {
 			$dir = self::$dir;
 			$code = self::$code;
-			$regular_wikipedia = self::$messages['patch-output-mobile-regular-wikipedia'];
-			$perm_stop_redirect = self::$messages['patch-output-mobile-perm-stop-redirect'];
+			$regularWikipedia = self::$messages['patch-output-mobile-regular-wikipedia'];
+			$permStopRedirect = self::$messages['patch-output-mobile-perm-stop-redirect'];
 			$copyright = self::$messages['patch-output-mobile-copyright'];
-			$home_button = self::$messages['patch-output-mobile-home-button'];
-			$random_button = self::$messages['patch-output-mobile-random-button'];
-			$are_you_sure = self::$messages['patch-output-mobile-are-you-sure'];
-			$explain_disable = self::$messages['patch-output-mobile-explain-disable'];
-			$disable_button = self::$messages['patch-output-mobile-disable-button'];
-			$back_button = self::$messages['patch-output-mobile-back-button'];
+			$homeButton = self::$messages['patch-output-mobile-home-button'];
+			$randomButton = self::$messages['patch-output-mobile-random-button'];
+			$areYouSure = self::$messages['patch-output-mobile-are-you-sure'];
+			$explainDisable = self::$messages['patch-output-mobile-explain-disable'];
+			$disableButton = self::$messages['patch-output-mobile-disable-button'];
+			$backButton = self::$messages['patch-output-mobile-back-button'];
 			$title = $are_you_sure;
+			$cssFileName = ( isset( self::$device['css_file_name'] ) ) ? self::$device['css_file_name'] : 'default';
 			require( 'views/notices/_donate.html.php' );
 			require( 'views/layout/_search_webkit.html.php' );
 			require( 'views/layout/_footmenu_default.html.php' );
@@ -353,11 +354,13 @@ class ExtPatchOutputMobile {
 		
 		$dir = self::$dir;
 		$code = self::$code;
-		$regular_wikipedia = self::$messages['patch-output-mobile-regular-wikipedia'];
-		$perm_stop_redirect = self::$messages['patch-output-mobile-perm-stop-redirect'];
+		$regularWikipedia = self::$messages['patch-output-mobile-regular-wikipedia'];
+		$permStopRedirect = self::$messages['patch-output-mobile-perm-stop-redirect'];
 		$copyright = self::$messages['patch-output-mobile-copyright'];
-		$home_button = self::$messages['patch-output-mobile-home-button'];
-		$random_button = self::$messages['patch-output-mobile-random-button'];
+		$homeButton = self::$messages['patch-output-mobile-home-button'];
+		$randomButton = self::$messages['patch-output-mobile-random-button'];
+		
+		$cssFileName = ( isset( self::$device['css_file_name'] ) ) ? self::$device['css_file_name'] : 'default';
 		
 		if ( strlen( $contentHtml ) > 4000 && $this->contentFormat == 'XHTML' 
 			&& self::$device['supports_javascript'] === true ) {
