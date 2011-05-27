@@ -90,6 +90,14 @@ class NoDatabaseProviderInstalled(Exception):
         return '''You need either to install Mongo or Cassandra to use 
         Wikiltyics.'''
 
+class OutputNotSupported(Exception):
+    def __init__(self, format):
+        super(OutputNotSupported, self).__init_()
+        self.format = format
+
+    def __str__(self):
+        return '''Output format %s is not supported.''' % format
+
 class UnknownPluginError(Exception):
     '''Exception to notify the user that the requested plugin does not exist.'''
     def __init__(self, plugin, plugins):

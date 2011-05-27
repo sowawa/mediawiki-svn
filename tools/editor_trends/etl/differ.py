@@ -24,6 +24,9 @@ import sys
 import os
 import difflib
 from xml.etree.cElementTree import iterparse, dump
+from multiprocessing import JoinableQueue, Process, cpu_count
+from datetime import datetime
+
 
 if '..' not in sys.path:
     sys.path.append('../')
@@ -206,6 +209,31 @@ def diff_revision(rev1, rev2, xml_namespace):
 
         return buffer.getvalue()
 
+def stream_raw_xml(input_queue, process_id, rts, format):
+    '''
+    This function fetches an XML file from the queue and launches the processor. 
+    '''
+    t0 = datetime.now()
+    file_id = 0
+
+    while True:
+        filename = input_queue.get()
+        input_queue.task_done()
+        if filename == None:
+            print '%s files left in the queue' % input_queue.qsize()
+            break
+
+        print filename
+        fh = file_utils.create_streaming_buffer(filename)
+        parse_xml(fh, format, process_id, rts.input_location)
+        fh.close()
+
+        t1 = datetime.now()
+        print 'Worker %s: Processing of %s took %s' % (process_id, filename, (t1 - t0))
+        print 'There are %s files left in the queue' % (input_queue.qsize())
+        t0 = t1
+
+
 
 def launcher(rts):
     '''
@@ -213,15 +241,13 @@ def launcher(rts):
     the compressed XML files. 
     '''
     input_queue = JoinableQueue()
-
+    format = 'json'
     files = file_utils.retrieve_file_list(rts.input_location)
 
     if len(files) > cpu_count():
         processors = cpu_count() - 1
     else:
         processors = len(files)
-
-    fhd = buffer.FileHandleDistributor(rts.max_filehandles, processors)
 
     for filename in files:
         filename = os.path.join(rts.input_location, filename)
@@ -233,7 +259,7 @@ def launcher(rts):
         input_queue.put(None)
 
     extracters = [Process(target=stream_raw_xml, args=[input_queue, process_id,
-                                                       fhd, rts])
+                                                       rts, format])
                   for process_id in xrange(processors)]
     for extracter in extracters:
         extracter.start()
@@ -249,768 +275,40 @@ def launcher_simple():
     format = 'json'
     for filename in files:
         fh = file_utils.create_streaming_buffer(os.path.join(location, filename))
-        #fh = codecs.open(os.path.join(location, filename), 'r', 'utf-8')
         parse_xml(fh, format, process_id, output_location)
         fh.close()
 
 
 def debug():
     str1 = """
-    '''Welcome to Wikilytics !
-'''
-== Background == 
-This package offers a set of tools used to create datasets to analyze Editor 
-Trends. By Editor Trends we refer to the overall pattern of entering and leaving
-a Wikipedia site. The main information source for this package is [[:strategy:Editor Trends Study|Editor Trends Study]]
-
-== High-level Overview Editor Trends Analytics ==
-
-The Python scripts to create the dataset to answer the question '''“Which editors are the ones that are leaving - -are they the new editors or the more tenured ones?”''' consists of three separate phases:
-* Chunk the XML dump file in smaller parts
-** and discard all non-zero namespace revisions.
-* Parse XML chunks by taking the following steps:
-** read XML chunk
-** construct XML DOM
-** iterate over each article in XML DOM
-** iterate over each revision in each article
-** extract from each revision
-*** username id
-*** date edit
-*** article id
-** determine if username belongs to bot, discard information if yes
-** store data in MongoDB
-* Create dataset from MongoDB database
-** Create list with unique username id’s
-** Loop over each id
-*** determine year of first edit
-*** determine year of last edit
-*** count total number of edits by year
-*** sort edits by date and keep first 10 edits
-** Write to CSV file.
-
-== Schema of Editor Trends Database ==
-Each person who has contributed to Wikipedia has it's own document in the [http://www.mongodb.org MongoDB]. A document is a bit similar to a row in a [http://en.wikipedia.org/wiki/SQL SQL] database but there are important differences. The document has the following structure:
-
-<source lang='javascript'>
-{'editor': id,
- 'year_joined': year,
- 'new_wikipedian': True,
- 'total_edits': n,
- 'edits': {
-           'date': date,
-       'article': article_id,
-      }
-}
-</source>
-The edits variable is a sub document containing all the edits made by that person. The edits variable is date sorted, so the first observation is the first edit made by that person while the last observation is the final edit made by that person. This structure allows for quickly querying
-the database:
-
-<pre>
-use enwiki
-editors = enwiki['editors']
-enwiki.editors.find_one({'editor': '35252'}, {'edits': 1})[0]
-</pre>
-
-
-Because we know that each editor has their own document, we do not need to scan the entire table to find all relevant matches. Hence, we can use the find_one() function which results in considerable speed improvements.
-
-== Installation ==
-
-=== Step-by-Step Movie Tutorial ===
-There is a online tutorial available at [http://vimeo.com/16850312 Vimeo]. You cannot install Editor Trends toolkit on OSX at the moment, I will try to code around some OSX restrictions regarding multiprocessing. 
-
-=== Dependencies ===
-
-Follow the next steps if you would like to replicate the analysis on a Wikipedia of your choice.
-
-# Download and install [http://www.mongodb.com MongoDB], preferably the 64 bit version. 
-# Download and install [http://www.python.org/download Python] 2.6 or 2.7 (The code is not Python 3 compliant and it has not been tested using Python < 2.6)
-#: Linux users may need to install the packages python-argparse, python-progressbar and pymongo if that functionality is not installed by default with python.
-# Download and install [http://www.sliksvn.com/en/download Subversion] client 
-# Depending on your platform make sure you have one of the following extraction utilities installed:
-:* Windows: [http://www.7zip.com 7zip]
-:* Linux: tar (should be installed by default)
-
-To verify that you have installed the required dependencies, do the following:
-<pre>
-<prompt>:: mongo
-MongoDB shell version: 1.6.3
-connecting to: test
-<prompt> (in mongo shell) exit
-
-<prompt>:: python
-Python 2.6.2 (r262:71605, Apr 14 2009, 22:40:02) [MSC v.1500 32 bit (Intel)] on
-win32
-Type "help", "copyright", "credits" or "license" for more information.
-<prompt> (in python) exit()
-
-<prompt>:: 7z or tar (depending on your platform)
-7-Zip [64] 4.65  Copyright (c) 1999-2009 Igor Pavlov  2009-02-03
-
-<prompt>:: svn
-
-</pre>
-Output on the console might look different depending on your OS and installed version. 
-
-'''For Windows Users, add the following directories to the path'''
-<pre>c:\python26;c:\python26\scripts;c:\mongodb\bin;</pre>
-
-To finish the Mongodb configuration, do the following:
-<pre>
-cd \
-mkdir data
-mkdir data\db
-cd \mongodb\bin
-mongod --install --logpath c:\mongodb\logs
-net start mongodb
-</pre>
-
-Prepare your Python environment by taking the following steps:
-1 Check whether easy_install is installed by issuing the command:
-<pre>
-easy_install
-</pre>
-If easy_install is not installed then enter the following command:
-<pre>
-sudo apt-get install python-setuptools
-</pre>
-2 Check whether virtualenv is installed by the issuing the following command:
-<pre>
-virtualenv
-</pre>
-If virtualenv is not installed enter this command:
-<pre>
-sudo easy_install virtualenv
-</pre>
-Go to the directory where you want to install your virtual Python, it's okay to go to the parent directory of editor_trends. Then, issue this command:
-<pre>
-virtualenv editor_trends
-</pre>
-This will copy the Python executable and libraries to editor_trends/bin and editor_trends/libs
-Now, we have to activate our virtual Python:
-<pre>
-source bin/activate
-</pre>
-You will see that your command prompt has changed to indicate that you are working with the virtual Python installation instead of working with the systems default installation. 
-If you now install dependencies then these dependencies will be installed in your virtual Python installation instead of in the system Python installation. This will keep everybody happy.
-Finally, enter the following commands:
-<pre>
-easy_install progressbar
-easy_install pymongo
-easy_install argparse
-easy_install python-dateutil
-easy_install texttable
-</pre>
-Python is installed and you are ready to go!
-
-If everything is running, then you are ready to go.
-==== Important MongoDB Notes ====
-If you decide to use MongoDB to store the results then you have to install the 
-64-bit version. 32-bit versions of MongoDB are limited to 2GB of data and the 
-databases created by this package will definitely be larger than that. For more
-background information on this limitation, please read [http://blog.mongodb.org/post/137788967/32-bit-limitations MongoDB 32-bit limitations]
-
-=== Install Editor Trend Analytics ===
-First, download Editor Trend Analytics
-* Windows: svn checkout http://svn.wikimedia.org/svnroot/mediawiki/trunk/tools/editor_trends/ editor_trends
-* Linux: svn checkout http://svn.wikimedia.org/svnroot/mediawiki/trunk/tools/editor_trends/ editor_trends
-
-=== Getting started ===
-By now, you should have Editor Trend Analytics up and running. The first thing you need to do is to download a Wikipedia dump file.
-<blockquote>From now on, I'll assume that you are locate in the directory where you installed Editor Trend Analytics.</blockquote>
-
-==== Download Wikipedia dump file ====
-To download a dump file enter the following command:
-<pre>
-python manage.py download
-</pre>
-You can also specify the language (either using the English name or the local name) of the Wikipedia project that you would like to analyze:
-<pre>
-python manage.py -l Spanish download 
-python manage.py -l Español download 
-</pre>
-Or, if you want to download a non Wikipedia dump file, enter the following command:
-<pre>
-python manage.py -l Spanish download {commons|wikibooks|wikinews|wikiquote|wikisource|wikiversity|wikitionary}
-</pre>
-
-To obtain a list of all supported languages, enter:
-<pre>
-manage show_languages
-</pre>
-or to obtain all languages starting with 'x', enter:
-<pre>
-python manage.py show_languages --first x
-</pre>
-
-
-==== Extract Wikipedia dump file ====
-'''WARNING''': This process might take hours to days, depending on the configuration of your system.
-The Wikipedia dump file is extracted and split into smaller chunks to speed up the processing. Enter the following command:
-<pre>
-python manage.py extract (for extracting data from the Wikipedia dump file and storing it in smaller chunks)
-</pre>
-or, for one of the other Wikimedia projects, enter 
-<pre>
-python manage.py -l Spanish -p commons extract
-</pre>
-Valid project choices are: {commons|wikibooks|wikinews|wikiquote|wikisource|wikiversity|wikitionary}
-
-'''Note:''' The extract process may need to be run twice. Once to unzip the dump file, then again to extract the data from the dump file.
-
-
-==== Sort Wikipedia dump file ====
-'''WARNING''': This process might take a few hours.
-The chunks must be sorted before being added to the MongoDB. Enter the following command:
-<pre>
-python manage.py sort (for sorting the chunks as generated by the 'manage extract' step)
-</pre>
-or, for one of the other Wikimedia projects, enter 
-<pre>
-python manage.py -l Spanish sort {commons|wikibooks|wikinews|wikiquote|wikisource|wikiversity|wikitionary}
-</pre>
-
-
-==== Store Wikipedia dump file ====
-'''WARNING''': This process might take hours to days, depending on the configuration of your system.
-Now, we are ready to extract the required information from the Wikipedia dump file chunks and store it in the MongoDB. Enter the following command:
-<pre>
-python manage.py store
-python manage.py -l Spanish store
-</pre>
-or, for one of the other Wikimedia projects, enter 
-<pre>
-python manage.py -l Spanish store {commons|wikibooks|wikinews|wikiquote|wikisource|wikiversity|wikitionary}
-</pre>
-
-==== Transform dataset ====
-'''WARNING''': This process might take a couple of hours.
-Finally, the raw data needs to be transformed in useful variables. Issue the following command:
-<pre>
-python manage.py transform
-python manage.py -l Spanish transform
-</pre>
-
-==== Create dataset ====
-'''WARNING''': This process might take a couple of hours to days depending on the configuration of your computer. 
-We are almost there, the data is in the database and now we need to export the data to a [[:en:CSV|CSV]] file so we can import it using a statistical program such as [[:en:R (programming language)]], [[:en:Stata]] or [[:en:SPSS]]. 
-
-Enter the following command:
-<pre>
-python manage.py dataset 
-python manage.py -l Spanish dataset
-</pre>
-or, for one of the other Wikimedia projects, enter 
-<pre>
-manage -l Spanish {commons|wikibooks|wikinews|wikiquote|wikisource|wikiversity|wikitionary} dataset
-</pre>
-
-==== Everything in one shot ====
-'''WARNING''': This process might take a couple of days or even more than a week depending on the configuration of your computer.
-If you don't feel like monitoring your computer and you just want to create a dataset from scratch, enter the following command:
-<pre>
-python manage.py all language
-python manage.py -l Spanish all
-</pre>
-<pre>
-python manage.py -p {commons|wikibooks|wikinews|wikiquote|wikisource|wikiversity|wikitionary} all
-</pre>
-
-
-=== Benchmarks ===
-{| border=0
-  |+ ''Benchmark German Wiki''
-|-
-  ! Task
-  ! Configuration 1
-  ! Configuration 2
-|-
-  | Download 
-  | 
-  | 1 minute 14 seconds
-|-
-  | Extract
-  | 
-  | 4-6 hours
-|-
-  | Sort
-  | 
-  | ~30 minutes
-|-
-  | Store
-  | 
-  | 4-5 hours
-|-
-  | Transform
-  | 
-  | 2-3 hours
-|-
-  | Total time
-  | 
-  | 10-14 hours
-
-|}
-
-
-{| border=0
-  |+ ''Benchmark English Wiki''
-|-
-  ! Task
-  ! Configuration 1
-  ! Configuration 2
-|-
-  | Download 
-  | 
-  | 15 minutes
-|-
-  | Extract
-  | 
-  | ~36 hours
-|-
-  | Sort
-  | 
-  | 10.5 hours
-|-
-  | Store
-  | 
-  | 21 hours
-|-
-  | Transform
-  | 
-  | 14.3 hours
-|-
-  | Total time
-  | 
-  | 3.4 days
-
-|}
-
-
-{| width="300" border="1"
-  |+ ''Benchmark Hungarian Wiki''
-|-
-  ! Task
-  ! Configuration 3
-|-
-  | Download 
-  | 1-2 minutes
-|-
-  | Extract
-  | 24.5 minutes
-|-
-  | Sort
-  | 1.5 minutes
-|-
-  | Store
-  | 7-8 minutes
-|-
-  | Transform
-  | 11 minutes
-|-
-  | Total time
-  | ~45 minutes
-|}
-
-
-;Configuration 2
-''Amazon Web Services Large EC2 Instance''
-* Ubuntu 64-bit
-* 4 EC2 Compute Units (2 virtual cores)
-* 7.5GB memory
-* 850GB storage
-
-;Configuration 3
-* Win7 64 bit
-* Intel i7 CPU (8 virtual core)
-* 6GB memory
-* 1TB storage
-* 100/100Mb/s internet connection
-
-
-[[Category:Editor Trends Study]]
-""".splitlines(1)
+        '''Welcome to Wikilytics !
+        '''
+        == Background == 
+        This package offers a set of tools used to create datasets to analyze Editor 
+        Trends. By Editor Trends we refer to the overall pattern of entering and leaving
+        a Wikipedia site. The main information source for this package is [[:strategy:Editor Trends Study|Editor Trends Study]]
+        
+        == High-level Overview Editor Trends Analytics ==
+    """.splitlines(1)
 
     str2 = """
-Welcome to '''Wikilytics''', a free and open source software toolkit for doing analysis of editing trends in Wikipedia and other Wikimedia projects. 
-
-== Background == 
-This package offers a set of tools used to create datasets to analyze editing trends. It was first created expressly for the [[:strategy:Editor Trends Study|Editor Trends Study]], but is well-suited to a variety of research into editing trends. It is thus free to use (as in beer and freedom) if you're interested in expanding on the [[:strategy:Editor Trends Study/Results|results of Editor Trend Study]] or if you'd like to participate in other [[Research/Projects|research projects]].
-
-== High-level Overview Editor Trends Analytics ==
-
-The Python scripts to create the dataset to answer the question '''“Which editors are the ones that are leaving - -are they the new editors or the more tenured ones?”''' consists of three separate phases:
-* Chunk the XML dump file in smaller parts
-** and discard all non-zero namespace revisions.
-* Parse XML chunks by taking the following steps:
-** read XML chunk
-** construct XML DOM
-** iterate over each article in XML DOM
-** iterate over each revision in each article
-** extract from each revision
-*** username id
-*** date edit
-*** article id
-** determine if username belongs to bot, discard information if yes
-** store data in MongoDB
-* Create dataset from MongoDB database
-** Create list with unique username id’s
-** Loop over each id
-*** determine year of first edit
-*** determine year of last edit
-*** count total number of edits by year
-*** sort edits by date and keep first 10 edits
-** Write to CSV file.
-
-== Schema of Editor Trends Database ==
-Each person who has contributed to Wikipedia has it's own document in the [http://www.mongodb.org MongoDB]. A document is a bit similar to a row in a [http://en.wikipedia.org/wiki/SQL SQL] database but there are important differences. The document has the following structure:
-
-<source lang='javascript'>
-{'editor': id,
- 'year_joined': year,
- 'new_wikipedian': True,
- 'total_edits': n,
- 'edits': {
-           'date': date,
-       'article': article_id,
-      }
-}
-</source>
-The edits variable is a sub document containing all the edits made by that person. The edits variable is date sorted, so the first observation is the first edit made by that person while the last observation is the final edit made by that person. This structure allows for quickly querying
-the database:
-
-<pre>
-use wikilitycs 
-db.editors_dataset.find_one({'editor': '35252'}, {'edits': 1})
-</pre>
-
-
-Because we know that each editor has their own document, we do not need to scan the entire table to find all relevant matches. Hence, we can use the find_one() function which results in considerable speed improvements.
-
-== Installation ==
-
-=== Step-by-Step Movie Tutorial ===
-There is a online tutorial available at [http://vimeo.com/16850312 Vimeo]. You cannot install Editor Trends toolkit on OSX at the moment, I will try to code around some OSX restrictions regarding multiprocessing. 
-
-=== Dependencies ===
-
-Follow the next steps if you would like to replicate the analysis on a Wikipedia of your choice.
-
-# Download and install [http://www.mongodb.com MongoDB], preferably the 64 bit version. 
-# Download and install [http://www.python.org/download Python] 2.6 or 2.7 (The code is not Python 3 compliant and it has not been tested using Python < 2.6)
-#: Linux users may need to install the packages python-argparse, python-progressbar and pymongo if that functionality is not installed by default with python.
-# Download and install [http://www.sliksvn.com/en/download Subversion] client 
-# Depending on your platform make sure you have one of the following extraction utilities installed:
-:* Windows: [http://www.7zip.com 7zip]
-:* Linux: tar (should be installed by default)
-
-To verify that you have installed the required dependencies, do the following:
-<pre>
-<prompt>:: mongo
-MongoDB shell version: 1.6.3
-connecting to: test
-<prompt> (in mongo shell) exit
-
-<prompt>:: python
-Python 2.6.2 (r262:71605, Apr 14 2009, 22:40:02) [MSC v.1500 32 bit (Intel)] on
-win32
-Type "help", "copyright", "credits" or "license" for more information.
-<prompt> (in python) exit()
-
-<prompt>:: 7z or tar (depending on your platform)
-7-Zip [64] 4.65  Copyright (c) 1999-2009 Igor Pavlov  2009-02-03
-
-<prompt>:: svn
-
-</pre>
-Output on the console might look different depending on your OS and installed version. 
-
-'''For Windows Users, add the following directories to the path'''
-<pre>c:\python26;c:\python26\scripts;c:\mongodb\bin;</pre>
-
-To finish the Mongodb configuration, do the following:
-<pre>
-cd \
-mkdir data
-mkdir data\db
-cd \mongodb\bin
-mongod --install --logpath c:\mongodb\logs
-net start mongodb
-</pre>
-
-Prepare your Python environment by taking the following steps:
-1 Check whether easy_install is installed by issuing the command:
-<pre>
-easy_install
-</pre>
-If easy_install is not installed then enter the following command:
-<pre>
-sudo apt-get install python-setuptools
-</pre>
-2 Check whether virtualenv is installed by the issuing the following command:
-<pre>
-virtualenv
-</pre>
-If virtualenv is not installed enter this command:
-<pre>
-sudo easy_install virtualenv
-</pre>
-Go to the directory where you want to install your virtual Python, it's okay to go to the parent directory of editor_trends. Then, issue this command:
-<pre>
-virtualenv editor_trends
-</pre>
-This will copy the Python executable and libraries to editor_trends/bin and editor_trends/libs
-Now, we have to activate our virtual Python:
-<pre>
-source bin/activate
-</pre>
-You will see that your command prompt has changed to indicate that you are working with the virtual Python installation instead of working with the systems default installation. 
-If you now install dependencies then these dependencies will be installed in your virtual Python installation instead of in the system Python installation. This will keep everybody happy.
-Finally, enter the following commands:
-<pre>
-easy_install progressbar
-easy_install pymongo
-easy_install argparse
-easy_install python-dateutil
-easy_install texttable
-</pre>
-Python is installed and you are ready to go!
-
-If everything is running, then you are ready to go.
-==== Important MongoDB Notes ====
-If you decide to use MongoDB to store the results then you have to install the 
-64-bit version. 32-bit versions of MongoDB are limited to 2GB of data and the 
-databases created by this package will definitely be larger than that. For more
-background information on this limitation, please read [http://blog.mongodb.org/post/137788967/32-bit-limitations MongoDB 32-bit limitations]
-
-=== Install Editor Trend Analytics ===
-First, download Editor Trend Analytics
-* Windows: svn checkout http://svn.wikimedia.org/svnroot/mediawiki/trunk/tools/editor_trends/ editor_trends
-* Linux: svn checkout http://svn.wikimedia.org/svnroot/mediawiki/trunk/tools/editor_trends/ editor_trends
-
-=== Getting started ===
-By now, you should have Editor Trend Analytics up and running. The first thing you need to do is to download a Wikipedia dump file.
-<blockquote>From now on, I'll assume that you are locate in the directory where you installed Editor Trend Analytics.</blockquote>
-
-==== Download Wikipedia dump file ====
-To download a dump file enter the following command:
-<pre>
-python manage.py download
-</pre>
-You can also specify the language (either using the English name or the local name) of the Wikipedia project that you would like to analyze:
-<pre>
-python manage.py -l Spanish download 
-python manage.py -l Español download 
-</pre>
-Or, if you want to download a non Wikipedia dump file, enter the following command:
-<pre>
-python manage.py -l Spanish download {commons|wikibooks|wikinews|wikiquote|wikisource|wikiversity|wikitionary}
-</pre>
-
-To obtain a list of all supported languages, enter:
-<pre>
-manage show_languages
-</pre>
-or to obtain all languages starting with 'x', enter:
-<pre>
-python manage.py show_languages --first x
-</pre>
-
-
-==== Extract Wikipedia dump file ====
-'''WARNING''': This process might take hours to days, depending on the configuration of your system.
-The Wikipedia dump file is extracted and split into smaller chunks to speed up the processing. Enter the following command:
-<pre>
-python manage.py extract (for extracting data from the Wikipedia dump file and storing it in smaller chunks)
-</pre>
-or, for one of the other Wikimedia projects, enter 
-<pre>
-python manage.py -l Spanish -p commons extract
-</pre>
-Valid project choices are: {commons|wikibooks|wikinews|wikiquote|wikisource|wikiversity|wikitionary}
-
-'''Note:''' The extract process may need to be run twice. Once to unzip the dump file, then again to extract the data from the dump file.
-
-
-==== Sort Wikipedia dump file ====
-'''WARNING''': This process might take a few hours.
-The chunks must be sorted before being added to the MongoDB. Enter the following command:
-<pre>
-python manage.py sort (for sorting the chunks as generated by the 'manage extract' step)
-</pre>
-or, for one of the other Wikimedia projects, enter 
-<pre>
-python manage.py -l Spanish sort {commons|wikibooks|wikinews|wikiquote|wikisource|wikiversity|wikitionary}
-</pre>
-
-
-==== Store Wikipedia dump file ====
-'''WARNING''': This process might take hours to days, depending on the configuration of your system.
-Now, we are ready to extract the required information from the Wikipedia dump file chunks and store it in the MongoDB. Enter the following command:
-<pre>
-python manage.py store
-python manage.py -l Spanish store
-</pre>
-or, for one of the other Wikimedia projects, enter 
-<pre>
-python manage.py -l Spanish store {commons|wikibooks|wikinews|wikiquote|wikisource|wikiversity|wikitionary}
-</pre>
-
-==== Transform dataset ====
-'''WARNING''': This process might take a couple of hours.
-Finally, the raw data needs to be transformed in useful variables. Issue the following command:
-<pre>
-python manage.py transform
-python manage.py -l Spanish transform
-</pre>
-
-==== Create dataset ====
-'''WARNING''': This process might take a couple of hours to days depending on the configuration of your computer. 
-We are almost there, the data is in the database and now we need to export the data to a [[:en:CSV|CSV]] file so we can import it using a statistical program such as [[:en:R (programming language)]], [[:en:Stata]] or [[:en:SPSS]]. 
-
-Enter the following command:
-<pre>
-python manage.py dataset 
-python manage.py -l Spanish dataset
-</pre>
-or, for one of the other Wikimedia projects, enter 
-<pre>
-manage -l Spanish {commons|wikibooks|wikinews|wikiquote|wikisource|wikiversity|wikitionary} dataset
-</pre>
-
-==== Everything in one shot ====
-'''WARNING''': This process might take a couple of days or even more than a week depending on the configuration of your computer.
-If you don't feel like monitoring your computer and you just want to create a dataset from scratch, enter the following command:
-<pre>
-python manage.py all language
-python manage.py -l Spanish all
-</pre>
-<pre>
-python manage.py -p {commons|wikibooks|wikinews|wikiquote|wikisource|wikiversity|wikitionary} all
-</pre>
-
-
-=== Benchmarks ===
-{| border=0
-  |+ ''Benchmark German Wiki''
-|-
-  ! Task
-  ! Configuration 1
-  ! Configuration 2
-|-
-  | Download 
-  | 
-  | 1 minute 14 seconds
-|-
-  | Extract
-  | 
-  | 4-6 hours
-|-
-  | Sort
-  | 
-  | ~30 minutes
-|-
-  | Store
-  | 
-  | 4-5 hours
-|-
-  | Transform
-  | 
-  | 2-3 hours
-|-
-  | Total time
-  | 
-  | 10-14 hours
-
-|}
-
-
-{| border=0
-  |+ ''Benchmark English Wiki''
-|-
-  ! Task
-  ! Configuration 1
-  ! Configuration 2
-|-
-  | Download 
-  | 
-  | 15 minutes
-|-
-  | Extract
-  | 
-  | ~36 hours
-|-
-  | Sort
-  | 
-  | 10.5 hours
-|-
-  | Store
-  | 
-  | 21 hours
-|-
-  | Transform
-  | 
-  | 14.3 hours
-|-
-  | Total time
-  | 
-  | 3.4 days
-
-|}
-
-
-{| width="300" border="1"
-  |+ ''Benchmark Hungarian Wiki''
-|-
-  ! Task
-  ! Configuration 3
-|-
-  | Download 
-  | 1-2 minutes
-|-
-  | Extract
-  | 24.5 minutes
-|-
-  | Sort
-  | 1.5 minutes
-|-
-  | Store
-  | 7-8 minutes
-|-
-  | Transform
-  | 11 minutes
-|-
-  | Total time
-  | ~45 minutes
-|}
-
-
-;Configuration 2
-''Amazon Web Services Large EC2 Instance''
-* Ubuntu 64-bit
-* 4 EC2 Compute Units (2 virtual cores)
-* 7.5GB memory
-* 850GB storage
-
-;Configuration 3
-* Win7 64 bit
-* Intel i7 CPU (8 virtual core)
-* 6GB memory
-* 1TB storage
-* 100/100Mb/s internet connection
-
-==See also==
-* [[Wikilytics Dataset]]
-* [[Wikilytics Plugins]]
-
-[[Category:Wikilytics]]
-
-""".splitlines(1)
+        Welcome to '''Wikilytics''', a free and open source software toolkit for doing analysis of editing trends in Wikipedia and other Wikimedia projects. 
+        
+        == Background == 
+        This package offers a set of tools used to create datasets to analyze editing trends. It was first created expressly for the [[:strategy:Editor Trends Study|Editor Trends Study]], but is well-suited to a variety of research into editing trends. It is thus free to use (as in beer and freedom) if you're interested in expanding on the [[:strategy:Editor Trends Study/Results|results of Editor Trend Study]] or if you'd like to participate in other [[Research/Projects|research projects]].
+        
+        == High-level Overview Editor Trends Analytics ==
+        
+        The Python scripts to create the dataset to answer the question '''“Which editors are the ones that are leaving - -are they the new editors or the more tenured ones?”''' consists of three separate phases:
+        * Chunk the XML dump file in smaller parts
+        ** and discard all non-zero namespace revisions.
+    """.splitlines(1)
 
     diff = difflib.unified_diff(str1, str2, n=0, lineterm='')
     for line in diff:
         if len(line) > 3:
             print line
-#            print result
+
 
 if __name__ == '__main__':
     launcher_simple()

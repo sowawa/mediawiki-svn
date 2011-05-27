@@ -205,10 +205,13 @@ def parse_contributor(revision, bots, xml_namespace):
     '''
     username = extract_username(revision, xml_namespace)
     user_id = extract_contributor_id(revision, xml_namespace)
-    bot = determine_username_is_bot(revision, bots, xml_namespace)
     editor = {}
     editor['username'] = username
-    editor['bot'] = bot
+
+    if bots:
+        bot = determine_username_is_bot(revision, bots, xml_namespace)
+        editor['bot'] = bot
+
     if user_id != None:
         editor.update(user_id)
     else:

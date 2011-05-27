@@ -72,11 +72,13 @@ class RunTimeSettings(Settings):
             self.dataset = os.path.join(self.dataset_location, self.project.name)
             self.txt = os.path.join(self.output_location, 'txt')
             self.sorted = os.path.join(self.output_location, 'sorted')
+            self.diffs = os.path.join(self.output_location, 'diffs')
 
             self.directories = [self.output_location,
                                 self.txt,
                                 self.sorted,
-                                self.dataset]
+                                self.dataset,
+                                self.diffs]
             self.verify_environment(self.directories)
 
             #Wikidump file related variables
@@ -88,6 +90,7 @@ class RunTimeSettings(Settings):
             self.editors_raw = '%s%s_editors_raw' % (self.language.code, self.project.name)
             self.editors_dataset = '%s%s_editors_dataset' % (self.language.code, self.project.name)
             self.articles_raw = '%s%s_articles_raw' % (self.language.code, self.project.name)
+            self.diffs_dataset = '%s%s_diffs_dataset' % (self.language.code, self.project.name)
 
 
 
