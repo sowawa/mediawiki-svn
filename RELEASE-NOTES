@@ -7,6 +7,14 @@ version of Semantic Maps. You can find the most upt-do-date version at
 http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Version_history#Semantic_Maps_change_log
 
 
+=== Semantic Maps 0.7.7 ===
+(2011-06-xx)
+
+* Fixed handling of parameters in form inputs.
+
+* Fixed latitude/longitude mixup for the OpenLayers centre parameter in queries.
+
+* Removed dead code (initial code to support the RL, now used in SM 1.0 and later).
 
 === Semantic Maps 0.7.6 ===
 (2011-03-21)

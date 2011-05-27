@@ -39,8 +39,8 @@ class SMOpenLayersQP extends SMMapPrinter {
 		MapsMapper::addInlineScript( $this->service, <<<EOT
 		initOpenLayer(
 			"$mapName",
-			$this->centreLat,
 			$this->centreLon,
+			$this->centreLat,
 			$this->zoom,
 			{$this->layers},
 			[$this->controls],
