@@ -39,7 +39,7 @@ $wgHooks['OutputPageBeforeHTML'][] = array( &$wgExtPatchOutputMobile,
 											'onOutputPageBeforeHTML' );
 
 class ExtPatchOutputMobile {
-	const VERSION = '0.3.8';
+	const VERSION = '0.3.9';
 
 	private $doc;
 	
@@ -119,16 +119,16 @@ class ExtPatchOutputMobile {
 			$this->contentFormat = 'XHTML';
 		}
 		
-		$m_action = isset( $_GET['m_action'] ) ? $_GET['m_action'] : '';
+		$mAction = isset( $_GET['m_action'] ) ? $_GET['m_action'] : '';
 
-		if ( $m_action == 'disable_mobile_site' ) {
+		if ( $mAction == 'disable_mobile_site' ) {
 			if ( $this->contentFormat == 'XHTML' ) {
 				echo $this->renderDisableMobileSiteXHTML();
 				exit();
 			}
 		}
 		
-		if ( $m_action != 'view_normal_site' ) {
+		if ( $mAction != 'view_normal_site' ) {
 			ob_start( array( $this, 'DOMParse' ) );
 		}
 		return true;
