@@ -38,6 +38,7 @@ from etl import extracter
 from etl import store
 from etl import sort
 from etl import transformer
+from etl import differ
 from analyses import analyzer
 from analyses import inventory
 
@@ -136,6 +137,11 @@ def init_args_parser():
         executing all.',
         default=[])
 
+    #DIFFER
+    parser_diff = subparsers.add_parser('diff',
+        help='Create a Mongo collection containing the diffs between revisions.')
+    parser_diff.set_defaults(func=diff_launcher)
+    
     #DJANGO
     parser_django = subparsers.add_parser('django')
     parser_django.add_argument('-e', '--except',
@@ -342,6 +348,18 @@ def transformer_launcher(rts, logger):
     log.to_db(rts, 'dataset', 'transform', stopwatch, event='finish')
     log.to_csv(logger, rts, 'Finish', 'Transform', transformer_launcher)
 
+
+def diff_launcher(rts, logger):
+    print 'Start creating diff dataset'
+    stopwatch = timer.Timer()
+    log.to_db(rts, 'dataset', 'diff', stopwatch, event='start')
+    log.to_csv(logger, rts, 'Start', 'Diff', diff_launcher)
+    differ.launcher(rts)
+    stopwatch.elapsed()
+    log.to_db(rts, 'dataset', 'diff', stopwatch, event='finish')
+    log.to_csv(logger, rts, 'Finish', 'Diff', diff_launcher)
+
+    
 
 def dataset_launcher(rts, logger):
     '''
