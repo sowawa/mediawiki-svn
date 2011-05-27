@@ -29,10 +29,19 @@ class LTLTFParser extends LTTMParser {
 			$values = array_map( 'trim', explode( ',', $line ) );
 			$tu = new LTTMUnit();
 			
-			foreach ( $values as $nr => $value ) {
-				if ( array_key_exists( $nr, $languages ) ) {
+			// If there is only one value, interpret it as "should never be translated", and add it for all languages.
+			if ( count( $values ) == 1 ) {
+				foreach ( $languages as $language ) {
 					// Add the translation (or translations) (value, array) of the word in the language (key).
-					$tu->addVariants( array( $languages[$nr] => array_map( 'trim', explode( '|', $value ) ) ) );
+					$tu->addVariants( array( $language => array_map( 'trim', explode( '|', $values[0] ) ) ) );
+				}
+			}
+			else {
+				foreach ( $languages as $nr => $language ) {
+					if ( array_key_exists( $nr, $values ) ) {
+						// Add the translation (or translations) (value, array) of the word in the language (key).
+						$tu->addVariants( array( $language => array_map( 'trim', explode( '|', $values[$nr] ) ) ) );
+					}
 				}
 			}
 			

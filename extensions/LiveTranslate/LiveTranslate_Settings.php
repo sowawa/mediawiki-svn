@@ -55,3 +55,6 @@ $egLTNSWithTranslationControl = array(
 
 # Show the control for namespaces not specified in $egLTNSWithTranslationControl?
 $egLTUnknownNSShowControl = true;
+
+# When true, this prevents storange of translations that are the same in the source and target language.
+$egLTRequireSignificance = false;

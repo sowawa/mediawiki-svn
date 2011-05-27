@@ -4,6 +4,12 @@ Extension page on mediawiki.org: http://www.mediawiki.org/wiki/Extension:Live_Tr
 Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/LiveTranslate/RELEASE-NOTES?view=co
 
 
+=== Version 1.0.1 ===
+2011-05-27
+
+* Added option (on by default) to store insignificant translations.
+* Tweaked the LTF parser to allow specifying a word that should never be translated.
+
 === Version 1.0 ===
 2011-05-26
 

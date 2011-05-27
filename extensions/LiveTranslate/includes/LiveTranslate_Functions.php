@@ -65,7 +65,8 @@ final class LiveTranslateFunctions {
 	 * @return string
 	 */
 	public static function getCurrentLang( Title $title ) {
-		$subPage = array_pop( explode( '/', $title->getSubpageText() ) );
+		$subPage = explode( '/', $title->getSubpageText() );
+		$subPage = array_pop( $subPage );
 
 		if ( $subPage != '' && array_key_exists( $subPage, Language::getLanguageNames( false ) ) ) {
 			return $subPage;

@@ -96,7 +96,7 @@ class ApiImportTranslationMemories extends ApiBase {
 		
 		// Insert the memory in the db.
 		foreach ( $tm->getTranslationUnits() as $tu ) {
-			if ( !$tu->isSignificant() ) {
+			if ( $GLOBALS['egLTRequireSignificance'] && !$tu->isSignificant() ) {
 				continue;
 			}
 			
