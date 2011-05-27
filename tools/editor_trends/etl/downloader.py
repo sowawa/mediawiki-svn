@@ -94,7 +94,7 @@ def download_wiki_file(task_queue, properties):
             print 'Error: %s' % error
         finally:
             fh.close()
-            file_utils.set_modified_data(mod_date, properties.location, filename)
+            file_utils.set_modified_data(mod_date, properties.input_location, filename)
 
 
 
