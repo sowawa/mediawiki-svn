@@ -25,17 +25,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	exit( 1 );
 }
 
-if ( !function_exists( 'wfIniGetBool' ) ) {
-	# perhaps GlobalFunctions wasn't loaded?
-	require_once( "$IP/includes/GlobalFunctions.php" );
-	if ( !function_exists( 'wfIniGetBool' ) ) {
-		# unsupported MediaWiki version, exit early so we don't get fatals or whatnot
-		echo '<html><head><title>Error</title></head><body>The AmazonPlus extension does not support your version of MediaWiki.
-		Please either upgrade MediaWiki or uninstall the AmazonPlus extension.</body></html>';
-		die( 1 );
-	}
-}
-
 # make sure that everything that needs to be set/loaded is that way
 $err = '';
 if ( !wfIniGetBool( 'allow_url_fopen' ) && !extension_loaded( 'curl' ) ) {
