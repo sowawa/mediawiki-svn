@@ -23,18 +23,22 @@ if( !defined( 'MEDIAWIKI' ) ) {
         die( -1 );
 }
 
+define( 'SemanticGraph_VERSION', '0.9 alpha' );
+
 # Define a setup function
 $wgExtensionFunctions[] = 'efSGraphParserFunction_Setup';
 # Add a hook to initialise the magic word
 $wgHooks['LanguageGetMagic'][]       = 'efSGraphParserFunction_Magic';
 // Extension credits that will show up on Special:Version    
-$wgExtensionCredits['parserhook'][] = array(
-        'name'         => 'SemanticGraph',
-        'version'      => '0.9 alpha',
-        'author'       => 'Rob Challen', 
-        'url'          => 'http://semanticgraph.sourceforge.net/',
-        'description'  => 'This extension depends on graphviz, freemind applet and hypergraph applet'
+$wgExtensionCredits[defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'parserhook'][] = array(
+        'name'           => 'SemanticGraph',
+        'version'        => SemanticGraph_VERSION,
+        'author'         => 'Rob Challen', 
+        'url'            => 'https://secure.wikimedia.org/wikipedia/mediawiki/wiki/Extension:Semantic_Graph',
+        'descriptionmsg' => 'semanticgraph-desc'
 );
+
+$wgExtensionMessagesFiles['SemanticGraph']	  				= dirname( __FILE__ ) . '/../SemanticGraph.i18n.php';
 
 $wgAutoloadClasses['SemanticGraphSettings']		  			= dirname( __FILE__ ) . '/SemanticGraphSettings.php';
 $wgAutoloadClasses['graphfile']		  						= dirname( __FILE__ ) . '/SemanticGraphFiles.php';
