@@ -209,6 +209,7 @@ class SecurePoll_LocalAuth extends SecurePoll_Auth {
 			'properties' => array(
 				'wiki' => wfWikiID(),
 				'blocked' => $user->isBlocked(),
+				'central-block-count' => $this->getCentralBlockCount( $user ),
 				'edit-count' => $user->getEditCount(),
 				'bot' => $user->isAllowed( 'bot' ),
 				'language' => $user->getOption( 'language' ),
@@ -216,6 +217,7 @@ class SecurePoll_LocalAuth extends SecurePoll_Auth {
 				'lists' => $this->getLists( $user )
 			)
 		);
+		
 		wfRunHooks( 'SecurePoll_GetUserParams', array( $this, $user, &$params ) );
 		return $params;
 	}
@@ -238,6 +240,30 @@ class SecurePoll_LocalAuth extends SecurePoll_Auth {
 			$lists[] = $row->li_name;
 		}
 		return $lists;
+	}
+	
+	/**
+	 * Checks how many central wikis the user is blocked on
+	 * @param $user User
+	 * @return Integer the number of wikis the user is blocked on.
+	 */
+	function getCentralBlockCount( $user ) {
+		if ( ! class_exists( 'CentralAuthUser' ) ) {
+			return 0;
+		}
+		
+		$centralUser = new CentralAuthUser( $user );
+		
+		$attached = $centralUser->queryAttached();
+		$blockCount = 0;
+		
+		foreach( $attached as $wiki => $data ) {
+			if ( $data['blocked'] ) {
+				$blockCount++;
+			}
+		}
+		
+		return $blockCount;
 	}
 }
 

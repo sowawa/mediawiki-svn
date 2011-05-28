@@ -31,6 +31,10 @@
  *              True if a voter is not allowed to change their vote
  *          encrypt-type
  *              The encryption module name
+ *          not-centrally-blocked
+ *          	True if voters need to not be blocked on more than X projects
+ *          central-block-threshold
+ *          	Number of blocks across projects that disqualify a user from voting.
  *      
  *      See the other module for documentation of the following.
  *
@@ -169,6 +173,14 @@ class SecurePoll_Election extends SecurePoll_Entity {
 		if ( $notBlocked && $isBlocked ) {
 			$status->fatal( 'securepoll-blocked' );
 		}
+		
+		# Centrally blocked on more than X projects
+		$notCentrallyBlocked = $this->getProperty( 'not-centrally-blocked' );
+		$centralBlockCount = isset( $props['central-block-count'] ) ? $props['central-block-count'] : 0;
+		$centralBlockThreshold = $this->getProperty( 'central-block-threshold', 1 );
+		if ( $centralBlockCount >= $centralBlockThreshold ) {
+			$status->fatal( 'securepoll-blocked-centrally', $centralBlockThreshold );
+		}
 
 		# Bot
 		$notBot = $this->getProperty( 'not-bot' );
@@ -198,6 +210,7 @@ class SecurePoll_Election extends SecurePoll_Entity {
 				$status = Status::newFatal( 'securepoll-custom-unqualified', $errorMsg );
 			}
 		}
+
 		return $status;
 	}
 
