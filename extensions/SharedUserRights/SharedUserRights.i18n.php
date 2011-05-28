@@ -216,6 +216,16 @@ $messages['fr'] = array(
 	'right-userrights-shared' => 'Gérer les droits d’utilisateur partagés',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'shareduserrights' => 'Administracion des drêts d’utilisator partagiês',
+	'gblrights-desc' => '[[Special:SharedUserRights|Administracion simpla des drêts d’utilisator partagiês]].',
+	'gblrights-logpage' => 'Jornal des drêts globâls',
+	'right-userrights-shared' => 'Administrar los drêts d’utilisator partagiês',
+);
+
 /** Irish (Gaeilge)
  * @author Alison
  */

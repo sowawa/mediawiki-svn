@@ -4080,72 +4080,72 @@ $messages['sr-ec'] = array(
 	'articlefeedback-form-panel-expertise-hobby' => 'Ово спада у домен мојих хобија',
 	'articlefeedback-form-panel-expertise-other' => 'Извор мог знања о теми није наведен овде',
 	'articlefeedback-form-panel-helpimprove' => 'Волео/ла бих да помажем унапређење Википедије, пошаљи ми једну електронску поруку (необавезно)',
-	'articlefeedback-form-panel-helpimprove-note' => 'Послаћемо Вам поруку за потврду адресе. Вашу адресу нећемо давати никоме. $1',
+	'articlefeedback-form-panel-helpimprove-note' => 'Послаћемо вам поруку за потврду е-адресе. Не делимо е-адресе ни с ким. $1',
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Политика приватности',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Политика приватности',
 	'articlefeedback-form-panel-submit' => 'Пошаљи оцене',
 	'articlefeedback-form-panel-pending' => 'Ваше оцене још увек нису послате',
-	'articlefeedback-form-panel-success' => 'Успешно снимљено',
+	'articlefeedback-form-panel-success' => 'Успешно сачувано',
 	'articlefeedback-form-panel-expiry-title' => 'Ваше оцене су истекле',
-	'articlefeedback-form-panel-expiry-message' => 'Молимо Вас да поново оцените страну и пошаљете нам те нове оцене.',
-	'articlefeedback-report-switch-label' => 'Преглед оцена страна',
-	'articlefeedback-report-panel-title' => 'Оцене стране',
+	'articlefeedback-form-panel-expiry-message' => 'Поново оцените страницу и пошаљите нове оцене.',
+	'articlefeedback-report-switch-label' => 'Преглед оцена странице',
+	'articlefeedback-report-panel-title' => 'Оцене странице',
 	'articlefeedback-report-panel-description' => 'Тренутне средње оцене',
 	'articlefeedback-report-empty' => 'Нема оцена.',
-	'articlefeedback-report-ratings' => '$1 оцене',
-	'articlefeedback-field-trustworthy-label' => 'Поузданост',
-	'articlefeedback-field-trustworthy-tip' => 'Да ли Вам изгледа да овај чланак цитира довољно референци и да оне потичу од поузданих извора?',
+	'articlefeedback-report-ratings' => '$1 оцена',
+	'articlefeedback-field-trustworthy-label' => 'Веродостојно',
+	'articlefeedback-field-trustworthy-tip' => 'Сматрате ли да ова страница има довољно извора и да су они из поверљивих извора?',
 	'articlefeedback-field-complete-label' => 'Комплетност',
-	'articlefeedback-field-complete-tip' => 'Да ли Вам изгледа да овај чланак покрива битне делове теме коју обрађује?',
-	'articlefeedback-field-objective-label' => 'Објективност',
-	'articlefeedback-field-objective-tip' => 'Да ли Вам изгледа да се на овом чланку све тачке гледишта равноправно приказују?',
+	'articlefeedback-field-complete-tip' => 'Сматрате ли да ова страница покрива основне делове теме коју обрађује?',
+	'articlefeedback-field-objective-label' => 'Непристрано',
+	'articlefeedback-field-objective-tip' => 'Сматрате ли да су на овој страници све тачке гледишта равноправно приказане?',
 	'articlefeedback-field-wellwritten-label' => 'Добро написано',
-	'articlefeedback-field-wellwritten-tip' => 'Да ли Вам изгледа да је овај чланак добро организован и квалитетно написан?',
+	'articlefeedback-field-wellwritten-tip' => 'Мислите ли да је ова страница добро организована и добро написана?',
 	'articlefeedback-pitch-reject' => 'Можда касније',
 	'articlefeedback-pitch-or' => 'или',
-	'articlefeedback-pitch-thanks' => 'Хвала Вам! Ваше оцене су снимљене.',
-	'articlefeedback-pitch-survey-message' => 'Молимо Вас да одвојите неколико минута да попуните кратку анкету.',
+	'articlefeedback-pitch-thanks' => 'Хвала! Ваше оцене су сачуване.',
+	'articlefeedback-pitch-survey-message' => 'Одвојите тренутак да довршите кратку анкету.',
 	'articlefeedback-pitch-survey-accept' => 'Почни упитник',
-	'articlefeedback-pitch-join-message' => 'Да ли сте желели да направите Ваш налог?',
-	'articlefeedback-pitch-join-body' => 'Налог ће Вам помоћи да пратите Ваше измене, да се укључите у разговоре, и да будете део заједнице.',
+	'articlefeedback-pitch-join-message' => 'Желите ли да отворите налог?',
+	'articlefeedback-pitch-join-body' => 'Налог ће вам помоћи да пратите своје измене, да се укључите у разговоре и да будете део заједнице.',
 	'articlefeedback-pitch-join-accept' => 'Отвори налог',
 	'articlefeedback-pitch-join-login' => 'Пријави ме',
-	'articlefeedback-pitch-edit-message' => 'Да ли знате да можете да измените ову страну?',
+	'articlefeedback-pitch-edit-message' => 'Јесте ли знали да можете да уређујете ову страницу?',
 	'articlefeedback-pitch-edit-accept' => 'Уреди ову страницу',
 	'articlefeedback-survey-message-success' => 'Хвала вам што сте попунили упитник.',
 	'articlefeedback-survey-message-error' => 'Дошло је до грешке.
-Молимо, покушајте касније.',
+Покушајте касније.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Данашње високе и ниске оцене',
-	'articleFeedback-table-caption-dailyhighs' => 'Чланци са највишим оценама: $1',
-	'articleFeedback-table-caption-dailylows' => 'Чланци са најнижим оценама: $1',
+	'articleFeedback-table-caption-dailyhighs' => 'Странице с највишим оценама: $1',
+	'articleFeedback-table-caption-dailylows' => 'Странице с најнижим оценама: $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Највише мењани ове недеље',
 	'articleFeedback-table-caption-recentlows' => 'Скорашње ниске оцене',
-	'articleFeedback-table-heading-page' => 'Чланак',
-	'articleFeedback-table-heading-average' => 'Средња оцена',
-	'articleFeedback-copy-above-highlow-tables' => 'Ово је експериментални додатак. Молимо Вас, реците шта о њему мислите на [$1 страни за разговор].',
-	'articleFeedback-copy-below-highlow-tables' => 'Ове табеле садрже стране које имају најмање 10 оцена у задња 24 сата. Средње вредности се израчунавају аритметичком средином свих оцена послатих у задња 24 сата.',
+	'articleFeedback-table-heading-page' => 'Страница',
+	'articleFeedback-table-heading-average' => 'Просек',
+	'articleFeedback-copy-above-highlow-tables' => 'Ово је експериментални додатак. Молимо вас да пошаљете повратну информацију на [$1 страници за разговор].',
+	'articleFeedback-copy-below-highlow-tables' => 'Ове табеле садрже странице које имају најмање десет оцена у последња 24 часа. Просек се рачуна аритметичком средином свих оцена у последња 24 часа.',
 	'articlefeedback-emailcapture-response-body' => 'Здраво!
 
-Хвала Вам што сте показали жељу да помогнете унапређење {{SITENAME}}.
+Хвала вам што сте показали жељу да помогнете у унапређењу пројекта {{SITENAME}}.
 
-Молимо Вас да одвојите неколико тренутака да потврдите адресу Ваше електронске поште кликом на линк испод:
+Одвојите тренутак да потврдите вашу е-адресу кликом на везу испод:
 
 $1
 
-Алтернативно можете да посетите:
+Можете посетити и:
 
 $2
 
-И унесете следећи код за потврду адресе:
+Након тога, унесите следећи потврдни кôд:
 
 $3
 
-Обавестићемо Вас ускоро како можете помоћи унапређење {{SITENAME}}.
+Ускоро ћемо вас обавестити о томе како нам можете помоћи.
 
-Ако нисте желели да добијете ову поруку, молимо Вас да је игноришете. У том случају Вам нећемо слати нове поруке.
+Ако сте добили ову поруку грешком, само је занемарите.
 
-Свако добро, и хвала Вам
-{{SITENAME}} тим',
+Све најлепше,
+{{SITENAME}}',
 );
 
 /** Swedish (Svenska)

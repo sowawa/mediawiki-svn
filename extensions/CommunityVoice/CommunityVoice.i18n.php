@@ -933,12 +933,13 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'communityvoice-ratings-scale-status-sending' => 'Слање...',
 	'communityvoice-ratings-scale-status-error' => 'Грешка при слању!',
-	'communityvoice-ratings-scale-status-thanks' => 'Хвала Вам за учешће у гласању!',
+	'communityvoice-ratings-scale-status-thanks' => 'Хвала на гласању!',
 );
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)

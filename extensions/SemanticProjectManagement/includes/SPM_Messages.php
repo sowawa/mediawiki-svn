@@ -102,6 +102,16 @@ $messages['fr'] = array(
 	'right-SPMsetup' => 'Modifier les paramètres basiques de gestion de projet sémantique',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'spm_wbs_link' => 'Èxportacion XML de MS Project',
+	'spm_printername_wbs' => 'Èxportacion de MS Project',
+	'spm-name' => 'Administracion du projèt sèmantico',
+	'semanticprojectmanagement' => 'Paramètres d’administracion du projèt sèmantico',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

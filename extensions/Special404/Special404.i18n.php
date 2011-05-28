@@ -142,6 +142,13 @@ Peut-être que vous désirez aller à la
 * [[{{MediaWiki:Mainpage}}|Page d'accueil]] ?",
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'error404' => '404 entrovâblo',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

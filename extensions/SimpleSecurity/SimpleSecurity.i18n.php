@@ -451,8 +451,11 @@ $messages['frp'] = array(
 	'security-desc-LS' => '(s’aplique perce que ceta pâge est dens lo « $1 $2 »)',
 	'security-desc-PR' => '(dèfeni dês l’ongllèta de « protèccion »)',
 	'security-manygroups' => 'tropes $1 et $2',
+	'security-unchain' => 'Changiér les accions en particuliér',
 	'security-type-category' => 'catègorie',
 	'security-type-namespace' => 'èspâço de noms',
+	'security-restricttogroup' => 'Accès u contegnu resèrvâ ux membros de « $1 »',
+	'restriction-read' => 'Liére',
 );
 
 /** Galician (Galego)

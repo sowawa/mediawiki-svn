@@ -189,6 +189,19 @@ $messages['fr'] = array(
 	'svgedit-toolbar-insert' => 'Dessin SVG',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'svgedit-editbutton-edit' => 'Changiér lo dèssin',
+	'svgedit-summary-label' => 'Rèsumâ du changement',
+	'svgedit-summary-default' => '/* Changiê avouéc svg-edit */',
+	'svgedit-editor-save-close' => 'Encartar et cllôre',
+	'svgedit-editor-close' => 'Anular',
+	'svgedit-edit-tab' => 'Changiér lo dèssin',
+	'svgedit-toolbar-insert' => 'Dèssin SVG',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

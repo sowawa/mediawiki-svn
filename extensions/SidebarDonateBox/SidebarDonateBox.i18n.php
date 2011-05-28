@@ -92,6 +92,13 @@ $messages['fr'] = array(
 	'DONATE' => 'Faire un don',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'DONATE' => 'Balyér',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

@@ -709,6 +709,7 @@ Il ne peut l’être une seconde fois.',
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'createsigndocument' => 'Activar la signatura des documents',
 	'createsigndoc-pagename' => 'Pâge :',
 	'createsigndoc-allowedgroup' => 'Tropa ôtorisâ :',
 	'createsigndoc-email' => 'Adrèce èlèctronica :',

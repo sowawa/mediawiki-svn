@@ -28,3 +28,12 @@ $messages['en'] = array(
 $messages['qqq'] = array(
 	'spark-desc' => '{{desc}}',
 );
+
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'spark-desc' => 'Acrescenta o elemento <code><nowiki><spark /></nowiki></code> que permite incorporar mash-ups [http://km.aifb.kit.edu/sites/spark/ Spark]. A biblioteca spark foi criada por Denny Vrandecic e Andreas Harth.',
+	'spark-missing-query' => 'Tem de especificar uma consulta usando o parâmetro "data-spark-query".',
+);
+

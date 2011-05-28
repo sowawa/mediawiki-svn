@@ -251,7 +251,11 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'prefs-sendmailtowiki' => 'Publecacion du contegnu per mèssageria èlèctronica',
+	'sendmailtowiki-inemail' => 'Adrèce èlèctronica consacrâ :',
 	'sendmailtowiki-inpin' => 'PIN :',
+	'sendmailtowiki-err-pinlength' => 'Lo PIN dêt contegnir justo 5 chifros.',
+	'sendmailtowiki-err-invalidpin' => 'PIN envalido. Accès refusâ.',
 );
 
 /** Galician (Galego)

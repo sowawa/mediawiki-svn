@@ -228,6 +228,11 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'signaturelogpage' => 'Jornal de les signatures',
+	'signature-desc' => 'Active la [[Special:SignDocument|signatura]] des documents.',
+	'signaturelogpagetext' => 'O est lo jornal de [[Special:SignDocument|totes les signatures apondues ux documents]].',
+	'signaturelogentry' => 'at signê lo document $1',
+	'right-sigadmin' => 'Administrar la signatura de documents',
+	'right-createsigndocument' => 'Fâre des documents que pôvont étre signês',
 );
 
 /** Galician (Galego)
