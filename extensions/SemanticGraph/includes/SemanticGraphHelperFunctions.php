@@ -311,5 +311,3 @@ function efBigSvg($svgurl, $boxwidth = null, $boxheight = null, $boxresize = 'no
 	//return $js;
 	return $svgtxt;
 }
-
-?>

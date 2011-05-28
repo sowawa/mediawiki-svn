@@ -432,6 +432,3 @@ class SemanticGraphSettings {
 		return $argv;
 	}
 }
-
-
-?>

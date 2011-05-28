@@ -372,4 +372,3 @@ Class localmap {
 		return $this->output;
 	}
 }
-?>

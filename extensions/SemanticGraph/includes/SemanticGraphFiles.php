@@ -137,5 +137,3 @@ Class graphfile {
 	return $iframe;	
 	}
 }
-
-?>

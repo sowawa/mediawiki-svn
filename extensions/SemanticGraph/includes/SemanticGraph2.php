@@ -30,17 +30,20 @@ $wgHooks['LanguageGetMagic'][]       = 'efSGraphParserFunction_Magic';
 // Extension credits that will show up on Special:Version    
 $wgExtensionCredits['parserhook'][] = array(
         'name'         => 'SemanticGraph',
-        'version'      => '0.8.6',
+        'version'      => '0.9 alpha',
         'author'       => 'Rob Challen', 
         'url'          => 'http://semanticgraph.sourceforge.net/',
         'description'  => 'This extension depends on graphviz, freemind applet and hypergraph applet'
 );
 
-include_once('SemanticGraphSettings.php');
-include_once('SemanticGraphFiles.php');
-include_once('SemanticGraphRenderer.php');
-include_once('SemanticGraphBuilders.php');
-include_once('SemanticGraphQuery.php');
+$wgAutoloadClasses['SemanticGraphSettings']		  			= dirname( __FILE__ ) . '/SemanticGraphSettings.php';
+$wgAutoloadClasses['graphfile']		  						= dirname( __FILE__ ) . '/SemanticGraphFiles.php';
+$wgAutoloadClasses['renderer']		  						= dirname( __FILE__ ) . '/SemanticGraphRenderer.php';
+$wgAutoloadClasses['networkgraph']		  					= dirname( __FILE__ ) . '/SemanticGraphBuilders.php';
+$wgAutoloadClasses['localmap']		  						= dirname( __FILE__ ) . '/SemanticGraphBuilders.php';
+$wgAutoloadClasses['freemindmap']		  					= dirname( __FILE__ ) . '/SemanticGraphBuilders.php';
+$wgAutoloadClasses['GraphQuery']		  					= dirname( __FILE__ ) . '/SemanticGraphQuery.php';
+
 include_once('SemanticGraphHelperFunctions.php');
 $wgSemanticGraphSettings = new SemanticGraphSettings();
 
@@ -182,4 +185,3 @@ function efLocalLinksParserFunction_Render( &$parser) {
     	$input = $file->renderGraphFromMM($mmtext, $initargs['width'], $initargs['height']);
 	return $parser->insertStripItem( $input, $parser->mStripState );
 }
-?>

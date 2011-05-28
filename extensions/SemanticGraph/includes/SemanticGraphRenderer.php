@@ -91,4 +91,3 @@ Class renderer {
 	 	return $r;
 	 }
 }
-?>

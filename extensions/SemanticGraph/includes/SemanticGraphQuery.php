@@ -159,5 +159,3 @@ if (strpos($sgcategoryof, $p)) {
 	}
 
 }
-
-?>
