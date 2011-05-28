@@ -45,4 +45,18 @@ $egSparkScriptPath = ( $wgExtensionAssetsPath === false ? $wgScriptPath . '/exte
 
 $wgExtensionMessagesFiles['Spark'] = dirname( __FILE__ ) . '/Spark.i18n.php';
 
+$wgAutoloadClasses['SparkHooks'] = dirname( __FILE__ ) . '/Spark.hooks.php';
+$wgAutoloadClasses['SparkTag'] = dirname( __FILE__ ) . '/Spark.class.php';
+
+$wgResourceModules['ext.spark'] = array(
+	'localBasePath' => dirname( __FILE__ ),
+	'remoteBasePath' => $egSparkScriptPath,
+	'styles' => array(),
+	'scripts' => array( 'rdf-spark/jquery.spark.js' ),
+	'dependencies' => array(),
+	'messages' => array()
+);
+
+$wgHooks['ParserFirstCallInit'][] = 'SparkHooks::onParserFirstCallInit';
+
 require_once 'Spark.settings.php';
