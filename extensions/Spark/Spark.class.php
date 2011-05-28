@@ -49,9 +49,9 @@ final class SparkTag {
 			$query = str_replace( array( '&lt;', '&gt;' ), array( '<', '>' ), $query );
 			unset( $this->parameters['data-spark-query'] );
 
-			return '<nowiki><div class="spark" data-spark-query="' . $query . '" ' . Html::expandAttributes( $this->parameters ) . ' >' .
+			return '<div class="spark" data-spark-query="' . $query . '" ' . Html::expandAttributes( $this->parameters ) . ' >' .
 						( is_null( $this->contents ) ? '' : htmlspecialchars( $this->contents ) ) .
-					'</div></nowiki>';		
+					'</div>';		
 		}
 		else {
 			return Html::element( 'i', array(), wfMsg( 'spark-missing-query' ) );

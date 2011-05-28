@@ -18,7 +18,7 @@ $messages = array();
  * @author Jeroen De Dauw
  */
 $messages['en'] = array(
-	'spark-desc' => 'Adds a <code><nowiki><spark /></nowiki></code> tag that enables embedding [http://km.aifb.kit.edu/sites/spark/ Spark] mash-ups.',
+	'spark-desc' => 'Adds a <code><nowiki><spark /></nowiki></code> tag that enables embedding [http://km.aifb.kit.edu/sites/spark/ Spark] mash-ups. The spark library was created by Denny Vrandecic and Andreas Harth.',
 	'spark-missing-query' => 'You need to specify a query using the "data-spark-query" parameter.',
 );
 
