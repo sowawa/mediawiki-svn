@@ -360,6 +360,11 @@ LocalSettings.php file. Please read carefully.
   exists i.e. has content. The mere existence of a user account is (currently)
   not sufficient.
 
+* $wgOpenIDMergeOnAccountMerge (default: false)
+  When merging accounts with the UserMerge and Delete extension,
+  should OpenIDs associated to the "from" account automatically be associated
+  to the "to" account ?
+
 * $wgOpenIDShowProviderIcons -- defaults to false due to potential
   brand issues. With this enabled, users will see button graphics
   instead of just links in OpenID provider UI.

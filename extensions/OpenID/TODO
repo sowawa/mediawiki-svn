@@ -1,4 +1,4 @@
-Status: 0.928-beta 20110525
+Status: 0.929-beta 20110528
 
 ? more details are needed to understand the "to do"
 * resolved, or partially resolved, wontfix
@@ -19,13 +19,8 @@ Status: 0.928-beta 20110525
   $path=array( dirname( __FILE__ ) );
   set_include_path(implode(PATH_SEPARATOR,$path).PATH_SEPARATOR.get_include_path());
   in OpenID.setup.php. I don't know, if it can be avoided.
-- allow user to set a password in case of !$wgOpenIDClientOnly && $wgOpenIDOnly
-  (https://bugzilla.wikimedia.org/show_bug.cgi?id=29027)
-  = case Server/OpenID-Only
 - keep user from mailing new password in OpenID account except case S/OO
 - keep user from setting password in OpenID account except case S/OO
-- be aware of user deletions done by extension UserMerge and Delete (and others)
-  https://bugzilla.wikimedia.org/show_bug.cgi?id=28993
 - participate in account-creation throttle
 - audit to prevent circumventing blocks/bans
 - share timezone when/if available
@@ -43,6 +38,12 @@ Status: 0.928-beta 20110525
 * Configure some stuff through Special:Preferences or a dedicated control panel
   (under construction, see Special:OpenIDDashboard)
 
++ be aware of user deletions done by extension UserMerge and Delete (and others)
+  https://bugzilla.wikimedia.org/show_bug.cgi?id=28993
++ allow user to set or reset a password in case of
+  !$wgOpenIDClientOnly && $wgOpenIDOnly
+  (https://bugzilla.wikimedia.org/show_bug.cgi?id=29027)
+  = case Server/OpenID-Only
 + Execute MediaWiki hook 'AddNewAccount' when new account is added
   https://bugzilla.wikimedia.org/show_bug.cgi?id=21711
 + Add a Storage class for $wgMemc

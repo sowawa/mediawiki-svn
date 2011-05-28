@@ -334,7 +334,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 			Xml::openElement( 'tr' ) . "\n" .
 			Xml::element( 'td', array(), '' ) . "\n" .
 			Xml::tags( 'td', array( 'class' => 'mw-submit' ),
-				Xml::submitButton( wfMsg( 'login' ), array( 'name' => 'wpOK' ) ) .
+				Xml::submitButton( wfMsg( 'userlogin' ), array( 'name' => 'wpOK' ) ) .
 				Xml::submitButton( wfMsg( 'cancel' ), array( 'name' => 'wpCancel' ) )
 			) . "\n" .
 			Xml::closeElement( 'tr' ) . "\n" .

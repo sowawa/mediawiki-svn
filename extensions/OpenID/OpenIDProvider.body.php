@@ -46,7 +46,7 @@ class OpenIDProvider {
 		if ( $this->id == 'openid' ) {
 			$url = isset( $_COOKIE[$wgCookiePrefix.'OpenID'] ) ? htmlspecialchars( $_COOKIE[$wgCookiePrefix.'OpenID'] ) : '';
 			$html .= '<input type="text" name="openid_url" id="openid_url" size="45" value="' . $url . '" />';
-			$html .= Xml::submitButton( wfMsg( 'login' ) );
+			$html .= Xml::submitButton( wfMsg( 'userlogin' ) );
 		} else {
 			$html .= '<input type="hidden" id="openid_provider_url_' . $this->id . '" value="' . $this->url . '" />';
 			if ( strpos( $this->url, '{' ) === false ) {
@@ -54,7 +54,7 @@ class OpenIDProvider {
 			} else {
 				$html .= '<input type="text" id="openid_provider_param_' . $this->id . '" size="25" value="" />';
 			}
-			$html .= Xml::submitButton( wfMsg( 'login' ) );
+			$html .= Xml::submitButton( wfMsg( 'userlogin' ) );
 		}
 		$html .= '</div>';
 

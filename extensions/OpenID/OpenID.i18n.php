@@ -107,6 +107,7 @@ You would not able to log in without an OpenID.',
 You would not able to log in without an OpenID.',
 	'openiddelete-sucess' => 'The OpenID has been successfully removed from your account.',
 	'openiddelete-error' => 'An error occured while removing the OpenID from your account.',
+        'openid-openids-were-not-merged' => 'OpenID(s) were not merged when merging the user accounts.',
 
 	'prefs-openid' => 'OpenID',
 	'openid-prefstext' => '[http://openid.net/ OpenID] preferences',
@@ -184,6 +185,7 @@ OpenID preferences tab title',
 	'openid-dashboard-title-admin' => 'Display name and page title for the adminstrator OpenID dashboard on Special:SpecialPages',
 	'openid-dashboard-introduction' => 'Intro text for the special OpenID dashboard page: the user gets status information about the current OpenID settings of this wiki.
 * $1 is the url of the help page explaining the parameters',
+        'openid-openids-were-not-merged' => 'When merging user accounts by UserMerge or similar extensions, OpenID(s) are not merged if $wgOpenIDMergeOnAccountMerge=false (default).',
 );
 
 /** Faeag Rotuma (Faeag Rotuma)

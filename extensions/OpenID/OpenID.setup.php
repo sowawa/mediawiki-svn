@@ -27,7 +27,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	exit( 1 );
 }
 
-define( 'MEDIAWIKI_OPENID_VERSION', '0.928-beta' );
+define( 'MEDIAWIKI_OPENID_VERSION', '0.929-beta' );
 
 $path = dirname( __FILE__ );
 set_include_path( implode( PATH_SEPARATOR, array( $path ) ) . PATH_SEPARATOR . get_include_path() );
@@ -208,6 +208,13 @@ $wgOpenIDClientOnly = false;
 $wgOpenIDAllowServingOpenIDUserAccounts = true;
 
 /**
+ * When merging accounts with the UserMerge and Delete extension,
+ * should OpenIDs associated to the "from" account automatically be associated
+ * to the "to" account ?
+ */
+$wgOpenIDMergeOnAccountMerge = false;
+
+/**
  * If true, will show provider icons instead of the text.
  */
 $wgOpenIDShowProviderIcons = false;
@@ -272,8 +279,10 @@ $wgHooks['PersonalUrls'][] = 'OpenIDHooks::onPersonalUrls';
 $wgHooks['BeforePageDisplay'][] = 'OpenIDHooks::onBeforePageDisplay';
 $wgHooks['ArticleViewHeader'][] = 'OpenIDHooks::onArticleViewHeader';
 $wgHooks['SpecialPage_initList'][] = 'OpenIDHooks::onSpecialPage_initList';
-
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'OpenIDHooks::onLoadExtensionSchemaUpdates';
+
+$wgHooks['DeleteAccount'][] = 'OpenIDHooks::onDeleteAccount';
+$wgHooks['MergeAccountFromTo'][] = 'OpenIDHooks::onMergeAccountFromTo';
 
 # 1.16+
 $wgHooks['GetPreferences'][] = 'OpenIDHooks::onGetPreferences';

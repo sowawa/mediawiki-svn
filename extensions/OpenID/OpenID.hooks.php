@@ -235,6 +235,59 @@ class OpenIDHooks {
 	}
 
 
+	public static function onDeleteAccount( $userObj ) {
+		global $wgOut;
+		
+		if ( is_object( $userObj ) ) {
+		
+			$username = $userObj->getName();
+			$userID = $userObj->getID();
+
+  			$dbw = wfGetDB( DB_MASTER );
+  			
+			$dbw->delete( 'user_openid', array( 'uoi_user' => $userID ) );
+			$wgOut->addHTML( "OpenID " . wfMsg( 'usermerge-userdeleted', $username, $userID ) );
+
+			wfDebug( "OpenID: deleted OpenID user $username ($userID)\n" );
+
+                }
+                
+		return true;
+		
+	}
+
+	public static function onMergeAccountFromTo( $fromUserObj, $toUserObj ) {
+		global $wgOut,$wgOpenIDMergeOnAccountMerge;
+
+		if ( is_object( $fromUserObj ) && is_object( $toUserObj) ) {
+
+			$fromUsername = $fromUserObj->getName();
+			$fromUserID = $fromUserObj->getID();
+			$toUsername = $toUserObj->getName();
+			$toUserID = $toUserObj->getID();
+
+                  	if ( $wgOpenIDMergeOnAccountMerge ) {
+
+				$dbw = wfGetDB( DB_MASTER );
+
+				$dbw->update( 'user_openid', array( 'uoi_user' => $toUserID ), array( 'uoi_user' => $fromUserID ) );
+				$wgOut->addHTML( "OpenID " . wfMsg('usermerge-updating', 'user_openid', $fromUsername, $toUsername ) . "<br />\n" );
+
+				wfDebug( "OpenID: transferred OpenID(s) of $fromUsername ($fromUserID) => $toUsername ($toUserID)\n" );
+
+			} else {
+
+				$wgOut->addHTML( wfMsg( 'openid-openids-were-not-merged' ) . "<br />\n" );
+				wfDebug( "OpenID: OpenID(s) were not merged for merged users $fromUsername ($fromUserID) => $toUsername ($toUserID)\n" );
+
+			}
+
+		}
+		
+		return true;
+		
+	}
+
 	# list of preferences used by extension
 	private static $oidPrefs = array( 'hide' );
 	private static $oidUpdateOnLogin = array( 'nickname', 'email', 'fullname',
