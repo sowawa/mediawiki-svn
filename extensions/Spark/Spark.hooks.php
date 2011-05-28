@@ -36,6 +36,13 @@ final class SparkHooks {
 	 * @param PPFrame $frame
 	 */
 	public static function onSparkRender( $input, array $args, Parser $parser, PPFrame $frame ) {
+		static $loadedJs = false;
+		
+		if ( !$loadedJs ) {
+			$parser->getOutput()->addModules( 'ext.spark' );
+			$loadedJs = true;
+		}
+		
 		$tag = new SparkTag( $args, $input );
 		return $tag->render();
 	}
