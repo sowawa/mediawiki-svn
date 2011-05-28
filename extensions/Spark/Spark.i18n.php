@@ -19,6 +19,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'spark-desc' => 'Adds a <code><nowiki><spark /></nowiki></code> tag that enables embedding [http://km.aifb.kit.edu/sites/spark/ Spark] mash-ups.',
+	'spark-missing-query' => 'You need to specify a query using the "data-spark-query" parameter.',
 );
 
 /** Message documentation (Message documentation)

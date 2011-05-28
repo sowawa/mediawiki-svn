@@ -44,11 +44,18 @@ final class SparkTag {
 	 * @return string
 	 */
 	public function render() {
-		return Html::element(
-			'div',
-			array_merge( array( 'class' => 'spark' ), $this->parameters ),
-			$this->contents
-		);
+		if ( array_key_exists( 'data-spark-query', $this->parameters ) ) {
+			$query = htmlspecialchars( $this->parameters['data-spark-query'] );
+			$query = str_replace( array( '&lt;', '&gt;' ), array( '<', '>' ), $query );
+			unset( $this->parameters['data-spark-query'] );
+
+			return '<nowiki><div class="spark" data-spark-query="' . $query . '" ' . Html::expandAttributes( $this->parameters ) . ' >' .
+						( is_null( $this->contents ) ? '' : htmlspecialchars( $this->contents ) ) .
+					'</div></nowiki>';		
+		}
+		else {
+			return Html::element( 'i', array(), wfMsg( 'spark-missing-query' ) );
+		}
 	}
 	
 	/**
