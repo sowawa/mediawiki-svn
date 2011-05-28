@@ -1,0 +1,11 @@
+4) Of course, append() and appendFinish() need to be implemented.
+5) The Upload seems to take more time than I expect, but that could be a function of generating the six thumbnails.
+6) There's no 404 handler to generate missing thumbnails.
+7) There's no support for remote thumbnailing.
+8) Test cases (but of course that could be done until the cows come home).
+9) Read through the code and look for anything which is insane.
+10) Remove directory from $wgLocalFileRepo, to make sure that there's no references to it. Ditto for wgDeletedDirectory and deletedDir.
+11) Determine what to do about the one remaining core change needed for Swift.
+12) Implement repo->freeTemp() - needed by several extensions and UploadFromStash.
+13) Do we need $wgLocalRepo->ThumbUrl to be configurable given that the Python middleware presumes it?
+

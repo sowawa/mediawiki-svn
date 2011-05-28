@@ -53,28 +53,28 @@ class SwiftFile extends LocalFile {
 		#$deleted;          # Bitfield akin to rev_deleted
 	/**#@-*/
 
-        /**
-         * Create a LocalFile from a title
-         * Do not call this except from inside a repo class.
-         *
-         * Note: $unused param is only here to avoid an E_STRICT
-         */
-        static function newFromTitle( $title, $repo, $unused = null ) {
+	/**
+	 * Create a LocalFile from a title
+	 * Do not call this except from inside a repo class.
+	 *
+	 * Note: $unused param is only here to avoid an E_STRICT
+	 */
+	static function newFromTitle( $title, $repo, $unused = null ) {
 		if ( empty($title) ) { return null; }
-                return new self( $title, $repo );
-        }
+		return new self( $title, $repo );
+	}
 
-        /**
-         * Create a LocalFile from a title
-         * Do not call this except from inside a repo class.
-         */
-        static function newFromRow( $row, $repo ) {
-                $title = Title::makeTitle( NS_FILE, $row->img_name );
-                $file = new self( $title, $repo );
-                $file->loadFromRow( $row );
+	/**
+	 * Create a LocalFile from a title
+	 * Do not call this except from inside a repo class.
+	 */
+	static function newFromRow( $row, $repo ) {
+		$title = Title::makeTitle( NS_FILE, $row->img_name );
+		$file = new self( $title, $repo );
+		$file->loadFromRow( $row );
 
-                return $file;
-        }
+		return $file;
+	}
 
 	/**
 	 * Constructor.
@@ -82,7 +82,7 @@ class SwiftFile extends LocalFile {
 	 */
 	function __construct( $title, $repo ) {
 		if ( !is_object( $title ) ) {
-			throw new MWException( __CLASS__ . ' constructor given bogus title.' );
+			throw new MWException( __CLASS__ . " constructor given bogus title." );
 		}
 
 		parent::__construct( $title, $repo );
@@ -229,7 +229,7 @@ class SwiftFile extends LocalFile {
 
 		// Sanity check prefix once
 		if ( substr( key( $array ), 0, $prefixLength ) !== $prefix ) {
-			throw new MWException( __METHOD__ .  ': incorrect $prefix parameter' );
+			throw new MWException( __METHOD__ .  ": incorrect $prefix parameter" );
 		}
 
 		$decoded = array();
@@ -412,19 +412,23 @@ class SwiftFile extends LocalFile {
 		$this->temp_path = tempnam( wfTempDir(), 'swift_in_' );
 
 		/* Fetch the image out of Swift */
-		$auth = new CF_Authentication($this->repo->swiftuser, $this->repo->key, NULL, $this->repo->authurl);
-		$auth->authenticate();
-		$conn = new CF_Connection($auth);
-		$cont = $conn->get_container($container);
+		$conn = $this->repo->connect();
+		$cont = $this->repo->get_container($conn,$container);
 
 		try {
 			$obj = $cont->get_object($rel);
 		} catch (NoSuchObjectException $e) {
-			throw new MWException( 'Unable to open original file at $container/$rel');
+			throw new MWException( "Unable to open original file at $container/$rel");
 		}
-		// FIXME we need to do a try here, but let's see how it fails first.
+
 		wfDebug(  __METHOD__ . " writing to " . $this->temp_path . "\n");
-		$obj->save_to_filename( $this->temp_path);
+		try {
+			$obj->save_to_filename( $this->temp_path);
+		} catch (IOException $e) {
+			throw new MWException( __METHOD__ . ": error opening '$e'" );
+		} catch (InvalidResponseException $e) {
+			throw new MWException( __METHOD__ . "unexpected response '$e'" );
+		}
 
 		return $this->temp_path;
 	}
@@ -598,13 +602,11 @@ class SwiftFile extends LocalFile {
 			$thumb = $this->handler->doTransform( $this, $thumbTemp, $thumbUrl, $params );
 
 			// Store the thumbnail into Swift, but in the thumb version of the container.
-			$auth = new CF_Authentication($this->repo->swiftuser, $this->repo->key, NULL, $this->repo->authurl);
-			$auth->authenticate();
-			$conn = new CF_Connection($auth);
-			$container = $conn->get_container($this->repo->container . "%2Fthumb");
 			wfDebug(  __METHOD__ . "Creating thumb " . $this->getRel() . "/" . $thumbName . "\n");
-			$obj = $container->create_object($this->getRel() . "/" . $thumbName);
-			$thumbRel = $obj->load_from_filename($thumbTemp);
+			$conn = $this->repo->connect();
+			$container = $this->repo->get_container($conn,$this->repo->container . "%2Fthumb");
+			$this->repo->write_swift_object( $thumbTemp, $container, $this->getRel() . "/" . $thumbName);
+			// php-cloudfiles throws exceptions, so failure never gets here.
 			
 			// Clean up temporary data.
 			unlink($thumbTemp);
@@ -621,13 +623,13 @@ class SwiftFile extends LocalFile {
 	 * Upgrading directly from 1.4 to 1.8/SwiftMedia is not supported.
 	 */
 	function migrateThumbFile( $thumbName ) {
-		throw new MWException( __METHOD__.': not implemented' );
+		throw new MWException( __METHOD__.": not implemented" );
 	}
 	/**
 	 * Get the public root directory of the repository.
 	 */
 	function getRootDirectory() {
-		throw new MWException( __METHOD__.': not implemented' );
+		throw new MWException( __METHOD__.": not implemented" );
 	}
 
 
@@ -642,12 +644,9 @@ class SwiftFile extends LocalFile {
 		$this->load();
 
 		$prefix = $this->getRel();
-		$auth = new CF_Authentication($this->repo->swiftuser, $this->repo->key, NULL, $this->repo->authurl);
-		$auth->authenticate();
-		$conn = new CF_Connection($auth);
-		$container = $conn->get_container($this->repo->container . "%2Fthumb");
+		$conn = $this->repo->connect();
+		$container = $this->repo->get_container($conn,$this->repo->container . "%2Fthumb");
 		$files = $container->list_objects(0, NULL, $prefix);
-		wfDebug(  __METHOD__ . var_export($files, true) . "\n");
 		return $files;
 	}
 
@@ -698,10 +697,8 @@ class SwiftFile extends LocalFile {
 		$files = $this->getThumbnails();
 		$urls = array();
 
-		$auth = new CF_Authentication($this->repo->swiftuser, $this->repo->key, NULL, $this->repo->authurl);
-		$auth->authenticate();
-		$conn = new CF_Connection($auth);
-		$container = $conn->get_container($this->repo->container . "%2Fthumb");
+		$conn = $this->repo->connect();
+		$container = $this->repo->get_container($conn,$this->repo->container . "%2Fthumb");
 		foreach ( $files as $file ) {
 			// I have no idea how to implement this given that we don't have paths in Swift
 			// Only remove files not in the $wgExcludeFromThumbnailPurge configuration variable
@@ -711,9 +708,7 @@ class SwiftFile extends LocalFile {
 			//}
 			
 			$urls[] = $this->getThumbUrl($file);
-			# Check that the base file name is part of the thumb name
-			# This is a basic sanity check to avoid erasing unrelated directories
-			$container->delete_object($file);
+			$this->repo->swift_delete($container, $file);
 		}
 
 		// Purge the squid
@@ -829,7 +824,6 @@ class SwiftFile extends LocalFile {
 	/** getRel inherited */
 	/** getUrlRel inherited */
 	/** getArchiveRel inherited */
-	/** getThumbRel inherited */
 	/** getArchiveUrl inherited */
 	/** getThumbUrl inherited */
 	/** getArchiveVirtualUrl inherited */
@@ -1171,7 +1165,7 @@ class SwiftFile extends LocalFile {
 		foreach ( $result as $row ) {
 			$batch->addOld( $row->oi_archive_name );
 		}
-		//wfDebug(__METHOD__ . var_export($batch, true) . "\n"); 
+		//wfDebug(__METHOD__ . " deleting these files: " . var_export($batch, true) . "\n"); 
 		$status = $batch->execute();
 
 		if ( $status->ok ) {
@@ -2242,21 +2236,108 @@ class SwiftFileMoveBatch {
  */
 
 class SwiftRepo extends LocalRepo {
-        var $fileFactory = array( 'SwiftFile', 'newFromTitle' );
-        var $fileFactoryKey = array( 'SwiftFile', 'newFromKey' );
-        var $fileFromRowFactory = array( 'SwiftFile', 'newFromRow' );
-        var $oldFileFactory = array( 'OldSwiftFile', 'newFromTitle' );
-        var $oldFileFactoryKey = array( 'OldSwiftFile', 'newFromKey' );
-        var $oldFileFromRowFactory = array( 'OldSwiftFile', 'newFromRow' );
+	var $fileFactory = array( 'SwiftFile', 'newFromTitle' );
+	var $fileFactoryKey = array( 'SwiftFile', 'newFromKey' );
+	var $fileFromRowFactory = array( 'SwiftFile', 'newFromRow' );
+	var $oldFileFactory = array( 'OldSwiftFile', 'newFromTitle' );
+	var $oldFileFactoryKey = array( 'OldSwiftFile', 'newFromKey' );
+	var $oldFileFromRowFactory = array( 'OldSwiftFile', 'newFromRow' );
 
 	function __construct( $info ) {
-		parent::__construct( $info );
+		FileRepo::__construct( $info );
 
 		// Required settings
-		$this->key= $info['key'];
+		$this->url = $info['url'];
+
+		// Optional settings
+		$this->hashLevels = isset( $info['hashLevels'] ) ? $info['hashLevels'] : 2;
+		$this->deletedHashLevels = isset( $info['deletedHashLevels'] ) ?
+			$info['deletedHashLevels'] : $this->hashLevels;
+
+		if ( isset( $info['thumbUrl'] ) ) {
+			$this->thumbUrl = $info['thumbUrl'];
+		} else {
+			$this->thumbUrl = "{$this->url}/thumb";
+		}
+
+		// Required settings
 		$this->swiftuser= $info['user'];
+		$this->swiftkey= $info['key'];
 		$this->authurl= $info['authurl'];
 		$this->container= $info['container'];
+	}
+
+	/**
+	 * Get a connection to the swift proxy.
+	 *
+	 * @return CF_Connection
+	 */
+	function connect() {
+		$auth = new CF_Authentication($this->swiftuser, $this->swiftkey, NULL, $this->authurl);
+		try {
+			$auth->authenticate();
+		} catch (AuthenticationException $e) {
+			throw new MWException( "We can't authenticate ourselves." );
+		} catch (InvalidResponseException $e) {
+			throw new MWException( __METHOD__ . "unexpected response '$e'" );
+		}
+		return new CF_Connection($auth);
+	}
+
+	/**
+	 * Given a connection and container name, return the container.
+	 * We KNOW the container should exist, so puke if it doesn't.
+	 *
+	 * @return CF_Container
+	 */
+	function get_container($conn, $cont) {
+		try {
+			return $conn->get_container($cont);
+		} catch (NoSuchContainerException $e) {
+			throw new MWException( "A container we thought existed, doesn't." );
+		} catch (InvalidResponseException $e) {
+			throw new MWException( __METHOD__ . "unexpected response '$e'" );
+		}
+	}
+
+	/**
+	 * Given a filename, container, and object name, write the file into the object.
+	 * None of these error conditions are recoverable by the user, so we just dump
+	 * an Internal Error on them.
+	 *
+	 * @return CF_Container
+	 */
+	function write_swift_object( $srcPath, $dstc, $dstRel) {
+		try {
+			$obj = $dstc->create_object($dstRel);
+			$obj->load_from_filename( $srcPath, True);
+		} catch (SyntaxException $e) {
+		       throw new MWException( "missing required parameters" );
+		} catch (BadContentTypeException $e) {
+		       throw new MWException( "No Content-Type was/could be set" );
+		} catch (InvalidResponseException $e) {
+			throw new MWException( __METHOD__ . "unexpected response '$e'" );
+		} catch (IOException $e) {
+			throw new MWException( "error opening file '$e'" );
+		}
+	}
+
+	/**
+	 * Given a container and object name, delete the object.
+	 * None of these error conditions are recoverable by the user, so we just dump
+	 * an Internal Error on them.
+	 *
+	 */
+	function swift_delete( $container, $rel ) {
+		try {
+			$container->delete_object($rel);
+		} catch (SyntaxException $e) {
+		       throw new MWException( "Swift object name not well-formed: '$e'" );
+		} catch (NoSuchObjectException $e) {
+		       throw new MWException( "Swift object we are trying to delete does not exist: '$e'" );
+		} catch (InvalidResponseException $e) {
+		       throw new MWException( "unexpected response '$e'" );
+		}
 	}
 
 	/**
@@ -2268,6 +2349,7 @@ class SwiftRepo extends LocalRepo {
 	 *     self::OVERWRITE         Overwrite an existing destination file instead of failing
 	 *     self::OVERWRITE_SAME    Overwrite the file if the destination exists and has the
 	 *                             same contents as the source
+	 * @return $status
 	 */
 	function storeBatch( $triplets, $flags = 0 ) {
 		wfDebug( __METHOD__  . ': Storing ' . count( $triplets ) . 
@@ -2279,7 +2361,7 @@ class SwiftRepo extends LocalRepo {
 			list( $srcPath, $dstZone, $dstRel ) = $triplet;
 
 			if ( !$this->validateFilename( $dstRel ) ) {
-				throw new MWException( 'Validation error in $dstRel' );
+				throw new MWException( "Validation error in $dstRel" );
 			}
 
 			// Check overwriting
@@ -2304,17 +2386,14 @@ class SwiftRepo extends LocalRepo {
 		}
 
 		// Execute the store operation for each triplet
-		$auth = new CF_Authentication($this->swiftuser, $this->key, NULL, $this->authurl);
-		$auth->authenticate();
-		$conn = new CF_Connection($auth);
+		$conn = $this->connect();
 
 		foreach ( $triplets as $i => $triplet ) {
 			list( $srcPath, $dstZone, $dstRel ) = $triplet;
 
-			// Create the destination object.
+			// Point to the container.
 			$dstContainer = $this->getZoneContainer( $dstZone );
-			$dstc = $conn->get_container($dstContainer);
-			$obj = $dstc->create_object($dstRel);
+			$dstc = $this->get_container($conn, $dstContainer);
 
 			$good = true;
 
@@ -2322,34 +2401,17 @@ class SwiftRepo extends LocalRepo {
 			if (self::isVirtualUrl( $srcPath )) {
 				$src = $this->resolveVirtualUrl( $srcPath );
 				list ($srcContainer, $srcRel) = $src;
+				$srcc = $this->get_container($conn, $srcContainer);
 
-				$obj->content_type = "text/plain";
-				$obj->write(".");
-
-				// FIXME: not sure if we need to re-open it, but let's not take any chances.
-				$obj = $dstc->get_object($dstRel);
-				// FIXME: errors are returned as exceptions.
-				$obj->copy("$srcContainer/$srcRel");
-				if (0) { // handle exceptions
-					$status->error( 'filecopyerror', $srcPath, $dstPath );
-					$good = false;
-				}
+				$this->swiftcopy($srcc, $srcRel, $dstc, $dstRel);
 				if ( $flags & self::DELETE_SOURCE ) {
-					$srcc = $conn->get_container($srcContainer);
-					// FIXME: handle exceptions.
-					$srcc->delete_object($srcRel);
-					if (0) { // handle exceptions.
-						$status->error( 'filerenameerror', $srcPath, $dstPath );
-						$good = false;
-					}
+					$this->swift_delete( $srcc, $srcRel );
 				}
 			} else {
-				// write an ordinary file into Swift.
-				$obj->load_from_filename( $srcPath, True);
-				// $status->error( 'filecopyerror', $srcPath, $dstRel );
-				// $good = false;
+				$this->write_swift_object( $srcPath, $dstc, $dstRel);
+				// php-cloudfiles throws exceptions, so failure never gets here.
 				if ( $flags & self::DELETE_SOURCE ) {
-					delete ( $srcPath );
+					unlink ( $srcPath );
 				}		
 			}
 
@@ -2392,10 +2454,10 @@ class SwiftRepo extends LocalRepo {
 	}
 
 	function append( $srcPath, $toAppendPath, $flags = 0 ){
-		throw new MWException( __METHOD__.': Not yet implemented.' );
+		throw new MWException( __METHOD__.": Not yet implemented." );
 	}
 	function appendFinish( $toAppendPath ){
-		throw new MWException( __METHOD__.': Not yet implemented.' );
+		throw new MWException( __METHOD__.": Not yet implemented." );
 	}
 
 	/**
@@ -2427,8 +2489,8 @@ class SwiftRepo extends LocalRepo {
 	}
 
 
-        function newFromArchiveName( $title, $archiveName ) {
-        	return OldSwiftFile::newFromArchiveName( $title, $this, $archiveName );
+	function newFromArchiveName( $title, $archiveName ) {
+		return OldSwiftFile::newFromArchiveName( $title, $this, $archiveName );
 	}
 
 	/**
@@ -2442,21 +2504,18 @@ class SwiftRepo extends LocalRepo {
 	function fileExistsBatch( $files, $flags = 0 ) {
 		if ($flags != self::FILES_ONLY) {
 			// we ONLY support when $flags & self::FILES_ONLY is set!
-			throw new MWException( 'Swift Media Store doesn\'t have directories');
+			throw new MWException( "Swift Media Store doesn't have directories");
 		}
-		wfDebug(  __METHOD__ . var_export($files, true) . " " . $flags. "\n");
 		$result = array();
-		$auth = new CF_Authentication($this->swiftuser, $this->key, NULL, $this->authurl);
-		$auth->authenticate();
-		$conn = new CF_Connection($auth);
-		$container = $conn->get_container($this->container);
+		$conn = $this->connect();
 
 		foreach ( $files as $key => $file ) {
-			if ( self::isVirtualUrl( $file ) ) {
-				$rvu = $this->resolveVirtualUrl( $file );
-				list ($cont, $rel) = $rvu;
-				$container = $conn->get_container($cont);
+			if ( !self::isVirtualUrl( $file ) ) {
+				throw new MWException( __METHOD__ . " requires a virtual URL, not '$file'");
 			}
+			$rvu = $this->resolveVirtualUrl( $file );
+			list ($cont, $rel) = $rvu;
+			$container = $this->get_container($conn,$cont);
 			try {
 				$obj = $container->get_object($rel);
 				$result[$key] = true;
@@ -2469,36 +2528,53 @@ class SwiftRepo extends LocalRepo {
 	}
 
 
-	function getFileProps( $virtualUrl ) {
-		wfDebug( __METHOD__ . " $virtualUrl\n" );
-		return parent::getFileProps( $virtualUrl );
-	}
+	// FIXME: do we really need to reject empty titles?
 	function newFile( $title, $time = false ) {
 		if ( empty($title) ) { return null; }
-		//wfDebug( __METHOD__ . " $title, $time " . var_export($this->fileFactory, true) ."\n" );
-		$f = parent::newFile( $title, $time );
-		return $f;
-	}
-	function findFile( $title, $options = array() ) {
-		//wfDebug( __METHOD__ . " finding $title" . var_export($options, true) . "\n" );
-		$found = parent::findFile( $title, $options );
-		//wfDebug( __METHOD__ . " found " . var_export($found, true) . "\n" );
-		return  $found;
+		return parent::newFile( $title, $time );
 	}
 
-	function swiftcopy($container, $srcRel, $archiveRel ) {
-		// Note the assumption that we're not doing cross-container copies.
-		//
+	/**
+	 * Copy a file from one place to another place in the same container
+	 * @param $srcContainer CF_Container
+	 * @param $srcRel String: relative path to the source file.
+	 * @param $dstContainer CF_Container
+	 * @param $dstRel String: relative path to the destination.
+	 */
+	function swiftcopy($srcContainer, $srcRel, $dstContainer, $dstRel ) {
 		// The destination must exist already.
-		$obj = $container->create_object($archiveRel);
+		$obj = $dstContainer->create_object($dstRel);
 		$obj->content_type = "text/plain";
-		$obj->write(".");
-		// FIXME: not sure if we need to re-open it, but let's not take any chances.
-		$obj = $container->get_object($archiveRel);
-		// Errors are returned as exceptions.
-		wfDebug( __METHOD__ . " copying to $archiveRel from " . $container->name . "/" . $srcRel . "\n");
-		$success = $obj->copy($container->name . "/" . $srcRel);
-		return $success;
+
+		try {
+			$obj->write(".");
+		} catch (SyntaxException $e ) {
+			throw new MWException( "Write failed: $e" );
+		} catch (BadContentTypeException $e ) {
+			throw new MWException( "Missing Content-Type: $e" );
+		} catch (MisMatchedChecksumException $e ) {
+			throw new MWException( __METHOD__ . "should not happen: '$e'" );
+		} catch (InvalidResponseException $e ) {
+			throw new MWException( __METHOD__ . "unexpected response '$e'" );
+		}
+
+		try {
+			$obj = $dstContainer->get_object($dstRel);
+		} catch (NoSuchObjectException $e) {
+			throw new MWException( "The object we just created does not exist: " . $dstContainer->name . "/$dstRel: $e" );
+		}
+
+		wfDebug( __METHOD__ . " copying to " . $dstContainer->name . "/" . $dstRel . " from " . $srcContainer->name . "/" . $srcRel . "\n");
+
+		try {
+			$obj->copy($srcContainer->name . "/" . $srcRel);
+		} catch (SyntaxException $e ) {
+			throw new MWException( "Source file does not exist: " . $srcContainer->name . "/$srcRel: $e" );
+		} catch (MisMatchedChecksumException $e ) {
+			throw new MWException( "Checksums do not match: $e" );
+		} catch (InvalidResponseException $e ) {
+			throw new MWException( __METHOD__ . "unexpected response '$e'" );
+		}
 	}
 
 	/**
@@ -2508,13 +2584,8 @@ class SwiftRepo extends LocalRepo {
 	 *        that the source files should be deleted if possible
 	 */
 	function publishBatch( $triplets, $flags = 0 ) {
-		$auth = new CF_Authentication($this->swiftuser, $this->key, NULL, $this->authurl);
-		$auth->authenticate();
-		$conn = new CF_Connection($auth);
-		$container = $conn->get_container($this->container);
-		#wfDebug( "Number of Objects: " . $container->object_count . "\n" );
-		#wfDebug( "Bytes stored in container: " . $container->bytes_used . "\n" );
-		#wfDebug( "Object: " . var_export($pic, true) . "\n" );
+		$conn = $this->connect();
+		$container = $this->get_container($conn,$this->container);
 
 		# paranoia
 		$status = $this->newGood( array() );
@@ -2522,10 +2593,10 @@ class SwiftRepo extends LocalRepo {
 			list( $srcPath, $dstRel, $archiveRel ) = $triplet;
 
 			if ( !$this->validateFilename( $dstRel ) ) {
-				throw new MWException( 'Validation error in $dstRel' );
+				throw new MWException( "Validation error in $dstRel" );
 			}
 			if ( !$this->validateFilename( $archiveRel ) ) {
-				throw new MWException( 'Validation error in $archiveRel' );
+				throw new MWException( "Validation error in $archiveRel" );
 			}
 			if ( !is_file( $srcPath ) ) {
 				// Make a list of files that don't exist for return to the caller
@@ -2547,35 +2618,19 @@ class SwiftRepo extends LocalRepo {
 				$pic = NULL;
 			}
 			if( $pic ) {
-				// this shouldn't fail, but we'll catch it anyway.
-				try {
-					$success = $this->swiftcopy($container, $dstRel, $archiveRel );
-				} catch (NoSuchObjectException $e) {
-					$success = false;
-				}
-
-				if( !$success ) {
-					$status->error( 'filerenameerror',$dstRel, $archiveRel );
-					$status->failCount++;
-					continue;
-				} else {
-					wfDebug(__METHOD__.": moved file $dstRel to $archiveRel\n");
-				}
+				$this->swiftcopy($container, $dstRel, $container, $archiveRel );
+				wfDebug(__METHOD__.": moved file $dstRel to $archiveRel\n");
 				$status->value[$i] = 'archived';
 			} else {
 				$status->value[$i] = 'new';
 			}
 
 			$good = true;
-			// FIXME: how does this return failure??
-			$obj = $container->create_object($dstRel);
-			// FIXME: we need to do a try here
-			$obj->load_from_filename( $srcPath, True);
-			// $status->error( 'filecopyerror', $srcPath, $dstRel );
-			// $good = false;
-			//if ( $flags & self::DELETE_SOURCE ) {
-			//	delete ( $srcPath );
-			//}		
+			$this->write_swift_object( $srcPath, $container, $dstRel);
+			// php-cloudfiles throws exceptions, so failure never gets here.
+			if ( $flags & self::DELETE_SOURCE ) {
+				unlink ( $srcPath );
+			}		
 
 			if ( $good ) {
 				$status->successCount++;
@@ -2595,9 +2650,7 @@ class SwiftRepo extends LocalRepo {
 	 * @param $pairs array List of files to delete
 	 */
 	function cleanupBatch( $files ) {
-		$auth = new CF_Authentication($this->swiftuser, $this->key, NULL, $this->authurl);
-		$auth->authenticate();
-		$conn = new CF_Connection($auth);
+		$conn = $this->connect();
 		foreach ( $files as $file ) {
 			if ( is_array( $file ) ) {
 				// This is a pair, extract it
@@ -2609,13 +2662,13 @@ class SwiftRepo extends LocalRepo {
 					list( $cont, $rel) = $path;
 				} else {
 					// FIXME: This is a full file name
-					throw new MWException( __METHOD__.': $file needs an unlink()' );
+					throw new MWException( __METHOD__.": $file needs an unlink()" );
 				}
 			}
 			
 			wfDebug( __METHOD__.": $cont/$rel\n" );
-			$container = $conn->get_container($cont);
-			$container->delete_object($rel);
+			$container = $this->get_container($conn,$cont);
+			$this->swift_delete( $container, $rel );
 		}
 	}
 
@@ -2627,11 +2680,9 @@ class SwiftRepo extends LocalRepo {
 	 * @return FileRepoStatus
 	 */
 	function cleanupDeletedBatch( $storageKeys ) {
-		$auth = new CF_Authentication($this->swiftuser, $this->key, NULL, $this->authurl);
-		$auth->authenticate();
-		$conn = new CF_Connection($auth);
+		$conn = $this->connect();
 		$cont = $this->getZoneContainer( 'deleted' );
-		$container = $conn->get_container($cont);
+		$container = $this->get_container($conn,$cont);
 
 		$dbw = $this->getMasterDB();
 		$status = $this->newGood();
@@ -2655,11 +2706,7 @@ class SwiftRepo extends LocalRepo {
 			}
 			if ( !$inuse ) {
 				wfDebug( __METHOD__ . ": deleting $key\n" );
-				$container->delete_object($rel);
-				if ( 0 ) {
-					$status->error( 'undelete-cleanup-error', $rel );
-					$status->failCount++;
-				}
+				$this->swift_delete( $container, $rel );
 			} else {
 				wfDebug( __METHOD__ . ": $key still in use\n" );
 				$status->successCount++;
@@ -2673,7 +2720,7 @@ class SwiftRepo extends LocalRepo {
 	 * Makes no sense in our context -- don't let anybody call it.
 	 */
 	function getZonePath( $zone ) {
-		throw new MWException( __METHOD__.': not implemented' );
+		throw new MWException( __METHOD__.": not implemented" );
 	}
 
 	/**
@@ -2698,7 +2745,7 @@ class SwiftRepo extends LocalRepo {
 	 */
 	function resolveVirtualUrl( $url ) {
 		if ( substr( $url, 0, 9 ) != 'mwrepo://' ) {
-			throw new MWException( __METHOD__.': unknown protoocl' );
+			throw new MWException( __METHOD__.": unknown protocol" );
 		}
 
 		$bits = explode( '/', substr( $url, 9 ), 3 );
@@ -2938,30 +2985,6 @@ class OldSwiftFile extends SwiftFile {
 
 
 class Junkyjunk {
-	function __construct( $info ) {
-		parent::__construct( $info );
-
-		// Required settings
-		$this->directory = $info['directory'];
-		$this->url = $info['url'];
-
-		// Optional settings
-		$this->hashLevels = isset( $info['hashLevels'] ) ? $info['hashLevels'] : 2;
-		$this->deletedHashLevels = isset( $info['deletedHashLevels'] ) ?
-			$info['deletedHashLevels'] : $this->hashLevels;
-		$this->fileMode = isset( $info['fileMode'] ) ? $info['fileMode'] : 0644;
-		if ( isset( $info['thumbDir'] ) ) {
-			$this->thumbDir =  $info['thumbDir'];
-		} else {
-			$this->thumbDir = "{$this->directory}/thumb";
-		}
-		if ( isset( $info['thumbUrl'] ) ) {
-			$this->thumbUrl = $info['thumbUrl'];
-		} else {
-			$this->thumbUrl = "{$this->url}/thumb";
-		}
-	}
-
 	function append( $srcPath, $toAppendPath, $flags = 0 ) {
 		$status = $this->newGood();
 
