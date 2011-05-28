@@ -1,0 +1,108 @@
+===Semantic Graph Mediawiki extension===
+
+This extension build and displays a number of different graph formats from the content
+of a semantic mediawiki. It is also capable of displaying content based on category
+trees and wiki links.
+
+Prerequisites
+-------------
+Tested against MW 1.12
+Semantic mediawiki 1.2.1
+Semantic Forms 1.2.9
+You must have a working graphviz installation (see: http://www.graphviz.org/)
+If your path to dot (which you can find by the command 'which dot') is not /usr/bin/dot
+then you will extra steps during configuration (see below)
+
+Installations
+-------------
+
+1) extract the files into the extensions directory of your mediawiki
+	(e.g. 
+	tar -xvf SemanticGraph.tar.gz $IP/extensions/SemanticGraph)
+
+2) Download the freemind applet jar file from:
+http://surfnet.dl.sourceforge.net/sourceforge/freemind/freemind-browser-0_7_1.zip
+extract the file "freemind.jar" and put it in the directory:
+	$IP/extensions/SemanticGraph/libs 
+where $IP is the install path of your mediawiki.
+
+3) Download the hypergraph applet and graph document type declaration from
+'wget http://hypergraph.sourceforge.net/hyperapplet.jar'
+'wget http://hypergraph.sourceforge.net/GraphXML.dtd'
+and put it in the directory:
+	$IP/images/hypergraph (you may need to create this) 
+where $IP is the install path of your mediawiki.
+ensuring that the apache user (e.g. www-data or apache) has write access to the 
+$IP/images/hypergraph directory (e.g. chown www-data:www-data $IP/images/hypergraph)
+(hypergraph is quite fussy about where it resides)
+
+NOTE:
+Hypergraph is a bit funny in that it has to be in the same directory as the output graph 
+file which is <wiki home>/images/hypergraph so you need to move (or symbolic link) the 
+two files hypergraph.jar & graph.dtd from "<wiki home>/extensions/SemanticGraph/libs"  
+to the "<wiki home>/images/hypergraph" so that the generated graph and the applet files 
+are all in the same place. Assuming you are running debian, and you have write access to the 
+apache directory, the sequence of commands would be:
+
+mkdir <wiki home>/images/hypergraph
+chown www-data:www-data <wiki home>/images/hypergraph 
+cp <wiki home>/extensions/SemanticGraph/libs/hypergraph.jar <wiki home>/images/hypergraph
+cp <wiki home>/extensions/SemanticGraph/libs/GraphXML.dtd <wiki home>/images/hypergraph
+
+Taking care to correctly substitute you wiki directory filepath for <wiki home>
+I think for other distros the apache username is different (www or apache)...
+
+4) put the following line in your $IP/LocalSettings.php:
+	require_once('$IP/extensions/SemanticGraph/includes/SemanticGraph2.php');
+
+5) relaxing mimetype checking and allowing mm files to be uploaded:
+see http://www.mediawiki.org/wiki/Manual:Configuring_file_uploads
+basically add the following to your LocalSettings.php:
+	$wgFileExtensions[] = 'mm';
+	$wgVerifyMimeType = false;
+
+
+Extra LocalSettings.php configuration:
+--------------------------------------
+
+the extension defines the settings object $wgSemanticGraphSettings. There are a number
+of useful things you can change here by including the following lines in your LocalSettings.php
+e.g.:
+
+	$wgSemanticGraphSettings->dotCommand = '/path/to/dot';	
+	$wgSemanticGraphSettings->neatoCommand = '/path/to/neato';
+	$wgSemanticGraphSettings->mmAppletPath = 'http://URL/to/freemind.jar';
+	$wgSemanticGraphSettings->maxToDispUnfolded = 10; //when displaying a 
+		// freemind map by default any branch with more than 10 items starts folded
+		// this can be overridden by the fold=none|level1|level2|level3|large option
+
+Those with MS operating systems will probably need to do something to these path variables
+
+Usage
+-----
+
+There are 5 parser functions provided by the extension. They are:
+	{{#smm:...}} - generated mindmap tree from semantic network, category tree or wiki links
+	{{#sgraph:...}} - generated dot network graph
+	{{#shypergraph:...}} - generated hypergraph graph
+	{{#mm2:...}} display an uploaded mind map with dynamic linking to the wiki.
+	{{#bigpic:..}} display a large image in a pan & zoom box
+All of them have similar syntax which can be displayed inline by doing e.g. {{#smm:help}}
+Tree functions generally require a single root resource to be specified, network graph functions can
+have a comma seperated list.
+
+It should be possible to use the ouput of a {{#ask..}} query as the definition of a resource list 
+for a graph if you specify the 'format=template' and 'link=none' option in the query.
+
+
+Known Issues
+------------
+* colouring of the graphs is not yet implemented.
+* ideally the functions should be integrated with the semantic result formats. There are subtle
+differences though in that this will iteratively perform semantic network browsing, and this will
+also do non semantic (e.g. category and wiki link maps). Also this integrates functionally with semantic forms
+extensions
+* the querying is done quite inefficiently at the moment especially for semantic networks.
+* caching is not managed at all
+
+
