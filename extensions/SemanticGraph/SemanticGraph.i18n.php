@@ -17,7 +17,7 @@ $messages = array();
  * @author Jeroen De Dauw
  */
 $messages['en'] = array(
-	'semanticgraph-desc' => 'Enables visualization of structured data stored via SMW in the form of grapgs.',
+	'semanticgraph-desc' => 'Enables visualization of structured data stored via Semantic MediaWiki in the form of graphs',
 );
 
 /** Message documentation (Message documentation)

@@ -31,6 +31,7 @@ $wgExtensionFunctions[] = 'efSGraphParserFunction_Setup';
 $wgHooks['LanguageGetMagic'][]       = 'efSGraphParserFunction_Magic';
 // Extension credits that will show up on Special:Version    
 $wgExtensionCredits[defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'parserhook'][] = array(
+	'path'           => __FILE__,
         'name'           => 'SemanticGraph',
         'version'        => SemanticGraph_VERSION,
         'author'         => 'Rob Challen', 
