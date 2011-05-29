@@ -79,15 +79,15 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	}
 
 	/**
-	 * Displays an error message saying that the user is already logged-in
+	 * Displays an info message saying that the user is already logged-in
 	 */
 	function alreadyLoggedIn() {
 		global $wgUser, $wgOut;
 
-		$wgOut->setPageTitle( wfMsg( 'openiderror' ) );
+		$wgOut->setPageTitle( wfMsg( 'openidalreadyloggedin' ) );
 		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 		$wgOut->setArticleRelated( false );
-		$wgOut->addWikiMsg( 'openidalreadyloggedin', $wgUser->getName() );
+		$wgOut->addWikiMsg( 'openidalreadyloggedintext', $wgUser->getName() );
 		list( $returnto, $returntoquery ) = $this->returnTo();
 		$wgOut->returnToMain( false, $returnto, $returntoquery );
 	}
@@ -596,7 +596,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 		$wgOut->setPageTitle( wfMsg( 'openidsuccess' ) );
 		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 		$wgOut->setArticleRelated( false );
-		$wgOut->addWikiMsg( 'openidsuccess', $wgUser->getName(), $openid );
+		$wgOut->addWikiMsg( 'openidsuccesstext', $wgUser->getName(), $openid );
 		$wgOut->addHtml( $inject_html );
 		list( $returnto, $returntoquery ) = $this->returnTo();
 		$wgOut->returnToMain( false, $returnto, $returntoquery );

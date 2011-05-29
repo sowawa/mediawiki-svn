@@ -49,7 +49,11 @@ Please consult an [[Special:ListUsers/sysop|administrator]].',
 	'openidfailure' => 'Verification failed',
 	'openidfailuretext' => 'Verification of the OpenID URL failed. Error message: "$1"',
 	'openidsuccess' => 'Verification succeeded',
-	'openidsuccesstext' => 'Verification of the OpenID URL succeeded.',
+	'openidsuccesstext' => "'''Successful verification and log in as user $1'''.
+
+Your OpenID is $2 .
+
+This and further OpenIDs, and an optional account password, can be managed in your [[Special:Preferences|preferences]].",
 	'openidusernameprefix' => 'OpenIDUser',
 	'openidserverlogininstructions' => '$3 requests that you enter your password for your user $2 page $1 (this is your OpenID URL)',
 	'openidtrustinstructions' => 'Check if you want to share data with $1.',
@@ -80,9 +84,10 @@ you can choose one from the options below.',
 	'openidconvertsuccesstext' => 'You have successfully converted your OpenID to $1.',
 	'openidconvertyourstext' => 'That is already your OpenID.',
 	'openidconvertothertext' => 'That is someone else\'s OpenID.',
-	'openidalreadyloggedin' => "'''You are already logged in, $1!'''
+	'openidalreadyloggedin' => 'You are already logged in.',
+	'openidalreadyloggedintext' => "'''You are already logged in, $1!'''
 
-If you want to use OpenID to log in in the future, you can [[Special:OpenIDConvert|convert your account to use OpenID]].",
+You can manage (view, delete, add further) OpenIDs in the OpenID tab of your [[Special:Preferences#preftab-8|preferences]].",
 	'openidnousername' => 'No username specified.',
 	'openidbadusername' => 'Bad username specified.',
 	'openidautosubmit' => 'This page includes a form that should be automatically submitted if you have JavaScript enabled.
