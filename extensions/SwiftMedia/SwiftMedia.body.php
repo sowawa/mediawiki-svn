@@ -2453,11 +2453,60 @@ class SwiftRepo extends LocalRepo {
 		return $result;
 	}
 
+
+	/**
+	 * Append the contents of the source path to the given file, OR queue
+	 * the appending operation in anticipation of a later appendFinish() call.
+	 * @param $srcPath String: location of the source file
+	 * @param $toAppendPath String: path to append to.
+	 * @param $flags Integer: bitfield, may be FileRepo::DELETE_SOURCE to indicate
+	 *        that the source file should be deleted if possible
+	 * @return mixed Status or false
+	 */
+
 	function append( $srcPath, $toAppendPath, $flags = 0 ){
 		throw new MWException( __METHOD__.": Not yet implemented." );
+		// I think we need to count the number of files whose names
+		// start with $toAppendPath, then add that count (with leading zeroes) to
+		// the end of $toAppendPath and write the chunk there.
+
+		// Count the number of files whose names start with $toAppendPath
+		$conn = $this->connect();
+		$container = $this->repo->get_container($conn,$this->repo->container . "%2Ftemp");
+		$nextone = count($container->list_objects(0, NULL, $srcPath));
+
+		// Do the append to the next name
+		$status = $this->store( $srcPath, 'temp', sprintf("%s.%05d", $toAppendPath, $nextone) );
+	
+		if ( $flags & self::DELETE_SOURCE ) {
+			unlink( $srcPath );
+		}
+
+		return $status;
 	}
+	/**
+	 * Finish the append operation.
+	 * @param $toAppendPath String: path to append to.
+	 */
 	function appendFinish( $toAppendPath ){
-		throw new MWException( __METHOD__.": Not yet implemented." );
+		$conn = $this->connect();
+		$container = $this->repo->get_container( $conn,$this->repo->container . "%2Ftemp" );
+		$parts = $container->list_objects( 0, NULL, $srcPath );
+		// list_objects() returns a sorted list.
+
+		// The first object as the same name as the destination, so
+		// we read it into memory and then write it out as the first chunk.
+		$obj = $container->get_object( array_shift($parts) );
+		$first = $obj->read();
+
+		$biggie = $container->create_object( $toAppendPath );
+		$biggie->write( $first );
+
+		foreach ( $parts as $part ) {
+			$obj = $container->get_object( $part );
+			$biggie->write( $obj->read() );
+		}
+		return newGood();
 	}
 
 	/**
@@ -2985,43 +3034,6 @@ class OldSwiftFile extends SwiftFile {
 
 
 class Junkyjunk {
-	function append( $srcPath, $toAppendPath, $flags = 0 ) {
-		$status = $this->newGood();
-
-		// Resolve the virtual URL
-		if ( self::isVirtualUrl( $srcPath ) ) {
-			$srcPath = $this->resolveVirtualUrl( $srcPath );
-		}
-		// Make sure the files are there
-		if ( !is_file( $srcPath ) )
-			$status->fatal( 'filenotfound', $srcPath );
-
-		if ( !is_file( $toAppendPath ) )
-			$status->fatal( 'filenotfound', $toAppendPath );
-
-		if ( !$status->isOk() ) return $status;
-
-		// Do the append
-		$chunk = file_get_contents( $toAppendPath );
-		if( $chunk === false ) {
-			$status->fatal( 'fileappenderrorread', $toAppendPath );
-		}
-
-		if( $status->isOk() ) {
-			if ( file_put_contents( $srcPath, $chunk, FILE_APPEND ) ) {
-				$status->value = $srcPath;
-			} else {
-				$status->fatal( 'fileappenderror', $toAppendPath,  $srcPath);
-			}
-		}
-
-		if ( $flags & self::DELETE_SOURCE ) {
-			unlink( $toAppendPath );
-		}
-
-		return $status;
-	}
-
 	/**
 	 * Remove a temporary file or mark it for garbage collection
 	 * @param $virtualUrl String: the virtual URL returned by storeTemp
@@ -3106,4 +3118,3 @@ class Junkyjunk {
 	}
 
 }
-

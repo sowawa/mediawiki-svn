@@ -1,4 +1,3 @@
-4) Of course, append() and appendFinish() need to be implemented.
 5) The Upload seems to take more time than I expect, but that could be a function of generating the six thumbnails.
 6) There's no 404 handler to generate missing thumbnails.
 7) There's no support for remote thumbnailing.
