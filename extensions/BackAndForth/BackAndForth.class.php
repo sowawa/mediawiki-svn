@@ -13,7 +13,7 @@ class BackAndForth {
 	 * @return bool
 	 */
 	public static function viewHook( $article ) {
-		global $wgOut, $wgUser;
+		global $wgOut;
 		$title = $article->getTitle();
 		if ( MWNamespace::isContent( $title->getNamespace() ) ) {
 			$wgOut->addHTML( self::buildLinks( $title ) );
