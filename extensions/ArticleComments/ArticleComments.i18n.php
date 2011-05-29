@@ -1299,7 +1299,36 @@ $messages['mn'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'article-comments-desc' => 'Membolehkan bahagian komen dalam laman kandungan',
 	'article-comments-title-string' => 'tajuk',
+	'article-comments-name-string' => 'Nama',
+	'article-comments-name-field' => 'Nama (diperlukan):',
+	'article-comments-url-field' => 'Tapak web:',
+	'article-comments-url-string' => 'URL',
+	'article-comments-comment-string' => 'Komen',
+	'article-comments-comment-field' => 'Komen:',
+	'article-comments-submit-button' => 'Hantar',
+	'article-comments-leave-comment-link' => 'Tinggalkan komen ...',
+	'article-comments-invalid-field' => '$1 yang diberikan <nowiki>[$2]</nowiki> tidak sah.',
+	'article-comments-required-field' => 'Ruangan "$1" mesti diisi.',
+	'article-comments-submission-failed' => 'Komen tidak dapat dihantar.',
+	'article-comments-failure-reasons' => 'Maaf, komen anda tidak dapat dihantar atas {{PLURAL:$1|sebab|sebab-sebab}} berikut:',
+	'article-comments-no-comments' => 'Maaf, laman "[[$1]]" tidak menerima komen buat masa ini.',
+	'article-comments-talk-page-starter' => '<noinclude>Komen di "[[$1]]"
+<comments />
+----- __NOEDITSECTION__</noinclude>',
+	'article-comments-commenter-said' => '$1 berkata ...',
+	'article-comments-summary' => 'Komen diberikan oleh $1 - melalui sambungan ArticleComments',
+	'article-comments-submission-succeeded' => 'Komen berjaya dihantar',
+	'article-comments-submission-success' => 'Anda berjaya menyerahkan komen untuk "[[$1]]"',
+	'article-comments-submission-view-all' => 'Anda boleh melihat [[$1|semua komen pada laman itu]]',
+	'article-comments-user-is-blocked' => 'Akaun pengguna anda sekarang disekat daripada menyunting "[[$1]]".',
+	'article-comments-comment-bad-mode' => 'Mod yang diberikan tidak sah untuk komen.
+Yang ada ialah "plain", "normal" dan "wiki".',
+	'article-comments-comment-missing-name-parameter' => 'Tiada nama',
+	'article-comments-comment-missing-date-parameter' => 'Tiada tarikh komen',
+	'article-comments-no-spam' => 'Sekurang-kurangnya satu ruangan yang diserahkan itu disyaki sebagai spam.',
+	'processcomment' => 'Proseskan komen laman',
 );
 
 /** Erzya (Эрзянь)

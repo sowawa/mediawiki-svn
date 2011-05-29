@@ -546,6 +546,13 @@ $messages['mr'] = array(
 	'categoryintersection-results' => 'शोधामध्ये $1 निकाल {{PLURAL:$1|सापडला|सापडले}}.',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'categoryintersection-results' => '$1 hasil carian dijumpai.',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Teòtlalili
  */

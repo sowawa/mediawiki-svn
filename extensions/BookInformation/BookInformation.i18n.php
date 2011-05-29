@@ -1237,6 +1237,7 @@ $messages['mr'] = array(
  */
 $messages['ms'] = array(
 	'bookinfo-result-title' => 'Tajuk:',
+	'bookinfo-provider' => 'Pembekal data: $1',
 );
 
 /** Burmese (မြန်မာဘာသာ)

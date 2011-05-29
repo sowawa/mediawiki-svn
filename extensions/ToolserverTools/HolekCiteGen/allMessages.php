@@ -681,6 +681,7 @@ $messages['lb'] = array(
 	'ts-citegen-Title' => 'Generator fir Zitatiouns-Schablounen',
 	'ts-citegen-Send' => 'Generéieren',
 	'ts-citegen-Option-append-author-link' => "Wikilinken op den Auteur an d'Schabloun derbäisetzen",
+	'ts-citegen-Option-append-newlines' => 'No all Parameter eng nei Zeil ufänken',
 	'ts-citegen-Output-title' => 'Resultat',
 	'ts-citegen-Skin-skins' => 'Skins/Layout',
 	'ts-citegen-Template-lang' => 'Sprooch vun der Schabloun',

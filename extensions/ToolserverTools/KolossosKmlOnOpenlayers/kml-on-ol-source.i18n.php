@@ -451,6 +451,13 @@ $messages['ml'] = array(
 	'ts-kml-on-ol-map-by' => 'ഭൂപട ഉടമ',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'ts-kml-on-ol-all' => 'Semua',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

@@ -595,6 +595,7 @@ $messages['ml'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'pf-admin-menu-default' => 'Tersedia',
 	'pf-header-documentation' => 'Dokumentasi',
 	'pf-header-page_title' => 'Tajuk',
 );

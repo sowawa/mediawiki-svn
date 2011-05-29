@@ -2425,6 +2425,7 @@ $2',
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'whitelisttablemodifyall' => 'Semua',
 	'whitelisttablemodifynone' => 'Tiada',
 	'whitelisttableremove' => 'Buang',
 );

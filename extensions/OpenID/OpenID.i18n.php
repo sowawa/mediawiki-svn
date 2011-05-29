@@ -143,6 +143,7 @@ You would not able to log in without an OpenID.',
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author Fryed-peach
+ * @author Hamilton Abreu
  * @author IAlex
  * @author Jon Harald Søby
  * @author Purodha
@@ -173,7 +174,6 @@ Parameters:
 	'openidlanguage' => '{{Identical|Language}}',
 	'openidtimezone' => '{{Identical|Time zone}}',
 	'openidchoosepassword' => '{{Identical|Password}}',
-	'openidalreadyloggedin' => '$1 is a user name.',
 	'openidautosubmit' => '{{doc-important|"Continue" will never be localised. It is hardcoded in a PHP extension. Translations could be made like ""Continue" (translation)"}}',
 	'openiddelete-button' => '{{Identical|Confirm}}',
 	'openid-openids-were-not-merged' => 'When merging user accounts by UserMerge or similar extensions, OpenID(s) are not merged if $wgOpenIDMergeOnAccountMerge=false (default).',
@@ -213,7 +213,7 @@ $messages['niu'] = array(
  */
 $messages['af'] = array(
 	'openid-desc' => "Teken by die wiki aan met 'n [http://openid.net/ OpenID], en teken by ander OpenID ondersteunde webwerwe aan met 'n wikigebruiker",
-	'openidlogin' => 'Teken aan met OpenID',
+	'openidlogin' => 'Meld aan/ registreer met OpenID',
 	'openidserver' => 'OpenID-bediener',
 	'openidxrds' => 'Yadis-lêer',
 	'openidconvert' => 'OpenID-omskakeling',
@@ -229,7 +229,11 @@ Raadpleeg asseblief 'n [[Special:ListUsers/sysop|administrateur]].",
 	'openidfailure' => 'Verifikasie het gefaal',
 	'openidfailuretext' => 'Verifikasie van die OpenID-URL het gefaal. Foutboodskap: "$1"',
 	'openidsuccess' => 'Verifikasie suksesvol uitgevoer',
-	'openidsuccesstext' => 'Die OpenID-URL is suksesvol geverifieer.',
+	'openidsuccesstext' => "'''Verifikasie en aanmelding was suksesvol vir gebruiker $1'''.
+
+U OpenID is $2 .
+
+Hierdie en verdere OpenID's, saam met 'n opsionele wagwoord, kan in u [[Special:Preferences|voorkeure]] bestuur word.",
 	'openidusernameprefix' => 'OpenIDGebruiker',
 	'openidserverlogininstructions' => 'Sleutel u wagwoord hier onder in om by $3 aan te meld as gebruiker $2 (gebruikersbladsy $1).',
 	'openidtrustinstructions' => 'Kontroleer of u data met $1 wil deel.',
@@ -259,9 +263,7 @@ Raadpleeg asseblief 'n [[Special:ListUsers/sysop|administrateur]].",
 	'openidconvertsuccesstext' => 'U OpenID is omgeskakel na $1.',
 	'openidconvertyourstext' => 'Dit is al reeds u OpenID.',
 	'openidconvertothertext' => 'Dit is iemand anders se OpenID.',
-	'openidalreadyloggedin' => "'''U is reeds aangeteken as $1!'''
-
-As u in die toekoms OpenID wil gebruik om mee aan te teken, [[Special:OpenIDConvert|skakel u gebruiker om na OpenID]].",
+	'openidalreadyloggedin' => "'''U is al reeds aangeteken!'''",
 	'openidnousername' => 'Geen gebruikersnaam is verskaf nie.',
 	'openidbadusername' => 'Slegte gebruikersnaam verskaf.',
 	'openidautosubmit' => 'Hierdie bladsy bevat \'n vorm wat outomaties ingedien sal word as u JavaScript in u bladleser geaktveer het.
@@ -293,12 +295,14 @@ Sonder 'n OpenID sou u glad nie meer kon aanteken nie.",
 	'openid-urls-action' => 'Aksie',
 	'openid-urls-delete' => 'Skrap',
 	'openid-add-url' => "Voeg 'n nuwe OpenID by",
-	'openid-login-or-create-account' => "Teken aan of skep 'n nuwe gebruiker",
+	'openid-login-or-create-account' => "Meld aan of skep 'n nuwe gebruiker",
 	'openid-provider-label-openid' => 'Sleutel die URL van u OpenID in',
 	'openid-provider-label-google' => 'Teken aan met u Google-gebruiker',
 	'openid-provider-label-yahoo' => 'Teken aan met u Yahoo-gebruiker',
 	'openid-provider-label-aol' => 'Teken aan met u AOL-gebruiker',
 	'openid-provider-label-other-username' => 'U gebruikersnaam by $1',
+	'openid-dashboard-title' => 'OpenID-beheerbord',
+	'openid-dashboard-title-admin' => 'OpenID-beheerbord (administrateur)',
 );
 
 /** Gheg Albanian (Gegë)
@@ -1169,7 +1173,11 @@ Bitte benachrichtige einen [[Special:ListUsers/sysop|Administrator]].',
 	'openidfailure' => 'Überprüfungsfehler',
 	'openidfailuretext' => 'Die Überprüfung der OpenID-URL ist fehlgeschlagen. Fehlermeldung: „$1“',
 	'openidsuccess' => 'Überprüfung erfolgreich beendet',
-	'openidsuccesstext' => 'Die Überprüfung der OpenID-URL war erfolgreich.',
+	'openidsuccesstext' => "'''Die Überprüfung sowie die Anmeldung als Benutzer $1 war erfolgreich.'''
+
+Deine OpenID lautet $2.
+
+Diese und weitere OpenIDs, sowie das fakultative Benutzerkontopasswort, können auf der Seite mit den [[Special:Preferences|Kontoeinstellungen]] verwaltet werden.",
 	'openidusernameprefix' => 'OpenID-Benutzer',
 	'openidserverlogininstructions' => '$3 erfordert die Eingabe deines Passworts für dein Benutzerkonto $2 auf der Seite $1 (OpenID-URL)',
 	'openidtrustinstructions' => 'Prüfe, ob du Daten mit $1 teilen möchtest.',
@@ -1200,9 +1208,10 @@ du kannst einen aus der untenstehenden Liste auswählen.',
 	'openidconvertsuccesstext' => 'Du hast die Konvertierung deiner OpenID nach $1 erfolgreich durchgeführt.',
 	'openidconvertyourstext' => 'Dies ist bereits deine OpenID.',
 	'openidconvertothertext' => 'Dies ist die OpenID von jemand anderem.',
-	'openidalreadyloggedin' => "'''Du bist bereits angemeldet, $1!'''
+	'openidalreadyloggedin' => 'Du bist bereits angemeldet.',
+	'openidalreadyloggedintext' => "'''Du bist bereits angemeldet, $1.'''
 
-Wenn du OpenID für künftige Anmeldevorgänge nutzen möchtest, kannst du [[Special:OpenIDConvert|dein Benutzerkonto nach OpenID konvertieren]].",
+Du kannst diese und weitere OpenIDs auf der Seite mit den [[Special:Preferences|Kontoeinstellungen]] unter dem Reiter OpenID verwalten (ansehen, löschen, weitere hinzufügen).",
 	'openidnousername' => 'Kein Benutzername angegeben.',
 	'openidbadusername' => 'Falscher Benutzername angegeben.',
 	'openidautosubmit' => 'Diese Seite enthält ein Formular, das automatisch übertragen wird, wenn JavaSkript aktiviert ist. Falls nicht, klicke bitte auf „Continue“ (Weiter).',
@@ -1259,6 +1268,11 @@ Ohne OpenID könntest du dich nicht mehr anmelden.',
 $messages['de-formal'] = array(
 	'openidconfigerrortext' => 'Die OpenID-Speicherkonfiguarion für dieses Wiki ist fehlerhaft.
 Bitte benachrichtigen Sie einen [[Special:ListUsers/sysop|Administrator]].',
+	'openidsuccesstext' => "'''Die Überprüfung sowie die Anmeldung als Benutzer $1 war erfolgreich.'''
+
+Ihre OpenID lautet $2.
+
+Diese und weitere OpenIDs, sowie das fakultative Benutzerkontopasswort, können auf der Seite mit den [[Special:Preferences|Kontoeinstellungen]] verwaltet werden.",
 	'openidserverlogininstructions' => '$3 erfordert die Eingabe Ihres Passworts für Ihr Benutzerkonto $2 auf der Seite $1 (OpenID-URL)',
 	'openidtrustinstructions' => 'Prüfen Sie, ob Sie Daten mit $1 teilen möchten.',
 	'openidchooseinstructions' => 'Alle Benutzer benötigen einen Benutzernamen;
@@ -1270,9 +1284,10 @@ Sie können einen aus der untenstehenden Liste auswählen.',
 	'openidconvertinstructions' => 'Mit diesem Formular können Sie Ihr Benutzerkonto zur Benutzung einer OpenID-URL freigeben oder eine weitere OpenID-URL hinzufügen',
 	'openidconvertsuccesstext' => 'Sie haben die Konvertierung Ihrer OpenID nach $1 erfolgreich durchgeführt.',
 	'openidconvertyourstext' => 'Dies ist bereits Ihre OpenID.',
-	'openidalreadyloggedin' => "'''Sie sind bereits angemeldet, $1!'''
+	'openidalreadyloggedin' => "'''Sie sind bereits angemeldet, $1.'''",
+	'openidalreadyloggedintext' => "'''Sie sind bereits angemeldet, $1.'''
 
-Wenn Sie OpenID für künftige Anmeldevorgänge nutzen möchten, können Sie [[Special:OpenIDConvert|Ihr Benutzerkonto nach OpenID konvertieren]].",
+Sie können diese und weitere OpenIDs auf der Seite mit den [[Special:Preferences|Kontoeinstellungen]] unter dem Reiter OpenID verwalten (ansehen, löschen, weitere hinzufügen).",
 	'openidautosubmit' => 'Diese Seite enthält ein Formular, das automatisch übertragen wird, wenn JavaSkript aktiviert ist. Falls nicht, klicken Sie bitte auf „Continue“ (Weiter).',
 	'openidclientonlytext' => 'Sie können keine Benutzerkonten aus diesem Wiki als OpenID für andere Seiten verwenden.',
 	'openidlogininstructions' => '{{SITENAME}} unterstützt den [http://openid.net/ OpenID-Standard] für eine einheitliche Anmeldung auf mehreren Websites.
@@ -2023,7 +2038,11 @@ Por favor, consúlteo cun [[Special:ListUsers/sysop|administrador]] do sitio.',
 	'openidfailure' => 'Fallou a verificación',
 	'openidfailuretext' => 'Fallou a verificación da dirección URL do OpenID. Mensaxe de erro: "$1"',
 	'openidsuccess' => 'A verificación foi un éxito',
-	'openidsuccesstext' => 'A verificación da dirección URL do OpenID foi un éxito.',
+	'openidsuccesstext' => "'''A verificación e o rexistro como usuario $1 foron correctos.'''
+
+O seu OpenID é $2.
+
+Pode xestionar este e outros OpenID e contrasinais opcionais nas súas [[Special:Preferences|preferencias]].",
 	'openidusernameprefix' => 'Usuario do OpenID',
 	'openidserverlogininstructions' => '$3 solicita que insira o seu contrasinal para o seu usuario $2 páxina $1 (este é o enderezo URL do seu OpenID)',
 	'openidtrustinstructions' => 'Comprobe se quere compartir datos con $1.',
@@ -2053,9 +2072,10 @@ Por favor, consúlteo cun [[Special:ListUsers/sysop|administrador]] do sitio.',
 	'openidconvertsuccesstext' => 'Converteu con éxito o seu OpenID a $1.',
 	'openidconvertyourstext' => 'Ese xa é o seu OpenID.',
 	'openidconvertothertext' => 'Ese é o OpenID de alguén.',
-	'openidalreadyloggedin' => "'''Está dentro do sistema, $1!'''
+	'openidalreadyloggedin' => 'Xa está identificado.',
+	'openidalreadyloggedintext' => "'''Xa está identificado como $1!'''
 
-Se quere usar OpenID para acceder ao sistema no futuro, pode [[Special:OpenIDConvert|converter a súa conta para usar OpenID]].",
+Pode xestionar (ollar, borrar) os OpenID na lapela correspondente das súas [[Special:Preferences|preferencias]].",
 	'openidnousername' => 'Non foi especificado ningún nome de usuario.',
 	'openidbadusername' => 'O nome de usuario especificado é incorrecto.',
 	'openidautosubmit' => 'Esta páxina inclúe un formulario que debería ser enviado automaticamente se ten o JavaScript activado.
@@ -2691,7 +2711,11 @@ Per favor contacta un [[Special:ListUsers/sysop|administrator]].',
 	'openidfailure' => 'Verification fallite',
 	'openidfailuretext' => 'Le verification del adresse URL de OpenID ha fallite. Message de error: "$1"',
 	'openidsuccess' => 'Verification succedite',
-	'openidsuccesstext' => 'Le verification del adresse URL de OpenID ha succedite.',
+	'openidsuccesstext' => "'''Verification e apertura de session succedite pro le usator $1'''.
+
+Tu OpenID es $2 .
+
+Iste OpenID e alteres, e un contrasigno facultative del conto, pote esser gerite in tu [[Special:Preferences|preferentias]].",
 	'openidusernameprefix' => 'Usator OpenID',
 	'openidserverlogininstructions' => 'Le sito $3 requesta que tu entra le contrasigno de tu conto "$2", pagina $1 (isto es tu URL de OpenID).',
 	'openidtrustinstructions' => 'Controla si tu vole repartir datos con $1.',
@@ -2722,9 +2746,10 @@ tu pote seliger un del optiones in basso.',
 	'openidconvertsuccesstext' => 'Tu ha convertite con successo tu OpenID a $1.',
 	'openidconvertyourstext' => 'Isto es ja tu OpenID.',
 	'openidconvertothertext' => 'Isto es le OpenID de alcuno altere.',
-	'openidalreadyloggedin' => "'''Tu es jam authenticate, $1!'''
+	'openidalreadyloggedin' => 'Tu es jam authenticate.',
+	'openidalreadyloggedintext' => "'''Tu es jam authenticate, \$1!'''
 
-Si tu vole usar OpenID pro aperir un session in le futuro, tu pote [[Special:OpenIDConvert|converter tu conto pro usar OpenID]].",
+Tu pote gerer (vider, deler, adder altere) OpenIDs in le scheda \"OpenID\" de tu [[Special:Preferences|preferentias]].",
 	'openidnousername' => 'Nulle nomine de usator specificate.',
 	'openidbadusername' => 'Mal nomine de usator specificate.',
 	'openidautosubmit' => 'Iste pagina include un formulario que debe esser submittite automaticamente si tu ha JavaScript activate.
@@ -3419,7 +3444,11 @@ Kontaktéiert w.e.g. een [[Special:ListUsers/sysop|Administrateur]].",
 	'openidfailure' => 'Feeler bei der Iwwerpréifung',
 	'openidfailuretext' => 'D\'iwwerpréifung vun der OpeniD URL huet net fonctionnéiert. Feeler Message: "$1"',
 	'openidsuccess' => 'Iwwerpréifung huet geklappt',
-	'openidsuccesstext' => "D'Iwwerpréifung vun der OpenID-URL huet geklappt.",
+	'openidsuccesstext' => "D'Iwwerpréifung an d'Aloggen als Benotzer $1 huet geklappt'''.
+
+Är OpenID ass $2.
+
+Dës a weider OpenId'en, an en optionaalt Passwuert, kann an Ären [[Special:Preferences|Astellungen]] geréiert ginn.",
 	'openidusernameprefix' => 'OpenIDBenotzer',
 	'openidserverlogininstructions' => '$3 freet datt Dir Äert Passwuert agitt fir Är $2-Benotzersäit (dëst ass Är OpenID URL).',
 	'openidtrustinstructions' => 'Klickt un wann Dir Donnéeën mat $1 deele wellt.',
@@ -3449,9 +3478,7 @@ Kontaktéiert w.e.g. een [[Special:ListUsers/sysop|Administrateur]].",
 	'openidconvertsuccesstext' => 'Dir hutt Är OpenID op $1 ëmgewandelt.',
 	'openidconvertyourstext' => 'Dat ass schon är OpenID.',
 	'openidconvertothertext' => 'Dëst ass engem anere seng OpenID.',
-	'openidalreadyloggedin' => "'''Dir sidd schonn ageloggt, $1!'''
-
-Wann Dir OpenID benotze wëllt fir Iech an Zukunft anzeloggen, da kënnt Dir [[Special:OpenIDConvert|Äre Benotzerkont an en OpenID-Benotzerkont ëmwandelen]].",
+	'openidalreadyloggedin' => 'Dir sidd schonn ageloggt.',
 	'openidnousername' => 'Kee Benotzernumm uginn.',
 	'openidbadusername' => 'Falsche Benotzernumm uginn.',
 	'openidautosubmit' => 'Op dëser Säit gëtt et e Formulaire deen automatesch soll verschéckt ginn wann Dir JavaScript ageschalt hutt.
@@ -4010,9 +4037,7 @@ Kontakt ein [[Special:ListUsers/sysop|administrator]].',
 	'openidconvertsuccesstext' => 'Du har konvertert OpenID-en din til $1.',
 	'openidconvertyourstext' => 'Det er allereie OpenID-en din.',
 	'openidconvertothertext' => 'Den OpenID-en tilhøyrer einkvan annan.',
-	'openidalreadyloggedin' => "'''Du er allereie innlogga, $1.'''
-
-Om du ynskjer å nytta OpenID i framtida, kan du [[Special:OpenIDConvert|konvertera kontoen din til å nytta OpenID]].",
+	'openidalreadyloggedin' => 'Du er alt innlogga.',
 	'openidnousername' => 'Du oppgav ingen brukarnamn.',
 	'openidbadusername' => 'Du oppgav eit ugyldig brukarnamn.',
 	'openidautosubmit' => 'Denne sida inneheld eit skjema som blir levert automatisk om du har JavaSvript slege på.
@@ -4501,7 +4526,11 @@ Por favor, consulte um [[Special:ListUsers/sysop|administrador]].',
 	'openidfailure' => 'Verificação falhou',
 	'openidfailuretext' => 'A verificação da URL OpenID falhou. Mensagem de erro: "$1"',
 	'openidsuccess' => 'Verificação com sucesso',
-	'openidsuccesstext' => 'A verificação da URL OpenID foi bem sucedida.',
+	'openidsuccesstext' => "'''Verificado e autenticado como $1'''.
+
+O seu OpenID é $2 .
+
+Este OpenID e outros, e uma palavra-chave opcional, podem ser geridos nas suas [[Special:Preferences|preferências]].",
 	'openidusernameprefix' => 'UtilizadorOpenID',
 	'openidserverlogininstructions' => '$3 pede que introduza a palavra-chave do seu utilizador $2 página $1 (a URL do seu OpenID)',
 	'openidtrustinstructions' => 'Verifique se pretender partilhar dados com $1.',
@@ -4532,9 +4561,10 @@ pode escolher uma das opções abaixo.',
 	'openidconvertsuccesstext' => 'Converteu com sucesso o seu OpenID para $1.',
 	'openidconvertyourstext' => 'Esse já é o seu OpenID.',
 	'openidconvertothertext' => 'Esse é o OpenID de outra pessoa.',
-	'openidalreadyloggedin' => "'''Já se encontra autenticado, $1!'''
+	'openidalreadyloggedin' => 'Já está autenticado.',
+	'openidalreadyloggedintext' => "'''Já está autenticado, $1!'''
 
-Se de futuro pretender usar o OpenID para se autenticar, pode [[Special:OpenIDConvert|converter a sua conta para usar OpenID]].",
+Pode gerir (ver, eliminar, etc.) OpenIDs no separador OpenID das suas [[Special:Preferences|preferências]].",
 	'openidnousername' => 'Nenhum nome de utilizador especificado.',
 	'openidbadusername' => 'Nome de utilizador especificado inválido.',
 	'openidautosubmit' => 'Esta página inclui um formulário que deverá ser automaticamente submetido se tiver JavaScript activado.
@@ -4704,13 +4734,17 @@ Vă rugăm să contactați un [[Special:ListUsers/sysop|administrator]].',
 	'openidfailure' => 'Verificare eșuată',
 	'openidfailuretext' => 'Verificarea URL-ului OpenID a eșuat. Mesaj de eroare: "$1"',
 	'openidsuccess' => 'Verificare cu succes',
-	'openidsuccesstext' => 'Verificarea URL-ului OpenID a reușit.',
+	'openidsuccesstext' => "'''Verificare finalizată cu succes și autentificare ca utilizator $1'''.
+
+OpenID-ul dumneavoastră este $2 .
+
+Acesta și alte OpenID-uri, precum și o parolă opțională a contului, pot fi gestionate în cadrul [[Special:Preferences|preferințelor]] dumneavoastră.",
 	'openidusernameprefix' => 'Utilizator OpenID',
 	'openidserverlogininstructions' => '$3 vă solicită să introduceți parola pentru pagina $2 dumneavoastră de utilizator $1 (URL OpenID)',
 	'openidtrustinstructions' => 'Verificați dacă doriți să partajați datele cu $1.',
 	'openidallowtrust' => 'Permite lui $1 să aibă încredere în acest cont de utilizator.',
 	'openidnopolicy' => 'Site-ul nu a specificat politica de confidențialitate.',
-	'openidpolicy' => 'Verificaţi <a target="_new" href="$1">politica de confidenţialitate</a> pentru mai multe informaţii',
+	'openidpolicy' => 'Verificați <a target="_new" href="$1">politica de confidențialitate</a> pentru mai multe informații.',
 	'openidoptional' => 'Opțional',
 	'openidrequired' => 'Necesar',
 	'openidnickname' => 'Poreclă',
@@ -4730,10 +4764,10 @@ se poate alege una din opțiunile de mai jos.',
 	'openidchooseusername' => 'Nume de utilizator:',
 	'openidchoosepassword' => 'Parolă:',
 	'openidconvertsuccess' => 'Convertit cu succes la OpenID',
+	'openidconvertsuccesstext' => 'V-ați convertit cu succes contul OpenID la $1.',
+	'openidconvertyourstext' => 'Acesta este deja OpenID-ul dumneavoastră.',
 	'openidconvertothertext' => 'Acesta este OpenID-ul altcuiva.',
-	'openidalreadyloggedin' => "'''$1, sunteți deja autentificat!'''
-
-Dacă doriți să utilizați un OpenID în viitor, puteți [[Special:OpenIDConvert|converti contul la OpenID]].",
+	'openidalreadyloggedin' => 'Sunteți deja autentificat.',
 	'openidnousername' => 'Nici un nume de utilizator specificat.',
 	'openidbadusername' => 'Nume de utilizator specificat greșit.',
 	'openidloginlabel' => 'URL OpenID',

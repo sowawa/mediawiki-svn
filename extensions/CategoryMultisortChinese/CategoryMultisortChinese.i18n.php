@@ -447,6 +447,24 @@ $messages['mk'] = array(
 	'categorymultisort-sortkey-name-radical-traditional' => 'Радикал: Традиционално',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'categorymultisort-sortkey-name-mandarin-pinyin' => 'Mandarin: Pinyin',
+	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'Mandarin: Bopomofo',
+	'categorymultisort-sortkey-name-mandarin-wadegiles' => 'Mandarin: Wade–Giles',
+	'categorymultisort-sortkey-name-mandarin-mps2' => 'Mandarin: MPS II',
+	'categorymultisort-sortkey-name-mandarin-tongyong' => 'Mandarin: Tongyong',
+	'categorymultisort-sortkey-name-cantonese-jyutping' => 'Kantonis: Jyutping',
+	'categorymultisort-sortkey-name-stroke' => 'Lejang',
+	'categorymultisort-sortkey-name-stroke-simplified' => 'Lejang: Ringkas',
+	'categorymultisort-sortkey-name-stroke-traditional' => 'Lejang: Tradisional',
+	'categorymultisort-sortkey-name-radical' => 'Akar',
+	'categorymultisort-sortkey-name-radical-simplified' => 'Akar: Ringkas',
+	'categorymultisort-sortkey-name-radical-traditional' => 'Akar: Tradisional',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -627,6 +627,13 @@ $messages['mn'] = array(
 	'mostrevisors-submit' => 'Явах',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'mostrevisors-submit' => 'Pergi',
+);
+
 /** Maltese (Malti)
  * @author Chrisportelli
  */

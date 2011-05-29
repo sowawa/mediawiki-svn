@@ -489,6 +489,14 @@ $messages['mr'] = array(
 	'categorystepper-start' => '(वर्गाची शेवट)',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'categorystepper-end' => '(Akhir kategori)',
+	'categorystepper-start' => '(Awal kategori)',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Teòtlalili
  */

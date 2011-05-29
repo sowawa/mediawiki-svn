@@ -1785,6 +1785,7 @@ $messages['ms'] = array(
 	'badimages-reason' => 'Sebab:',
 	'badimages-remove' => '(buang)',
 	'badimages-remove-btn' => 'Buang',
+	'badimages-page' => '{{ns:help}}:Senarai imej tak elok',
 );
 
 /** Maltese (Malti)

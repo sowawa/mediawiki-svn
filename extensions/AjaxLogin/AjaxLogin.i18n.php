@@ -850,9 +850,16 @@ $messages['ml'] = array(
  * @author Zamwan
  */
 $messages['ms'] = array(
+	'ajaxlogin-desc' => 'Petak dinamik yang membolehkan pengguna untuk log masuk dan ingatkan kata laluan',
+	'ajaxLogin1' => 'Untuk melengkapkan log masuk anda, anda mesti mengisikan kata laluan baru.
+Ini akan membawa anda pergi dari laman penyuntingan ini dan anda mungkin kehilangan suntingan semasa anda.',
 	'ajaxLogin2' => 'Adakah anda pasti?
 Perubahan yang anda lakukan di laman ini mungkin hilang sekiranya anda tinggalkan laman ini sekarang.',
 	'ajaxlogin-create' => 'Buka akaun',
+	'al-nosuchuser' => 'Tiada pengguna yang bernama "$1".
+Nama pengguna adalah peka besar kecil huruf.
+Sila semak ejaan anda.',
+	'al-createblocked' => 'Alamat IP anda disekat daripada membuka akaun.',
 );
 
 /** Erzya (Эрзянь)

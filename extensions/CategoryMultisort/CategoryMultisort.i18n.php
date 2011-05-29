@@ -478,6 +478,14 @@ $messages['mn'] = array(
 	'categorymultisort-go' => 'Явах',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'categorymultisort-defaultsortkey-name' => 'Tersedia',
+	'categorymultisort-go' => 'Pergi',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Teòtlalili
  */

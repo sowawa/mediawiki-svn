@@ -1562,6 +1562,15 @@ $messages['mr'] = array(
 	'changeauthor-logpagename' => 'लेखक बदल सूची',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'changeauthor-pagenameform-go' => 'Pergi',
+	'changeauthor-comment' => 'Komen:',
+	'changeauthor-changeauthors-single' => 'Tukar pengarang',
+);
+
 /** Maltese (Malti)
  * @author Chrisportelli
  * @author Roderick Mallia

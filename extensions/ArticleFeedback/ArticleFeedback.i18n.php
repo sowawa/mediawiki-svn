@@ -2816,7 +2816,7 @@ $messages['mn'] = array(
  * @author Aviator
  */
 $messages['ms'] = array(
-	'articlefeedback' => 'Pentaksiran rencana',
+	'articlefeedback' => 'Papan pemuka maklum balas rencana',
 	'articlefeedback-desc' => 'Pentaksiran rencana (versi percubaan)',
 	'articlefeedback-survey-answer-whyrated-other' => 'Lain',
 	'articlefeedback-survey-question-useful-iffalse' => 'Мезекс?',
@@ -4392,11 +4392,12 @@ Ang pangkat ng {{SITENAME}}',
  * @author Emperyan
  * @author Joseph
  * @author Karduelis
+ * @author Reedy
  * @author Stultiwikia
  */
 $messages['tr'] = array(
 	'articlefeedback' => 'Madde değerlendirmesi',
-	'articlefeedback-desc' => 'Madde Geridönütleri',
+	'articlefeedback-desc' => 'Madde geribildirimi',
 	'articlefeedback-survey-answer-whyrated-sharing-opinion' => 'Fikirlerimi paylaşmayı seviyorum',
 	'articlefeedback-survey-answer-whyrated-other' => 'Diğer',
 	'articlefeedback-survey-question-useful-iffalse' => 'Neden?',

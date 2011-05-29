@@ -1898,6 +1898,7 @@ $messages['ms'] = array(
 	'ct_italic_tip_ins' => 'Isikan teks condong',
 	'ct_italic_tip_wrap' => 'Condongkan teks ini',
 	'ct_italic_caption' => 'Condong',
+	'ct_submit' => 'Pergi!',
 );
 
 /** Maltese (Malti)

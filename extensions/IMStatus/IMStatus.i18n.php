@@ -1032,6 +1032,13 @@ $messages['mk'] = array(
 	'imstatus_yahoo_style' => 'стил на копчето, од $1 (најмало) до $2 (најголемо), $3 и $4 се за говорна пошта.',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'imstatus_default' => 'Tersedia',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

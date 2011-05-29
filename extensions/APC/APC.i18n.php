@@ -4613,11 +4613,13 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Emrrans
  * @author Zamwan
  */
 $messages['ms'] = array(
 	'apc' => 'Maklumat APC',
+	'viewapc-info-general' => 'Maklumat am',
 	'viewapc-apc-version' => 'Versi APC',
 	'viewapc-php-version' => 'Versi PHP',
 	'viewapc-display-info' => 'Nama',

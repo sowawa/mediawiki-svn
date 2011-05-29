@@ -703,10 +703,12 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Aurora
  */
 $messages['ms'] = array(
 	'randomincategory-label' => 'Kategori:',
+	'randomincategory-submit' => 'Pergi',
 );
 
 /** Maltese (Malti)

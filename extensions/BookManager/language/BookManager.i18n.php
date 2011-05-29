@@ -329,6 +329,13 @@ $messages['mk'] = array(
 	'bm-printversion-inexistent-book' => 'Не ја најдов книгата. Внесете име на постоечка книга за да ја добиете нејзината верзија за печатење.',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'bm-printversion' => 'Versi boleh cetak',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
