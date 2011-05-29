@@ -1,6 +1,6 @@
 <?php
 /**
- * Internationalisation file for DublinCoreRdf extension.
+ * Internationalisation file for CreativeCommonsRdf extension.
  *
  * @file
  * @ingroup Extensions
@@ -13,6 +13,6 @@ $messages = array();
  * @author Evan Prodromou
  */
 $messages['en'] = array(
-	'creativecorerdf-desc' => 'CreativeCommons RDF-metadata',
+	'creativecommonsrdf-desc' => 'CreativeCommons RDF-metadata',
 );
 
