@@ -1208,7 +1208,7 @@ class LqtView {
 		$wgOut->addExtensionStyle( "$wgLiquidThreadsExtensionPath/lqt.css?{$wgStyleVersion}" );
 
 		# Hack to make old LQT work with new WikiEditor, hopefully --catrope
-		$wgOut->addModules( array( 'ext.wikiEditor', 'ext.wikiEditor.toolbar.i18n', 'jquery.wikiEditor.toolbar', 'jquery.wikiEditor.dialogs', 'jquery.async', 'jquery.cookie', 'jquery.ui.dialog' ) );
+		$wgOut->addModules( array( 'ext.wikiEditor', 'ext.wikiEditor.toolbar.i18n', 'jquery.wikiEditor.toolbar', 'jquery.wikiEditor.dialogs', 'jquery.async', 'jquery.cookie', 'jquery.ui.dialog', 'jquery.ui.droppable' ) );
 	
 		self::$stylesAndScriptsDone = true;
 	}
