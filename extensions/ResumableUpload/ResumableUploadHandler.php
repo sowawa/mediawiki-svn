@@ -146,7 +146,7 @@ class ResumableUploadHandler extends UploadBase {
 		
 		if ( $this->getRealPath( $this->repoPath ) ) {
 		    if ( $this->getSize( $this->repoPath ) == $this->mChunkOffset ) {
-			    $this->status = $this->appendToUploadFile( $this->repoPath, $this->mTempPath );
+			    $this->status = $this->appendToUploadFile( $this->mTempPath, $this->repoPath );
 			    if ( $this->mFileSize >	$wgMaxUploadSize )
 				    $this->status = Status::newFatal( 'largefileserver' );
 		    } else {
@@ -165,6 +165,7 @@ class ResumableUploadHandler extends UploadBase {
 	 */
 	public function finalizeFile() {
 		$this->appendChunk();
+		$this->appendFinal( $this->repoPath );
 		$this->mTempPath = $this->getRealPath( $this->repoPath );
 	}
 }
