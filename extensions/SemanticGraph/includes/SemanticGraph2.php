@@ -34,7 +34,7 @@ $wgExtensionCredits[defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'parserh
         'name'           => 'SemanticGraph',
         'version'        => SemanticGraph_VERSION,
         'author'         => 'Rob Challen', 
-        'url'            => 'https://secure.wikimedia.org/wikipedia/mediawiki/wiki/Extension:Semantic_Graph',
+        'url'            => 'http://www.mediawiki.org/wiki/Extension:Semantic_Graph',
         'descriptionmsg' => 'semanticgraph-desc'
 );
 

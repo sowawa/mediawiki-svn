@@ -17,7 +17,7 @@ $messages = array();
  * @author Jeroen De Dauw
  */
 $messages['en'] = array(
-	'semanticgraph-desc' => 'This extension depends on graphviz, freemind applet and hypergraph applet',
+	'semanticgraph-desc' => 'Enables visualization of structured data stored via SMW in the form of grapgs.',
 );
 
 /** Message documentation (Message documentation)
