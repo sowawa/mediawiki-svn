@@ -5,7 +5,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'CreativeCoreRdf',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:CreativeCoreRdf',
 	'author' => 'Evan Prodromou',
-	'description' => "CreativeCommons RDF-metadata"
+	'descriptionmsg' => 'creativecorerdf-desc',
 );
 
 $wgHooks['MediaWikiPerformAction'][] = 'efCreativeCommonsRdfPreformAction';
