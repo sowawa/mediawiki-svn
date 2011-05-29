@@ -5,7 +5,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'DublinCoreRdf',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:DublinCoreRdf',
 	'author' => 'Evan Prodromou',
-	'description' => "Dublin Core RDF-metadata"
+	'descriptionmsg' => "dublincorerdf-desc"
 );
 
 $wgHooks['MediaWikiPerformAction'][] = 'efDublinCoreBeforePageDisplay';
