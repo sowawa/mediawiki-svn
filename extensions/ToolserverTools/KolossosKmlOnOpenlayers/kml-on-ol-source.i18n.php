@@ -257,6 +257,18 @@ $messages['fr'] = array(
 	'ts-kml-on-ol-map-by' => 'Carte créée par',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'ts-kml-on-ol-options' => 'Chouèx',
+	'ts-kml-on-ol-languages' => 'Lengoues',
+	'ts-kml-on-ol-thumbnails' => 'Figures',
+	'ts-kml-on-ol-help' => 'Éde',
+	'ts-kml-on-ol-all' => 'Tot',
+	'ts-kml-on-ol-map-by' => 'Mapa fêta per',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

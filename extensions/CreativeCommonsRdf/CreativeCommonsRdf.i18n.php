@@ -16,6 +16,13 @@ $messages['en'] = array(
 	'creativecommonsrdf-desc' => 'CreativeCommons RDF-metadata',
 );
 
+/** Danish (Dansk)
+ * @author Peter Alberti
+ */
+$messages['da'] = array(
+	'creativecommonsrdf-desc' => 'CreativeCommons RDF-metadata',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -23,11 +30,32 @@ $messages['de'] = array(
 	'creativecommonsrdf-desc' => 'Stellt RDF-Metadaten zu Creative Commons bereit',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'creativecommonsrdf-desc' => 'Metadatos RDF de Creative Commons',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
 $messages['ia'] = array(
 	'creativecommonsrdf-desc' => 'Metadatos RDF de Creative Commons',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'creativecommonsrdf-desc' => 'RDF-метаподатоци од Криејтив комонс',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'creativecommonsrdf-desc' => 'Creative Commons RDF-metadata',
 );
 
 /** Portuguese (Português)

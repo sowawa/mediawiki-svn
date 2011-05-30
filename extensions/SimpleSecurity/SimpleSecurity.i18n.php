@@ -393,6 +393,8 @@ $messages['eu'] = array(
 	'security-info-toggle' => 'segurtasun murrizketak',
 	'security-manygroups' => '$1 eta $2 taldeak',
 	'security-type-category' => 'kategoria',
+	'security-type-namespace' => 'izen-tartea',
+	'restriction-read' => 'Irakurri',
 );
 
 /** Finnish (Suomi)

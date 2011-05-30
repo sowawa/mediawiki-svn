@@ -37,6 +37,14 @@ $messages['de'] = array(
 	'spark-missing-query' => 'Es muss eine eine Abfrage mit dem Parameter „data-spark-query“ erstellt werden.',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'spark-desc' => 'Engade unha etiqueta <code><nowiki><spark /></nowiki></code> que permite a incorporación de mash-ups de [http://km.aifb.kit.edu/sites/spark/ Spark]. A biblioteca spark foi creada por Denny Vrandecic e Andreas Harth.',
+	'spark-missing-query' => 'Cómpre especificar unha pescuda a través do parámetro "data-spark-query".',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -51,6 +59,14 @@ $messages['ia'] = array(
 $messages['mk'] = array(
 	'spark-desc' => 'Ја додава ознаката <code><nowiki><spark /></nowiki></code> што овозможува вградување на мешовити содржини од разни извори (mash-ups) од [http://km.aifb.kit.edu/sites/spark/ Spark]. Библиотеката на Spark е дело на Дени Врандечиќ и Андреас Харт.',
 	'spark-missing-query' => 'Ќе треба да наведете барање користејќи го параметарот „data-spark-query“.',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'spark-desc' => 'Voegt het label <code><nowiki><spark /></nowiki></code> voor het inbedden van [http://km.aifb.kit.edu/sites/spark/ Spark]-mashups. De sparkbibliotheek gemaakt door Denny Vrandecic en Andreas Harth',
+	'spark-missing-query' => 'U moet een zoekopdracht opgeven met de parameter "data-spark-query".',
 );
 
 /** Portuguese (Português)

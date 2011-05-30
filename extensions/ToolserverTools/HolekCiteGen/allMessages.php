@@ -388,6 +388,31 @@ $messages['fr'] = array(
 	'ts-citegen-base-disabled' => "Erreur: la base de données %s n'est pas disponible",
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'ts-citegen-Output-title' => 'Rèsultat',
+	'ts-citegen-Wrong-input' => '%s : pas identifiâ coment una entrâ justa.',
+	'ts-citegen-Parsers' => 'Parsors',
+	'ts-citegen-Skins' => 'Sortia',
+	'ts-citegen-Skin-skins' => 'Habelyâjos',
+	'ts-citegen-Skin-outputformat' => 'Format de sortia',
+	'ts-citegen-Template-lang' => 'Lengoua du modèlo',
+	'ts-citegen-Sources-title' => 'Sôrses',
+	'ts-citegen-Sources-text' => 'Ce-desot la lista de les sôrses utilisâs est montrâ.',
+	'ts-citegen-Sidebar-title' => 'G·ènèrator de citacions',
+	'ts-citegen-Sidebar-add-Firefox' => 'Apondre a la banche de fllanc',
+	'ts-citegen-Sidebar-add-Opera' => 'Apondre a la lista prèferâ',
+	'ts-citegen-Sidebar-add-IE-Mac' => 'Apondre u titulèro de la pâge',
+	'ts-citegen-Tools' => 'Outils',
+	'ts-citegen-Other-languages' => 'Ôtres lengoues',
+	'ts-citegen-Save-it' => 'Requéta en cors',
+	'ts-citegen-Errors-title' => 'Èrrors',
+	'ts-citegen-Unavailable-SQL' => "Èrror : lo ''toolserver'' de la bâsa de balyês est pas disponiblo. MySQL at retornâ : %s",
+	'ts-citegen-base-disabled' => 'Èrror : la bâsa de balyês %s est pas disponibla.',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

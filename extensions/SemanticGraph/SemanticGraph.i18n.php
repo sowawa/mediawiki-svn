@@ -34,11 +34,32 @@ $messages['de'] = array(
 	'semanticgraph-desc' => 'Ermöglicht die Darstellung strukturierter semantischer Daten in Form von Diagrammen',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'semanticgraph-desc' => 'Permite a visualización de datos estruturados que foron almacenados a través de Semantic MediaWiki en forma de gráficas',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
 $messages['ia'] = array(
 	'semanticgraph-desc' => 'Permitte le visualisation de datos structurate via Semantic MediaWiki in forma de graphicos',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'semanticgraph-desc' => 'Овозможува визуелен приказ на структурирани податоци преку складирани преку Семантички МедијаВики во облик на графикони',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'semanticgraph-desc' => 'Maakt de visualisatie in grafieken mogelijk van gestructureerde gegevens die via Semantic MediaWiki zijn opgeslagen',
 );
 
 /** Portuguese (Português)

@@ -420,6 +420,7 @@ $messages['bg'] = array(
 	'articlefeedback-survey-title' => 'Моля, отговорете на няколко въпроса',
 	'articlefeedback-survey-thanks' => 'Благодарим ви, че попълнихте въпросника!',
 	'articlefeedback-report-switch-label' => 'Показване на резултатите',
+	'articlefeedback-pitch-join-accept' => 'Създаване на сметка',
 	'articlefeedback-pitch-join-login' => 'Влизане',
 	'articlefeedback-pitch-edit-accept' => 'Редактиране на тази страница',
 );

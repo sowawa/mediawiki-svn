@@ -125,6 +125,13 @@ $messages['et'] = array(
 	'nll-lastseparator' => '&#32;ning&#32;',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'nll-lastseparator' => '&#32;eta&#32;',
+);
+
 /** Finnish (Suomi)
  * @author Centerlink
  * @author Nike

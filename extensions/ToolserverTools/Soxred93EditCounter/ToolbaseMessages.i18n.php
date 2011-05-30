@@ -536,6 +536,45 @@ Si vous avez suivi un lien, veuillez <a href="$1">rapporter le bug</a>.
 	'toolbase-error-toomanyedits' => '$1 a $2 modifications. Cet outil a un maximum de $3 modifications.',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'toolbase-header-title' => 'Outils X! (BÈTA)',
+	'toolbase-header-bugs' => 'Cofieries',
+	'toolbase-header-sitenotice' => 'Avis du seto du sèrvor d’outils globâl : $1',
+	'toolbase-replag' => 'Sèrvor en retârd de $1',
+	'toolbase-replag-years' => 'ans',
+	'toolbase-replag-months' => 'mês',
+	'toolbase-replag-weeks' => 'semanes',
+	'toolbase-replag-days' => 'jorns',
+	'toolbase-replag-hours' => 'hores',
+	'toolbase-replag-minutes' => 'menutes',
+	'toolbase-replag-seconds' => 'secondes',
+	'toolbase-footer-exectime' => 'Complètâ en $1 second{{PLURAL:$1|a|es}}',
+	'toolbase-footer-source' => 'Vêre lo tèxto sôrsa',
+	'toolbase-footer-language' => 'Changiér de lengoua',
+	'toolbase-footer-translate' => 'Traduire',
+	'toolbase-navigation' => 'Navigacion',
+	'toolbase-navigation-homepage' => 'Pâge de reçua',
+	'toolbase-navigation-user_id' => 'Trovar lo numerô utilisator',
+	'toolbase-navigation-autoedits' => 'Comptor de changements ôtomatisâ',
+	'toolbase-userid-submit' => 'Avêr lo numerô utilisator',
+	'toolbase-userid-title' => 'Trovar un numerô utilisator',
+	'toolbase-userid-result' => 'Lo numerô utilisator por <b>$1</b> dessus <a href="$3"><b>$3</b></a> est <b>$2</b>.',
+	'toolbase-autoedits-title' => 'Calculator de changements ôtomatisâ',
+	'toolbase-autoedits-submit' => 'Calcular',
+	'toolbase-autoedits-approximate' => 'Nombro <b>a pou prés</b> de changements en utilisent...',
+	'toolbase-autoedits-totalauto' => 'Nombro totâl de changements ôtomatisâs',
+	'toolbase-autoedits-totalall' => 'Soma totâla de changements',
+	'toolbase-autoedits-pct' => 'Porcentâjo de changements ôtomatisâs',
+	'toolbase-main-title' => 'Benvegnua !',
+	'toolbase-main-404' => 'Fichiér entrovâblo',
+	'toolbase-form-wiki' => 'Vouiqui',
+	'toolbase-error-nouser' => '$1 est pas un utilisator valido',
+	'toolbase-error-nowiki' => '$1.$2.org est pas un vouiqui valido',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

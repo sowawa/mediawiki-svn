@@ -3575,7 +3575,11 @@ $messages['mk'] = array(
 	'openidfailure' => ' Потврдувањето не успеа',
 	'openidfailuretext' => 'Потврдувањето на URL адресата на OpenID не успеа. Извештај за грешката: „$1“',
 	'openidsuccess' => 'Потврдувањето успеа',
-	'openidsuccesstext' => 'Потврдувањето на URL адресата на OpenID беше успешно.',
+	'openidsuccesstext' => "'''Проверката е успешна. Најавени сте како корисник $1'''.
+
+Вашиот OpenID гласи $2 .
+
+На страницата [[Special:Preferences|нагодувања]] можете поставите други OpenID-ја и лозинка за сметката (незадолжително).",
 	'openidusernameprefix' => 'OpenIDКорисник',
 	'openidserverlogininstructions' => '$3 бара да ја внесете лозинката за вашиот корисник $2 страница $1 (OpenID URL)',
 	'openidtrustinstructions' => 'Штиклирајте ако сакате да споделувате податоци со $1.',
@@ -3606,9 +3610,10 @@ $messages['mk'] = array(
 	'openidconvertsuccesstext' => 'Успешно го претворивте вашиот OpenID во $1.',
 	'openidconvertyourstext' => 'Ова веќе е  вашиот OpenID.',
 	'openidconvertothertext' => 'Тоа е туѓ OpenID.',
-	'openidalreadyloggedin' => "'''Веќе сте најавени, $1!'''
+	'openidalreadyloggedin' => 'Веќе сте најавени.',
+	'openidalreadyloggedintext' => "'''Веќе сте најавени, $1!'''
 
-Ако сакате во иднина да користите OpenID за најавување, можете да [[Special:OpenIDConvert|ја претворите вашата сметка за да користи OpenID]].",
+Можете да раководите со (погледате, избришете, додавате повеќе) OpenID-ја во јазичето за OpenID во вашите [[Special:Preferences|нагодувања]].",
 	'openidnousername' => 'Нема назначено корисничко име.',
 	'openidbadusername' => 'Беше назначено грешно име.',
 	'openidautosubmit' => 'На оваа страница стои образец кој треба да се поднесе автоматски ако имате овозможено JavaScript.
@@ -3905,7 +3910,11 @@ Raadpleeg een  [[Special:ListUsers/sysop|beheerder]].",
 	'openidfailure' => 'Verificatie mislukt',
 	'openidfailuretext' => 'De verificatie van de OpenID URL is mislukt. Foutmelding: "$1"',
 	'openidsuccess' => 'Verificatie uitgevoerd',
-	'openidsuccesstext' => 'De OpenID-URL is geverifieerd.',
+	'openidsuccesstext' => "'''De controle is geslaag en u bent aangemeld als gebruiker $1.'''
+
+Uw OpenID is $2 .
+
+Dit OpenID en andere OpenID's en optioneel een wachtwoord voor deze gebruiker, kunnen beheerd worden in uw [[Special:Preferences|voorkeuren]].",
 	'openidusernameprefix' => 'OpenIDGebruiker',
 	'openidserverlogininstructions' => '$3 vraag om het invoeren van uw wachtwoord voor uw gebruiker $2 pagina $1 (URL voor OpenID).',
 	'openidtrustinstructions' => 'Controleer of u gegevens wilt delen met $1.',
@@ -3935,9 +3944,10 @@ Raadpleeg een  [[Special:ListUsers/sysop|beheerder]].",
 	'openidconvertsuccesstext' => 'Uw OpenID is omgezet naar $1.',
 	'openidconvertyourstext' => 'Dat is al uw OpenID.',
 	'openidconvertothertext' => 'Iemand anders heeft die OpenID al in gebruik.',
-	'openidalreadyloggedin' => "'''U bent al aangemeld, $1!'''
+	'openidalreadyloggedin' => 'U bent al aangemeld.',
+	'openidalreadyloggedintext' => "'''U bent al aangemeld, $1!'''
 
-Als u in de toekomst uw OpenID wilt gebruiken om aan te melden, [[Special:OpenIDConvert|zet uw gebruiker dan om naar OpenID]].",
+U kunt OpenID's beheren (bekijken, verwijderen en toevoegen) in het tabblad OpenID in uw [[Special:Preferences|voorkeuren]].",
 	'openidnousername' => 'Er is geen gebruikersnaam opgegeven.',
 	'openidbadusername' => 'De opgegeven gebruikersnaam is niet toegestaan.',
 	'openidautosubmit' => 'Deze pagina bevat een formulier dat automatisch wordt verzonden als JavaScript is ingeschaked.
@@ -3962,6 +3972,7 @@ Dan zou u niet langer kunnen aanmelden zonder een OpenID.",
 Dan zou u niet langer kunnen aanmelden zonder een OpenID.",
 	'openiddelete-sucess' => 'De OpenID is verwijderd uit uw gebruiker.',
 	'openiddelete-error' => 'Er is een fout opgetreden tijdens het verwijderen van de OpenID uit uw gebruiker.',
+	'openid-openids-were-not-merged' => "Bij het samenvoegen van de gebruikers zijn een of meer OpenID's niet samengevoegd.",
 	'openid-prefstext' => 'Voorkeuren [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Bij aanmelden met OpenID, uw OpenID op uw gebruikerspagina verbergen.',
 	'openid-pref-update-userinfo-on-login' => 'Iedere keer als ik aanmeld de volgende informatie vanuit de OpenID-gebruiker bijwerken:',

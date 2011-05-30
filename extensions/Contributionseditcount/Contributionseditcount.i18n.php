@@ -77,7 +77,7 @@ $messages['be-tarask'] = array(
  * @author Spiritia
  */
 $messages['bg'] = array(
-	'contributionseditcount' => 'Този потребител е направил $1 редакции.',
+	'contributionseditcount' => 'Този потребител е направил {{PLURAL:$1|една редакция|$1 редакции}}.',
 	'contributionseditcount-desc' => 'Показва броя редакции на [[Special:Contributions|специална страница]]',
 );
 

@@ -113,6 +113,16 @@ $messages['fr'] = array(
 	'webfonts-disable-preference' => "Désactiver l'incorporation des polices (Polices web)",
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'webfonts' => 'Polices vouèbe',
+	'webfonts-desc' => 'Apond les polices a les pâges.',
+	'webfonts-load' => 'Chouèsésséd una police',
+	'webfonts-reset' => 'Tornar inicialisar',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

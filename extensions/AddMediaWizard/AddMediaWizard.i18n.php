@@ -183,6 +183,7 @@ $messages['es'] = array(
  */
 $messages['eu'] = array(
 	'addmediawizard-desc' => 'Gehitu media magoa, Kaltura eta Wikipedia Fundazioak lankidetzan garatua',
+	'addmediawizard-loading' => 'Add Media Wizard kargatzen',
 );
 
 /** Persian (فارسی)
