@@ -15,8 +15,6 @@ jQuery( function( $ ) {
 		&& mw.util.getParamValue( 'oldid' ) == null
 		// Not viewing a redirect
 		&& mw.util.getParamValue( 'redirect' ) != 'no'
-		// Not printable version
-		&& mw.util.getParamValue( 'printable' ) != 'yes'
 	) {
 		// Assign a tracking bucket using options from wgArticleFeedbackTracking
 		mw.user.bucket(
