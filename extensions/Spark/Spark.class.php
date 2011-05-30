@@ -41,17 +41,21 @@ final class SparkTag {
 	 * 
 	 * @since 0.1
 	 * 
+	 * @param Parser $parser
+	 * 
 	 * @return string
 	 */
-	public function render() {
+	public function render( Parser $parser ) {
 		if ( array_key_exists( 'data-spark-query', $this->parameters ) ) {
 			$query = htmlspecialchars( $this->parameters['data-spark-query'] );
 			$query = str_replace( array( '&lt;', '&gt;' ), array( '<', '>' ), $query );
 			unset( $this->parameters['data-spark-query'] );
 
-			return '<div class="spark" data-spark-query="' . $query . '" ' . Html::expandAttributes( $this->parameters ) . ' >' .
+			$html = '<div class="spark" data-spark-query="' . $query . '" ' . Html::expandAttributes( $this->parameters ) . ' >' .
 						( is_null( $this->contents ) ? '' : htmlspecialchars( $this->contents ) ) .
-					'</div>';		
+					'</div>';
+
+			return array( $parser->insertStripItem( $html, $parser->mStripState ), 'noparse' => true, 'isHTML' => true );
 		}
 		else {
 			return Html::element( 'i', array(), wfMsg( 'spark-missing-query' ) );

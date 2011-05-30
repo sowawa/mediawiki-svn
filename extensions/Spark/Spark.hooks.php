@@ -44,7 +44,7 @@ final class SparkHooks {
 		}
 		
 		$tag = new SparkTag( $args, $input );
-		return $tag->render();
+		return $tag->render( $parser );
 	}
 	
 }
