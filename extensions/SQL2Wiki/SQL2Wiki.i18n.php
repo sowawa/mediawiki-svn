@@ -13,5 +13,3 @@ $messages['en'] = array(
 	'sql2wiki-err-failed_to_execute' => 'SQL2Wiki: Failed to execute the statement:<br /> "$1" <br />with error message: "$2"!',
 	'sql2wiki-err-feature_not_supported' => 'SQL2Wiki: Feature is not supported by databases of type $1!',
 );
-
-?> 
