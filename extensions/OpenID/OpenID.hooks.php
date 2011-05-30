@@ -235,7 +235,7 @@ class OpenIDHooks {
 	}
 
 
-	public static function onDeleteAccount( $userObj ) {
+	public static function onDeleteAccount( &$userObj ) {
 		global $wgOut;
 		
 		if ( is_object( $userObj ) ) {
@@ -256,7 +256,7 @@ class OpenIDHooks {
 		
 	}
 
-	public static function onMergeAccountFromTo( $fromUserObj, $toUserObj ) {
+	public static function onMergeAccountFromTo( &$fromUserObj, &$toUserObj ) {
 		global $wgOut,$wgOpenIDMergeOnAccountMerge;
 
 		if ( is_object( $fromUserObj ) && is_object( $toUserObj) ) {

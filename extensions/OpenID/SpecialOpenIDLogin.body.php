@@ -89,7 +89,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 		$wgOut->setArticleRelated( false );
 		$wgOut->addWikiMsg( 'openidalreadyloggedintext', $wgUser->getName() );
 		list( $returnto, $returntoquery ) = $this->returnTo();
-		$wgOut->returnToMain( false, $returnto, $returntoquery );
+		$wgOut->returnToMain( null, $returnto, $returntoquery );
 	}
 
 	/**
@@ -599,7 +599,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 		$wgOut->addWikiMsg( 'openidsuccesstext', $wgUser->getName(), $openid );
 		$wgOut->addHtml( $inject_html );
 		list( $returnto, $returntoquery ) = $this->returnTo();
-		$wgOut->returnToMain( false, $returnto, $returntoquery );
+		$wgOut->returnToMain( null, $returnto, $returntoquery );
 	}
 
 	function createUser( $openid, $sreg, $ax, $name ) {
