@@ -22,8 +22,8 @@ The extracter module takes care of decompressing a Wikipedia XML dumpfile,
 parsing the XML on the fly and extracting & constructing the variables that are
 need for subsequent analysis. The extract module is initialized using an 
 instance of RunTimeSettings and the most important parameters are:
-The name of project\n
-The language of the project\n
+The name of project
+The language of the project
 The location where the dump files are stored
 '''
 

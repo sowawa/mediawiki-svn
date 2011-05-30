@@ -159,7 +159,7 @@ def find_partner(distances):
         min_d = min(data.keys())
         max_d = max(data.keys())
         match = data[max_d]
-        matches.append((ppi_editor, match))
+        matches.append((ppi_editor, match, max_d))
         #remove match to make sure that every matched pair is unique
         for editor in distances:
             try:
@@ -177,11 +177,12 @@ def write_dataset(vars, matches, obs_a, obs_b):
     fh.write('_a\t'.join(vars))
     fh.write('\t%s\t' % ('editor_b'))
     fh.write('_b\t'.join(vars))
-    fh.write('\tdelta registration days\tid\n')
+    fh.write('\tdelta registration days\tid\teuclid_dist\n')
     for i, match in enumerate(matches):
         line = []
         editor_a = match[0]
         editor_b = match[1]
+        dist = match[2]
         line.append(editor_a)
         values_a = [str(obs_a[editor_a][v]) for v in vars]
         values_b = [str(obs_b[editor_b][v]) for v in vars]
@@ -191,6 +192,7 @@ def write_dataset(vars, matches, obs_a, obs_b):
         dt = obs_a[editor_a]['reg_date'] - obs_b[editor_b]['reg_date']
         line.append(str(dt.days))
         line.append(str(i))
+        line.append(dist)
         line.append('\n')
         print line
         #line = '\t'.join([str(l).decode('utf-8') for l in line])

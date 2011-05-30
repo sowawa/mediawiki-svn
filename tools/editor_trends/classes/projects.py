@@ -107,9 +107,12 @@ def debug():
     pc = ProjectContainer()
     pc.supported_projects()
 
-def init():
+def init(project=None):
     pc = ProjectContainer()
-    return pc.get_project('wiki')
+    if project:
+        return pc.get_project(project)
+    else:
+        return pc.get_project('wiki')
 
 if __name__ == '__main__':
     debug()

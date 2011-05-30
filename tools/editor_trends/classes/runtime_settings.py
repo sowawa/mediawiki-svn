@@ -27,6 +27,9 @@ import sys
 import datetime
 import time
 
+if '..' not in sys.path:
+    sys.path.append('../')
+
 from settings import Settings
 from analyses import inventory
 from classes import exceptions
@@ -48,49 +51,49 @@ class RunTimeSettings(Settings):
         self.language = language
         self.dbname = 'wikilytics'
 
-        if args:
-            self.args = args
-            self.hash = self.secs_since_epoch()
-            #print self.settings.input_location
-            #print self.get_value('location')
-            self.project = self.update_project_settings()
-            self.language = self.update_language_settings()
+        #if args:
+        self.args = args
+        self.id = '%s%s_%s' % (self.language.code, self.project.name, 'current_month')
+        #print self.settings.input_location
+        #print self.get_value('location')
+        self.project = self.update_project_settings()
+        self.language = self.update_language_settings()
 
-            self.input_location = self.set_input_location()
-            self.output_location = self.set_output_location()
+        self.input_location = self.set_input_location()
+        self.output_location = self.set_output_location()
 
-            self.plugins = self.set_plugin()
-            self.keywords = self.split_keywords()
-            self.namespaces = self.get_namespaces()
+        self.plugins = self.set_plugin()
+        self.keywords = self.split_keywords()
+        self.namespaces = self.get_namespaces()
 
-            self.kaggle = self.get_value('kaggle')
-            self.function = self.get_value('func')
-            self.ignore = self.get_value('except')
-            self.force = self.get_value('force')
-            self.analyzer_collection = self.get_value('collection')
+        #self.kaggle = self.get_value('kaggle')
+        self.function = self.get_value('func')
+        self.ignore = self.get_value('except')
+        self.force = self.get_value('force')
+        self.analyzer_collection = self.get_value('collection')
 
-            self.dataset = os.path.join(self.dataset_location, self.project.name)
-            self.txt = os.path.join(self.output_location, 'txt')
-            self.sorted = os.path.join(self.output_location, 'sorted')
-            self.diffs = os.path.join(self.output_location, 'diffs')
+        self.dataset = os.path.join(self.dataset_location, self.project.name)
+        self.txt = os.path.join(self.output_location, 'txt')
+        self.sorted = os.path.join(self.output_location, 'sorted')
+        self.diffs = os.path.join(self.output_location, 'diffs')
 
-            self.directories = [self.output_location,
-                                self.txt,
-                                self.sorted,
-                                self.dataset,
-                                self.diffs]
-            self.verify_environment(self.directories)
+        self.directories = [self.output_location,
+                            self.txt,
+                            self.sorted,
+                            self.dataset,
+                            self.diffs]
+        self.verify_environment(self.directories)
 
-            #Wikidump file related variables
-            self.dump_filename = self.generate_wikidump_filename()
-            self.dump_relative_path = self.set_dump_path()
-            self.dump_absolute_path = self.set_dump_path(absolute=True)
+        #Wikidump file related variables
+        self.dump_filename = self.generate_wikidump_filename()
+        self.dump_relative_path = self.set_dump_path()
+        self.dump_absolute_path = self.set_dump_path(absolute=True)
 
-            #Collection names
-            self.editors_raw = '%s%s_editors_raw' % (self.language.code, self.project.name)
-            self.editors_dataset = '%s%s_editors_dataset' % (self.language.code, self.project.name)
-            self.articles_raw = '%s%s_articles_raw' % (self.language.code, self.project.name)
-            self.diffs_dataset = '%s%s_diffs_dataset' % (self.language.code, self.project.name)
+        #Collection names
+        self.editors_raw = '%s%s_editors_raw' % (self.language.code, self.project.name)
+        self.editors_dataset = '%s%s_editors_dataset' % (self.language.code, self.project.name)
+        self.articles_raw = '%s%s_articles_raw' % (self.language.code, self.project.name)
+        self.diffs_dataset = '%s%s_diffs_dataset' % (self.language.code, self.project.name)
 
 
 
@@ -239,7 +242,7 @@ class RunTimeSettings(Settings):
         '''
         default = self.project
         proj = self.get_value('project')
-        if proj != 'wiki':
+        if proj != default:
             pc = projects.ProjectContainer()
             proj = pc.get_project(proj)
             return proj
@@ -281,7 +284,7 @@ class RunTimeSettings(Settings):
             return ['0']  #Assume that the mainspace is of interest
 
 
-def init_environment(project, language_code, args):
+def init_environment(project, language_code):
     '''
     Initialize an instance of RuntimeSettings. 
     '''
@@ -289,8 +292,9 @@ def init_environment(project, language_code, args):
     project = pjc.get_project(project)
     lnc = languages.LanguageContainer()
     language = lnc.get_language(language_code)
-
-    args.language = language.name
-    args.project = project.name
+    parser = init_args_parser(language_code, project)
+    args = parser.parse_args(['django'])
+    #args.language = language.name
+    #args.project = project.name
     rts = RunTimeSettings(project, language, args)
     return rts

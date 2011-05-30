@@ -173,9 +173,10 @@ def create_txt_filehandle(location, filename, mode, encoding):
     '''Create a filehandle for text file with utf-8 encoding'''
     filename = str(filename)
     if not filename.endswith('.csv'):
-        filename = construct_filename(filename, '.csv')
+        if filename.find('.') == -1:
+            filename = construct_filename(filename, '.csv')
     path = os.path.join(location, filename)
-    return codecs.open(path, mode, encoding='utf-8')
+    return codecs.open(path, mode, encoding)
 
 
 def create_streaming_buffer(path):
@@ -189,7 +190,8 @@ def create_streaming_buffer(path):
         fh = subprocess.Popen('7z e -bd -so %s 2>/dev/null' % path, shell=True,
                               stdout=subprocess.PIPE, bufsize=65535).stdout
     elif extension == '.xml':
-        fh = create_txt_filehandle(path, None, 'r', 'utf-8')
+        location, filename = os.path.split(path)
+        fh = create_txt_filehandle(location, filename, 'r', 'utf-8')
     else:
         raise exceptions.CompressedFileNotSupported(extension)
     return fh
@@ -246,6 +248,7 @@ def set_modified_data(mod_rem, location, filename):
     mod_rem = int(time.mktime(mod_rem.timetuple()))
     os.utime(path, (mod_rem, mod_rem))
     #sraise exceptions.NotYetImplementedError(set_modified_data)
+
 
 def get_modified_date(location, filename):
     '''determine the date the file was originally created'''

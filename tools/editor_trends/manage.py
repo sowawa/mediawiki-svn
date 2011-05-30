@@ -30,6 +30,7 @@ from classes import languages
 from classes import projects
 from classes import runtime_settings
 from utils import file_utils
+from utils import text_utils
 from utils import ordered_dict
 from utils import log
 from utils import timer
@@ -43,14 +44,113 @@ from analyses import analyzer
 from analyses import inventory
 
 
-def init_args_parser():
+
+def config_launcher(rts, logger):
+    '''
+    Config launcher is used to (re)configure Wikilytics. 
+    '''
+
+    pc = projects.ProjectContainer()
+    if not os.path.exists('wiki.cfg') or rts.force:
+        config = ConfigParser.RawConfigParser()
+        project = None
+        language = None
+        db = None
+        valid_hostname = False
+        valid_storage = ['mongo', 'cassandra']
+        working_directory = raw_input('''Please indicate where you installed 
+        Wikilytics.\nCurrent location is %s\nPress Enter to accept default.\n''' % os.getcwd())
+
+        input_location = raw_input('''Please indicate where the Wikipedia dump 
+        files are or will be located.\nDefault is: %s\nPress Enter to 
+        accept default.\n''' % rts.input_location)
+
+        base_location = raw_input('''Please indicate where to store all 
+        Wikilytics project files.\nDefault is: %s\nPress Enter to accept 
+        default.\n''' % rts.base_location)
+
+        while db not in valid_storage:
+            db = raw_input('''Please indicate what database you are using for storage.\nDefault is: Mongo\n''')
+            db = 'mongo' if len(db) == 0 else db.lower()
+            if db not in valid_storage:
+                print 'Valid choices are: %s' % ','.join(valid_storage)
+
+        while project not in pc.projects.keys():
+            project = raw_input('''Please indicate which project you would like 
+            to analyze.\nDefault is: %s\nPress Enter to accept default.\n''' % rts.project.full_name)
+            project = project if len(project) > 0 else rts.project.name
+            if project not in pc.projects.keys():
+                print 'Valid choices for a project are: %s' % ','.join(pc.projects.keys())
+
+        while language not in rts.project.valid_languages:
+            language = raw_input('''Please indicate which language of project 
+            %s you would like to analyze.\nDefault is: %s\nPress Enter to accept 
+            default.\n''' % (rts.project.full_name, rts.language))
+            if len(language) == 0:
+                language = rts.language.code
+            language = language if language in rts.project.valid_languages \
+                else rts.language.default
+
+        while valid_hostname == False:
+            master = raw_input('''Please indicate the hostname master of your database 
+                cluster.\n Default is: %s\nPress Enter to accept default.\n''' % ('localhost'))
+            master = 'localhost' if len(master) == 0 else master
+            valid_hostname = text_utils.validate_hostname(master)
+
+        if master != 'localhost':
+            valid_hostname = False
+            while valid_hostname == False:
+                slaves = raw_input('''Please indicate the hostnames of your slaves 
+                    of your database cluster.Separate names using a comma.\n''')
+                slaves = slaves.split(',')
+                results = []
+                for slave in slaves:
+                    results.append(text_utils.validate_hostname(slave))
+                valid_hostname = True if all(results) else False
+
+        slaves = ','.join(slaves)
+        input_location = input_location if len(input_location) > 0 else \
+            rts.input_location
+        base_location = base_location if len(base_location) > 0 else \
+            rts.base_location
+        working_directory = working_directory if len(working_directory) > 0 \
+            else os.getcwd()
+
+        config = ConfigParser.RawConfigParser()
+        config.add_section('file_locations')
+        config.set('file_locations', 'working_directory', working_directory)
+        config.set('file_locations', 'input_location', input_location)
+        config.set('file_locations', 'base_location', base_location)
+        config.add_section('wiki')
+        config.set('wiki', 'project', project)
+        config.set('wiki', 'language', language)
+        config.add_section('storage')
+        config.set('storage', 'db', db)
+        config.add_section('cluster')
+        config.set('cluster', 'master', master)
+        config.set('cluster', 'slaves', slaves)
+
+        fh = file_utils.create_binary_filehandle(working_directory, 'wiki.cfg', 'wb')
+        config.write(fh)
+        fh.close()
+
+        log.to_csv(logger, rts, 'New configuration', 'Creating',
+                       config_launcher,
+                       working_directory=working_directory,
+                       input_location=input_location,
+                       base_location=base_location,
+                       project=project,
+                       language=language,)
+
+
+def init_args_parser(language_code=None, project=None):
     '''
     Entry point for parsing command line and launching the needed function(s).
     '''
-    language = languages.init()
-    project = projects.init()
+    language = languages.init(language_code)
+    project = projects.init(project)
     pjc = projects.ProjectContainer()
-    rts = runtime_settings.RunTimeSettings(project, language)
+    #rts = runtime_settings.RunTimeSettings(project, language)
 
     file_choices = {'meta-full': 'stub-meta-history.xml.gz',
                     'meta-current': 'stub-meta-current.xml.gz',
@@ -78,7 +178,7 @@ def init_args_parser():
     parser_config.set_defaults(func=config_launcher)
     parser_config.add_argument('-f', '--force',
         action='store_true',
-        help='Reconfigure Editor Toolkit (this will replace wiki.cfg')
+        help='Reconfigure Wikilytics (this will replace wiki.cfg')
 
     #DOWNLOAD
     parser_download = subparsers.add_parser('download',
@@ -141,7 +241,7 @@ def init_args_parser():
     parser_diff = subparsers.add_parser('diff',
         help='Create a Mongo collection containing the diffs between revisions.')
     parser_diff.set_defaults(func=diff_launcher)
-    
+
     #DJANGO
     parser_django = subparsers.add_parser('django')
     parser_django.add_argument('-e', '--except',
@@ -192,83 +292,7 @@ def init_args_parser():
             %s' % ''.join([f + ',\n' for f in file_choices]),
         default=file_choices['meta-full'])
 
-    return project, language, parser
-
-
-def config_launcher(rts, logger):
-    '''
-    Config launcher is used to reconfigure editor trends toolkit. 
-    '''
-
-    pc = projects.ProjectContainer()
-    if not os.path.exists('wiki.cfg') or rts.force:
-        config = ConfigParser.RawConfigParser()
-        project = None
-        language = None
-        db = None
-        valid_storage = ['mongo', 'cassandra']
-        working_directory = raw_input('''Please indicate where you installed 
-        Wikilytics.\nCurrent location is %s\nPress Enter to accept default.\n''' % os.getcwd())
-
-        input_location = raw_input('''Please indicate where the Wikipedia dump 
-        files are or will be located.\nDefault is: %s\nPress Enter to 
-        accept default.\n''' % rts.input_location)
-
-        base_location = raw_input('''Please indicate where to store all 
-        Wikilytics project files.\nDefault is: %s\nPress Enter to accept 
-        default.\n''' % rts.base_location)
-
-        while db not in valid_storage:
-            db = raw_input('Please indicate what database you are using for storage. \nDefault is: Mongo\n')
-            db = 'mongo' if len(db) == 0 else db.lower()
-            if db not in valid_storage:
-                print 'Valid choices are: %s' % ','.join(valid_storage)
-
-        while project not in pc.projects.keys():
-            project = raw_input('''Please indicate which project you would like 
-            to analyze.\nDefault is: %s\nPress Enter to accept default.\n''' % rts.project.full_name)
-            project = project if len(project) > 0 else rts.project.name
-            if project not in pc.projects.keys():
-                print 'Valid choices for a project are: %s' % ','.join(pc.projects.keys())
-
-        while language not in rts.project.valid_languages:
-            language = raw_input('''Please indicate which language of project 
-            %s you would like to analyze.\nDefault is: %s\nPress Enter to accept 
-            default.\n''' % (rts.project.full_name, rts.language))
-            if len(language) == 0:
-                language = rts.language.code
-            language = language if language in rts.project.valid_languages \
-                else rts.language.default
-
-        input_location = input_location if len(input_location) > 0 else \
-            rts.input_location
-        base_location = base_location if len(base_location) > 0 else \
-            rts.base_location
-        working_directory = working_directory if len(working_directory) > 0 \
-            else os.getcwd()
-
-        config = ConfigParser.RawConfigParser()
-        config.add_section('file_locations')
-        config.set('file_locations', 'working_directory', working_directory)
-        config.set('file_locations', 'input_location', input_location)
-        config.set('file_locations', 'base_location', base_location)
-        config.add_section('wiki')
-        config.set('wiki', 'project', project)
-        config.set('wiki', 'language', language)
-        config.add_section('storage')
-        config.set('storage', 'db', db)
-
-        fh = file_utils.create_binary_filehandle(working_directory, 'wiki.cfg', 'wb')
-        config.write(fh)
-        fh.close()
-
-        log.to_csv(logger, rts, 'New configuration', 'Creating',
-                       config_launcher,
-                       working_directory=working_directory,
-                       input_location=input_location,
-                       base_location=base_location,
-                       project=project,
-                       language=language,)
+    return parser
 
 
 def downloader_launcher(rts, logger):
@@ -343,7 +367,8 @@ def transformer_launcher(rts, logger):
     stopwatch = timer.Timer()
     log.to_db(rts, 'dataset', 'transform', stopwatch, event='start')
     log.to_csv(logger, rts, 'Start', 'Transform', transformer_launcher)
-    transformer.transform_editors_multi_launcher(rts)
+    #transformer.transform_editors_multi_launcher(rts)
+    transformer.transform_editors_single_launcher(rts)
     stopwatch.elapsed()
     log.to_db(rts, 'dataset', 'transform', stopwatch, event='finish')
     log.to_csv(logger, rts, 'Finish', 'Transform', transformer_launcher)
@@ -359,7 +384,7 @@ def diff_launcher(rts, logger):
     log.to_db(rts, 'dataset', 'diff', stopwatch, event='finish')
     log.to_csv(logger, rts, 'Finish', 'Diff', diff_launcher)
 
-    
+
 
 def dataset_launcher(rts, logger):
     '''
@@ -414,8 +439,11 @@ def main():
     '''
     This function initializes the command line parser. 
     '''
-    project, language, parser, = init_args_parser()
+    parser = init_args_parser()
     args = parser.parse_args()
+    language = languages.init()
+    project = projects.init()
+
     rts = runtime_settings.RunTimeSettings(project, language, args)
     #initialize logger
     logger = logging.getLogger('manager')

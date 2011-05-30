@@ -102,9 +102,14 @@ class Mongo(AbstractDatabase):
     This class provides the functionality to talk to a MongoDB backend including
     inserting, finding, and updating data.
     '''
-    def __init__(self, dbname, collection):
-        super(Mongo, self).__init__(dbname, collection)
+    def __init__(self, dbname, collection, master=None, slaves=[]):
+        if master == None:
+            self.master = 'localhost'
+        else:
+            self.master = master
+        self.slaves = slaves
         self.port = 27017
+        super(Mongo, self).__init__(dbname, collection)
 
     @classmethod
     def is_registrar_for(cls, storage):
@@ -114,8 +119,16 @@ class Mongo(AbstractDatabase):
         return storage == 'mongo'
 
     def connect(self):
-        db = pymongo.Connection()
-        return db[self.dbname]
+        master = pymongo.Connection(host=self.master, port=self.port)
+        if self.master == 'localhost':
+            return master[self.dbname]
+        else:
+            slave_connections = []
+            for slave in self.slaves:
+                slave = pymongo.Connection(host=slave, port=self.port)
+                slave_connections.append(slave)
+            master_slave_connection = pymongo.MasterSlaveConnection(master, slave_connections)
+            return master_slave_connection[self.dbname]
 
     def save(self, data):
         assert isinstance(data, dict), 'You need to feed me dictionaries.'

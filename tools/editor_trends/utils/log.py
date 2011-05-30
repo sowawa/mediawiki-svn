@@ -31,11 +31,9 @@ from classes import storage
 def to_db(rts, jobtype, task, timer, event='start'):
     db = storage.init_database(rts.storage, rts.dbname, 'jobs')
     created = datetime.datetime.now()
-    hash = '%s_%s' % (rts.project, rts.hash)
+    job = db.find_one('hash', rts.id)
 
-    job = db.find_one('hash', hash)
-
-    data = {'hash': hash,
+    data = {'hash': rts.id,
           'created': created,
           'jobtype': jobtype,
           'in_progress': True,
@@ -60,7 +58,7 @@ def to_db(rts, jobtype, task, timer, event='start'):
         t['start'] = timer.t0
         t['in_progress'] = True
         tasks[task] = t
-        db.update('hash', hash, {'$set': {'tasks': tasks}})
+        db.update('hash', rts.id, {'$set': {'tasks': tasks}})
         #coll.update({'hash': hash}, {'$set': {'tasks': tasks}})
     elif event == 'finish':
         t['finish'] = timer.t1
@@ -68,11 +66,11 @@ def to_db(rts, jobtype, task, timer, event='start'):
         tasks[task] = t
         if task == 'transform' or jobtype == 'chart':
             #final task, set entire task to finished
-            db.update('hash', hash, {'$set': {'tasks': tasks,
+            db.update('hash', rts.id, {'$set': {'tasks': tasks,
                                                  'in_progress': False,
                                                  'finished': True}})
         else:
-            db.update('hash', hash, {'$set': {'tasks': tasks}})
+            db.update('hash', rts.id, {'$set': {'tasks': tasks}})
 
 
 def to_csv(logger, settings, message, verb, function, **kwargs):

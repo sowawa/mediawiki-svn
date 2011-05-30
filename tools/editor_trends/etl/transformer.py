@@ -338,11 +338,11 @@ def setup_database(rts):
     db_dataset = storage.init_database(rts.storage, rts.dbname, rts.editors_dataset)
     db_dataset.drop_collection()
     editors = db_raw.retrieve_editors()
-    return editors
+    return editors, db_raw, db_dataset
 
 
 def transform_editors_multi_launcher(rts):
-    editors = setup_database(rts)
+    editors, db_raw, db_dataset = setup_database(rts)
     n = editors.size()
     result = queue.JoinableRetryQueue()
     pbar = progressbar.ProgressBar(maxval=n).start()
@@ -372,7 +372,7 @@ def transform_editors_multi_launcher(rts):
 
 def transform_editors_single_launcher(rts):
     print rts.dbname, rts.editors_raw
-    editors = setup_database(rts)
+    editors, db_raw, db_dataset = setup_database(rts)
     n = editors.size()
     pbar = progressbar.ProgressBar(maxval=n).start()
 
@@ -384,7 +384,7 @@ def transform_editors_single_launcher(rts):
         editors.task_done()
         if editor == None:
             break
-        editor = Editor(rts, editor)
+        editor = Editor(rts, editor, db_raw, db_dataset)
         editor()
 
         pbar.update(pbar.currval + 1)

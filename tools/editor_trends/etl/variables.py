@@ -275,20 +275,20 @@ def extract_revision_id(revision_id):
     Determine the id of a revision 
     '''
     if revision_id != None:
-        return revision_id.text
+        return int(revision_id.text)
     else:
         return None
 
 
-def extract_comment_text(revision_id, revision):
+def extract_comment_text(revision, xml_namespace):
     '''
     Extract the comment associated with an edit. 
     '''
-    comment = {}
-    text = revision.find('comment')
-    if text != None and text.text != None:
-        comment[revision_id] = text.text.encode('utf-8')
-    return comment
+    comment_text = revision.find('%s%s' % (xml_namespace, 'comment'))
+    if comment_text != None and comment_text.text != None:
+        return comment_text.text
+    else:
+        return None
 
 
 def create_namespace_dict(siteinfo, xml_namespace):

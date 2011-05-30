@@ -17,7 +17,7 @@ __email__ = 'dvanliere at gmail dot com'
 _date__ = '2010-12-10'
 __version__ = '0.1'
 
-from multiprocessing import JoinableQueue, Queue, Manager, RLock, Process
+from multiprocessing import JoinableQueue, Queue, Manager, RLock, Process, cpu_count
 from multiprocessing.managers import BaseManager
 from Queue import Empty
 
@@ -141,10 +141,10 @@ def generate_chart_data(rts, func, **kwargs):
     del editors
 
     analyzers = [analytics.Analyzer(rts, tasks, result, var, data, plugin, func) for
-                 x in xrange(rts.number_of_processes)]
+                 x in xrange(cpu_count())]
 
 
-    for x in xrange(rts.number_of_processes):
+    for x in xrange(cpu_count()):
         tasks.put(None)
 
     pbar = progressbar.ProgressBar(maxval=n).start()
@@ -152,7 +152,7 @@ def generate_chart_data(rts, func, **kwargs):
         analyzer.start()
 
 
-    ppills = rts.number_of_processes
+    ppills = cpu_count()
     while True:
         while ppills > 0:
             try:
@@ -216,7 +216,7 @@ def determine_project_year_range(db, var):
 
 
 def launcher():
-    project, language, parser = manage.init_args_parser()
+    project, language, parser = commandline.init_args_parser()
     args = parser.parse_args(['django'])
     rts = runtime_settings.init_environment('wiki', 'en', args)
     generate_chart_data(rts, 'taxonomy_burnout', time_unit='month')

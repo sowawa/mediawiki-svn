@@ -244,8 +244,8 @@ def bot_launcher_multi(tasks):
     '''
     This is the launcher that uses multiprocesses.
     '''
-    consumers = [consumers.XMLFileConsumer(tasks, None) for i in xrange(settings.number_of_processes)]
-    for x in xrange(settings.number_of_processes):
+    consumers = [consumers.XMLFileConsumer(tasks, None) for i in xrange(multiprocessing.cpu_count())]
+    for x in xrange(multiprocessing.cpu_count()):
         tasks.put(None)
 
     for w in consumers:

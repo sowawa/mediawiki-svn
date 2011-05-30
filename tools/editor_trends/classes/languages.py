@@ -679,9 +679,12 @@ class LanguageContainer:
         print abbr
         print len(abbr)
 
-def init():
+def init(language_code=None):
     lnc = LanguageContainer()
-    return lnc.languages[lnc.default]
+    if language_code:
+        return lnc.languages[language_code]
+    else:
+        return lnc.languages[lnc.default]
 
 if __name__ == '__main__':
     init()

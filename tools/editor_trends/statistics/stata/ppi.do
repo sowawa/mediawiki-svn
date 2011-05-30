@@ -1,5 +1,11 @@
 clear
 insheet using "C:\Users\diederik.vanliere\Desktop\ppi_quality.csv"
+
+gen diff_character_count =  character_count_a - character_count_b
+gen diff_cum_edit_count_main_ns =  cum_edit_count_main_ns_a- cum_edit_count_main_ns_b
+gen diff_cum_edit_count_other_ns =  cum_edit_count_other_ns_a- cum_edit_count_other_ns_b
+gen diff_article_count =  article_count_a- article_count_b
+
 label var character_count_a "PPI editor"
 label var character_count_b "Regular editor"
 

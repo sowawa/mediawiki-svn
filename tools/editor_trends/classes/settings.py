@@ -17,11 +17,6 @@ __email__ = 'dvanliere at gmail dot com'
 __date__ = '2010-10-21'
 __version__ = '0.1'
 
-'''
-This file contains settings that are used for constructing and analyzing
-the datasets as part of the Editor Dynamics and Anti-Vandalism projects.
-'''
-
 from multiprocessing import cpu_count
 import ConfigParser
 import os
@@ -73,7 +68,7 @@ class Settings:
         #Change this to match your computers configuration (RAM / CPU)
         # I want to get rid off these two variables.
         self.number_of_processes = cpu_count()
-        self.windows_register = {'7z.exe': 'Software\\7-Zip'}
+        #self.windows_register = {'7z.exe': 'Software\\7-Zip'}
 
         self.wp_dump_location = 'http://dumps.wikimedia.org'
 
@@ -107,6 +102,8 @@ class Settings:
             self.default_project = config.get('wiki', 'project')
             self.default_language = config.get('wiki', 'language')
             self.storage = config.get('storage', 'db')
+            self.master = config.get('cluster', 'master')
+            self.slaves = config.get('cluster', 'slaves')
             return True
         except Exception, error:
             #raise exceptions.GenericMessage('corrupted_config')

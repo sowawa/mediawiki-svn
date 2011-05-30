@@ -17,23 +17,35 @@ __email__ = 'dvanliere at gmail dot com'
 __date__ = '2011-04-10'
 __version__ = '0.1'
 
+
+'''
+This script generates diffs of edits for the Talk, User Talk and Wikipedia Talk
+pages of a Wikipedia project. These diffs are stored in json files and then
+imported in Mongo. 
+'''
+import pprint
 import json
 import cStringIO
 import codecs
 import sys
 import os
 import difflib
+import bson
 from xml.etree.cElementTree import iterparse, dump
 from multiprocessing import JoinableQueue, Process, cpu_count
 from datetime import datetime
+from copy import deepcopy
 
 
 if '..' not in sys.path:
     sys.path.append('../')
 
 from utils import file_utils
+from utils import text_utils
 from etl import variables
 from classes import exceptions
+from classes import storage
+from classes import runtime_settings
 
 
 def parse_xml(fh, format, process_id, location):
@@ -50,13 +62,13 @@ def parse_xml(fh, format, process_id, location):
     context = iterparse(fh, events=(start, end))
     context = iter(context)
 
-    article = {}
+
+    revisions = []
     count_articles = 0
     id = False
     ns = False
     parse = False
-    rev1 = None
-    rev2 = None
+    prev_rev_text = None
     file_id, fh_output = None, None
 
     try:
@@ -80,11 +92,11 @@ def parse_xml(fh, format, process_id, location):
                 parsing this article, else it will skip this article. 
                 '''
                 title = variables.parse_title(elem)
-                article['title'] = title
                 current_namespace = variables.determine_namespace(title, namespaces, include_ns)
                 if current_namespace == 1 or current_namespace == 3 or current_namespace == 5:
                     parse = True
-                    article['namespace'] = current_namespace
+                    #article['namespace'] = current_namespace
+                    title = title.replace(namespaces[current_namespace], '')
                     count_articles += 1
                     if count_articles % 10000 == 0:
                         print 'Worker %s parsed %s articles' % (process_id, count_articles)
@@ -105,23 +117,32 @@ def parse_xml(fh, format, process_id, location):
                         timestamp = elem.find('%s%s' % (xml_namespace, 'timestamp')).text
                         contributor = elem.find('%s%s' % (xml_namespace, 'contributor'))
                         editor = variables.parse_contributor(contributor, None, xml_namespace)
+                        text = variables.extract_revision_text(elem, xml_namespace)
+                        comment = variables.extract_comment_text(elem, xml_namespace)
                         if editor:
                             rev_id = variables.extract_revision_id(rev_id)
+                            if prev_rev_text == None:
+                                diff = text
+                                prev_rev_text = deepcopy(text)
+                            if prev_rev_text != None:
+                                #print text[0:20], prev_rev_text[0:20]
+                                diff = diff_revision(prev_rev_text, text)
 
-                            if rev1 == None and rev2 == None:
-                                diff = variables.extract_revision_text(elem, xml_namespace)
-                                rev1 = elem
-                            if rev1 != None and rev2 != None:
-                                diff = diff_revision(rev1, rev2, xml_namespace)
-
-                            article[rev_id] = {}
-                            article[rev_id].update(editor)
-                            article[rev_id]['timestamp'] = timestamp
-                            article[rev_id]['diff'] = diff
+                                if diff != None:
+                                    timestamp = text_utils.convert_timestamp_to_datetime_utc(timestamp)
+                                    timestamp = timestamp.isoformat()
+                                    revision = dict(rev_id=rev_id, title=title,
+                                                    timestamp=timestamp,
+                                                    diff=diff, comment=comment,
+                                                    id=editor['id'],
+                                                    username=editor['username'],
+                                                    article_id=article_id,
+                                                    ns=current_namespace)
+                                    revisions.append(revision)
 
                         clear = True
                     if clear:
-                        rev2 = rev1
+                        prev_rev_text = deepcopy(text)
                         elem.clear()
                 else:
                     elem.clear()
@@ -130,7 +151,7 @@ def parse_xml(fh, format, process_id, location):
                 '''
                 Determine id of article
                 '''
-                article['article_id'] = elem.text
+                article_id = int(elem.text)
                 id = True
                 elem.clear()
 
@@ -140,17 +161,16 @@ def parse_xml(fh, format, process_id, location):
                 memory. 
                 '''
                 elem.clear()
-                #write diff of text to file
+
                 if parse:
-                    #print article
-                    fh_output, file_id = assign_filehandle(fh_output, file_id, location, process_id, format)
-                    write_diff(fh_output, article, format)
+                    #write diff of text to file
+                    if len(revisions) > 0:
+                        fh_output, file_id = assign_filehandle(fh_output, file_id, location, process_id, format)
+                        write_diff(fh_output, revisions, format)
+
                 #Reset all variables for next article
-                article = {}
-                if rev1 != None:
-                    rev1.clear()
-                if rev2 != None:
-                    rev2.clear()
+                revisions = []
+                prev_rev_text = None
                 id = False
                 parse = False
 
@@ -181,12 +201,45 @@ def assign_filehandle(fh, file_id, location, process_id, format):
 
     return fh, file_id
 
+
 def write_xml_diff(fh, article):
     pass
 
 
-def write_json_diff(fh, article):
-    json.dump(article, fh)
+def write_json_diff(fh, revisions):
+    fh.write('\nStart new JSON object\n')
+    json.dump(revisions, fh, indent=4, sort_keys=True)
+
+
+def store_json_diffs(rts):
+    files = os.listdir(rts.diffs)
+    print files, rts.diffs
+    db = storage.init_database(rts.storage, rts.dbname, rts.diffs_dataset)
+    buffer = cStringIO.StringIO()
+
+    for filename in files:
+        fh = file_utils.create_txt_filehandle(rts.diffs, filename, 'r', 'utf-8')
+        for line in fh:
+            if line.startswith('\n') or line.startswith('Start'):
+                obj = buffer.getvalue()
+                if obj != '':
+                    obj = json.loads(obj)
+                    obj[0]['article_id'] = int(obj[0]['article_id'])
+                    for key, value in obj[0].iteritems():
+                        if type(value) == type(dict()):
+                            value['timestamp'] = datetime.strptime(value['timestamp'], '%Y-%m-%dT%H:%M:%S')
+                        obj[0][key] = value
+                    obj = obj[0]
+                    #print obj
+                    #print len(obj)
+                    try:
+                        db.save(obj)
+                    except bson.errors.InvalidDocument, error:
+                        print error
+                buffer = cStringIO.StringIO()
+            else:
+                buffer.write(line)
+        fh.close()
 
 
 def write_diff(fh, article, format):
@@ -198,23 +251,47 @@ def write_diff(fh, article, format):
         raise exceptions.OutputNotSupported()
 
 
-def diff_revision(rev1, rev2, xml_namespace):
-    buffer = cStringIO.StringIO()
-    if rev1.text != None and rev2.text != None:
-        diff = difflib.unified_diff(rev1.text, rev2.text, n=0, lineterm='')
+def diff_revision(rev1, rev2):
+    if rev1 == None:
+        rev1 = ''
+    if rev2 == None:
+        rev2 = ''
+    if len(rev1) != len(rev2):
+        buffer = cStringIO.StringIO()
+        rev1 = rev1.splitlines(1)
+        rev2 = rev2.splitlines(2)
+
+        diff = difflib.unified_diff(rev1, rev2, n=0, lineterm='')
         for line in diff:
             if len(line) > 3:
-                print line
-                buffer.write(line)
+                #print line
+                buffer.write(line.encode('utf-8'))
 
-        return buffer.getvalue()
+        diff = buffer.getvalue()
+
+        if diff == '':
+            return None
+        else:
+            return diff
+    else:
+        return None
+
+
+def store_diffs_debug(rts):
+    db = storage.init_database(rts)
+    files = os.listdir(rts.diffs)
+    for filename in files:
+        fh = file_utils.create_txt_filehandle(rts.diffs, filename, 'r', 'utf-8')
+        diffs = json.load(fh)
+        db.insert(diffs)
+        fh.close()
+
 
 def stream_raw_xml(input_queue, process_id, rts, format):
     '''
     This function fetches an XML file from the queue and launches the processor. 
     '''
     t0 = datetime.now()
-    file_id = 0
 
     while True:
         filename = input_queue.get()
@@ -225,7 +302,7 @@ def stream_raw_xml(input_queue, process_id, rts, format):
 
         print filename
         fh = file_utils.create_streaming_buffer(filename)
-        parse_xml(fh, format, process_id, rts.input_location)
+        parse_xml(fh, format, process_id, rts.diffs)
         fh.close()
 
         t1 = datetime.now()
@@ -265,6 +342,13 @@ def launcher(rts):
         extracter.start()
 
     input_queue.join()
+
+    store_json_diffs(rts)
+    db = storage.init_database(rts.storage, rts.dbname, rts.diffs_dataset)
+    db.add_index('title')
+    db.add_index('timestamp')
+    db.add_index('username')
+    db.add_index('ns')
 
 
 def launcher_simple():
@@ -311,5 +395,6 @@ def debug():
 
 
 if __name__ == '__main__':
+    #read_json_diffs()
     launcher_simple()
     #debug()

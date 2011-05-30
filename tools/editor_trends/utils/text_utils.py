@@ -20,6 +20,7 @@ __version__ = '0.1'
 import datetime
 import time
 import sys
+import re
 
 if '..' not in sys.path:
     sys.path.append('..')
@@ -51,6 +52,14 @@ def invert_dict(dictionary):
     '''
     return dict([[v, k] for k, v in dictionary.items()])
 
+
+def validate_hostname(hostname):
+    regex_hostname = re.compile('^(?=.{1,255}$)[0-9A-Za-z](?:(?:[0-9A-Za-z]|\b-){0,61}[0-9A-Za-z])?(?:\.[0-9A-Za-z](?:(?:[0-9A-Za-z]|\b-){0,61}[0-9A-Za-z])?)*\.?$')
+    res = re.match(regex_hostname, hostname)
+    if res == None:
+        return False
+    else:
+        return True
 
 def get_max_width(table, index):
     '''
