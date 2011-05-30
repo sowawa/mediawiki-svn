@@ -28,7 +28,7 @@ if ( version_compare( $wgVersion, '1.17', '<' ) ) {
 	die( '<b>Error:</b> Spark requires MediaWiki 1.17 or above.' );
 }
 
-define( 'Spark_VERSION', '0.1 alpha' );
+define( 'Spark_VERSION', '0.1' );
 
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
