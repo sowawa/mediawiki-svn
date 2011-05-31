@@ -393,13 +393,13 @@ def get_metric_index(query_name, metric_name):
         if metric_name == 'imp':
             return 2
         elif metric_name == 'donations':
-            return 5
+            return 4
         elif metric_name == 'amount50':
-            return 7
+            return 6
         elif metric_name == 'don_per_imp':
-            return 10
+            return 8
         elif metric_name == 'amt50_per_imp':
-            return 12
+            return 10
         else:
             return -1
     elif query_name == 'report_campaign_metrics_minutely':
