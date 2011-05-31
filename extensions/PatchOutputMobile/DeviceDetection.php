@@ -360,7 +360,7 @@ class DeviceDetection {
 
 		if ( $formatName === '' ) {
 			if ( strpos( $acceptHeader, 'application/vnd.wap.xhtml+xml' ) !== false ) {
-				$formatName = 'wap2';
+				$formatName = 'wml';
 			} elseif ( strpos( $acceptHeader, 'vnd.wap.wml' ) !== false ) {
 				$formatName = 'wml';
 			} else {

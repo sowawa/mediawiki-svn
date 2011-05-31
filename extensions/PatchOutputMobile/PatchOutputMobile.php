@@ -39,7 +39,7 @@ $wgHooks['OutputPageBeforeHTML'][] = array( &$wgExtPatchOutputMobile,
 											'onOutputPageBeforeHTML' );
 
 class ExtPatchOutputMobile {
-	const VERSION = '0.4.1';
+	const VERSION = '0.4.2';
 
 	private $doc;
 	
