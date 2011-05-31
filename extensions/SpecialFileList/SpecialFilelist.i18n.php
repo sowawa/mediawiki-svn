@@ -689,7 +689,7 @@ $messages['ps'] = array(
 	'filelist' => 'د دوتنو لړليک',
 	'filelist-desc' => 'د پورته شويو دوتنو د لړليک [[Special:Filelist|ځانګړی مخ]]',
 	'filelist-show-list' => 'لړليک ښکاره کول',
-	'filelist-show-gallery' => 'نندارتون ښکاره کول',
+	'filelist-show-gallery' => 'انځورتون ښکاره کول',
 );
 
 /** Portuguese (Português)

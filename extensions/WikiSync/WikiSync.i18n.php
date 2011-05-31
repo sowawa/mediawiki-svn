@@ -467,6 +467,40 @@ vers $2
 	'wikisync_js_sync_end_rtl' => 'Fin de la synchronisation depuis le wiki distant vers le wiki local à $1',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'wikisync' => 'Sincronisacion de vouiquis',
+	'wikisync_direction' => 'Volyéd chouèsir la dirèccion de la sincronisacion',
+	'wikisync_local_root' => 'Racena du seto vouiqui local',
+	'wikisync_remote_root' => 'Racena du seto vouiqui distant',
+	'wikisync_remote_log' => 'Jornal de les opèratcions a distance',
+	'wikisync_clear_log' => 'Èfaciér lo jornal',
+	'wikisync_login_to_remote_wiki' => 'Branchement u vouiqui distant',
+	'wikisync_remote_wiki_root' => 'Racena du vouiqui distant',
+	'wikisync_remote_wiki_example' => 'Chemin d’accès u api.php, per ègzemplo : http://www.mediawiki.org/w',
+	'wikisync_remote_wiki_user' => 'Nom d’utilisator sur lo vouiqui distant',
+	'wikisync_remote_wiki_pass' => 'Mot de pâssa sur lo vouiqui distant',
+	'wikisync_remote_login_button' => 'Branchement',
+	'wikisync_sync_files' => 'Sincronisar des fichiérs',
+	'wikisync_store_password' => 'Stocar lo mot de pâssa du vouiqui distant',
+	'wikisync_storing_password_warning' => 'Lo stocâjo d’un mot de pâssa distant est pas sècurisâ et est pas recomandâ',
+	'wikisync_synchronization_button' => 'Sincronisar',
+	'wikisync_scheduler_log' => 'Jornal du planifior',
+	'wikisync_scheduler_setup' => 'Configuracion du planifior',
+	'wikisync_scheduler_turn_on' => 'Activar lo planifior',
+	'wikisync_apply_button' => 'Aplicar',
+	'wikisync_log_imported_by' => 'Importâ per [[Special:WikiSync|WikiSync]]',
+	'wikisync_log_uploaded_by' => 'Tèlèchargiê per [[Special:WikiSync|WikiSync]]',
+	'wikisync_api_result_unknown_action' => 'Accion encognua de l’API',
+	'wikisync_api_result_exception' => 'Una èxcèpcion est arrevâ pendent l’apèl de l’API locala',
+	'wikisync_api_result_invalid_parameter' => 'Valor envalida du paramètre',
+	'wikisync_api_result_Blocked' => 'L’utilisator est blocâ',
+	'wikisync_js_revision' => 'Vèrsion $1',
+	'wikisync_js_scheduler_countdown' => '$1 {{PLURAL:$1|menuta que réste|menutes que réstont}}',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -974,6 +1008,39 @@ $messages['lb'] = array(
 	'wikisync_js_sync_to_itself' => "Dir kënnt d'Wiki net mat sech selwer synchroniséieren",
 	'wikisync_js_revision' => 'Versioun $1',
 	'wikisync_js_scheduler_countdown' => '{{PLURAL:$1|Eng Minutt|$1 Minutten}} iwwreg',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Eitvys200
+ */
+$messages['lt'] = array(
+	'wikisync' => 'Wiki sinchronizacija',
+	'wikisync_direction' => 'Prašome pasirinkti sinchronizacijos kryptį',
+	'wikisync_clear_log' => 'Valyti žurnalą',
+	'wikisync_remote_login_button' => 'Prisijungti',
+	'wikisync_sync_files' => 'Sinchronizuoti failus',
+	'wikisync_synchronization_button' => 'Sinchronizuoti',
+	'wikisync_scheduler_time_interval' => 'Laikas minutėmis tarp automatinės sinchronizacijos',
+	'wikisync_apply_button' => 'Taikyti',
+	'wikisync_api_result_unknown_action' => 'Nežinomas API veiksmas',
+	'wikisync_api_result_noaccess' => 'Tik nariai tokių {{PLURAL:$2| grupė | grupių}} gali atlikti šį veiksmą: $1',
+	'wikisync_api_result_invalid_parameter' => 'Neleistina parametro reikšmė',
+	'wikisync_api_result_Unsupported' => 'Jūsų versija MediaWiki yra netinkama (mažiau nei 1.15)',
+	'wikisync_api_result_Illegal' => 'Jūs nurodėte neteisėta vardą',
+	'wikisync_api_result_NotExists' => 'Pateikėte vartotojo vardą kurio nėra',
+	'wikisync_api_result_EmptyPass' => 'Jūs nenustatė lgpassword parametro arba jūs jį palikote tuščia',
+	'wikisync_api_result_WrongPass' => 'Slaptažodis yra neteisingas',
+	'wikisync_api_result_WrongPluginPass' => 'Slaptažodis yra neteisingas',
+	'wikisync_api_result_CreateBlocked' => 'Wiki bandė automatiškai sukurti jums naują sąskaitą, tačiau Jūsų IP adresas yra užblokuotas nuo sąskaitų kūrimo',
+	'wikisync_api_result_Throttled' => 'Jūs prisijungėte, per daug kartų per trumpą laiką.',
+	'wikisync_api_result_Blocked' => 'Naudotojas yra užblokuotas',
+	'wikisync_api_result_no_import_rights' => 'Šis vartotojas neturi teisės importuoti XML failų',
+	'wikisync_js_last_op_error' => 'Paskutinė operacija grąžino klaidą.
+Kodas: $1
+Pranešimas: $2
+Paspauskite [OK] Norėdami kartoti paskutinę operaciją',
+	'wikisync_js_synchronization_success' => 'Sinchronizavimas buvo sėkmingai baigtas',
+	'wikisync_js_scheduler_countdown' => '$1 {{PLURAL:$1| minutė | minučių}} liko',
 );
 
 /** Macedonian (Македонски)

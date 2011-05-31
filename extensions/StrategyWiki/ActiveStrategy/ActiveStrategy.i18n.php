@@ -41,6 +41,13 @@ $messages['be-tarask'] = array(
 	'nedits' => '$1 {{PLURAL:$1|рэдагаваньне|рэдагаваньні|рэдагаваньняў}}',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'nedits' => '$1 {{PLURAL:$1|редакция|редакции}}',
+);
+
 /** Bengali (বাংলা)
  * @author Bellayet
  */

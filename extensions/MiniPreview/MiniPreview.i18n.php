@@ -706,7 +706,7 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'minipreview-files_in_category' => "دا وېشنيزه '''$1''' {{PLURAL:$1|دوتنه لري|دوتنې لري}}.",
-	'minipreview-files_in_gallery' => "دا نندارتون '''$1''' {{PLURAL:$1|دوتنه لري|دوتنې لري}}.",
+	'minipreview-files_in_gallery' => "دا انځورتون '''$1''' {{PLURAL:$1|دوتنه لري|دوتنې لري}}.",
 	'minipreview-no_category_gallery' => 'هېڅ کومې وېشنيزې يا نندارتونونه نه!',
 );
 

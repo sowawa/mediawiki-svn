@@ -132,6 +132,30 @@ $messages['fr'] = array(
 	'wikitweet-fewsecondsago' => 'Il y a quelques secondes',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'wikitweet-desc' => 'Fâre un flux de la sôrta Twitter dens MediaWiki',
+	'wikitweet-pleaselogin' => 'Vos volyéd branchiér por tweetar.',
+	'wikitweet-moretweets' => 'Més de tweets...',
+	'wikitweet-submit' => 'Tweetar',
+	'wikitweet-submitandmail' => 'Tweetar et prèvegnir',
+	'wikitweet-intheroom' => 'Vos éte dens la sâla',
+	'wikitweet-subscribe' => 's’abonar',
+	'wikitweet-subscribed' => 'abonâ',
+	'wikitweet-unsubscribe' => 'anular l’abonement',
+	'wikitweet-delete' => 'suprimar',
+	'wikitweet-inform' => 'per l’enformator',
+	'wikitweet-private' => 'privâ',
+	'wikitweet-answer' => 'rèpondre a',
+	'wikitweet-anonymous' => 'anonimo',
+	'wikitweet-tweets-tagged' => 'Tweets tagâs',
+	'wikitweet-back-timeline' => 'Retôrn u flux',
+	'wikitweet-tweets-from-room' => 'Tweets de la sâla',
+	'wikitweet-timeago' => 'cen fât $1',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -206,6 +230,31 @@ $messages['lb'] = array(
 	'wikitweet-timeago' => 'viru(n) $1',
 	'wikitweet-inthefuture' => 'An Zukunft!',
 	'wikitweet-fewsecondsago' => 'Virun e puer Sekonnen',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Eitvys200
+ */
+$messages['lt'] = array(
+	'wikitweet-pleaselogin' => 'Prašome prisijungti prie twitter.',
+	'wikitweet-moretweets' => 'Daugiau tweets ...',
+	'wikitweet-infoajax' => 'naudoja AJAX technologiją ir atnaujina pats kas 5 sekundes be puslapio perkrovimo.',
+	'wikitweet-submit' => 'Tweet',
+	'wikitweet-submitandmail' => 'Tweet ir el. paštu',
+	'wikitweet-intheroom' => 'Jūs esate kambaryje',
+	'wikitweet-subscribe' => 'prenumeruoti',
+	'wikitweet-subscribed' => 'užprenumeruota',
+	'wikitweet-unsubscribe' => 'nebeprenumeruoti',
+	'wikitweet-delete' => 'trinti',
+	'wikitweet-private' => 'privataus',
+	'wikitweet-answer' => 'atsakymas į',
+	'wikitweet-anonymous' => 'anonimas',
+	'wikitweet-tweets-tagged' => 'Tweets pažymėtas',
+	'wikitweet-back-timeline' => 'Atgal į laiko juostą',
+	'wikitweet-tweets-from-room' => 'Tweets iš kambario',
+	'wikitweet-timeago' => 'prieš $1',
+	'wikitweet-inthefuture' => 'Ateityje!',
+	'wikitweet-fewsecondsago' => 'Prieš keletą sekundžių',
 );
 
 /** Macedonian (Македонски)

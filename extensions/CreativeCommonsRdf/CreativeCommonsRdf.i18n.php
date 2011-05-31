@@ -65,3 +65,10 @@ $messages['pt'] = array(
 	'creativecommonsrdf-desc' => 'Metadados RDF da Creative Commons',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'creativecommonsrdf-desc' => 'RDF-метаданные CreativeCommons',
+);
+

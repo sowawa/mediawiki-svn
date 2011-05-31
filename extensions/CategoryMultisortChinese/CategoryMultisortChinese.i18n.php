@@ -451,6 +451,7 @@ $messages['mk'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'categorymultisortchinese-desc' => 'Membolehkan kategori dilihat dengan kunci isih yang berbeza khusus untuk tulisan Cina',
 	'categorymultisort-sortkey-name-mandarin-pinyin' => 'Mandarin: Pinyin',
 	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'Mandarin: Bopomofo',
 	'categorymultisort-sortkey-name-mandarin-wadegiles' => 'Mandarin: Wade–Giles',

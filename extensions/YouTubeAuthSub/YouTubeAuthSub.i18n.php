@@ -2092,6 +2092,7 @@ $messages['li'] = array(
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Eitvys200
  * @author Matasg
  */
 $messages['lt'] = array(
@@ -2124,6 +2125,9 @@ Norėdami įdėti savo video į wiki puslapį, į jį įterpkite šį kodą :
 	'youtubeauthsub_uploading' => 'Jūsų vaizdo įrašas įkeliamas. 
 Prašome būti kantriems.',
 	'youtubeauthsub_viewpage' => 'Taip pat galite [[$1|peržiūrėti savo video]].',
+	'youtubeauthsub_jserror_nokeywords' => 'Prašome įvesti 1 arba daugiau raktinių žodžių.',
+	'youtubeauthsub_jserror_notitle' => 'Prašome įvesti pavadinimą.',
+	'youtubeauthsub_jserror_nodesc' => 'Prašome įvesti vaizdo aprašimą.',
 );
 
 /** Latgalian (Latgaļu)

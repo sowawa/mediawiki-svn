@@ -676,6 +676,13 @@ $messages['vi'] = array(
 	'ts-kml-on-ol-map-by' => 'Bản đồ',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'ts-kml-on-ol-help' => 'הילף',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Hydra
  */

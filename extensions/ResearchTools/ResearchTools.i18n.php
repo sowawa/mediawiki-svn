@@ -33,6 +33,13 @@ $messages['be-tarask'] = array(
 	'researchtools-page-prefs' => 'Статыстыка наладаў',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'researchtools-page-dashboard' => 'Табло',
+);
+
 /** Bengali (বাংলা)
  * @author Wikitanvir
  */

@@ -65,3 +65,10 @@ $messages['pt'] = array(
 	'dublincorerdf-desc' => 'Metadados RDF Dublin Core',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'dublincorerdf-desc' => 'RDF-метаданные Dublin Core',
+);
+

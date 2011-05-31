@@ -435,7 +435,7 @@ $messages['ia'] = array(
 	'mwe-apiproxy-setup' => 'Configuration del proxy pro le API',
 	'mwe-load-drag-item' => 'Cargamento del file trahite',
 	'mwe-ok' => 'OK',
-	'mwe-cancel' => 'Cancella',
+	'mwe-cancel' => 'Cancellar',
 	'mwe-enable-gadget' => 'Activar beta multimedia (mwEmbed) pro tote le paginas',
 	'mwe-enable-gadget-done' => 'Le gadget beta multimedia ha essite activate',
 	'mwe-must-login-gadget' => 'Pro activar le gadget tu debe <a target="_new" href="$1">aperir un session</a>',

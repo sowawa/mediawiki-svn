@@ -511,6 +511,13 @@ $messages['ig'] = array(
 	'abcdownload' => 'Danwèré:',
 );
 
+/** Ingush (ГІалгІай Ğalğaj)
+ * @author Sapral Mikail
+ */
+$messages['inh'] = array(
+	'abcdownload' => 'Хьачуяккха:',
+);
+
 /** Italian (Italiano)
  * @author Melos
  */

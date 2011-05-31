@@ -2076,6 +2076,13 @@ $messages['vep'] = array(
 	'cb_edit_append_hint' => "Panda operator jäl'gmäižhe pozicijaha",
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'cb_next_items_link' => 'נעקסט',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Hydra
  * @author 阿pp

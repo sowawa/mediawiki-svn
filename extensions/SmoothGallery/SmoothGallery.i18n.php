@@ -761,7 +761,7 @@ Ch'a contròla che {{PLURAL:$3|la figura|le figure}} dont a fa da manca a-i sio 
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'smoothgallery-javascript-disabled' => 'د همدې نندارتون د ښه ليدو لپاره  Javascript
+	'smoothgallery-javascript-disabled' => 'د همدې انځورتون د ښه ليدو لپاره  Javascript
 ته اړتيا ده.',
 );
 

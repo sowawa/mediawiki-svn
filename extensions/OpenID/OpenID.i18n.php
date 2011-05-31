@@ -5130,7 +5130,11 @@ Posvetujte se z [[Special:ListUsers/sysop|administratorjem]].',
 	'openidfailure' => 'Preverjanje ni uspelo',
 	'openidfailuretext' => 'Preverjanje URL OpenID ni uspelo. Sporočilo o napaki: »$1«',
 	'openidsuccess' => 'Preverjanje je uspelo',
-	'openidsuccesstext' => 'Preverjanje URL OpenID je uspelo.',
+	'openidsuccesstext' => "'''Preverjanje je bilo uspešno, prijavljeni ste kot uporabnik $1'''.
+
+Vaš OpenID je $2 .
+
+Ta in nadaljne OpenID-je ter izbirno geslo računa lahko upravljate v svojih [[Special:Preferences|nastavitvah]].",
 	'openidusernameprefix' => 'UporabnikOpenID',
 	'openidserverlogininstructions' => '$3 zahteva, da vnesete svoje geslo za vašega uporabnika $2, stran $1 (URL OpenID).',
 	'openidtrustinstructions' => 'Označite, če želite deliti podatke s $1.',
@@ -5161,9 +5165,7 @@ svojega si lahko izberete med spodnjimi možnostmi.',
 	'openidconvertsuccesstext' => 'Uspešno ste pretvorili svoj OpenID v $1.',
 	'openidconvertyourstext' => 'To je že vaš OpenID.',
 	'openidconvertothertext' => 'To je OpenID nekoga drugega.',
-	'openidalreadyloggedin' => "'''$1, ste že prijavljeni!'''
-
-Če želite za prijavo v prihodnje uporabljati OpenID, lahko [[Special:OpenIDConvert|pretvorite svoj račun za uporabo OpenID]].",
+	'openidalreadyloggedin' => 'Ste že prijavljeni.',
 	'openidnousername' => 'Uporabniško ime ni določeno.',
 	'openidbadusername' => 'Določeno je neustrezno uporabniško ime.',
 	'openidautosubmit' => 'Ta stran vsebuje obrazec, ki bi se moral potrditi samodejno, če imate omogočen JavaScript.

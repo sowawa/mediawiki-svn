@@ -4203,6 +4203,7 @@ $messages['yi'] = array(
 	'tasks_here' => 'דאָ',
 	'tasks_table_header_page' => 'בלאַט',
 	'tasks_search_form_title' => 'זוכן',
+	'tasks_next' => 'נעקסטער',
 	'tasks_status_open' => 'אפֿן',
 );
 

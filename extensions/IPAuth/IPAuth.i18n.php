@@ -263,6 +263,13 @@ $messages['lb'] = array(
 	'ipauth-desc' => 'Automatesch alogge vu fixen IP-Adressen',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Eitvys200
+ */
+$messages['lt'] = array(
+	'ipauth-desc' => 'Automatinis prisijungimas iš fiksuoto IP adreso',
+);
+
 /** Latvian (Latviešu)
  * @author Xil
  */

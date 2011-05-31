@@ -237,6 +237,13 @@ $messages['lb'] = array(
 	'wikimediamobile-desc' => 'MediaWiki ënnerstetzt Fonctioune fir de Wikimedia-Mobile Projet deen Dir op http://github.com/hcatlin/wikimedia-mobile fannt',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Eitvys200
+ */
+$messages['lt'] = array(
+	'wikimediamobile-desc' => 'MediaWiki priima funkcijas Wikimedia-mobile patalpinta http://github.com/hcatlin/wikimedia-mobile',
+);
+
 /** Latvian (Latviešu)
  * @author Xil
  */

@@ -482,8 +482,12 @@ $messages['mn'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'categorymultisort-desc' => 'Membolehkan pemaparan kategori dengan pelbagai kunci isih',
 	'categorymultisort-defaultsortkey-name' => 'Tersedia',
+	'categorymultisort-sortkey' => 'Kunci isih:',
 	'categorymultisort-go' => 'Pergi',
+	'categorymultisort-default-sortkey' => 'Kunci isih utama:',
+	'prefs-category' => 'Kategori',
 );
 
 /** Nahuatl (Nāhuatl)

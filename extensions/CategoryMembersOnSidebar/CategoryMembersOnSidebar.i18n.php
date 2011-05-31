@@ -183,6 +183,13 @@ $messages['mk'] = array(
 	'categorymembersonsidebar-desc' => 'Додава членови на категорија во страничната лента',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'categorymembersonsidebar-desc' => 'Menambahkan ahli kategori pada bar sisi',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Teòtlalili
  */
