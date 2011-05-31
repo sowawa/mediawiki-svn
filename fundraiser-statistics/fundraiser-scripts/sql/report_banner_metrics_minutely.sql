@@ -4,14 +4,14 @@ select
 
 if(imp.dt_min < 10, concat(imp.dt_hr, '0', imp.dt_min,'00'), concat(imp.dt_hr, imp.dt_min,'00')) as day_hr,
 lp.utm_source,
-impressions * (views / total_views) as impressions, 
+floor(impressions * (views / total_views)) as impressions, 
 views,
-total_clicks,
+-- total_clicks,
 donations,
 amount,
 amount50,
 (views / impressions) * (total_views / views) as click_rate,
-donations / total_clicks as completion_rate,
+-- donations / total_clicks as completion_rate,
 round((donations / impressions) * (total_views / views), 6) as don_per_imp,
 (amount / impressions) * (total_views / views) as amt_per_imp,
 (amount50 / impressions) * (total_views / views) as amt50_per_imp
