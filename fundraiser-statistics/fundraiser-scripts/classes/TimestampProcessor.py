@@ -45,7 +45,27 @@ import datetime
 import math
 import Fundraiser_Tools.classes.Helper as mh
 
+"""
+    Get timestamps for interval
     
+    INPUT:
+         start_time_obj       - a datetime object indicating the start of the interval
+"""
+def timestamps_for_interval(start_time_obj, timestamp_format, **kwargs):
+   
+   for key in kwargs:
+       
+       if key == 'minutes':
+           end_time_obj = start_time_obj + datetime.timedelta(minutes=kwargs[key])
+       elif key == 'hours':
+            end_time_obj = start_time_obj + datetime.timedelta(hours=kwargs[key])
+    
+       start_timestamp = timestamp_from_obj(start_time_obj, timestamp_format, 3)
+       end_timestamp = timestamp_from_obj(end_time_obj, timestamp_format, 3)
+        
+       return [start_timestamp, end_timestamp]
+   
+   
 """
  
      Takes a list of timestamps as input and converts it to a set of days, hours, or minutes counting back from 0
