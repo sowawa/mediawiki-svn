@@ -23,6 +23,7 @@ import math
 import datetime
 import re        # regular expression matching
 
+import Fundraiser_Tools.settings as projSet
 import Fundraiser_Tools.classes.QueryData as QD
 import Fundraiser_Tools.classes.TimestampProcessor as TP
 import Fundraiser_Tools.classes.Helper as Hlp
@@ -63,7 +64,7 @@ class DataLoader(object):
         
         """ Establish connection """
         #db = MySQLdb.connect(host='db10.pmtpa.wmnet', user='rfaulk', db='faulkner')
-        self._db_ = MySQLdb.connect(host='127.0.0.1', user='rfaulk', db='faulkner', port=3307)
+        self._db_ = MySQLdb.connect(host=projSet.__db_server__, user=projSet.__user__, db=projSet.__db__, port=projSet.__db_port__)
         #self.db = MySQLdb.connect(host='storage3.pmtpa.wmnet', user='rfaulk', db='faulkner')
         
         """ Create cursor """
