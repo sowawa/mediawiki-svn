@@ -77,14 +77,24 @@ class SQL2Wiki {
 
 		if ( !isset( $this->mArgs["database"] ) || !isset( $wgExSql2WikiDatabases[$this->mArgs["database"]] ) ) 
 			throw new Exception( wfMsgForContent( 'sql2wiki-err-invalid_db_id' ) );
+			
+		$lastError = null;
+		try {
+			wfSuppressWarnings();
+			$db = $wgExSql2WikiDatabases[$this->mArgs["database"]];
+			$this->mDBType = $db['type'];
+			$this->mDB = Database::newFromType( $this->mDBType, $db );
+			wfRestoreWarnings();
+		} catch ( Exception $ex) {
+			$lastError = $ex->getMessage();
+		}
 		
-		$db = $wgExSql2WikiDatabases[$this->mArgs["database"]];
-		$this->mDBType = $db['type'];
-		$this->mDB = Database::newFromType( $this->mDBType, $db );
-	
-		if ( !$this->mDB->isOpen() ) {
-			throw new Exception( wfMsgForContent( 'sql2wiki-err-failed_to_connect',  $this->mArgs["database"] ) );
+		if ( $lastError == null && !$this->mDB->isOpen() ) {
+			$lastError = $this->mDB->lastError();
+		}
 		
+		if ( $lastError != null ) {
+			throw new Exception( wfMsgForContent( 'sql2wiki-err-failed_to_connect',  $this->mArgs["database"] ) . "<br />\n$lastError" );
 		}
 	}
 	
