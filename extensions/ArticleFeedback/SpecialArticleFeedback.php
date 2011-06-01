@@ -43,8 +43,8 @@ class SpecialArticleFeedback extends SpecialPage {
 			
 			/*
 			This functionality does not exist yet.
-			$this->renderWeeklyMostChanged();
-			$this->renderRecentLows();*/
+			$this->renderWeeklyMostChanged();*/
+			$this->renderProblems();
 		} else {
 			$wgOut->addWikiText( 'This page has been disabled.' );
 		}
@@ -187,15 +187,15 @@ class SpecialArticleFeedback extends SpecialPage {
 	}
 
 	/**
-	 * Renders recent lows
+	 * Renders problem articles table
 	 * 
 	 * @return String: HTML table of recent lows
 	 */
-	protected function renderRecentLows() {
+	protected function renderProblems() {
 		global $wgOut, $wgUser, $wgArticleFeedbackRatings;
 
 		$rows = array();
-		foreach ( $this->getRecentLows() as $page ) {
+		foreach ( $this->getProblems() as $page ) {
 			$row = array();
 			$pageTitle = Title::newFromText( $page['page'] );
 			$row['page'] = $wgUser->getSkin()->link( $pageTitle, $pageTitle->getPrefixedText() );
@@ -227,6 +227,54 @@ class SpecialArticleFeedback extends SpecialPage {
 	}
 
 	/**
+	 * Gets a list of articles which were rated exceptionally low
+	 */
+	protected function getProblems() {
+		global $wgMemc;
+		// check if we've got results in the cache
+		$key = wfMemcKey( 'article_feedback_stats_problems' );
+		$cache = $wgMemc->get( $key );
+		if ( is_array( $cache )) {
+			$highs_lows = $cache;
+		} else {
+			$dbr = wfGetDB( DB_SLAVE );
+			// first find the freshest timestamp
+			$row = $dbr->selectRow(
+				'article_feedback_stats',
+				array( 'afs_ts' ),
+				"",
+				__METHOD__,
+				array( "ORDER BY" => "afs_ts DESC", "LIMIT" => 1 )
+			);
+			
+			// if we have no results, just return
+			if ( !$row || !$row->afs_ts ) {
+				return array();
+			}
+			
+			// select ratings with that ts
+			$result = $dbr->select(
+				'article_feedback_stats',
+				array(
+					'afs_page_id',
+					'afs_orderable_data',
+					'afs_data'
+				),
+				array( 
+					'afs_ts' => $row->afs_ts,
+					'afs_stats_type_id' => self::getStatsTypeId( 'problems' )
+				),
+				__METHOD__,
+				array( "ORDER BY" => "afs_orderable_data" )
+			);
+			$problems = $this->buildProblems( $result );
+			$wgMemc->set( $key, $problems, 86400 );
+		}
+		
+		return $problems;
+	}
+	
+	/**
 	 * Gets a list of articles which were rated exceptionally high or low.
 	 * 
 	 * - Based on average of all rating categories
@@ -237,7 +285,6 @@ class SpecialArticleFeedback extends SpecialPage {
 	 */
 	protected function getDailyHighsAndLows() {
 		global $wgMemc;
-		
 		// check if we've got results in the cache
 		$key = wfMemcKey( 'article_feedback_stats_highs_lows' );
 		$cache = $wgMemc->get( $key );
@@ -247,29 +294,32 @@ class SpecialArticleFeedback extends SpecialPage {
 			$dbr = wfGetDB( DB_SLAVE );
 			// first find the freshest timestamp
 			$row = $dbr->selectRow(
-				'article_feedback_stats_highs_lows',
-				array( 'afshl_ts' ),
+				'article_feedback_stats',
+				array( 'afs_ts' ),
 				"",
 				__METHOD__,
-				array( "ORDER BY" => "afshl_ts DESC", "LIMIT" => 1 )
+				array( "ORDER BY" => "afs_ts DESC", "LIMIT" => 1 )
 			);
 			
 			// if we have no results, just return
-			if ( !$row || !$row->afshl_ts ) {
+			if ( !$row || !$row->afs_ts ) {
 				return array();
 			}
 			
 			// select ratings with that ts
 			$result = $dbr->select(
-				'article_feedback_stats_highs_lows',
+				'article_feedback_stats',
 				array(
-					'afshl_page_id',
-					'afshl_avg_overall',
-					'afshl_avg_ratings'
+					'afs_page_id',
+					'afs_orderable_data',
+					'afs_data'
 				),
-				array( 'afshl_ts' => $row->afshl_ts ),
+				array( 
+					'afs_ts' => $row->afs_ts,
+					'afs_stats_type_id' => self::getStatsTypeId( 'highs_and_lows' )
+				),
 				__METHOD__,
-				array( "ORDER BY" => "afshl_avg_overall" )
+				array( "ORDER BY" => "afs_orderable_data" )
 			);
 			$highs_lows = $this->buildHighsAndLows( $result );
 			$wgMemc->set( $key, $highs_lows, 86400 );
@@ -331,12 +381,53 @@ class SpecialArticleFeedback extends SpecialPage {
 		$highs_lows = array();
 		foreach ( $result as $row ) {
 			$highs_lows[] = array(
-				'page' => $row->afshl_page_id,
-				'ratings' => FormatJson::decode( $row->afshl_avg_ratings ),
-				'average' => $row->afshl_avg_overall		
+				'page' => $row->afs_page_id,
+				'ratings' => FormatJson::decode( $row->afs_data ),
+				'average' => $row->afs_orderable_data		
 			);
 		}
 		return $highs_lows;
+	}
+	
+	/**
+	 * Build data store of problems for use when rendering table
+	 * @param object Database result
+	 * @return array
+	 */
+	public static function buildProblems( $result ) {
+		$problems = array();
+		foreach( $result as $row ) {
+			$problems[] = array(
+				'page' => $row->afs_page_id,
+				'ratings' => FormatJson::decode( $row->afs_data ),
+				'average' => $row->afs_orderable_data		
+			);
+		}
+		return $problems;
+	}
+	
+	/**
+	 * Get the stats type id for a given stat type
+	 * @param string $stats_type
+	 */
+	public static function getStatsTypeId( $stats_type ) {
+		global $wgMemc;
+		$key = wfMemcKey( 'article_feedback_stats_type_' . $stats_type );
+		$cache = $wgMemc->get( $key );
+		if ( $cache ) {
+			return $cache;
+		}
+		
+		$dbr = wfGetDB( DB_SLAVE );
+		$row = $dbr->selectRow(
+			'article_feedback_stats_types',
+			array( 'afst_id' ),
+			array( 'afst_type' => $stats_type ),
+			__METHOD__,
+			array( )
+		);
+		$wgMemc->set( $key, $row->afst_id );
+		return $row->afst_id;
 	}
 	
 	/**

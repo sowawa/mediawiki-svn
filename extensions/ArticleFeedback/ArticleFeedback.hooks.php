@@ -174,12 +174,52 @@ class ArticleFeedbackHooks {
 				$dir . '/sql/AddRevisionsTable.sql',
 				true
 			) );
-			$updater->addExtensionUpdate( array(
-				'addTable',
-				'article_feedback_stats_highs_lows',
-				$dir . '/sql/AddStatsHighsLowsTable.sql',
-				true
-			) );
+			
+			if ( $db->tableExists( 'article_feedback_stats_highs_lows') ) {
+				if ( !$db->tableExists( 'article_feedback_stats_types' )) {
+					// add article_feedback_stats_type if necessaray
+					$updater->addExtensionUpdate( array(
+						'addTable',
+						'article_feedback_stats_types',
+						$dir . '/sql/AddArticleFeedbackStatsTypesTable.sql',
+						true
+					) );
+				}
+				
+				$updater->addExtensionUpdate( array(
+					'addTable',
+					'article_feedback_stats',
+					$dir . '/sql/AddArticleFeedbackStatsTable.sql',
+					true
+				) );
+				
+				// migrate article_feedback_stats_highs_lows to article_feedback_stats
+				$updater->addExtensionUpdate( array(
+					'applyPatch',
+					$dir . '/sql/MigrateArticleFeedbackStatsHighsLows.sql',
+					true
+				) );
+			} else {
+				// add article_feedback_stats and article_feedback_stats_type
+				if ( !$db->tableExists( 'article_feedback_stats_type' )) {
+					$updater->addExtensionUpdate( array(
+						'addTable',
+						'article_feedback_stats_types',
+						$dir . '/sql/AddArticleFeedbackStatsTypesTable.sql',
+						true
+					) );
+				}
+				
+				if ( !$db->tableExists( 'article_feedback_stats' )) {
+					$updater->addExtensionUpdate( array(
+						'addTable',
+						'article_feedback_stats',
+						$dir . '/sql/AddArticleFeedbackStatsTable.sql',
+						true
+					) );
+				}
+			}
+			
 			$updater->addExtensionUpdate( array(
 				'addIndex',
 				'article_feedback',
