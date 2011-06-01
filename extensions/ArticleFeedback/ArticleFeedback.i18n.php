@@ -1117,6 +1117,7 @@ La teamo {{SITENAME}}',
 
 /** Spanish (Español)
  * @author Dferg
+ * @author Drini
  * @author Fitoschido
  * @author Locos epraix
  * @author Mashandy
@@ -1128,14 +1129,14 @@ $messages['es'] = array(
 	'articlefeedback' => 'Evaluación del artículo',
 	'articlefeedback-desc' => 'Evaluación del artículo (versión de pruebas)',
 	'articlefeedback-survey-question-origin' => '¿En qué página estabas cuando iniciaste esta encuesta?',
-	'articlefeedback-survey-question-whyrated' => 'Por favor, dinos por qué has valorado esta página hoy (marca todas las opciones que correspondan):',
-	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'Quería contribuir a la calificación global de la página',
-	'articlefeedback-survey-answer-whyrated-development' => 'Espero que mi calificación afecte positivamante el desarrollo de la página',
+	'articlefeedback-survey-question-whyrated' => 'Por favor, dinos por qué decidiste valorar esta página (marca todas las opciones que correspondan):',
+	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'Deseo contribuir a la calificación global de la página',
+	'articlefeedback-survey-answer-whyrated-development' => 'Espero que mi calificación afecte de forma positiva el desarrollo de la página',
 	'articlefeedback-survey-answer-whyrated-contribute-wiki' => 'Quería contribuir a {{SITENAME}}',
-	'articlefeedback-survey-answer-whyrated-sharing-opinion' => 'Me gusta compartir mi opinión',
-	'articlefeedback-survey-answer-whyrated-didntrate' => 'Hoy no evalué ninguna página. Sólo quise dejar mis comentarios sobre la funcionalidad.',
+	'articlefeedback-survey-answer-whyrated-sharing-opinion' => 'Me agrada compartir mi opinión',
+	'articlefeedback-survey-answer-whyrated-didntrate' => 'No evalué ninguna página. Únicamente quise comentar acerca de la funcionalidad.',
 	'articlefeedback-survey-answer-whyrated-other' => 'Otro',
-	'articlefeedback-survey-question-useful' => '¿Crees las valoraciones proporcionadas son útiles y claras?',
+	'articlefeedback-survey-question-useful' => '¿Crees que las valoraciones proporcionadas son útiles y claras?',
 	'articlefeedback-survey-question-useful-iffalse' => '¿Por qué?',
 	'articlefeedback-survey-question-comments' => '¿Tienes algún comentario adicional?',
 	'articlefeedback-survey-submit' => 'Enviar',
@@ -1144,7 +1145,7 @@ $messages['es'] = array(
 	'articlefeedback-error' => 'Ha ocurrido un error. Por favor inténtalo de nuevo más tarde.',
 	'articlefeedback-form-switch-label' => 'Evalúa esta página',
 	'articlefeedback-form-panel-title' => 'Evalúa esta página',
-	'articlefeedback-form-panel-instructions' => 'Por favor tómate un tiempo para evaluar esta página.',
+	'articlefeedback-form-panel-instructions' => 'Por favor tómate el tiempo necesario para evaluar esta página.',
 	'articlefeedback-form-panel-clear' => 'Eliminar la evaluación',
 	'articlefeedback-form-panel-expertise' => 'Estoy muy bien informado sobre este tema (opcional)',
 	'articlefeedback-form-panel-expertise-studies' => 'Tengo un grado universitario relevante',
@@ -1156,6 +1157,7 @@ $messages['es'] = array(
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Política de privacidad',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Política de protección de datos',
 	'articlefeedback-form-panel-submit' => 'Enviar calificaciones',
+	'articlefeedback-form-panel-pending' => 'Tu valoración aún no ha sido enviada',
 	'articlefeedback-form-panel-success' => 'Guardado correctamente',
 	'articlefeedback-form-panel-expiry-title' => 'Tus calificaciones han caducado',
 	'articlefeedback-form-panel-expiry-message' => 'Por favor, reevalúa esta página y presenta nuevas calificaciones.',
@@ -1171,7 +1173,7 @@ $messages['es'] = array(
 	'articlefeedback-field-objective-label' => 'Objetivo',
 	'articlefeedback-field-objective-tip' => '¿Crees que esta página muestra una representación justa de todas las perspectivas sobre el tema?',
 	'articlefeedback-field-wellwritten-label' => 'Bien escrito',
-	'articlefeedback-field-wellwritten-tip' => '¿Crees que esta página está bien organizada y escrita correctamente?',
+	'articlefeedback-field-wellwritten-tip' => '¿Crees que la página está bien organizada y escrita correctamente?',
 	'articlefeedback-pitch-reject' => 'Quizá más tarde',
 	'articlefeedback-pitch-or' => 'o',
 	'articlefeedback-pitch-thanks' => '¡Gracias! Se han guardado tus valoraciones.',
@@ -1187,9 +1189,36 @@ $messages['es'] = array(
 	'articlefeedback-survey-message-error' => 'Ha ocurrido un error.
 Por favor inténtalo de nuevo más tarde.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Altibajos de hoy',
+	'articleFeedback-table-caption-dailyhighs' => 'Páginas con las mayores calificaciones: $1',
+	'articleFeedback-table-caption-dailylows' => 'Páginas con las menores calificaciones: $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Lo más modificado de la semana',
+	'articleFeedback-table-caption-recentlows' => 'Calificaciones bajas recientes',
 	'articleFeedback-table-heading-page' => 'Página',
 	'articleFeedback-table-heading-average' => 'Promedio',
+	'articleFeedback-copy-above-highlow-tables' => 'Esta es una característica experimental. Si deseas, puedes comentar en la [$1 página de discusión].',
+	'articleFeedback-copy-below-highlow-tables' => 'Estas tablas contienen las páginas que han recibido al menos 10 valoraciones en las últimas 24 horas. Los promedios se calculan tomando la media de todas las valoraciones enviadas en las últimas 24 horas.',
+	'articlefeedback-emailcapture-response-body' => '¡Hola!
+
+Te agradecemos el interés por ayudar a mejorar {{SITENAME}}.
+
+Por favor, toma un momento para confirmar tu correo electrónico haciendo clic en el siguiente enlace:
+
+$1
+
+Quizás quieras visitar:
+
+$2
+
+E ingresa el siguiente código de confirmación:
+
+$3
+
+Nos pondremos en contacto contigo con información para para ayudarte a mejorar {{SITENAME}}.
+
+Si tú no realizaste esta solicitud, por favor ignora este correo y no te enviaremos más información.
+
+Agradecidos y con los mejores deseos,
+El equipo de {{SITENAME}}.',
 );
 
 /** Estonian (Eesti)

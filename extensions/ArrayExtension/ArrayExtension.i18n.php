@@ -183,6 +183,13 @@ $messages['pt'] = array(
 	'arrayext-desc' => 'Armazenar e calcular matrizes designadas',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'arrayext-desc' => 'Armazenar e calcular matrizes designadas',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

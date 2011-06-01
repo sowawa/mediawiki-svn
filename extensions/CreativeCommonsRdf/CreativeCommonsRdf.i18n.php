@@ -65,6 +65,13 @@ $messages['pt'] = array(
 	'creativecommonsrdf-desc' => 'Metadados RDF da Creative Commons',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'creativecommonsrdf-desc' => 'Metadados RDF do Creative Commons',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

@@ -858,8 +858,11 @@ Jika Anda mengikuti tautan dari tempat lain, silahkan <a href="$1">laporkan bug<
 
 /** Italian (Italiano)
  * @author Beta16
+ * @author Rippitippi
  */
 $messages['it'] = array(
+	'toolbase-header-title' => "X!'s Tools (BETA)",
+	'toolbase-header-bugs' => 'Errori',
 	'toolbase-replag-years' => 'anni',
 	'toolbase-replag-months' => 'mesi',
 	'toolbase-replag-weeks' => 'settimane',
@@ -870,6 +873,11 @@ $messages['it'] = array(
 	'toolbase-footer-exectime' => 'Eseguito in $1 secondi',
 	'toolbase-footer-source' => 'Visualizza sorgente',
 	'toolbase-footer-language' => 'Cambia lingua',
+	'toolbase-footer-translate' => 'Traduci',
+	'toolbase-navigation' => 'Navigazione',
+	'toolbase-navigation-homepage' => 'Pagina principale',
+	'toolbase-navigation-user_id' => 'Cercare un utente',
+	'toolbase-navigation-autoedits' => 'Contatore di modifiche automatico',
 	'toolbase-autoedits-totalall' => 'Totale delle modifiche',
 	'toolbase-main-404' => 'File non trovato',
 );

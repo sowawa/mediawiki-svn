@@ -1040,6 +1040,7 @@ Você perderá as suas edições se abandonar a página agora.',
 Nomes de usuário são sensíveis à maiúsculas.
 Cheque se você soletrou corretamente.',
 	'al-createblocked' => 'O seu endereço IP está bloqueado e foi impedido de criar contas.',
+	'al-throttled' => 'Você tem demasiadas tentativas recentes de fornecer a senha. Aguarde $1 {{PLURAL:$1|segundo|segundos}} antes de tentar novamente, por favor.',
 );
 
 /** Romanian (Română)

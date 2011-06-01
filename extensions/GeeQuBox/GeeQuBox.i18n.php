@@ -164,6 +164,13 @@ $messages['pt'] = array(
 	'geequbox-desc' => 'Gera efeitos lightbox usando o plugin lightbox do jQuery',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'geequbox-desc' => 'Gera efeitos lightbox usando o plugin lightbox do jQuery',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

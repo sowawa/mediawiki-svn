@@ -104,6 +104,13 @@ $messages['pt'] = array(
 	'whitelistpages-desc' => 'Nas wikis privadas, permite a inclusão de páginas numa [[MediaWiki:Public read whitelist|lista branca pública]], para que os utilizadores anónimos possam lê-las',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'whitelistpages-desc' => 'Permite a inclusão de páginas numa [[MediaWiki:Public read whitelist|lista branca]] nas wikis privadas, para que os usuários anônimos possam lê-las',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

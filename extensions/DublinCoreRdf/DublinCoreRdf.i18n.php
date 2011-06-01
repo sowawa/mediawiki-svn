@@ -65,6 +65,13 @@ $messages['pt'] = array(
 	'dublincorerdf-desc' => 'Metadados RDF Dublin Core',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'dublincorerdf-desc' => 'Metadados RDF Dublin Core',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

@@ -69,3 +69,17 @@ $messages['pt'] = array(
 	'semanticgraph-desc' => 'Permite o visionamento na forma de grafos, de dados estruturados armazenados através do MediaWiki Semântico',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'semanticgraph-desc' => 'Permite a visualização na forma de grafos, de dados estruturados armazenados através do MediaWiki Semântico',
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'semanticgraph-desc' => 'Позволяет визуализовать  структурированные данных, хранящихся в Semantic MediaWiki в виде графов',
+);
+
