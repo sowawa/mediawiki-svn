@@ -33,33 +33,8 @@ $wgExtensionCredits['other'][] = array(
 );
 
 $wgAutoloadClasses['MwEmbedResourceManager'] = dirname( __FILE__ ) . '/MwEmbedResourceManager.php';
-
-// Add Global MwEmbed Registration hook
-$wgHooks['ResourceLoaderRegisterModules'][] = 'MwEmbedResourceManager::registerModules';
-
-// Add MwEmbed module configuration
-$wgHooks['ResourceLoaderGetConfigVars'][] =  'MwEmbedResourceManager::registerConfigVars';
+$wgAutoloadClasses['MwEmbedSupportHooks'] = dirname( __FILE__ ) . '/MwEmbedSupport.hooks.php';
 
 /* MwEmbed Module Registration */
-
-// Register the core MwEmbed Support Module:
-MwEmbedResourceManager::register( 'extensions/MwEmbedSupport/MwEmbedModules/MwEmbedSupport' );
-
-// Register the MwEmbed 'mediaWiki' Module:
-MwEmbedResourceManager::register( 'extensions/MwEmbedSupport/MwEmbedModules/MediaWikiSupport' );
-
-// Add MwEmbedSupport to Startup:
-function MwUpdateStartupModules( &$modules ){ 
-	array_push($modules, 'jquery.triggerQueueCallback', 'jquery.mwEmbedUtil', 'mw.MwEmbedSupport' );		
-	return true;
-}
-$wgHooks['ResourceLoaderGetStartupModules'][] = 'MwUpdateStartupModules';
-
-
-
-// Add mwEmbed Support ( style sheets and messages post page ready ) 
-$wgHooks['BeforePageDisplay'][] = 'MwUpdatePageModules';
-function MwUpdatePageModules( &$out ){
-	$out->addModules( 'mw.MwEmbedSupport.style' );
-	return true;
-}
+$wgHooks['SetupAfterCache'][] = 'MwEmbedSupportHooks::register';
+	
