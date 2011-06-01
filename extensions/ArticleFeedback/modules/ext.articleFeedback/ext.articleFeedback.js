@@ -290,15 +290,20 @@ var config = {
 			'action': function() {
 				// Mute for 7 days
 				mutePitch( 'edit', 7 );
-				// Go to edit page
-				// Track the click through an API redirect
+				// Setup edit page link
+				var params = {
+					'title': mw.config.get( 'wgPageName' ),
+					'action': 'edit'
+				};
+				if ( tracked ) {
+					// Keep track of tracked users' edits
+					params.clicktrackingsession = $.cookie( 'clicktracking-session' );
+					params.clicktrackingevent = prefix( 'pitch-edit-save' );
+				}
+				// Track the click through an API redirect (automatically bypasses if !tracked)
 				window.location = trackClickURL(
-					mw.config.get( 'wgScript' ) + '?' + $.param( {
-						'title': mw.config.get( 'wgPageName' ),
-						'action': 'edit',
-						'clicktrackingsession': $.cookie( 'clicktracking-session' ),
-						'clicktrackingevent': prefix( 'pitch-edit-save' )
-					} ), 'pitch-edit-accept' );
+					mw.config.get( 'wgScript' ) + '?' + $.param( params ), 'pitch-edit-accept'
+				);
 				return false;
 			},
 			'title': 'articlefeedback-pitch-thanks',
