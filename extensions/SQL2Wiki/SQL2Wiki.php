@@ -9,7 +9,7 @@ EOT;
 }
 $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'SQL2Wiki',
-	'author' => 'freakolowsky [Jure Kajzer] original version by Patrick Müller',
+	'author' => 'freakolowsky [Jure Kajzer] original version by Patrick MÃ¼ller',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:SQL2Wiki',
 	'description' => 'Show SQL data directly in the page contents..',
 	'descriptionmsg' => 'sql2wiki-desc',
