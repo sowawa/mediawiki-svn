@@ -77,7 +77,7 @@ $.setupActiveBuckets = function(){
 };
 
 // No need to do any of this if there are no active campaigns
-if ( mw.activeCampaigns && mw.activeCampaigns.length ) {
+if ( mw.activeCampaigns && !$.isEmptyObject(mw.activeCampaigns) ) {
 	$( $.setupActiveBuckets );
 }
 
