@@ -26,7 +26,7 @@ sys.path.append('../')
 
 from classes import storage
 
-location = '/home/diederik/wikimedia/en/wiki/kaggle_prediction_solution'
+location = '/home/diederik/wikimedia/en/wiki/kaggle'
 files = os.listdir(location)
 files.reverse()
 
@@ -67,7 +67,7 @@ for filename in files:
                 continue
             id = line[2]
             if id not in ids and id not in ignore_ids:
-                res = db.find_one('editor', id)
+                res = db.find_one({'editor': id})
                 if res == None:
                     ignore_ids.add(id)
                     continue
@@ -100,7 +100,7 @@ x = 0
 fh = codecs.open('solutions.tsv', 'w', 'utf-8')
 for id in ids:
     if id not in ignore_ids:
-        obs = db.find_one('editor', str(id), 'cum_edit_count_main_ns')
+        obs = db.find_one({'editor': str(id)}, 'cum_edit_count_main_ns')
         if obs != None:
             x += 1
             n = obs['cum_edit_count_main_ns']

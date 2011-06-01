@@ -24,6 +24,7 @@ from Queue import Empty
 import types
 import sys
 import cPickle
+import pymongo
 import gc
 import os
 import progressbar
@@ -65,7 +66,7 @@ def reconstruct_observations(var):
 def feedback(plugin, rts):
     print 'Exporting data for chart: %s' % plugin
     print 'Project: %s' % rts.dbname
-    print 'Dataset: %s' % rts.editors_dataset
+    print 'Dataset: %s' % rts.collection
 
 
 def write_output(ds, rts, stopwatch):
@@ -97,7 +98,8 @@ def generate_chart_data(rts, func, **kwargs):
     plugin = retrieve_plugin(func)
 
     if not plugin:
-        raise exceptions.UnknownPluginError(plugin, self.available_plugins)
+        available_plugins = inventory.available_analyses()
+        raise exceptions.UnknownPluginError(plugin, available_plugins)
         plugin = getattr(plugin, func)
 
     feedback(func, rts)
@@ -110,15 +112,16 @@ def generate_chart_data(rts, func, **kwargs):
     obs = dict()
     obs_proxy = mgr.dict(obs)
 
-    db = storage.init_database(rts.storage, rts.dbname, rts.editors_dataset)
+    db = storage.init_database(rts.storage, rts.dbname, rts.collection)
     editors = db.retrieve_distinct_keys('editor')
     #editors = editors[:500]
-    min_year, max_year = determine_project_year_range(db, 'new_wikipedian')
+    if rts.collection.find('editors_dataset') > -1:
+        min_year, max_year = determine_project_year_range(db, 'new_wikipedian')
+        kwargs['min_year'] = min_year
+        kwargs['max_year'] = max_year
 
     fmt = kwargs.pop('format', 'long')
     time_unit = kwargs.pop('time_unit', 'year')
-    kwargs['min_year'] = min_year
-    kwargs['max_year'] = max_year
 
 
     var = dataset.Variable('count', time_unit, lock, obs_proxy, **kwargs)
@@ -153,24 +156,21 @@ def generate_chart_data(rts, func, **kwargs):
 
 
     ppills = cpu_count()
-    while True:
-        while ppills > 0:
-            try:
-                res = result.get()
-                if res == True:
-                    pbar.update(pbar.currval + 1)
-                else:
-                    ppills -= 1
-                    var = res
-                    print ppills
-            except Empty:
-                pass
-        break
-    print 'Waiting for tasks...'
+    while ppills > 0:
+        try:
+            res = result.get()
+            if res == True:
+                pbar.update(pbar.currval + 1)
+            else:
+                ppills -= 1
+                var = res
+        except Empty:
+            pass
+
     tasks.join()
 
     var = reconstruct_observations(var)
-    ds = dataset.Dataset(plugin.func_name, rts, format=fmt, **kwargs)
+    ds = dataset.Dataset(func, rts, format=fmt, **kwargs)
     ds.add_variable(var)
 
     stopwatch.elapsed()
@@ -178,8 +178,8 @@ def generate_chart_data(rts, func, **kwargs):
 
     ds.summary()
 
-    for n, c in get_refcounts()[:100]:
-        print '%10d %s' % (n, c.__name__)
+    #for n, c in get_refcounts()[:100]:
+    #    print '%10d %s' % (n, c.__name__)
 
 
 def get_refcounts():
@@ -205,9 +205,12 @@ def determine_project_year_range(db, var):
     Determine the first and final year for the observed data
     '''
     try:
-        obs = db.find(var, qualifier='max')
+        conditions = {var : {'$ne' : False}}
+
+        obs = db.find(conditions).sort(var, pymongo.ASCENDING).limit(1)[0]
         max_year = obs[var].year + 1
-        obs = db.find(var, qualifier='min')
+
+        obs = db.find(conditions).sort(var, pymongo.DESCENDING).limit(1)[0]
         min_year = obs[var].year
     except KeyError:
         min_year = 2001

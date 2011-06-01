@@ -160,29 +160,22 @@ class Mongo(AbstractDatabase):
         assert isinstance(data, dict), 'You need to feed me dictionaries.'
         self.db[self.collection].update({key: value}, {'$set': data})
 
-    def find(self, key=None, qualifier=None):
-        if qualifier == 'min':
-            return self.db[self.collection].find({
-                key : {'$ne' : False}}).sort(key, pymongo.ASCENDING).limit(1)[0]
-        elif qualifier == 'max':
-            return self.db[self.collection].find({
-                key : {'$ne' : False}}).sort(key, pymongo.DESCENDING).limit(1)[0]
-        elif qualifier:
-            return self.db[self.collection].find({key : qualifier})
-        elif key != None:
-            return self.db[self.collection].find({}, fields=[key])
+    def find(self, conditions, vars=None):
+        if conditions:
+            return self.db[self.collection].find(conditions, fields=vars)
         else:
             return self.db[self.collection].find()
 
-    def find_one(self, key, value, vars=None):
+    def find_one(self, conditions, vars=None):
         if vars:
             #if you only want to retrieve a specific variable(s) then you need to
             #specify vars, if vars is None then you will get the entire BSON object
             vars = vars.split(',')
             vars = dict([(var, 1) for var in vars])
-            return self.db[self.collection].find_one({key: value}, vars)
+            return self.db[self.collection].find_one(conditions, vars)
         else:
-            return self.db[self.collection].find_one({key: value})
+            #conditions should be a dictionary
+            return self.db[self.collection].find_one(conditions)
 
 
     def drop_collection(self):

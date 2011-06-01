@@ -150,13 +150,7 @@ def init_args_parser(language_code=None, project=None):
     language = languages.init(language_code)
     project = projects.init(project)
     pjc = projects.ProjectContainer()
-    #rts = runtime_settings.RunTimeSettings(project, language)
-
-    file_choices = {'meta-full': 'stub-meta-history.xml.gz',
-                    'meta-current': 'stub-meta-current.xml.gz',
-                    'history-full': 'pages-meta-history.xml.7z',
-                    'history-current': 'pages-meta-current.xml.bz2'
-                    }
+    rts = runtime_settings.RunTimeSettings(project, language)
 
     #Init Argument Parser
     parser = ArgumentParser(prog='manage', formatter_class=RawTextHelpFormatter)
@@ -218,7 +212,7 @@ def init_args_parser(language_code=None, project=None):
     parser_dataset.add_argument('-c', '--charts',
                                 action='store',
                                 help='Should be a valid function name that matches one of the plugin functions',
-                                default=inventory.available_analyses()['new_editor_count'])
+                                default='new_editor_count')
 
     parser_dataset.add_argument('-k', '--keywords',
                                 action='store',
@@ -256,6 +250,13 @@ def init_args_parser(language_code=None, project=None):
                         help='Indicate whether the output is for Kaggle or not',
                         default=False)
 
+
+    parser.add_argument('-t', '--collection',
+        action='store',
+        help='Name of default collection',
+        default='editors_dataset'
+        )
+
     parser.add_argument('-l', '--language',
         action='store',
         help='Example of valid languages.',
@@ -269,28 +270,17 @@ def init_args_parser(language_code=None, project=None):
         choices=pjc.supported_projects(),
         default='wiki')
 
-    parser.add_argument('-c', '--collection',
-        action='store',
-        help='Name of MongoDB collection',
-        default='editors_raw')
-
-
     parser.add_argument('-ns', '--namespace',
         action='store',
         help='A list of namespaces to include for analysis.',
         default='0')
 
-    parser.add_argument('-db', '--database',
-                        action='store',
-                        help='Specify the database that you want to use. Valid choices are mongo and cassandra.',
-                        default='mongo')
-
     parser.add_argument('-f', '--file',
         action='store',
-        choices=file_choices,
+        choices=rts.file_choices,
         help='Indicate which dump you want to download. Valid choices are:\n \
-            %s' % ''.join([f + ',\n' for f in file_choices]),
-        default=file_choices['meta-full'])
+            %s' % ''.join([f + ',\n' for f in rts.file_choices]),
+        default='meta-full')
 
     return parser
 
@@ -353,6 +343,7 @@ def store_launcher(rts, logger):
     log.to_db(rts, 'dataset', 'store', stopwatch, event='start')
     log.to_csv(logger, rts, 'Start', 'Store', store_launcher)
     store.launcher(rts)
+    #store.launcher_articles(rts)
     stopwatch.elapsed()
     log.to_db(rts, 'dataset', 'store', stopwatch, event='finish')
     log.to_csv(logger, rts, 'Finish', 'Store', store_launcher)

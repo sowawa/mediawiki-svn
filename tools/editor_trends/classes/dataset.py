@@ -176,6 +176,7 @@ class Observation(Data):
         #self.date = date
         self.data = 0
         self.time_unit = time_unit
+        self.date = date
         self.t1, self.t0 = self.set_date_range(date)
         self.id = id
         self.props = []
@@ -515,7 +516,7 @@ class Dataset:
             variable.max = get_max(data)
             variable.num_obs = variable.number_of_obs()
             variable.num_dates = len(variable)
-            #variable.first_obs, variable.last_obs = variable.get_date_range()
+            variable.first_obs, variable.last_obs = variable.get_date_range()
 
     def summary(self):
         '''

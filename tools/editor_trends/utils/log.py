@@ -31,8 +31,8 @@ from classes import storage
 def to_db(rts, jobtype, task, timer, event='start'):
     db = storage.init_database(rts.storage, rts.dbname, 'jobs')
     created = datetime.datetime.now()
-    job = db.find_one('hash', rts.id)
-
+    job = db.find_one({'hash': rts.id})
+    #print job
     data = {'hash': rts.id,
           'created': created,
           'jobtype': jobtype,
@@ -50,7 +50,7 @@ def to_db(rts, jobtype, task, timer, event='start'):
             data['finished'] = True
             _id = db.save(data)
 
-        job = db.find_one('_id', _id)
+        job = db.find_one({'_id': _id})
 
     tasks = job['tasks']
     t = tasks.get(task, {})

@@ -124,7 +124,9 @@ class CSVBuffer:
     def simplify(self, revision):
         row = []
         for key in self.keys:
-            row.append(revision[key].decode('utf-8'))
+            value = revision.get(key, None)
+            if value != None:
+                row.append(value.decode('utf-8'))
         return row
 
     def stringify(self, revision):

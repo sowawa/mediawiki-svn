@@ -57,7 +57,7 @@ def create_sample_b():
 
 
 def retrieve_variables(obs, username, date):
-    data = db.find_one('username', username)
+    data = db.find_one({'username': username})
     year = str(date.year)
     month = str(date.month)
     if data:

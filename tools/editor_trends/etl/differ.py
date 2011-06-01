@@ -213,7 +213,7 @@ def write_json_diff(fh, revisions):
 
 def store_json_diffs(rts):
     files = os.listdir(rts.diffs)
-    print files, rts.diffs
+    #print files, rts.diffs
     db = storage.init_database(rts.storage, rts.dbname, rts.diffs_dataset)
     buffer = cStringIO.StringIO()
 
@@ -226,12 +226,10 @@ def store_json_diffs(rts):
                     obj = json.loads(obj)
                     obj[0]['article_id'] = int(obj[0]['article_id'])
                     for key, value in obj[0].iteritems():
-                        if type(value) == type(dict()):
-                            value['timestamp'] = datetime.strptime(value['timestamp'], '%Y-%m-%dT%H:%M:%S')
+                        if key == 'timestamp':
+                            value = datetime.strptime(value, '%Y-%m-%dT%H:%M:%S')
                         obj[0][key] = value
                     obj = obj[0]
-                    #print obj
-                    #print len(obj)
                     try:
                         db.save(obj)
                     except bson.errors.InvalidDocument, error:
@@ -279,6 +277,7 @@ def diff_revision(rev1, rev2):
 
 def store_diffs_debug(rts):
     db = storage.init_database(rts)
+    db.drop_collection()
     files = os.listdir(rts.diffs)
     for filename in files:
         fh = file_utils.create_txt_filehandle(rts.diffs, filename, 'r', 'utf-8')
@@ -335,20 +334,22 @@ def launcher(rts):
         print 'Inserting poison pill %s...' % x
         input_queue.put(None)
 
-    extracters = [Process(target=stream_raw_xml, args=[input_queue, process_id,
-                                                       rts, format])
-                  for process_id in xrange(processors)]
-    for extracter in extracters:
-        extracter.start()
-
-    input_queue.join()
+#    extracters = [Process(target=stream_raw_xml, args=[input_queue, process_id,
+#                                                       rts, format])
+#                  for process_id in xrange(processors)]
+#    for extracter in extracters:
+#        extracter.start()
+#
+#    input_queue.join()
 
     store_json_diffs(rts)
     db = storage.init_database(rts.storage, rts.dbname, rts.diffs_dataset)
+
     db.add_index('title')
     db.add_index('timestamp')
     db.add_index('username')
     db.add_index('ns')
+    db.add_index('editor')
 
 
 def launcher_simple():

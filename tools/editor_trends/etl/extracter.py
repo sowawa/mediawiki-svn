@@ -72,8 +72,8 @@ def parse_revision(revision, article, xml_namespace, cache, bots, md5hashes, siz
     text = variables.extract_revision_text(revision, xml_namespace)
     article.update(contributor)
 
-    comment = variables.extract_comment_text(revision_id, revision)
-    cache.comments.update(comment)
+    #comment = variables.extract_comment_text(revision_id, revision)
+    #cache.comments.update(comment)
 
     timestamp = revision.find('%s%s' % (xml_namespace, 'timestamp')).text
     article['timestamp'] = timestamp
@@ -139,7 +139,7 @@ def parse_xml(fh, rts, cache, process_id, file_id):
                 title = variables.parse_title(elem)
                 article['title'] = title
                 current_namespace = variables.determine_namespace(title, namespaces, include_ns)
-                title_meta = variables.parse_title_meta_data(title, current_namespace)
+                title_meta = variables.parse_title_meta_data(title, current_namespace, namespaces)
                 if current_namespace < 6:
                     parse = True
                     article['namespace'] = current_namespace
@@ -172,7 +172,7 @@ def parse_xml(fh, rts, cache, process_id, file_id):
                 Determine id of article
                 '''
                 article['article_id'] = elem.text
-                if isinstance(current_namespace, int):
+                if isinstance(current_namespace, int) and title_meta != {}:
                     cache.articles[article['article_id']] = title_meta
                 id = True
                 elem.clear()

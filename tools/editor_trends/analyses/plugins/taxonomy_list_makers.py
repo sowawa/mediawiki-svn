@@ -71,4 +71,4 @@ def preload(rts):
     cursor = db.find('category', 'List')
     for c in cursor:
         data[c['id']] = 1
-    return data
+    return data, rts

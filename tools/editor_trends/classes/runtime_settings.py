@@ -50,51 +50,55 @@ class RunTimeSettings(Settings):
         self.project = project
         self.language = language
         self.dbname = 'wikilytics'
+        self.file_choices = {'meta-full': 'stub-meta-history.xml.gz',
+                             'meta-current': 'stub-meta-current.xml.gz',
+                             'history-full': 'pages-meta-history.xml.7z',
+                             'history-current': 'pages-meta-current.xml.bz2'
+                             }
+        if args:
+            self.args = args
+            self.id = '%s%s_%s' % (self.language.code, self.project.name, 'current_month')
+            #print self.settings.input_location
+            #print self.get_value('location')
+            self.project = self.update_project_settings()
+            self.language = self.update_language_settings()
 
-        #if args:
-        self.args = args
-        self.id = '%s%s_%s' % (self.language.code, self.project.name, 'current_month')
-        #print self.settings.input_location
-        #print self.get_value('location')
-        self.project = self.update_project_settings()
-        self.language = self.update_language_settings()
+            self.input_location = self.set_input_location()
+            self.output_location = self.set_output_location()
 
-        self.input_location = self.set_input_location()
-        self.output_location = self.set_output_location()
+            self.plugins = self.set_plugin()
+            self.keywords = self.split_keywords()
+            self.namespaces = self.get_namespaces()
 
-        self.plugins = self.set_plugin()
-        self.keywords = self.split_keywords()
-        self.namespaces = self.get_namespaces()
+            #self.kaggle = self.get_value('kaggle')
+            self.function = self.get_value('func')
+            self.ignore = self.get_value('except')
+            self.force = self.get_value('force')
+            self.analyzer_collection = self.get_value('collection')
 
-        #self.kaggle = self.get_value('kaggle')
-        self.function = self.get_value('func')
-        self.ignore = self.get_value('except')
-        self.force = self.get_value('force')
-        self.analyzer_collection = self.get_value('collection')
+            self.dataset = os.path.join(self.dataset_location, self.project.name)
+            self.txt = os.path.join(self.output_location, 'txt')
+            self.sorted = os.path.join(self.output_location, 'sorted')
+            self.diffs = os.path.join(self.output_location, 'diffs')
 
-        self.dataset = os.path.join(self.dataset_location, self.project.name)
-        self.txt = os.path.join(self.output_location, 'txt')
-        self.sorted = os.path.join(self.output_location, 'sorted')
-        self.diffs = os.path.join(self.output_location, 'diffs')
+            self.directories = [self.output_location,
+                                self.txt,
+                                self.sorted,
+                                self.dataset,
+                                self.diffs]
+            self.verify_environment(self.directories)
 
-        self.directories = [self.output_location,
-                            self.txt,
-                            self.sorted,
-                            self.dataset,
-                            self.diffs]
-        self.verify_environment(self.directories)
+            #Wikidump file related variables
+            self.dump_filename = self.generate_wikidump_filename()
+            self.dump_relative_path = self.set_dump_path()
+            self.dump_absolute_path = self.set_dump_path(absolute=True)
 
-        #Wikidump file related variables
-        self.dump_filename = self.generate_wikidump_filename()
-        self.dump_relative_path = self.set_dump_path()
-        self.dump_absolute_path = self.set_dump_path(absolute=True)
-
-        #Collection names
-        self.editors_raw = '%s%s_editors_raw' % (self.language.code, self.project.name)
-        self.editors_dataset = '%s%s_editors_dataset' % (self.language.code, self.project.name)
-        self.articles_raw = '%s%s_articles_raw' % (self.language.code, self.project.name)
-        self.diffs_dataset = '%s%s_diffs_dataset' % (self.language.code, self.project.name)
-
+            #Collection names
+            self.editors_raw = '%s%s_editors_raw' % (self.language.code, self.project.name)
+            self.editors_dataset = '%s%s_editors_dataset' % (self.language.code, self.project.name)
+            self.articles_raw = '%s%s_articles_raw' % (self.language.code, self.project.name)
+            self.diffs_dataset = '%s%s_diffs_dataset' % (self.language.code, self.project.name)
+            self.collection = self.set_collection()
 
 
     def __str__(self):
@@ -105,14 +109,8 @@ class RunTimeSettings(Settings):
         for item in self.__dict__:
             yield item
 
-    def dict(self):
-        '''
-        Return a dictionary with all properties and their values
-        '''
-        props = {}
-        for prop in self:
-            props[prop] = getattr(self, prop)
-        return props
+    def set_collection(self):
+        return getattr(self, self.get_value('collection'))
 
     def split_keywords(self):
         '''
@@ -141,7 +139,7 @@ class RunTimeSettings(Settings):
         '''
         plugin = self.get_value('charts')
         requested_plugins = []
-        if plugin != None and isinstance(plugin, type('module')) == False:
+        if plugin != None:
             plugins = plugin.split(',')
             available_plugins = inventory.available_analyses()
             for plugin in plugins:
@@ -220,8 +218,9 @@ class RunTimeSettings(Settings):
         '''
         Generate the main name of the wikidump file to be downloaded.
         '''
+        choice = self.get_value('file')
         return '%s%s-latest-%s' % (self.language.code, self.project.name,
-                                   self.get_value('file'))
+                                   self.file_choices[choice])
 
     def update_language_settings(self):
         '''

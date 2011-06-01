@@ -68,21 +68,22 @@ def parse_title(title):
     return title.text
 
 
-def parse_title_meta_data(title, namespace):
+def parse_title_meta_data(title, ns, namespaces):
     '''
     This function categorizes an article to assist the Wikimedia Taxonomy
     project. See 
     http://meta.wikimedia.org/wiki/Contribution_Taxonomy_Project/Research_Questions
     '''
     title_meta = {}
-    if not namespace:
+    if not ns:
         return title_meta
-
+    namespace = '%s:' % namespaces[ns]
+    title = title.replace(namespace, '')
     title_meta['title'] = title
-    title_meta['ns'] = namespace
+    title_meta['ns'] = ns
     if title.startswith('List of'):
         title_meta['category'] = 'List'
-    elif namespace == 4 or namespace == 5:
+    elif ns == 4 or ns == 5:
         if title.find('Articles for deletion') > -1:
             title_meta['category'] = 'Deletion'
         elif title.find('Mediation Committee') > -1:
@@ -105,6 +106,7 @@ def parse_title_meta_data(title, namespace):
             title_meta['category'] = 'Featured Topic'
         elif title.find('Good Article') > -1:
             title_meta['category'] = 'Good Article'
+    #print title_meta
     return title_meta
 
 

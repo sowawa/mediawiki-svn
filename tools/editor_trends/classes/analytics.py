@@ -64,10 +64,8 @@ class Replicator:
 
     def __call__(self):
         project = 'wiki'
-        #rts = runtime_settings.init_environment('wiki', 'en', args)
         for lang in self.languages:
             self.rts = runtime_settings.init_environment(project, lang, self.args)
-            #self.rts.editors_dataset = 'editors_dataset'
 
             self.rts.dbname = '%s%s' % (lang, project)
             for cum_cutoff in self.cum_cutoff:
@@ -91,15 +89,16 @@ class Analyzer(consumers.BaseConsumer):
         Generic loop function that loops over all the editors of a Wikipedia 
         project and then calls the plugin that does the actual mapping.
         '''
-        db = storage.init_database(self.rts.storage, self.rts.dbname, self.rts.editors_dataset)
+        db = storage.init_database(self.rts.storage, self.rts.dbname, self.rts.collection)
         while True:
             try:
                 editor_id = self.tasks.get(block=False)
+                self.tasks.task_done()
                 if editor_id == None:
                     self.result.put(self.var)
                     break
-                editor = db.find_one('editor', editor_id)
-                self.plugin(self.var, editor, dbname=self.rts.dbname, data=self.data)
+                editor = db.find_one({'editor': editor_id})
+                self.plugin(self.var, editor, rts=self.rts, data=self.data)
                 self.result.put(True)
             except Empty:
                 pass

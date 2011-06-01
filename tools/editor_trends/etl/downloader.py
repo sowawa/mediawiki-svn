@@ -29,7 +29,7 @@ from utils import text_utils
 from utils import log
 
 
-def download_wiki_file(task_queue, properties):
+def download_wiki_file(task_queue, rts):
     '''
     This is a very simple replacement for wget and curl because Windows does
     not have these tools installed by default
@@ -46,34 +46,34 @@ def download_wiki_file(task_queue, properties):
         widgets = log.init_progressbar_widgets(filename)
         extension = os.path.splitext(filename)[1]
         filemode = file_utils.determine_file_mode(extension)
-        filesize = http_utils.determine_remote_filesize(properties.wp_dump_location,
-                                                        properties.dump_relative_path,
+        filesize = http_utils.determine_remote_filesize(rts.wp_dump_location,
+                                                        rts.dump_relative_path,
                                                         filename)
 
-        mod_date = http_utils.determine_modified_date(properties.wp_dump_location,
-                                                properties.dump_relative_path,
+        mod_date = http_utils.determine_modified_date(rts.wp_dump_location,
+                                                rts.dump_relative_path,
                                                 filename)
-        mod_date = text_utils.convert_timestamp_to_datetime_naive(mod_date, properties.timestamp_server)
-        if file_utils.check_file_exists(properties.input_location, filename):
-            mod_loc = file_utils.get_modified_date(properties.input_location, filename)
-            if mod_loc == mod_date and (properties.force == False or properties.force == None):
-                print 'You already have downloaded the most recent %s%s dumpfile.' % (properties.language.code, properties.project.name)
+        mod_date = text_utils.convert_timestamp_to_datetime_naive(mod_date, rts.timestamp_server)
+        if file_utils.check_file_exists(rts.input_location, filename):
+            mod_loc = file_utils.get_modified_date(rts.input_location, filename)
+            if mod_loc == mod_date and (rts.force == False or rts.force == None):
+                print 'You already have downloaded the most recent %s%s dumpfile.' % (rts.language.code, rts.project.name)
                 continue
 
         if filemode == 'w':
-            fh = file_utils.create_txt_filehandle(properties.input_location,
+            fh = file_utils.create_txt_filehandle(rts.input_location,
                                                   filename,
                                                   filemode,
-                                                  properties.encoding)
+                                                  rts.encoding)
         else:
-            fh = file_utils.create_binary_filehandle(properties.input_location, filename, 'wb')
+            fh = file_utils.create_binary_filehandle(rts.input_location, filename, 'wb')
 
         if filesize != -1:
             pbar = progressbar.ProgressBar(widgets=widgets, maxval=filesize).start()
         else:
             pbar = progressbar.ProgressBar(widgets=widgets).start()
         try:
-            path = '%s%s' % (properties.dump_absolute_path, filename)
+            path = '%s%s' % (rts.dump_absolute_path, filename)
             req = urllib2.Request(path)
             response = urllib2.urlopen(req)
             while True:
@@ -94,24 +94,24 @@ def download_wiki_file(task_queue, properties):
             print 'Error: %s' % error
         finally:
             fh.close()
-            file_utils.set_modified_data(mod_date, properties.input_location, filename)
+            file_utils.set_modified_data(mod_date, rts.input_location, filename)
 
 
 
-def launcher(properties, logger):
+def launcher(rts, logger):
     print 'Creating list of files to be downloaded...'
-    tasks = http_utils.create_list_dumpfiles(properties.wp_dump_location,
-                                  properties.dump_relative_path,
-                                  properties.dump_filename)
+    tasks = http_utils.create_list_dumpfiles(rts.wp_dump_location,
+                                  rts.dump_relative_path,
+                                  rts.dump_filename)
     #print tasks.qsize()
-    #if tasks.qsize() < properties.settings.number_of_processes:
-    #    properties..number_of_processes = tasks.qsize()
+    #if tasks.qsize() < rts.settings.number_of_processes:
+    #    rts..number_of_processes = tasks.qsize()
     if tasks.qsize() > 2:
         consumers = [multiprocessing.Process(target=download_wiki_file,
-                    args=(tasks, properties))
-                    for i in xrange(properties.number_of_processes)]
+                    args=(tasks, rts))
+                    for i in xrange(rts.number_of_processes)]
     else: consumers = [multiprocessing.Process(target=download_wiki_file,
-                    args=(tasks, properties))
+                    args=(tasks, rts))
                     for i in xrange(1)]
     print 'Starting consumers to download files...'
     for w in consumers:

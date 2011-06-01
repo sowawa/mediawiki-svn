@@ -44,30 +44,29 @@ class Storer(consumers.BaseConsumer):
         while True:
             try:
                 filename = self.tasks.get(block=False)
+                self.tasks.task_done()
+                if filename == None:
+                    self.result.put(None)
+                    break
+
+                fh = file_utils.create_txt_filehandle(self.rts.sorted, filename,
+                                                      'r', 'utf-8')
+                for line in file_utils.read_raw_data(fh):
+                    if len(line) == 1 or len(line) == 4:
+                        continue
+                    editor = line[0]
+                    #print 'Parsing %s' % editor
+                    if prev_editor != editor and prev_editor != -1:
+                        editor_cache.add(prev_editor, 'NEXT')
+
+                    data = prepare_data(line)
+                    #print editor, data['username']
+                    editor_cache.add(editor, data)
+                    prev_editor = editor
+                fh.close()
+                self.result.put(True)
             except Empty:
-                break
-
-            self.tasks.task_done()
-            if filename == None:
-                self.result.put(None)
-                break
-
-            fh = file_utils.create_txt_filehandle(self.rts.sorted, filename,
-                                                  'r', 'utf-8')
-            for line in file_utils.read_raw_data(fh):
-                if len(line) == 1 or len(line) == 4:
-                    continue
-                editor = line[0]
-                #print 'Parsing %s' % editor
-                if prev_editor != editor and prev_editor != -1:
-                    editor_cache.add(prev_editor, 'NEXT')
-
-                data = prepare_data(line)
-                #print editor, data['username']
-                editor_cache.add(editor, data)
-                prev_editor = editor
-            fh.close()
-            self.result.put(True)
+                pass
 
 
 def prepare_data(line):
@@ -103,34 +102,34 @@ def store_articles(tasks, rts):
     while True:
         try:
             filename = tasks.get(block=False)
+            if filename == None:
+                self.result.put(None)
+                break
+            print 'Processing %s...' % filename
+            fh = file_utils.create_txt_filehandle(rts.txt, filename, 'r', 'utf-8')
+            for line in fh:
+                line = line.strip()
+                line = line.split('\t')
+                data = {}
+                x, y = 0, 1
+                while y < len(line):
+                    key, value = line[x], line[y]
+                    if key == 'ns' or key == 'id':
+                        data[key] = int(value)
+                    else:
+                        data[key] = value
+                    x += 2
+                    y += 2
+                db.insert(data)
+            fh.close()
         except Empty:
-            continue
-
-        if filename == None:
-            break
-        print 'Processing %s...' % filename
-        fh = file_utils.create_txt_filehandle(rts.txt, filename, 'r', 'utf-8')
-        for line in fh:
-            line = line.strip()
-            line = line.split('\t')
-            data = {}
-            x, y = 0, 1
-            while y < len(line):
-                key, value = line[x], line[y]
-                if key == 'ns' or key == 'id':
-                    data[key] = int(value)
-                else:
-                    data[key] = value
-                x += 2
-                y += 2
-            db.insert(data)
-        fh.close()
+            pass
     print 'Done storing articles...'
 
 
 def launcher_articles(rts):
     '''
-    This function reads titles.csv and stores it in a separate collection.
+    This function reads articles.csv and stores it in a separate collection.
     Besides containing the title of an article, it also includes:
     * namespace
     * category (if any)
@@ -172,7 +171,6 @@ def launcher(rts):
     This is the main entry point and creates a number of workers and launches
     them. 
     '''
-    #launcher_articles(rts)
     print 'Input directory is: %s ' % rts.sorted
     db = storage.init_database(rts.storage, rts.dbname, rts.editors_raw)
     db.drop_collection()
