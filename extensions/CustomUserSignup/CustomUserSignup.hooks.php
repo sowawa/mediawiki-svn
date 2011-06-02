@@ -123,7 +123,7 @@ class CustomUserSignupHooks {
 			// *NOT HTTPONLY* In fact, that's the point of this cookie
 			
 			setcookie( 'acctcreation' , $buckets['AccountCreation'][0] , 
-					time() + 60 * 60 * 24 * 365  );
+					time() + 60 * 60 * 24 * 365 , '/' );
 					
 			$session = $wgRequest->getCookie( 'clicktracking-session', "" );
 			if ( $session !== null ) {
