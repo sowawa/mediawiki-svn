@@ -1,0 +1,41 @@
+
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Copy Squid Logs:</h1><br>
+
+<u><h3>Choose hour of logs to copy:</h3></u>
+
+<form action="/LML/copy_logs_process" method="post">
+{% csrf_token %}
+<label for="year"> 
+<pre>YEAR:		</pre>
+</label>
+<input type="text" name="year" value="{{ year }}" />
+<br/>
+<label for="month"> 
+<pre>MONTH:		</pre>
+</label>
+<input type="text" name="month" value="{{ month }}" />
+<br/>
+<label for="day"> 
+<pre>DAY:		</pre>
+</label>
+<input type="text" name="day" value="{{ day }}" />
+<br/>
+<label for="hour"> 
+<pre>HOUR (24HR Format):		</pre>
+</label>
+<input type="text" name="hour" value="{{ hour }}" />
+<br/>
+<br/>
+<input type="submit" value="Copy" />
+</form>
+
+<br><br><br>
+<u>Go to:</u>
+<br><br>
+<a href="/LML">LML</a><br><br>
+<a href="/">Home</a>
+
+{% endblock %}
