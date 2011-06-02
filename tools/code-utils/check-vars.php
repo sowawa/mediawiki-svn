@@ -103,6 +103,36 @@ class CheckVars {
 		'wfVarDump' => 'Debugging function.', //var_export() wrapper
 		);
 
+	static $enabledWarnings = array(
+		'utf8-bom' => true,
+		'php-trail' => true,
+		'double-php-open' => true,
+		'double-;' => true,
+		'this-in-static' => true,
+		'missed-docblock' => false,
+		'profileout' => true,
+		'evil-@' => false,
+		'global-in-switch' => true,
+		'global-as-local' => true,
+		'global-names' => true,
+		'double-globals' => true,
+		'unused-global' => true,
+		'undefined-global' => true,
+		'function-function' => true,
+		'missing-function' => true,
+		'missing-class' => true,
+		'orphan-parent' => true,
+		'$self' => true,
+		'function-throw' => true,
+		'undefined-constant' => true,
+		'missing-requires' => true,
+		'deprecated-calls' => true,
+		'deprecated-might' => true,
+		'poisoned-function' => true,
+		'error' => true
+		);
+
+
 	protected $generateDeprecatedList = false;
 	protected $generateParentList = false;
 
@@ -258,11 +288,11 @@ class CheckVars {
 
 		$source = file_get_contents( $file );
 		if ( substr( $source, 0, 3 ) == "\xEF\xBB\xBF" ) {
-			$this->warning( "$file has an UTF-8 BOM" );
+			$this->warning( 'utf8-bom', "$file has an UTF-8 BOM" );
 		}
 		$source = rtrim( $source );
 		if ( substr( $source, -2 ) == '?>' ) {
-			$this->warning( "?> at end of file is deprecated in MediaWiki code" );
+			$this->warning( 'php-trail', "?> at end of file is deprecated in MediaWiki code" );
 		}
 		if ( $shortcircuit && !preg_match( "/^[^'\"#*]*function [^\"']*\$/m", $source ) ) {
 			$this->mTokens = array();
@@ -284,12 +314,12 @@ class CheckVars {
 
 			if ( $lastMeaningfulToken[0] == T_OPEN_TAG && $token[0] == T_OPEN_TAG ) {
 				# See r69767
-				$this->warning( "{$token[1]} in line {$token[2]} after {$lastMeaningfulToken[1]} in line {$lastMeaningfulToken[2]}" );
+				$this->warning( 'double-php-open', "{$token[1]} in line {$token[2]} after {$lastMeaningfulToken[1]} in line {$lastMeaningfulToken[2]}" );
 			}
 			if ( $token == ';' ) {
 				if ( $lastMeaningfulToken == ';' ) {
 					# See r72751, warn on ;;
-					$this->warning( "Empty statement" );
+					$this->warning( 'double-;', "Empty statement" );
 				} elseif ( $lastMeaningfulToken[0] == T_FOR ) {
 					# But not on infinte for loops: for ( ; ; )
 					$currentToken = array(';', ';', $lastMeaningfulToken[2] );
@@ -325,7 +355,7 @@ class CheckVars {
 					if ( $token[0] == T_COMMENT ) {
 						if ( substr( $token[1], 0, 2 ) == '/*' && substr( $token[1], 0, 3 ) != '/**' 
 							&& preg_match( '/^\s+\*(?!\/)/m', $token[1] ) && strpos( $token[1], "\$separatorTransformTable = array( ',' => '' )" ) === false ) {
-							$this->warning( "Multiline comment with /* in line $token[2]" );
+							$this->warning( 'missed-docblock', "Multiline comment with /* in line $token[2]" );
 						}
 					}
 
@@ -421,7 +451,7 @@ class CheckVars {
 						$this->purgeGlobals();
 						if ( ! $this->mBraces ) {
 							if ( $this->mInProfilingFunction && $this->mAfterProfileOut & 1 ) {
-								$this->warning( "Reached end of $this->mClass::$this->mFunction with last statement not being wfProfileOut" );
+								$this->warning( 'profileout', "Reached end of $this->mClass::$this->mFunction with last statement not being wfProfileOut" );
 							}
 								
 							$this->mStatus = self::WAITING_FUNCTION;
@@ -437,12 +467,12 @@ class CheckVars {
 							$this->mAfterProfileOut = 3;
 						}
 					} elseif ( $token == '@' ) {
-						$this->warning( "Use of @ operator in function {$this->mFunction}" );
+						$this->warning( 'evil-@', "Use of @ operator in function {$this->mFunction}" );
 					} elseif ( is_array ( $token ) ) {
 						if ( $token[0] == T_GLOBAL ) {
 							$this->mStatus = self::IN_GLOBAL;
 							if ( $this->mInSwitch ) {
-								$this->warning( "Defining global variables inside a switch in line $token[2], function {$this->mFunction}" );
+								$this->warning( 'global-in-switch', "Defining global variables inside a switch in line $token[2], function {$this->mFunction}" );
 							}
 						} elseif ( ( $token[0] == T_CURLY_OPEN ) || ( $token[0] == T_DOLLAR_OPEN_CURLY_BRACES ) ) {
 							// {$ and ${ and  All these three end in }, so we need to open an extra brace to balance
@@ -457,7 +487,7 @@ class CheckVars {
 							# $this->debug( "Found variable $token[1]" );
 
 							if ( ( $token[1] == '$this' ) && in_array( T_STATIC, $this->mFunctionQualifiers ) ) {
-								$this->warning( "Use of \$this in static method function {$this->mFunction} in line $token[2]" );
+								$this->warning( 'this-in-static', "Use of \$this in static method function {$this->mFunction} in line $token[2]" );
 							}
 
 							if ( $lastMeaningfulToken[0] == T_PAAMAYIM_NEKUDOTAYIM ) {
@@ -466,17 +496,17 @@ class CheckVars {
 								if ( isset( $this->mFunctionGlobals[ $token[1] ] ) ) {
 										$this->mFunctionGlobals[ $token[1] ][0] ++;
 								} elseif ( $this->shouldBeGlobal( $token[1] ) ) {
-									$this->warning( "{$token[1]} is used as local variable in line $token[2], function {$this->mFunction}" );
+									$this->warning( 'global-as-local', "{$token[1]} is used as local variable in line $token[2], function {$this->mFunction}" );
 								}
 							}
 						} elseif ( $token[0] == T_RETURN && $this->mInProfilingFunction ) {
 							if ( $this->mAfterProfileOut == 2 ) {
 								$this->mAfterProfileOut = 0;
 							} else {
-								$this->warning( "$token[1] in line $token[2] is not preceded by wfProfileOut" );
+								$this->warning( 'profileout', "$token[1] in line $token[2] is not preceded by wfProfileOut" );
 							}
 						} elseif ( $token[0] == T_FUNCTION ) {
-							$this->warning( "Uh? Function inside function? A lamda function?" );
+							$this->warning( 'function-function', "Uh? Function inside function? A lamda function?" );
 							$this->error( $token );
 						} elseif ( $token[0] == T_SWITCH ) {
 							if ( !$this->mInSwitch )
@@ -484,7 +514,7 @@ class CheckVars {
 						} elseif ( ( $token[0] == T_PAAMAYIM_NEKUDOTAYIM ) && is_array( $lastMeaningfulToken ) && ( $lastMeaningfulToken[0] == T_VARIABLE ) ) {
 							if ( ( $lastMeaningfulToken[1] == '$self' ) || ( $lastMeaningfulToken[1] == '$parent' ) ) {
 								# Bug of r69904
-								$this->warning( "$lastMeaningfulToken[1]:: used in line $lastMeaningfulToken[2] It probably should have been " . substr( $lastMeaningfulToken[1], 1 ) . "::" );
+								$this->warning( '$self', "$lastMeaningfulToken[1]:: used in line $lastMeaningfulToken[2] It probably should have been " . substr( $lastMeaningfulToken[1], 1 ) . "::" );
 							}
 						} elseif ( ( $token[0] == T_STRING ) && ( is_array( $lastMeaningfulToken )
 								&& in_array( $lastMeaningfulToken[0], array( T_OBJECT_OPERATOR, T_PAAMAYIM_NEKUDOTAYIM ) ) ) ) {
@@ -514,7 +544,7 @@ class CheckVars {
 							// throw Exception("Foo"); -> Exception() is a function
 							// throw new Exception("Foo"); -> Exception is a class.
 							
-							$this->warning( "Not using new when throwing token {$token[1]} in line $token[2], function {$this->mFunction}" );
+							$this->warning( 'function-throw', "Not using new when throwing token {$token[1]} in line $token[2], function {$this->mFunction}" );
 						}
 					}
 
@@ -560,7 +590,7 @@ class CheckVars {
 						} else {
 
 							if ( !defined( $lastMeaningfulToken[1] ) && !in_array( $lastMeaningfulToken[1], $this->mConstants ) && !self::inIgnoreList( $lastMeaningfulToken[1], self::$constantIgnorePrefixes ) ) {
-								$this->warning( "Use of undefined constant $lastMeaningfulToken[1] in line $lastMeaningfulToken[2]" );
+								$this->warning( 'undefined-constant', "Use of undefined constant $lastMeaningfulToken[1] in line $lastMeaningfulToken[2]" );
 							}
 						}
 					}
@@ -579,11 +609,11 @@ class CheckVars {
 					if ( is_array( $token ) ) {
 						if ( $token[0] == T_VARIABLE ) {
 							if ( !$this->shouldBeGlobal( $token[1] ) && !$this->canBeGlobal( $token[1] ) ) {
-								$this->warning( "Global variable {$token[1]} in line {$token[2]}, function {$this->mFunction} does not follow coding conventions" );
+								$this->warning( 'global-names', "Global variable {$token[1]} in line {$token[2]}, function {$this->mFunction} does not follow coding conventions" );
 							}
 							if ( isset( $this->mFunctionGlobals[ $token[1] ] ) ) {
 								if ( !$this->mInSwitch ) {
-									$this->warning( $token[1] . " marked as global again in line {$token[2]}, function {$this->mFunction}" );
+									$this->warning( 'double-globals', $token[1] . " marked as global again in line {$token[2]}, function {$this->mFunction}" );
 								}
 							} else {
 								$this->checkGlobalName( $token[1] );
@@ -648,7 +678,7 @@ class CheckVars {
 						
 						if ( !file_exists( $requirePath ) ) {
 							if ( strpos( $requirePath, '$' ) === false ) {
-								$this->warning( "Did not found the expected require of $requirePath" );
+								$this->warning( 'missing-requires', "Did not found the expected require of $requirePath" );
 							}
 						} else {
 							$requirePath = realpath( $requirePath );
@@ -684,7 +714,7 @@ class CheckVars {
 						if ( isset( $this->mFunctionGlobals[ $token[1] ] ) ) {
 								$this->mFunctionGlobals[ $token[1] ][0] ++;
 						} elseif ( $this->shouldBeGlobal( $token[1] ) ) {
-							$this->warning( "{$token[1]} is used as local variable in line $token[2], function {$this->mFunction}" );
+							$this->warning( 'global-as-local', "{$token[1]} is used as local variable in line $token[2], function {$this->mFunction}" );
 						}
 					}
 					if ( $token == '.' ) {
@@ -746,7 +776,7 @@ class CheckVars {
 				$class = $token['class'];
 				do {
 					if ( in_array( $class, $mwDeprecatedFunctions[ $token[1] ] ) ) {
-						$this->warning( "Non deprecated function $this->mFunction calls deprecated function {$token['class']}::{$token[1]} in line {$token[2]}" );
+						$this->warning( 'deprecated-calls', "Non deprecated function $this->mFunction calls deprecated function {$token['class']}::{$token[1]} in line {$token[2]}" );
 						return;
 					}
 					if ( !isset( $mwParentClasses[ $class ] ) ) {
@@ -755,7 +785,7 @@ class CheckVars {
 					$class = $mwParentClasses[ $class ];
 				} while( true );
 			} else if ( isset( $token['base'] ) ) { # Avoid false positives for local functions, see maintenance/rebuildInterwiki.inc
-				$this->warning( "Non deprecated function $this->mFunction may be calling deprecated function " .
+				$this->warning( 'deprecated-might', "Non deprecated function $this->mFunction may be calling deprecated function " .
 					implode( '/', $mwDeprecatedFunctions[ $token[1] ] ) . "::" . $token[1] . " in line {$token[2]}" );
 			}
 		}
@@ -779,7 +809,7 @@ class CheckVars {
 					// Allow var_dump if the function purpose is really to dump contents
 					return;
 				}
-				$this->warning( "Poisoned function {$token[1]} called from {$this->mFunction} in line {$token[2]}: " . self::$poisonedFunctions[strtolower($token[1])] );
+				$this->warning( 'poisoned-function', "Poisoned function {$token[1]} called from {$this->mFunction} in line {$token[2]}: " . self::$poisonedFunctions[strtolower($token[1])] );
 				return;
 			}
 
@@ -795,7 +825,7 @@ class CheckVars {
 			}
 
 			if ( $warn == 'now' ) {
-				$this->warning( "Unavailable function {$token[1]} in line {$token[2]}" );
+				$this->warning( 'missing-function', "Unavailable function {$token[1]} in line {$token[2]}" );
 			} else if ( $warn == 'defer' ) {
 				// Defer to the end of the file
 				$this->mUnknownFunctions[] = $token;
@@ -862,11 +892,14 @@ class CheckVars {
 			$msg .= " in line $token[2]";
 		}
 		$msg .= "\n";
-		$this->warning( $msg );
+		$this->warning( 'error', $msg );
 		die( 1 );
 	}
 
-	function warning( $msg ) {
+	function warning( $name, $msg ) {
+		if ( !self::$enabledWarnings[$name] ) {
+			return;
+		}
 		if ( !$this->mProblemCount ) {
 			echo "Problems in {$this->mFilename}:\n";
 		}
@@ -917,7 +950,7 @@ class CheckVars {
 			# the if block (see r69883).
 
 			if ( $globalData[0] == 0 ) {
-				$this->warning( "Unused global $globalName in function {$this->mFunction} line $globalData[2]" );
+				$this->warning( 'unused-global', "Unused global $globalName in function {$this->mFunction} line $globalData[2]" );
 			}
 			unset( $this->mFunctionGlobals[$globalName] );
 		}
@@ -928,7 +961,7 @@ class CheckVars {
 		if ( substr( $name, 0, 3 ) == '$wg' ) {
 			if ( ( self::$mDefaultSettingsGlobals != null ) && !in_array( $name, self::$mDefaultSettingsGlobals ) ) {
 				if ( !isset( self::$mGlobalsPerFile[$name] ) || !in_array( basename( $this->mFilename ) , self::$mGlobalsPerFile[$name] ) ) {
-					$this->warning( "Global variable $name is not present in DefaultSettings" );
+					$this->warning( 'undefined-global', "Global variable $name is not present in DefaultSettings" );
 				}
 			}
 		}
@@ -971,7 +1004,7 @@ class CheckVars {
 
 		if ( !isset( $wgAutoloadLocalClasses[$token[1]] ) && !in_array( $token[1], $this->mKnownFileClasses ) ) {
 			if ( $warn == 'now' ) {
-				$this->warning( "Use of unknown class $token[1] in line $token[2]" );
+				$this->warning( 'missing-class', "Use of unknown class $token[1] in line $token[2]" );
 			} else if ( $warn == 'defer' ) {
 				// Defer to the end of the file
 				$this->mUnknownClasses[] = $token;
@@ -1001,7 +1034,7 @@ class CheckVars {
 		if ( !is_null( $this->mParent ) ) {
 			return $this->mParent;
 		}
-		$this->warning( "Use of parent in orphan class {$this->mClass} in line $token[2]" );
+		$this->warning( 'orphan-parent', "Use of parent in orphan class {$this->mClass} in line $token[2]" );
 		return "-";
 	}
 
@@ -1042,9 +1075,23 @@ if ( $argv[0] == '--generate-parent-list' ) {
 	$cv->setGenerateParentList( true );
 	array_shift( $argv );
 }
+
+foreach ( $argv as $arg ) {
+	if ( preg_match( '/^-W(no-)?(.*)/', $arg, $m ) ) {
+		if ( !isset( CheckVars::$enabledWarnings[ $m[2] ] ) ) {
+			var_dump($m);
+			die( "Wrong warning name $arg\n" );
+		}
+		CheckVars::$enabledWarnings[ $m[2] ] = strlen( $m[1] ) == 0;
+	}
+}
+
 $cv->preloadFiles( array( $IP . '/includes/GlobalFunctions.php' ) );
 
 foreach ( $argv as $arg ) {
+	if ( substr( $arg, 0, 2 ) == '-W' )
+		continue;
+	
 	$cv->load( $arg );
 	$cv->execute();
 }
