@@ -11,7 +11,7 @@
  */
 
 /* XXX: Survey setup */
-require_once( dirname( dirname( __FILE__ ) ) . '/extensions/SimpleSurvey/SimpleSurvey.php' );
+require_once( dirname( dirname( __FILE__ ) ) . '/SimpleSurvey/SimpleSurvey.php' );
 
 /* Configuration */
 
