@@ -287,17 +287,12 @@ $wgHooks['MergeAccountFromTo'][] = 'OpenIDHooks::onMergeAccountFromTo';
 # 1.16+
 $wgHooks['GetPreferences'][] = 'OpenIDHooks::onGetPreferences';
 
-# < 1.16
-$wgHooks['RenderPreferencesForm'][] = 'OpenIDHooks::onRenderPreferencesForm';
-$wgHooks['InitPreferencesForm'][] = 'OpenIDHooks::onInitPreferencesForm';
-$wgHooks['ResetPreferences'][] = 'OpenIDHooks::onResetPreferences';
-$wgHooks['SavePreferences'][] = 'OpenIDHooks::onSavePreferences';
-
 # FIXME, function does not exist
 # $wgHooks['UserLoginForm'][] = 'OpenIDHooks::onUserLoginForm';
 
 # new user rights
-$wgAvailableRights[] = array( 'openid-dashboard-access', 'openid-dashboard-admin' );
+$wgAvailableRights[] = 'openid-dashboard-access';
+$wgAvailableRights[] = 'openid-dashboard-admin';
 
 # allow users to read access the dashboard
 $wgGroupPermissions['user']['openid-dashboard-access'] = true;

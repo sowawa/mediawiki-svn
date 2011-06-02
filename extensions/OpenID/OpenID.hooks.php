@@ -150,7 +150,6 @@ class OpenIDHooks {
 		$info .= $user->getSkin()->link( SpecialPage::getTitleFor( 'OpenIDConvert' ), wfMsgHtml( 'openid-add-url' ) );
 		return $info;
 	}
-	
 
 	public static function onGetPreferences( $user, &$preferences ) {
 		global $wgOpenIDShowUrlOnUserPage, $wgAllowRealName;
@@ -234,7 +233,6 @@ class OpenIDHooks {
 		return true;
 	}
 
-
 	public static function onDeleteAccount( &$userObj ) {
 		global $wgOut;
 		
@@ -288,105 +286,8 @@ class OpenIDHooks {
 		
 	}
 
-	# list of preferences used by extension
-	private static $oidPrefs = array( 'hide' );
-	private static $oidUpdateOnLogin = array( 'nickname', 'email', 'fullname',
-		'language', 'timezone' );
-
-	private static function getToggles() {
-		$toggles = self::$oidPrefs;
-		foreach( self::$oidUpdateOnLogin as $pref ) {
-			$toggles[] = 'update-on-login-' . $pref;
-		}
-		return $toggles;
-	}
-
-	public static function onInitPreferencesForm( $prefs, $request ) {
-		foreach ( self::getToggles() as $oidPref ) {
-			$prefs->mToggles['openid-' . $oidPref]
-				= $request->getCheck( "wpOpOpenID-" . $oidPref ) ? 1 : 0;
-		}
-
-		return true;
-	}
-
-	public static function onRenderPreferencesForm( $prefs, $out ) {
-		global $wgUser;
-
-		$out->addHeadItem( 'openidwikitablestyle', self::wikitableStyle() );
-
-		$out->addHTML( "\n<fieldset>\n<legend>" . wfMsgHtml( 'prefs-openid' ) . "</legend>\n<table>\n" );
-
-		#$out->addWikiText( wfMsg( 'openid-prefstext' ) );
-
-		foreach ( self::$oidPrefs as $oidPref ) {
-			$name = 'wpOpOpenID-' . $oidPref;
-			$out->addHTML(
-				Xml::tags( 'tr', array(),
-					Xml::tags( 'td', array( 'style' => 'width: 20%;' ), '' ) .
-					Xml::tags( 'td', array(),
-						Xml::tags( 'div', array( 'class' => 'toggle' ),
-							Xml::check( $name, $prefs->mToggles['openid-' . $oidPref] ) .
-							Xml::tags( 'span', array( 'class' => 'toggletext' ),
-								Xml::label( wfMsg( 'openid-pref-' . $oidPref ), $name )
-							)
-						)
-					)
-				)
-			);
-		}
-
-		$out->addHTML( Xml::openElement( 'tr' ) . Xml::element( 'td', array(),
-			wfMsg( 'openid-pref-update-userinfo-on-login' ) ) . Xml::openElement( 'td' ) );
-
-		$first = true;
-		foreach ( self::$oidUpdateOnLogin as $oidPref ) {
-			if ( $first ) {
-				$first = false;
-			} else {
-				#$out->addHTML( '<br />' );
-			}
-			$name = 'wpOpOpenID-update-on-login-' . $oidPref;
-			$out->addHTML(
-				Xml::tags( 'div', array( 'class' => 'toggle' ),
-					Xml::check( $name, $prefs->mToggles['openid-update-on-login-' . $oidPref] ) .
-					Xml::tags( 'span', array( 'class' => 'toggletext' ),
-						Xml::label( wfMsg( 'openid' . $oidPref ), $name )
-					)
-				)
-			);
-		}
-
-		$out->addHTML(
-			"</td></tr>\n<tr><td>" . wfMsgHtml( 'openid-urls-desc' ) .
-			"</td><td>" . self::getInfoTable( $wgUser ) .
-			"</td></tr></table></fieldset>\n\n"
-		);
-
-		return true;
-	}
-
-	public static function onSavePreferences( $prefs, $user, &$message, $old ) {
-		foreach ( self::getToggles() as $oidPref ) {
-			$user->setOption( 'openid-' . $oidPref, $prefs->mToggles['openid-' . $oidPref] );
-			wfDebugLog( 'OpenID', 'Setting user preferences: ' . print_r( $user, true ) );
-		}
-
-		$user->saveSettings();
-
-		return true;
-	}
-
-	public static function onResetPreferences( $prefs, $user ) {
-		foreach ( self::getToggles() as $oidPref ) {
-			$prefs->mToggles['openid-' . $oidPref] = $user->getOption( 'openid-' . $oidPref );
-		}
-
-		return true;
-	}
-
 	public static function onLoadExtensionSchemaUpdates( $updater = null ) {
-		$base = dirname( __FILE__ );
+		$base = dirname( __FILE__ ) . '/patches';
 		if ( $updater === null ) { // < 1.17
 			global $wgDBtype, $wgUpdates, $wgExtNewTables;
 			if ( $wgDBtype == 'mysql' ) {
@@ -421,11 +322,11 @@ class OpenIDHooks {
 
 		$info = $db->fieldInfo( 'user_openid', 'uoi_user' );
 		if ( !$info->isMultipleKey() ) {
-			wfOut( "Making uoi_user filed not unique..." );
+			echo( "Making uoi_user filed not unique..." );
 			$db->sourceFile( dirname( __FILE__ ) . '/patch-uoi_user-not-unique.sql' );
-			wfOut( " done.\n" );
+			echo( " done.\n" );
 		} else {
-			wfOut( "...uoi_user field is already not unique.\n" );
+			echo( "...uoi_user field is already not unique.\n" );
 		}
 	}
 
@@ -439,31 +340,6 @@ class OpenIDHooks {
 		  text-transform: none;
 		}
 		</style>
-
-EOS;
-	}
-	
-	private static function wikitableStyle() {
-		return <<<EOS
-<style type='text/css'>
-table.wikitable {
-    margin: 1em 1em 1em 0;
-    background: #f9f9f9;
-    border: 1px #aaa solid;
-    border-collapse: collapse;
-}
-.wikitable th, .wikitable td {
-    border: 1px #aaa solid;
-    padding: 0.2em;
-}
-.wikitable th {
-    background: #f2f2f2;
-    text-align: center;
-}
-.wikitable caption {
-    font-weight: bold;
-}
-</style>
 
 EOS;
 	}
