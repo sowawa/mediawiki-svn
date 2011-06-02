@@ -60,7 +60,7 @@ $.articleFeedback = {
 		<div class="articleFeedback-switch articleFeedback-switch-form articleFeedback-visibleWith-report" rel="form"><html:msg key="form-switch-label" /></div>\
 		<div class="articleFeedback-title articleFeedback-visibleWith-form"><html:msg key="form-panel-title" /></div>\
 		<div class="articleFeedback-title articleFeedback-visibleWith-report"><html:msg key="report-panel-title" /></div>\
-		<div class="articleFeedback-instructions articleFeedback-visibleWith-form"><html:msg key="form-panel-instructions" /></div>\
+		<div class="articleFeedback-explaination articleFeedback-visibleWith-form"><a class="articleFeedback-explaination-link"><html:msg key="form-panel-explaination" /></a></div>\
 		<div class="articleFeedback-description articleFeedback-visibleWith-report"><html:msg key="report-panel-description" /></div>\
 		<div style="clear:both;"></div>\
 		<div class="articleFeedback-ratings"></div>\
@@ -498,6 +498,11 @@ $.articleFeedback = {
 								.appendTo( $(this) );
 						}
 					} )
+					.end()
+				.find( '.articleFeedback-explaination-link' )
+					.attr( 'href', mw.config.get( 'wgArticlePath' ).replace(
+						'$1', mw.msg( 'articlefeedback-form-panel-explaination-link' )
+					) )
 					.end()
 				.find( '.articleFeedback-pitches' )
 					.each( function() {
