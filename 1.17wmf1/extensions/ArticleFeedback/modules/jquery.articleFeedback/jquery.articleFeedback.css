@@ -8,6 +8,12 @@
 	margin-top: 1em;
 }
 
+@media print {
+	.articleFeedback {
+		display:none;
+	}
+}
+
 .articleFeedback-panel {
 	background-color: #f9f9f9;
 	border: 1px solid #cccccc;
