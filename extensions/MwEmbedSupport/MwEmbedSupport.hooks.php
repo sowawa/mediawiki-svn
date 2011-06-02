@@ -43,7 +43,7 @@ class MwEmbedSupportHooks {
 	
 	// Add MwEmbedSupport modules to Startup:
 	static function addStartupModules( &$modules ){
-		array_push($modules, 'jquery.triggerQueueCallback', 'jquery.mwEmbedUtil', 'mw.MwEmbedSupport' );		
+		array_push($modules, 'jquery.triggerQueueCallback', 'jquery.loadingSpinner', 'jquery.mwEmbedUtil', 'mw.MwEmbedSupport' );		
 		return true;
 	}
 }
