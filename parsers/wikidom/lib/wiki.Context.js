@@ -35,8 +35,8 @@ wiki.Context = function( options ) {
 	 * @return Object: Page DOM (document object)
 	 */
 	this.getPageDom = function( namespace, title ) {
-		return typeof options.pageExists === 'function'
-			? options.pageExists( namespace, title ) : null;
+		return typeof options.getPageDom === 'function'
+			? options.getPageDom( namespace, title ) : null;
 	};
 
 	/**
