@@ -219,6 +219,7 @@ var config = {
 	},
 	'pitches': {
 		'survey': {
+			'weight': 1,
 			'condition': function() {
 				return isPitchVisible( 'survey' );
 			},
@@ -236,6 +237,7 @@ var config = {
 			'reject': 'articlefeedback-pitch-reject'
 		},
 		'join': {
+			'weight': 1,
 			'condition': function() {
 				return isPitchVisible( 'join' ) && mw.user.anonymous();
 			},
@@ -273,6 +275,7 @@ var config = {
 			}
 		},
 		'edit': {
+			'weight': 2,
 			'condition': function() {
 				// An empty restrictions array means anyone can edit
 				var restrictions =  mw.config.get( 'wgRestrictionEdit' );

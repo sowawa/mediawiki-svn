@@ -662,7 +662,10 @@ $.articleFeedback = {
 							// the user has rejected this within 3 days of right now
 							var display = $.cookie( prefix( 'pitch-' + key ) );
 							if ( display !== 'hide' && context.options.pitches[key].condition() ) {
-								pitches.push( key );
+								var weight = 'weight' in pitches ? pitches.weight : 1;
+								for ( var i = 0; i < weight; i++ ) {
+									pitches.push( key );
+								}
 							}
 						}
 						if ( pitches.length ) {
