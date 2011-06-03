@@ -61,8 +61,8 @@ $wgOpenIDServerForceAllowTrust = array();
 
 /**
  * Implicitly trust the e-mail address sent from the OpenID server, and don't
- * ask the user to verify it.  This can lead to people with a nasty OpenID 
- * provider setting up accounts and spamming 
+ * ask the user to verify it.  This can lead to people with a nasty OpenID
+ * provider setting up accounts and spamming
  */
 $wgOpenIDTrustEmailAddress = false;
 
@@ -104,8 +104,8 @@ $wgOpenIDConsumerAllow = array();
 $wgOpenIDConsumerDeny = array();
 
 /**
- * Force this server to only allow authentication against one server; 
- * hides the selection form entirely. 
+ * Force this server to only allow authentication against one server;
+ * hides the selection form entirely.
  */
 $wgOpenIDConsumerForce = null;
 

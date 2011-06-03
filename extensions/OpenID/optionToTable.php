@@ -37,7 +37,7 @@ class OpenIDOptionToTable extends Maintenance {
 
 	public function execute() {
 		$dbr = wfGetDB( DB_SLAVE );
-		if( !$dbr->tableExists( 'user_properties' ) ) {
+		if ( !$dbr->tableExists( 'user_properties' ) ) {
 			$this->error( "The OpenID extension requires at least MediaWiki 1.16.", true );
 		}
 
@@ -45,8 +45,8 @@ class OpenIDOptionToTable extends Maintenance {
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( array( 'user_properties' ), array( 'up_user' ),
 			array( 'up_property' => 'openid_url' ), __METHOD__ );
-		if( $dbr->numRows( $res ) ) {
-			foreach( $res as $row ) {
+		if ( $dbr->numRows( $res ) ) {
+			foreach ( $res as $row ) {
 				$user = User::newFromId( $row->up_user );
 				$this->output( "\n\tFixing {$user->getName()}" );
 				SpecialOpenID::addUserUrl( $user, $user->getOption( 'openid_url' ) );

@@ -73,7 +73,7 @@ class MediaWikiOpenIDDatabaseConnection extends Auth_OpenID_DatabaseConnection {
 			return false;
 
 		$ret = array();
-		foreach( $res as $row ) {
+		foreach ( $res as $row ) {
 			$ret[] = (array)$row;
 		}
 		return $ret;

@@ -69,7 +69,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 
 			if ( !is_null( $openid_url ) && strlen( $openid_url ) > 0 ) {
 				$this->login( $openid_url, $this->getTitle( 'Finish' ) );
-		 	} else if (!is_null ( $wgOpenIDConsumerForce )) {
+		 	} else if ( !is_null ( $wgOpenIDConsumerForce ) ) {
 		 		// if a forced OpenID provider specified, bypass the form
 		 		$this->login( $wgOpenIDConsumerForce, $this->getTitle( 'Finish' ) );
 			} else {
@@ -151,9 +151,9 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 		);
 		$wgOut->addWikiMsg( 'openidlogininstructions' );
 		if ( $wgOpenIDOnly ) {
-			$wgOut->addWikiMsg('openidlogininstructions-openidloginonly');
+			$wgOut->addWikiMsg( 'openidlogininstructions-openidloginonly' );
 		} else {
-			$wgOut->addWikiMsg('openidlogininstructions-passwordloginallowed');
+			$wgOut->addWikiMsg( 'openidlogininstructions-passwordloginallowed' );
 		}
 	}
 
@@ -242,7 +242,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 		# These are only available if all visitors are allowed to create accounts
 		if ( $wgUser->isAllowed( 'createaccount' ) && !$wgUser->isBlockedFromCreateAccount() ) {
 
-		if ($wgOpenIDProposeUsernameFromSREG) {
+		if ( $wgOpenIDProposeUsernameFromSREG ) {
 
 			# These options won't exist if we can't get them.
 			if ( array_key_exists( 'nickname', $sreg ) && $this->userNameOK( $sreg['nickname'] ) ) {
@@ -263,11 +263,11 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 			if ( array_key_exists( 'fullname', $sreg ) ) {
 				$fullname = $sreg['fullname'];
 			}
-                       
+
 			if ( array_key_exists( 'http://axschema.org/namePerson/first', $ax ) || array_key_exists( 'http://axschema.org/namePerson/last', $ax ) ) {
 				$fullname = $ax['http://axschema.org/namePerson/first'][0] . " " . $ax['http://axschema.org/namePerson/last'][0];
 			}
-               
+
 			if ( $fullname && $this->userNameOK( $fullname ) ) {
 				$wgOut->addHTML(
 					Xml::openElement( 'tr' ) .
@@ -298,7 +298,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 			}
 		} // if $wgOpenIDProposeUsernameFromSREG
 
-		if ($wgOpenIDAllowAutomaticUsername) {
+		if ( $wgOpenIDAllowAutomaticUsername ) {
 			$wgOut->addHTML(
 				Xml::openElement( 'tr' ) .
 				Xml::tags( 'td', array( 'class' => 'mw-label' ),
@@ -311,7 +311,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 				);
 		}
 
-		if ($wgOpenIDAllowNewAccountname) {
+		if ( $wgOpenIDAllowNewAccountname ) {
 			$wgOut->addHTML(
 
 			Xml::openElement( 'tr' ) .
@@ -381,7 +381,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 			}
 
 			$force = array();
-			foreach( array( 'fullname', 'nickname', 'email', 'language' ) as $option ) {
+			foreach ( array( 'fullname', 'nickname', 'email', 'language' ) as $option ) {
 				if ( $wgRequest->getCheck( 'wpUpdateUserInfo' . $option ) ) {
 					$force[] = $option;
 				}
@@ -448,9 +448,9 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 			// This means the authentication succeeded.
 			wfSuppressWarnings();
 			$openid = $response->identity_url;
-				
-			if (!$this->canLogin($openid)) {
-				$wgOut->showErrorPage('openidpermission', 'openidpermissiontext');
+
+			if ( !$this->canLogin( $openid ) ) {
+				$wgOut->showErrorPage( 'openidpermission', 'openidpermissiontext' );
 				return;
 			}
 
@@ -474,14 +474,14 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 				$this->displaySuccessLogin( $openid );
 			} else {
 				// if we are hardcoding nickname, and a valid e-mail address was returned, create a user with this name
-				if ($wgOpenIDUseEmailAsNickname) {
+				if ( $wgOpenIDUseEmailAsNickname ) {
 					$name = $this->getNameFromEmail( $openid, $sreg, $ax );
-					if ( !empty($name) && $this->userNameOk( $name ) ) {
+					if ( !empty( $name ) && $this->userNameOk( $name ) ) {
 						$wgUser = $this->createUser( $openid, $sreg, $ax, $name );
 						$this->displaySuccessLogin( $openid );
 						return;
 					}
-				} 
+				}
 
 				$this->saveValues( $openid, $sreg, $ax );
 				$this->chooseNameForm( $openid, $sreg, $ax );
@@ -516,7 +516,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 			if ( array_key_exists ( 'http://axschema.org/contact/email', $ax ) ) {
 				$email = $ax['http://axschema.org/contact/email'][0];
 			}
-			if ($email) {
+			if ( $email ) {
 				// If email changed, then email a confirmation mail
 				if ( $email != $user->getEmail() ) {
 					$user->setEmail( $email );
@@ -526,7 +526,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 						$user->invalidateEmail();
 						if ( $wgEmailAuthentication && $email != '' ) {
 							$result = $user->sendConfirmationMail();
-							if( WikiError::isError( $result ) ) {
+							if ( WikiError::isError( $result ) ) {
 								$wgOut->addWikiMsg( 'mailerror', $result->getMessage() );
 							}
 						}
@@ -542,7 +542,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 			}
 
 			if ( array_key_exists( 'http://axschema.org/namePerson/first', $ax ) || array_key_exists( 'http://axschema.org/namePerson/last', $ax ) ) {
-				$user->setRealName($ax['http://axschema.org/namePerson/first'][0] . " " . $ax['http://axschema.org/namePerson/last'][0]);
+				$user->setRealName( $ax['http://axschema.org/namePerson/first'][0] . " " . $ax['http://axschema.org/namePerson/last'][0] );
 			}
 		}
 
@@ -630,7 +630,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 			$wgAuth->updateUser( $user );
 
 			$wgUser = $user;
-			
+
 			# new user account: not opened by mail
    			wfRunHooks( 'AddNewAccount', array( $user, false ) );
 			$user->addNewUserLogEntry();
@@ -670,13 +670,13 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 
 		switch ( $choice ) {
 		 case 'nick':
-		 	if ($wgOpenIDProposeUsernameFromSREG) return ( ( array_key_exists( 'nickname', $sreg ) ) ? $sreg['nickname'] : null );
+		 	if ( $wgOpenIDProposeUsernameFromSREG ) return ( ( array_key_exists( 'nickname', $sreg ) ) ? $sreg['nickname'] : null );
 		 	break;
 		 case 'full':
-		        if (!$wgOpenIDProposeUsernameFromSREG) return;
+		        if ( !$wgOpenIDProposeUsernameFromSREG ) return;
 		 	# check the SREG first; only return a value if non-null
 		 	$fullname = ( ( array_key_exists( 'fullname', $sreg ) ) ? $sreg['fullname'] : null );
-		 	if (!is_null($fullname)) {
+		 	if ( !is_null( $fullname ) ) {
 			 	return $fullname;
 			}
 
@@ -686,13 +686,13 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 		 	return $fullname;
 			break;
 		 case 'url':
-			if ($wgOpenIDProposeUsernameFromSREG) return $this->toUserName( $openid );
+			if ( $wgOpenIDProposeUsernameFromSREG ) return $this->toUserName( $openid );
 			break;
 		 case 'auto':
-		        if ($wgOpenIDAllowAutomaticUsername) return $this->automaticName( $sreg );
+		        if ( $wgOpenIDAllowAutomaticUsername ) return $this->automaticName( $sreg );
 			break;
 		 case 'manual':
-		        if ($wgOpenIDAllowNewAccountname) return $nameValue;
+		        if ( $wgOpenIDAllowNewAccountname ) return $nameValue;
 		 default:
 			return null;
 		}
@@ -706,7 +706,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 		}
 	}
 
-	function getNameFromEmail($openid, $sreg, $ax) {
+	function getNameFromEmail( $openid, $sreg, $ax ) {
 
 		# return the part before the @ in the e-mail address;
 		# look at AX, then SREG.

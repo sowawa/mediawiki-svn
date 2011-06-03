@@ -36,7 +36,7 @@ class SpecialOpenIDConvert extends SpecialOpenID {
 	function execute( $par ) {
 		global $wgRequest, $wgUser, $wgOut;
 
-		if ( !$this->userCanExecute($wgUser) ) {
+		if ( !$this->userCanExecute( $wgUser ) ) {
                 	$this->displayRestrictionError();
         	        return;
 	        }
@@ -137,7 +137,7 @@ class SpecialOpenIDConvert extends SpecialOpenID {
 		$wgOut->addHTML(
 			Xml::openElement( 'form', array( 'id' => 'openid_form', 'action' => $this->getTitle()->getLocalUrl(), 'method' => 'post', 'onsubmit' => 'openid.update()' ) ) .
 			Xml::fieldset( wfMsg( 'openidconvertoraddmoreids' ) ) .
-			Xml::openElement('p') . wfMsg( 'openidconvertinstructions' ) . Xml::closeElement( 'p' ) .
+			Xml::openElement( 'p' ) . wfMsg( 'openidconvertinstructions' ) . Xml::closeElement( 'p' ) .
 			$largeButtonsHTML .
 			'<div id="openid_input_area">' .
 			$formsHTML .
@@ -166,7 +166,7 @@ class SpecialOpenIDConvert extends SpecialOpenID {
 			if ( $wgUser->mPassword == '' ) {
 				$wgOut->showErrorPage( 'openiderror', 'openiddeleteerrornopassword' );
 				return;
-			} elseif( $wgOpenIDOnly ) {
+			} elseif ( $wgOpenIDOnly ) {
 				$wgOut->showErrorPage( 'openiderror', 'openiddeleteerroropenidonly' );
 				return;
 			}
@@ -216,8 +216,8 @@ class SpecialOpenIDConvert extends SpecialOpenID {
 			// This means the authentication succeeded.
 			$openid_url = $response->identity_url;
 
-			if (!$this->canLogin($openid_url)) {
-				$wgOut->showErrorPage('openidpermission', 'openidpermissiontext');
+			if ( !$this->canLogin( $openid_url ) ) {
+				$wgOut->showErrorPage( 'openidpermission', 'openidpermissiontext' );
 				return;
 			}
 

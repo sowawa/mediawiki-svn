@@ -543,7 +543,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 	}
 
 	function SaveValues( $request, $sreg ) {
-		if( session_id() == '' ) {
+		if ( session_id() == '' ) {
 			wfSetupSession();
 		}
 
@@ -737,9 +737,9 @@ class SpecialOpenIDServer extends SpecialOpenID {
 		$pattern = str_replace( '?', '\?', $pattern );
 
 		/* remove "Special:OpenIDXRDS/" to allow construction of a valid user page name */
-		$specialPagePrefix = SpecialPage::getTitleFor('OpenIDXRDS');
+		$specialPagePrefix = SpecialPage::getTitleFor( 'OpenIDXRDS' );
 		if ( $specialPagePrefix != "Special:OpenIDXRDS" ) $specialPagePrefix = "({$specialPagePrefix}|Special:OpenIDXRDS)";
-		$relative = preg_replace("!" . $specialPagePrefix . "/!", "", $relative);
+		$relative = preg_replace( "!" . $specialPagePrefix . "/!", "", $relative );
 
 		# Can't have a pound-sign in the relative, since that's for fragments
 		if ( !preg_match( "#$pattern#", $relative, $matches ) ) {

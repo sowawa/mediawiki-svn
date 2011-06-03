@@ -252,19 +252,19 @@ class SpecialOpenID extends SpecialPage {
 		// Create attribute request object. Depending on your endpoint, you can request many things:
 		// see http://code.google.com/apis/accounts/docs/OpenID.html#Parameters for parameters.
 		// Usage: make($type_uri, $count=1, $required=false, $alias=null)
-		$attribute[] = Auth_OpenID_AX_AttrInfo::make('http://axschema.org/contact/email', 1, 1, 'email');
-		$attribute[] = Auth_OpenID_AX_AttrInfo::make('http://axschema.org/namePerson/first', 1, 1, 'firstname');
-		$attribute[] = Auth_OpenID_AX_AttrInfo::make('http://axschema.org/namePerson/last', 1, 1, 'lastname');
+		$attribute[] = Auth_OpenID_AX_AttrInfo::make( 'http://axschema.org/contact/email', 1, 1, 'email' );
+		$attribute[] = Auth_OpenID_AX_AttrInfo::make( 'http://axschema.org/namePerson/first', 1, 1, 'firstname' );
+		$attribute[] = Auth_OpenID_AX_AttrInfo::make( 'http://axschema.org/namePerson/last', 1, 1, 'lastname' );
 
 		// Create AX fetch request and add attributes
 		$ax_request = new Auth_OpenID_AX_FetchRequest;
 
-		foreach($attribute as $attr){
-			$ax_request->add($attr);
+		foreach ( $attribute as $attr ) {
+			$ax_request->add( $attr );
 		}
 
-		if ($ax_request) {
-			$auth_request->addExtension($ax_request);
+		if ( $ax_request ) {
+			$auth_request->addExtension( $ax_request );
 		}
 
 		$process_url = $this->scriptUrl( $finish_page );
@@ -316,7 +316,7 @@ class SpecialOpenID extends SpecialPage {
 	}
 
 	protected function setupSession() {
-		if( session_id() == '' ) {
+		if ( session_id() == '' ) {
 			wfSetupSession();
 		}
 	}
@@ -339,7 +339,7 @@ class SpecialOpenID extends SpecialPage {
 				__METHOD__
 			);
 
-			foreach( $res as $row ) {
+			foreach ( $res as $row ) {
 				$openid_urls[] = $row->uoi_openid;
 			}
 			$res->free();

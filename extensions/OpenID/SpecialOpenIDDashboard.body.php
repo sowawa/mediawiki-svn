@@ -65,7 +65,7 @@ class SpecialOpenIDDashboard extends SpecialPage {
 		global $wgOpenIDAllowServingOpenIDUserAccounts;
 		global $wgOpenIDShowProviderIcons;
 
-		if ( !$this->userCanExecute($wgUser) ) {
+		if ( !$this->userCanExecute( $wgUser ) ) {
 			$this->displayRestrictionError();
 			return;
 		}
@@ -76,7 +76,7 @@ class SpecialOpenIDDashboard extends SpecialPage {
 
 		$this->setHeaders();
 		$this->outputHeader();
-		
+
 		$wgOut->addWikiMsg( 'openid-dashboard-introduction', 'http://www.mediawiki.org/wiki/Extension:OpenID' );
 
 		$wgOut->addHTML(
@@ -95,7 +95,7 @@ class SpecialOpenIDDashboard extends SpecialPage {
 		$out .= $this->show( '$wgOpenIDProposeUsernameFromSREG', $wgOpenIDProposeUsernameFromSREG );
 		$out .= $this->show( '$wgOpenIDShowUrlOnUserPage', $wgOpenIDShowUrlOnUserPage );
 		$out .= $this->show( '$wgOpenIDShowProviderIcons', $wgOpenIDShowProviderIcons );
-		
+
 		$out .= $this->show( 'Number of users (total)', $totalUsers );
 		$out .= $this->show( 'Number of users with OpenID', $OpenIDdistinctUsers  );
 		$out .= $this->show( 'Number of OpenIDs (total)', $OpenIDUsers );

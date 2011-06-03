@@ -5,12 +5,12 @@
  * they're so badly written as to be impossible to extend
  */
 class SpecialOpenIDCreateAccount extends SpecialRedirectToSpecial {
-	function __construct(){
+	function __construct() {
 		parent::__construct( 'SpecialOpenIDCreateAccount', 'OpenIDLogin' );
 	}
 }
 class SpecialOpenIDUserLogin extends SpecialRedirectToSpecial {
-	function __construct(){
+	function __construct() {
 		parent::__construct( 'SpecialOpenIDUserLogin', 'OpenIDLogin', false, array( 'returnto', 'returntoquery' ) );
 	}
 }
@@ -21,7 +21,7 @@ class OpenIDHooks {
 
 		if ( $wgOpenIDOnly ) {
 			$list['Userlogin'] = 'SpecialOpenIDLogin';
-			
+
 			# as Special:CreateAccount is an alias for Special:UserLogin/signup
 			# we show our own OpenID page here, too
 			$list['CreateAccount'] = 'SpecialOpenIDLogin';
@@ -77,7 +77,7 @@ class OpenIDHooks {
 				}
 
 				# Add OpenID data if its allowed
-				if ( !$wgOpenIDClientOnly && !( count( $openid ) && (strlen( $openid[0] ) != 0 ) && !$wgOpenIDAllowServingOpenIDUserAccounts ) ) {
+				if ( !$wgOpenIDClientOnly && !( count( $openid ) && ( strlen( $openid[0] ) != 0 ) && !$wgOpenIDAllowServingOpenIDUserAccounts ) ) {
 					$st = SpecialPage::getTitleFor( 'OpenIDServer' );
 					$wgOut->addLink( array( 'rel' => 'openid.server',
 											'href' => $st->getFullURL() ) );
@@ -124,7 +124,7 @@ class OpenIDHooks {
 	public static function onBeforePageDisplay( $out, &$sk ) {
 		global $wgHideOpenIDLoginLink, $wgUser;
 
-		# We need to do this *before* PersonalUrls is called 
+		# We need to do this *before* PersonalUrls is called
 		if ( !$wgHideOpenIDLoginLink && $wgUser->getID() == 0 ) {
 			$out->addHeadItem( 'openidloginstyle', self::loginStyle() );
 		}
@@ -137,7 +137,7 @@ class OpenIDHooks {
 		$delTitle = SpecialPage::getTitleFor( 'OpenIDConvert', 'Delete' );
 		$sk = $user->getSkin();
 		$rows = '';
-		foreach( $urls as $url ) {
+		foreach ( $urls as $url ) {
 			$rows .= Xml::tags( 'tr', array(),
 				Xml::tags( 'td', array(), Xml::element( 'a', array( 'href' => $url ), $url ) ) .
 				Xml::tags( 'td', array(), $sk->link( $delTitle, wfMsg( 'openid-urls-delete' ), array(), array( 'url' => $url ) ) )
@@ -153,7 +153,7 @@ class OpenIDHooks {
 
 	public static function onGetPreferences( $user, &$preferences ) {
 		global $wgOpenIDShowUrlOnUserPage, $wgAllowRealName;
-		global $wgAuth,$wgUser,$wgLang;
+		global $wgAuth, $wgUser, $wgLang;
 
 		if ( $wgOpenIDShowUrlOnUserPage == 'user' ) {
 			$preferences['openid-hide'] =
@@ -235,29 +235,29 @@ class OpenIDHooks {
 
 	public static function onDeleteAccount( &$userObj ) {
 		global $wgOut;
-		
+
 		if ( is_object( $userObj ) ) {
-		
+
 			$username = $userObj->getName();
 			$userID = $userObj->getID();
 
   			$dbw = wfGetDB( DB_MASTER );
-  			
+
 			$dbw->delete( 'user_openid', array( 'uoi_user' => $userID ) );
 			$wgOut->addHTML( "OpenID " . wfMsg( 'usermerge-userdeleted', $username, $userID ) );
 
 			wfDebug( "OpenID: deleted OpenID user $username ($userID)\n" );
 
                 }
-                
+
 		return true;
-		
+
 	}
 
 	public static function onMergeAccountFromTo( &$fromUserObj, &$toUserObj ) {
-		global $wgOut,$wgOpenIDMergeOnAccountMerge;
+		global $wgOut, $wgOpenIDMergeOnAccountMerge;
 
-		if ( is_object( $fromUserObj ) && is_object( $toUserObj) ) {
+		if ( is_object( $fromUserObj ) && is_object( $toUserObj ) ) {
 
 			$fromUsername = $fromUserObj->getName();
 			$fromUserID = $fromUserObj->getID();
@@ -269,7 +269,7 @@ class OpenIDHooks {
 				$dbw = wfGetDB( DB_MASTER );
 
 				$dbw->update( 'user_openid', array( 'uoi_user' => $toUserID ), array( 'uoi_user' => $fromUserID ) );
-				$wgOut->addHTML( "OpenID " . wfMsg('usermerge-updating', 'user_openid', $fromUsername, $toUsername ) . "<br />\n" );
+				$wgOut->addHTML( "OpenID " . wfMsg( 'usermerge-updating', 'user_openid', $fromUsername, $toUsername ) . "<br />\n" );
 
 				wfDebug( "OpenID: transferred OpenID(s) of $fromUsername ($fromUserID) => $toUsername ($toUserID)\n" );
 
@@ -281,9 +281,9 @@ class OpenIDHooks {
 			}
 
 		}
-		
+
 		return true;
-		
+
 	}
 
 	public static function onLoadExtensionSchemaUpdates( $updater = null ) {
@@ -297,7 +297,7 @@ class OpenIDHooks {
 				$wgExtNewTables[] = array( 'user_openid', "$base/openid_table.pg.sql" );
 				# This doesn't work since MediaWiki doesn't use $wgUpdates when
 				# updating a PostgreSQL database
-				#$wgUpdates['postgres'][] = array( array( __CLASS__, 'makeUoiUserNotUnique' ) );
+				# $wgUpdates['postgres'][] = array( array( __CLASS__, 'makeUoiUserNotUnique' ) );
 			}
 		} else {
 			$dbPatch = "$base/" . ( $updater->getDB()->getType() == 'postgres' ?
