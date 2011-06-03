@@ -1,4 +1,4 @@
-import pymongo, logging, time, argparse, sys
+import pymongo, logging, time, argparse, sys, types
 from collections import deque
 
 
@@ -20,7 +20,7 @@ def main(args):
 			a['id'] for a in 
 			db.enwiki_articles_dataset.find({'category': args.category})
 	])
-	logging.info("Found %s articles with in '%s' category." % (len(catIds), args.category))
+	logging.info("Found %s articles in the '%s' category." % (len(catIds), args.category))
 	
 	#Printing headers
 	print(
@@ -40,7 +40,8 @@ def main(args):
 			) < period
 	
 	for editor in db.enwiki_editors_raw.find():
-		recent = LimQueue(limit=limitPeriod(args.time))
+		logging.debug("Processing %(editor)s:%(username)s..." % editor)
+		
 		for year, month, edits in get_months_of_edits(editor['edits']):
 			catEdits = [e for e in edits if e['article'] in catIds]
 			if len(catEdits) >= args.n:
@@ -53,6 +54,11 @@ def main(args):
 						len(catEdits)
 					])
 				)
+				LOGGING_STREAM.write("o")
+			else:
+				LOGGING_STREAM.write("-")
+			
+		LOGGING_STREAM.write("\n")
 					
 			
 		
@@ -61,13 +67,17 @@ def main(args):
 def clean(value):
 	if value == None:
 		return "\N"
+	elif type(value) in types.StringTypes:
+		return value.encode('utf-8').replace("\\", "\\\\").replace("\t", "\\t").replace("\n", "\\n")
 	else:
-		return str(value).replace("\\", "\\\\").replace("\t", "\\t").replace("\n", "\\n")
+		return str(value)
 
 def get_months_of_edits(edits):
 	for year, edits in edits.items():
+		if len(edits) == 0: continue
+		
 		#set
-		currMonth = year[0]['date'].strftime("%m")
+		currMonth = edits[0]['date'].strftime("%m")
 		monthEdits = []
 		for edit in edits:
 			month = edit['date'].strftime("%m")
