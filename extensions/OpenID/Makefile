@@ -30,7 +30,7 @@ Auth:	php-openid-$(VER).tar.gz
 	tar -xzf php-openid-$(VER).tar.gz $(SUBDIR)/Auth
 	rm -f php-openid-$(VER).tar.gz
 	mv $(SUBDIR)/Auth ./
-	patch -p1 -d Auth < php-openid-$(VER).patch
+	patch -p1 -d Auth < patches/php-openid-$(VER).patch
 	rmdir $(SUBDIR)
 
 php-openid-$(VER).tar.gz:
