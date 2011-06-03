@@ -375,7 +375,7 @@ class SignDocumentSignature {
 		$f->mEmail      = $wgRequest->getVal( 'email', '' );
 
 		$f->mIp    = wfGetIp();
-		$f->mAgent = wfGetAgent();
+		$f->mAgent = $wgRequest->getHeader( 'User-Agent' );
 
 		if ( $wgRequest->getVal( 'anonymous' ) ) $f->mHiddenFields[] = 'realname';
 		if ( $wgRequest->getVal( 'hideaddress' ) ) $f->mHiddenFields[] = 'address';
