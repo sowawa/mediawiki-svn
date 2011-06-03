@@ -239,9 +239,7 @@ var config = {
 		'join': {
 			'weight': 1,
 			'condition': function() {
-				//return isPitchVisible( 'join' ) && mw.user.anonymous();
-				// Temp hack to disable join CTAs --roan Jun 2 2011
-				return false;
+				return isPitchVisible( 'join' ) && mw.user.anonymous();
 			},
 			'action': function() {
 				// Mute for 1 day
