@@ -199,13 +199,11 @@ class CheckVars {
 	}
 
 	protected static $mGlobalsPerFile = array( # Variables which are OK, but only on a few files
-			'$wgDatabase' => array( 'updaters.inc', 'Installer.php', 'install-utils.inc', 'update.php', 'SqliteInstaller.php' ), # For update scripts
 			'$wgHtmlEntities' => array( 'Sanitizer.php' ),
 			'$wgHtmlEntityAliases' => array( 'Sanitizer.php' ),
 			'$wgFullyInitialised' => array( /* Set */ 'Setup.php', /* read */ 'Exception.php' ),
 			'$wgContLanguageCode' => array( 'Setup.php' ),
 			'$wgUseLatin1' => array( 'upgrade1_5.php' ), # If you upgrade from MW < 1.5 it will be there
-			'$wgDatabase' => array( 'DatabaseUpdater.php' ),
 			'$wgExtPGNewFields' => array( 'DatabaseUpdater.php', 'PostgresUpdater.php' ),
 			'$wgExtPGAlteredFields' => array( 'DatabaseUpdater.php', 'PostgresUpdater.php' ),
 			'$optionsWithArgs' => array( 'commandLine.inc' ),
