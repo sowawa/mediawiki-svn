@@ -1,3 +1,10 @@
+#
+# Sample talk page postings to newbie's talk pages in various languages.
+#
+# This script is intended to be run on the one of the toolserver machines.
+#
+# run python sample_talk_edits.py --help for command line parameters.
+#
 import os, sys, logging, argparse, MySQLdb
 
 def clean(v):
