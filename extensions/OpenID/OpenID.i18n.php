@@ -2277,7 +2277,11 @@ $messages['he'] = array(
 	'openidfailure' => 'האימות נכשל',
 	'openidfailuretext' => 'אימות כתובת ה־OpenID נכשל. הודעת השגיאה: "$1"',
 	'openidsuccess' => 'האימות הושלם בהצלחה',
-	'openidsuccesstext' => 'אימות כתובת ה־OpenID הושלם בהצלחה.',
+	'openidsuccesstext' => "'''אימות וכניסה מוצלחים בתור משתמש $1'''.
+
+ה־OpenID שלך הוא $2 .
+
+ניתן לנההל את ה־OpenID הזה ואת הבאים אחריו וכן את ססמה האפשרית לחשבון ב[[Special:Preferences|דף ההעדפות]].",
 	'openidusernameprefix' => 'משתמשOpenID',
 	'openidserverlogininstructions' => 'אתר $3 דורש שתכתבו את סיסמתכם לדף המשתמש $2 בכתובת $1 (זוהי כתובת ה־OpenID שלכם)',
 	'openidtrustinstructions' => 'סמנו אם ברצונכם לשתף מידע עם $1.',
@@ -2308,9 +2312,10 @@ $messages['he'] = array(
 	'openidconvertsuccesstext' => 'המרתם בהצלחה את ה־OpenID שלכם ל־$1.',
 	'openidconvertyourstext' => 'זהו כבר ה־OpenID שלכם.',
 	'openidconvertothertext' => 'זהו ה־OpenID של מישהו אחר.',
-	'openidalreadyloggedin' => "'''הינכם כבר מחוברים לחשבון, $1!'''
+	'openidalreadyloggedin' => 'אתם כבר מחוברים לחשבון.',
+	'openidalreadyloggedintext' => "'''$1, אתם כבר מחוברים לחשבון!'''
 
-אם ברצונכם להשתמש ב־OpenID כדי להתחבר בעתיד, תוכלו [[Special:OpenIDConvert|להמיר את חשבונכם לשימוש ב־OpenID]].",
+אפשר לנהל (להציג, למחוק ולהוסיף) מזהי OpenID בלשונית OpenID ב[[Special:Preferences|דף ההעדפות]].",
 	'openidnousername' => 'לא צוין שם משתמש.',
 	'openidbadusername' => 'שם המשתמש שצוין אינו תקין.',
 	'openidautosubmit' => 'דף זה מכיל טופס שאמור להשלח אוטומטית אם יש לכם JavaScript פעיל.
@@ -2806,7 +2811,7 @@ Il esserea impossibile aperir un session sin OpenID.',
  */
 $messages['id'] = array(
 	'openid-desc' => 'Masuk log ke wiki dengan sebuah [http://openid.net/ OpenID], dan masuk log ke situs web lain yang berbasis OpenID dengan sebuah akun pengguna wiki',
-	'openidlogin' => 'Masuk log dengan OpenID',
+	'openidlogin' => 'Masuk log/ buat akun dengan OpenID',
 	'openidserver' => 'Server OpenID',
 	'openidxrds' => 'berkas Yadis',
 	'openidconvert' => 'Konverter OpenID',
@@ -2823,7 +2828,11 @@ Silakan hubungi salah satu [[Special:ListUsers/sysop|administrator]].',
 	'openidfailuretext' => 'Verifikasi dari URL OpenID tersebut gagal.
 Pesan kesalahan: "$1"',
 	'openidsuccess' => 'Verifikasi berhasil',
-	'openidsuccesstext' => 'Verifikasi dari URL OpenID tersebut berhasil.',
+	'openidsuccesstext' => "''Verifikasi berhasil dan masuk log sebagai pengguna $1'''.
+
+OpenID Anda adalah $2.
+
+Ini dan OpenID selanjutnya, dan sebuah kata sandi akun opsional, dapat dikelola di [[Special:Preferences|preferensi]] Anda.",
 	'openidusernameprefix' => 'PenggunaOpenID',
 	'openidserverlogininstructions' => '$3 meminta Anda memasukkan sandi untuk halaman pengguna $2 Anda di $1 (ini adalah URL OpenID Anda)',
 	'openidtrustinstructions' => 'Berikan tanda cek jika Anda ingin berbagi data dengan $1.',

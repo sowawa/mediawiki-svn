@@ -118,6 +118,7 @@ The {{SITENAME}} team',
  * @author EugeneZelenko
  * @author Krinkle
  * @author Minh Nguyen
+ * @author Praveenp
  * @author Purodha
  * @author Raymond
  * @author Sam Reed
@@ -142,6 +143,7 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 {{Identical|Submit}}',
 	'articlefeedback-survey-title' => 'This text appears in the title bar of the survey dialog.',
 	'articlefeedback-survey-thanks' => 'This text appears when the user has successfully submitted the survey.',
+	'articlefeedback-form-panel-explanation-link' => 'Do not translate "Project:"',
 	'articlefeedback-form-panel-helpimprove-email-placeholder' => '{{Optional}}',
 	'articlefeedback-form-panel-helpimprove-privacy' => '{{Identical|Privacy}}',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Do not translate "Project:"
@@ -809,7 +811,8 @@ $messages['de'] = array(
 	'articlefeedback-error' => 'Ein Fehler ist aufgetreten. Bitte versuche es später erneut.',
 	'articlefeedback-form-switch-label' => 'Diese Seite einschätzen',
 	'articlefeedback-form-panel-title' => 'Diese Seite einschätzen',
-	'articlefeedback-form-panel-instructions' => 'Bitte nimm dir kurz Zeit, diese Seite einzuschätzen.',
+	'articlefeedback-form-panel-explanation' => 'Was ist das?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:Artikeleinschätzung',
 	'articlefeedback-form-panel-clear' => 'Einschätzung entfernen',
 	'articlefeedback-form-panel-expertise' => 'Ich habe umfangreiche Kenntnisse zu diesem Thema (optional)',
 	'articlefeedback-form-panel-expertise-studies' => 'Ich habe einen entsprechenden Abschluss/ Hochschulabschluss',
@@ -2816,7 +2819,8 @@ $messages['ml'] = array(
 	'articlefeedback-error' => 'എന്തോ പിഴവുണ്ടായിരിക്കുന്നു. ദയവായി പിന്നീട് വീണ്ടും ശ്രമിക്കുക.',
 	'articlefeedback-form-switch-label' => 'ഈ താളിനു നിലവാരമിടുക',
 	'articlefeedback-form-panel-title' => 'ഈ താളിനു നിലവാരമിടുക',
-	'articlefeedback-form-panel-instructions' => 'താഴെ ഈ താളിന്റെ മൂല്യനിർണ്ണയം നടത്താൻ ഒരു നിമിഷം ചിലവാക്കുക.',
+	'articlefeedback-form-panel-explanation' => 'എന്താണിത്?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:ലേഖനാഭിപ്രായം',
 	'articlefeedback-form-panel-clear' => 'ഈ നിലവാരമിടൽ നീക്കം ചെയ്യുക',
 	'articlefeedback-form-panel-expertise' => 'എനിക്ക് ഈ വിഷയത്തിൽ വളരെ അറിവുണ്ട് (ഐച്ഛികം)',
 	'articlefeedback-form-panel-expertise-studies' => 'എനിക്ക് ബന്ധപ്പെട്ട വിഷയത്തിൽ കലാലയ/യൂണിവേഴ്സിറ്റി ബിരുദമുണ്ട്',
@@ -3246,7 +3250,8 @@ $messages['pl'] = array(
 	'articlefeedback-error' => 'Wystąpił błąd. Proszę spróbować ponownie później.',
 	'articlefeedback-form-switch-label' => 'Oceń tę stronę',
 	'articlefeedback-form-panel-title' => 'Oceń tę stronę',
-	'articlefeedback-form-panel-instructions' => 'Poświeć chwilę, aby ocenić tę stronę.',
+	'articlefeedback-form-panel-explanation' => 'Co to jest?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:Ocena artykułu',
 	'articlefeedback-form-panel-clear' => 'Usuń ranking',
 	'articlefeedback-form-panel-expertise' => 'Posiadam szeroką wiedzę w tym temacie (opcjonalne)',
 	'articlefeedback-form-panel-expertise-studies' => 'Znam to ze szkoły średniej lub ze studiów',
@@ -4059,7 +4064,8 @@ $messages['sl'] = array(
 	'articlefeedback-error' => 'Prišlo je do napake. Prosimo, poskusite znova pozneje.',
 	'articlefeedback-form-switch-label' => 'Ocenite to stran',
 	'articlefeedback-form-panel-title' => 'Ocenite to stran',
-	'articlefeedback-form-panel-instructions' => 'Prosimo, vzemite si trenutek in ocenite to stran.',
+	'articlefeedback-form-panel-explanation' => 'Kaj je to?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:PovratnaInformacijaOČlankih',
 	'articlefeedback-form-panel-clear' => 'Odstrani oceno',
 	'articlefeedback-form-panel-expertise' => 'S to temo sem zelo dobro seznanjen (neobvezno)',
 	'articlefeedback-form-panel-expertise-studies' => 'Imam ustrezno fakultetno/univerzitetno diplomo',

@@ -1248,6 +1248,8 @@ Par plasê <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_do
 	'ogg-dismiss' => 'Siere',
 	'ogg-download' => 'Discjame il file',
 	'ogg-desc-link' => 'Informazions su chest file',
+	'ogg-oggThumb-version' => 'A OggHandler i covente oggThumb version $1 o sucessive.',
+	'ogg-oggThumb-failed' => 'oggThumb nol è rivât a creâ la miniature.',
 );
 
 /** Irish (Gaeilge)

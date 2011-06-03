@@ -16,6 +16,13 @@ $messages['en'] = array(
 	'creativecommonsrdf-desc' => 'CreativeCommons RDF-metadata',
 );
 
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author Wizardist
+ */
+$messages['be-tarask'] = array(
+	'creativecommonsrdf-desc' => 'RDF-мэтазьвесткі CreativeCommons',
+);
+
 /** Danish (Dansk)
  * @author Peter Alberti
  */

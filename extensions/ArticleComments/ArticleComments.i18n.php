@@ -479,6 +479,7 @@ Móžne su "plain", "normal" a "wiki".',
 );
 
 /** Greek (Ελληνικά)
+ * @author Aral
  * @author Glavkos
  */
 $messages['el'] = array(
@@ -495,14 +496,20 @@ $messages['el'] = array(
 	'article-comments-invalid-field' => 'Η $1 υπό τον όρο <nowiki> [ $2 ] </nowiki> είναι άκυρη.',
 	'article-comments-required-field' => '" $1 "πεδίο είναι υποχρεωτικό.',
 	'article-comments-submission-failed' => 'H υποβολή Σχόλιου  απέτυχε',
+	'article-comments-failure-reasons' => 'Συγνώμη η υποβολή του σχόλιου σας απέτυχε για τους ακόλουθους λόγους {{PLURAL:$1|reason|reasons}}:',
 	'article-comments-no-comments' => 'Δυστυχώς η σελίδα "[[$1]]" δεν δέχεται σχόλια αυτή την ώρα',
 	'article-comments-commenter-said' => '$1 είπε...',
+	'article-comments-summary' => 'Σχόλιο από $1 - μέσω του πρόσθετου ArticleComments',
 	'article-comments-submission-succeeded' => 'Υποβολή σχολίου ολοκληρώθηκε',
 	'article-comments-submission-success' => 'Έχετε υποβάλει με επιτυχία ένα σχόλιο για "[[$1]]"',
+	'article-comments-submission-view-all' => 'Μπορείτε να δείτε [[ $1 | όλα τα σχόλια σε αυτήν τη σελίδα]]',
 	'article-comments-user-is-blocked' => 'Στον λογαριασμό χρήστη σας αυτή τη στιγμή έχει  μπλοκαριστεί η λειτουργία  επεξεργασίας "[[$1]]".',
+	'article-comments-comment-bad-mode' => 'Ο κωδικός που δόθηκε για το σχόλιο είναι άκυρος.
+Έγκυροι κωδικοί είναι "plain", "normal" και "wiki"',
 	'article-comments-comment-missing-name-parameter' => 'Λείπει το όνομα',
 	'article-comments-comment-missing-date-parameter' => 'Λείπει η ημερομηνία του σχολίου',
 	'article-comments-no-spam' => 'Τουλάχιστον ένα από τα πεδία υποβλήθηκε έχουν επισημανθεί ως ανεπιθύμητη αλληλογραφία.',
+	'processcomment' => 'Επεξεργαστείτε το σχόλιο της σελίδας',
 );
 
 /** Esperanto (Esperanto)

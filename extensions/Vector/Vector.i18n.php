@@ -575,7 +575,7 @@ $messages['fa'] = array(
 	'vector-editwarning-preference' => 'زمان خروج از صفحهٔ ویرایش در صورت داشتن ویرایش‌های‌ ذخیره‌نشده به من هشدار بده',
 	'vector-simplesearch-search' => 'جستجو',
 	'vector-simplesearch-containing' => 'صفحه‌های دربردارنده...',
-	'vector-noexperiments-preference' => 'مستثنی کردن من از آزمایش ویژگی',
+	'vector-noexperiments-preference' => 'من را از ویژگی‌های آزمایشی مستثنی کن',
 );
 
 /** Finnish (Suomi)

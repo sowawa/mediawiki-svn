@@ -1649,7 +1649,7 @@ $messages['la'] = array(
  */
 $messages['lb'] = array(
 	'prefstats' => 'Statistike vun den Astellungen',
-	'prefstats-desc' => 'Statistiken doriwwer wéivil Benotzer bestëmmten Astellungn aktivéiert hunn',
+	'prefstats-desc' => 'Statistiken doriwwer wéi vill Benotzer bestëmmt Astellungen aktivéiert hunn',
 	'prefstats-title' => 'Statistike vun den Astellungen',
 	'prefstats-list-intro' => 'Elo ginn dës Astellungen iwwerwaacht.
 Klickt op eng fir Statistiken iwwer hire Gebrauch ze gesinn.',
