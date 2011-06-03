@@ -4,7 +4,7 @@
  * Checks a number of syntax conventions on variables from a valid PHP file.
  *
  * Run as:
- *  find phase3/ \( -name \*.php -or -name \*.inc \) -not \( -name importUseModWiki.php -o -name diffLanguage.php -o -name LocalSettings.php -o -name Parser?????.php \) -exec php tools/code-utils/check-vars.php \{\} +
+ *  find phase3/ \( -name \*.php -or -name \*.inc \) -not \( -name diffLanguage.php -o -name LocalSettings.php -o -name Parser?????.php \) -exec php tools/code-utils/check-vars.php \{\} +
  */
 if( ! $IP = getenv( 'MW_INSTALL_PATH' ) ) {
 	$IP = dirname( __FILE__ ) . "/../../phase3/";
@@ -160,7 +160,6 @@ class CheckVars {
 			$this->load( "$IP/includes/DefaultSettings.php", false );
 			if ( count( $this->mTokens ) > 0 ) {
 				$globals = array (
-					'$wgArticle', # Setup.php
 					'$wgAutoloadLocalClasses', # AutoLoader.php, a couple of readers
 					'$wgCanonicalNamespaceNames', # Namespace.php
 					'$wgContLang', # Setup.php
@@ -186,7 +185,6 @@ class CheckVars {
 					'$wgUseEnotif', # Setup.php
 					'$wgUseNormalUser', # maintenance
 					'$wgUser', # Setup.php
-					'$wgWikiFarm', # maintenance, to be removed
 				);
 
 				foreach ( $this->mTokens as $token ) {
@@ -221,6 +219,8 @@ class CheckVars {
 			'$col' => array( 'UtfNormalTest2.php' ),
 			'$lineNo' => array( 'UtfNormalTest2.php' ),
 			'$cliUpgrade' => array( 'CliInstaller.php' ),
+			'$mediaWiki' => array( 'index.php' ),
+			'$wgArticle' => array( 'index.php' ),
 		);
 
 	function setGenerateDeprecatedList( $bool = true ) {
