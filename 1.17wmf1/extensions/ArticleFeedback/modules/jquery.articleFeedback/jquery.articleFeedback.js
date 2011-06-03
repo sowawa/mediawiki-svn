@@ -60,7 +60,7 @@ $.articleFeedback = {
 		<div class="articleFeedback-switch articleFeedback-switch-form articleFeedback-visibleWith-report" rel="form"><html:msg key="form-switch-label" /></div>\
 		<div class="articleFeedback-title articleFeedback-visibleWith-form"><html:msg key="form-panel-title" /></div>\
 		<div class="articleFeedback-title articleFeedback-visibleWith-report"><html:msg key="report-panel-title" /></div>\
-		<div class="articleFeedback-instructions articleFeedback-visibleWith-form"><html:msg key="form-panel-instructions" /></div>\
+		<div class="articleFeedback-explanation articleFeedback-visibleWith-form"><a class="articleFeedback-explanation-link"><html:msg key="form-panel-explanation" /></a></div>\
 		<div class="articleFeedback-description articleFeedback-visibleWith-report"><html:msg key="report-panel-description" /></div>\
 		<div style="clear:both;"></div>\
 		<div class="articleFeedback-ratings"></div>\
@@ -499,6 +499,11 @@ $.articleFeedback = {
 						}
 					} )
 					.end()
+				.find( '.articleFeedback-explanation-link' )
+					.attr( 'href', mw.config.get( 'wgArticlePath' ).replace(
+						'$1', mw.msg( 'articlefeedback-form-panel-explanation-link' )
+					) )
+					.end()
 				.find( '.articleFeedback-pitches' )
 					.each( function() {
 						for ( var key in context.options.pitches ) {
@@ -662,7 +667,10 @@ $.articleFeedback = {
 							// the user has rejected this within 3 days of right now
 							var display = $.cookie( prefix( 'pitch-' + key ) );
 							if ( display !== 'hide' && context.options.pitches[key].condition() ) {
-								pitches.push( key );
+								var weight = 'weight' in pitches ? pitches.weight : 1;
+								for ( var i = 0; i < weight; i++ ) {
+									pitches.push( key );
+								}
 							}
 						}
 						if ( pitches.length ) {
