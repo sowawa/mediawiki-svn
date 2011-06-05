@@ -8,19 +8,19 @@ EOT;
         exit( 1 );
 }
 $wgExtensionCredits['parserhook'][] = array(
+	'path' => __FILE__,
 	'name' => 'SQL2Wiki',
 	'author' => 'freakolowsky [Jure Kajzer] original version by Patrick Müller',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:SQL2Wiki',
-	'description' => 'Show SQL data directly in the page contents..',
 	'descriptionmsg' => 'sql2wiki-desc',
 	'version' => '1.0.0',
 );
 
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name' => 'SQL2Wiki',
 	'author' => 'Jure Kajzer',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:SQL2Wiki',
-	'description' => 'Run SQL2Wiki code on-click',
 	'descriptionmsg' => 'sql2wiki-special',
 	'version' => '1.0.0',
 );
