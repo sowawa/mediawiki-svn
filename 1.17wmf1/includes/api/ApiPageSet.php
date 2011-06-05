@@ -446,6 +446,10 @@ class ApiPageSet extends ApiQueryBase {
 		}
 
 		$pageids = array_map( 'intval', $pageids ); // paranoia
+		$remaining = array_flip( $pageids );
+
+		$pageids = self::getPositiveIntegers( $pageids );
+
 		$set = array(
 			'page_id' => $pageids
 		);
@@ -457,7 +461,6 @@ class ApiPageSet extends ApiQueryBase {
 					__METHOD__ );
 		$this->profileDBOut();
 
-		$remaining = array_flip( $pageids );
 		$this->initFromQueryResult( $db, $res, $remaining, false );	// process PageIDs
 
 		// Resolve any found redirects
@@ -534,6 +537,8 @@ class ApiPageSet extends ApiQueryBase {
 		$db = $this->getDB();
 		$pageids = array();
 		$remaining = array_flip( $revids );
+
+		$revids = self::getPositiveIntegers( $revids );
 
 		$tables = array( 'revision', 'page' );
 		$fields = array( 'rev_id', 'rev_page' );
@@ -710,6 +715,25 @@ class ApiPageSet extends ApiQueryBase {
 		}
 
 		return $linkBatch;
+	}
+
+	/**
+	 * Returns the input array of integers with all values < 0 removed
+	 *
+	 * @param $array array
+	 * @return array
+	 */
+	private static function getPositiveIntegers( $array ) {
+		// bug 25734 API: possible issue with revids validation
+		// It seems with a load of revision rows, MySQL gets upset
+		// Remove any < 0 integers, as they can't be valid
+		foreach( $array as $i => $int ) {
+			if ( $int < 0 ) {
+				unset( $array[$i] );
+			}
+		}
+
+		return $array;
 	}
 
 	protected function getAllowedParams() {
