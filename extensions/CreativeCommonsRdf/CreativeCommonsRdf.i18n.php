@@ -37,6 +37,13 @@ $messages['de'] = array(
 	'creativecommonsrdf-desc' => 'Stellt RDF-Metadaten zu Creative Commons bereit',
 );
 
+/** French (Français)
+ * @author Jean-Frédéric
+ */
+$messages['fr'] = array(
+	'creativecommonsrdf-desc' => 'Métadonnées RDF Creative Commons',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -49,6 +56,13 @@ $messages['gl'] = array(
  */
 $messages['ia'] = array(
 	'creativecommonsrdf-desc' => 'Metadatos RDF de Creative Commons',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'creativecommonsrdf-desc' => 'CreativeCommons RDF-Metadonnéeën',
 );
 
 /** Macedonian (Македонски)

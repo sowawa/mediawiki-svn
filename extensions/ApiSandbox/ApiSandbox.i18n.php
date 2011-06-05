@@ -492,6 +492,21 @@ $messages['or'] = array(
 	'apisb-ns-main' => '(ମୂଳ)',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'apisb-parameters' => 'Parametry',
+	'apisb-result' => 'Rezultat',
+	'apisb-select-action' => 'Wybierz działanie',
+	'apisb-select-value' => 'Wybierz wartość',
+	'apisb-loading' => 'Trwa ładowanie…',
+	'apisb-ns-main' => '(główna)',
+	'apisb-query-prop' => 'Właściwości',
+	'apisb-query-list' => 'Listy',
+	'apisb-query-meta' => 'Matainformacje',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

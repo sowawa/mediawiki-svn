@@ -143,7 +143,7 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 {{Identical|Submit}}',
 	'articlefeedback-survey-title' => 'This text appears in the title bar of the survey dialog.',
 	'articlefeedback-survey-thanks' => 'This text appears when the user has successfully submitted the survey.',
-	'articlefeedback-form-panel-explanation-link' => 'Do not translate "Project:"',
+	'articlefeedback-form-panel-explanation-link' => 'Do not translate "Project:". Also translate the "ArticleFeedback" special page name at [[Special:AdvancedTranslate]].',
 	'articlefeedback-form-panel-helpimprove-email-placeholder' => '{{Optional}}',
 	'articlefeedback-form-panel-helpimprove-privacy' => '{{Identical|Privacy}}',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Do not translate "Project:"
@@ -1407,6 +1407,7 @@ $messages['fi'] = array(
  * @author Crochet.david
  * @author Faure.thomas
  * @author IAlex
+ * @author Jean-Frédéric
  * @author Od1n
  * @author Peter17
  * @author Sherbrooke
@@ -1431,7 +1432,7 @@ $messages['fr'] = array(
 	'articlefeedback-error' => "Une erreur s'est produite. Veuillez réessayer plus tard.",
 	'articlefeedback-form-switch-label' => 'Noter cette page',
 	'articlefeedback-form-panel-title' => 'Noter cette page',
-	'articlefeedback-form-panel-instructions' => 'Veuillez prendre un moment pour évaluer cette page.',
+	'articlefeedback-form-panel-explanation' => 'Qu’est-ce que c’est?',
 	'articlefeedback-form-panel-clear' => 'Supprimer cette évaluation',
 	'articlefeedback-form-panel-expertise' => 'Je suis très bien informé sur ce sujet (facultatif)',
 	'articlefeedback-form-panel-expertise-studies' => "Je détiens un diplôme d'études supérieures (université ou grande école)",
@@ -1589,7 +1590,8 @@ $messages['gl'] = array(
 	'articlefeedback-error' => 'Houbo un erro. Inténteo de novo máis tarde.',
 	'articlefeedback-form-switch-label' => 'Avaliar esta páxina',
 	'articlefeedback-form-panel-title' => 'Avaliar esta páxina',
-	'articlefeedback-form-panel-instructions' => 'Por favor, tome uns intres para avaliar esta páxina.',
+	'articlefeedback-form-panel-explanation' => 'Que é isto?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:Avaliación de artigos',
 	'articlefeedback-form-panel-clear' => 'Eliminar a avaliación',
 	'articlefeedback-form-panel-expertise' => 'Estou moi ben informado sobre este tema (opcional)',
 	'articlefeedback-form-panel-expertise-studies' => 'Teño un grao escolar ou universitario pertinente',
@@ -1752,7 +1754,8 @@ $messages['he'] = array(
 	'articlefeedback-error' => 'אירעה שגיאה. נא לנסות שוב מאוחר יותר.',
 	'articlefeedback-form-switch-label' => 'תנו הערכה לדף הזה',
 	'articlefeedback-form-panel-title' => 'תנו הערכה לדף הזה',
-	'articlefeedback-form-panel-instructions' => 'הקדישו רגע לדרג את הדף.',
+	'articlefeedback-form-panel-explanation' => 'מה זה?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:משוב על דפים',
 	'articlefeedback-form-panel-clear' => 'הסר דירוג זה',
 	'articlefeedback-form-panel-expertise' => 'יש לי ידע רב על הנושא הזה (לא חובה)',
 	'articlefeedback-form-panel-expertise-studies' => 'יש לי תואר אקדמי בנושא הזה',
@@ -2003,7 +2006,8 @@ $messages['ia'] = array(
 	'articlefeedback-error' => 'Un error ha occurrite. Per favor reproba plus tarde.',
 	'articlefeedback-form-switch-label' => 'Evalutar iste pagina',
 	'articlefeedback-form-panel-title' => 'Evalutar iste pagina',
-	'articlefeedback-form-panel-instructions' => 'Per favor prende un momento pro evalutar iste pagina.',
+	'articlefeedback-form-panel-explanation' => 'Que es isto?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:CommentarArticulos',
 	'articlefeedback-form-panel-clear' => 'Remover iste evalutation',
 	'articlefeedback-form-panel-expertise' => 'Io es multo ben informate super iste thema (optional)',
 	'articlefeedback-form-panel-expertise-studies' => 'Io ha un grado relevante de collegio/universitate',
@@ -2517,7 +2521,8 @@ $messages['lb'] = array(
 	'articlefeedback-error' => 'Et ass e Feeler geschitt. Probéiert w.e.g. méi spéit nach emol.',
 	'articlefeedback-form-switch-label' => 'Dës Säit bewäerten',
 	'articlefeedback-form-panel-title' => 'Dës Säit bewäerten',
-	'articlefeedback-form-panel-instructions' => 'Huelt Iech w.e.g. een Ament fir d¨s Säit ze bewäerten.',
+	'articlefeedback-form-panel-explanation' => 'Wat ass dat?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:Artikel-Feedback',
 	'articlefeedback-form-panel-clear' => 'Dës Bewäertung ewechhuelen',
 	'articlefeedback-form-panel-expertise' => 'Ech weess gutt iwwer dëse Sujet Bescheed (fakultativ)',
 	'articlefeedback-form-panel-expertise-studies' => 'Ech hunn een Ofschloss an der Schoul/op der Universitéit zu deem Sujet',
@@ -2529,6 +2534,7 @@ $messages['lb'] = array(
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Dateschutz',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Dateschutz',
 	'articlefeedback-form-panel-submit' => 'Bewäertunge schécken',
+	'articlefeedback-form-panel-pending' => 'Äre Bewäertunge goufen nach net ageschéckt',
 	'articlefeedback-form-panel-success' => 'Gespäichert',
 	'articlefeedback-form-panel-expiry-title' => 'Är Bewäertung ass ofgelaf',
 	'articlefeedback-form-panel-expiry-message' => 'Bewäert dëse Säit w.e.g. nach emol a späichert déi nei Bewäertung.',
@@ -2559,6 +2565,8 @@ $messages['lb'] = array(
 	'articlefeedback-survey-message-success' => "Merci datt Dir d'Ëmfro ausgefëllt hutt.",
 	'articlefeedback-survey-message-error' => 'Et ass e Feeler geschitt.
 Probéiert w.e.g. méi spéit nach emol.',
+	'articleFeedback-table-caption-dailyhighs' => 'Säite mat den héchste Bewäertungen: $1',
+	'articleFeedback-table-caption-dailylows' => 'Säite mat den niddregste Bewäertungen: $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Déi gréisst Ännerungen an dëser Woch',
 	'articleFeedback-table-heading-page' => 'Säit',
 	'articleFeedback-table-heading-average' => 'Duerchschnëtt',
@@ -2719,7 +2727,8 @@ $messages['mk'] = array(
 	'articlefeedback-error' => 'Се појави грешка. Обидете се повторно.',
 	'articlefeedback-form-switch-label' => 'Оценете ја страницава',
 	'articlefeedback-form-panel-title' => 'Оценете ја страницава',
-	'articlefeedback-form-panel-instructions' => 'Одвојте момент за да ја оцените страницава.',
+	'articlefeedback-form-panel-explanation' => 'Што е ова?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:ОценувањеНаСтатии',
 	'articlefeedback-form-panel-clear' => 'Отстрани ја оценкава',
 	'articlefeedback-form-panel-expertise' => 'Имам големи познавања на оваа тематика (незадолжително)',
 	'articlefeedback-form-panel-expertise-studies' => 'Имам релевантно више/факултетско образование',
@@ -2961,6 +2970,7 @@ $messages['ne'] = array(
 /** Dutch (Nederlands)
  * @author Catrope
  * @author McDutchie
+ * @author SPQRobin
  * @author Siebrand
  */
 $messages['nl'] = array(
@@ -2984,7 +2994,8 @@ $messages['nl'] = array(
 Probeer het later opnieuw.',
 	'articlefeedback-form-switch-label' => 'Deze pagina waarderen',
 	'articlefeedback-form-panel-title' => 'Deze pagina waarderen',
-	'articlefeedback-form-panel-instructions' => 'Geef alstublieft een beoordeling van deze pagina.',
+	'articlefeedback-form-panel-explanation' => 'Wat is dit?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:Paginaterugkoppeling',
 	'articlefeedback-form-panel-clear' => 'Deze beoordeling verwijderen',
 	'articlefeedback-form-panel-expertise' => 'Ik ben zeer goed geïnformeerd over dit onderwerp (optioneel)',
 	'articlefeedback-form-panel-expertise-studies' => 'Ik heb een relevante opleiding gevolgd op HBO/WO-niveau',
@@ -3227,6 +3238,13 @@ $messages['or'] = array(
 	'articlefeedback-survey-submit' => 'ଦାଖଲକରିବା',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'articleFeedback-table-heading-average' => 'Рæстæмбис',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
@@ -3438,7 +3456,8 @@ $messages['pt'] = array(
 	'articlefeedback-error' => 'Ocorreu um erro. Tente novamente mais tarde, por favor.',
 	'articlefeedback-form-switch-label' => 'Avaliar esta página',
 	'articlefeedback-form-panel-title' => 'Avaliar esta página',
-	'articlefeedback-form-panel-instructions' => 'Dedique um momento a avaliar esta página abaixo, por favor.',
+	'articlefeedback-form-panel-explanation' => 'O que é isto?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:ComentarArtigos',
 	'articlefeedback-form-panel-clear' => 'Remover essa avaliação',
 	'articlefeedback-form-panel-expertise' => 'Conheço este assunto muito profundamente (opcional)',
 	'articlefeedback-form-panel-expertise-studies' => 'Tenho estudos relevantes do secundário/universidade',
@@ -4579,7 +4598,8 @@ $messages['vi'] = array(
 	'articlefeedback-error' => 'Đã gặp lỗi. Xin vui lòng thử lại sau.',
 	'articlefeedback-form-switch-label' => 'Đánh giá trang này',
 	'articlefeedback-form-panel-title' => 'Đánh giá trang này',
-	'articlefeedback-form-panel-instructions' => 'Xin hãy dành một chút thì giờ để đánh giá trang này.',
+	'articlefeedback-form-panel-explanation' => 'Này là gì?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:Phản hồi bài',
 	'articlefeedback-form-panel-clear' => 'Hủy đánh giá này',
 	'articlefeedback-form-panel-expertise' => 'Tôi rất am hiểu về đề tài này (tùy chọn)',
 	'articlefeedback-form-panel-expertise-studies' => 'Tôi đã lấy bằng có liên quan tại trường cao đẳng / đại học',

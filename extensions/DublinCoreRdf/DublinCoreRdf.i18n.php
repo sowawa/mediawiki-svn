@@ -30,6 +30,13 @@ $messages['de'] = array(
 	'dublincorerdf-desc' => 'Stellt RDF-Metadaten zu Dublin Core bereit',
 );
 
+/** French (Français)
+ * @author Jean-Frédéric
+ */
+$messages['fr'] = array(
+	'dublincorerdf-desc' => 'Métadonnées RDF Dublin Core',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -42,6 +49,13 @@ $messages['gl'] = array(
  */
 $messages['ia'] = array(
 	'dublincorerdf-desc' => 'Metadatos RDF de Dublin Core',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'dublincorerdf-desc' => 'Dublin Core RDF-Metadonnéeën',
 );
 
 /** Macedonian (Македонски)

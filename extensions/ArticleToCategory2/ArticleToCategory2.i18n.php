@@ -535,6 +535,8 @@ $messages['pl'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Utwórz',
 	'articletocategory2-create-category-under-category-text' => 'Dodaj kategorię do tej kategorii',
 	'articletocategory2-create-category-under-category-button' => 'Utwórz',
+	'right-ArticleToCategory2' => 'Dodaj stronę do kategorii',
+	'right-ArticleToCategory2AddCat' => 'Dodaj kategorię do kategorii',
 );
 
 /** Piedmontese (Piemontèis)

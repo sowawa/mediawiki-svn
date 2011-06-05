@@ -360,6 +360,13 @@ $messages['no'] = array(
 	'bm-printversion-inexistent-book' => 'Bok ikke funnet. Skriv inn navnet på en eksisterende bok for å få dens utskriftsversjon.',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'bm-printversion' => 'Wersja do druku',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt
@@ -423,8 +430,13 @@ $messages['ru'] = array(
  * @author Lesko987
  */
 $messages['sl'] = array(
+	'bookmanager-desc' => 'Orodja za knjige',
+	'bm-booktools-section' => 'Orodja knjige',
+	'bm-randomchapter-link' => 'Naključno poglavje',
 	'bm-printversion' => 'Različica za tisk',
+	'bm-printversion-desc' => 'Pripravi [[Special:PrintVersion|različico knjige za tiskanje]]',
 	'bm-printversion-no-book' => 'Prosim vnesite ime knjige, da dobite različico za tiskanje le te.',
+	'bm-printversion-inexistent-book' => 'Knjige ni mogoče najti. Vnesite ime obstoječe knjige, da dobite različico za tiskanje le te.',
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
