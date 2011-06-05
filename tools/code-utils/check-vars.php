@@ -129,9 +129,24 @@ class CheckVars {
 		'deprecated-calls' => true,
 		'deprecated-might' => true,
 		'poisoned-function' => true,
-		'error' => true
+		'error' => true,
+		# 'help' keyword is reserved!!
 		);
-
+	/** print out the default warnings list */
+	static function dumpWarningsKeywords() {
+		print "Warning keywords suitable for -W<[no]keyword>:\n";
+		$w = CheckVars::$enabledWarnings ;
+		asort( $w ); // sort by status
+		print "Keywords disabled by default:\n";
+		$prevStatus = false;
+		foreach( $w as $key => $status ) {
+			if( $status !== $prevStatus ) {
+				$prevStatus = $status;
+				print "Keywords enabled by default:\n";
+			}
+			print "\t$key\n";
+		}
+	}
 
 	protected $generateDeprecatedList = false;
 	protected $generateParentList = false;
@@ -1059,7 +1074,16 @@ class CheckVars {
 }
 
 if( $argc < 2 ) {
-	die ("Usage: php $argv[0] [--generate-deprecated-list] [--generate-parent-list] <PHP_source_file1> <PHP_source_file2> ...\n");
+	die (
+"Usage:
+	php $argv[0] [options] <PHP_source_file1> <PHP_source_file2> ...
+	
+Options:
+	--generate-deprecated-list
+	--generate-parent-list
+	-Whelp : available warnings methods
+	-W[no]key : disabled/enable key warning.
+");
 }
 
 $cv = new CheckVars();
@@ -1076,7 +1100,10 @@ if ( $argv[0] == '--generate-parent-list' ) {
 
 foreach ( $argv as $arg ) {
 	if ( preg_match( '/^-W(no-)?(.*)/', $arg, $m ) ) {
-		if ( !isset( CheckVars::$enabledWarnings[ $m[2] ] ) ) {
+		if( $m[2] === 'help' ) {
+			CheckVars::dumpWarningsKeywords();
+			exit;
+		} elseif ( !isset( CheckVars::$enabledWarnings[ $m[2] ] ) ) {
 			var_dump($m);
 			die( "Wrong warning name $arg\n" );
 		}
