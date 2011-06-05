@@ -182,7 +182,7 @@ class ArticleFeedbackHooks {
 					$updater->addExtensionUpdate( array(
 						'addTable',
 						'article_feedback_stats_types',
-						$dir . '/sql/AddArticleFeedbackStatsTypesTable.sql',
+						$dir . '/sql/AddArticleFeedbackStatsTypeTable.sql',
 						true
 					) );
 				}
@@ -206,7 +206,7 @@ class ArticleFeedbackHooks {
 					$updater->addExtensionUpdate( array(
 						'addTable',
 						'article_feedback_stats_types',
-						$dir . '/sql/AddArticleFeedbackStatsTypesTable.sql',
+						$dir . '/sql/AddArticleFeedbackStatsTypeTable.sql',
 						true
 					) );
 				}
