@@ -63,9 +63,9 @@
 		if ( $confirm ) {
 			$this->doDelete( $reason );
 			if ( $wgRequest->getCheck( 'wpWatch' ) ) {
-				Action::factory( 'watch', $this )->execute();
+				WatchAction:doWatch( $this->mTitle, $wgUser );
 			} elseif ( $this->mTitle->userIsWatching() ) {
-				Action::factory( 'watch', $this )->execute();
+				WatchAction:doUnwatch( $this->mTitle, $wgUser );
 			}
 			return;
 		}
