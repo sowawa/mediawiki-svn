@@ -138,6 +138,9 @@ You would not able to log in without an OpenID.',
 	'openid-dashboard-title' => 'OpenID dashboard',
 	'openid-dashboard-title-admin' => 'OpenID dashboard (administrator)',
 	'openid-dashboard-introduction' => 'The current OpenID extension settings ([$1 help])',
+	'openid-dashboard-number-openid-users' => 'Number of users with OpenID',
+	'openid-dashboard-number-openids-in-database' => 'Number of OpenIDs (total)',
+	'openid-dashboard-number-users-without-openid' => 'Number of users without OpenID',
 );
 
 /** Message documentation (Message documentation)

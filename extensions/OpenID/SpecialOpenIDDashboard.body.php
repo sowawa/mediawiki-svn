@@ -4,7 +4,6 @@
  *
  * @ingroup SpecialPage
  * @ingroup Extensions
- * @version 0.1
  * @author Thomas Gries
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  * @link http://www.mediawiki.org/wiki/Extension:OpenID Documentation
@@ -83,7 +82,9 @@ class SpecialOpenIDDashboard extends SpecialPage {
 			Html::openElement( 'table', array( 'style' => 'width:50%;', 'class' => 'mw-openiddashboard-table wikitable' ) )
 		);
 
-		$out  = $this->show( 'MEDIAWIKI_OPENID_VERSION', MEDIAWIKI_OPENID_VERSION );
+		# Here we show some basic version infos. Retrieval of SVN revision number of OpenID appears to be too difficult
+		$out  = $this->show( 'OpenID ' . wfMsg( 'version-software-version' ), MEDIAWIKI_OPENID_VERSION );
+		$out .= $this->show( 'MediaWiki ' . wfMsg( 'version-software-version' ), SpecialVersion::getVersion() );
 		$out .= $this->show( '$wgOpenIDOnly', $wgOpenIDOnly );
 		$out .= $this->show( '$wgOpenIDClientOnly', $wgOpenIDClientOnly );
 		$out .= $this->show( '$wgOpenIDAllowServingOpenIDUserAccounts', $wgOpenIDAllowServingOpenIDUserAccounts );
@@ -95,11 +96,10 @@ class SpecialOpenIDDashboard extends SpecialPage {
 		$out .= $this->show( '$wgOpenIDProposeUsernameFromSREG', $wgOpenIDProposeUsernameFromSREG );
 		$out .= $this->show( '$wgOpenIDShowUrlOnUserPage', $wgOpenIDShowUrlOnUserPage );
 		$out .= $this->show( '$wgOpenIDShowProviderIcons', $wgOpenIDShowProviderIcons );
-
-		$out .= $this->show( 'Number of users (total)', $totalUsers );
-		$out .= $this->show( 'Number of users with OpenID', $OpenIDdistinctUsers  );
-		$out .= $this->show( 'Number of OpenIDs (total)', $OpenIDUsers );
-		$out .= $this->show( 'Number of users without OpenID', $totalUsers - $OpenIDdistinctUsers );
+		$out .= $this->show( wfMsgExt( 'statistics-users', array( 'parseinline' ) ), $totalUsers );
+		$out .= $this->show( wfMsg( 'openid-dashboard-number-openid-users' ), $OpenIDdistinctUsers  );
+		$out .= $this->show( wfMsg( 'openid-dashboard-number-openids-in-database' ), $OpenIDUsers );
+		$out .= $this->show( wfMsg( 'openid-dashboard-number-users-without-openid' ), $totalUsers - $OpenIDdistinctUsers );
 
 		$wgOut->addHTML( $out . Html::closeElement( 'table' ) . "\n" );
 
