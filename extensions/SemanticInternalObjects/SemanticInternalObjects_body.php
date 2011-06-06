@@ -20,7 +20,7 @@ class SIOInternalObject {
 	public function addPropertyAndValue( $propName, $value ) {
 		// SMW 1.6+
 		if ( class_exists( 'SMWDIProperty' ) ) {
-			$property = new SMWDIProperty( $propName );
+			$property = SMWDIProperty::newFromUserLabel( $propName );
 		} else {
 			$property = SMWPropertyValue::makeUserProperty( $propName );
 		}
