@@ -86,26 +86,29 @@ def parse_title_meta_data(title, ns, namespaces):
     elif ns == 4 or ns == 5:
         if title.find('Articles for deletion') > -1:
             title_meta['category'] = 'Deletion'
-        elif title.find('Mediation Committee') > -1:
-            title_meta['category'] = 'Mediation'
-        elif title.find('Mediation Cabal') > -1:
-            title_meta['category'] = 'Mediation'
         elif title.find('Arbitration') > -1:
             title_meta['category'] = 'Arbitration'
-        elif title.find('Featured Articles') > -1:
-            title_meta['category'] = 'Featured Article'
-        elif title.find('Featured picture candidates') > -1:
-            title_meta['category'] = 'Featured Pictures'
-        elif title.find('Featured sound candidates') > -1:
-            title_meta['category'] = 'Featured Sounds'
-        elif title.find('Featured list candidates') > -1:
-            title_meta['category'] = 'Featured Lists'
-        elif title.find('Featured portal candidates') > -1:
-            title_meta['category'] = 'Featured Portal'
-        elif title.find('Featured topic candidates') > -1:
-            title_meta['category'] = 'Featured Topic'
         elif title.find('Good Article') > -1:
             title_meta['category'] = 'Good Article'
+        elif title.find('Mediation') > -1:
+            if title.find('Mediation Committee') > -1:
+                title_meta['category'] = 'Mediation'
+            elif title.find('Mediation Cabal') > -1:
+                title_meta['category'] = 'Mediation'
+        elif title.find('Featured') > -1:
+            if title.find('Featured Articles') > -1:
+                title_meta['category'] = 'Featured Article'
+            elif title.find('Featured picture candidates') > -1:
+                title_meta['category'] = 'Featured Pictures'
+            elif title.find('Featured sound candidates') > -1:
+                title_meta['category'] = 'Featured Sounds'
+            elif title.find('Featured list candidates') > -1:
+                title_meta['category'] = 'Featured Lists'
+            elif title.find('Featured portal candidates') > -1:
+                title_meta['category'] = 'Featured Portal'
+            elif title.find('Featured topic candidates') > -1:
+                title_meta['category'] = 'Featured Topic'
+
     #print title_meta
     return title_meta
 
