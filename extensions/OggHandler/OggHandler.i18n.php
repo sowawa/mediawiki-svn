@@ -188,6 +188,7 @@ Puede <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downloa
 );
 
 /** Arabic (العربية)
+ * @author Aiman titi
  * @author Alnokta
  * @author Majid Al-Dharrab
  * @author Meno25
@@ -231,6 +232,7 @@ $messages['ar'] = array(
 	'ogg-dismiss' => 'أغلق',
 	'ogg-download' => 'نزّل الملف',
 	'ogg-desc-link' => 'عن هذا الملف',
+	'ogg-oggThumb-failed' => 'فشل في إنشاء المصغرات',
 );
 
 /** Aramaic (ܐܪܡܝܐ)

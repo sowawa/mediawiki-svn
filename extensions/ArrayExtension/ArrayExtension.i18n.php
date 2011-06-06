@@ -147,6 +147,13 @@ $messages['mk'] = array(
 	'arrayext-desc' => 'Складирај и пресметај именувани низи',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'arrayext-desc' => 'Menyimpan dan mengira tatasusunan bernama',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

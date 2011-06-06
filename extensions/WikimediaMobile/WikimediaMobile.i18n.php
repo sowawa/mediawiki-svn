@@ -262,7 +262,7 @@ $messages['mk'] = array(
  * @author Praveenp
  */
 $messages['ml'] = array(
-	'wikimediamobile-desc' => 'http://github.com/hcatlin/wikimedia-mobile എന്നയിടത്ത് ഹോസ്റ്റ് ചെയ്യപ്പെട്ടിരിക്കുന്ന വിക്കിമീഡിയ-മൊബൈൽ പദ്ധതിയുടെ മീഡിയ വിക്കി സഹായ ഫങ്ഷനുകൾ',
+	'wikimediamobile-desc' => 'http://github.com/hcatlin/wikimedia-mobile എന്ന് ഹോസ്റ്റ് ചെയ്യപ്പെട്ടിരിക്കുന്ന വിക്കിമീഡിയ-മൊബൈൽ പദ്ധതിയുടെ മീഡിയവിക്കി സഹായ ഫങ്ഷനുകൾ',
 );
 
 /** Mongolian (Монгол)

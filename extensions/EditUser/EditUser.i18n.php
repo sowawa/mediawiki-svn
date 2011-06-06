@@ -979,9 +979,10 @@ $messages['myv'] = array(
 
 /** Nahuatl (Nāhuatl)
  * @author Fluence
+ * @author Ricardo gs
  */
 $messages['nah'] = array(
-	'edituser-username' => 'Tōcāitl',
+	'edituser-username' => 'Tlatequitiltilīltōcāitl:',
 	'edituser-dosearch' => 'Titlatēmōz',
 );
 

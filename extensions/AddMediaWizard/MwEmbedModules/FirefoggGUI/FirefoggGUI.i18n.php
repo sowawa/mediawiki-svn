@@ -3181,7 +3181,12 @@ $messages['ms'] = array(
 	'fogg-aspect-help' => 'Nisbah bidang video boleh jadi 4:3 atau 16:9.
 (Maklumat lanjut mengenai <a target="_new" href="http://ms.wikipedia.org/wiki/Nisbah_bidang_%28imej%29">nisbah bidang</a>.)',
 	'fogg-keyframeInterval-title' => 'Selang bidang utama',
+	'fogg-keyframeInterval-help' => 'Masa selang bidang kekunci dalam bilangan bidang.
+Perhatian: Kebanyakan kodek memaksakan bidang kekunci jika perbezaan antara bidang lebih besar daripada saiz pengekodan bidang kekunci.
+Maklumat lanjut mengenai <a href="http://ms.wikipedia.org/wiki/Intra-bidang">bidang kekunci</a>.',
 	'fogg-denoise-title' => 'Penapis nyahhingar',
+	'fogg-denoise-help' => 'Nyahhingar video input.
+Maklumat lanjut mengenai <a href="http://ms.wikipedia.org/wiki/Penyahhingaran_video">penyahhingaran</a>.',
 	'fogg-novideo-title' => 'Tiada video',
 	'fogg-novideo-help' => 'matikan video dalam output',
 	'fogg-audioBitrate-title' => 'Kadar bit audio',

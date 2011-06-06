@@ -720,7 +720,7 @@ $messages['ce'] = array(
  * @author Mr. Richard Bolla
  */
 $messages['cs'] = array(
-	'articlefeedback' => 'Hodnocení článku',
+	'articlefeedback' => 'Přehled hodnocení článků',
 	'articlefeedback-desc' => 'Hodnocení článků (pilotní verze)',
 	'articlefeedback-survey-question-origin' => 'Ze které stránky jste {{gender:|přišel|přišla|přišli}} na tento průzkum?',
 	'articlefeedback-survey-question-whyrated' => 'Proč jste dnes hodnotili tuto stránku (zaškrtněte všechny platné možnosti)?',
@@ -739,7 +739,8 @@ $messages['cs'] = array(
 	'articlefeedback-error' => 'Došlo k chybě. Zkuste to prosím později.',
 	'articlefeedback-form-switch-label' => 'Hodnoťte tuto stránku',
 	'articlefeedback-form-panel-title' => 'Ohodnoťte tuto stránku',
-	'articlefeedback-form-panel-instructions' => 'Věnujte prosím chvilku ohodnocení této stránky.',
+	'articlefeedback-form-panel-explanation' => 'Co tohle je?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:Hodnocení článků',
 	'articlefeedback-form-panel-clear' => 'Odstranit hodnocení',
 	'articlefeedback-form-panel-expertise' => 'Mám rozsáhlé znalosti tohoto tématu (nepovinné)',
 	'articlefeedback-form-panel-expertise-studies' => 'Mám příslušný vysokoškolský titul',
@@ -751,6 +752,7 @@ $messages['cs'] = array(
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Zásady ochrany osobních údajů',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Ochrana osobních údajů',
 	'articlefeedback-form-panel-submit' => 'Odeslat hodnocení',
+	'articlefeedback-form-panel-pending' => 'Vaše hodnocení zatím nebylo odesláno',
 	'articlefeedback-form-panel-success' => 'Úspěšně uloženo',
 	'articlefeedback-form-panel-expiry-title' => 'Platnost vašeho hodnocení vypršela',
 	'articlefeedback-form-panel-expiry-message' => 'Ohodnoťte prosím stránku znovu a zadejte nové hodnocení.',
@@ -782,8 +784,12 @@ $messages['cs'] = array(
 	'articlefeedback-survey-message-error' => 'Došlo k chybě.
 Zkuste to prosím později.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Dnešní maxima a minima',
+	'articleFeedback-table-caption-dailyhighs' => 'Stránky s nejvyšším hodnocením: $1',
+	'articleFeedback-table-caption-dailylows' => 'Stránky s nejnižším hodnocením: $1',
 	'articleFeedback-table-heading-page' => 'Stránka',
 	'articleFeedback-table-heading-average' => 'Průměr',
+	'articleFeedback-copy-above-highlow-tables' => 'Toto je pokusná funkce. Sdělte nám svůj názor na [$1 diskusní stránce].',
+	'articleFeedback-copy-below-highlow-tables' => 'Tyto tabulky obsahují stránky, které byly v posledních 24 hodinách ohodnoceny alespoň 10krát. Průměry se počítají ze všech hodnocení odeslaných v posledních 24 hodinách.',
 );
 
 /** German (Deutsch)
@@ -1525,7 +1531,7 @@ $messages['frp'] = array(
 	'articlefeedback-error' => 'Una èrror est arrevâ. Volyéd tornar èprovar ples târd.',
 	'articlefeedback-form-switch-label' => 'Èstimar cela pâge',
 	'articlefeedback-form-panel-title' => 'Èstimar cela pâge',
-	'articlefeedback-form-panel-instructions' => 'Volyéd prendre un moment por èstimar cela pâge.',
+	'articlefeedback-form-panel-explanation' => 'Qu’est-o qu’il est ?',
 	'articlefeedback-form-panel-clear' => 'Enlevar cela èstimacion',
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Politica de confidencialitât',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Politica de confidencialitât',

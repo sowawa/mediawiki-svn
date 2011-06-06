@@ -276,6 +276,13 @@ $messages['mk'] = array(
 	'apisvgproxy-desc' => 'Посредува со SVG податотеки од (можеби далечинско) складиште на податотеки до локален домен',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'apisvgproxy-desc' => 'Memproksi fail SVG daripada repositori fail (yang mungkin berjauhan) kepada domain setempat',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */

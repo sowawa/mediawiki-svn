@@ -2754,22 +2754,30 @@ $messages['frp'] = array(
 	'mwe-unknown-error' => 'Èrror encognua :',
 	'mwe-return-to-form' => 'Tornar u formulèro',
 	'mwe-file-exists-duplicate' => 'Cél fichiér est un doblo de ceti fichiér :',
+	'mwe-fileexists' => 'Un fichiér avouéc cél nom ègziste ja. Volyéd controlar <b><tt>$1</tt></b> se vos éte pas de sûr de lo volêr changiér.',
 	'mwe-fileexists-thumb' => 'Fichiér ègzistent',
 	'mwe-ignorewarning' => 'Ignorar l’avèrtissement et pués sôvar quand mémo lo fichiér',
 	'mwe-file-thumbnail-no' => 'Lo nom du fichiér comence per <b><code>$1</code></b>',
 	'mwe-go-to-resource' => 'Alar a la pâge de la ressôrsa',
 	'mwe-upload-misc-error' => 'Èrror encognua pendent lo tèlèchargement',
+	'mwe-wgfogg_warning_bad_extension' => 'Vos éd chouèsi un fichiér qu’at una èxtension pas recognua (<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_file_types">més d’enformacions</a>).',
 	'mwe-thumbnail-more' => 'Agrantir',
 	'mwe-filesource' => 'Sôrsa :',
 	'mwe-filestatus' => 'Statut des drêts d’ôtor :',
 	'mwe-loading-add-media-wiz' => 'Chargement de l’assistent d’aponsa de mèdia',
+	'mwe-imported_from' => '$1 at importâ dês [$2 $3].
+Vêde la [$4 pâge de la ressôrsa] originâla por més d’enformacions.',
 	'mwe-import-description' => '$1, importâs dês $2',
 	'mwe-select_file' => 'Chouèsésséd un fichiér',
+	'mwe-select_ownwork' => 'Tèlècharjo ren que mes prôpres ôvres, et les plaço desot licence :',
 	'mwe-license_cc-by-sa' => 'Creative Commons partâjo a l’identico (3.0)',
 	'mwe-upload' => 'Tèlèchargiér lo fichiér',
 	'mwe-destfilename' => 'Nom du fichiér de dèstinacion :',
 	'mwe-summary' => 'Rèsumâ',
 	'mwe-date-of-work' => 'Dâta de l’ôvra',
+	'mwe-error_not_loggedin' => 'Semble que vos seyâd pas branchiê ou ben que vos èyâd pas lo drêt de tèlèchargiér.',
+	'mwe-error-not-loggedin-file' => 'Vos semblâd pas étre branchiê ou ben y at una èrror dens la programeria.
+Vos vos pouede $1 et pués tornâd èprovar',
 	'mwe-link-login' => 'branchiér',
 	'mwe-watch-this-file' => 'Siuvre ceti fichiér',
 	'mwe-ignore-any-warnings' => 'Ignorar tôs los avèrtissements',
@@ -2779,6 +2787,8 @@ $messages['frp'] = array(
 	'mwe-upload-once-done' => 'Volyéd $1. Setout que vos aréd chavonâ voutron tèlèchargement, $2',
 	'mwe-upload-in-new-win-link' => 'tèlèchargiér dens una fenétra novèla ou ben una ongllèta',
 	'mwe-upload-refresh' => 'rafrèchir voutra lista de tèlèchargement',
+	'mwe-ie-inline-upload' => 'Lo tèlèchargement en legne est ora dèsactivâ por Internet Explorer.
+Vos pouede $1, et pués $2',
 	'mwe-upload-in-progress' => 'Tèlèchargement en cors (pas cllôre cela fenétra)',
 	'mwe-uploaded-status' => 'Tèlèchargiê',
 	'mwe-transcoded-status' => 'Transcodâ',
@@ -2805,7 +2815,13 @@ $messages['frp'] = array(
 	'mwe-cc_sa_title' => 'Partâjo a l’identico',
 	'mwe-cc_pd_title' => 'Domêno publico',
 	'mwe-unknown_license' => 'Licence encognua',
+	'mwe-no-import-by-url' => 'Cél utilisator ou vouiqui <b>pôt pas</b> importar des ressôrses dês les URLs a distance.
+<p>Avéd-vos fôta de vos branchiér ?</p>
+<p>La pèrmission « upload_by_url » vos est acordâ ?
+Lo vouiqui at-o ôtorisâ los $1 ?</p>',
 	'mwe-results_from' => 'Rèsultats dês $1',
+	'mwe-missing_desc_see_source' => 'Manque una dèscripcion por cela ressôrsa.
+Vêde la [$1 sôrsa] et pués édiéd a la dècrire.',
 	'mwe-am-config_error' => 'Èrror de configuracion de l’assistent d’aponsa de mèdia : $1',
 	'mwe-your-recent-uploads' => 'Voutros tèlèchargements',
 	'mwe-your-recent-uploads-to' => 'Voutros novéls tèlèchargements dessus $1',

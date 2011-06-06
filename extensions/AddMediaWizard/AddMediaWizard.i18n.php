@@ -211,6 +211,14 @@ $messages['fr'] = array(
 	'addmediawizard-loading' => "Chargement de l'assistant d'ajout de média",
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'addmediawizard-desc' => 'Apond un assistent por los médias, dèvelopâ dens un partenariat entre Kaltura et la Wikimedia Foundation.',
+	'addmediawizard-loading' => 'Chargement de l’assistent d’aponsa de mèdia',
+);
+
 /** Scottish Gaelic (Gàidhlig)
  * @author Akerbeltz
  */

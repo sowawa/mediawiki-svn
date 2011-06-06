@@ -1617,7 +1617,7 @@ Se ne, klaku la butonon "Continue" (Daŭri).',
  */
 $messages['es'] = array(
 	'openid-desc' => 'Ingresa a la wiki con un [http://openid.net OpenID] e ingresa a los otros sitios que aceptan OpenID con una cuenta de usuario wiki.',
-	'openidlogin' => 'Conectarse con OpenID',
+	'openidlogin' => 'Conectarse / crear cuenta con OpenID',
 	'openidserver' => 'servidor OpenID',
 	'openidxrds' => 'Archivo Yadis',
 	'openidconvert' => 'Convertidor OpenID',
@@ -1633,9 +1633,13 @@ Por favor consulte a un [[Special:ListUsers/sysop|administrador]].',
 	'openidfailure' => 'Verificación fracasada',
 	'openidfailuretext' => 'Verificación del OpenID fracasó. Mensaje de error: "$1".',
 	'openidsuccess' => 'Verificación fue un éxito',
-	'openidsuccesstext' => 'Verificación del URL OpenID fue un éxito.',
+	'openidsuccesstext' => "'''Verificación e inicio de sesión exitosa como usuario $1'''.
+
+Tu OpenID es $2 .
+
+Esta y otras OpenIDs, y una contraseña de cuenta opcional, puedn ser administradas en tus [[Special:Preferences|preferencias]].",
 	'openidusernameprefix' => 'OpenIDUser',
-	'openidserverlogininstructions' => 'Ingresa tu password debajo para ingresar a $3 como el usuario $2 (página de usuario $1)',
+	'openidserverlogininstructions' => '$3 solicita que ingreses tu contraseña para tu página de usuario $2 $1 (ésta es tu OpenID URL)',
 	'openidtrustinstructions' => 'Verifique si usted desea compartir información con $1.',
 	'openidallowtrust' => 'Permitir a $1 confiar en esta cuenta de usuario.',
 	'openidnopolicy' => 'El sitio no ha especificado una política de privacidad.',
@@ -1647,7 +1651,7 @@ Por favor consulte a un [[Special:ListUsers/sysop|administrador]].',
 	'openidemail' => 'Dirección de correo electrónico',
 	'openidlanguage' => 'Idioma',
 	'openidtimezone' => 'Huso horario',
-	'openidchooselegend' => 'Elección del nombre de usuario',
+	'openidchooselegend' => 'Elección del nombre de usuario y cuenta',
 	'openidchooseinstructions' => 'Todos los usuarios necesitan un sobrenombre;
 puedes escoger uno de las opciones debajo.',
 	'openidchoosenick' => 'Tu apodo ($1)',
@@ -1664,9 +1668,7 @@ puedes escoger uno de las opciones debajo.',
 	'openidconvertsuccesstext' => 'Usted ha convertido exitosamente su OpenID a $1.',
 	'openidconvertyourstext' => 'Esto ya es su OpenID.',
 	'openidconvertothertext' => 'Esto es el OpenID de alguien más.',
-	'openidalreadyloggedin' => "'''¡Ya has ingresado al sistema, $1!'''
-
-Si quieres usar OpenID para ingresar en el futuro, puedes [[Special:OpenIDConvert|convertir tu cuenta a OpenID]].",
+	'openidalreadyloggedin' => 'Ya has ingresado.',
 	'openidnousername' => 'Ningún nombre de usuario especificado.',
 	'openidbadusername' => 'Nombre de usuario mal especificado.',
 	'openidautosubmit' => 'Esta página incluye un formulario que será automáticamnte enviado si dispones de JavaScript.
@@ -3459,7 +3461,7 @@ Kontaktéiert w.e.g. een [[Special:ListUsers/sysop|Administrateur]].",
 
 Dës a weider OpenId'en, an en optionaalt Passwuert, kann an Ären [[Special:Preferences|Astellungen]] geréiert ginn.",
 	'openidusernameprefix' => 'OpenIDBenotzer',
-	'openidserverlogininstructions' => '$3 freet datt Dir Äert Passwuert agitt fir Är $2-Benotzersäit (dëst ass Är OpenID URL).',
+	'openidserverlogininstructions' => '$3 freet datt Dir Äert Passwuert agitt fir Är $2-Benotzersäit $1 (dëst ass Är OpenID URL).',
 	'openidtrustinstructions' => 'Klickt un wann Dir Donnéeën mat $1 deele wellt.',
 	'openidallowtrust' => 'Erlaabt $1 fir dësem Benotzerkont ze vertrauen.',
 	'openidnopolicy' => 'De Site huet keng Richtlinne fir den Dateschutz uginn.',

@@ -282,6 +282,13 @@ $messages['mk'] = array(
 	'autoincrement-desc' => 'Повикувач на променливи кој ја додава автоинкрементирачката променлива <nowiki>{{AUTOINCREMENT}}</nowiki>',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'autoincrement-desc' => 'Cangkuk pembolehubah yang menambahkan pembolehubah autotokok <nowiki>{{AUTOINCREMENT}}</nowiki>',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */

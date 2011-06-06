@@ -860,6 +860,7 @@ Perubahan yang anda lakukan di laman ini mungkin hilang sekiranya anda tinggalka
 Nama pengguna adalah peka besar kecil huruf.
 Sila semak ejaan anda.',
 	'al-createblocked' => 'Alamat IP anda disekat daripada membuka akaun.',
+	'al-throttled' => 'Anda telah membuat terlalu banyak cubaan kata laluan terkini. Sila tunggu $1 saat sebelum mencuba lagi.',
 );
 
 /** Erzya (Эрзянь)
