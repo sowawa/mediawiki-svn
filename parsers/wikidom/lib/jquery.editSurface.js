@@ -11,7 +11,53 @@ $.fn.editSurface = function( options ) {
 		.append( '<div class="editSurface-document"></div>' )
 		.before( '<div class="editSurface-range"></div>'
 				+ '<div class="editSurface-range"></div>'
-				+ '<div class="editSurface-range"></div>');
+				+ '<div class="editSurface-range"></div>')
+		.mousedown( function( e ) {
+			var $target = $( e.target );
+			// TODO: If the target is not a line, find the nearest line to the cursor and use it
+			if ( $target.is( '.editSurface-line' ) ) {
+				e.preventDefault();
+				e.stopPropagation();
+				sel = {
+					'active': true,
+					'from': null,
+					'to': null,
+					'start': getSelection( e ),
+					'end': null
+				};
+				drawSelection( $target.parent() );
+			}
+			return false;
+		} )
+		.mouseup( function( e ) {
+			var $target = $( e.target );
+			if ( !$target.is( '.editSurface-line' ) || !sel.from || !sel.to
+					|| ( sel.from.line === sel.to.line && sel.from.index === sel.to.index ) ) {
+				sel.from = null;
+				sel.to = null;
+				sel.start = null;
+				sel.end = null;
+			}
+			sel.active = false;
+			drawSelection( $target.parent() );
+		} )
+		.mousemove( function( e ) {
+			var $target = $( e.target );
+			// TODO: If the target is not a line, find the nearest line to the cursor and use it
+			if ( $target.is( '.editSurface-line' ) && sel.active ) {
+				sel.end = getSelection( e );
+				if ( sel.start.line < sel.end.line
+						|| ( sel.start.line === sel.end.line
+								&& sel.start.index < sel.end.index ) ) {
+					sel.from = sel.start;
+					sel.to = sel.end;
+				} else {
+					sel.from = sel.end;
+					sel.to = sel.start;
+				}
+				drawSelection( $target.parent() );
+			}
+		} );
 	var ranges = {
 		'$all': $( '.editSurface-range' ),
 		'$first': $( '.editSurface-range:eq(0)' ),
@@ -147,50 +193,6 @@ $.fn.editSurface = function( options ) {
 			lines.push( paragraph.lines[i].text );
 		}
 		$paragraph.flow( lines.join( ' ' ) );
-		$paragraph
-			.mousedown( function( e ) {
-				// TODO: If the target is not a line, find the nearest line to the cursor and use it
-				if ( $( e.target ).is( '.editSurface-line' ) ) {
-					e.preventDefault();
-					e.stopPropagation();
-					sel = {
-						'active': true,
-						'from': null,
-						'to': null,
-						'start': getSelection( e ),
-						'end': null
-					};
-					drawSelection( $paragraph );
-				}
-				return false;
-			} )
-			.mouseup( function( e ) {
-				if ( !$( e.target ).is( '.editSurface-line' ) || !sel.from || !sel.to
-						|| ( sel.from.line === sel.to.line && sel.from.index === sel.to.index ) ) {
-					sel.from = null;
-					sel.to = null;
-					sel.start = null;
-					sel.end = null;
-				}
-				sel.active = false;
-				drawSelection( $paragraph );
-			} )
-			.mousemove( function( e ) {
-				// TODO: If the target is not a line, find the nearest line to the cursor and use it
-				if ( $( e.target ).is( '.editSurface-line' ) && sel.active ) {
-					sel.end = getSelection( e );
-					if ( sel.start.line < sel.end.line
-							|| ( sel.start.line === sel.end.line
-									&& sel.start.index < sel.end.index ) ) {
-						sel.from = sel.start;
-						sel.to = sel.end;
-					} else {
-						sel.from = sel.end;
-						sel.to = sel.start;
-					}
-					drawSelection( $paragraph );
-				}
-			} );
 	}
 	
 	function update() {
