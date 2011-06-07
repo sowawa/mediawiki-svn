@@ -30,7 +30,7 @@ $wgParserTestFiles[] = dirname( __FILE__ ) . "/poemParserTests.txt";
 $wgExtensionMessagesFiles['Poem'] =  dirname(__FILE__) . '/Poem.i18n.php';
 
 function wfPoemExtension( &$parser ) {
-	$parser->setHook("poem","PoemExtension");
+	$parser->setHook( 'poem', 'wfRenderPoemTag' );
 	return true;
 }
 
@@ -41,19 +41,21 @@ function wfPoemExtension( &$parser ) {
  * @param bool $frame
  * @return string
  */
-function PoemExtension( $in, $param=array(), $parser=null, $frame=false ) {
+function wfRenderPoemTag( $in, $param=array(), $parser=null, $frame=false ) {
 
 	/* using newlines in the text will cause the parser to add <p> tags,
- 	 * which may not be desired in some cases
+	 * which may not be desired in some cases
 	 */
 	$nl = isset( $param['compact'] ) ? '' : "\n";
-  
+
 	$tag = $parser->insertStripItem( "<br />", $parser->mStripState );
+
 	$text = preg_replace(
-		array( "/^\n/", "/\n$/D", "/\n/", "/^( +)/me" ),
-		array( "", "", "$tag\n", "str_replace(' ','&#160;','\\1')" ),
+		array( "/^\n/", "/\n$/D", "/\n/" ),
+		array( "", "", "$tag\n" ),
 		$in );
-		$text = $parser->recursiveTagParse( $text, $frame );
+	$text = preg_replace_callback( '/^( +)/m', 'wfPoemReplaceSpaces', $text );
+	$text = $parser->recursiveTagParse( $text, $frame );
 
 	$attribs = Sanitizer::validateTagAttributes( $param, 'div' );
 
@@ -64,8 +66,15 @@ function PoemExtension( $in, $param=array(), $parser=null, $frame=false ) {
 		$attribs['class'] = 'poem';
 	}
 
-	return Xml::openElement( 'div', $attribs ) .
-		$nl .
-		trim( $text ) .
-		"$nl</div>";
+	return array(
+		Html::rawElement( 'div', $attribs, $nl . trim( $text ) . $nl ),
+		'markerType' => 'none',
+	);
+}
+
+/**
+ * Callback for preg_replace_callback()
+ */
+function wfPoemReplaceSpaces( $m ) {
+	return str_replace( ' ', '&#160;', $m[1] );
 }
