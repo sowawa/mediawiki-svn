@@ -81,7 +81,13 @@ class LDAPSupportLib:
 		return self.ldapHost
 
 	def getLdapInfo(self, attr, conffile="/etc/ldap.conf"):
-		f = open(conffile)
+		try:
+			f = open(conffile)
+		except IOError:
+			if conffile == "/etc/ldap.conf":
+				# fallback to /etc/ldap/ldap.conf, which will likely
+				# have less information
+				f = open("/etc/ldap/ldap.conf")
 		for line in f:
 			if line.strip() == "":
 				continue
