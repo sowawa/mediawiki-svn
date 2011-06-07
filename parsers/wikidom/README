@@ -61,7 +61,6 @@ a dialog or inspector.
 
 * Re-flow lines without deleting paragraph elements
 * Auto-update selection on resize
-* Draw blinking cursor
 * Handle keyboard input for moving cursor and making selection
 * Handle keyboard input for inserting and deleting
 * Support multiple font styles in the same paragraph
