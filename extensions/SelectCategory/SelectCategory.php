@@ -16,10 +16,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die();
 }
 
-## Load the file containing the hook functions:
-require_once( 'SelectCategoryFunctions.php' );
-
-## Options:
+## Options
 # $wgSelectCategoryNamespaces - list of namespaces in which this extension should be active
 if( !isset( $wgSelectCategoryNamespaces	) ) $wgSelectCategoryNamespaces = array(
 	NS_MEDIA		=> true,
@@ -67,8 +64,8 @@ if( !isset( $wgSelectCategoryEnableSubpages ) ) $wgSelectCategoryEnableSubpages 
 $wgExtensionCredits['parserhook'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'SelectCategory',
-	'version'        => '0.7dev',
-	'author'         => 'Leon Weber & Manuel Schneider',
+	'version'        => '0.8.1',
+	'author'         => array( 'Leon Weber', 'Manuel Schneider' ),
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:SelectCategory',
 	'descriptionmsg' => 'selectcategory-desc',
 );
@@ -76,18 +73,17 @@ $wgExtensionCredits['parserhook'][] = array(
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['SelectCategory'] = $dir . 'SelectCategory.i18n.php';
 
-## Set Hook:
-global $wgHooks;
+$wgAutoloadClasses['SelectCategory'] = $dir . 'SelectCategoryFunctions.php';
 
 ## Showing the boxes
-# Hook when starting editing:
-$wgHooks['EditPage::showEditForm:initial'][] = array( 'fnSelectCategoryShowHook', false );
-# Hook for the upload page:
-$wgHooks['UploadForm:initial'][] = array( 'fnSelectCategoryShowHook', true );
+# Hook when starting editing
+$wgHooks['EditPage::showEditForm:initial'][] = array( 'SelectCategory::showHook', false );
+# Hook for the upload page
+$wgHooks['UploadForm:initial'][] = array( 'SelectCategory::showHook', true );
 
 ## Saving the data
-# Hook when saving page:
-$wgHooks['EditPage::attemptSave'][] = array( 'fnSelectCategorySaveHook', false );
-# Hook when saving the upload:
-$wgHooks['UploadForm:BeforeProcessing'][] = array( 'fnSelectCategorySaveHook', true );
+# Hook when saving page
+$wgHooks['EditPage::attemptSave'][] = array( 'SelectCategory::saveHook', false );
+# Hook when saving the upload
+$wgHooks['UploadForm:BeforeProcessing'][] = array( 'SelectCategory::saveHook', true );
 

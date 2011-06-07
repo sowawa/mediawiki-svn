@@ -1,3 +1,6 @@
+* v0.8.1 - 2011-06-07
+  - Fix for code structure and variable names (Yaron Koren)
+
 * v0.8
   - using JQuery Treeview to collapse / expand branches
 
