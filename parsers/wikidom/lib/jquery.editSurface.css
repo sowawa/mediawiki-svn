@@ -43,3 +43,11 @@ body {
 	background-color: Highlight;
 	cursor: text;
 }
+
+.editSurface-cursor {
+	position: absolute;
+	background-color: black;
+	width: 1px;
+	height: 1.5em;
+	display: none;
+}

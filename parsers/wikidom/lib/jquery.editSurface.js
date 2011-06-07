@@ -1,6 +1,8 @@
 $.fn.editSurface = function( options ) {
 	var $this = $(this);
-	var sel;
+	sel = {
+		'active': false
+	};
 	
 	options = $.extend( {
 		// Defaults
@@ -11,6 +13,7 @@ $.fn.editSurface = function( options ) {
 	$this
 		.addClass( 'editSurface-container' )
 		.append( '<div class="editSurface-document"></div>' )
+		.after( '<div class="editSurface-cursor"></div>' )
 		.before( '<div class="editSurface-range"></div>'
 				+ '<div class="editSurface-range"></div>'
 				+ '<div class="editSurface-range"></div>')
@@ -27,7 +30,15 @@ $.fn.editSurface = function( options ) {
 					'start': getSelection( e ),
 					'end': null
 				};
+				cursor.show();
 				drawSelection( $target.parent() );
+				// Move cursor
+				if ( sel.start ) {
+					cursor.$.css( {
+						'top': sel.start.top,
+						'left': sel.start.left
+					} );
+				}
 			}
 			return false;
 		} )
@@ -39,6 +50,7 @@ $.fn.editSurface = function( options ) {
 				sel.to = null;
 				sel.start = null;
 				sel.end = null;
+				cursor.show();
 			}
 			sel.active = false;
 			drawSelection( $target.parent() );
@@ -57,6 +69,7 @@ $.fn.editSurface = function( options ) {
 					sel.from = sel.end;
 					sel.to = sel.start;
 				}
+				cursor.hide();
 				drawSelection( $target.parent() );
 			}
 		} );
@@ -201,6 +214,36 @@ $.fn.editSurface = function( options ) {
 		}
 	}
 	
+	var cursor = {
+		'$': $( '.editSurface-cursor' ),
+		'visible': true,
+		'timeout': null,
+		'speed': 500
+	};
+	cursor.blink = function() {
+		// Flip
+		cursor.visible = !cursor.visible;
+		// Hide/show
+		cursor.visible ? cursor.$.hide() : cursor.$.show();
+		// Repeat
+		cursor.timeout = setTimeout( cursor.blink, cursor.speed )
+	}
+	cursor.show = function() {
+		// Start visible (will flip when run)
+		cursor.visible = true;
+		cursor.$.show();
+		// Start/restart blinking
+		clearTimeout( cursor.timeout );
+		cursor.blink();
+	};
+	cursor.hide = function() {
+		// Hide
+		cursor.$.hide();
+		// Stop blinking
+		clearTimeout( cursor.timeout );
+	};
+	
 	$(window).resize( update );
 	update();
+	cursor.show();
 };
