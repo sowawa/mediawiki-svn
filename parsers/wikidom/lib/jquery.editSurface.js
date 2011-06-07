@@ -245,5 +245,4 @@ $.fn.editSurface = function( options ) {
 	
 	$(window).resize( update );
 	update();
-	cursor.show();
 };
