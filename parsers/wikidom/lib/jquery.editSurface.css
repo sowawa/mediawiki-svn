@@ -1,0 +1,45 @@
+body {
+	font-family: "Arial";
+	font-size: 0.8em;
+}
+
+#selection {
+	position: absolute;
+	right: 3%;
+	width: 45%;
+	border: solid 1px Highlight;
+	line-height: 1.5em;
+	cursor: text;
+}
+
+#selection p {
+	margin: 0;
+	padding: 1em;
+}
+
+.editSurface-container {
+	position: absolute;
+	left: 3%;
+	width: 45%;
+	border: solid 1px red;
+	cursor: text;
+}
+
+.editSurface-paragraph {
+	padding: 1em;
+}
+
+.editSurface-container .editSurface-line {
+	height: 1.5em;
+	line-height: 1.5em;
+	width: 100%;
+	cursor: text;
+	overflow: hidden;
+}
+
+.editSurface-range {
+	display: none;
+	position: absolute;
+	background-color: Highlight;
+	cursor: text;
+}

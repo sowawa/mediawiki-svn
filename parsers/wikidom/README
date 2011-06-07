@@ -42,3 +42,29 @@ a variety of objects.
 : A series of item objects.
 ; Table
 : A series of rows, each a series of columns, which contain document objects.
+
+== EditSurface ==
+
+EditSurface is a proof-of-concept for rendering a structured and formatted text editor. The document
+structure is from WikiDOM, and should be kept compatible as WikiDOM changes. 
+
+=== Design ===
+
+A document is made up of a series of blocks, each with unique data structures and user interfaces.
+These blocks may be paragraphs, lists, tables, etc. Within a block, the most common atomic element
+is a line of text. Within a line of text, annotations can be applied which will affect it's
+rendering. Additionally, discreet in-line objects can be used within a line. These items are treated
+as a single character during selection, and are modified using a supplemental user interface such as
+a dialog or inspector.
+
+=== Plans ===
+
+* Re-flow lines without deleting paragraph elements
+* Auto-update selection on resize
+* Draw blinking cursor
+* Handle keyboard input for moving cursor and making selection
+* Handle keyboard input for inserting and deleting
+* Support multiple font styles in the same paragraph
+* Support "black-box" in-line elements, treat them as a single character
+* Add list editor
+* Add table editor
