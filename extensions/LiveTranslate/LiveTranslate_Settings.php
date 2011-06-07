@@ -33,6 +33,10 @@ $wgGroupPermissions['sysop']['managetms'] = true;
 # TMT_LTF, TMT_TMX, TMT_GCSV
 $egLiveTranslateTMT = TMT_LTF;
 
+# Translation service to use.
+# LTS_GOOGLE, LTS_MS
+$egLiveTranslateService = LTS_GOOGLE;
+
 # The namespaces that should show the translation control.
 $egLTNSWithTranslationControl = array(
 	              NS_MAIN => true,
@@ -58,3 +62,5 @@ $egLTUnknownNSShowControl = true;
 
 # When true, this prevents storange of translations that are the same in the source and target language.
 $egLTRequireSignificance = false;
+
+$egLiveTranslateDebugJS = false;

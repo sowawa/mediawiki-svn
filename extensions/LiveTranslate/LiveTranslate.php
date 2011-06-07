@@ -24,7 +24,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define( 'LiveTranslate_VERSION', '1.0.1' );
+define( 'LiveTranslate_VERSION', '1.1 alpha' );
 
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
@@ -95,6 +95,18 @@ if ( defined( 'MW_SUPPORTS_RESOURCE_MODULES' ) ) {
 		'dependencies' => array(),
 		'messages' => $egLTJSMessages
 	);
+	
+	$wgResourceModules['ext.lt.google'] = $moduleTemplate + array(
+		'scripts' => array( 'includes/ext.lt.google.js' ),
+		'dependencies' => array( 'ext.livetranslate' ),
+		'messages' => array()
+	);
+	
+	$wgResourceModules['ext.lt.ms'] = $moduleTemplate + array(
+		'scripts' => array( 'includes/ext.lt.ms.js' ),
+		'dependencies' => array( 'ext.livetranslate' ),
+		'messages' => array()
+	);
 }
 
 /**
@@ -105,6 +117,14 @@ if ( defined( 'MW_SUPPORTS_RESOURCE_MODULES' ) ) {
 define( 'TMT_LTF', 0 );
 define( 'TMT_TMX', 1 );
 define( 'TMT_GCSV', 2 );
+
+/**
+ * Enum for translation services.
+ * 
+ * @since 1.1
+ */
+define( 'LTS_GOOGLE', 0 );
+define( 'LTS_MS', 1 );
 
 $egLiveTranslateMagicWords = array();
 

@@ -21,9 +21,30 @@ final class LiveTranslateFunctions {
 	public static function loadJs() {
 		global $wgOut;
 		
+		$wgOut->addScript(
+			Html::inlineScript(
+				'var ltDebugMessages = ' . FormatJson::encode( $GLOBALS['egLiveTranslateDebugJS'] ) . ';'
+			)
+		);
+		
 		// For backward compatibility with MW < 1.17.
 		if ( is_callable( array( $wgOut, 'addModules' ) ) ) {
-			$wgOut->addModules( 'ext.livetranslate' );
+			$modules = array( 'ext.livetranslate' );
+			
+			switch( $GLOBALS['egLiveTranslateService'] ) {
+				case LTS_GOOGLE: 
+					$modules[] = 'ext.lt.google';
+					$wgOut->addHeadItem(
+						'ext.lt.google.jsapi',
+						Html::linkedScript( 'https://www.google.com/jsapi?key=' . htmlspecialchars( $GLOBALS['egGoogleApiKey'] ) )
+					);
+					break;
+				case LTS_MS:
+					$modules[] = 'ext.lt.ms';
+					break;
+			}
+			
+			$wgOut->addModules( $modules );
 		}
 		else {
 			global $egLiveTranslateScriptPath;
@@ -36,6 +57,26 @@ final class LiveTranslateFunctions {
 				'ext.livetranslate',
 				Html::linkedScript( $egLiveTranslateScriptPath . '/includes/ext.livetranslate.js' )
 			);
+			
+			switch( $GLOBALS['egLiveTranslateService'] ) {
+				case LTS_GOOGLE:
+					$wgOut->addHeadItem(
+						'ext.lt.google.jsapi',
+						Html::linkedScript( 'https://www.google.com/jsapi?key=' . htmlspecialchars( $GLOBALS['egGoogleApiKey'] ) )
+					);
+					
+					$wgOut->addHeadItem(
+						'ext.lt.google',
+						Html::linkedScript( $egLiveTranslateScriptPath . '/includes/ext.lt.google.js' )
+					);
+					break;
+				case LTS_MS:
+					$wgOut->addHeadItem(
+						'ext.lt.ms',
+						Html::linkedScript( $egLiveTranslateScriptPath . '/includes/ext.lt.ms.js' )
+					);
+					break;
+			}
 		}		
 	}	
 	

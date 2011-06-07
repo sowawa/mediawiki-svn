@@ -154,41 +154,38 @@ final class LiveTranslateHooks {
 	protected static function displayTranslationControl( $currentLang ) {
 		global $wgOut, $egGoogleApiKey;
 		
+		$divContents = htmlspecialchars( wfMsg( 'livetranslate-translate-to' ) ) .
+			'&#160;' . 
+			LiveTranslateFunctions::getLanguageSelector( $currentLang ) .
+			'&#160;' . 
+			Html::element(
+				'button',
+				array( 'id' => 'livetranslatebutton' ),
+				wfMsg( 'livetranslate-button-translate' )
+			) .
+			'&#160;' . 
+			Html::element(
+				'button',
+				array( 'id' => 'ltrevertbutton', 'style' => 'display:none' ),
+				wfMsg( 'livetranslate-button-revert' )
+			);				
+		
+		if ( $GLOBALS['egLiveTranslateService'] == LTS_GOOGLE ) {
+			$divContents .= '<br /><br /><div id="googlebranding" style="display:inline; float:right"></div>';
+		}
+		
 		$wgOut->addHTML(
 			Html::rawElement(
 				'div',
 				array(
 					'id' => 'livetranslatediv',
 					'style' => 'display:inline; float:right',
-					'class' => 'notranslate'
+					'class' => 'notranslate',
+					'sourcelang' => $currentLang
 				),
-				htmlspecialchars( wfMsg( 'livetranslate-translate-to' ) ) .
-				'&#160;' . 
-				LiveTranslateFunctions::getLanguageSelector( $currentLang ) .
-				'&#160;' . 
-				Html::element(
-					'button',
-					array( 'id' => 'livetranslatebutton' ),
-					wfMsg( 'livetranslate-button-translate' )
-				) .
-				'&#160;' . 
-				Html::element(
-					'button',
-					array( 'id' => 'ltrevertbutton', 'style' => 'display:none' ),
-					wfMsg( 'livetranslate-button-revert' )
-				)					
-			) .
-			'<br /><br /><div id="googlebranding" style="display:inline; float:right"></div>'
+				$divContents
+			)	
 		);
-		
-		$wgOut->addScript(
-			Html::linkedScript( 'https://www.google.com/jsapi?key=' . htmlspecialchars( $egGoogleApiKey ) ) .
-			Html::inlineScript(
-				'google.load("language", "1");
-				google.setOnLoadCallback(function(){google.language.getBranding("googlebranding");});' .
-				'var sourceLang = ' . FormatJson::encode( $currentLang ) . ';'
-			)
-		);		
 		
 		LiveTranslateFunctions::loadJs();			
 	}
@@ -350,9 +347,8 @@ final class LiveTranslateHooks {
 	}
 	
 	public static function onOutputPageParserOutput( $outputpage, $parseroutput ) {
-			$magicWords = isset( $parseroutput->mLTMagicWords ) ? $parseroutput->mLTMagicWords : array();
-
-			return true;
+		$magicWords = isset( $parseroutput->mLTMagicWords ) ? $parseroutput->mLTMagicWords : array();
+		return true;
 	}
 	
 }
