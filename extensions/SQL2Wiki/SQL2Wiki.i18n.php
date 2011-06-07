@@ -38,6 +38,25 @@ mit Fehlermeldung „$2“.",
 	'sql2wiki-err-feature_not_supported' => "'''Fehler:''' Die Funktion wird nicht von Datenbanken des Typs $1 unterstützt.",
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'sql2wiki' => 'SQL2Wiki',
+	'sql2wiki-desc' => 'Mostrar os datos SQL directamente nos contidos da páxina',
+	'sql2wiki-special' => 'Executar o código SQL2Wiki cun clic',
+	'sql2wiki-cache_refresh' => 'Refrescar',
+	'sql2wiki-err-invalid_db_id' => 'SQL2Wiki: Falta o identificador da base de datos ou este non é válido',
+	'sql2wiki-err-invalid_type' => 'SQL2Wiki: Falta o tipo ou este non é válido',
+	'sql2wiki-err-failed_to_connect' => 'SQL2Wiki: Erro ao conectar con $1!',
+	'sql2wiki-err-failed_to_execute' => 'SQL2Wiki: Erro ao executar o código:
+
+"$1"
+
+coa mensaxe de erro: "$2"!',
+	'sql2wiki-err-feature_not_supported' => 'SQL2Wiki: A función non está soportada polo tipo de base de datos $1!',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

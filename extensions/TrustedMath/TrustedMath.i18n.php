@@ -83,6 +83,13 @@ $messages['fr'] = array(
 	'trustedmath-not-found' => "La page [[:$1]] n'existe pas",
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'trustedmath-not-found' => 'La pâge [[:$1]] ègziste pas',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

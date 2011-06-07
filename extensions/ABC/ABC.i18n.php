@@ -1026,9 +1026,10 @@ $messages['so'] = array(
 /** Albanian (Shqip)
  * @author Cradel
  * @author Puntori
+ * @author Vinie007
  */
 $messages['sq'] = array(
-	'abc-desc' => 'Vendosë kodin <code>&lt;abc&gt;</code> për të formatuar muzikë ABC',
+	'abc-desc' => 'Shton <code>&lt;abc&gt;</code> ne formen ABC music',
 	'abcdownload' => 'Shkarko:',
 );
 

@@ -392,6 +392,13 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'ts-citegen-Title' => 'G·ènèrator de modèlos de citacion',
+	'ts-citegen-Send' => 'Fâre',
+	'ts-citegen-Input-title' => 'Entrâ',
+	'ts-citegen-Option-append-author-link' => 'Apondre los lims vouiqui a l’ôtor dens lo modèlo',
+	'ts-citegen-Option-append-newlines' => 'Apondre de sôts de legne novéls aprés châque paramètre',
+	'ts-citegen-Option-add-references' => 'Apondre des balises <ref> u tôrn des modèlos de citacion',
+	'ts-citegen-Option-add-list' => 'Fâre una vouiquilista des modèlos de citacion',
 	'ts-citegen-Output-title' => 'Rèsultat',
 	'ts-citegen-Wrong-input' => '%s : pas identifiâ coment una entrâ justa.',
 	'ts-citegen-Parsers' => 'Parsors',

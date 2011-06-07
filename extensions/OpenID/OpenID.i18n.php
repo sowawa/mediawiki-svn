@@ -1258,6 +1258,9 @@ Ohne OpenID könntest du dich nicht mehr anmelden.',
 	'openid-dashboard-title' => 'OpenID - Übersicht',
 	'openid-dashboard-title-admin' => 'OpenID - Übersicht und Einstellungen',
 	'openid-dashboard-introduction' => 'Die aktuellen Einstellungen zu OpenID ([$1 Hilfe])',
+	'openid-dashboard-number-openid-users' => 'Anzahl der Benutzer mit einer OpenID',
+	'openid-dashboard-number-openids-in-database' => 'Anzahl der OpenIDs (gesamt)',
+	'openid-dashboard-number-users-without-openid' => 'Anzahl der Benutzer ohne einer OpenID',
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)

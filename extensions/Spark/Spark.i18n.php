@@ -77,3 +77,11 @@ $messages['pt'] = array(
 	'spark-missing-query' => 'Tem de especificar uma consulta usando o parâmetro "data-spark-query".',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'spark-desc' => 'Добавляет тег <nowiki><spark /></nowiki>, позволяющий встраивать мэшап [http://km.aifb.kit.edu/sites/spark/ Spark]. Библиотека Spark была создана Денни Врандечич (Denny Vrandecic) и Андреасом Хартом (Andreas Harth).',
+	'spark-missing-query' => 'Необходимо задать запрос с использованием параметра «data-spark-query».',
+);
+
