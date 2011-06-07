@@ -187,7 +187,7 @@ class SelectCategory {
 
 		# Get current namespace (save duplicate call of method)
 		$namespace = $wgTitle->getNamespace();
-		if( $namespace >= 0 && $wgSelectCategoryRoot[$namespace] ) {
+		if( $namespace >= 0 && array_key_exists( $namespace, $wgSelectCategoryRoot ) && $wgSelectCategoryRoot[$namespace] ) {
 			# Include root and step into the recursion
 			$allCats = array_merge( array( $wgSelectCategoryRoot[$namespace] => 0 ),
 				self::getChildren( $wgSelectCategoryRoot[$namespace] ) );
