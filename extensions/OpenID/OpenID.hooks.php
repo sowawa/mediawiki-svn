@@ -323,7 +323,7 @@ class OpenIDHooks {
 		$info = $db->fieldInfo( 'user_openid', 'uoi_user' );
 		if ( !$info->isMultipleKey() ) {
 			echo( "Making uoi_user filed not unique..." );
-			$db->sourceFile( dirname( __FILE__ ) . '/patch-uoi_user-not-unique.sql' );
+			$db->sourceFile( dirname( __FILE__ ) . '/patches/patch-uoi_user-not-unique.sql' );
 			echo( " done.\n" );
 		} else {
 			echo( "...uoi_user field is already not unique.\n" );
