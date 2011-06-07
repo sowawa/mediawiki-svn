@@ -144,6 +144,7 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'articlefeedback-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ArticleFeedback'
 );
+
 // Autoloading
 $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['ApiQueryArticleFeedback'] = $dir . 'api/ApiQueryArticleFeedback.php';
@@ -152,12 +153,15 @@ $wgAutoloadClasses['ArticleFeedbackHooks'] = $dir . 'ArticleFeedback.hooks.php';
 $wgAutoloadClasses['SpecialArticleFeedback'] = $dir . 'SpecialArticleFeedback.php';
 $wgExtensionMessagesFiles['ArticleFeedback'] = $dir . 'ArticleFeedback.i18n.php';
 $wgExtensionAliasesFiles['ArticleFeedback'] = $dir . 'ArticleFeedback.alias.php';
+
 // Hooks
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'ArticleFeedbackHooks::loadExtensionSchemaUpdates';
 $wgHooks['ParserTestTables'][] = 'ArticleFeedbackHooks::parserTestTables';
 $wgHooks['BeforePageDisplay'][] = 'ArticleFeedbackHooks::beforePageDisplay';
 $wgHooks['ResourceLoaderRegisterModules'][] = 'ArticleFeedbackHooks::resourceLoaderRegisterModules';
 $wgHooks['ResourceLoaderGetConfigVars'][] = 'ArticleFeedbackHooks::resourceLoaderGetConfigVars';
+$wgHooks['GetPreferences'][] = 'ArticleFeedbackHooks::getPreferences';
+
 // API Registration
 $wgAPIListModules['articlefeedback'] = 'ApiQueryArticleFeedback';
 $wgAPIModules['articlefeedback'] = 'ApiArticleFeedback';

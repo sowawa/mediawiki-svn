@@ -87,6 +87,8 @@ Please try again later.',
 	'articleFeedback-table-heading-average' => 'Average',
 	'articleFeedback-copy-above-highlow-tables' => 'This is an experimental feature.  Please provide feedback on the [$1 discussion page].',
 	'articleFeedback-copy-below-highlow-tables' => 'These tables contain pages that have received at least 10 ratings within the last 24 hours.  Averages are calculated by taking the mean of all ratings submitted within the last 24 hours.',
+	/* Special:Preferences */
+	'articlefeedback-disable-preference' => "Don't show the Article feedback widget on pages",
 	/* EmailCapture */
 	'articlefeedback-emailcapture-response-body' => 'Hello!
 

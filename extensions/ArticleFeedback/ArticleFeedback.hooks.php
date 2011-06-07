@@ -287,4 +287,18 @@ class ArticleFeedbackHooks {
 		$vars['wgArticleFeedbackNamespaces'] = $wgArticleFeedbackNamespaces;
 		return true;
 	}
+	
+	/**
+	 * Add the preference in the user preferences with the GetPreferences hook.
+	 * @param $user User
+	 * @param $preferences
+	 */
+	public static function getPreferences( $user, &$preferences ) {
+		$preferences['articlefeedback-disable'] = array(
+			'type' => 'check',
+			'section' => 'rendering/advancedrendering',
+			'label-message' => 'articlefeedback-disable-preference',
+		);
+		return true;
+	}
 }
