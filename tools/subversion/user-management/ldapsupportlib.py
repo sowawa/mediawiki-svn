@@ -83,6 +83,8 @@ class LDAPSupportLib:
 	def getLdapInfo(self, attr, conffile="/etc/ldap.conf"):
 		f = open(conffile)
 		for line in f:
+			if line.strip() == "":
+				continue
 			if line.split()[0].lower() == attr.lower():
 				return line.split(None, 1)[1].strip()
 				break
