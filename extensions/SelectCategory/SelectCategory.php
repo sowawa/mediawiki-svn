@@ -73,7 +73,7 @@ $wgExtensionCredits['parserhook'][] = array(
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['SelectCategory'] = $dir . 'SelectCategory.i18n.php';
 
-$wgAutoloadClasses['SelectCategory'] = $dir . 'SelectCategoryFunctions.php';
+$wgAutoloadClasses['SelectCategory'] = $dir . 'SelectCategory_body.php';
 
 ## Showing the boxes
 # Hook when starting editing
@@ -86,4 +86,3 @@ $wgHooks['UploadForm:initial'][] = array( 'SelectCategory::showHook', true );
 $wgHooks['EditPage::attemptSave'][] = array( 'SelectCategory::saveHook', false );
 # Hook when saving the upload
 $wgHooks['UploadForm:BeforeProcessing'][] = array( 'SelectCategory::saveHook', true );
-
