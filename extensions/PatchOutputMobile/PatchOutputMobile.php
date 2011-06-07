@@ -39,7 +39,7 @@ $wgHooks['OutputPageBeforeHTML'][] = array( &$wgExtPatchOutputMobile,
 											'onOutputPageBeforeHTML' );
 
 class ExtPatchOutputMobile {
-	const VERSION = '0.4.3';
+	const VERSION = '0.4.4';
 
 	private $doc;
 	
@@ -386,7 +386,16 @@ class ExtPatchOutputMobile {
 			$json_data = array();
 			$json_data['title'] = $title;
 			$json_data['html'] = $contentHtml;
-			return json_encode( $json_data );
+			
+			$callback = isset( $_GET['callback'] ) ? $_GET['callback'] : '';
+			
+			$json = json_encode( $json_data );
+			
+			if ( !empty( $callback ) ) {
+				$json = urlencode( $callback ) . '(' . $json . ')';
+			} 
+			
+			return $json;
 		}
 		
 		return $applicationHtml;
