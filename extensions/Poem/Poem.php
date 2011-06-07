@@ -66,10 +66,7 @@ function wfRenderPoemTag( $in, $param=array(), $parser=null, $frame=false ) {
 		$attribs['class'] = 'poem';
 	}
 
-	return array(
-		Html::rawElement( 'div', $attribs, $nl . trim( $text ) . $nl ),
-		'markerType' => 'none',
-	);
+	return Html::rawElement( 'div', $attribs, $nl . trim( $text ) . $nl );
 }
 
 /**
