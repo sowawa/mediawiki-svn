@@ -24,8 +24,8 @@ class SIOInternalObject {
 		} else {
 			$property = SMWPropertyValue::makeUserProperty( $propName );
 		}
-
 		$dataValue = SMWDataValueFactory::newPropertyObjectValue( $property, $value );
+
 		if ( $dataValue->isValid() ) {
 			$this->mPropertyValuePairs[] = array( $property, $dataValue );
 		} // else - show an error message?
@@ -174,11 +174,18 @@ class SIOSQLStore extends SMWSQLStore2 {
 					'o_id' => $this->makeSMWPageID( $value->getDBkey(), $value->getNamespace(), $value->getInterwiki() )
 				);
 			} elseif ( $isAttribute ) {
-				$keys = $value->getDBkeys();
-				if ( method_exists( $value, 'getValueKey' ) ) {
-					$valueNum = $value->getValueKey();
+				if ( class_exists( 'SMWCompatibilityHelpers' ) ) {
+					// SMW 1.6
+					$dataItem = $value->getDataItem();
+					$keys = SMWCompatibilityHelpers::getDBkeysFromDataItem( $dataItem );
+					$valueNum = $dataItem->getSortKey();
 				} else {
-					$valueNum = $value->getNumericValue();
+					$keys = $value->getDBkeys();
+					if ( method_exists( $value, 'getValueKey' ) ) {
+						$valueNum = $value->getValueKey();
+					} else {
+						$valueNum = $value->getNumericValue();
+					}
 				}
 				
 				$upAttr = array(
@@ -188,18 +195,24 @@ class SIOSQLStore extends SMWSQLStore2 {
 					'value_num' => $valueNum
 				);
 				
-				// getUnit got removed in SMW 1.6
+				// getUnit() was removed in SMW 1.6
 				if ( method_exists( $value, 'getUnit' ) ) {
 					$upAttr['value_unit'] = $value->getUnit();
 				}
 				
 				$upAtts2[] = $upAttr;
 			} elseif ( $isText ) {
-				$keys = $value->getDBkeys();
+				if ( method_exists( $value, 'getShortWikiText' ) ) {
+					// SMW 1.6
+					$key = $value->getShortWikiText();
+				} else {
+					$keys = $value->getDBkeys();
+					$key = $keys[0];
+				}
 				$upText2[] = array(
 					's_id' => $ioID,
 					'p_id' => $this->makeSMWPropertyID( $property ),
-					'value_blob' => $keys[0]
+					'value_blob' => $key
 				);
 			} elseif ( $isCoords ) {
 				$keys = $value->getDBkeys();
