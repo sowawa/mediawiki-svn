@@ -1,11 +1,13 @@
 $.fn.editSurface = function( options ) {
 	var $this = $(this);
+	var sel;
 	
 	options = $.extend( {
 		// Defaults
 		'document': null
 	}, options );
 	
+	// Initialization
 	$this
 		.addClass( 'editSurface-container' )
 		.append( '<div class="editSurface-document"></div>' )
@@ -58,20 +60,17 @@ $.fn.editSurface = function( options ) {
 				drawSelection( $target.parent() );
 			}
 		} );
+	
+	// Shortcuts
+	var $document = $this.find( '.editSurface-document' );
 	var ranges = {
 		'$all': $( '.editSurface-range' ),
 		'$first': $( '.editSurface-range:eq(0)' ),
 		'$fill': $( '.editSurface-range:eq(1)' ),
 		'$last': $( '.editSurface-range:eq(2)' )
 	};
-	var $document = $this.find( '.editSurface-document' );
-	var sel = {
-		'active': false,
-		'from': null,
-		'to': null,
-		'start': null,
-		'end': null
-	};
+	
+	// Functions
 	function getSelectionText() {
 		var text;
 		if ( sel.from && sel.to ) {
