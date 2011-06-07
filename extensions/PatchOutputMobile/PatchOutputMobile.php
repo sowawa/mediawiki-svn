@@ -39,7 +39,7 @@ $wgHooks['OutputPageBeforeHTML'][] = array( &$wgExtPatchOutputMobile,
 											'onOutputPageBeforeHTML' );
 
 class ExtPatchOutputMobile {
-	const VERSION = '0.4.2';
+	const VERSION = '0.4.3';
 
 	private $doc;
 	
@@ -352,6 +352,8 @@ class ExtPatchOutputMobile {
 			$title = 'Wikipedia';
 		}
 		
+		$format = isset( $_GET['format'] ) ? $_GET['format'] : ''; 
+		
 		$dir = self::$dir;
 		$code = self::$code;
 		$regularWikipedia = self::$messages['patch-output-mobile-regular-wikipedia'];
@@ -371,11 +373,20 @@ class ExtPatchOutputMobile {
 			require( 'views/layout/application.wml.php' );
 		}
 		
-		if ( $this->contentFormat == 'XHTML' ) {
+		if ( $this->contentFormat == 'XHTML' && $format != 'json' ) {
 			require( 'views/notices/_donate.html.php' );
 			require( 'views/layout/_search_webkit.html.php' );
 			require( 'views/layout/_footmenu_default.html.php' );
 			require( 'views/layout/application.html.php' );
+		}
+		
+		if ( $format === 'json' ) {
+			header( 'Content-Type: application/json' );
+			header( 'Content-Disposition: attachment; filename="data.js";' );
+			$json_data = array();
+			$json_data['title'] = $title;
+			$json_data['html'] = $contentHtml;
+			return json_encode( $json_data );
 		}
 		
 		return $applicationHtml;
