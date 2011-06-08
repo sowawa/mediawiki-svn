@@ -31,7 +31,7 @@ public static function notificator_Render( $parser, $receiver = '', $receiverLab
 <input type="hidden" name="revId" value="' . $wgTitle->getLatestRevID() . '" />
 <input type="hidden" name="receiver" value="' . $receiver . '" />
 <input type="submit" value="' .
-wfMsg( 'notify-address-or-name', htmlspecialchars( $receiverLabel ) ) . '" />
+wfMsg( 'notificator-notify-address-or-name', htmlspecialchars( $receiverLabel ) ) . '" />
 </form>';
 	} else {
 		// No valid e-mail address available, show text entry field and button
@@ -39,10 +39,10 @@ wfMsg( 'notify-address-or-name', htmlspecialchars( $receiverLabel ) ) . '" />
 			'/Special:Notificator" method="post" enctype="multipart/form-data">
 <input type="hidden" name="pageId" value="' . $wgTitle->getArticleID() . '" />
 <input type="hidden" name="revId" value="' . $wgTitle->getLatestRevID() . '" />
-<input type="text" name="receiver" value="' . wfMsg( 'e-mail-address' ) .
-'" onfocus="if (this.value == \'' . wfMsg( 'e-mail-address' ) .
+<input type="text" name="receiver" value="' . wfMsg( 'notificator-e-mail-address' ) .
+'" onfocus="if (this.value == \'' . wfMsg( 'notificator-e-mail-address' ) .
 '\') {this.value=\'\'}" />
-<input type="submit" value="' . wfMsg( 'notify' ) . '" />
+<input type="submit" value="' . wfMsg( 'notificator-notify' ) . '" />
 </form>';
 	}
 
@@ -156,7 +156,7 @@ public static function getNotificationDiffHtml( $oldRevId, $revId ) {
 
 	if ( $oldRevisionObj->getTitle() != $newRevisionObj->getTitle() ) {
 		return '<span class="error">' .
-			wfMsg( 'revs-not-from-same-title' ) . '</span>';
+			wfMsg( 'notificator-revs-not-from-same-title' ) . '</span>';
 	}
 
 	$titleObj = $oldRevisionObj->getTitle();
@@ -219,7 +219,7 @@ public static function recordNotificationInDatabase( $pageId, $revId, $receiver 
 
 public static function getReturnToText( $linkToPage, $pageTitle ) {
 	return '<p style="margin-top: 2em;">' .
-		wfMsg( 'return-to' ) . ' <a href="' . $linkToPage . '">' . $pageTitle . '</a>.';
+		wfMsg( 'notificator-return-to' ) . ' <a href="' . $linkToPage . '">' . $pageTitle . '</a>.';
 }
 
 }
