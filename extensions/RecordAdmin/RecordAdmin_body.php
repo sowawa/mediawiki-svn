@@ -62,7 +62,7 @@ class RecordAdmin {
 		$records = array();
 		$content = $editPage->getContent();
 		foreach( self::examineBraces( $content ) as $brace ) {
-			if( $brace['DEPTH'] == 2 ) {
+			if( array_key_exists( 'DEPTH', $brace ) && $brace['DEPTH'] == 2 ) {
 				$name = $brace['NAME'];
 				$form = Title::newFromText( $name, NS_FORM );
 				if( is_object( $form ) && $form->exists() ) {
