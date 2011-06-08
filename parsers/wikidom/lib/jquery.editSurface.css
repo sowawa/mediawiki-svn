@@ -5,8 +5,8 @@ body {
 
 #selection {
 	position: absolute;
-	right: 3%;
-	width: 45%;
+	left: 26em;
+	width: 20em;
 	border: solid 1px Highlight;
 	line-height: 1.5em;
 	cursor: text;
@@ -14,27 +14,27 @@ body {
 
 #selection p {
 	margin: 0;
-	padding: 1em;
+	padding: 0em;
 }
 
 .editSurface-container {
 	position: absolute;
-	left: 3%;
-	width: 45%;
+	left: 1em;
+	width: 24em;
 	border: solid 1px red;
 	cursor: text;
 }
 
 .editSurface-paragraph {
-	padding: 1em;
+	padding: 0em;
 }
 
-.editSurface-container .editSurface-line {
+.editSurface-line {
+	display: inline-block;
 	height: 1.5em;
 	line-height: 1.5em;
-	width: 100%;
 	cursor: text;
-	overflow: hidden;
+	white-space: nowrap;
 }
 
 .editSurface-range {

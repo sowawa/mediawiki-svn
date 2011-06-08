@@ -5,87 +5,86 @@
 $.flow = { 'widthCache': {} };
 
 $.fn.flow = function( text ) {
-	var lineLimit = $(this).innerWidth();
 	
-	// Wordify
-	var words = [],
-		word = { 'text': '', 'width': 0, 'metrics': [] };
-	for ( var i = 0; i < text.length; i++ ) {
-		var char = text[i];
-		// Boundary detection
-		var boundary = String( ' -\t\r\n\f' ).indexOf( char ) >= 0;
-		// Encoding
-		var charHtml = char
-			.replace( '&', '&amp;' )
+	function encodeHtml( c ) {
+		return c.replace( '&', '&amp;' )
 			.replace( ' ', '&nbsp;' )
 			.replace( '<', '&lt;' )
 			.replace( '>', '&gt;' )
 			.replace( '\'', '&apos;' )
 			.replace( '"', '&quot;' );
-        // Measurement
-		var charWidth;
-		if ( typeof $.flow.widthCache[char] === 'undefined' ) {
-			charWidth = $.flow.widthCache[char] =
-				$( '<span>' + charHtml + '</span>' ).appendTo( $(this) ).width();
-		} else {
-			charWidth = $.flow.widthCache[char];
-		}
-		// Virtual boundary
-		if ( word.width + charWidth >= lineLimit ) {
-			words[words.length] = word;
-			word = { 'text': '', 'width': 0, 'metrics': [] };
-		}
-		// Append
-		if ( boundary ) {
-			if ( word.text.length ) {
-				words[words.length] = word;
-				word = { 'text': '', 'width': 0, 'metrics': [] };
+	}
+	
+	var breakableRe = /[\s\r\n\f]/;
+	
+	var $this = $(this);
+	
+	$this.empty();
+	
+	var width = $this.innerWidth();
+	var pos = 0;
+	var line = 0;
+	
+	while( pos < text.length ) {
+		var lineStartPos = pos;
+		var breakPos = pos;
+		
+		var $line = $( '<div class="editSurface-line"></div>' ).appendTo( $this );
+		var lineText = '';
+		var lineMetrics = [];
+		var lineWidth = 0;
+		var lastLineWidth = 0;
+		
+		while ( pos < text.length && lineWidth < width ) {
+			// Append text
+			lineText += text.charAt( pos );
+			// Apply to DOM
+			$line.html( encodeHtml( lineText ) );
+			// Get new line width from DOM
+			lastLineWidth = lineWidth;
+			lineWidth = $line.innerWidth();
+			// Push difference (character width)
+			lineMetrics.push( lineWidth - lastLineWidth );
+			if ( breakableRe( text.charAt(pos) ) ) {
+				breakPos = pos;
 			}
-			words[words.length] = { 'text': char, 'width': charWidth, 'metrics': [charWidth] };
-		} else {
-			word.text += char;
-			word.width += charWidth;
-			word.metrics[word.metrics.length] = charWidth;
+			pos++;
 		}
+		
+		if ( lineWidth >= width ) {
+			if ( breakPos === lineStartPos ) {
+				// There was no breakable position between the start of the line and here, so we
+				// have some kind of long word. Or, the line width is very small. Break at the
+				// previous character.
+				pos -= 1;
+				breakPos = pos;
+			} else {
+				// Include the breaking character in the previous line
+				// TODO: How does this work with hyphens? Won't they be to far right?
+				breakPos++;
+			}
+			lineText = text.substring( lineStartPos, breakPos );
+			$line.html( encodeHtml( lineText ) );
+			pos = breakPos;
+		}
+		
+		$line
+			.data( 'metrics', lineMetrics )
+			.data( 'text', lineText )
+			.data( 'line', line );
+		
+		if ( lineStartPos === pos ) {
+			$line.html( '&nbsp;' )
+		}
+		
+		line++;
 	}
-	if ( word.text.length ) {
-		words[words.length] = word;
-	}
+
+	return $this;
 	
-	// Lineify
-	var lines = [],
-		line = { 'text': '', 'width': 0, 'metrics': [] };
-	for ( var i = 0; i < words.length; i++ ) {
-		var hardReturn = String( '\r\n\f' ).indexOf( words[i].text ) >= 0;
-		if ( line.width + words[i].width > lineLimit || hardReturn ) {
-			lines[lines.length] = line;
-			line = { 'text': '', 'width': 0, 'metrics': [] };
-		}
-		if ( !hardReturn && ( line.width > 0 || words[i].text !== ' ' ) ) {
-			line.text += words[i].text;
-			line.width += words[i].width;
-			line.metrics = line.metrics.concat( words[i].metrics );
-		}
-	}
-	if ( line.text.length ) {
-		lines[lines.length] = line;
-	}
-	
-	// Flow
-	$(this).empty();
-	for ( var i = 0; i < lines.length; i++ ) {
-		var $line = $( '<div class="editSurface-line"></div>' )
-			.data( 'metrics', lines[i].metrics )
-			.data( 'text', lines[i].text )
-			.data( 'line', i );
-		if ( lines[i].text.length ) {
-			$line.text( lines[i].text );
-		} else {
-			$line.html( '&nbsp;' );
-			$line.addClass( 'empty' );
-		}
-		$(this).append( $line );
-	}
-	
-	return $(this);
+	// the end
+
+
+
 };
+

@@ -17,23 +17,25 @@
 		
 		<!-- Demo -->
 		<script>
-			var text = [
-				"In text display, line wrap is the feature of continuing on a new line when a line is full, such that each line fits in the viewable window, allowing text to be read from top to bottom without any horizontal scrolling.",
-				"Word wrap is the additional feature of most text editors, word processors, and web browsers, of breaking lines between and not within words, except when a single word is longer than a line.",
-				"It is usually done on the fly when viewing or printing a document, so no line break code is manually entered, or stored.[citation needed] If the user changes the margins, the editor will either automatically reposition the line breaks to ensure that all the text will \"flow\" within the margins and remain visible, or provide the typist some convenient way to reposition the line breaks.",
-				"A soft return is the break resulting from line wrap or word wrap, whereas a hard return is an intentional break, creating a new paragraph.",
-				"The soft returns are usually placed after the ends of complete words, or after the punctuation that follows complete words. However, word wrap may also occur following a hyphen.",
-				"Word wrap following hyphens is sometimes not desired, and can be avoided by using a so-called non-breaking hyphen instead of a regular hyphen. On the other hand, when using word processors, invisible hyphens, called soft hyphens, can also be inserted inside words so that word wrap can occur following the soft hyphens.",
-				"Sometimes, word wrap is not desirable between words. In such cases, word wrap can usually be avoided by using a hard space or non-breaking space between the words, instead of regular spaces.",
-				"OccasionallyThereAreWordsThatAreSoLongTheyExceedTheWidthOfTheLineAndEndUpWrappingBetweenMultipleLines.",
-			].join( ' ' );
-			$( '#es' ).editSurface( {
-				'document': { 'blocks': [ {
-					'type': 'paragraph',
-					'lines': [
-						{ 'text': text }
-					]
-				} ] }
+			$(document).ready( function() {
+				var text = [
+					"In text display, line wrap is the feature of continuing on a new line when a line is full, such that each line fits in the viewable window, allowing text to be read from top to bottom without any horizontal scrolling.",
+					"Word wrap is the additional feature of most text editors, word processors, and web browsers, of breaking lines between and not within words, except when a single word is longer than a line.",
+					"It is usually done on the fly when viewing or printing a document, so no line break code is manually entered, or stored.[citation needed] If the user changes the margins, the editor will either automatically reposition the line breaks to ensure that all the text will \"flow\" within the margins and remain visible, or provide the typist some convenient way to reposition the line breaks.",
+					"A soft return is the break resulting from line wrap or word wrap, whereas a hard return is an intentional break, creating a new paragraph.",
+					"The soft returns are usually placed after the ends of complete words, or after the punctuation that follows complete words. However, word wrap may also occur following a hyphen.",
+					"Word wrap following hyphens is sometimes not desired, and can be avoided by using a so-called non-breaking hyphen instead of a regular hyphen. On the other hand, when using word processors, invisible hyphens, called soft hyphens, can also be inserted inside words so that word wrap can occur following the soft hyphens.",
+					"Sometimes, word wrap is not desirable between words. In such cases, word wrap can usually be avoided by using a hard space or non-breaking space between the words, instead of regular spaces.",
+					"OccasionallyThereAreWordsThatAreSoLongTheyExceedTheWidthOfTheLineAndEndUpWrappingBetweenMultipleLines.",
+				].join( ' ' );
+				$( '#es' ).editSurface( {
+					'document': { 'blocks': [ {
+						'type': 'paragraph',
+						'lines': [
+							{ 'text': text }
+						]
+					} ] }
+				} );
 			} );
 		</script>
 	</body>

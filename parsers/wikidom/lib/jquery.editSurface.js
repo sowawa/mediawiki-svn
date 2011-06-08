@@ -16,7 +16,9 @@ $.fn.editSurface = function( options ) {
 		.after( '<div class="editSurface-cursor"></div>' )
 		.before( '<div class="editSurface-range"></div>'
 				+ '<div class="editSurface-range"></div>'
-				+ '<div class="editSurface-range"></div>')
+				+ '<div class="editSurface-range"></div>');
+	
+	$(document)
 		.mousedown( function( e ) {
 			var $target = $( e.target );
 			// TODO: If the target is not a line, find the nearest line to the cursor and use it
@@ -44,8 +46,8 @@ $.fn.editSurface = function( options ) {
 		} )
 		.mouseup( function( e ) {
 			var $target = $( e.target );
-			if ( !$target.is( '.editSurface-line' ) || !sel.from || !sel.to
-					|| ( sel.from.line === sel.to.line && sel.from.index === sel.to.index ) ) {
+			if ( $target.is( '.editSurface-line' ) && ( !sel.from || !sel.to
+					|| ( sel.from.line === sel.to.line && sel.from.index === sel.to.index ) ) ) {
 				sel.from = null;
 				sel.to = null;
 				sel.start = null;
@@ -73,6 +75,7 @@ $.fn.editSurface = function( options ) {
 				drawSelection( $target.parent() );
 			}
 		} );
+	
 	
 	// Shortcuts
 	var $document = $this.find( '.editSurface-document' );
