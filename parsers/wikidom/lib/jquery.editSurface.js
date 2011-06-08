@@ -31,7 +31,6 @@ $.fn.editSurface = function( options ) {
 					'start': getCursorPosition( e ),
 					'end': null
 				};
-				console.log( sel.start );
 				cursor.show();
 				drawSelection( $target.parent() );
 				// Move cursor
