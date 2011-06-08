@@ -37,6 +37,14 @@ $messages['de'] = array(
 	'spark-missing-query' => 'Es muss eine eine Abfrage mit dem Parameter „data-spark-query“ erstellt werden.',
 );
 
+/** French (Français)
+ * @author Sherbrooke
+ */
+$messages['fr'] = array(
+	'spark-desc' => "Ajoute une balise <code><nowiki><spark /></nowiki></code> qui permet d'inclure une mosaïque de données [http://km.aifb.kit.edu/sites/spark/ Spark] (''mashup''). Cette librairie est de Denny Vrandecic et Andreas Harth.",
+	'spark-missing-query' => 'Vous devez spécifier une requête en utilisant le paramètre <code>data-spark-query</code>.',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

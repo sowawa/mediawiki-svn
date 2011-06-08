@@ -34,6 +34,13 @@ $messages['de'] = array(
 	'semanticgraph-desc' => 'Ermöglicht die Darstellung strukturierter semantischer Daten in Form von Diagrammen',
 );
 
+/** French (Français)
+ * @author Sherbrooke
+ */
+$messages['fr'] = array(
+	'semanticgraph-desc' => 'Permet la visualisation de données structurées stockées via Semantic MediaWiki sous forme de graphiques',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

@@ -100,3 +100,10 @@ $messages['ru'] = array(
 	'creativecommonsrdf-desc' => 'RDF-метаданные CreativeCommons',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'creativecommonsrdf-desc' => 'Siêu dữ liệu RDF về Creative Commons',
+);
+

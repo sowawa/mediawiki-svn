@@ -872,6 +872,7 @@ Bitte später erneut versuchen.',
 	'articleFeedback-table-heading-average' => 'Durchschnitt',
 	'articleFeedback-copy-above-highlow-tables' => 'Dies ist ein experimenteller Funktionsbestandteil. Bitte hierzu auf der [$1 Diskussionsseite] eine Rückmeldung geben.',
 	'articleFeedback-copy-below-highlow-tables' => 'Diese Tabellen enthalten die Namen der Artikel, zu denen während der letzten 24 Stunden mindestens zehn Bewertungen abgegeben wurden. Die Durchschnittswerte basieren auf allen während der vergangenen 24 Stunden abgegebenen Bewertungen.',
+	'articlefeedback-disable-preference' => 'Das Widget zum Einschätzen von Seiten nicht anzeigen',
 	'articlefeedback-emailcapture-response-body' => 'Hallo!
 
 Vielen Dank für dein Interesse an der Verbesserung von {{SITENAME}}.
@@ -1441,6 +1442,7 @@ $messages['fr'] = array(
 	'articlefeedback-form-switch-label' => 'Noter cette page',
 	'articlefeedback-form-panel-title' => 'Noter cette page',
 	'articlefeedback-form-panel-explanation' => 'Qu’est-ce que c’est?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:ArticleFeedback',
 	'articlefeedback-form-panel-clear' => 'Supprimer cette évaluation',
 	'articlefeedback-form-panel-expertise' => 'Je suis très bien informé sur ce sujet (facultatif)',
 	'articlefeedback-form-panel-expertise-studies' => "Je détiens un diplôme d'études supérieures (université ou grande école)",
@@ -1492,6 +1494,7 @@ Veuillez ré-essayer plus tard.',
 	'articleFeedback-table-heading-average' => 'Moyenne',
 	'articleFeedback-copy-above-highlow-tables' => "Il s'agit d'une fonctionnalité expérimentale. Veuillez fournir des commentaires sur la [$1 page de discussion].",
 	'articleFeedback-copy-below-highlow-tables' => 'Ces tableaux contiennent des pages qui ont reçu au moins 10 votes au cours des 24 dernières heures. Les moyennes sont calculées en prenant la moyenne de toutes les notes présentées au cours des 24 dernières heures.',
+	'articlefeedback-disable-preference' => 'Ne pas afficher le widget Évaluation d’article sur les pages',
 	'articlefeedback-emailcapture-response-body' => "Bonjour !
 
 Merci pour votre aider à améliorer {{SITENAME}}.
@@ -2789,6 +2792,7 @@ $messages['mk'] = array(
 	'articleFeedback-table-heading-average' => 'Просечно',
 	'articleFeedback-copy-above-highlow-tables' => 'Ова е експериментална функција. Искажете го вашето мислење на [$1 страницатата за разговор].',
 	'articleFeedback-copy-below-highlow-tables' => 'Овие табели содржат статии што добиле барем 10 оценки во последниве 24 часа. Просекот се пресметува земајќи ја средната вредност на сите оцеки поднесени во текот на последните 24 часа.',
+	'articlefeedback-disable-preference' => 'Не го прикажувај прилогот „Оценување на статии“ во страниците',
 	'articlefeedback-emailcapture-response-body' => 'Здраво!
 
 Ви благодариме што изразивте интерес да помогнете во развојот на {{SITENAME}}.
@@ -3329,6 +3333,7 @@ Proszę spróbować ponownie później.',
 	'articleFeedback-table-heading-average' => 'Średnio',
 	'articleFeedback-copy-above-highlow-tables' => 'To jest rozwiązanie eksperymentalne. Wyraź swoją opinię na jego temat na [$1 stronie dyskusji].',
 	'articleFeedback-copy-below-highlow-tables' => 'Tabele uwzględniają strony, które otrzymały co najmniej 10 głosów w ciągu ostatnich 24 godzin. Średnie są obliczane ze wszystkich ocen wystawionych w ciągu ostatnich 24 godzin.',
+	'articlefeedback-disable-preference' => 'Nie pokazuj na stronach widżetu opinii o artykule',
 );
 
 /** Piedmontese (Piemontèis)
@@ -3517,6 +3522,7 @@ Tente novamente mais tarde, por favor.',
 	'articleFeedback-table-heading-average' => 'Média',
 	'articleFeedback-copy-above-highlow-tables' => 'Esta funcionalidade é experimental. Deixe os seus comentários na [$1 página de discussão], por favor.',
 	'articleFeedback-copy-below-highlow-tables' => 'Estas tabelas contêm artigos que receberam pelo menos 10 avaliações nas últimas 24 horas. As médias são calculadas pela média aritmética de todas as avaliações enviadas nas últimas 24 horas.',
+	'articlefeedback-disable-preference' => 'Não mostrar nas páginas o widget da avaliação de artigos',
 	'articlefeedback-emailcapture-response-body' => 'Olá,
 
 Obrigado por expressar interesse em ajudar a melhorar a {{SITENAME}}.
@@ -3873,6 +3879,7 @@ $messages['ru'] = array(
 	'articleFeedback-table-heading-average' => 'Среднее',
 	'articleFeedback-copy-above-highlow-tables' => 'Это экспериментальная возможность. Пожалуйста, оставьте отзыв на [$1 странице обсуждения].',
 	'articleFeedback-copy-below-highlow-tables' => 'В таблицах указаны страницы, получившие за последние 24 часа не менее 10 оценок. Средние показатели рассчитываются путём усреднения всех оценок за последние 24 часа.',
+	'articlefeedback-disable-preference' => 'Не показывать на страницах виджет обратной связи',
 	'articlefeedback-emailcapture-response-body' => 'Здравствуйте!
 
 Спасибо за интерес к улучшению проекта {{SITENAME}}.
@@ -4660,6 +4667,7 @@ Xin hãy thử lại sau.',
 	'articleFeedback-table-heading-average' => 'Trung bình',
 	'articleFeedback-copy-above-highlow-tables' => 'Đây là một tính năng thử nghiệm. Xin vui lòng đưa ra phản hồi tại [$1 trang thảo luận].',
 	'articleFeedback-copy-below-highlow-tables' => 'Các bảng này chứa các bài đã được đánh giá 10 lần trở lên trong vòng 24 giờ qua. Các trung bình tính các đánh giá được nhận trong vòng 24 giờ qua.',
+	'articlefeedback-disable-preference' => 'Ẩn bảng Phản hồi bài khỏi các trang',
 	'articlefeedback-emailcapture-response-body' => 'Xin chào!
 
 Cám ơn bạn đã bày tỏ quan tâm về việc giúp cải tiến {{SITENAME}}.

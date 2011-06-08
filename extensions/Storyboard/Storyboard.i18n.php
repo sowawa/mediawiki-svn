@@ -801,6 +801,7 @@ $messages['frp'] = array(
 	'story' => 'Histouère',
 	'storyboard-submittedbyon' => 'Proposâ per $1 lo $2, $3.',
 	'storyboard-viewstories' => 'Vêre les histouères',
+	'storyboard-createdandmodified' => 'Fêta lo $1, $2 et dèrriér changement lo $3, $4',
 	'storyboard-authorname' => 'Nom a l’ôtor',
 	'storyboard-authorlocation' => 'Localisacion a l’ôtor',
 	'storyboard-authoroccupation' => 'Metiér a l’ôtor',

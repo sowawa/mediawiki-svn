@@ -7411,6 +7411,7 @@ $messages['frp'] = array(
 	'configure-setting-wgDefaultUserOptions' => 'Prèferences utilisator per dèfôt',
 	'configure-setting-wgHiddenPrefs' => 'Prèferences utilisator dèsactivâs',
 	'configure-setting-wgExternalDiffEngine' => 'Motor de difèrences de defôr',
+	'configure-setting-wgShellLocale' => 'Valor por <code>LC_CTYPE</code>',
 	'configure-setting-wgUseAutomaticEditSummaries' => 'Utilisar los rèsumâs de changement ôtomaticos',
 	'configure-setting-wgUseTrackbacks' => 'Utilisar los rètrolims',
 	'configure-setting-wgEnableScaryTranscluding' => 'Activar l’encllusion entèrvouiqui',

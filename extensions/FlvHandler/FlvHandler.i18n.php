@@ -420,7 +420,7 @@ $messages['uk'] = array(
  */
 $messages['vi'] = array(
 	'flvhandler_desc' => 'Cho phép thêm video Flash (.flv) như tập tin bình thường (thí dụ <nowiki>[[</nowiki>{{ns:file}}:Phim.flv<nowiki>]]</nowiki>)',
-	'flv-long-desc' => 'Video Flash, $1 × $2 điểm ảnh, kích thước: $3',
+	'flv-long-desc' => 'Video Flash, $1×$2 điểm ảnh, kích thước: $3',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

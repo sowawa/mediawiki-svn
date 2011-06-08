@@ -38,6 +38,14 @@ mit Fehlermeldung „$2“.",
 	'sql2wiki-err-feature_not_supported' => "'''Fehler:''' Die Funktion wird nicht von Datenbanken des Typs $1 unterstützt.",
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'sql2wiki' => 'SQL2Vouiqui',
+	'sql2wiki-cache_refresh' => 'Rafrèchir',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

@@ -232,6 +232,7 @@ $messages['ar'] = array(
 	'ogg-dismiss' => 'أغلق',
 	'ogg-download' => 'نزّل الملف',
 	'ogg-desc-link' => 'عن هذا الملف',
+	'ogg-oggThumb-version' => 'OggHandler يتطلب الإصدار oggThumb $1 أو في وقت لاحق.',
 	'ogg-oggThumb-failed' => 'فشل في إنشاء المصغرات',
 );
 

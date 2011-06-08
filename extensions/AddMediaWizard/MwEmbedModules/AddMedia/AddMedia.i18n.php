@@ -5389,6 +5389,14 @@ $messages['or'] = array(
 	'mwe-link-login' => 'ଲଗଇନ',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'mwe-summary' => 'Ивдтыты афыст:',
+	'mwe-link' => 'æрвитæн',
+);
+
 /** Deitsch (Deitsch)
  * @author Xqt
  */

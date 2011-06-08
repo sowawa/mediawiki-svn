@@ -5193,6 +5193,7 @@ $messages['os'] = array(
 	'viewapc-ls-header-deleted' => 'Аппæрст',
 	'viewapc-ls-scope-deleted' => 'Аппæрст',
 	'viewapc-ls-sort-deleted' => 'Аппæрст',
+	'viewapc-ls-limit-none' => 'Æппæт',
 );
 
 /** Deitsch (Deitsch)

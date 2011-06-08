@@ -1729,7 +1729,10 @@ $messages['vep'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
+	'gep-desc' => 'Cải tiến trang sửa đổi để dễ sử dụng hơn',
 	'gep-emailsubject' => '[$1] Gợi ý thể loại: $2',
+	'gep-emailbody' => 'Người dùng “$1” để gợi ý “$2” cho website “$3”.',
+	'gep-emailfailure' => 'Rất tiếc, không thể xử lý gợi ý của bạn.',
 	'gep-emailsuccess' => 'Cám ơn bạn đã gợi ý thể loại: $1.',
 	'gep-categories' => 'Thể loại',
 	'gep-addcategory' => 'Thêm thể loại',
@@ -1737,10 +1740,14 @@ $messages['vi'] = array(
 	'gep-suggestcategory' => 'Đề nghị thể loại',
 	'gep-suggestcategorybutton' => 'Gợi ý',
 	'gep-sections' => 'Đoạn',
+	'gep-sectionnotdisabled' => 'Không thể tắt phần này',
 	'gep-addsection' => 'Thêm đoạn',
 	'gep-addsectionbutton' => 'Thêm',
 	'gep-classicmode' => 'Chế độ cổ điển',
 	'gep-genericmode' => 'Chế độ thường',
+	'gep-nosectioninstructions' => 'Trang này không có đề mục nào.
+Hãy thêm đề mục dùng thanh công cụ.',
+	'gep-nocategories' => 'Vui lòng chọn ít nhất một thể loại trước khi lưu.',
 );
 
 /** Volapük (Volapük)

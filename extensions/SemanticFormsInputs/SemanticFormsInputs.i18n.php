@@ -527,6 +527,17 @@ $messages['uk'] = array(
 	'semanticformsinputs-next' => 'Наступна',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'semanticformsinputs-wrongformat' => 'Định dạng sai',
+	'semanticformsinputs-close' => 'Đóng',
+	'semanticformsinputs-prev' => 'Trước',
+	'semanticformsinputs-next' => 'Sau',
+	'semanticformsinputs-today' => 'Hôm nay',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Liangent
  */

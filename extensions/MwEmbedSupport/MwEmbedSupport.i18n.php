@@ -275,6 +275,13 @@ $messages['uk'] = array(
 	'mwembed-desc' => 'Забезпечує підтримку модулів та розширень mwEmbed',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'mwembed-desc' => 'Hỗ trợ các mô đun và phần mở rộng mwEmbed',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Mark85296341
  */

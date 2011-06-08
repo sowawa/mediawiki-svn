@@ -10057,6 +10057,7 @@ $messages['or'] = array(
  * @author Amikeco
  */
 $messages['os'] = array(
+	'datasearch_language' => 'Æвзаг:',
 	'ow_save' => 'Афтæ уæд',
 	'ow_history' => 'Истори',
 	'ow_dm_OK' => 'Афтæ уæд!',

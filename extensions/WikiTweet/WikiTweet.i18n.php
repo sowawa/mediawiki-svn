@@ -396,3 +396,22 @@ $messages['tl'] = array(
 	'wikitweet-tweets-from-room' => 'Mga pagsiyap mula sa silid',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'wikitweet-desc' => 'Đưa một nguồn tin giống Twitter vào MediaWiki',
+	'wikitweet-infoajax' => 'Sử dụng công nghệ AJAX để làm mới 5 giây một lần mà không cần tải cả trang.',
+	'wikitweet-subscribe' => 'theo dõi',
+	'wikitweet-subscribed' => 'đang theo dõi',
+	'wikitweet-unsubscribe' => 'ngừng theo dõi',
+	'wikitweet-delete' => 'xóa',
+	'wikitweet-private' => 'riêng tư',
+	'wikitweet-answer' => 'trả lời cho',
+	'wikitweet-anonymous' => 'vô danh',
+	'wikitweet-back-timeline' => 'Trở về thời biểu',
+	'wikitweet-timeago' => 'Cách đây $1',
+	'wikitweet-inthefuture' => 'Trong tương lai!',
+	'wikitweet-fewsecondsago' => 'Vừa mới xong',
+);
+

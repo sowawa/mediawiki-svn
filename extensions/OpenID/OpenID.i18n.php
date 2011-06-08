@@ -1891,7 +1891,11 @@ Veuillez vous mettre en rapport avec un [[Special:ListUsers/sysop|administrateur
 	'openidfailure' => 'Échec de la vérification',
 	'openidfailuretext' => 'La vérification de l’adresse OpenID a échouée. Message d’erreur : « $1 »',
 	'openidsuccess' => 'Vérification réussie',
-	'openidsuccesstext' => 'Vérification de l’adresse OpenID réussie.',
+	'openidsuccesstext' => "'''La vérification de l’adresse OpenID est réussie et vous êtes identifié en tant qu'utilisateur $1.'''
+
+Votre OpenID est $2.
+
+Cet OpenID et les autres, tout comme un mot de passe facultatif, peuvent être suivis dans vos [[Special:Preferences|préférences]].",
 	'openidusernameprefix' => 'Utilisateur OpenID',
 	'openidserverlogininstructions' => '$3 demande que vous entriez votre mot de passe pour votre page $1 utilisateur $2 (URL OpenID)',
 	'openidtrustinstructions' => 'Cochez si vous désirez partager les données avec $1.',
@@ -1921,9 +1925,10 @@ Veuillez vous mettre en rapport avec un [[Special:ListUsers/sysop|administrateur
 	'openidconvertsuccesstext' => 'Vous avez converti avec succès votre OpenID vers $1.',
 	'openidconvertyourstext' => 'C’est déjà votre OpenID.',
 	'openidconvertothertext' => 'Ceci est l’OpenID de quelqu’un d’autre.',
-	'openidalreadyloggedin' => "'''Vous êtes déjà connecté{{GENDER:||e|(e)}}, $1 !'''
+	'openidalreadyloggedin' => 'Vous êtes déjà connecté.',
+	'openidalreadyloggedintext' => "'''Vous êtes déjà connecté, $1 !'''
 
-Vous vous désirez utiliser votre OpenID pour vous connecter ultérieurement, vous pouvez [[Special:OpenIDConvert|convertir votre compte pour utiliser OpenID]].",
+Vous pouvez gérer, (voir, supprimer et en ajouter d'autres) OpenID dans l'onglet de [[Special:Preferences|préférences]].",
 	'openidnousername' => 'Aucun nom d’utilisateur n’a été indiqué.',
 	'openidbadusername' => 'Un mauvais nom d’utilisatteur a été indiqué.',
 	'openidautosubmit' => 'Cette page comprend un formulaire qui pourrait être envoyé automatiquement si vous avez activé JavaScript.
@@ -1949,6 +1954,7 @@ Vous ne pourriez pas vous connecter sans un OpenID.",
 Vous ne pourriez pas vous connecter sans un OpenID.",
 	'openiddelete-sucess' => "L'OpenID a été supprimé avec succès de votre compte.",
 	'openiddelete-error' => "Une erreur est survenue pendant la suppression de l'OpenID de votre compte.",
+	'openid-openids-were-not-merged' => "Les OpenID n'ont pas été fusionnés lors de la fusion des comptes d'utilisateurs.",
 	'openid-prefstext' => 'Préférences de [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Cacher votre OpenID sur votre page utilisateur, si vous vous connectez avec OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Mettre à jour les données suivantes depuis OpenID à chaque fois que je me connecte :',
@@ -1968,6 +1974,9 @@ Vous ne pourriez pas vous connecter sans un OpenID.",
 	'openid-dashboard-title' => 'Tableau de bord OpenID',
 	'openid-dashboard-title-admin' => 'Tableau de bord OpenID (administrateur)',
 	'openid-dashboard-introduction' => "Les paramètres actuels de l'extension OpenID ([$1 aide])",
+	'openid-dashboard-number-openid-users' => "Nombre d'utilisateurs avec OpenID",
+	'openid-dashboard-number-openids-in-database' => 'Nombre de OpenID (total)',
+	'openid-dashboard-number-users-without-openid' => "Nombre d'utilisateurs sans OpenID",
 );
 
 /** Franco-Provençal (Arpetan)
@@ -3674,6 +3683,9 @@ OpenID ви овозможува да се најавувате на многу 
 	'openid-dashboard-title' => 'Табла на OpenID',
 	'openid-dashboard-title-admin' => 'Табла на OpenID (администратор)',
 	'openid-dashboard-introduction' => 'Тековни нагодувања на додатокот за OpenID ([$1 помош])',
+	'openid-dashboard-number-openid-users' => 'Број на корисници со OpenID',
+	'openid-dashboard-number-openids-in-database' => 'Број на OpenID-ја (вкупно)',
+	'openid-dashboard-number-users-without-openid' => 'Број на корисници без OpenID',
 );
 
 /** Malayalam (മലയാളം)
@@ -4634,6 +4646,9 @@ Sem um OpenID não se poderia autenticar.',
 	'openid-dashboard-title' => 'Painel do OpenID',
 	'openid-dashboard-title-admin' => 'Painel do OpenID (administrador)',
 	'openid-dashboard-introduction' => 'As configurações actuais da extensão OpenID ([$1 ajuda])',
+	'openid-dashboard-number-openid-users' => 'Número de utilizadores com OpenID',
+	'openid-dashboard-number-openids-in-database' => 'Número de OpenIDs (total)',
+	'openid-dashboard-number-users-without-openid' => 'Número de utilizadores sem OpenID',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -6069,7 +6084,7 @@ $messages['vep'] = array(
  */
 $messages['vi'] = array(
 	'openid-desc' => 'Đăng nhập vào wiki dùng [http://openid.net/ OpenID] và đăng nhập vào các website nhận OpenID dùng tài khoản wiki',
-	'openidlogin' => 'Đăng nhập dùng OpenID',
+	'openidlogin' => 'Đăng nhập / mở tài khoản dùng OpenID',
 	'openidserver' => 'Dịch vụ OpenID',
 	'openidxrds' => 'Tập tin Yadis',
 	'openidconvert' => 'Chuyển đổi OpenID',
@@ -6085,9 +6100,13 @@ Xin hãy liên lạc với [[Special:ListUsers/sysop|bảo quản viên]].',
 	'openidfailure' => 'Không thẩm tra được',
 	'openidfailuretext' => 'Không thể thẩm tra địa chỉ OpenID. Lỗi: “$1”',
 	'openidsuccess' => 'Đã thẩm tra thành công',
-	'openidsuccesstext' => 'Đã thẩm tra địa chỉ OpenID thành công.',
+	'openidsuccesstext' => "'''Đã xác minh và đăng nhập như $1'''.
+
+Địa chỉ OpenID của bạn là $2 .
+
+Quản lý các OpenID này và vào tương lai, cũng như một mật khẩu tùy chọn, tại [[Special:Preferences|trang tùy chọn]].",
 	'openidusernameprefix' => 'Thành viên OpenID',
-	'openidserverlogininstructions' => 'Hãy cho vào mật khẩu ở dưới để đăng nhập vào $3 dùng tài khoản $2 (trang thảo luận $1).',
+	'openidserverlogininstructions' => '$2, $3 yêu cầu bạn nhập mật khẩu cho trang cá nhân của bạn, $1, tức là địa chỉ OpenID của bạn.',
 	'openidtrustinstructions' => 'Hãy kiểm tra hộp này nếu bạn muốn cho $1 biết thông tin cá nhân của bạn.',
 	'openidallowtrust' => 'Để $1 tin cậy vào tài khoản này.',
 	'openidnopolicy' => 'Website chưa xuất bản chính sách về sự riêng tư.',
@@ -6099,7 +6118,7 @@ Xin hãy liên lạc với [[Special:ListUsers/sysop|bảo quản viên]].',
 	'openidemail' => 'Địa chỉ thư điện tử',
 	'openidlanguage' => 'Ngôn ngữ',
 	'openidtimezone' => 'Múi giờ',
-	'openidchooselegend' => 'Lựa chọn tên người dùng',
+	'openidchooselegend' => 'Lựa chọn tên người dùng và tài khoản',
 	'openidchooseinstructions' => 'Mọi người dùng cần có tên hiệu; bạn có thể chọn tên hiệu ở dưới.',
 	'openidchoosenick' => 'Tên hiệu của bạn ($1)',
 	'openidchoosefull' => 'Tên đầy đủ của bạn ($1)',
@@ -6115,23 +6134,23 @@ Xin hãy liên lạc với [[Special:ListUsers/sysop|bảo quản viên]].',
 	'openidconvertsuccesstext' => 'Bạn đã chuyển đổi OpenID của bạn sang $1 thành công.',
 	'openidconvertyourstext' => 'Đó đã là OpenID của bạn.',
 	'openidconvertothertext' => 'Đó là OpenID của một người nào khác.',
-	'openidalreadyloggedin' => "'''Bạn đã đăng nhập rồi, $1!'''
+	'openidalreadyloggedin' => 'Bạn đã đăng nhập rồi.',
+	'openidalreadyloggedintext' => "'''Bạn đã đăng nhập rồi, $1!'''
 
-Nếu bạn muốn sử dụng OpenID để đăng nhập vào lần sau, bạn có thể [[Special:OpenIDConvert|chuyển đổi tài khoản của bạn để dùng OpenID]].",
+Quản lý (xem, xóa, và thêm) các OpenID trong thẻ OpenID tại [[Special:Preferences|trang tùy chọn]].",
 	'openidnousername' => 'Chưa chỉ định tên người dùng.',
 	'openidbadusername' => 'Tên người dùng không hợp lệ.',
 	'openidautosubmit' => 'Trang này có một mẫu sẽ tự động đăng lên nếu bạn kích hoạt JavaScript.
 Nếu không, hãy thử nút "Continue" (Tiếp tục).',
 	'openidclientonlytext' => 'Bạn không thể sử dụng tài khoản tại wiki này như OpenID tại trang khác.',
 	'openidloginlabel' => 'Địa chỉ OpenID',
-	'openidlogininstructions' => '{{SITENAME}} hỗ trợ chuẩn [http://openid.net/ OpenID] để đăng nhập một lần giữa các trang web.
-OpenID cho phép bạn đăng nhập vào nhiều trang web khác nhau mà không phải sử dụng mật khẩu khác nhau tại mỗi trang.
-(Xem [http://en.wikipedia.org/wiki/OpenID bài viết về OpenID của Wikipedia] để biết thêm chi tiết.)
-
-Nếu bạn đã có một tài khoản tại {{SITENAME}}, bạn có thể [[Special:UserLogin|đăng nhập]] bằng tên người dùng và mật khẩu của bạn như thông thường.
-Để dùng OpenID vào lần sau, bạn có thể [[Special:OpenIDConvert|chuyển đổi tài khoản của bạn sang OpenID]] sau khi đã đăng nhập bình thường.
-
-Có nhiều [http://wiki.openid.net/Public_OpenID_providers nhà cung cấp OpenID Công cộng], và có thể bạn đã có một tài khoản kích hoạt OpenID tại dịch vụ khác.',
+	'openidlogininstructions' => '{{SITENAME}} hỗ trợ tiêu chuẩn [http://openid.net/ OpenID] để đăng nhập một lần giữa các trang Web.
+OpenID cho phép bạn đăng nhập vào nhiều trang Web khác nhau mà không phải sử dụng mật khẩu khác nhau tại mỗi trang.
+(Xem thêm chi tiết tại [http://vi.wikipedia.org/wiki/OpenID bài viết về OpenID của Wikipedia].)
+Nhiều [http://openid.net/get/ dịch vụ cung cấp OpenID], và có thể bạn đã có tài khoản tại một dịch vụ kích hoạt OpenID.',
+	'openidlogininstructions-openidloginonly' => "{{SITENAME}} ''chỉ'' cho phép đăng nhập dùng OpenID.",
+	'openidlogininstructions-passwordloginallowed' => 'Nếu bạn đã có một tài khoản tại {{SITENAME}}, bạn có thể [[Special:UserLogin|đăng nhập]] bằng tên người dùng và mật khẩu của bạn như thông thường.
+Để dùng OpenID vào lần sau, bạn có thể [[Special:OpenIDConvert|chuyển đổi tài khoản của bạn sang OpenID]] sau khi đã đăng nhập bình thường.',
 	'openidupdateuserinfo' => 'Cập nhật thông tin cá nhân của tôi:',
 	'openiddelete' => 'Xóa OpenID',
 	'openiddelete-text' => 'Khi bấm nút “{{int:openiddelete-button}}”, bạn sẽ dời OpenID $1 khỏi tài khoản của bạn.
@@ -6141,6 +6160,7 @@ Bạn sẽ không đăng nhập được dùng OpenID này.',
 	'openiddeleteerroropenidonly' => 'Bạn không có thể xóa tất cả các OpenID của bạn vì bạn chỉ được phép đăng nhập dùng OpenID. Nếu không có OpenID thì bạn không thể đăng nhập được.',
 	'openiddelete-sucess' => 'Đã dời OpenID thành công khỏi tài khoản của bạn.',
 	'openiddelete-error' => 'Đã gặp lỗi khi dời OpenID khỏi tài khoản của bạn.',
+	'openid-openids-were-not-merged' => 'Các OpenID không được hợp nhất lúc khi hợp nhất các tài khoản người dùng.',
 	'openid-prefstext' => 'Tùy chỉnh [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Ẩn địa chỉ OpenID của bạn khỏi trang cá nhân, nếu bạn đăng nhập bằng OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Cập nhật thông tin sau từ persona OpenID mỗi khi tôi đăng nhập:',
@@ -6154,6 +6174,15 @@ Bạn sẽ không đăng nhập được dùng OpenID này.',
 	'openid-provider-label-yahoo' => 'Đăng nhập dùng tài khoản Yahoo!',
 	'openid-provider-label-aol' => 'Ghi vào tên màn hình AOL',
 	'openid-provider-label-other-username' => 'Ghi vào tên người dùng $1',
+	'specialpages-group-openid' => 'Các trang quản lý và trạng thái OpenID',
+	'right-openid-dashboard-access' => 'Truy cập chuẩn vào bảng điều khiển OpenID',
+	'right-openid-dashboard-admin' => 'Truy cập như bảo quản viên vào bảng điều khiển OpenID',
+	'openid-dashboard-title' => 'Bảng điều khiển OpenID',
+	'openid-dashboard-title-admin' => 'Bảng điều khiển OpenID (bảo quản viên)',
+	'openid-dashboard-introduction' => 'Cấu hình hiện hành của phần mở rộng OpenID ([$1 trợ giúp])',
+	'openid-dashboard-number-openid-users' => 'Số người dùng qua OpenID',
+	'openid-dashboard-number-openids-in-database' => 'Tổng số OpenID',
+	'openid-dashboard-number-users-without-openid' => 'Số người dùng không phải qua OpenID',
 );
 
 /** Volapük (Volapük)
