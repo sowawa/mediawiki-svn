@@ -20,48 +20,52 @@ $.fn.editSurface = function( options ) {
 	
 	$(document)
 		.mousedown( function( e ) {
-			var $target = $( e.target );
-			// TODO: If the target is not a line, find the nearest line to the cursor and use it
-			if ( $target.is( '.editSurface-line' ) ) {
-				e.preventDefault();
-				sel = {
-					'active': true,
-					'from': null,
-					'to': null,
-					'start': getCursorPosition( e ),
-					'end': null
-				};
-				cursor.show();
-				drawSelection( $target.parent() );
-				// Move cursor
-				if ( sel.start ) {
-					cursor.$.css( {
-						'top': sel.start.top,
-						'left': sel.start.x
-					} );
-				}
+			if ( !$( e.target ).is( '.editSurface-line' ) ) {
+				return;
 			}
+			sel = {
+				'active': true,
+				'from': null,
+				'to': null,
+				'start': getCursorPosition( e.pageX, e.pageY, $( e.target ) ),
+				'end': null
+			};
+			cursor.show();
+			drawSelection( sel.start.$target.parent() );
+			// Move cursor
+			if ( sel.start ) {
+				cursor.$.css( {
+					'top': sel.start.top,
+					'left': sel.start.x
+				} );
+			}
+			e.preventDefault();
 			return false;
 		} )
 		.mouseup( function( e ) {
-			var $target = $( e.target );
-			if ( $target.is( '.editSurface-line' ) && ( !sel.from || !sel.to
-					|| ( sel.from.line === sel.to.line && sel.from.index === sel.to.index ) ) ) {
-				sel.from = null;
-				sel.to = null;
-				sel.start = null;
-				sel.end = null;
-				cursor.show();
+			if ( sel.active ) {
+				if ( !sel.from || !sel.to
+						|| ( sel.from.line === sel.to.line && sel.from.index === sel.to.index ) ) {
+					sel.from = null;
+					sel.to = null;
+					sel.start = null;
+					sel.end = null;
+					cursor.show();
+					clearSelection();
+				} else {
+					drawSelection( sel.start.$target.parent() );
+				}
+				sel.active = false;
 			}
-			sel.active = false;
-			drawSelection( $target.parent() );
 		} )
 		.mousemove( function( e ) {
-			var $target = $( e.target );
-			// TODO: If the target is not a line, find the nearest line to the cursor and use it
-			if ( $target.is( '.editSurface-line' ) && sel.active ) {
-				sel.end = getCursorPosition( e );
-				if ( sel.start && sel.end && sel.start.line < sel.end.line
+			var $target = undefined;
+			if ( $( e.target ).is( '.editSurface-line' ) ) {
+				$target = $( e.target );
+			}
+			if ( sel.active ) {
+				sel.end = getCursorPosition( e.pageX, e.pageY, $target );
+				if ( sel.start.line < sel.end.line
 						|| ( sel.start.line === sel.end.line
 								&& sel.start.index < sel.end.index ) ) {
 					sel.from = sel.start;
@@ -71,7 +75,7 @@ $.fn.editSurface = function( options ) {
 					sel.to = sel.start;
 				}
 				cursor.hide();
-				drawSelection( $target.parent() );
+				drawSelection( sel.start.$target.parent() );
 			}
 		} );
 	
@@ -105,23 +109,24 @@ $.fn.editSurface = function( options ) {
 		}
 		return text;
 	}
-	// TODO: Take x and y, and infer the target
-	function getCursorPosition( e ) {
-		var $target = $( e.target );
+	function getCursorPosition( x, y, $target ) {
+		if ( $target === undefined ) {
+			var $target = $( '.editSurface-line' ).closestToOffset( { 'left': x, 'top': y } );
+		}
 		var metrics = $target.data( 'metrics' );
 		var text = $target.data( 'text' );
 		var line = $target.data( 'line' );
 		if ( !$.isArray( metrics ) || metrics.length === 0 ) {
-			return null;
+			throw "Missing metrics data error"
 		}
 		var to = metrics.length - 1;
 		var a;
 		var b = { 'l': 0, 'c': 0, 'r': 0 };
-		var x = e.layerX;
+		var c = x - $target.offset().left;
 		for ( var i = 0; i <= to; i++ ) {
 			a = b;
 			b = { 'l': a.r, 'c': a.r + ( metrics[i] / 2 ), 'r': a.r + metrics[i] };
-			if ( ( i === 0 && x < a.l ) || ( x > a.c && x <= b.c ) || ( i === to && x >= b.r ) ) {
+			if ( ( i === 0 && c <= a.l ) || ( c >= a.c && c <= b.c ) || i === to ) {
 				var offset = $target.offset();
 				var height = $target.height();
 				return {
@@ -135,7 +140,10 @@ $.fn.editSurface = function( options ) {
 				};
 			}
 		}
-		return null;
+	}
+	
+	function clearSelection() {
+		ranges.$all.hide();
 	}
 	
 	function drawSelection( $container ) {

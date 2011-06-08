@@ -63,9 +63,13 @@ $.fn.flow = function( text ) {
 				// TODO: How does this work with hyphens? Won't they be to far right?
 				breakPos++;
 			}
+			// Move the position back to the last safe location
+			pos = breakPos;
+			// Truncate characters that won't fit
 			lineText = text.substring( lineStartPos, breakPos );
 			$line.html( encodeHtml( lineText ) );
-			pos = breakPos;
+			// Don't leave metrics from truncated characters around
+			lineMetrics = lineMetrics.slice( 0, pos - lineStartPos );
 		}
 		
 		$line
