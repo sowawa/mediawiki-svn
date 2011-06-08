@@ -9,7 +9,6 @@ class SpecialNotificator extends SpecialPage {
 
 function __construct() {
 	parent::__construct( 'Notificator' );
-	wfLoadExtensionMessages('Notificator');
 }
 
 function execute($par) {
