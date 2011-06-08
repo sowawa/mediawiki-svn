@@ -6,7 +6,7 @@ body {
 #selection {
 	position: absolute;
 	left: 26em;
-	width: 20em;
+	width: 24em;
 	border: solid 1px Highlight;
 	line-height: 1.5em;
 	cursor: text;
