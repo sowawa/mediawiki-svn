@@ -20,14 +20,18 @@ $.fn.editSurface = function( options ) {
 	
 	$(document)
 		.mousedown( function( e ) {
-			if ( !$( e.target ).is( '.editSurface-line' ) ) {
+			var $target = $( e.target );
+			if ( $target.is( '.editSurface-paragraph' ) ) {
+				$target = $target.children().closestToOffset( { 'left': e.pageX, 'top': e.pageY } );
+			}
+			if ( !$target.is( '.editSurface-line' ) ) {
 				return;
 			}
 			sel = {
 				'active': true,
 				'from': null,
 				'to': null,
-				'start': getCursorPosition( e.pageX, e.pageY, $( e.target ) ),
+				'start': getCursorPosition( e.pageX, e.pageY, $target ),
 				'end': null
 			};
 			cursor.show();
@@ -110,9 +114,6 @@ $.fn.editSurface = function( options ) {
 		return text;
 	}
 	function getCursorPosition( x, y, $target ) {
-		if ( $target === undefined ) {
-			var $target = $( '.editSurface-line' ).closestToOffset( { 'left': x, 'top': y } );
-		}
 		var metrics = $target.data( 'metrics' );
 		var text = $target.data( 'text' );
 		var line = $target.data( 'line' );

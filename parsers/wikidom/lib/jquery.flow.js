@@ -5,6 +5,7 @@
 $.flow = { 'widthCache': {} };
 
 $.fn.flow = function( text ) {
+	console.time( 'flow' );
 	
 	function encodeHtml( c ) {
 		return c.replace( /&/g, '&amp;' )
@@ -83,12 +84,9 @@ $.fn.flow = function( text ) {
 		
 		line++;
 	}
-
-	return $this;
 	
-	// the end
-
-
-
+	console.timeEnd( 'flow' );
+	
+	return $this;
 };
 
