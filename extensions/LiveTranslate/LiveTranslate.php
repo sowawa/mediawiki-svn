@@ -92,7 +92,7 @@ if ( defined( 'MW_SUPPORTS_RESOURCE_MODULES' ) ) {
 	
 	$wgResourceModules['ext.livetranslate'] = $moduleTemplate + array(
 		'scripts' => array( 'includes/ext.livetranslate.js' ),
-		'dependencies' => array(),
+		'dependencies' => array( 'jquery' ),
 		'messages' => $egLTJSMessages
 	);
 	

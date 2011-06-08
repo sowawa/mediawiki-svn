@@ -1,7 +1,7 @@
 google.load("language", "1");
 google.setOnLoadCallback(function(){google.language.getBranding("googlebranding");});
 
-( window.translationService = function( $ ) {
+(function( $ ){ window.translationService = function() {
 	
 	var self = this;
 	
@@ -110,7 +110,7 @@ google.setOnLoadCallback(function(){google.language.getBranding("googlebranding"
 	
 	/**
 	 * Translates a single DOM element using Google Translate.
-	 * Loops through child elements and recursivly calls itself to translate these.
+	 * Loops through child elements and recursively calls itself to translate these.
 	 * 
 	 * @param {jQuery} element
 	 * @param {string} sourceLang
@@ -118,22 +118,18 @@ google.setOnLoadCallback(function(){google.language.getBranding("googlebranding"
 	 */
 	this.translateElement = function( element, sourceLang, targetLang ) {
 		ltdebug( 'Google: Translating element' );
-		runningJobs++;
+		this.runningJobs++;
 		
 		var maxChunkLength = 500;
-		
+
 		element.contents().each( function() {
-			if ( this.nodeType == 3 && ( typeof this.data != undefined ) ) {
-				console.log( $.trim( this.data ) );
-				console.log( typeof $.trim( this.data ) );
-			}
 			ltdebug( 'Google: Element conent item' );
 			
 			// If it's a text node, then translate it.
-			if ( this.nodeType == 3 && this.data != undefined && $.trim( this.data ).length > 0 ) {
+			if ( this.nodeType == 3 && typeof this.data === 'string' && $.trim( this.data ).length > 0 ) {
 				ltdebug( 'Google: Found content node' );
 				
-				runningJobs++;
+				self.runningJobs++;
 				self.translateChunk(
 					this.data.split( new RegExp( "(\\S.+?[.!?])(?=\\s+|$)", "gi" ) ),
 					[],
@@ -144,7 +140,8 @@ google.setOnLoadCallback(function(){google.language.getBranding("googlebranding"
 				);
 			}
 			// If it's an html element, check to see if it should be ignored, and if not, apply function again.
-			else if ( $.inArray( $( this ).attr( 'id' ), [ 'siteSub', 'jump-to-nav' ] ) == -1
+			else if ( this.nodeType != 3
+				&& $.inArray( $( this ).attr( 'id' ), [ 'siteSub', 'jump-to-nav' ] ) == -1
 				&& !$( this ).hasClass( 'notranslate' ) && !$( this ).hasClass( 'printfooter' )
 				&& $( this ).text().length > 0 ) {
 				
@@ -172,4 +169,4 @@ google.setOnLoadCallback(function(){google.language.getBranding("googlebranding"
 		}
 	}
 	
-} )( jQuery );
+}; })( jQuery );
