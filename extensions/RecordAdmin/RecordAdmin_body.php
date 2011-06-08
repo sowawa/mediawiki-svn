@@ -110,27 +110,28 @@ class RecordAdmin {
 			# JS to add an onSubmit method that adds the record forms contents to hidden values in the edit form
 			$wgOut->addScript( "<script type='$wgJsMimeType'>
 				function raRecordForms() {
-					forms = [ $jsFormsList ];
+					var forms = [ $jsFormsList ];
 					for( i = 0; i < forms.length; i++ ) {
-						type = forms[i];
-						form = document.getElementById( type + '-form' );
-						tags = [ 'input', 'select', 'textarea' ];
+						var type = forms[i];
+						var form = document.getElementById( type + '-form' );
+						var tags = [ 'input', 'select', 'textarea' ];
 						for( j = 0; j < tags.length; j++ ) {
-							inputs = form.getElementsByTagName( tags[j] );
+							var inputs = form.getElementsByTagName( tags[j] );
 							for( k = 0; k < inputs.length; k++ ) {
-								input = inputs[k];
-								key = type + ':' + input.getAttribute('name');
-								hidden = document.createElement( 'input' );
-								hidden.setAttribute( 'name', key );
-								hidden.setAttribute( 'type', 'hidden' );
-								hidden.value = input.value;
-								document.getElementById( 'editform' ).appendChild( hidden );
+								var multi = jQuery( inputs[k] ).val();
+								if( typeof( multi ) == 'object' ) multi = multi.join('\\n');
+								var key = type + ':' + inputs[k].getAttribute('name');
+								var hidden = jQuery( document.createElement( 'input' ) );
+								hidden.attr( 'name', key );
+								hidden.attr( 'type', 'hidden' );
+								hidden.val( multi );
+								jQuery( '#editform' ).append( hidden );
 							}
 						}
 					}
 				}
 				function raAddToSubmit() {
-					document.getElementById( 'editform' ).setAttribute( 'onsubmit', 'raRecordForms()' );
+					jQuery( '#editform' ).attr( 'onsubmit', 'raRecordForms()' );
 				}
 				addOnloadHook( raAddToSubmit );
 			</script>" );
@@ -148,6 +149,8 @@ class RecordAdmin {
 
 		# Organise the posted record data
 		$data = array();
+#print_r($_REQUEST);
+#die;
 		foreach( $_REQUEST as $key => $value ) {
 			if( preg_match( "|(.+):ra_(.+)|", $key, $m ) ) {
 				if( is_array( $value ) ) $value = join( "\n", $value );
