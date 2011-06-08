@@ -17,6 +17,14 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 // Define the extension; allows us make sure the extension is used correctly
 define( 'PATCHOUTPUTMOBILE', 'PatchOutputMobile' );
+// WURFL installation dir
+define( 'WURFL_DIR', dirname(__FILE__) . DIRECTORY_SEPARATOR . 'library' . 
+		DIRECTORY_SEPARATOR . 'WURFL' . DIRECTORY_SEPARATOR );
+// WURFL configuration files directory
+define( 'RESOURCES_DIR', dirname(__FILE__) . DIRECTORY_SEPARATOR . 'library' . 
+		DIRECTORY_SEPARATOR. 'resources' . DIRECTORY_SEPARATOR );
+
+require_once( WURFL_DIR . 'Application.php' );
 
 // Extension credits that will show up on Special:Version
 $wgExtensionCredits['other'][] = array(
@@ -39,7 +47,7 @@ $wgHooks['OutputPageBeforeHTML'][] = array( &$wgExtPatchOutputMobile,
 											'onOutputPageBeforeHTML' );
 
 class ExtPatchOutputMobile {
-	const VERSION = '0.4.4';
+	const VERSION = '0.4.5';
 
 	private $doc;
 	
@@ -107,6 +115,17 @@ class ExtPatchOutputMobile {
 		self::$dir = $wgContLang->getDir();
 		self::$code = $wgContLang->getCode();
 		
+		try {
+			$wurflConfigFile = RESOURCES_DIR . 'wurfl-config.xml';
+			$wurflConfig = new WURFL_Configuration_XmlConfig( $wurflConfigFile );
+			$wurflManagerFactory = new WURFL_WURFLManagerFactory( $wurflConfig );
+			$wurflManager = $wurflManagerFactory->create();
+			$device = $wurflManager->getDeviceForHttpRequest( $_SERVER );
+			$props = $device->getAllCapabilities();
+		} catch (Exception $e) {
+			//echo $e->getMessage();
+		}
+		
 		$userAgent = $_SERVER['HTTP_USER_AGENT'];
 		$acceptHeader = $_SERVER["HTTP_ACCEPT"];
 		$device = new DeviceDetection();
@@ -128,7 +147,7 @@ class ExtPatchOutputMobile {
 			}
 		}
 		
-		if ( $mAction != 'view_normal_site' ) {
+		if ( $mAction != 'view_normal_site' && $props['is_wireless_device'] === 'true' ) {
 			ob_start( array( $this, 'DOMParse' ) );
 		}
 		return true;
