@@ -26,8 +26,8 @@ $wgSpecialPages['Notificator'] = 'SpecialNotificator';
 
 $wgExtensionMessagesFiles['Notificator'] = dirname( __FILE__ ) . '/Notificator.i18n.php';
 
-global $wgPasswordSender, $ngFromAddress;
-if(! $ngFromAddress) $ngFromAddress = $wgPasswordSender;
+// Setting default here, to avoid register_globals vulnerabilites
+$ngFromAddress = $wgPasswordSenderName . '<' . $wgPasswordSender . '>';
 
 function notificator_AddDatabaseTable() {
 	global $wgExtNewTables;
