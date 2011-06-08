@@ -63,9 +63,11 @@ $.fn.editSurface = function( options ) {
 			}
 		} )
 		.mousemove( function( e ) {
-			var $target = undefined;
-			if ( $( e.target ).is( '.editSurface-line' ) ) {
-				$target = $( e.target );
+			var $target = $( e.target );
+			if ( !$target.is( '.editSurface-line' ) ) {
+				$target = sel.start.$target.parent().children().closestToOffset(
+					{ 'left': e.pageX, 'top': e.pageY }
+				);
 			}
 			if ( sel.active ) {
 				sel.end = getCursorPosition( e.pageX, e.pageY, $target );
