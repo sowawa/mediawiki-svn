@@ -1,8 +1,8 @@
 <?php
 
-if (!defined('MEDIAWIKI')) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	echo "Not a valid entry point";
-	exit(1);
+	exit( 1 );
 }
 
 $wgExtensionCredits['parserhook'][] = array(
@@ -14,8 +14,8 @@ $wgExtensionCredits['parserhook'][] = array(
 	'url' => "http://www.mediawiki.org/wiki/Extension:Notificator",
 );
 
-$wgAutoloadClasses['Notificator'] = dirname(__FILE__) . '/Notificator.body.php';
-$wgAutoloadClasses['SpecialNotificator'] = dirname(__FILE__) . '/SpecialNotificator.php';
+$wgAutoloadClasses['Notificator'] = dirname( __FILE__ ) . '/Notificator.body.php';
+$wgAutoloadClasses['SpecialNotificator'] = dirname( __FILE__ ) . '/SpecialNotificator.php';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'notificator_AddDatabaseTable';
 $wgHooks['ParserTestTables'][]           = 'notificator_ParserTestTables';
@@ -31,21 +31,21 @@ $ngFromAddress = $wgPasswordSenderName . '<' . $wgPasswordSender . '>';
 
 function notificator_AddDatabaseTable() {
 	global $wgExtNewTables;
-	$wgExtNewTables[] = array('notificator', dirname( __FILE__ ) . '/Notificator.sql');
+	$wgExtNewTables[] = array( 'notificator', dirname( __FILE__ ) . '/Notificator.sql' );
 	return true;
 }
 
-function notificator_ParserTestTables(&$tables) {
+function notificator_ParserTestTables( &$tables ) {
   $tables[] = 'notificator';
   return true;
 }
 
-function notificator_Setup(&$parser) {
-	$parser->setFunctionHook('notificator', 'Notificator::notificator_Render');
+function notificator_Setup( &$parser ) {
+	$parser->setFunctionHook( 'notificator', 'Notificator::notificator_Render' );
 	return true;
 }
 
-function notificator_Magic(&$magicWords, $langCode) {
+function notificator_Magic( &$magicWords, $langCode ) {
 	$magicWords['notificator'] = array( 0, 'notificator' );
 	return true;
 }

@@ -2,11 +2,11 @@
 
 $aliases = array();
 $messages = array();
- 
+
 $aliases['en'] = array(
 	'Notificator' => array( 'Notificator' ),
 );
- 
+
 $messages['en'] = array(
 	'notificator' => 'Notificator',
 	'notificator-description' => 'Notifies someone by e-mail about changes to a page when a button on that page gets clicked.',
