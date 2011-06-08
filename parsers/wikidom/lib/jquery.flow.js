@@ -7,12 +7,12 @@ $.flow = { 'widthCache': {} };
 $.fn.flow = function( text ) {
 	
 	function encodeHtml( c ) {
-		return c.replace( '&', '&amp;' )
-			.replace( ' ', '&nbsp;' )
-			.replace( '<', '&lt;' )
-			.replace( '>', '&gt;' )
-			.replace( '\'', '&apos;' )
-			.replace( '"', '&quot;' );
+		return c.replace( /&/g, '&amp;' )
+			.replace( / /g, '&nbsp;' )
+			.replace( /</g, '&lt;' )
+			.replace( />/g, '&gt;' )
+			.replace( /\'/g, '&apos;' )
+			.replace( /"/g, '&quot;' );
 	}
 	
 	var breakableRe = /[\s\r\n\f]/;
