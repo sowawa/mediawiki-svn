@@ -63,13 +63,13 @@ $.fn.editSurface = function( options ) {
 			}
 		} )
 		.mousemove( function( e ) {
-			var $target = $( e.target );
-			if ( !$target.is( '.editSurface-line' ) ) {
-				$target = sel.start.$target.parent().children().closestToOffset(
-					{ 'left': e.pageX, 'top': e.pageY }
-				);
-			}
 			if ( sel.active ) {
+				var $target = $( e.target );
+				if ( !$target.is( '.editSurface-line' ) ) {
+					$target = sel.start.$target.parent().children().closestToOffset(
+						{ 'left': e.pageX, 'top': e.pageY }
+					);
+				}
 				sel.end = getCursorPosition( e.pageX, e.pageY, $target );
 				if ( sel.start.line < sel.end.line
 						|| ( sel.start.line === sel.end.line
