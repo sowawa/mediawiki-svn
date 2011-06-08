@@ -53,19 +53,21 @@ if ($from =~ /^bugzilla-daemon/)
 	for ($body) {
 		# Use fancy lookahead magic to match comments in the form of
 		# "Foo <bar@baz.com>" or "bing@boop.com".
-		if ( m{^--- Comment #\d+ from (.+) <\S+\@.*}m ) {
+		if ( m{^--- Comment #\d+ from (.*) ?<?\S+\@.*}m ) {
 			$user = $1;
-		} elsif ( m{^(.*) <(\S+)\@\S+> changed:$}m ) {
+        	$haschanges = 1;
+			$comment = 1;
+		}
+		if ( m{^(.*) ?<?(\S+)\@\S+>? changed:$}m ) {
         	# Try to grab the "real name" again.
         	$haschanges = 1;
-        	$user = $1;
+        	$user = $1 if !$user;
     	} else {
         	# If "real name" isn't available and we didn't get a user from the
         	# comment header, just use the "X-Bugzilla-Who" header.
         	my @who = split '@', $mail->header( 'X-Bugzilla-Who' );
         	$user = $who[0];
 		}
-		$comment = s/^--- Comment #\d+ from (?-s:.*?<)?(\S+)\@.*//ms;
 	}
 
 	my @changed_fields = split /\s+/, $mail->header( 'X-Bugzilla-Changed-Fields' );
@@ -161,7 +163,7 @@ if ($from =~ /^bugzilla-daemon/)
 if ($output)
 {
 	open (OUT, ">>/var/wikibugs/wikibugs.log");
-	# print $output;
+	#print $output;
 	print OUT $output;
 	close OUT;
 }
