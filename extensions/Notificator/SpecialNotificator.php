@@ -28,7 +28,7 @@ function execute($par) {
 		$pageTitle = $titleObj->getFullText();
 		$linkToPage = $titleObj->getFullURL();
 
-		if(! Notificator::checkEmailAddress($receiver)) {
+		if(! Sanitizer::validateEmail($receiver)) {
 			$output = '<span class="error">' . wfMsg('e-mail-address-invalid') . ' ' . wfMsg('notification-not-sent') . '</span>';
 			$output .= Notificator::getReturnToText($linkToPage, $pageTitle);
 			$wgOut->addHTML($output);
