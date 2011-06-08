@@ -24,21 +24,21 @@ $.fn.editSurface = function( options ) {
 			// TODO: If the target is not a line, find the nearest line to the cursor and use it
 			if ( $target.is( '.editSurface-line' ) ) {
 				e.preventDefault();
-				e.stopPropagation();
 				sel = {
 					'active': true,
 					'from': null,
 					'to': null,
-					'start': getSelection( e ),
+					'start': getCursorPosition( e ),
 					'end': null
 				};
+				console.log( sel.start );
 				cursor.show();
 				drawSelection( $target.parent() );
 				// Move cursor
 				if ( sel.start ) {
 					cursor.$.css( {
 						'top': sel.start.top,
-						'left': sel.start.left
+						'left': sel.start.x
 					} );
 				}
 			}
@@ -61,8 +61,8 @@ $.fn.editSurface = function( options ) {
 			var $target = $( e.target );
 			// TODO: If the target is not a line, find the nearest line to the cursor and use it
 			if ( $target.is( '.editSurface-line' ) && sel.active ) {
-				sel.end = getSelection( e );
-				if ( sel.start.line < sel.end.line
+				sel.end = getCursorPosition( e );
+				if ( sel.start && sel.end && sel.start.line < sel.end.line
 						|| ( sel.start.line === sel.end.line
 								&& sel.start.index < sel.end.index ) ) {
 					sel.from = sel.start;
@@ -106,7 +106,8 @@ $.fn.editSurface = function( options ) {
 		}
 		return text;
 	}
-	function getSelection( e ) {
+	// TODO: Take x and y, and infer the target
+	function getCursorPosition( e ) {
 		var $target = $( e.target );
 		var metrics = $target.data( 'metrics' );
 		var text = $target.data( 'text' );
@@ -115,23 +116,22 @@ $.fn.editSurface = function( options ) {
 			return null;
 		}
 		var to = metrics.length - 1;
-		var l = 0;
-		var r = 0;
+		var a;
+		var b = { 'l': 0, 'c': 0, 'r': 0 };
+		var x = e.layerX;
 		for ( var i = 0; i <= to; i++ ) {
-			l = r;
-			r += metrics[i];
-			if ( ( e.layerX > l && e.layerX <= r ) || ( e.layerX >= r && i == to ) ) {
+			a = b;
+			b = { 'l': a.r, 'c': a.r + ( metrics[i] / 2 ), 'r': a.r + metrics[i] };
+			if ( ( i === 0 && x < a.l ) || ( x > a.c && x <= b.c ) || ( i === to && x >= b.r ) ) {
 				var offset = $target.offset();
 				var height = $target.height();
 				return {
 						'$target': $target,
 						'index': i,
 						'line': line,
+						'x': offset.left + b.l,
 						'top': offset.top,
-						'left': offset.left + l,
-						'right': r,
 						'bottom': offset.top + height,
-						'width': r - l,
 						'height': height
 				};
 			}
@@ -145,9 +145,9 @@ $.fn.editSurface = function( options ) {
 				// 1 line
 				if ( sel.from.index !== sel.to.index ) {
 					ranges.$first.show().css( {
-						'left': sel.from.left,
+						'left': sel.from.x,
 						'top': sel.from.top,
-						'width': sel.to.right - sel.from.right,
+						'width': sel.to.x - sel.from.x,
 						'height': sel.from.height
 					} );
 					ranges.$fill.hide();
@@ -159,9 +159,9 @@ $.fn.editSurface = function( options ) {
 			} else if ( sel.from.line < sel.to.line ) {
 				// 2+ lines
 				ranges.$first.show().css( {
-					'left': sel.from.left,
+					'left': sel.from.x,
 					'top': sel.from.top,
-					'width': ( $container.innerWidth() - sel.from.left )
+					'width': ( $container.innerWidth() - sel.from.x )
 							+ $container.offset().left,
 					'height': sel.from.height
 				} );
@@ -178,7 +178,7 @@ $.fn.editSurface = function( options ) {
 				ranges.$last.show().css( {
 					'left': $container.offset().left,
 					'top': sel.to.top,
-					'width': sel.to.left - $container.offset().left,
+					'width': sel.to.x - $container.offset().left,
 					'height': sel.to.height
 				} );
 				// XXX: Demo code!
