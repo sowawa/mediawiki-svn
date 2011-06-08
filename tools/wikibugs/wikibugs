@@ -14,7 +14,7 @@ $/ = undef;
 my $contents = <STDIN>;
 my $output;
 
-my $shash = { 
+my $shash = {
 	'enhancement' => "\00315enhancement\003",
 	'trivial' => 'trivial',
 	'minor' => "minor",
@@ -25,13 +25,13 @@ my $shash = {
 };
 
 my $rhash = {
-	'WORKSFORME' => "\00314(WFM)\003", 
+	'WORKSFORME' => "\00314(WFM)\003",
 	'INVALID' => "\00314(INVALID)\003",
 	'DUPLICATE' => "\00314(DUP)\003",
 	'FIXED' => "\00303(FIXED)\003",
-	'WONTFIX' => "\00303(WONTFIX)\003", 
+	'WONTFIX' => "\00303(WONTFIX)\003",
 	'LATER' => "\00306(LATER)\003",
-	'REMIND' => "\00306(REMIND)\003" 
+	'REMIND' => "\00306(REMIND)\003"
 };
 
 use Email::MIME;
@@ -49,13 +49,25 @@ if ($from =~ /^bugzilla-daemon/)
 	$/ = "";
 	# extract and remove the comment section
 	my ($haschanges, $user);
-	my $comment = $body =~ s/^--- Comment #\d+ from (?-s:.*?<)?(\S+)\@.*//ms;
-	if($comment) {
-		$user = $1;
-	} else {
-		$user = 'N/A' # shouldn't be possible'
+	my $comment = undef;
+	for ($body) {
+		# Use fancy lookahead magic to match comments in the form of
+		# "Foo <bar@baz.com>" or "bing@boop.com".
+		if ( m{^--- Comment #\d+ from (.+) <\S+\@.*}m ) {
+			$user = $1;
+		} elsif ( m{^(.*) <(\S+)\@\S+> changed:$}m ) {
+        	# Try to grab the "real name" again.
+        	$haschanges = 1;
+        	$user = $1;
+    	} else {
+        	# If "real name" isn't available and we didn't get a user from the
+        	# comment header, just use the "X-Bugzilla-Who" header.
+        	my @who = split '@', $mail->header( 'X-Bugzilla-Who' );
+        	$user = $who[0];
+		}
+		$comment = s/^--- Comment #\d+ from (?-s:.*?<)?(\S+)\@.*//ms;
 	}
-	
+
 	my @changed_fields = split /\s+/, $mail->header( 'X-Bugzilla-Changed-Fields' );
 
 
@@ -71,14 +83,14 @@ if ($from =~ /^bugzilla-daemon/)
 		} elsif ($subject =~ /\[Bug (\d+)\]\s(.*)/s) {
 			($bug, $summary, $st) = ($1, $2, "\00303(mod)\003");
 		}
-		
+
 		## Set the URL to the URL found in the message body if available, else construct our own URL
 		my $url =
 			$body =~ /^(http.*\/)show_bug\.cgi\?id=(.*)$/m
 			? "$1$2"   # short URL!
 			: "http://bugzilla.wikimedia.org/show_bug.cgi?id=$bug";
 
-		$summary =~ s/\s+/ /g; 
+		$summary =~ s/\s+/ /g;
 
 		# We are going to append stuff to the beginning of $output later.
 		# This stuff is going to contain $st. But we want a chance of changing it first.
@@ -96,8 +108,6 @@ if ($from =~ /^bugzilla-daemon/)
 		}
 		else
 		{
-			($haschanges, $user) = (1, $1) if $contents =~ /^(?:.*<)?(\S+)\@\S+>? changed:$/m;
-
 			if ($haschanges) {
 				my @outputs;
 				my $status = $mail->header( 'X-Bugzilla-Status' );
@@ -151,7 +161,7 @@ if ($from =~ /^bugzilla-daemon/)
 if ($output)
 {
 	open (OUT, ">>/var/wikibugs/wikibugs.log");
-#	print $output;
+	# print $output;
 	print OUT $output;
 	close OUT;
 }
