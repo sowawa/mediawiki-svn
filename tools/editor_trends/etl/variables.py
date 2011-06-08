@@ -19,8 +19,11 @@ __date__ = '2011-04-10'
 __version__ = '0.1'
 
 import hashlib
+import re
 from xml.etree.cElementTree import dump
 
+RE_DEL_ARTICLE = re.compile('/GA[\d]{1,2}')
+RE_SPEEDY_DELETION = re.compile('\{\{db\-[a-z\d]*\}\}') #http://en.wikipedia.org/wiki/Wikipedia:Criteria_for_speedy_deletion
 
 def validate_hostname(address):
     '''
@@ -68,6 +71,14 @@ def parse_title(title):
     return title.text
 
 
+def detect_speedy_deletion(revision_text):
+    spds = re.findall(RE_SPEEDY_DELETION, revision_text)
+    templates = {}
+    for spd in spds:
+        templates[spd] = 1
+    return templates
+
+
 def parse_title_meta_data(title, ns, namespaces):
     '''
     This function categorizes an article to assist the Wikimedia Taxonomy
@@ -75,6 +86,7 @@ def parse_title_meta_data(title, ns, namespaces):
     http://meta.wikimedia.org/wiki/Contribution_Taxonomy_Project/Research_Questions
     '''
     title_meta = {}
+    re_ga = re.compile('/GA[\d]')
     if not ns:
         return title_meta
     namespace = '%s:' % namespaces[ns]
@@ -83,10 +95,11 @@ def parse_title_meta_data(title, ns, namespaces):
     title_meta['ns'] = ns
     if title.startswith('List of'):
         title_meta['category'] = 'List'
+    elif ns == 1:
+        if re.search(RE_DEL_ARTICLE, title.find):
+            title_meta['category'] = 'Good Article'
     elif ns == 4 or ns == 5:
-        if title.find('Articles for deletion') > -1:
-            title_meta['category'] = 'Deletion'
-        elif title.find('Arbitration') > -1:
+        if title.find('Arbitration') > -1:
             title_meta['category'] = 'Arbitration'
         elif title.find('Good Article') > -1:
             title_meta['category'] = 'Good Article'
@@ -108,6 +121,8 @@ def parse_title_meta_data(title, ns, namespaces):
                 title_meta['category'] = 'Featured Portal'
             elif title.find('Featured topic candidates') > -1:
                 title_meta['category'] = 'Featured Topic'
+        elif title.find('Articles for deletion') > -1 and title.find('Articles for deletion/Log/') > -1:
+            title_meta['category'] = 'Deletion'
 
     #print title_meta
     return title_meta
