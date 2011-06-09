@@ -38,13 +38,12 @@ class SpecialArticleFeedback extends SpecialPage {
 			//render daily lows table
 			$this->renderDailyHighsAndLows( $lows, wfMsg( 'articleFeedback-table-caption-dailylows', $wgLang->date( time() )));
 
-			// provide some messaging below high/low tables
-			$wgOut->addWikiMsg( 'articleFeedback-copy-below-highlow-tables' );
-			
 			/*
 			This functionality does not exist yet.
 			$this->renderWeeklyMostChanged();*/
 			$this->renderProblems();
+			
+			$wgOut->addWikiMsg( 'articlefeedback-dashboard-bottom' );
 		} else {
 			$wgOut->addWikiText( 'This page has been disabled.' );
 		}
