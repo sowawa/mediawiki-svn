@@ -175,12 +175,52 @@ class ArticleFeedbackHooks {
 				$dir . '/sql/AddRevisionsTable.sql',
 				true
 			) );
-			$updater->addExtensionUpdate( array(
-				'addTable',
-				'article_feedback_stats_highs_lows',
-				$dir . '/sql/AddStatsHighsLowsTable.sql',
-				true
-			) );
+			
+			if ( $db->tableExists( 'article_feedback_stats_highs_lows') ) {
+				if ( !$db->tableExists( 'article_feedback_stats_types' )) {
+					// add article_feedback_stats_type if necessaray
+					$updater->addExtensionUpdate( array(
+						'addTable',
+						'article_feedback_stats_types',
+						$dir . '/sql/AddArticleFeedbackStatsTypeTable.sql',
+						true
+					) );
+				}
+				
+				$updater->addExtensionUpdate( array(
+					'addTable',
+					'article_feedback_stats',
+					$dir . '/sql/AddArticleFeedbackStatsTable.sql',
+					true
+				) );
+				
+				// migrate article_feedback_stats_highs_lows to article_feedback_stats
+				$updater->addExtensionUpdate( array(
+					'applyPatch',
+					$dir . '/sql/MigrateArticleFeedbackStatsHighsLows.sql',
+					true
+				) );
+			} else {
+				// add article_feedback_stats and article_feedback_stats_type
+				if ( !$db->tableExists( 'article_feedback_stats_types' )) {
+					$updater->addExtensionUpdate( array(
+						'addTable',
+						'article_feedback_stats_types',
+						$dir . '/sql/AddArticleFeedbackStatsTypeTable.sql',
+						true
+					) );
+				}
+				
+				if ( !$db->tableExists( 'article_feedback_stats' )) {
+					$updater->addExtensionUpdate( array(
+						'addTable',
+						'article_feedback_stats',
+						$dir . '/sql/AddArticleFeedbackStatsTable.sql',
+						true
+					) );
+				}
+			}
+			
 			$updater->addExtensionUpdate( array(
 				'addIndex',
 				'article_feedback',
@@ -233,16 +273,32 @@ class ArticleFeedbackHooks {
 	public static function resourceLoaderGetConfigVars( &$vars ) {
 		global $wgArticleFeedbackSMaxage,
 			$wgArticleFeedbackCategories,
+			$wgArticleFeedbackBlacklistCategories,
 			$wgArticleFeedbackLotteryOdds,
 			$wgArticleFeedbackTracking,
 			$wgArticleFeedbackOptions,
 			$wgArticleFeedbackNamespaces;
 		$vars['wgArticleFeedbackSMaxage'] = $wgArticleFeedbackSMaxage;
 		$vars['wgArticleFeedbackCategories'] = $wgArticleFeedbackCategories;
+		$vars['wgArticleFeedbackBlacklistCategories'] = $wgArticleFeedbackBlacklistCategories;
 		$vars['wgArticleFeedbackLotteryOdds'] = $wgArticleFeedbackLotteryOdds;
 		$vars['wgArticleFeedbackTracking'] = $wgArticleFeedbackTracking;
 		$vars['wgArticleFeedbackOptions'] = $wgArticleFeedbackOptions;
 		$vars['wgArticleFeedbackNamespaces'] = $wgArticleFeedbackNamespaces;
+		return true;
+	}
+	
+	/**
+	 * Add the preference in the user preferences with the GetPreferences hook.
+	 * @param $user User
+	 * @param $preferences
+	 */
+	public static function getPreferences( $user, &$preferences ) {
+		$preferences['articlefeedback-disable'] = array(
+			'type' => 'check',
+			'section' => 'rendering/advancedrendering',
+			'label-message' => 'articlefeedback-disable-preference',
+		);
 		return true;
 	}
 }

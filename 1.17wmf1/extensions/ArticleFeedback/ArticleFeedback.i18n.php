@@ -86,7 +86,11 @@ Please try again later.',
 	'articleFeedback-table-heading-page' => 'Page',
 	'articleFeedback-table-heading-average' => 'Average',
 	'articleFeedback-copy-above-highlow-tables' => 'This is an experimental feature.  Please provide feedback on the [$1 discussion page].',
-	'articleFeedback-copy-below-highlow-tables' => 'These tables contain pages that have received at least 10 ratings within the last 24 hours.  Averages are calculated by taking the mean of all ratings submitted within the last 24 hours.',
+	'articlefeedback-dashboard-bottom' => "'''Note''': We will continue to experiment with different ways of surfacing articles in these dashboards.  At present, the dashboards include the following articles:
+* Pages with highest/lowest ratings: articles that have received at least 10 ratings within the last 24 hours.  Averages are calculated by taking the mean of all ratings submitted within the last 24 hours.
+* Recent lows: articles that got 70% or more low (2 stars or lower) ratings in any category in the last 24 hours. Only articles that have received at least 10 ratings in the last 24 hours are included.",
+	/* Special:Preferences */
+	'articlefeedback-disable-preference' => "Don't show the Article feedback widget on pages",
 	/* EmailCapture */
 	'articlefeedback-emailcapture-response-body' => 'Hello!
 
@@ -118,6 +122,7 @@ The {{SITENAME}} team',
  * @author EugeneZelenko
  * @author Krinkle
  * @author Minh Nguyen
+ * @author Praveenp
  * @author Purodha
  * @author Raymond
  * @author Sam Reed
@@ -142,6 +147,7 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 {{Identical|Submit}}',
 	'articlefeedback-survey-title' => 'This text appears in the title bar of the survey dialog.',
 	'articlefeedback-survey-thanks' => 'This text appears when the user has successfully submitted the survey.',
+	'articlefeedback-form-panel-explanation-link' => 'Do not translate "Project:". Also translate the "ArticleFeedback" special page name at [[Special:AdvancedTranslate]].',
 	'articlefeedback-form-panel-helpimprove-email-placeholder' => '{{Optional}}',
 	'articlefeedback-form-panel-helpimprove-privacy' => '{{Identical|Privacy}}',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Do not translate "Project:"
@@ -421,6 +427,7 @@ $messages['bg'] = array(
 	'articlefeedback-survey-title' => 'Моля, отговорете на няколко въпроса',
 	'articlefeedback-survey-thanks' => 'Благодарим ви, че попълнихте въпросника!',
 	'articlefeedback-report-switch-label' => 'Показване на резултатите',
+	'articlefeedback-pitch-join-accept' => 'Създаване на сметка',
 	'articlefeedback-pitch-join-login' => 'Влизане',
 	'articlefeedback-pitch-edit-accept' => 'Редактиране на тази страница',
 );
@@ -595,7 +602,7 @@ Skipailh {{SITENAME}}",
  * @author CERminator
  */
 $messages['bs'] = array(
-	'articlefeedback' => 'Ocjenjivanje članaka',
+	'articlefeedback' => 'Tabla za ocjenjivanje članaka',
 	'articlefeedback-desc' => 'Ocjenjivanje članaka (probna verzija)',
 	'articlefeedback-survey-question-origin' => 'Koja je stranica na kojoj ste bili kada ste počeli ovu anketu?',
 	'articlefeedback-survey-question-whyrated' => 'Molimo recite nam zašto se ocijenili danas ovu stranicu (označite sve koje se može primijeniti):',
@@ -653,6 +660,8 @@ $messages['bs'] = array(
 	'articlefeedback-survey-message-success' => 'Hvala vam na popunjavanju ankete.',
 	'articlefeedback-survey-message-error' => 'Desila se greška.
 Molimo pokušajte kasnije.',
+	'articleFeedback-table-heading-page' => 'Stranica',
+	'articleFeedback-table-heading-average' => 'Prosjek',
 );
 
 /** Catalan (Català)
@@ -715,7 +724,7 @@ $messages['ce'] = array(
  * @author Mr. Richard Bolla
  */
 $messages['cs'] = array(
-	'articlefeedback' => 'Hodnocení článku',
+	'articlefeedback' => 'Přehled hodnocení článků',
 	'articlefeedback-desc' => 'Hodnocení článků (pilotní verze)',
 	'articlefeedback-survey-question-origin' => 'Ze které stránky jste {{gender:|přišel|přišla|přišli}} na tento průzkum?',
 	'articlefeedback-survey-question-whyrated' => 'Proč jste dnes hodnotili tuto stránku (zaškrtněte všechny platné možnosti)?',
@@ -734,7 +743,8 @@ $messages['cs'] = array(
 	'articlefeedback-error' => 'Došlo k chybě. Zkuste to prosím později.',
 	'articlefeedback-form-switch-label' => 'Hodnoťte tuto stránku',
 	'articlefeedback-form-panel-title' => 'Ohodnoťte tuto stránku',
-	'articlefeedback-form-panel-instructions' => 'Věnujte prosím chvilku ohodnocení této stránky.',
+	'articlefeedback-form-panel-explanation' => 'Co tohle je?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:Hodnocení článků',
 	'articlefeedback-form-panel-clear' => 'Odstranit hodnocení',
 	'articlefeedback-form-panel-expertise' => 'Mám rozsáhlé znalosti tohoto tématu (nepovinné)',
 	'articlefeedback-form-panel-expertise-studies' => 'Mám příslušný vysokoškolský titul',
@@ -746,6 +756,7 @@ $messages['cs'] = array(
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Zásady ochrany osobních údajů',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Ochrana osobních údajů',
 	'articlefeedback-form-panel-submit' => 'Odeslat hodnocení',
+	'articlefeedback-form-panel-pending' => 'Vaše hodnocení zatím nebylo odesláno',
 	'articlefeedback-form-panel-success' => 'Úspěšně uloženo',
 	'articlefeedback-form-panel-expiry-title' => 'Platnost vašeho hodnocení vypršela',
 	'articlefeedback-form-panel-expiry-message' => 'Ohodnoťte prosím stránku znovu a zadejte nové hodnocení.',
@@ -777,8 +788,12 @@ $messages['cs'] = array(
 	'articlefeedback-survey-message-error' => 'Došlo k chybě.
 Zkuste to prosím později.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Dnešní maxima a minima',
+	'articleFeedback-table-caption-dailyhighs' => 'Stránky s nejvyšším hodnocením: $1',
+	'articleFeedback-table-caption-dailylows' => 'Stránky s nejnižším hodnocením: $1',
 	'articleFeedback-table-heading-page' => 'Stránka',
 	'articleFeedback-table-heading-average' => 'Průměr',
+	'articleFeedback-copy-above-highlow-tables' => 'Toto je pokusná funkce. Sdělte nám svůj názor na [$1 diskusní stránce].',
+	'articleFeedback-copy-below-highlow-tables' => 'Tyto tabulky obsahují stránky, které byly v posledních 24 hodinách ohodnoceny alespoň 10krát. Průměry se počítají ze všech hodnocení odeslaných v posledních 24 hodinách.',
 );
 
 /** German (Deutsch)
@@ -806,7 +821,8 @@ $messages['de'] = array(
 	'articlefeedback-error' => 'Ein Fehler ist aufgetreten. Bitte versuche es später erneut.',
 	'articlefeedback-form-switch-label' => 'Diese Seite einschätzen',
 	'articlefeedback-form-panel-title' => 'Diese Seite einschätzen',
-	'articlefeedback-form-panel-instructions' => 'Bitte nimm dir kurz Zeit, diese Seite einzuschätzen.',
+	'articlefeedback-form-panel-explanation' => 'Was ist das?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:Artikeleinschätzung',
 	'articlefeedback-form-panel-clear' => 'Einschätzung entfernen',
 	'articlefeedback-form-panel-expertise' => 'Ich habe umfangreiche Kenntnisse zu diesem Thema (optional)',
 	'articlefeedback-form-panel-expertise-studies' => 'Ich habe einen entsprechenden Abschluss/ Hochschulabschluss',
@@ -858,6 +874,7 @@ Bitte später erneut versuchen.',
 	'articleFeedback-table-heading-average' => 'Durchschnitt',
 	'articleFeedback-copy-above-highlow-tables' => 'Dies ist ein experimenteller Funktionsbestandteil. Bitte hierzu auf der [$1 Diskussionsseite] eine Rückmeldung geben.',
 	'articleFeedback-copy-below-highlow-tables' => 'Diese Tabellen enthalten die Namen der Artikel, zu denen während der letzten 24 Stunden mindestens zehn Bewertungen abgegeben wurden. Die Durchschnittswerte basieren auf allen während der vergangenen 24 Stunden abgegebenen Bewertungen.',
+	'articlefeedback-disable-preference' => 'Das Widget zum Einschätzen von Seiten nicht anzeigen',
 	'articlefeedback-emailcapture-response-body' => 'Hallo!
 
 Vielen Dank für dein Interesse an der Verbesserung von {{SITENAME}}.
@@ -887,24 +904,50 @@ Das {{SITENAME}}-Team',
  * @author Kghbln
  */
 $messages['de-formal'] = array(
+	'articlefeedback-survey-question-origin' => 'Auf welcher Seite befanden Sie sich zu Anfang dieser Umfrage?',
 	'articlefeedback-survey-question-whyrated' => 'Bitte lassen Sie uns wissen, warum Sie diese Seite heute eingeschätzt haben (Zutreffendes bitte ankreuzen):',
 	'articlefeedback-survey-question-useful' => 'Glauben Sie, dass die abgegebenen Einschätzungen nützlich und verständlich sind?',
 	'articlefeedback-survey-question-comments' => 'Haben Sie noch weitere Anmerkungen?',
 	'articlefeedback-survey-title' => 'Bitte beantworten Sie uns ein paar Fragen',
-	'articlefeedback-survey-thanks' => 'Vielen Dank für Ihre Rückmeldung.',
 	'articlefeedback-error' => 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.',
 	'articlefeedback-form-panel-instructions' => 'Bitte nehmen Sie sich kurz Zeit, diesen Seite einzuschätzen.',
+	'articlefeedback-form-panel-helpimprove' => 'Ich möchte dabei helfen, {{SITENAME}} zu verbessern. Senden Sie mir bitte eine E-Mail. (optional)',
+	'articlefeedback-form-panel-helpimprove-note' => 'Wir werden Ihnen eine Bestätigungs-E-Mail senden. Wir geben Ihre E-Mail-Adresse an niemanden weiter. $1',
+	'articlefeedback-form-panel-pending' => 'Ihre Bewertung wurde noch nicht übertragen',
+	'articlefeedback-form-panel-expiry-title' => 'Ihre Einschätzung liegt zu lange zurück.',
+	'articlefeedback-form-panel-expiry-message' => 'Bitte beurteilen Sie die Seite erneut und speichern Sie eine neue Einschätzung.',
 	'articlefeedback-field-trustworthy-tip' => 'Haben Sie den Eindruck, dass diese Seite über genügend Quellenangaben verfügt und diese zudem aus vertrauenswürdigen Quellen stammen?',
 	'articlefeedback-field-complete-tip' => 'Haben Sie den Eindruck, dass diese Seite alle wichtigen Aspekte enthält, die mit dessen Inhalt zusammenhängen?',
 	'articlefeedback-field-objective-tip' => 'Haben Sie den Eindruck, dass diese Seite eine ausgewogene Darstellung aller mit dessen Inhalt verbundenen Aspekte enthält?',
 	'articlefeedback-field-wellwritten-tip' => 'Haben Sie den Eindruck, dass diese Seite gut strukturiert sowie geschrieben wurde?',
 	'articlefeedback-pitch-thanks' => 'Vielen Dank! Ihre Einschätzung wurde gespeichert.',
 	'articlefeedback-pitch-survey-message' => 'Bitte nehmen Sie sich einen Moment Zeit, um an einer kurzen Umfrage teilzunehmen.',
-	'articlefeedback-pitch-join-message' => 'Wussten Sie, dass Sie auch ein Benutzerkonto anlegen können? Ein Benutzerkonto hilft Ihnen Ihre Bearbeitungen nachzuvollziehen, sich einfacher an Diskussionen zu beteiligen sowie ein Teil der Wikipedia zu werden.',
+	'articlefeedback-pitch-join-message' => 'Wollten Sie ein Benutzerkonto anlegen?',
 	'articlefeedback-pitch-edit-message' => 'Wussten Sie, dass Sie diesen Artikel bearbeiten können?',
-	'articlefeedback-expert-assessment-question' => 'Besitzen Sie Kenntnisse bezüglich dieses Themas?',
 	'articlefeedback-survey-message-error' => 'Ein Fehler ist aufgetreten.
 Bitte versuchen Sie es später erneut.',
+	'articlefeedback-emailcapture-response-body' => 'Hallo!
+
+Vielen Dank für Ihr Interesse an der Verbesserung von {{SITENAME}}.
+
+Bitte nehmen Sie sich einen Moment Zeit, Ihre E-Mail-Adresse zu bestätigen, indem Sie auf den folgenden Link klicken:
+
+$1
+
+Sie können auch die folgende Seite besuchen:
+
+$2
+
+Geben Sie dort den nachfolgenden Bestätigungscode ein:
+
+$3
+
+Wir melden uns in Kürze dazu, wie Sie helfen können, {{SITENAME}} zu verbessern.
+
+Sofern Sie diese Anfrage nicht ausgelöst haben, ignorieren Sie einfach diese E-Mail. Wir werden Ihnen dann nichts mehr zusenden.
+
+Viele Grüße und vielen Dank,
+Das {{SITENAME}}-Team',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -1089,6 +1132,7 @@ La teamo {{SITENAME}}',
 
 /** Spanish (Español)
  * @author Dferg
+ * @author Drini
  * @author Fitoschido
  * @author Locos epraix
  * @author Mashandy
@@ -1100,14 +1144,14 @@ $messages['es'] = array(
 	'articlefeedback' => 'Evaluación del artículo',
 	'articlefeedback-desc' => 'Evaluación del artículo (versión de pruebas)',
 	'articlefeedback-survey-question-origin' => '¿En qué página estabas cuando iniciaste esta encuesta?',
-	'articlefeedback-survey-question-whyrated' => 'Por favor, dinos por qué has valorado esta página hoy (marca todas las opciones que correspondan):',
-	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'Quería contribuir a la calificación global de la página',
-	'articlefeedback-survey-answer-whyrated-development' => 'Espero que mi calificación afecte positivamante el desarrollo de la página',
+	'articlefeedback-survey-question-whyrated' => 'Por favor, dinos por qué decidiste valorar esta página (marca todas las opciones que correspondan):',
+	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'Deseo contribuir a la calificación global de la página',
+	'articlefeedback-survey-answer-whyrated-development' => 'Espero que mi calificación afecte de forma positiva el desarrollo de la página',
 	'articlefeedback-survey-answer-whyrated-contribute-wiki' => 'Quería contribuir a {{SITENAME}}',
-	'articlefeedback-survey-answer-whyrated-sharing-opinion' => 'Me gusta compartir mi opinión',
-	'articlefeedback-survey-answer-whyrated-didntrate' => 'Hoy no evalué ninguna página. Sólo quise dejar mis comentarios sobre la funcionalidad.',
+	'articlefeedback-survey-answer-whyrated-sharing-opinion' => 'Me agrada compartir mi opinión',
+	'articlefeedback-survey-answer-whyrated-didntrate' => 'No evalué ninguna página. Únicamente quise comentar acerca de la funcionalidad.',
 	'articlefeedback-survey-answer-whyrated-other' => 'Otro',
-	'articlefeedback-survey-question-useful' => '¿Crees las valoraciones proporcionadas son útiles y claras?',
+	'articlefeedback-survey-question-useful' => '¿Crees que las valoraciones proporcionadas son útiles y claras?',
 	'articlefeedback-survey-question-useful-iffalse' => '¿Por qué?',
 	'articlefeedback-survey-question-comments' => '¿Tienes algún comentario adicional?',
 	'articlefeedback-survey-submit' => 'Enviar',
@@ -1116,7 +1160,7 @@ $messages['es'] = array(
 	'articlefeedback-error' => 'Ha ocurrido un error. Por favor inténtalo de nuevo más tarde.',
 	'articlefeedback-form-switch-label' => 'Evalúa esta página',
 	'articlefeedback-form-panel-title' => 'Evalúa esta página',
-	'articlefeedback-form-panel-instructions' => 'Por favor tómate un tiempo para evaluar esta página.',
+	'articlefeedback-form-panel-instructions' => 'Por favor tómate el tiempo necesario para evaluar esta página.',
 	'articlefeedback-form-panel-clear' => 'Eliminar la evaluación',
 	'articlefeedback-form-panel-expertise' => 'Estoy muy bien informado sobre este tema (opcional)',
 	'articlefeedback-form-panel-expertise-studies' => 'Tengo un grado universitario relevante',
@@ -1128,6 +1172,7 @@ $messages['es'] = array(
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Política de privacidad',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Política de protección de datos',
 	'articlefeedback-form-panel-submit' => 'Enviar calificaciones',
+	'articlefeedback-form-panel-pending' => 'Tu valoración aún no ha sido enviada',
 	'articlefeedback-form-panel-success' => 'Guardado correctamente',
 	'articlefeedback-form-panel-expiry-title' => 'Tus calificaciones han caducado',
 	'articlefeedback-form-panel-expiry-message' => 'Por favor, reevalúa esta página y presenta nuevas calificaciones.',
@@ -1143,7 +1188,7 @@ $messages['es'] = array(
 	'articlefeedback-field-objective-label' => 'Objetivo',
 	'articlefeedback-field-objective-tip' => '¿Crees que esta página muestra una representación justa de todas las perspectivas sobre el tema?',
 	'articlefeedback-field-wellwritten-label' => 'Bien escrito',
-	'articlefeedback-field-wellwritten-tip' => '¿Crees que esta página está bien organizada y escrita correctamente?',
+	'articlefeedback-field-wellwritten-tip' => '¿Crees que la página está bien organizada y escrita correctamente?',
 	'articlefeedback-pitch-reject' => 'Quizá más tarde',
 	'articlefeedback-pitch-or' => 'o',
 	'articlefeedback-pitch-thanks' => '¡Gracias! Se han guardado tus valoraciones.',
@@ -1159,9 +1204,36 @@ $messages['es'] = array(
 	'articlefeedback-survey-message-error' => 'Ha ocurrido un error.
 Por favor inténtalo de nuevo más tarde.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Altibajos de hoy',
+	'articleFeedback-table-caption-dailyhighs' => 'Páginas con las mayores calificaciones: $1',
+	'articleFeedback-table-caption-dailylows' => 'Páginas con las menores calificaciones: $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Lo más modificado de la semana',
+	'articleFeedback-table-caption-recentlows' => 'Calificaciones bajas recientes',
 	'articleFeedback-table-heading-page' => 'Página',
 	'articleFeedback-table-heading-average' => 'Promedio',
+	'articleFeedback-copy-above-highlow-tables' => 'Esta es una característica experimental. Si deseas, puedes comentar en la [$1 página de discusión].',
+	'articleFeedback-copy-below-highlow-tables' => 'Estas tablas contienen las páginas que han recibido al menos 10 valoraciones en las últimas 24 horas. Los promedios se calculan tomando la media de todas las valoraciones enviadas en las últimas 24 horas.',
+	'articlefeedback-emailcapture-response-body' => '¡Hola!
+
+Te agradecemos el interés por ayudar a mejorar {{SITENAME}}.
+
+Por favor, toma un momento para confirmar tu correo electrónico haciendo clic en el siguiente enlace:
+
+$1
+
+Quizás quieras visitar:
+
+$2
+
+E ingresa el siguiente código de confirmación:
+
+$3
+
+Nos pondremos en contacto contigo con información para para ayudarte a mejorar {{SITENAME}}.
+
+Si tú no realizaste esta solicitud, por favor ignora este correo y no te enviaremos más información.
+
+Agradecidos y con los mejores deseos,
+El equipo de {{SITENAME}}.',
 );
 
 /** Estonian (Eesti)
@@ -1223,16 +1295,73 @@ $messages['et'] = array(
 /** Basque (Euskara)
  * @author Abel2es
  * @author Joxemai
+ * @author Theklan
  */
 $messages['eu'] = array(
+	'articlefeedback' => 'Artikuluen gaineko ekarpenen arbela',
+	'articlefeedback-desc' => 'Artikuluaren ekarpenak',
+	'articlefeedback-survey-question-origin' => 'Ze orrialdetan zeunden inkesta hau betetzen hasi zarenean?',
+	'articlefeedback-survey-question-whyrated' => 'Esaiguzu, mesedez, zergatik baloratu duzun orrialde hau gaur (klik egin nahi duzun guztien gainean):',
+	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'Orrialde honen balorazio orokorrean parte hartu nahi nuen',
+	'articlefeedback-survey-answer-whyrated-development' => 'Uste dut nire ekarpenarekin orrialde honen garapena hobetu ahal dela',
+	'articlefeedback-survey-answer-whyrated-contribute-wiki' => '{{SITENAME}}rekin kolaboratu nahi nuen',
+	'articlefeedback-survey-answer-whyrated-sharing-opinion' => 'Nire iritzia ematen gustoko dut',
+	'articlefeedback-survey-answer-whyrated-didntrate' => 'Gaur ez dut baloraziorik egin, baina tresna honen gaineko ekarpenak egin nahi nituen',
 	'articlefeedback-survey-answer-whyrated-other' => 'Beste bat',
+	'articlefeedback-survey-question-useful' => 'Uste duzu emandako puntuazioak baliagarriak eta argigarriak direla?',
 	'articlefeedback-survey-question-useful-iffalse' => 'Zergatik?',
+	'articlefeedback-survey-question-comments' => 'Beste iruzkinik al duzu?',
 	'articlefeedback-survey-submit' => 'Bidali',
+	'articlefeedback-survey-title' => 'Erantzun, mesedez, galdera hauei',
+	'articlefeedback-survey-thanks' => 'Eskerrik asko inkesta betetzeagatik.',
+	'articlefeedback-error' => 'Arazo bat egon da. Saia zaitez beranduago.',
 	'articlefeedback-form-switch-label' => 'Kalifikatu orri hau',
 	'articlefeedback-form-panel-title' => 'Kalifikatu orri hau',
 	'articlefeedback-form-panel-instructions' => 'Har ezazu mesedez une bat orri hau baloratzeko.',
+	'articlefeedback-form-panel-clear' => 'Balorazio hau ezabatu',
+	'articlefeedback-form-panel-expertise' => 'Gai honen inguruko ezagutza handia dut (aukerazkoa)',
+	'articlefeedback-form-panel-expertise-studies' => 'Unibertsitateko titulazio bat dut gai honetan',
+	'articlefeedback-form-panel-expertise-profession' => 'Nire ogibidearen parte da',
+	'articlefeedback-form-panel-expertise-hobby' => 'Oso gogoko dudan gai bat da',
+	'articlefeedback-form-panel-expertise-other' => 'Nire ezagutzaren jatorria ez da goiko aukeren artean agertzen',
+	'articlefeedback-form-panel-helpimprove' => 'Wikipedia hobetzen lagundu nahi dut, bidalidazue e-posta bat (aukeran)',
+	'articlefeedback-form-panel-helpimprove-note' => 'E-posta bat bidaliko dizugu konfirmaziorako. Ez diogu zure helbidea beste inori bidaliko. $1',
+	'articlefeedback-form-panel-helpimprove-privacy' => 'Pribazitate arauak',
+	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Pribatutasun politika',
+	'articlefeedback-form-panel-submit' => 'Bidali balorazioa',
+	'articlefeedback-form-panel-pending' => 'Zure balorazioak ez dira oraindik bidali',
+	'articlefeedback-form-panel-success' => 'Ondo gorde da',
+	'articlefeedback-form-panel-expiry-title' => 'Zure balorazioak iraungi du',
+	'articlefeedback-form-panel-expiry-message' => 'Mesedez, berriro ebaluatu orrialde hau eta bidali zure balorazio berria.',
+	'articlefeedback-report-switch-label' => 'Ikus orriaren balorazioak',
+	'articlefeedback-report-panel-title' => 'Orrialdearen balorazioak',
+	'articlefeedback-report-panel-description' => 'Oraingo bataz besteko balorazioa.',
+	'articlefeedback-report-empty' => 'Ez dago baloraziorik',
+	'articlefeedback-report-ratings' => '$1 balorazio',
+	'articlefeedback-field-trustworthy-label' => 'Sinisgarria',
 	'articlefeedback-field-complete-label' => 'Osorik',
-	'articlefeedback-pitch-edit-accept' => 'Hasi editatzen',
+	'articlefeedback-field-objective-label' => 'Helburua',
+	'articlefeedback-field-wellwritten-label' => 'Ondo idatzia',
+	'articlefeedback-pitch-reject' => 'Agian beranduago',
+	'articlefeedback-pitch-or' => 'edo',
+	'articlefeedback-pitch-thanks' => 'Eskerrik asko! Zure balorazioa bidali da.',
+	'articlefeedback-pitch-survey-accept' => 'Hasi inkestarekin',
+	'articlefeedback-pitch-join-message' => 'Kontu bat sortu nahi al zenuen?',
+	'articlefeedback-pitch-join-body' => 'Kontu bat sortzeak lagunduko dizu zure aldaketak jarraitzen, eztabaidetan parte hartzen eta komunitatearen parte izaten.',
+	'articlefeedback-pitch-join-accept' => 'Kontua sortu',
+	'articlefeedback-pitch-join-login' => 'Saioa hasi',
+	'articlefeedback-pitch-edit-message' => 'Ba al zenekien artikulu hau alda zenezakeela?',
+	'articlefeedback-pitch-edit-accept' => 'Orrialde hau aldatu',
+	'articlefeedback-survey-message-success' => 'Eskerrik asko inkesta betetzeagatik.',
+	'articlefeedback-survey-message-error' => 'Akats bat egon da.
+Saia zaitez bearnduago.',
+	'articleFeedback-table-caption-dailyhighsandlows' => 'Gaurko goi eta beheak',
+	'articleFeedback-table-caption-dailyhighs' => 'Baloraziorik altuena duten orrialdeak: $1',
+	'articleFeedback-table-caption-dailylows' => 'Balorazio eskasena duten orrialdeak: $1',
+	'articleFeedback-table-caption-weeklymostchanged' => 'Aste honetan gehien aldatu direnak',
+	'articleFeedback-table-caption-recentlows' => 'Balorazio eskasa izan duten azkenak',
+	'articleFeedback-table-heading-page' => 'Orrialdea',
+	'articleFeedback-table-heading-average' => 'Bataz bestekoa',
 );
 
 /** Persian (فارسی)
@@ -1287,13 +1416,15 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Crochet.david
+ * @author Faure.thomas
  * @author IAlex
+ * @author Jean-Frédéric
  * @author Od1n
  * @author Peter17
  * @author Sherbrooke
  */
 $messages['fr'] = array(
-	'articlefeedback' => 'Évaluation d’article',
+	'articlefeedback' => "Tableau de bord de l'évaluation d’article",
 	'articlefeedback-desc' => 'Évaluation d’article (version pilote)',
 	'articlefeedback-survey-question-origin' => 'À quelle page étiez-vous lorsque vous avez commencé cette évaluation ?',
 	'articlefeedback-survey-question-whyrated' => 'Veuillez nous indiquer pourquoi vous avez évalué cette page aujourd’hui (cochez tout ce qui s’applique) :',
@@ -1312,18 +1443,20 @@ $messages['fr'] = array(
 	'articlefeedback-error' => "Une erreur s'est produite. Veuillez réessayer plus tard.",
 	'articlefeedback-form-switch-label' => 'Noter cette page',
 	'articlefeedback-form-panel-title' => 'Noter cette page',
-	'articlefeedback-form-panel-instructions' => 'Veuillez prendre un moment pour évaluer cette page.',
+	'articlefeedback-form-panel-explanation' => 'Qu’est-ce que c’est?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:ArticleFeedback',
 	'articlefeedback-form-panel-clear' => 'Supprimer cette évaluation',
 	'articlefeedback-form-panel-expertise' => 'Je suis très bien informé sur ce sujet (facultatif)',
-	'articlefeedback-form-panel-expertise-studies' => 'Je détient un diplôme collégial ou universitaire pertinent',
+	'articlefeedback-form-panel-expertise-studies' => "Je détiens un diplôme d'études supérieures (université ou grande école)",
 	'articlefeedback-form-panel-expertise-profession' => 'Cela fait partie de ma profession',
 	'articlefeedback-form-panel-expertise-hobby' => "C'est une passion profonde et personnelle",
 	'articlefeedback-form-panel-expertise-other' => "La source de ma connaissance n'est pas répertoriée ici",
-	'articlefeedback-form-panel-helpimprove' => "J'aimerais aider à améliorer Wikipedia, envoyez-moi un courriel (facultatif)",
+	'articlefeedback-form-panel-helpimprove' => "J'aimerais aider à améliorer Wikipédia, envoyez-moi un courriel (facultatif)",
 	'articlefeedback-form-panel-helpimprove-note' => 'Nous vous enverrons un courriel de confirmation. Nous ne partagerons votre adresse avec personne. $1',
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Politique de confidentialité',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Confidentialité',
 	'articlefeedback-form-panel-submit' => 'Envoyer les cotes',
+	'articlefeedback-form-panel-pending' => "Vos votes n'ont pas encore été soumis",
 	'articlefeedback-form-panel-success' => 'Enregistré avec succès',
 	'articlefeedback-form-panel-expiry-title' => 'Votre évaluation a expiré',
 	'articlefeedback-form-panel-expiry-message' => 'Veuillez réévaluer cette page et soumettre votre nouvelle évaluation.',
@@ -1355,13 +1488,18 @@ $messages['fr'] = array(
 	'articlefeedback-survey-message-error' => 'Une erreur est survenue.
 Veuillez ré-essayer plus tard.',
 	'articleFeedback-table-caption-dailyhighsandlows' => "Les hauts et bas d'aujourd'hui",
+	'articleFeedback-table-caption-dailyhighs' => 'Pages avec les plus hautes cotes : $1',
+	'articleFeedback-table-caption-dailylows' => 'Pages avec cotes les plus basses : $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Les plus modifiés cette semaine',
-	'articleFeedback-table-caption-recentlows' => 'Dernières bas',
+	'articleFeedback-table-caption-recentlows' => 'Dernières cotes basses',
 	'articleFeedback-table-heading-page' => 'Page',
 	'articleFeedback-table-heading-average' => 'Moyenne',
+	'articleFeedback-copy-above-highlow-tables' => "Il s'agit d'une fonctionnalité expérimentale. Veuillez fournir des commentaires sur la [$1 page de discussion].",
+	'articleFeedback-copy-below-highlow-tables' => 'Ces tableaux contiennent des pages qui ont reçu au moins 10 votes au cours des 24 dernières heures. Les moyennes sont calculées en prenant la moyenne de toutes les notes présentées au cours des 24 dernières heures.',
+	'articlefeedback-disable-preference' => 'Ne pas afficher le widget Évaluation d’article sur les pages',
 	'articlefeedback-emailcapture-response-body' => "Bonjour !
 
-Merci de votre à aider à améliorer {{SITENAME}}.
+Merci pour votre aider à améliorer {{SITENAME}}.
 
 Veuillez prendre un moment pour confirmer votre courriel en cliquant sur le lien ci-dessous :
 
@@ -1371,13 +1509,13 @@ Vous pouvez aussi visiter :
 
 $2
 
-Et entrer le code ce confirmation suivant :
+et entrer le code ce confirmation suivant :
 
 $3
 
 Nous serons en contact prochainement pour connaître la façon dont vous pouvez aider à améliorer {{SITENAME}}.
 
-Si vous n'avez pas initié cette demande, veuillez ignorer ce courriel et nous ne vous enverrons rien d’autre chose.
+Si vous n'avez pas initié cette demande, veuillez ignorer ce courriel et nous ne vous enverrons rien d’autre.
 
 Meilleurs vœux, et merci,
 
@@ -1388,7 +1526,7 @@ L’équipe de {{SITENAME}}",
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'articlefeedback' => 'Èstimacion d’articllo',
+	'articlefeedback' => 'Tablô de bôrd de l’èstimacion d’articllo',
 	'articlefeedback-desc' => 'Èstimacion d’articllo (vèrsion pilote)',
 	'articlefeedback-survey-answer-whyrated-sharing-opinion' => 'J’âmo partagiér mon avis',
 	'articlefeedback-survey-answer-whyrated-other' => 'Ôtra',
@@ -1400,7 +1538,7 @@ $messages['frp'] = array(
 	'articlefeedback-error' => 'Una èrror est arrevâ. Volyéd tornar èprovar ples târd.',
 	'articlefeedback-form-switch-label' => 'Èstimar cela pâge',
 	'articlefeedback-form-panel-title' => 'Èstimar cela pâge',
-	'articlefeedback-form-panel-instructions' => 'Volyéd prendre un moment por èstimar cela pâge.',
+	'articlefeedback-form-panel-explanation' => 'Qu’est-o qu’il est ?',
 	'articlefeedback-form-panel-clear' => 'Enlevar cela èstimacion',
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Politica de confidencialitât',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Politica de confidencialitât',
@@ -1427,6 +1565,8 @@ $messages['frp'] = array(
 	'articlefeedback-survey-message-error' => 'Una èrror est arrevâ.
 Volyéd tornar èprovar ples târd.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Los hôts et bâs d’houé',
+	'articleFeedback-table-caption-dailyhighs' => 'Pâges avouéc quotes les ples hôtes : $1',
+	'articleFeedback-table-caption-dailylows' => 'Pâges avouéc quotes les ples bâsses : $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Los ples changiês de cela semana',
 	'articleFeedback-table-caption-recentlows' => 'Dèrriérs bâs',
 	'articleFeedback-table-heading-page' => 'Pâge',
@@ -1463,7 +1603,8 @@ $messages['gl'] = array(
 	'articlefeedback-error' => 'Houbo un erro. Inténteo de novo máis tarde.',
 	'articlefeedback-form-switch-label' => 'Avaliar esta páxina',
 	'articlefeedback-form-panel-title' => 'Avaliar esta páxina',
-	'articlefeedback-form-panel-instructions' => 'Por favor, tome uns intres para avaliar esta páxina.',
+	'articlefeedback-form-panel-explanation' => 'Que é isto?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:Avaliación de artigos',
 	'articlefeedback-form-panel-clear' => 'Eliminar a avaliación',
 	'articlefeedback-form-panel-expertise' => 'Estou moi ben informado sobre este tema (opcional)',
 	'articlefeedback-form-panel-expertise-studies' => 'Teño un grao escolar ou universitario pertinente',
@@ -1513,6 +1654,8 @@ Inténteo de novo máis tarde.',
 	'articleFeedback-table-caption-recentlows' => 'Últimos baixos',
 	'articleFeedback-table-heading-page' => 'Páxina',
 	'articleFeedback-table-heading-average' => 'Media',
+	'articleFeedback-copy-above-highlow-tables' => 'Esta é unha característica experimental. Deixe os seus comentarios na [$1 páxina de conversa].',
+	'articleFeedback-copy-below-highlow-tables' => 'Estas táboas conteñen as páxinas que recibiron, polo menos, 10 votos nas últimas 24 horas. As medias calcúlanse facendo a media de todas as valoracións enviadas nas últimas 24 horas.',
 	'articlefeedback-emailcapture-response-body' => 'Ola!
 
 Grazas por expresar interese en axudar a mellorar {{SITENAME}}.
@@ -1624,7 +1767,8 @@ $messages['he'] = array(
 	'articlefeedback-error' => 'אירעה שגיאה. נא לנסות שוב מאוחר יותר.',
 	'articlefeedback-form-switch-label' => 'תנו הערכה לדף הזה',
 	'articlefeedback-form-panel-title' => 'תנו הערכה לדף הזה',
-	'articlefeedback-form-panel-instructions' => 'הקדישו רגע לדרג את הדף.',
+	'articlefeedback-form-panel-explanation' => 'מה זה?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:משוב על דפים',
 	'articlefeedback-form-panel-clear' => 'הסר דירוג זה',
 	'articlefeedback-form-panel-expertise' => 'יש לי ידע רב על הנושא הזה (לא חובה)',
 	'articlefeedback-form-panel-expertise-studies' => 'יש לי תואר אקדמי בנושא הזה',
@@ -1674,6 +1818,8 @@ $messages['he'] = array(
 	'articleFeedback-table-caption-recentlows' => 'תוצאות נמוכות לאחרונה',
 	'articleFeedback-table-heading-page' => 'דף',
 	'articleFeedback-table-heading-average' => 'ממוצע',
+	'articleFeedback-copy-above-highlow-tables' => 'זוהי תכונה ניסיונית. נשמח לקבל משוב ב[$1 דף השיחה].',
+	'articleFeedback-copy-below-highlow-tables' => 'הטבלאות האלו מכילות דפים שקיהלו לפחות 10 דירוגים ב־24 השעות האחרונות. הממוצעים מחושבים על סמך ממוצעים של כל הדירוגים שנשלחו ב־24 השעות האחרונות.',
 	'articlefeedback-emailcapture-response-body' => 'שלום!
 
 תודה שהבעתם עניין בסיוע לשיפור אתר {{SITENAME}}.
@@ -1873,7 +2019,8 @@ $messages['ia'] = array(
 	'articlefeedback-error' => 'Un error ha occurrite. Per favor reproba plus tarde.',
 	'articlefeedback-form-switch-label' => 'Evalutar iste pagina',
 	'articlefeedback-form-panel-title' => 'Evalutar iste pagina',
-	'articlefeedback-form-panel-instructions' => 'Per favor prende un momento pro evalutar iste pagina.',
+	'articlefeedback-form-panel-explanation' => 'Que es isto?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:CommentarArticulos',
 	'articlefeedback-form-panel-clear' => 'Remover iste evalutation',
 	'articlefeedback-form-panel-expertise' => 'Io es multo ben informate super iste thema (optional)',
 	'articlefeedback-form-panel-expertise-studies' => 'Io ha un grado relevante de collegio/universitate',
@@ -2024,6 +2171,8 @@ Silakan coba lagi.',
 	'articleFeedback-table-caption-recentlows' => 'Penurunan terbaru',
 	'articleFeedback-table-heading-page' => 'Halaman',
 	'articleFeedback-table-heading-average' => 'Rata-rata',
+	'articleFeedback-copy-above-highlow-tables' => 'Ini adalah fitur percobaan. Harap berikan masukan pada [$1 halaman pembicaraan].',
+	'articleFeedback-copy-below-highlow-tables' => 'Tabel berikut berisi halaman yang telah menerima sedikitnya 10 penilaian dalam 24 jam terakhir. Nilai rata-rata dihitung dengan mengambil rerata dari semua nilai yang dikirim dalam 24 jam terakhir.',
 	'articlefeedback-emailcapture-response-body' => 'Halo!
 
 Terima kasih atas minat Anda untuk membantu meningkatkan {{SITENAME}}.
@@ -2053,7 +2202,7 @@ Tim {{SITENAME}}',
  * @author Pietrodn
  */
 $messages['it'] = array(
-	'articlefeedback' => 'Cruscotto valutazione pagina',
+	'articlefeedback' => 'Cruscotto valutazione pagine',
 	'articlefeedback-desc' => 'Valutazione pagina (versione pilota)',
 	'articlefeedback-survey-question-origin' => 'In quale pagina eravate quando avete iniziato questa indagine?',
 	'articlefeedback-survey-question-whyrated' => 'Esprimi il motivo per cui oggi hai valutato questa pagina (puoi selezionare più opzioni):',
@@ -2073,7 +2222,7 @@ $messages['it'] = array(
 Riprova più tardi.',
 	'articlefeedback-form-switch-label' => 'Valuta questa pagina',
 	'articlefeedback-form-panel-title' => 'Valuta questa pagina',
-	'articlefeedback-form-panel-instructions' => "Per favore, concedici un po' del tuo tempo per valutare questa pagina.",
+	'articlefeedback-form-panel-explanation' => "Cos'è questo?",
 	'articlefeedback-form-panel-clear' => 'Cancella questo giudizio',
 	'articlefeedback-form-panel-expertise' => 'Conosco molto bene questo argomento (opzionale)',
 	'articlefeedback-form-panel-expertise-studies' => 'Ho una laurea pertinente alla materia',
@@ -2085,6 +2234,7 @@ Riprova più tardi.',
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Informazioni sulla privacy',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Informazioni sulla privacy',
 	'articlefeedback-form-panel-submit' => 'Invia voti',
+	'articlefeedback-form-panel-pending' => 'Le tue valutazioni non sono state ancora inviate',
 	'articlefeedback-form-panel-success' => 'Salvato con successo',
 	'articlefeedback-form-panel-expiry-title' => 'Le tue valutazioni sono obsolete',
 	'articlefeedback-form-panel-expiry-message' => 'Valuta nuovamente questa pagina ed inviaci i tuoi giudizi.',
@@ -2124,6 +2274,7 @@ Riprova più tardi.',
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author Marine-Blue
  * @author Ohgi
  * @author Whym
@@ -2172,7 +2323,7 @@ $messages['ja'] = array(
 	'articlefeedback-field-trustworthy-tip' => 'このページは、十分な出典があり、それらの出典は信頼できる情報源によるものですか？',
 	'articlefeedback-field-complete-label' => '完成度',
 	'articlefeedback-field-complete-tip' => 'この記事は、不可欠な話題を、説明していると思いますか？',
-	'articlefeedback-field-objective-label' => '公平な',
+	'articlefeedback-field-objective-label' => '客観性',
 	'articlefeedback-field-objective-tip' => 'このページは、ある問題に対する全ての観点を平等に説明していると思いますか？',
 	'articlefeedback-field-wellwritten-label' => 'よく書けている',
 	'articlefeedback-field-wellwritten-tip' => 'この記事は、良く整理され、良く書かれていると思いますか？',
@@ -2221,7 +2372,7 @@ $messages['ka'] = array(
 	'articlefeedback-form-panel-title' => 'ამ გვერდის შეფასება',
 	'articlefeedback-form-panel-instructions' => 'გთხოვთ, გამონახეთ დრო ამ გვერდის შეფასებისათვის.',
 	'articlefeedback-form-panel-clear' => 'შეფასება წაიშალა',
-	'articlefeedback-form-panel-expertise' => 'მე მაქვს წინასწარი ცოდნა ამ თემის შესახებ',
+	'articlefeedback-form-panel-expertise' => 'მე მაქვს წინასწარი ცოდნა ამ თემის შესახებ (არასავალდებულო)',
 	'articlefeedback-form-panel-expertise-studies' => 'მე ეს უმაღლეს სასწავლებელში ვისწავლე',
 	'articlefeedback-form-panel-expertise-profession' => 'ეს ჩემი პროფესიის ნაწილია',
 	'articlefeedback-form-panel-expertise-hobby' => 'ეს ჩემს ჰობისა და ინტერესებს მოიცავს',
@@ -2383,7 +2534,8 @@ $messages['lb'] = array(
 	'articlefeedback-error' => 'Et ass e Feeler geschitt. Probéiert w.e.g. méi spéit nach emol.',
 	'articlefeedback-form-switch-label' => 'Dës Säit bewäerten',
 	'articlefeedback-form-panel-title' => 'Dës Säit bewäerten',
-	'articlefeedback-form-panel-instructions' => 'Huelt Iech w.e.g. een Ament fir d¨s Säit ze bewäerten.',
+	'articlefeedback-form-panel-explanation' => 'Wat ass dat?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:Artikel-Feedback',
 	'articlefeedback-form-panel-clear' => 'Dës Bewäertung ewechhuelen',
 	'articlefeedback-form-panel-expertise' => 'Ech weess gutt iwwer dëse Sujet Bescheed (fakultativ)',
 	'articlefeedback-form-panel-expertise-studies' => 'Ech hunn een Ofschloss an der Schoul/op der Universitéit zu deem Sujet',
@@ -2395,6 +2547,7 @@ $messages['lb'] = array(
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Dateschutz',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Dateschutz',
 	'articlefeedback-form-panel-submit' => 'Bewäertunge schécken',
+	'articlefeedback-form-panel-pending' => 'Äre Bewäertunge goufen nach net ageschéckt',
 	'articlefeedback-form-panel-success' => 'Gespäichert',
 	'articlefeedback-form-panel-expiry-title' => 'Är Bewäertung ass ofgelaf',
 	'articlefeedback-form-panel-expiry-message' => 'Bewäert dëse Säit w.e.g. nach emol a späichert déi nei Bewäertung.',
@@ -2425,6 +2578,8 @@ $messages['lb'] = array(
 	'articlefeedback-survey-message-success' => "Merci datt Dir d'Ëmfro ausgefëllt hutt.",
 	'articlefeedback-survey-message-error' => 'Et ass e Feeler geschitt.
 Probéiert w.e.g. méi spéit nach emol.',
+	'articleFeedback-table-caption-dailyhighs' => 'Säite mat den héchste Bewäertungen: $1',
+	'articleFeedback-table-caption-dailylows' => 'Säite mat den niddregste Bewäertungen: $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Déi gréisst Ännerungen an dëser Woch',
 	'articleFeedback-table-heading-page' => 'Säit',
 	'articleFeedback-table-heading-average' => 'Duerchschnëtt',
@@ -2585,7 +2740,8 @@ $messages['mk'] = array(
 	'articlefeedback-error' => 'Се појави грешка. Обидете се повторно.',
 	'articlefeedback-form-switch-label' => 'Оценете ја страницава',
 	'articlefeedback-form-panel-title' => 'Оценете ја страницава',
-	'articlefeedback-form-panel-instructions' => 'Одвојте момент за да ја оцените страницава.',
+	'articlefeedback-form-panel-explanation' => 'Што е ова?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:ОценувањеНаСтатии',
 	'articlefeedback-form-panel-clear' => 'Отстрани ја оценкава',
 	'articlefeedback-form-panel-expertise' => 'Имам големи познавања на оваа тематика (незадолжително)',
 	'articlefeedback-form-panel-expertise-studies' => 'Имам релевантно више/факултетско образование',
@@ -2638,6 +2794,7 @@ $messages['mk'] = array(
 	'articleFeedback-table-heading-average' => 'Просечно',
 	'articleFeedback-copy-above-highlow-tables' => 'Ова е експериментална функција. Искажете го вашето мислење на [$1 страницатата за разговор].',
 	'articleFeedback-copy-below-highlow-tables' => 'Овие табели содржат статии што добиле барем 10 оценки во последниве 24 часа. Просекот се пресметува земајќи ја средната вредност на сите оцеки поднесени во текот на последните 24 часа.',
+	'articlefeedback-disable-preference' => 'Не го прикажувај прилогот „Оценување на статии“ во страниците',
 	'articlefeedback-emailcapture-response-body' => 'Здраво!
 
 Ви благодариме што изразивте интерес да помогнете во развојот на {{SITENAME}}.
@@ -2685,7 +2842,8 @@ $messages['ml'] = array(
 	'articlefeedback-error' => 'എന്തോ പിഴവുണ്ടായിരിക്കുന്നു. ദയവായി പിന്നീട് വീണ്ടും ശ്രമിക്കുക.',
 	'articlefeedback-form-switch-label' => 'ഈ താളിനു നിലവാരമിടുക',
 	'articlefeedback-form-panel-title' => 'ഈ താളിനു നിലവാരമിടുക',
-	'articlefeedback-form-panel-instructions' => 'താഴെ ഈ താളിന്റെ മൂല്യനിർണ്ണയം നടത്താൻ ഒരു നിമിഷം ചിലവാക്കുക.',
+	'articlefeedback-form-panel-explanation' => 'എന്താണിത്?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:ലേഖനാഭിപ്രായം',
 	'articlefeedback-form-panel-clear' => 'ഈ നിലവാരമിടൽ നീക്കം ചെയ്യുക',
 	'articlefeedback-form-panel-expertise' => 'എനിക്ക് ഈ വിഷയത്തിൽ വളരെ അറിവുണ്ട് (ഐച്ഛികം)',
 	'articlefeedback-form-panel-expertise-studies' => 'എനിക്ക് ബന്ധപ്പെട്ട വിഷയത്തിൽ കലാലയ/യൂണിവേഴ്സിറ്റി ബിരുദമുണ്ട്',
@@ -2773,7 +2931,7 @@ $messages['mn'] = array(
  * @author Aviator
  */
 $messages['ms'] = array(
-	'articlefeedback' => 'Pentaksiran rencana',
+	'articlefeedback' => 'Papan pemuka maklum balas rencana',
 	'articlefeedback-desc' => 'Pentaksiran rencana (versi percubaan)',
 	'articlefeedback-survey-answer-whyrated-other' => 'Lain',
 	'articlefeedback-survey-question-useful-iffalse' => 'Мезекс?',
@@ -2826,6 +2984,7 @@ $messages['ne'] = array(
 /** Dutch (Nederlands)
  * @author Catrope
  * @author McDutchie
+ * @author SPQRobin
  * @author Siebrand
  */
 $messages['nl'] = array(
@@ -2849,7 +3008,8 @@ $messages['nl'] = array(
 Probeer het later opnieuw.',
 	'articlefeedback-form-switch-label' => 'Deze pagina waarderen',
 	'articlefeedback-form-panel-title' => 'Deze pagina waarderen',
-	'articlefeedback-form-panel-instructions' => 'Geef alstublieft een beoordeling van deze pagina.',
+	'articlefeedback-form-panel-explanation' => 'Wat is dit?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:Paginaterugkoppeling',
 	'articlefeedback-form-panel-clear' => 'Deze beoordeling verwijderen',
 	'articlefeedback-form-panel-expertise' => 'Ik ben zeer goed geïnformeerd over dit onderwerp (optioneel)',
 	'articlefeedback-form-panel-expertise-studies' => 'Ik heb een relevante opleiding gevolgd op HBO/WO-niveau',
@@ -3059,6 +3219,8 @@ Prøv igjen senere.',
 	'articleFeedback-table-caption-recentlows' => 'Ukens nedturer',
 	'articleFeedback-table-heading-page' => 'Side',
 	'articleFeedback-table-heading-average' => 'Gjennomsnitt',
+	'articleFeedback-copy-above-highlow-tables' => 'Dette er en eksperimentell funksjon.  Vennligst gi tilbakemelding på [$1 diskusjonssiden].',
+	'articleFeedback-copy-below-highlow-tables' => 'Disse tabellene inneholder sider som har mottatt minst 10 vurderinger i løpet av de siste 24 timene.  Gjennomsnittene beregnes ved å ta gjennomsnittet av alle vurderingene som er sendt inn i løpet av de siste 24 timene.',
 	'articlefeedback-emailcapture-response-body' => 'Hei!
 
 Takk for din interesse i å hjelpe oss med å forbedre {{SITENAME}}. Vennligst bekreft e-posten din ved å klikke på lenken under:
@@ -3090,6 +3252,13 @@ $messages['or'] = array(
 	'articlefeedback-survey-submit' => 'ଦାଖଲକରିବା',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'articleFeedback-table-heading-average' => 'Рæстæмбис',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
@@ -3113,7 +3282,8 @@ $messages['pl'] = array(
 	'articlefeedback-error' => 'Wystąpił błąd. Proszę spróbować ponownie później.',
 	'articlefeedback-form-switch-label' => 'Oceń tę stronę',
 	'articlefeedback-form-panel-title' => 'Oceń tę stronę',
-	'articlefeedback-form-panel-instructions' => 'Poświeć chwilę, aby ocenić tę stronę.',
+	'articlefeedback-form-panel-explanation' => 'Co to jest?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:Ocena artykułu',
 	'articlefeedback-form-panel-clear' => 'Usuń ranking',
 	'articlefeedback-form-panel-expertise' => 'Posiadam szeroką wiedzę w tym temacie (opcjonalne)',
 	'articlefeedback-form-panel-expertise-studies' => 'Znam to ze szkoły średniej lub ze studiów',
@@ -3163,6 +3333,9 @@ Proszę spróbować ponownie później.',
 	'articleFeedback-table-caption-recentlows' => 'Najniższe ostatnio',
 	'articleFeedback-table-heading-page' => 'Strona',
 	'articleFeedback-table-heading-average' => 'Średnio',
+	'articleFeedback-copy-above-highlow-tables' => 'To jest rozwiązanie eksperymentalne. Wyraź swoją opinię na jego temat na [$1 stronie dyskusji].',
+	'articleFeedback-copy-below-highlow-tables' => 'Tabele uwzględniają strony, które otrzymały co najmniej 10 głosów w ciągu ostatnich 24 godzin. Średnie są obliczane ze wszystkich ocen wystawionych w ciągu ostatnich 24 godzin.',
+	'articlefeedback-disable-preference' => 'Nie pokazuj na stronach widżetu opinii o artykule',
 );
 
 /** Piedmontese (Piemontèis)
@@ -3298,7 +3471,8 @@ $messages['pt'] = array(
 	'articlefeedback-error' => 'Ocorreu um erro. Tente novamente mais tarde, por favor.',
 	'articlefeedback-form-switch-label' => 'Avaliar esta página',
 	'articlefeedback-form-panel-title' => 'Avaliar esta página',
-	'articlefeedback-form-panel-instructions' => 'Dedique um momento a avaliar esta página abaixo, por favor.',
+	'articlefeedback-form-panel-explanation' => 'O que é isto?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:ComentarArtigos',
 	'articlefeedback-form-panel-clear' => 'Remover essa avaliação',
 	'articlefeedback-form-panel-expertise' => 'Conheço este assunto muito profundamente (opcional)',
 	'articlefeedback-form-panel-expertise-studies' => 'Tenho estudos relevantes do secundário/universidade',
@@ -3348,8 +3522,9 @@ Tente novamente mais tarde, por favor.',
 	'articleFeedback-table-caption-recentlows' => 'Os piores mais recentes',
 	'articleFeedback-table-heading-page' => 'Página',
 	'articleFeedback-table-heading-average' => 'Média',
-	'articleFeedback-copy-above-highlow-tables' => 'Esta funcionalidade é experimental. Deixe os seus comentários na página de discussão, por favor.',
+	'articleFeedback-copy-above-highlow-tables' => 'Esta funcionalidade é experimental. Deixe os seus comentários na [$1 página de discussão], por favor.',
 	'articleFeedback-copy-below-highlow-tables' => 'Estas tabelas contêm artigos que receberam pelo menos 10 avaliações nas últimas 24 horas. As médias são calculadas pela média aritmética de todas as avaliações enviadas nas últimas 24 horas.',
+	'articlefeedback-disable-preference' => 'Não mostrar nas páginas o widget da avaliação de artigos',
 	'articlefeedback-emailcapture-response-body' => 'Olá,
 
 Obrigado por expressar interesse em ajudar a melhorar a {{SITENAME}}.
@@ -3380,7 +3555,7 @@ A equipa da {{SITENAME}}',
  * @author Raylton P. Sousa
  */
 $messages['pt-br'] = array(
-	'articlefeedback' => 'Avaliação do artigo',
+	'articlefeedback' => 'Painel de avaliação de artigos',
 	'articlefeedback-desc' => 'Avaliação do artigo (versão de testes)',
 	'articlefeedback-survey-question-origin' => 'Em que página você estava quando começou a responder esta pesquisa?',
 	'articlefeedback-survey-question-whyrated' => 'Diga-nos porque é que classificou esta página hoje, por favor (marque todas as opções as quais se aplicam):',
@@ -3411,6 +3586,7 @@ $messages['pt-br'] = array(
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Política de privacidade',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Política de privacidade',
 	'articlefeedback-form-panel-submit' => 'Enviar avaliações',
+	'articlefeedback-form-panel-pending' => 'As suas avaliações não foram enviadas',
 	'articlefeedback-form-panel-success' => 'Gravado com sucesso',
 	'articlefeedback-form-panel-expiry-title' => 'As suas avaliações expiraram',
 	'articlefeedback-form-panel-expiry-message' => 'Volte a avaliar esta página e envie as novas avaliações, por favor.',
@@ -3442,10 +3618,14 @@ $messages['pt-br'] = array(
 	'articlefeedback-survey-message-error' => 'Ocorreu um erro. 
 Tente novamente mais tarde, por favor.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Os melhores e piores de hoje',
+	'articleFeedback-table-caption-dailyhighs' => 'Artigos com as avaliações mais elevadas: $1',
+	'articleFeedback-table-caption-dailylows' => 'Artigos com as avaliações mais baixas: $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Os mais alterados da semana',
 	'articleFeedback-table-caption-recentlows' => 'Os piores mais recentes',
 	'articleFeedback-table-heading-page' => 'Página',
 	'articleFeedback-table-heading-average' => 'Média',
+	'articleFeedback-copy-above-highlow-tables' => 'Esta funcionalidade é experimental. Deixe os seus comentários na [$1 página de discussão], por favor.',
+	'articleFeedback-copy-below-highlow-tables' => 'Estas tabelas contêm artigos que receberam pelo menos 10 avaliações nas últimas 24 horas. As médias são calculadas pela média aritmética de todas as avaliações enviadas nas últimas 24 horas.',
 	'articlefeedback-emailcapture-response-body' => 'Olá,
 
 Obrigado por expressar interesse em ajudar a melhorar a {{SITENAME}}.
@@ -3486,7 +3666,7 @@ $messages['ro'] = array(
 	'articlefeedback-survey-answer-whyrated-contribute-wiki' => 'Am vrut să contribui la {{SITENAME}}',
 	'articlefeedback-survey-answer-whyrated-sharing-opinion' => 'Îmi place să îmi împărtășesc opinia',
 	'articlefeedback-survey-answer-whyrated-didntrate' => 'Nu am furnizat evaluări astăzi, însă am dorit să ofer reacții pe viitor',
-	'articlefeedback-survey-answer-whyrated-other' => 'Altul',
+	'articlefeedback-survey-answer-whyrated-other' => 'Altceva',
 	'articlefeedback-survey-question-useful' => 'Considerați că evaluările furnizate sunt folositoare și clare?',
 	'articlefeedback-survey-question-useful-iffalse' => 'De ce?',
 	'articlefeedback-survey-question-comments' => 'Aveți comentarii suplimentare?',
@@ -3503,13 +3683,16 @@ $messages['ro'] = array(
 	'articlefeedback-form-panel-expertise-profession' => 'Este parte din profesia mea',
 	'articlefeedback-form-panel-expertise-hobby' => 'Este o pasiune personală puternică',
 	'articlefeedback-form-panel-expertise-other' => 'Nivelul cunoștințelor mele nu se află în această listă',
+	'articlefeedback-form-panel-helpimprove' => 'Aș dori să contribui la îmbunătățirea Wikipediei; trimite-mi un e-mail (opțional)',
+	'articlefeedback-form-panel-helpimprove-note' => 'Vă vom trimite un e-mail de confirmare. Nu vom face cunoscută adresa dumneavoastră nimănui. $1',
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Politica de confidențialitate',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Politica de confidențialitate',
 	'articlefeedback-form-panel-submit' => 'Trimite evaluările',
+	'articlefeedback-form-panel-pending' => 'Evaluările dumneavoastră nu au fost încă trimise',
 	'articlefeedback-form-panel-success' => 'Salvat cu succes',
 	'articlefeedback-form-panel-expiry-title' => 'Evaluările dumneavoastră au expirat',
 	'articlefeedback-form-panel-expiry-message' => 'Vă rugăm să reevaluați această pagină și să trimiteți noi clasificări.',
-	'articlefeedback-report-switch-label' => 'Vezi evaluările paginilor',
+	'articlefeedback-report-switch-label' => 'Vezi evaluările paginii',
 	'articlefeedback-report-panel-title' => 'Evaluări pagină',
 	'articlefeedback-report-panel-description' => 'Media evaluărilor actuale.',
 	'articlefeedback-report-empty' => 'Nu există evaluări',
@@ -3531,13 +3714,42 @@ $messages['ro'] = array(
 	'articlefeedback-pitch-join-body' => 'Un cont de utilizator v-ar ajuta să țineți evidența contribuțiile dumneavoastră, să luați parte la discuții și să faceți parte din comunitate.',
 	'articlefeedback-pitch-join-accept' => 'Creează un cont',
 	'articlefeedback-pitch-join-login' => 'Autentificare',
-	'articlefeedback-pitch-edit-message' => 'Știți că puteți modifica această pagină?',
+	'articlefeedback-pitch-edit-message' => 'Știați că puteți modifica această pagină?',
 	'articlefeedback-pitch-edit-accept' => 'Modifică această pagină',
 	'articlefeedback-survey-message-success' => 'Vă mulțumim că ați completat chestionarul.',
 	'articlefeedback-survey-message-error' => 'A apărut o eroare.
 Vă rugăm să reîncercați mai târziu.',
+	'articleFeedback-table-caption-dailyhighsandlows' => 'Cele mai bune și cele mai slabe evaluări de astăzi',
+	'articleFeedback-table-caption-dailyhighs' => 'Paginile cu cele mai bune evaluări: $1',
+	'articleFeedback-table-caption-dailylows' => 'Paginile cu cele mai slabe evaluări: $1',
+	'articleFeedback-table-caption-weeklymostchanged' => 'Cea mai modificată din această săptămână',
+	'articleFeedback-table-caption-recentlows' => 'Minime recente',
 	'articleFeedback-table-heading-page' => 'Pagina',
 	'articleFeedback-table-heading-average' => 'Medie',
+	'articleFeedback-copy-above-highlow-tables' => 'Aceasta este o unealtă experimentală. Vă rugăm să ne oferiți reacții pe [$1 pagina de discuție].',
+	'articleFeedback-copy-below-highlow-tables' => 'Aceste tabele conțin paginile care au fost evaluate de cel puțin 10 ori în ultimele 24 de ore. Media este calculată luând în considerare toate evaluările trimise în ultimele 24 de ore.',
+	'articlefeedback-emailcapture-response-body' => 'Bună ziua!
+
+Vă mulțumim pentru interesul arătat față de procesul de îmbunătățire al proiectului {{SITENAME}}.
+
+Vă rugăm să vă confirmați adresa de e-mail accesând legătura de mai jos: 
+
+$1
+
+Ați putea vizita de asemenea și:
+
+$2
+
+Și să introduceți următorul cod de confirmare:
+
+$3
+
+Vă vom contacta curând în legătură cu modul în care vă puteți implica în procesul de îmbunătățire al proiectului {{SITENAME}}.
+
+Dacă nu sunteți dumneavoastră persoana care a cerut aceste indicații, vă rugăm să ignorați acest e-mail; nu vă vom mai trimite alte mesaje.
+
+Vă mulțumim și vă urăm toate cele bune,
+Echipa proiectului {{SITENAME}}',
 );
 
 /** Tarandíne (Tarandíne)
@@ -3616,7 +3828,8 @@ $messages['ru'] = array(
 	'articlefeedback-error' => 'Произошла ошибка. Пожалуйста, повторите попытку позже.',
 	'articlefeedback-form-switch-label' => 'Оцените эту страницу',
 	'articlefeedback-form-panel-title' => 'Оцените эту страницу',
-	'articlefeedback-form-panel-instructions' => 'Пожалуйста, найдите время, чтобы оценить эту страницу.',
+	'articlefeedback-form-panel-explanation' => 'Что это?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:ArticleFeedback',
 	'articlefeedback-form-panel-clear' => 'Удалить эту оценку',
 	'articlefeedback-form-panel-expertise' => 'Я хорошо знаком с этой темой (опционально)',
 	'articlefeedback-form-panel-expertise-studies' => 'По данной теме я получил образование в колледже / университете',
@@ -3628,6 +3841,7 @@ $messages['ru'] = array(
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Политика конфиденциальности',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Политика конфиденциальности',
 	'articlefeedback-form-panel-submit' => 'Отправить оценку',
+	'articlefeedback-form-panel-pending' => 'Ваши оценки ещё не были отправлены',
 	'articlefeedback-form-panel-success' => 'Информация сохранена',
 	'articlefeedback-form-panel-expiry-title' => 'Ваши оценки устарели',
 	'articlefeedback-form-panel-expiry-message' => 'Пожалуйста, пересмотрите эту страницу и укажите новые оценки.',
@@ -3665,6 +3879,9 @@ $messages['ru'] = array(
 	'articleFeedback-table-caption-recentlows' => 'Недавние падения',
 	'articleFeedback-table-heading-page' => 'Страница',
 	'articleFeedback-table-heading-average' => 'Среднее',
+	'articleFeedback-copy-above-highlow-tables' => 'Это экспериментальная возможность. Пожалуйста, оставьте отзыв на [$1 странице обсуждения].',
+	'articleFeedback-copy-below-highlow-tables' => 'В таблицах указаны страницы, получившие за последние 24 часа не менее 10 оценок. Средние показатели рассчитываются путём усреднения всех оценок за последние 24 часа.',
+	'articlefeedback-disable-preference' => 'Не показывать на страницах виджет обратной связи',
 	'articlefeedback-emailcapture-response-body' => 'Здравствуйте!
 
 Спасибо за интерес к улучшению проекта {{SITENAME}}.
@@ -3884,7 +4101,8 @@ $messages['sl'] = array(
 	'articlefeedback-error' => 'Prišlo je do napake. Prosimo, poskusite znova pozneje.',
 	'articlefeedback-form-switch-label' => 'Ocenite to stran',
 	'articlefeedback-form-panel-title' => 'Ocenite to stran',
-	'articlefeedback-form-panel-instructions' => 'Prosimo, vzemite si trenutek in ocenite to stran.',
+	'articlefeedback-form-panel-explanation' => 'Kaj je to?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:PovratnaInformacijaOČlankih',
 	'articlefeedback-form-panel-clear' => 'Odstrani oceno',
 	'articlefeedback-form-panel-expertise' => 'S to temo sem zelo dobro seznanjen (neobvezno)',
 	'articlefeedback-form-panel-expertise-studies' => 'Imam ustrezno fakultetno/univerzitetno diplomo',
@@ -3963,9 +4181,20 @@ ekipa {{GRAMMAR:rodilnik|{{SITENAME}}}}',
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'articlefeedback' => 'Табла за оцењивање чланака',
+	'articlefeedback-desc' => 'Оцењивање чланака',
+	'articlefeedback-survey-question-origin' => 'На којој страници сте били када сте започели ову анкету?',
+	'articlefeedback-survey-question-whyrated' => 'Реците нам зашто сте данас оценили ову страницу (означити све што одговара):',
+	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'Желео/ла сам да учествујем у свеукупној оцени странице',
+	'articlefeedback-survey-answer-whyrated-development' => 'Надам се да ће моја оцена позитивно утицати на даљи развој странице',
+	'articlefeedback-survey-answer-whyrated-contribute-wiki' => 'Желим да допринесем пројекту {{SITENAME}}',
+	'articlefeedback-survey-answer-whyrated-sharing-opinion' => 'Волим да са свима поделим моје мишљење',
+	'articlefeedback-survey-answer-whyrated-didntrate' => 'Данас нисам желео/ла да оцењујем, али сам желео/ла да дам повратну информацију о самом алату за оцењивање.',
 	'articlefeedback-survey-answer-whyrated-other' => 'Остало',
+	'articlefeedback-survey-question-useful' => 'Да ли верујете да су могуће оцене корисне и јасне?',
 	'articlefeedback-survey-question-useful-iffalse' => 'Зашто?',
 	'articlefeedback-survey-question-comments' => 'Имате ли још коментара?',
 	'articlefeedback-survey-submit' => 'Пошаљи',
@@ -3976,21 +4205,78 @@ $messages['sr-ec'] = array(
 	'articlefeedback-form-panel-title' => 'Оцењивање странице',
 	'articlefeedback-form-panel-instructions' => 'Издвојте тренутак да оцените ову страницу.',
 	'articlefeedback-form-panel-clear' => 'Уклони ову оцену',
+	'articlefeedback-form-panel-expertise' => 'Добро сам упознат/а са овом темом (необавезно)',
+	'articlefeedback-form-panel-expertise-studies' => 'Имам релевантну универзитетску диплому',
 	'articlefeedback-form-panel-expertise-profession' => 'То је део моје струке',
-	'articlefeedback-form-panel-expertise-hobby' => 'То је везано за моје хобије или занимања',
-	'articlefeedback-form-panel-submit' => 'Пошаљи повратну информацију',
+	'articlefeedback-form-panel-expertise-hobby' => 'Ово спада у домен мојих хобија',
+	'articlefeedback-form-panel-expertise-other' => 'Извор мог знања о теми није наведен овде',
+	'articlefeedback-form-panel-helpimprove' => 'Волео/ла бих да помажем унапређење Википедије, пошаљи ми једну електронску поруку (необавезно)',
+	'articlefeedback-form-panel-helpimprove-note' => 'Послаћемо вам поруку за потврду е-адресе. Не делимо е-адресе ни с ким. $1',
+	'articlefeedback-form-panel-helpimprove-privacy' => 'Политика приватности',
+	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Политика приватности',
+	'articlefeedback-form-panel-submit' => 'Пошаљи оцене',
+	'articlefeedback-form-panel-pending' => 'Ваше оцене још увек нису послате',
+	'articlefeedback-form-panel-success' => 'Успешно сачувано',
+	'articlefeedback-form-panel-expiry-title' => 'Ваше оцене су истекле',
+	'articlefeedback-form-panel-expiry-message' => 'Поново оцените страницу и пошаљите нове оцене.',
+	'articlefeedback-report-switch-label' => 'Преглед оцена странице',
+	'articlefeedback-report-panel-title' => 'Оцене странице',
+	'articlefeedback-report-panel-description' => 'Тренутне средње оцене',
 	'articlefeedback-report-empty' => 'Нема оцена.',
-	'articlefeedback-field-trustworthy-label' => 'Поуздано',
-	'articlefeedback-field-wellwritten-label' => 'Лепо написано',
+	'articlefeedback-report-ratings' => '$1 оцена',
+	'articlefeedback-field-trustworthy-label' => 'Веродостојно',
+	'articlefeedback-field-trustworthy-tip' => 'Сматрате ли да ова страница има довољно извора и да су они из поверљивих извора?',
+	'articlefeedback-field-complete-label' => 'Комплетност',
+	'articlefeedback-field-complete-tip' => 'Сматрате ли да ова страница покрива основне делове теме коју обрађује?',
+	'articlefeedback-field-objective-label' => 'Непристрано',
+	'articlefeedback-field-objective-tip' => 'Сматрате ли да су на овој страници све тачке гледишта равноправно приказане?',
+	'articlefeedback-field-wellwritten-label' => 'Добро написано',
+	'articlefeedback-field-wellwritten-tip' => 'Мислите ли да је ова страница добро организована и добро написана?',
 	'articlefeedback-pitch-reject' => 'Можда касније',
 	'articlefeedback-pitch-or' => 'или',
+	'articlefeedback-pitch-thanks' => 'Хвала! Ваше оцене су сачуване.',
+	'articlefeedback-pitch-survey-message' => 'Одвојите тренутак да довршите кратку анкету.',
 	'articlefeedback-pitch-survey-accept' => 'Почни упитник',
+	'articlefeedback-pitch-join-message' => 'Желите ли да отворите налог?',
+	'articlefeedback-pitch-join-body' => 'Налог ће вам помоћи да пратите своје измене, да се укључите у разговоре и да будете део заједнице.',
 	'articlefeedback-pitch-join-accept' => 'Отвори налог',
 	'articlefeedback-pitch-join-login' => 'Пријави ме',
+	'articlefeedback-pitch-edit-message' => 'Јесте ли знали да можете да уређујете ову страницу?',
 	'articlefeedback-pitch-edit-accept' => 'Уреди ову страницу',
 	'articlefeedback-survey-message-success' => 'Хвала вам што сте попунили упитник.',
 	'articlefeedback-survey-message-error' => 'Дошло је до грешке.
 Покушајте касније.',
+	'articleFeedback-table-caption-dailyhighsandlows' => 'Данашње високе и ниске оцене',
+	'articleFeedback-table-caption-dailyhighs' => 'Странице с највишим оценама: $1',
+	'articleFeedback-table-caption-dailylows' => 'Странице с најнижим оценама: $1',
+	'articleFeedback-table-caption-weeklymostchanged' => 'Највише мењани ове недеље',
+	'articleFeedback-table-caption-recentlows' => 'Скорашње ниске оцене',
+	'articleFeedback-table-heading-page' => 'Страница',
+	'articleFeedback-table-heading-average' => 'Просек',
+	'articleFeedback-copy-above-highlow-tables' => 'Ово је експериментални додатак. Молимо вас да пошаљете повратну информацију на [$1 страници за разговор].',
+	'articleFeedback-copy-below-highlow-tables' => 'Ове табеле садрже странице које имају најмање десет оцена у последња 24 часа. Просек се рачуна аритметичком средином свих оцена у последња 24 часа.',
+	'articlefeedback-emailcapture-response-body' => 'Здраво!
+
+Хвала вам што сте показали жељу да помогнете у унапређењу пројекта {{SITENAME}}.
+
+Одвојите тренутак да потврдите вашу е-адресу кликом на везу испод:
+
+$1
+
+Можете посетити и:
+
+$2
+
+Након тога, унесите следећи потврдни кôд:
+
+$3
+
+Ускоро ћемо вас обавестити о томе како нам можете помоћи.
+
+Ако сте добили ову поруку грешком, само је занемарите.
+
+Све најлепше,
+{{SITENAME}}',
 );
 
 /** Swedish (Svenska)
@@ -4237,10 +4523,12 @@ Ang pangkat ng {{SITENAME}}',
  * @author Emperyan
  * @author Joseph
  * @author Karduelis
+ * @author Reedy
+ * @author Stultiwikia
  */
 $messages['tr'] = array(
 	'articlefeedback' => 'Madde değerlendirmesi',
-	'articlefeedback-desc' => 'Madde Geridönütleri',
+	'articlefeedback-desc' => 'Madde geribildirimi',
 	'articlefeedback-survey-answer-whyrated-sharing-opinion' => 'Fikirlerimi paylaşmayı seviyorum',
 	'articlefeedback-survey-answer-whyrated-other' => 'Diğer',
 	'articlefeedback-survey-question-useful-iffalse' => 'Neden?',
@@ -4251,6 +4539,7 @@ $messages['tr'] = array(
 	'articlefeedback-pitch-join-accept' => 'Yeni hesap edin',
 	'articlefeedback-pitch-join-login' => 'Oturum aç',
 	'articlefeedback-survey-message-success' => 'Anketi doldurduğunuz için teşekkür ederiz.',
+	'articleFeedback-table-heading-page' => 'Madde',
 );
 
 /** Ukrainian (Українська)
@@ -4327,7 +4616,8 @@ $messages['vi'] = array(
 	'articlefeedback-error' => 'Đã gặp lỗi. Xin vui lòng thử lại sau.',
 	'articlefeedback-form-switch-label' => 'Đánh giá trang này',
 	'articlefeedback-form-panel-title' => 'Đánh giá trang này',
-	'articlefeedback-form-panel-instructions' => 'Xin hãy dành một chút thì giờ để đánh giá trang này.',
+	'articlefeedback-form-panel-explanation' => 'Này là gì?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:Phản hồi bài',
 	'articlefeedback-form-panel-clear' => 'Hủy đánh giá này',
 	'articlefeedback-form-panel-expertise' => 'Tôi rất am hiểu về đề tài này (tùy chọn)',
 	'articlefeedback-form-panel-expertise-studies' => 'Tôi đã lấy bằng có liên quan tại trường cao đẳng / đại học',
@@ -4377,8 +4667,9 @@ Xin hãy thử lại sau.',
 	'articleFeedback-table-caption-recentlows' => 'Các điểm thấp gần đây',
 	'articleFeedback-table-heading-page' => 'Trang',
 	'articleFeedback-table-heading-average' => 'Trung bình',
-	'articleFeedback-copy-above-highlow-tables' => 'Đây là một tính năng thử nghiệm. Xin vui lòng đưa ra phản hồi tại trang thảo luận.',
+	'articleFeedback-copy-above-highlow-tables' => 'Đây là một tính năng thử nghiệm. Xin vui lòng đưa ra phản hồi tại [$1 trang thảo luận].',
 	'articleFeedback-copy-below-highlow-tables' => 'Các bảng này chứa các bài đã được đánh giá 10 lần trở lên trong vòng 24 giờ qua. Các trung bình tính các đánh giá được nhận trong vòng 24 giờ qua.',
+	'articlefeedback-disable-preference' => 'Ẩn bảng Phản hồi bài khỏi các trang',
 	'articlefeedback-emailcapture-response-body' => 'Xin chào!
 
 Cám ơn bạn đã bày tỏ quan tâm về việc giúp cải tiến {{SITENAME}}.

@@ -31,6 +31,9 @@ $wgArticleFeedbackRatings = array( 1, 2, 3, 4 );
 // Extension is "disabled" if this field is an empty array (as per default configuration)
 $wgArticleFeedbackCategories = array();
 
+// Which categories the pages must not belong to have the rating widget added (with _ in text)
+$wgArticleFeedbackBlacklistCategories = array();
+
 // Only load the module / enable the tool in these namespaces
 // Default to $wgContentNamespaces (defaults to array( NS_MAIN ) ).
 $wgArticleFeedbackNamespaces = $wgContentNamespaces;
@@ -141,6 +144,7 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'articlefeedback-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ArticleFeedback'
 );
+
 // Autoloading
 $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['ApiQueryArticleFeedback'] = $dir . 'api/ApiQueryArticleFeedback.php';
@@ -149,12 +153,15 @@ $wgAutoloadClasses['ArticleFeedbackHooks'] = $dir . 'ArticleFeedback.hooks.php';
 $wgAutoloadClasses['SpecialArticleFeedback'] = $dir . 'SpecialArticleFeedback.php';
 $wgExtensionMessagesFiles['ArticleFeedback'] = $dir . 'ArticleFeedback.i18n.php';
 $wgExtensionAliasesFiles['ArticleFeedback'] = $dir . 'ArticleFeedback.alias.php';
+
 // Hooks
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'ArticleFeedbackHooks::loadExtensionSchemaUpdates';
 $wgHooks['ParserTestTables'][] = 'ArticleFeedbackHooks::parserTestTables';
 $wgHooks['BeforePageDisplay'][] = 'ArticleFeedbackHooks::beforePageDisplay';
 $wgHooks['ResourceLoaderRegisterModules'][] = 'ArticleFeedbackHooks::resourceLoaderRegisterModules';
 $wgHooks['ResourceLoaderGetConfigVars'][] = 'ArticleFeedbackHooks::resourceLoaderGetConfigVars';
+$wgHooks['GetPreferences'][] = 'ArticleFeedbackHooks::getPreferences';
+
 // API Registration
 $wgAPIListModules['articlefeedback'] = 'ApiQueryArticleFeedback';
 $wgAPIModules['articlefeedback'] = 'ApiArticleFeedback';
