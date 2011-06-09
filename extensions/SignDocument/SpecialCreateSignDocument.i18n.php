@@ -1352,6 +1352,13 @@ $messages['mr'] = array(
 ती दुसर्‍यांदा होत नाही.',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'createsigndoc-create' => 'Cipta',
+);
+
 /** Mirandese (Mirandés)
  * @author Malafaya
  */

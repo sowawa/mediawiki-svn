@@ -72,6 +72,13 @@ $messages['mk'] = array(
 	'creativecommonsrdf-desc' => 'RDF-метаподатоци од Криејтив комонс',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'creativecommonsrdf-desc' => 'Metadata Creative Commons RDF',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

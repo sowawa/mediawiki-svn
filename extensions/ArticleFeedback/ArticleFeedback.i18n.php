@@ -1655,7 +1655,7 @@ Inténteo de novo máis tarde.',
 	'articleFeedback-table-heading-page' => 'Páxina',
 	'articleFeedback-table-heading-average' => 'Media',
 	'articleFeedback-copy-above-highlow-tables' => 'Esta é unha característica experimental. Deixe os seus comentarios na [$1 páxina de conversa].',
-	'articleFeedback-copy-below-highlow-tables' => 'Estas táboas conteñen as páxinas que recibiron, polo menos, 10 votos nas últimas 24 horas. As medias calcúlanse facendo a media de todas as valoracións enviadas nas últimas 24 horas.',
+	'articlefeedback-disable-preference' => 'Non mostrar o widget de avaliación de artigos nas páxinas',
 	'articlefeedback-emailcapture-response-body' => 'Ola!
 
 Grazas por expresar interese en axudar a mellorar {{SITENAME}}.
@@ -2986,6 +2986,7 @@ $messages['ne'] = array(
  * @author McDutchie
  * @author SPQRobin
  * @author Siebrand
+ * @author Tjcool007
  */
 $messages['nl'] = array(
 	'articlefeedback' => 'Dashboard voor paginawaardering',
@@ -3061,7 +3062,7 @@ Probeer het later opnieuw.',
 	'articleFeedback-table-heading-page' => 'Pagina',
 	'articleFeedback-table-heading-average' => 'Gemiddelde',
 	'articleFeedback-copy-above-highlow-tables' => 'Dit is experimentele functionaliteit. Geef alstublieft terugkoppeling op de [$1 overlegpagina].',
-	'articleFeedback-copy-below-highlow-tables' => "Deze tabellen bevatten pagina's die in de afgelopen 24 uur tenminste 10 waarderingen hebben gehad. De gemiddelden worden berekend door het gemiddelde te berekenen van alle waarderingen in de afgelopen 24 uur.",
+	'articlefeedback-disable-preference' => "Toon de Artikel feedback widget niet op pagina's",
 	'articlefeedback-emailcapture-response-body' => 'Hallo!
 
 Dank u wel voor uw interesse in het verbeteren van {{SITENAME}}.
@@ -3449,6 +3450,7 @@ $messages['ps'] = array(
 /** Portuguese (Português)
  * @author Giro720
  * @author Hamilton Abreu
+ * @author Helder.wiki
  * @author Waldir
  */
 $messages['pt'] = array(
@@ -3497,7 +3499,7 @@ $messages['pt'] = array(
 	'articlefeedback-field-trustworthy-tip' => 'Considera que esta página tem citações suficientes e que essas citações provêm de fontes fiáveis?',
 	'articlefeedback-field-complete-label' => 'Completa',
 	'articlefeedback-field-complete-tip' => 'Considera que esta página aborda os temas essenciais que deviam ser cobertos?',
-	'articlefeedback-field-objective-label' => 'Imparcial',
+	'articlefeedback-field-objective-label' => 'Objetivo',
 	'articlefeedback-field-objective-tip' => 'Acha que esta página representa, de forma equilibrada, todos os pontos de vista sobre o assunto?',
 	'articlefeedback-field-wellwritten-label' => 'Bem escrita',
 	'articlefeedback-field-wellwritten-tip' => 'Acha que esta página está bem organizada e bem escrita?',
@@ -3523,7 +3525,6 @@ Tente novamente mais tarde, por favor.',
 	'articleFeedback-table-heading-page' => 'Página',
 	'articleFeedback-table-heading-average' => 'Média',
 	'articleFeedback-copy-above-highlow-tables' => 'Esta funcionalidade é experimental. Deixe os seus comentários na [$1 página de discussão], por favor.',
-	'articleFeedback-copy-below-highlow-tables' => 'Estas tabelas contêm artigos que receberam pelo menos 10 avaliações nas últimas 24 horas. As médias são calculadas pela média aritmética de todas as avaliações enviadas nas últimas 24 horas.',
 	'articlefeedback-disable-preference' => 'Não mostrar nas páginas o widget da avaliação de artigos',
 	'articlefeedback-emailcapture-response-body' => 'Olá,
 
@@ -4083,7 +4084,7 @@ Prosím, skúste to neskôr.',
  */
 $messages['sl'] = array(
 	'articlefeedback' => 'Pregledna plošča povratnih informacij člankov',
-	'articlefeedback-desc' => 'Ocenjevanje člankov (pilotska različica)',
+	'articlefeedback-desc' => 'Povratna informacija članka',
 	'articlefeedback-survey-question-origin' => 'Na kateri strani ste bili, ko ste začeli s to anketo?',
 	'articlefeedback-survey-question-whyrated' => 'Prosimo, povejte nam, zakaj ste danes ocenili to stran (izberite vse, kar ustreza):',
 	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'Želel sem prispevati splošni oceni strani',
@@ -4153,7 +4154,7 @@ Prosimo, poskusite znova pozneje.',
 	'articleFeedback-table-heading-page' => 'Stran',
 	'articleFeedback-table-heading-average' => 'Povprečje',
 	'articleFeedback-copy-above-highlow-tables' => 'To je preizkusna funkcija. Prosimo, podajte povratno informacijo na [$1 pogovorni strani].',
-	'articleFeedback-copy-below-highlow-tables' => 'Te razpredelnice vsebujejo članke, ki so v zadnjih 24 urah prejeli vsaj 10 ocen. Povprečna so izračunana iz povprečja vseh ocen, podanih v zadnjih 24 urah.',
+	'articlefeedback-disable-preference' => 'Na strani ne pokaži gradnika Povratna informacija članka',
 	'articlefeedback-emailcapture-response-body' => 'Pozdravljeni!
 
 Zahvaljujemo se vam za izkazano zanimanje za pomoč pri izboljševanju {{GRAMMAR:rodilnik|{{SITENAME}}}}.

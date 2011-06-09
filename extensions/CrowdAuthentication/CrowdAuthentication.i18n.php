@@ -258,6 +258,13 @@ $messages['mr'] = array(
 	'crowdauthentication-desc' => 'ऍट्लेशिअन क्राउड साठीचे प्रमाणिकरण प्लग-इन',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'crowdauthentication-desc' => "Pemalam (''plugin'') pengesahan untuk Atlassian Crowd",
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */

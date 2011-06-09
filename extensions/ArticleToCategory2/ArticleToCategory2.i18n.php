@@ -474,6 +474,19 @@ $messages['ml'] = array(
 	'articletocategory2-create-category-under-category-button' => 'സൃഷ്ടിക്കുക',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'articletocategory2-desc' => 'Meletakkan peti input pada setiap laman kategori, membolehkan pembentukan laman baru secara terus ke dalam kategori itu',
+	'articletocategory2-create-article-under-category-text' => 'Tambahkan laman ke dalam kategori ini',
+	'articletocategory2-create-article-under-category-button' => 'Cipta',
+	'articletocategory2-create-category-under-category-text' => 'Tambahkan kategori ke dalam kategori ini',
+	'articletocategory2-create-category-under-category-button' => 'Cipta',
+	'right-ArticleToCategory2' => 'Tambahkan laman kepada kategori',
+	'right-ArticleToCategory2AddCat' => 'Tambahkan kategori kepada kategori',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

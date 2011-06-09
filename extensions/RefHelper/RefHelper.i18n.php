@@ -1057,6 +1057,7 @@ $messages['mk'] = array(
  */
 $messages['ms'] = array(
 	'refhelper-title' => 'Tajuk:',
+	'refhelper-create' => 'Cipta',
 );
 
 /** Dutch (Nederlands)

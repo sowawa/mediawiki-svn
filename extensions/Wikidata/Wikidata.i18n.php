@@ -8956,6 +8956,7 @@ $messages['ms'] = array(
 	'ow_Link' => 'Pautan',
 	'ow_LinkAttributeValues' => 'Pautan',
 	'ow_class_attr_type_link' => 'Pautan',
+	'ow_create' => 'Cipta',
 	'ow_suggest_previous' => 'Sebelumnya',
 	'ow_suggest_next' => 'Berikutnya',
 );

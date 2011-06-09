@@ -301,6 +301,13 @@ $messages['ml'] = array(
 	'clientside-desc' => 'എച്ച്.റ്റി.എം.എൽ., സി.എസ്.എസ്., ജാവാസ്ക്രിപ്റ്റ് തുടങ്ങിയ ക്ലയന്റ്-സൈഡ് വിദ്യകൾ സ്വയം സൃഷ്ടിക്കുന്ന സൗകര്യങ്ങൾ നൽകുന്നു',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'clientside-desc' => 'Menyediakan fungsi untuk menjana kod dalam format sebelah klien seperti HTML, CSS dan JavaScript',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */

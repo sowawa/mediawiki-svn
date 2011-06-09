@@ -346,6 +346,14 @@ $messages['mr'] = array(
 	'purge-desc' => 'सर्व साधारण पानांवर एक स्वच्छतेचा टॅब वाढवितो, व अनामिक सदस्यांसाठी पर्ज तपासणी वगळून लवकर सय स्वच्छ करण्याची सुविधा देतो',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'purge' => 'singkirkan',
+	'purge-desc' => 'Membubuh tab singkirkan pada semua laman biasa, serta memintas semakan penyingkiran untuk pengguna tanpa nama, mempercepat penyingkiran cache',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

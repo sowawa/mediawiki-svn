@@ -297,6 +297,13 @@ $messages['mr'] = array(
 	'contributorsaddon-desc' => '"मुख्य योगदानकर्ता" दुव्यांवर माउस नेल्यानंतर येणार्‍या खिडकीसाठीची जावास्क्रीप्ट वाढविते',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'contributorsaddon-desc' => 'Menambahkan tetimbul JavaScript pada pautan "Penyumbang utama"',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */

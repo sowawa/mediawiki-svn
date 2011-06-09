@@ -128,6 +128,13 @@ $messages['ml'] = array(
 	'customusersignup-desc' => 'അംഗത്വ സൃഷ്ടി പ്രക്രിയക്കിടയിൽ ക്രമീകരിക്കാവുന്ന സന്ദേശങ്ങൾ അനുവദിക്കുക',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'customusersignup-desc' => 'Membolehkan mesej yang boleh diubahsuai ketika proses pembukaan akaun',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

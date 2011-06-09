@@ -4794,6 +4794,7 @@ $messages['ms'] = array(
 	'wikilog-log-cmt-rejdel' => 'Ulasan wikilog oleh [[Special:Contributions/$1|$1]] ditolak',
 	'wikilog-tab' => 'Wikilog',
 	'wikilog-tab-title' => 'Tindakan Wikilog',
+	'wikilog-new-item-go' => 'Cipta',
 	'wikilog-title' => 'Tajuk',
 	'wikilog-view-summary' => 'Ringkasan',
 	'wikilog-pager-prev' => 'sebelumnya',

@@ -1473,6 +1473,7 @@ $messages['mn'] = array(
  * @author Aurora
  */
 $messages['ms'] = array(
+	'recordadmin-buttoncreate' => 'Cipta',
 	'recordadmin-actions' => 'Sunting',
 );
 

@@ -2137,6 +2137,9 @@ Non podería conectarse sen un OpenID.',
 	'openid-dashboard-title' => 'Taboleiro de OpenID',
 	'openid-dashboard-title-admin' => 'Taboleiro de OpenID (administrador)',
 	'openid-dashboard-introduction' => 'A configuración actual da extensión OpenID ([$1 axuda])',
+	'openid-dashboard-number-openid-users' => 'Número de usuarios con OpenID',
+	'openid-dashboard-number-openids-in-database' => 'Número de OpenID (total)',
+	'openid-dashboard-number-users-without-openid' => 'Número de usuarios sen OpenID',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -3918,6 +3921,7 @@ $messages['ne'] = array(
  * @author McDutchie
  * @author SPQRobin
  * @author Siebrand
+ * @author Tjcool007
  */
 $messages['nl'] = array(
 	'openid-desc' => 'Aanmelden bij de wiki met een [http://openid.net/ OpenID] en aanmelden bij andere websites die OpenID ondersteunen met een wikigebruiker',
@@ -4019,6 +4023,9 @@ Dan zou u niet langer kunnen aanmelden zonder een OpenID.",
 	'openid-dashboard-title' => 'OpenID-dashboard',
 	'openid-dashboard-title-admin' => 'OpenID-dashboard (beheerder)',
 	'openid-dashboard-introduction' => 'De huidige instellingen van de OpenID-uitbreiding ([$1 hulp])',
+	'openid-dashboard-number-openid-users' => 'Aantal gebruikers met OpenID',
+	'openid-dashboard-number-openids-in-database' => 'Totaal aantal OpenIDs',
+	'openid-dashboard-number-users-without-openid' => 'Aantal gebruikers zonder OpenID',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)

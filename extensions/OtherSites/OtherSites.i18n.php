@@ -329,10 +329,12 @@ $messages['ml'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Zamwan
  */
 $messages['ms'] = array(
 	'othersites' => 'Tapak-tapak lain',
+	'othersites-desc' => 'Mengalihkan pautan antara wiki selain pautan bahasa ke dalam portler sendiri',
 );
 
 /** Dutch (Nederlands)

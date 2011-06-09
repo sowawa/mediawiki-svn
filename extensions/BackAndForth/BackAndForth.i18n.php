@@ -650,10 +650,12 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Kurniasan
  */
 $messages['ms'] = array(
 	'backforth-next' => 'Berikutnya ($1)',
+	'backandforth-desc' => 'Membubuh pautan penghalaman "Sebelumnya" dan "Berikutnya" di atas laman',
 	'backforth-prev' => 'Sebelumnya ($1)',
 );
 

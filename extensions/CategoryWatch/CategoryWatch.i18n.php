@@ -536,6 +536,19 @@ $messages['mk'] = array(
 	'categorywatch-autocat' => 'Автоматски набљудувана од $1',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'categorywatch-desc' => 'Meluaskan kefungsian senarai pantau untuk merangkumi pemberitahuan mengenai perubahan keahlian dalam kategori yang dipantau',
+	'categorywatch-emailsubject' => 'Kegiatan yang melihatkan kategori terpantau "$1"',
+	'categorywatch-catmovein' => '$1 telah berpindah ke dalam $2 dari $3',
+	'categorywatch-catmoveout' => '$1 telah berpindah keluar dari $2 ke dalam $3',
+	'categorywatch-catadd' => '$1 telah ditambahkan ke dalam $2',
+	'categorywatch-catsub' => '$1 telah dikeluarkan dari $2',
+	'categorywatch-autocat' => 'Dipantau secara automatik oleh $1',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -290,6 +290,15 @@ $messages['mr'] = array(
 	'htmlets-desc' => '<code>&lt;htmlet&gt;</code> खूण वापरून संचिकेमध्ये अंतरओळ स्निपेट्ट्स टाकायची परवानगी देते',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'htmlets-desc' => 'Membolehkan anda menyebariskan coretan-coretan HTML daripada fail dengan menggunakan tag <code>&lt;htmlet&gt;</code>',
+	'htmlets-filenotfound' => 'Fail HTML $1 tidak dapat dicari',
+	'htmlets-loadfailed' => 'Fail HTML $1 tidak dapat dimuatkan',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

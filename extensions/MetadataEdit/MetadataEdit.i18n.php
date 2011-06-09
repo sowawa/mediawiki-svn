@@ -801,9 +801,11 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Aviator
  */
 $messages['ms'] = array(
+	'metadataedit-desc' => 'Meletakkan kategori, pautan bahasa dan templat yang dibenarkan dalam petak teks yang berasingan ketika menyunting halaman',
 	'metadata_help' => 'Metadata:',
 );
 

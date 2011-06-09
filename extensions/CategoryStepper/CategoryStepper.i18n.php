@@ -493,6 +493,7 @@ $messages['mr'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'categorystepper-desc' => 'Memaparkan peti pelangkah kategori yang membolehkan pengguna berpandu arah ulang-alih mengikut susunan abjad melalui satu atau lebih kategori yang menggolongkan sesebuah laman',
 	'categorystepper-end' => '(Akhir kategori)',
 	'categorystepper-start' => '(Awal kategori)',
 );

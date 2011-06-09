@@ -233,6 +233,13 @@ $messages['mk'] = array(
 	'conditionalshowsection-desc' => 'Додавање на ознаката cshow за условен приказ/сокривање на дел од вики-текст',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'conditionalshowsection-desc' => 'Membubuh tag cshow untuk menunjukkan/menyorokkan sebahagian teks wiki secara bersyarat',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */

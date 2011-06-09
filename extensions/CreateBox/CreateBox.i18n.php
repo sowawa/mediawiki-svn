@@ -580,6 +580,19 @@ $messages['mr'] = array(
 	'createbox-create' => 'तयार करा',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'createbox-desc' => 'Ruang input khusus untuk penciptaan laman',
+	'createbox-create' => 'Cipta',
+	'createbox-exists' => "Maaf, \"'''{{FULLPAGENAME}}'''\" sudah wujud.
+
+Anda tidak boleh mencipta laman ini, tetapi anda boleh [{{fullurl:{{FULLPAGENAME}}|action=edit}} menyuntingnya], [{{fullurl:{{FULLPAGENAME}}}} membacanya], atau memilih untuk mencipta laman yang baru dengan menggunakan ruangan di bawah.
+
+<createbox>break=no</createbox>",
+);
+
 /** Maltese (Malti)
  * @author Chrisportelli
  */

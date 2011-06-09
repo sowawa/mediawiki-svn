@@ -199,6 +199,13 @@ $messages['ml'] = array(
 	'datediff-desc' => 'രണ്ട് തിയ്യതികൾ സ്വീകരിച്ച് അതിനിടയിലുള്ള എല്ലാ ദിവസങ്ങളും നൽകുന്നു',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'datediff-desc' => 'Mengambil dua tarikh lalu memulangkan semua hari antaranya',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -830,12 +830,26 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Kurniasan
  */
 $messages['ms'] = array(
 	'call' => 'Panggil',
 	'call-desc' => 'Membuat hiperpautan ke templat (atau ke laman wiki biasa) melalui penguluran parameter.
 Boleh digunakan di baris perintah penyemak imbas atau di dalam teks wiki.',
+	'call-text' => "Sambungan Call menjangkakan laman wiki dan parameter pilihan untuk laman itu sebagai hujah.<br /><br />
+
+Contoh 1: &nbsp; <tt>[[{{#special:call}}/My Template,parm1=value1]]</tt><br />
+Contoh 2: &nbsp; <tt>[[{{#special:call}}/Talk:My Discussion,parm1=value1]]</tt><br />
+Contoh 3: &nbsp; <tt>[[{{#special:call}}/:My Page,parm1=value1,parm2=value2]]</tt><br />
+Contoh 4 (URL Pelayar): &nbsp; <tt>http://mydomain/mywiki/index.php?{{#special:call}}/:My Page,parm1=value1</tt><br /><br />
+
+<i>Sambungan Call</i> akan memanggil laman yang dinyatakan dan menghantarkan parameter-parameternya.<br />
+Anda akan melihat kandungan laman yang dipanggil dan tajuknya tetapi dalam 'jenis' laman khas, yang mana ia tidak boleh disunting.<br />Kandungan yang anda lihat mungkin ada perbezaan, bergantung pada nilai parameter yang dihantarkan.<br /><br />
+
+<i>Sambungan Call</i> sesuai untuk membina aplikasi interaktif dengan MediaWiki.<br />
+Contohnya, perhatikan <a href='http://semeb.com/dpldemo/Template:Catlist'>antara muka pengguna bergrafik DPL</a> ..<br />
+Sekiranya ada masalah, anda boleh cuba <b>{{#special:call}}/DebuG</b>",
 	'call-save' => "Keluaran bagi panggilan ini akan disimpan di laman ''$1''.",
 	'call-save-success' => 'Teks berikut telah disimpan di laman <big>[[$1]]</big> .',
 	'call-save-failed' => 'Teks berikut TIDAK disimpan di laman <big>[[$1]]</big> kerana laman tersebut telah pun wujud.',
