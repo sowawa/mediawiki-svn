@@ -8,18 +8,15 @@ $.fn.flow = function( text ) {
 	console.time( 'flow' );
 	
 	function encodeHtml( c ) {
-		return c.replace( /&/g, '&amp;' )
-			.replace( / /g, '&nbsp;' )
+		return c.replace( /\&/g, '&amp;' )
 			.replace( /</g, '&lt;' )
-			.replace( />/g, '&gt;' )
-			.replace( /\'/g, '&apos;' )
-			.replace( /"/g, '&quot;' );
+			.replace( />/g, '&gt;' );
 	}
 	
 	var breakableRe = /[\s\r\n\f]/;
 	
 	var $this = $(this);
-	
+
 	$this.empty();
 	
 	var width = $this.innerWidth();
@@ -31,6 +28,7 @@ $.fn.flow = function( text ) {
 		var breakPos = pos;
 		
 		var $line = $( '<div class="editSurface-line"></div>' ).appendTo( $this );
+		var lineElem = $line.get(0);
 		var lineText = '';
 		var lineMetrics = [];
 		var lineWidth = 0;
@@ -38,20 +36,24 @@ $.fn.flow = function( text ) {
 		
 		while ( pos < text.length && lineWidth < width ) {
 			// Append text
-			lineText += text.charAt( pos );
-			// Apply to DOM
-			$line.html( encodeHtml( lineText ) );
+			var c = text.charAt( pos );
+			lineText += c;
+			lineElem.innerHTML = encodeHtml( lineText );
+		
 			// Get new line width from DOM
 			lastLineWidth = lineWidth;
-			lineWidth = $line.innerWidth();
+			// $.innerWidth call is expensive. Assume padding and border = 0 and this should be okay
+			lineWidth = lineElem.offsetWidth; 
 			// Push difference (character width)
 			lineMetrics.push( lineWidth - lastLineWidth );
-			if ( breakableRe( text.charAt(pos) ) ) {
+
+			if ( breakableRe( c ) ) {
 				breakPos = pos;
 			}
+
 			pos++;
 		}
-		
+	
 		if ( lineWidth >= width ) {
 			if ( breakPos === lineStartPos ) {
 				// There was no breakable position between the start of the line and here, so we
@@ -68,18 +70,18 @@ $.fn.flow = function( text ) {
 			pos = breakPos;
 			// Truncate characters that won't fit
 			lineText = text.substring( lineStartPos, breakPos );
-			$line.html( encodeHtml( lineText ) );
+			lineElem.innerHTML = encodeHtml( lineText );
 			// Don't leave metrics from truncated characters around
 			lineMetrics = lineMetrics.slice( 0, pos - lineStartPos );
 		}
-		
+
 		$line
 			.data( 'metrics', lineMetrics )
 			.data( 'text', lineText )
 			.data( 'line', line );
 		
 		if ( lineStartPos === pos ) {
-			$line.html( '&nbsp;' )
+			lineElem.innerHtml = '&nbsp;';
 		}
 		
 		line++;
