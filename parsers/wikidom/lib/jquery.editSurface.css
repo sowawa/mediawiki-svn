@@ -1,12 +1,12 @@
 body {
 	font-family: "Arial";
-	font-size: 1em;
+	font-size: 0.8em;
 }
 
 #selection {
 	position: absolute;
-	left: 26em;
-	width: 24em;
+	right: 3%;
+	width: 45%;
 	border: solid 1px Highlight;
 	line-height: 1.5em;
 	cursor: text;
@@ -19,8 +19,8 @@ body {
 
 .editSurface-container {
 	position: absolute;
-	left: 1em;
-	width: 24em;
+	left: 3%;
+	width: 45%;
 	border: solid 1px red;
 	cursor: text;
 }
@@ -36,6 +36,10 @@ body {
 	cursor: text;
 	white-space: nowrap;
 	background-color: rgba(204, 204, 204, 0.25);
+}
+.editSurface-line.empty {
+	display: block;
+	width: 0px;
 }
 
 .editSurface-range {

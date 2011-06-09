@@ -2,10 +2,13 @@
  * Flow jQuery plugin
  */
 
-$.flow = { 'widthCache': {} };
+$.flow = { 'cache': { 'chars': {}, 'words': {} } };
 
 $.fn.flow = function( text ) {
-	var lineLimit = $(this).innerWidth();
+	console.time( 'flow' );
+	
+	var $this = $(this);
+	var lineLimit = $this.innerWidth();
 	
 	// Wordify
 	var words = [],
@@ -24,11 +27,12 @@ $.fn.flow = function( text ) {
 			.replace( '"', '&quot;' );
         // Measurement
 		var charWidth;
-		if ( typeof $.flow.widthCache[char] === 'undefined' ) {
-			charWidth = $.flow.widthCache[char] =
-				$( '<span>' + charHtml + '</span>' ).appendTo( $(this) ).width();
+		if ( typeof $.flow.cache.chars[char] === 'undefined' ) {
+			charWidth = $.flow.cache.chars[char] =
+				$( '<div class="editSurface-line">' + charHtml + '</div>' )
+					.appendTo( $this ).width();
 		} else {
-			charWidth = $.flow.widthCache[char];
+			charWidth = $.flow.cache.chars[char];
 		}
 		// Virtual boundary
 		if ( word.width + charWidth >= lineLimit ) {
@@ -72,7 +76,7 @@ $.fn.flow = function( text ) {
 	}
 	
 	// Flow
-	$(this).empty();
+	$this.empty();
 	for ( var i = 0; i < lines.length; i++ ) {
 		var $line = $( '<div class="editSurface-line"></div>' )
 			.data( 'metrics', lines[i].metrics )
@@ -84,8 +88,10 @@ $.fn.flow = function( text ) {
 			$line.html( '&nbsp;' );
 			$line.addClass( 'empty' );
 		}
-		$(this).append( $line );
+		$this.append( $line );
 	}
+
+	console.timeEnd( 'flow' );
 	
-	return $(this);
+	return $this;
 };
