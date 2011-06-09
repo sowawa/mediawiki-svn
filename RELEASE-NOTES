@@ -16,6 +16,8 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
 * Removed dead code (initial code to support the RL, now used in SM 1.0 and later).
 
+* Use of Google Maps geocoding service v3 instead of v2.
+
 === Maps 0.7.6 ===
 (2011-03-21)
 
