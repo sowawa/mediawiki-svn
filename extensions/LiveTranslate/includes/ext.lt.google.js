@@ -1,3 +1,11 @@
+/**
+ * JavasSript for the Google translation functionality in the Live Translate extension.
+ * @see http://www.mediawiki.org/wiki/Extension:Live_Translate
+ * 
+ * @licence GNU GPL v3 or later
+ * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
+ */
+
 google.load("language", "1");
 google.setOnLoadCallback(function(){google.language.getBranding("googlebranding");});
 
