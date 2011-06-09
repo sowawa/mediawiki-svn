@@ -1,0 +1,51 @@
+/**
+ * Base classes reflecting the MediaWiki Style guide.
+ *
+ * Note: This must not depend on JavaScript as it is
+ * also loaded with javascript disabled.
+ */
+
+.mw-htmlform-form {
+	padding: 10px;
+}
+
+.mw-htmlform-field {
+	margin: 0px 0px 21px 0px;
+}
+
+.mw-label {
+	display: block;
+}
+
+.mw-label .mw-help-field-hint {
+	margin-bottom: -15px;
+	height: 12px;
+	width: 12px;
+}
+
+.mw-label label {
+	margin: 0px 0px 0px 16px;
+	font-weight: bold;
+}
+
+.mw-htmlform-tip {
+	margin: 0px 0px 0px 30px;
+	font-size: 10px;
+	line-height: 14px;
+	color: #777777;
+}
+
+.mw-htmlform-field-HTMLTextField .mw-input {
+	margin: 0px 0px 0px 30px;
+}
+
+.mw-htmlform-field-HTMLTextField .mw-input input {
+	background: #f7f6f6 url(images/MW-StyleGuide-Form-InputInnerShade.png) top left no-repeat;
+	border: 1px solid #6b6b6b;
+	margin: 0;
+	padding: 6px 4px 4px 10px;
+	width: 200px; /* width: 214px; */
+}
+
+.mw-htmlform-submit {
+}
