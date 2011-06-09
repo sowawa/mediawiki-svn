@@ -42,9 +42,9 @@ $wgAutoloadClasses['PrintVersion'] = $dir . '/BookManager.body.php';
 $wgSpecialPages['PrintVersion'] = 'PrintVersion';
 $wgSpecialPageGroups['PrintVersion'] = 'other';
 
-$wgExtensionMessagesFiles['BookManager'] = $dir . '/languages/BookManager.i18n.php';
-$wgExtensionMessagesFiles['BookManagerMagic'] = $dir . '/languages/BookManager.i18n.magic.php';
-$wgExtensionAliasesFiles['BookManager'] = $dir . '/languages/BookManager.alias.php';
+$wgExtensionMessagesFiles['BookManager'] = $dir . '/language/BookManager.i18n.php';
+$wgExtensionMessagesFiles['BookManagerMagic'] = $dir . '/language/BookManager.i18n.magic.php';
+$wgExtensionAliasesFiles['BookManager'] = $dir . '/language/BookManager.alias.php';
 
 
 
