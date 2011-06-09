@@ -189,6 +189,7 @@ class PopulateAFStatistics extends Maintenance {
 		
 		$rows = array();
 		$cur_ts = $this->dbw->timestamp();
+		$count = 0;
 		foreach( $problems as $page_id ) {
 			$page = $this->pages->getPage( $page_id );
 			$rows[] = array(
@@ -198,6 +199,13 @@ class PopulateAFStatistics extends Maintenance {
 				'afs_ts' => $cur_ts,
 				'afs_stats_type_id' => $stats_type_id,
 			);
+			
+			$count++;
+			if ( $count >= 50 ) {
+				// No more than 50
+				// TODO: Get the 50 most problematic articles rather than 50 random problematic ones
+				break;
+			}
 		}
 		$this->output( "Done.\n" );
 		
@@ -540,7 +548,7 @@ class Page {
 	/**
 	 * Determine whether this article is  'problematic'
 	 *
-	 * If a page has one more rating categories where 70% of the ratings are 
+	 * If a page has one or more rating categories where 70% of the ratings are 
 	 * <= 2, it is considered problematic.
 	 */
 	public function determineProblematicStatus() {
