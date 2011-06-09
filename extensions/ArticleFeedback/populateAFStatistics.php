@@ -186,6 +186,9 @@ class PopulateAFStatistics extends Maintenance {
 		if ( !$stats_type_id ) {
 			$stats_type_id = $this->addStatType( 'problems' );
 		}
+		
+		$rows = array();
+		$cur_ts = $this->dbw->timestamp();
 		foreach( $problems as $page_id ) {
 			$page = $this->pages->getPage( $page_id );
 			$rows[] = array(
@@ -539,7 +542,7 @@ class Page {
 		if ( !isset( $this->problematic )) {
 			$this->determineProblematicStatus();
 		}
-		return $this->probematic;
+		return $this->problematic;
 	}
 	
 	/**

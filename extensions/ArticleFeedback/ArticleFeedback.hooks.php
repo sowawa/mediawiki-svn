@@ -202,7 +202,7 @@ class ArticleFeedbackHooks {
 				) );
 			} else {
 				// add article_feedback_stats and article_feedback_stats_type
-				if ( !$db->tableExists( 'article_feedback_stats_type' )) {
+				if ( !$db->tableExists( 'article_feedback_stats_types' )) {
 					$updater->addExtensionUpdate( array(
 						'addTable',
 						'article_feedback_stats_types',
