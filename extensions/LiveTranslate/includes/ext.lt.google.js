@@ -173,6 +173,7 @@ google.setOnLoadCallback(function(){google.language.getBranding("googlebranding"
 	 */
 	this.handleTranslationCompletion = function( targetLang ) {
 		if ( !--this.runningJobs ) {
+			ltdebug( 'Google: translation process done' );
 			this.done( targetLang );
 		}
 	}
