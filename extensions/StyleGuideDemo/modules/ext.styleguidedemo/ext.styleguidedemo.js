@@ -8,7 +8,7 @@ jQuery( document ).ready(function( $ ) {
 		.hide()
 		.closest( '.mw-help-field-container' )
 			.find( '.mw-help-field-hint' )
-				.show()
+				.css( 'display', 'block' ) // <span>, so show() is not enough
 				.click( function() {
 					$(this)
 					.closest( '.mw-help-field-container' )
