@@ -113,12 +113,19 @@ class SpecialArticleFeedback extends SpecialPage {
 	 */
 	protected function renderDailyHighsAndLows( $pages, $caption ) {
 		global $wgOut, $wgUser;
+		
+		// Pre-fill page ID cache
+		$ids = array();
+		foreach ( $pages as $page ) {
+			$ids[] = $page['page'];
+		}
+		self::populateTitleCache( $ids );
 
 		$rows = array();
 		if ( $pages ) {
 			foreach ( $pages as $page ) {
 				$row = array();
-				$pageTitle = Title::newFromId( $page['page'] );
+				$pageTitle = self::getTitleFromID( $page['page'] );
 				$row['page'] = $wgUser->getSkin()->link( $pageTitle, $pageTitle->getPrefixedText() );
 				foreach ( $page['ratings'] as $id => $value ) {
 					$row[] = array(
@@ -194,32 +201,45 @@ class SpecialArticleFeedback extends SpecialPage {
 	protected function renderProblems() {
 		global $wgOut, $wgUser, $wgArticleFeedbackRatings;
 
+		
+		$problems = $this->getProblems();
+		
+		// Pre-fill page ID cache
+		$ids = array();
+		foreach ( $problems as $page ) {
+			$ids[] = $page['page'];
+		}
+		self::populateTitleCache( $ids );
+		
 		$rows = array();
-		foreach ( $this->getProblems() as $page ) {
+		foreach ( $problems as $page ) {
 			$row = array();
-			$pageTitle = Title::newFromText( $page['page'] );
+			$pageTitle = self::getTitleFromID( $page['page'] );
 			$row['page'] = $wgUser->getSkin()->link( $pageTitle, $pageTitle->getPrefixedText() );
-			foreach ( $wgArticleFeedbackRatings as $category ) {
+			foreach ( $page['ratings'] as $id => $value ) {
 				$row[] = array(
-					'attr' => in_array( $category, $page['categories'] )
-						? array(
-							'class' => 'articleFeedback-table-column-bad',
-							'data-sort-value' => 0
-						)
-						: array(
-							'class' => 'articleFeedback-table-column-good',
-							'data-sort-value' => 1
-						),
-					'html' => '&nbsp;'
+					'text' => $this->formatNumber( $value ),
+					'attr' => array(
+						'class' => 'articleFeedback-table-column-rating ' .
+							'articleFeedback-table-column-score-' . round( $value )
+					)
 				);
 			}
+			$row[] = array(
+				'text' => $this->formatNumber( $page['average'] ),
+				'attr' => array(
+					'class' => 'articleFeedback-table-column-average ' .
+						'articleFeedback-table-column-score-' . round( $page['average'] )
+				)
+			);
 			$rows[] = $row;
 		}
 		$this->renderTable(
 			wfMsg( 'articleFeedback-table-caption-recentlows' ),
 			array_merge(
 				array( wfMsg( 'articleFeedback-table-heading-page' ) ),
-				self::getCategories()
+				self::getCategories(),
+				array( wfMsg( 'articleFeedback-table-heading-average' ) )
 			),
 			$rows,
 			'articleFeedback-table-recentlows'
@@ -235,14 +255,15 @@ class SpecialArticleFeedback extends SpecialPage {
 		$key = wfMemcKey( 'article_feedback_stats_problems' );
 		$cache = $wgMemc->get( $key );
 		if ( is_array( $cache )) {
-			$highs_lows = $cache;
+			$problems = $cache;
 		} else {
 			$dbr = wfGetDB( DB_SLAVE );
+			$typeID = self::getStatsTypeId( 'problems' );
 			// first find the freshest timestamp
 			$row = $dbr->selectRow(
 				'article_feedback_stats',
 				array( 'afs_ts' ),
-				"",
+				array( 'afs_stats_type_id' => $typeID ),
 				__METHOD__,
 				array( "ORDER BY" => "afs_ts DESC", "LIMIT" => 1 )
 			);
@@ -262,7 +283,7 @@ class SpecialArticleFeedback extends SpecialPage {
 				),
 				array( 
 					'afs_ts' => $row->afs_ts,
-					'afs_stats_type_id' => self::getStatsTypeId( 'problems' )
+					'afs_stats_type_id' => $typeID
 				),
 				__METHOD__,
 				array( "ORDER BY" => "afs_orderable_data" )
@@ -292,11 +313,12 @@ class SpecialArticleFeedback extends SpecialPage {
 			$highs_lows = $cache;
 		} else {
 			$dbr = wfGetDB( DB_SLAVE );
+			$typeID = self::getStatsTypeId( 'highs_and_lows' );
 			// first find the freshest timestamp
 			$row = $dbr->selectRow(
 				'article_feedback_stats',
 				array( 'afs_ts' ),
-				"",
+				array( 'afs_stats_type_id' => $typeID ),
 				__METHOD__,
 				array( "ORDER BY" => "afs_ts DESC", "LIMIT" => 1 )
 			);
@@ -316,7 +338,7 @@ class SpecialArticleFeedback extends SpecialPage {
 				),
 				array( 
 					'afs_ts' => $row->afs_ts,
-					'afs_stats_type_id' => self::getStatsTypeId( 'highs_and_lows' )
+					'afs_stats_type_id' => $typeID,
 				),
 				__METHOD__,
 				array( "ORDER BY" => "afs_orderable_data" )
@@ -374,16 +396,19 @@ class SpecialArticleFeedback extends SpecialPage {
 	
 	/**
 	 * Build data store of highs/lows for use when rendering table
-	 * @param object Database result
+	 * @param object Database result or array of rows
 	 * @return array
 	 */
 	public static function buildHighsAndLows( $result ) {
 		$highs_lows = array();
 		foreach ( $result as $row ) {
+			if ( is_array( $row ) ) {
+				$row = (object)$row;
+			}
 			$highs_lows[] = array(
 				'page' => $row->afs_page_id,
 				'ratings' => FormatJson::decode( $row->afs_data ),
-				'average' => $row->afs_orderable_data		
+				'average' => $row->afs_orderable_data
 			);
 		}
 		return $highs_lows;
@@ -391,16 +416,19 @@ class SpecialArticleFeedback extends SpecialPage {
 	
 	/**
 	 * Build data store of problems for use when rendering table
-	 * @param object Database result
+	 * @param object Database result or array of rows
 	 * @return array
 	 */
 	public static function buildProblems( $result ) {
 		$problems = array();
 		foreach( $result as $row ) {
+			if ( is_array( $row ) ) {
+				$row = (object)$row;
+			}
 			$problems[] = array(
 				'page' => $row->afs_page_id,
 				'ratings' => FormatJson::decode( $row->afs_data ),
-				'average' => $row->afs_orderable_data		
+				'average' => $row->afs_orderable_data
 			);
 		}
 		return $problems;
@@ -463,54 +491,20 @@ class SpecialArticleFeedback extends SpecialPage {
 		);
 	}
 
-	/**
-	 * Gets a list of articles which have recently recieved exceptionally low ratings.
-	 * 
-	 * - Based on any rating category
-	 * - Gets up to 100 most recently poorly rated articles
-	 * - Only consider articles which were rated lower than 3 for 7 out of the last 10 ratings
-	 * 
-	 * This data should be updated whenever article ratings are changed, ideally through a hook
-	 */
-	protected function getRecentLows() {
-		return array(
-			array(
-				'page' => 'Main Page',
-				// List of rating IDs that qualify as recent lows
-				'categories' => array( 1, 4 ),
-			),
-			array(
-				'page' => 'Test Article 1',
-				'categories' => array( 1, 3 ),
-			),
-			array(
-				'page' => 'Test Article 2',
-				'categories' => array( 2, 3 ),
-			),
-			array(
-				'page' => 'Test Article 3',
-				'categories' => array( 3, 4 ),
-			),
-			array(
-				'page' => 'Test Article 4',
-				'categories' => array( 1, 2 ),
-			)
-		);
-	}
-
 	/* Protected Static Members */
 
 	protected static $categories;
+	protected static $titleCache = array();
 
 	/* Protected Static Methods */
 
-	protected function formatNumber( $number ) {
+	protected static function formatNumber( $number ) {
 		global $wgLang;
 		
 		return $wgLang->formatNum( number_format( $number, 2 ) );
 	}
 
-	protected function getCategories() {
+	protected static function getCategories() {
 		global $wgArticleFeedbackRatings;
 
 		if ( !isset( self::$categories ) ) {
@@ -518,7 +512,8 @@ class SpecialArticleFeedback extends SpecialPage {
 			$res = $dbr->select(
 				'article_feedback_ratings',
 				array( 'aar_id', 'aar_rating' ),
-				array( 'aar_id' => $wgArticleFeedbackRatings )
+				array( 'aar_id' => $wgArticleFeedbackRatings ),
+				__METHOD__
 			);
 			self::$categories = array();
 			foreach ( $res as $row ) {
@@ -526,5 +521,21 @@ class SpecialArticleFeedback extends SpecialPage {
 			}
 		}
 		return self::$categories;
+	}
+	
+	protected static function getTitleFromID( $id ) {
+		// There's no caching in Title::newFromId() so we hack our own around it
+		if ( !isset( self::$titleCache[$id] ) ) {
+			self::$titleCache[$id] = Title::newFromId( $id );
+		}
+		return self::$titleCache[$id];
+	}
+	
+	protected static function populateTitleCache( $ids ) {
+		$toQuery = array_diff( $ids, array_keys( self::$titleCache ) );
+		$titles = Title::newFromIds( $toQuery );
+		foreach ( $titles as $title ) {
+			self::$titleCache[$title->getArticleID()] = $title;
+		}
 	}
 }

@@ -9,5 +9,5 @@ CREATE TABLE IF NOT EXISTS /*_*/article_feedback_stats (
 	-- timestamp of insertion job	
 	afs_ts binary(14) NOT NULL
 ) /*$wgDBTableOptions*/;
-CREATE UNIQUE INDEX /*i*/ afs_page_ts_type ON /*_*/article_feedback_stats( afs_page_id, afs_ts, afs_stats_type_id );
-CREATE INDEX /*i*/ afs_ts_avg_overall ON /*_*/article_feedback_stats (afs_ts, afs_orderable_data);
+CREATE UNIQUE INDEX /*i*/afs_type_ts_page ON /*_*/article_feedback_stats(afs_stats_type_id, afs_ts, afs_page_id);
+CREATE INDEX /*i*/ afs_type_ts_orderable ON /*_*/article_feedback_stats (afs_stats_type_id, afs_ts, afs_orderable_data);

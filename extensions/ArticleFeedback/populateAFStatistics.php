@@ -176,12 +176,12 @@ class PopulateAFStatistics extends Maintenance {
 			}
 			
 			if ( $page->isProblematic() ) {
-				array_push( $problems, $page->page_id );
+				$problems[] = $page->page_id;
 			}
 		}
 		
 		// populate stats table with problem articles & associated data
-		// fetch stats type id - add stat type if it's non-existant
+		// fetch stats type id - add stat type if it's non-existent
 		$stats_type_id = SpecialArticleFeedback::getStatsTypeId( 'problems' );
 		if ( !$stats_type_id ) {
 			$stats_type_id = $this->addStatType( 'problems' );
@@ -201,28 +201,31 @@ class PopulateAFStatistics extends Maintenance {
 		}
 		$this->output( "Done.\n" );
 		
+		// Insert the problem rows into the database
+		$this->output( "Writing data to article_feedback_stats ...\n" );
+		$rowsInserted = 0;
+		// $rows is gonna be modified by array_splice(), so make a copy for later use
+		$rowsCopy = $rows;
+		while( $rows ) {
+			$batch = array_splice( $rows, 0, $this->insert_batch_size );
+			$this->dbw->insert( 
+				'article_feedback_stats',
+				$batch,
+				__METHOD__
+			);
+			$rowsInserted += count( $batch );
+			$this->syncDBs();
+			$this->output( "Inserted " . $rowsInserted . " rows\n" );
+		}
+		$this->output( "Done.\n" );
+		
 		// populate cache with current problem articles
-		// loading data into cache
 		$this->output( "Caching latest problems (if cache present).\n" );
-		$key = wfMemcKey( 'article_feedback_stats_problems' );
-		$result = $this->dbr->select(
-			'article_feedback_stats',
-			array(
-				'afs_page_id',
-				'afs_orderable_data',
-				'afs_data'
-			),
-			array( 
-				'afs_ts' => $cur_ts,
-				'afs_stats_type_id' => $stats_type_id 
-			),
-			__METHOD__,
-			array( "ORDER BY" => "afs_orderable_data" )
-		);
 		// grab the article feedback special page so we can reuse the data structure building code
 		// FIXME this logic should not be in the special page class
-		$problems = SpecialArticleFeedback::buildProblems( $result );
+		$problems = SpecialArticleFeedback::buildProblems( $rowsCopy );
 		// stash the data structure in the cache
+		$key = wfMemcKey( 'article_feedback_stats_problems' );
 		$wgMemc->set( $key, $problems, 86400 );
 		$this->output( "Done.\n" );
 	}
@@ -300,6 +303,8 @@ class PopulateAFStatistics extends Maintenance {
 		// insert data to db
 		$this->output( "Writing data to article_feedback_stats ...\n" );
 		$rowsInserted = 0;
+		// $rows is gonna be modified by array_splice(), so make a copy for later use
+		$rowsCopy = $rows;
 		while( $rows ) {
 			$batch = array_splice( $rows, 0, $this->insert_batch_size );
 			$this->dbw->insert( 
@@ -316,26 +321,12 @@ class PopulateAFStatistics extends Maintenance {
 		// loading data into cache
 		$this->output( "Caching latest highs/lows (if cache present).\n" );
 		$key = wfMemcKey( 'article_feedback_stats_highs_lows' );
-		$result = $this->dbr->select(
-			'article_feedback_stats',
-			array(
-				'afs_page_id',
-				'afs_orderable_data',
-				'afs_data'
-			),
-			array( 
-				'afs_ts' => $cur_ts,
-				'afs_stats_type_id' => $stats_type_id 
-			),
-			__METHOD__,
-			array( "ORDER BY" => "afs_orderable_data" )
-		);
 		// grab the article feedback special page so we can reuse the data structure building code
 		// FIXME this logic should not be in the special page class
-		$highs_lows = SpecialArticleFeedback::buildHighsAndLows( $result );
+		$highs_lows = SpecialArticleFeedback::buildHighsAndLows( $rowsCopy );
 		// stash the data structure in the cache
 		$wgMemc->set( $key, $highs_lows, 86400 );
-		$this->output( "Done\n" );		
+		$this->output( "Done\n" );
 	}
 	
 	/**
@@ -364,7 +355,7 @@ class PopulateAFStatistics extends Maintenance {
 				'aa_page_id', 
 				'aa_rating_value',
 			), 
-			array( 'aa_timestamp >= ' . $this->dbr->addQuotes( $ts )),
+			array( 'aa_timestamp >= ' . $this->dbr->addQuotes( $this->dbr->timestamp( $ts ) ) ),
 			__METHOD__,
 			array()
 		);
@@ -390,6 +381,7 @@ class PopulateAFStatistics extends Maintenance {
 			// fetch the page from the page store referentially so we can
 			// perform actions on it that will automagically be saved in the
 			// object for easy access later
+			
 			$page =& $pages->getPage( $row->aa_page_id );
 			
 			// determine the unique hash for a given rating set (page rev + user identifying info)
@@ -584,7 +576,7 @@ class Pages implements IteratorAggregate {
 	 */
 	public $pages = array();
 	
-	public function getPage( $page_id ) {
+	public function &getPage( $page_id ) {
 		if ( !isset( $this->pages[ $page_id ] )) {
 			$this->addPage( $page_id );
 		}
