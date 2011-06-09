@@ -8,14 +8,15 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,     // Magic so that svn revision number can be shown
 	'name' => 'Notificator',
-	'descriptionmsg' => 'notificator-description',
+	'descriptionmsg' => 'notificator-desc',
 	'version' => '1.0.2',
 	'author' => 'Patrick Nagel',
 	'url' => "http://www.mediawiki.org/wiki/Extension:Notificator",
 );
+$dir = dirname( __FILE__ );
 
-$wgAutoloadClasses['Notificator'] = dirname( __FILE__ ) . '/Notificator.body.php';
-$wgAutoloadClasses['SpecialNotificator'] = dirname( __FILE__ ) . '/SpecialNotificator.php';
+$wgAutoloadClasses['Notificator'] = $dir . '/Notificator.body.php';
+$wgAutoloadClasses['SpecialNotificator'] = $dir . '/SpecialNotificator.php';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'notificator_AddDatabaseTable';
 $wgHooks['ParserTestTables'][]           = 'notificator_ParserTestTables';
@@ -24,7 +25,8 @@ $wgHooks['LanguageGetMagic'][]           = 'notificator_Magic';
 
 $wgSpecialPages['Notificator'] = 'SpecialNotificator';
 
-$wgExtensionMessagesFiles['Notificator'] = dirname( __FILE__ ) . '/Notificator.i18n.php';
+$wgExtensionMessagesFiles['Notificator'] =  $dir . '/Notificator.i18n.php';
+$wgExtensionAliasesFiles['Notificator'] = $dir . '/Notificator.alias.php';
 
 // Setting default here, to avoid register_globals vulnerabilites
 $ngFromAddress = $wgPasswordSenderName . '<' . $wgPasswordSender . '>';
