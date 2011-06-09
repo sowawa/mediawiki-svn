@@ -1,0 +1,78 @@
+Remove Debian package references from Makefile in preparation for using standard debian build system
+
+Move fPIC into g++ line, under Deb build CFLAGS must have some predefined 
+value already which doesn't include it
+
+Remove link against libicudata, it's not used
+--- a/Makefile
++++ b/Makefile
+@@ -2,10 +2,8 @@
+ PRODUCT=utfnormal
+ VERSION=0.0.1
+ 
+-DESTDIR?=
+-
+ CXX?=g++
+-CFLAGS?=-O2 -fPIC
++CFLAGS?=-O2
+ 
+ # For Linux
+ SHARED = -shared
+@@ -13,19 +11,6 @@
+ # For Mac OS X
+ #SHARED = -bundle -flat_namespace -undefined suppress
+ 
+-DEBFILES=\
+-debian/changelog\
+-debian/compat\
+-debian/control\
+-debian/copyright\
+-debian/dirs\
+-debian/docs\
+-debian/README.Debian\
+-debian/rules
+-
+-DISTDIRS=\
+-debian
+-
+ TMPDIST=$(PRODUCT)-$(VERSION)
+ TARBALL=$(TMPDIST).tar.gz
+ 
+@@ -33,13 +18,13 @@
+   $(PRODUCT).spec \
+   $(PRODUCT).cpp $(PRODUCT).i \
+   $(PRODUCT)_wrap.cpp php_$(PRODUCT).h \
+-  test.php \
+-  $(DEBFILES)
++  test.php 
++
+ 
+ 
+ php_$(PRODUCT).so : $(PRODUCT).cpp $(PRODUCT)_wrap.cpp
+-	$(CXX) $(CFLAGS) `php-config --includes --ldflags --libs` \
+-	-licuuc -licudata \
++	$(CXX) $(CFLAGS) -fPIC `php-config --includes --ldflags --libs` \
++	-licuuc \
+ 	$(SHARED) -o php_$(PRODUCT).so $(PRODUCT).cpp $(PRODUCT)_wrap.cpp
+ 
+ $(PRODUCT)_wrap.cpp : $(PRODUCT).i
+@@ -64,7 +49,6 @@
+ distclean : clean
+ 	rm -rf $(TMPDIST)
+ 	rm -f $(TMPDIST).tar.gz
+-	rm -rf debbuild
+ 
+ dist : $(TARBALL)
+ 
+@@ -79,11 +63,3 @@
+ 	cp $(TARBALL) /usr/src/redhat/SOURCES
+ 	cp $(PRODUCT).spec /usr/src/redhat/SPECS/$(PRODUCT)-$(VERSION).spec
+ 	cd /usr/src/redhat/SPECS && rpmbuild -ba $(PRODUCT)-$(VERSION).spec
+-
+-deb : $(TARBALL)
+-	rm -rf debbuild
+-	mkdir debbuild
+-	cd debbuild && tar zxvf ../$(TARBALL)
+-	cd debbuild/$(TMPDIST) && dpkg-buildpackage -rfakeroot
+-	#rm -rf debbuild/$(TMPDIST)
+-

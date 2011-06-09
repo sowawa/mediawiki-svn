@@ -1,0 +1,14 @@
+Source: normal
+Section: unknown
+Priority: extra
+Maintainer: Ariel T. Glenn <ariel@wikimedia.org>
+Build-Depends: debhelper (>= 7), libicu-dev, php5-cli, php5-dev, swig, g++
+Standards-Version: 3.8.3
+Vcs-svn: http://svn/wikimedia.org/viewvc/mediawiki/trunk/extensions/normal
+Homepage: http://svn/wikimedia.org/viewvc/mediawiki/trunk/extensions/normal
+
+Package: wikimedia-php5-utfnormal
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, php5-cli, php5-common, libicu42
+Description:  PHP extension to use ICU library to do stuff
+ PHP extension to use ICU library for UTF-8 normalization.

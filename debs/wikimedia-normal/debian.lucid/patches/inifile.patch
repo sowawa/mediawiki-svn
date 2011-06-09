@@ -1,0 +1,5 @@
+Add utfnormal.ini file
+--- /dev/null
++++ b/utfnormal.ini
+@@ -0,0 +1 @@
++extension=php_utfnormal.so
