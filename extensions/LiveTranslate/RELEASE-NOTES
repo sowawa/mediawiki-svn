@@ -4,6 +4,13 @@ Extension page on mediawiki.org: http://www.mediawiki.org/wiki/Extension:Live_Tr
 Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/LiveTranslate/RELEASE-NOTES?view=co
 
 
+=== Version 1.1.0 ===
+2011-06-1x
+
+* Added support for the Microsoft Translation service.
+* Added support for comments in the LiveTranslate TMX format.
+* Added debug messages in the JavaScript that can be logged by setting $egLiveTranslateDebugJS to true.
+
 === Version 1.0.1 ===
 2011-05-27
 
