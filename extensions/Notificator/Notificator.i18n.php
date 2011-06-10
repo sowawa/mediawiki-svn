@@ -99,6 +99,16 @@ $messages['de'] = array(
 	'notificator-notified-already' => '$1 wurde bereits zu dieser Seite oder Seitenänderung benachrichtigt.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'notificator-change-tag' => 'Ännerung',
+	'notificator-new-tag' => 'nei',
+	'notificator-subject' => 'Sujet:',
+	'notificator-error-parameter-missing' => 'Feeler: Parameter feelt.',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -117,7 +127,12 @@ $messages['mk'] = array(
 	'notificator-change-tag' => 'измена',
 	'notificator-new-tag' => 'ново',
 	'notificator-notification-text-changes' => '$1 сака да ве извести за следниве измени $2:',
+	'notificator-notification-text-new' => '$1 сака да ве извести за $2.',
+	'notificator-following-e-mail-sent-to' => 'На <em>$1</em> ја пративте следнава порака:',
 	'notificator-subject' => 'Наслов:',
+	'notificator-error-sending-e-mail' => 'Се појави грешка испраќајќи го известувањетоа на <em>$1</em>.',
+	'notificator-error-parameter-missing' => 'Грешка: Недостасува параметар.',
+	'notificator-notified-already' => 'Корисникот $1 е известен за оваа страница или претходните измени на страницата.',
 );
 
 /** Dutch (Nederlands)

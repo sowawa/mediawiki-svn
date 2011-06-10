@@ -16,6 +16,13 @@ $messages['en'] = array(
 	'dublincorerdf-desc' => 'Dublin Core RDF-metadata',
 );
 
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'dublincorerdf-desc' => 'RDF-мэтазьвесткі Dublin Core',
+);
+
 /** Danish (Dansk)
  * @author Peter Alberti
  */

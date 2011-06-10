@@ -335,7 +335,8 @@ $messages['be-tarask'] = array(
 	'articlefeedback-error' => 'Узьнікла памылка. Калі ласка, паспрабуйце потым',
 	'articlefeedback-form-switch-label' => 'Адзначце гэтую старонку',
 	'articlefeedback-form-panel-title' => 'Адзначце гэтую старонку',
-	'articlefeedback-form-panel-instructions' => 'Калі ласка, знайдзіце час, каб адзначыць гэтую старонку.',
+	'articlefeedback-form-panel-explanation' => 'Што гэта?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:Адзнака артыкула',
 	'articlefeedback-form-panel-clear' => 'Выдаліць гэтую адзнаку',
 	'articlefeedback-form-panel-expertise' => 'Я маю значныя веды па гэтай тэме (па жаданьні)',
 	'articlefeedback-form-panel-expertise-studies' => 'Я маю адпаведную ступень вышэйшай адукацыі',
@@ -386,7 +387,10 @@ $messages['be-tarask'] = array(
 	'articleFeedback-table-heading-page' => 'Старонка',
 	'articleFeedback-table-heading-average' => 'Сярэдняе',
 	'articleFeedback-copy-above-highlow-tables' => 'Гэта экспэрымэнтальная магчымасьць. Калі ласка, падайце Ваш водгук на [$1 старонцы абмеркаваньня].',
-	'articleFeedback-copy-below-highlow-tables' => 'Гэтыя табліцы ўтрымліваюць артыкулы, якія атрымалі адзнаку не меней 10 за апошнія 24 гадзіны.  Сярэдняя адзнака разьлічваецца на падставе ўсіх адзнака пададзеных за апошнія 24 гадзіны.',
+	'articlefeedback-dashboard-bottom' => "'''Заўвага''': Мы ўсё яшчэ працягваем экспэрымэнтаваць з апрацоўкай артыкулаў на гэтых пляцоўках.  У цяперашні час пляцоўкі ўтрымліваюць наступныя артыкулы:
+* Старонкі з вышэйшымі/ніжэйшымі адзнакамі: артыкулы, якія атрымалі ня менш 10 адзнакаў за апошнія 24 гадзіны. Сярэдняя адзнака вылічаная на падставе усіх адзнакаў атрыманых за апошнія 24 гадзіны.
+* Апошнія самыя нізкія адзнакі: артыкулы, якія маюць 70% ці болей нізкіх (2 зоркі ці ніжэй) адзнакаў у любой катэгорыі за апошнія 24 гадзіны. Улічваюцца толькі артыкулы якія атрымалі ня менш 10 адзнакаў за апошнія 24 гадзіны.",
+	'articlefeedback-disable-preference' => 'Не паказваць на старонках віджэт адзнакі артыкула',
 	'articlefeedback-emailcapture-response-body' => 'Вітаем!
 
 Дзякуй, за дапамогу ў паляпшэньні {{GRAMMAR:родны|{{SITENAME}}}}.
@@ -873,7 +877,9 @@ Bitte später erneut versuchen.',
 	'articleFeedback-table-heading-page' => 'Seite',
 	'articleFeedback-table-heading-average' => 'Durchschnitt',
 	'articleFeedback-copy-above-highlow-tables' => 'Dies ist ein experimenteller Funktionsbestandteil. Bitte hierzu auf der [$1 Diskussionsseite] eine Rückmeldung geben.',
-	'articleFeedback-copy-below-highlow-tables' => 'Diese Tabellen enthalten die Namen der Artikel, zu denen während der letzten 24 Stunden mindestens zehn Bewertungen abgegeben wurden. Die Durchschnittswerte basieren auf allen während der vergangenen 24 Stunden abgegebenen Bewertungen.',
+	'articlefeedback-dashboard-bottom' => "'''Hinweis:''' Wir werden weiterhin unterschiedliche Möglichkeiten ausprobieren Artikel auf diesen Arbeits- und Übersichtseiten anzuzeigen. Momentan werden hier die folgenden Artikel angezeigt:
+* Seiten mit den höchsten/ niedrigsten Bewertungen: Artikel die mindestens zehn Bewertungen während der vergangenen 24 Stunden erhalten haben. Die Durchschnittswerte sind dabei der Mittelwert aller Bewertungen während der vergangenen 24 Stunden.
+* Aktuelle schlechte Bewertungen: Artikel die während der vergangenen 24 Stunden 70 % oder schlechtere Bewertungen (zwei Sterne oder weniger) in jeder der Kategorien erhalten haben. Lediglich Artikel mit wenigstens zehn Bewertungen während der vergangenen 24 Stunden werden dabei einbezogen.",
 	'articlefeedback-disable-preference' => 'Das Widget zum Einschätzen von Seiten nicht anzeigen',
 	'articlefeedback-emailcapture-response-body' => 'Hallo!
 
@@ -2793,7 +2799,9 @@ $messages['mk'] = array(
 	'articleFeedback-table-heading-page' => 'Страница',
 	'articleFeedback-table-heading-average' => 'Просечно',
 	'articleFeedback-copy-above-highlow-tables' => 'Ова е експериментална функција. Искажете го вашето мислење на [$1 страницатата за разговор].',
-	'articleFeedback-copy-below-highlow-tables' => 'Овие табели содржат статии што добиле барем 10 оценки во последниве 24 часа. Просекот се пресметува земајќи ја средната вредност на сите оцеки поднесени во текот на последните 24 часа.',
+	'articlefeedback-dashboard-bottom' => "'''Напомена''': Ќе продолжиме да експериментираме со различни начини на истакнување на статии во овие контролни табли.  Моментално таблите ги истакнуваат следниве статии:
+* Страници со највисоки/најниски оценки: статии што добиле барем 10 оценки во текот на последните 24 часа.  Просекот се пресметува со наоѓање на средината на сите оценки дадени во последните 24 часа.
+* Неодамна нискооценети: статии со 70% или повеќе ниски оценки (2 ѕвезди и помалку) во било која категорија во последните 24 часа. Се бројат само статии со барем 10 оценки добиени во последните 24 часа.",
 	'articlefeedback-disable-preference' => 'Не го прикажувај прилогот „Оценување на статии“ во страниците',
 	'articlefeedback-emailcapture-response-body' => 'Здраво!
 
@@ -3474,7 +3482,7 @@ $messages['pt'] = array(
 	'articlefeedback-form-switch-label' => 'Avaliar esta página',
 	'articlefeedback-form-panel-title' => 'Avaliar esta página',
 	'articlefeedback-form-panel-explanation' => 'O que é isto?',
-	'articlefeedback-form-panel-explanation-link' => 'Project:ComentarArtigos',
+	'articlefeedback-form-panel-explanation-link' => 'Project:Avaliação de Artigos',
 	'articlefeedback-form-panel-clear' => 'Remover essa avaliação',
 	'articlefeedback-form-panel-expertise' => 'Conheço este assunto muito profundamente (opcional)',
 	'articlefeedback-form-panel-expertise-studies' => 'Tenho estudos relevantes do secundário/universidade',
@@ -3499,7 +3507,7 @@ $messages['pt'] = array(
 	'articlefeedback-field-trustworthy-tip' => 'Considera que esta página tem citações suficientes e que essas citações provêm de fontes fiáveis?',
 	'articlefeedback-field-complete-label' => 'Completa',
 	'articlefeedback-field-complete-tip' => 'Considera que esta página aborda os temas essenciais que deviam ser cobertos?',
-	'articlefeedback-field-objective-label' => 'Objetivo',
+	'articlefeedback-field-objective-label' => 'Objectivo',
 	'articlefeedback-field-objective-tip' => 'Acha que esta página representa, de forma equilibrada, todos os pontos de vista sobre o assunto?',
 	'articlefeedback-field-wellwritten-label' => 'Bem escrita',
 	'articlefeedback-field-wellwritten-tip' => 'Acha que esta página está bem organizada e bem escrita?',
@@ -3518,13 +3526,16 @@ $messages['pt'] = array(
 	'articlefeedback-survey-message-error' => 'Ocorreu um erro. 
 Tente novamente mais tarde, por favor.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Os melhores e piores de hoje',
-	'articleFeedback-table-caption-dailyhighs' => 'Artigos com as avaliações mais elevadas: $1',
-	'articleFeedback-table-caption-dailylows' => 'Artigos com as avaliações mais baixas: $1',
+	'articleFeedback-table-caption-dailyhighs' => 'Páginas com as avaliações mais elevadas: $1',
+	'articleFeedback-table-caption-dailylows' => 'Páginas com as avaliações mais baixas: $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Os mais alterados da semana',
 	'articleFeedback-table-caption-recentlows' => 'Os piores mais recentes',
 	'articleFeedback-table-heading-page' => 'Página',
 	'articleFeedback-table-heading-average' => 'Média',
 	'articleFeedback-copy-above-highlow-tables' => 'Esta funcionalidade é experimental. Deixe os seus comentários na [$1 página de discussão], por favor.',
+	'articlefeedback-dashboard-bottom' => "'''Nota''': Continuaremos a experimentar diferentes critérios de selecção de artigos para estes painéis. De momento, os painéis incluem os seguintes:
+* Páginas com as avaliações mais altas e mais baixas: artigos que receberam pelo menos 10 avaliações nas últimas 24 horas. As médias são calculadas pela média de todas as avaliações recebidas nas últimas 24 horas.
+* Os piores mais recentes: artigos com 70% ou mais de avaliações baixas (2 estrelas ou menos) em qualquer categoria nas últimas 24 horas. Só são incluídos os artigos que receberam pelo menos 10 avaliações nas últimas 24 horas.",
 	'articlefeedback-disable-preference' => 'Não mostrar nas páginas o widget da avaliação de artigos',
 	'articlefeedback-emailcapture-response-body' => 'Olá,
 
@@ -3881,7 +3892,9 @@ $messages['ru'] = array(
 	'articleFeedback-table-heading-page' => 'Страница',
 	'articleFeedback-table-heading-average' => 'Среднее',
 	'articleFeedback-copy-above-highlow-tables' => 'Это экспериментальная возможность. Пожалуйста, оставьте отзыв на [$1 странице обсуждения].',
-	'articleFeedback-copy-below-highlow-tables' => 'В таблицах указаны страницы, получившие за последние 24 часа не менее 10 оценок. Средние показатели рассчитываются путём усреднения всех оценок за последние 24 часа.',
+	'articlefeedback-dashboard-bottom' => "'''Примечание'''. Мы будем продолжать экспериментировать с различными способами наполнения этой панели. Сейчас на неё попадают следующие статьи:
+* Страницы с самым высокими/низкими оценками: статьи, получившие не менее 10 оценок за последние 24 часа. Средние значения рассчитываются после обработки всех оценок за последние 24 часа.
+* Последние минимумы: статьи, получившие 70% и ниже (2 звезды и ниже) в любой из категорий за последние 24 часа. Учитываются только статьи, получившие не менее 10 оценок за последние 24 часа.",
 	'articlefeedback-disable-preference' => 'Не показывать на страницах виджет обратной связи',
 	'articlefeedback-emailcapture-response-body' => 'Здравствуйте!
 
@@ -4154,6 +4167,9 @@ Prosimo, poskusite znova pozneje.',
 	'articleFeedback-table-heading-page' => 'Stran',
 	'articleFeedback-table-heading-average' => 'Povprečje',
 	'articleFeedback-copy-above-highlow-tables' => 'To je preizkusna funkcija. Prosimo, podajte povratno informacijo na [$1 pogovorni strani].',
+	'articlefeedback-dashboard-bottom' => "'''Opomba''': Nadaljevali bomo z raziskovanjem različnih načinov prikazovanja člankov na teh preglednih ploščah. Pregledna plošča trenutno vključuje naslednje članke:
+* Strani z najvišjimi/najnižjimi ocenami: članki, ki so v zadnjih 24 urah prejeli vsaj 10 ocen. Povprečja predstavljajo sredino vseh ocen, podanih v zadnjih 24 urah.
+* Nedavni padci: članki, ki so v zadnjih 24 urah prejeli 70&nbsp;% ali več nizkih (dve zvezdici ali manj) ocen v kateri koli kategoriji. Vključeni so samo članki, ki so v zadnjih 24 urah prejeli vsaj 10 ocen.",
 	'articlefeedback-disable-preference' => 'Na strani ne pokaži gradnika Povratna informacija članka',
 	'articlefeedback-emailcapture-response-body' => 'Pozdravljeni!
 

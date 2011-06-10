@@ -19,6 +19,16 @@ with error message: "$2"!',
 	'sql2wiki-err-feature_not_supported' => 'SQL2Wiki: Feature is not supported by databases of type $1!',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'sql2wiki' => 'SQL2Wiki',
+	'sql2wiki-desc' => 'Wys SQL-data direk in die bladsy-inhoud',
+	'sql2wiki-special' => 'Kliek om die SQL2Wiki-kode uit te voer',
+	'sql2wiki-cache_refresh' => 'Verfris',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
