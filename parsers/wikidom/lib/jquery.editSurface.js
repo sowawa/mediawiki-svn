@@ -32,7 +32,7 @@ $.fn.editSurface = function( options ) {
 		'mousedown': function( e ) {
 			var $target = $( e.target );
 			if ( $target.is( '.editSurface-paragraph' ) ) {
-				$target = $target.children().closestToOffset( { 'left': e.pageX, 'top': e.pageY } );
+				$target = getNearestLine( $target.children(), e.pageY );
 			}
 			if ( !$target.is( '.editSurface-line' ) ) {
 				var $line = $target.closest( '.editSurface-line' );
@@ -81,14 +81,9 @@ $.fn.editSurface = function( options ) {
 			if ( sel.active ) {
 				var $target = $( e.target );
 				if ( !$target.is( '.editSurface-line' ) ) {
-					$target = sel.start.$target.parent().children().closestToOffset(
-						{ 'left': e.pageX, 'top': e.pageY }
-					);
+					$target = getNearestLine( sel.start.$target.parent().children(), e.pageY );
 				}
 				sel.end = getCursorPosition( e.pageX, e.pageY, $target );
-				//console.log( [sel.start.char, sel.end.char] );
-				//console.log( [sel.start.word, sel.end.word] );
-				//console.log( [sel.start.line, sel.end.line] );
 				if ( sel.start.line < sel.end.line
 						|| ( sel.start.line === sel.end.line
 								&& sel.start.char < sel.end.char ) ) {
@@ -105,6 +100,26 @@ $.fn.editSurface = function( options ) {
 	} );
 	
 	// Functions
+	function getNearestLine( $lines, y ) {
+		var $line,
+			minDistance;
+		$lines.each( function() {
+			var top = $(this).offset().top;
+			var bottom = top + $(this).height();
+			// Inside test
+			if ( y > top && y < bottom ) {
+				$line = $(this);
+				return false;
+			}
+			// Distance test
+			var distance = Math.abs( y - top );
+			if ( minDistance === undefined || distance < minDistance ) {
+				minDistance = distance;
+				$line = $(this);
+			}
+		} );
+		return $line;
+	}
 	function getSelectionText() {
 		var text;
 		if ( sel.from && sel.to ) {
