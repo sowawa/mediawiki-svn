@@ -41,6 +41,11 @@ final class LiveTranslateFunctions {
 					break;
 				case LTS_MS:
 					$modules[] = 'ext.lt.ms';
+					$wgOut->addScript(
+						Html::inlineScript(
+							'var ltMsAppId = ' . FormatJson::encode( $GLOBALS['egLiveTranslateMSAppId'] ) . ';'
+						)
+					);
 					break;
 			}
 			

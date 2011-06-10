@@ -87,7 +87,7 @@
 		$.getJSON(
 			'http://api.microsofttranslator.com/V2/Ajax.svc/Translate?oncomplete=?',
 			{
-				'appId': '9B1B396B48BBA6BF483B6C0A83CE2B07EF5D8F8C', // TODO
+				'appId': window.ltMsAppId,
 				'from': sourceLang,
 				'to': targetLang,
 				'text': jQuery.trim( chunk ) // Trim, so the result does not contain preceding or tailing spaces.

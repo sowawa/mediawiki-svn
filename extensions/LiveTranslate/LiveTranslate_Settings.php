@@ -63,4 +63,8 @@ $egLTUnknownNSShowControl = true;
 # When true, this prevents storange of translations that are the same in the source and target language.
 $egLTRequireSignificance = false;
 
+# When true, debugging messages will be logged using console.log(). Do not use on production wikis.
 $egLiveTranslateDebugJS = false;
+
+# Microsoft App Id, needed when using the Microsoft Translation service.
+$egLiveTranslateMSAppId = '';
