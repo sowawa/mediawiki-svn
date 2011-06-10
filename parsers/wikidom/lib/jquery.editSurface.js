@@ -49,7 +49,7 @@ $.fn.editSurface = function( options ) {
 		.mouseup( function( e ) {
 			if ( sel.active ) {
 				if ( !sel.from || !sel.to
-						|| ( sel.from.line === sel.to.line && sel.from.index === sel.to.index ) ) {
+						|| ( sel.from.line === sel.to.line && sel.from.char === sel.to.char ) ) {
 					sel.from = null;
 					sel.to = null;
 					sel.start = null;
@@ -71,9 +71,12 @@ $.fn.editSurface = function( options ) {
 					);
 				}
 				sel.end = getCursorPosition( e.pageX, e.pageY, $target );
+				//console.log( [sel.start.char, sel.end.char] );
+				//console.log( [sel.start.word, sel.end.word] );
+				//console.log( [sel.start.line, sel.end.line] );
 				if ( sel.start.line < sel.end.line
 						|| ( sel.start.line === sel.end.line
-								&& sel.start.index < sel.end.index ) ) {
+								&& sel.start.char < sel.end.char ) ) {
 					sel.from = sel.start;
 					sel.to = sel.end;
 				} else {
@@ -84,7 +87,6 @@ $.fn.editSurface = function( options ) {
 				drawSelection( sel.start.$target.parent() );
 			}
 		} );
-	
 	
 	// Shortcuts
 	var $document = $this.find( '.editSurface-document' );
@@ -100,47 +102,56 @@ $.fn.editSurface = function( options ) {
 		var text;
 		if ( sel.from && sel.to ) {
 			if ( sel.from.line === sel.to.line ) {
-				text = sel.from.$target.data( 'text' ).substr(
-					sel.from.index, sel.to.index - sel.from.index
+				text = sel.from.$target.data( 'flow' ).text.substr(
+					sel.from.char, sel.to.char - sel.from.char
 				);
 			} else {
-				text = sel.from.$target.data( 'text' ).substr( sel.from.index );
+				text = sel.from.$target.data( 'flow' ).text.substr( sel.from.char );
 				var $sibling = sel.from.$target.next();
 				for ( var i = sel.from.line + 1; i < sel.to.line; i++ ) {
-					text += $sibling.data( 'text' )
+					text += $sibling.data( 'flow' ).text
 					$sibling = $sibling.next();
 				}
-				text += sel.to.$target.data( 'text' ).substr( 0, sel.to.index );
+				text += sel.to.$target.data( 'flow' ).text.substr( 0, sel.to.char );
 			}
 		}
 		return text;
 	}
 	function getCursorPosition( x, y, $target ) {
-		var metrics = $target.data( 'metrics' );
-		var text = $target.data( 'text' );
-		var line = $target.data( 'line' );
-		if ( !$.isArray( metrics ) || metrics.length === 0 ) {
-			throw "Missing metrics data error"
-		}
-		var to = metrics.length - 1;
-		var a;
-		var b = { 'l': 0, 'c': 0, 'r': 0 };
-		var c = x - $target.offset().left;
-		for ( var i = 0; i <= to; i++ ) {
-			a = b;
-			b = { 'l': a.r, 'c': a.r + ( metrics[i] / 2 ), 'r': a.r + metrics[i] };
-			if ( ( i === 0 && c <= a.l ) || ( c >= a.c && c <= b.c ) || i === to ) {
-				var offset = $target.offset();
-				var height = $target.height();
-				return {
-						'$target': $target,
-						'index': i,
-						'line': line,
-						'x': offset.left + b.l,
-						'top': offset.top,
-						'bottom': offset.top + height,
-						'height': height
-				};
+		var line = $target.data( 'flow' ),
+			offset = $target.offset(),
+			height = $target.height(),
+			l,
+			r = 0,
+			cur = x - offset.left;
+		for ( var w = 0, eol = line.metrics.length; w <= eol; w++ ) {
+			var wi = Math.min( w, eol - 1 );
+			l = r;
+			r += line.metrics[wi];
+			if ( ( w === 0 && cur <= l ) || ( cur >= l && cur <= r ) || ( w === eol ) ) {
+				var word = line.words[wi],
+					a,
+					b = { 'l': l, 'c': l, 'r': l };
+				for ( var c = 0, eow = word.metrics.length; c <= eow; c++ ) {
+					a = b;
+					b = {
+						'l': a.r,
+						'c': a.r + ( word.metrics[c] / 2 ),
+						'r': a.r + word.metrics[c]
+					};
+					if ( ( c === 0 && cur <= a.l ) || ( cur >= a.c && cur <= b.c ) || c === eow ) {
+						return {
+							'$target': $target,
+							'char': word.offset + Math.min( c, word.text.length - 1 ),
+							'word': word.index,
+							'line': line.index,
+							'x': offset.left + ( c < eow ? b.l : a.l ),
+							'top': offset.top,
+							'bottom': offset.top + height,
+							'height': height
+						};
+					}
+				}
 			}
 		}
 	}
@@ -153,7 +164,7 @@ $.fn.editSurface = function( options ) {
 		if ( sel.from && sel.to ) {
 			if ( sel.from.line === sel.to.line ) {
 				// 1 line
-				if ( sel.from.index !== sel.to.index ) {
+				if ( sel.from.char !== sel.to.char ) {
 					ranges.$first.show().css( {
 						'left': sel.from.x,
 						'top': sel.from.top,
