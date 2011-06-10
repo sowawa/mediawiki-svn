@@ -113,7 +113,7 @@ $.fn.editSurface = function( options ) {
 			}
 			// Distance test
 			var distance = Math.abs( y - top );
-			if ( minDistance === undefined || distance < minDistance ) {
+			if ( typeof minDistance === 'undefined' || distance < minDistance ) {
 				minDistance = distance;
 				$line = $(this);
 			}

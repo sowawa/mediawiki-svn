@@ -35,9 +35,8 @@
  *     ]
  * }
  */
-
 function copy( from, to ) {
-	if ( to === undefined ) {
+	if ( typeof to === 'undefined' ) {
 		to = {};
 	}
 	if ( from == null || typeof from != 'object' ) {
@@ -65,7 +64,7 @@ $.flow = {
 	'charCache': {},
 	'wordCache': {},
 	'measureWord': function( text, ruler ) {
-		if ( $.flow.wordCache[text] === undefined ) {
+		if ( typeof $.flow.wordCache[text] === 'undefined' ) {
 			// Cache miss
 			var word = { 'text': text, 'html': '', 'metrics': [] };
 			for ( var i = 0; i < text.length; i++ ) {
@@ -80,7 +79,7 @@ $.flow = {
 						.replace( '\n', '<span class="editSurface-whitespace">&#9166;</span>' )
 						.replace( '\t', '<span class="editSurface-whitespace">&#8677;</span>' );
 				word.html += charHtml;
-				if ( $.flow.charCache[char] === undefined ) {
+				if ( typeof $.flow.charCache[char] === 'undefined' ) {
 					// Cache miss
 					ruler.innerHTML = charHtml;
 					word.metrics.push( $.flow.charCache[char] = ruler.clientWidth );
@@ -161,7 +160,7 @@ $.flow = {
 };
 
 $.fn.flow = function( text ) {
-	console.time( 'flow' );
+	//console.time( 'flow' );
 	
 	var $this = $(this),
 		$ruler = $( '<div></div>' ).appendTo( $(this) ),
@@ -183,6 +182,6 @@ $.fn.flow = function( text ) {
 		$this.append( $line );
 	}
 	
-	console.timeEnd( 'flow' );
+	//console.timeEnd( 'flow' );
 	return $this;
 };
