@@ -164,9 +164,10 @@ $.fn.flow = function( text ) {
 	console.time( 'flow' );
 	
 	var $this = $(this),
+		$ruler = $( '<div></div>' ).appendTo( $(this) ),
 		lines = $.flow.getLines(
 			$.flow.getWords( text, $( '<div class="editSurface-line"></div>' ).appendTo( $this )[0] ),
-			$this.innerWidth()
+			$ruler.innerWidth()
 		);
 	
 	// Flow

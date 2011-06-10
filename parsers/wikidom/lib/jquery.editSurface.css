@@ -16,7 +16,7 @@ body {
 
 #selection p {
 	margin: 0;
-	padding: 0em;
+	padding: 2em;
 }
 
 .editSurface-container {
@@ -28,7 +28,7 @@ body {
 }
 
 .editSurface-paragraph {
-	padding: 0em;
+	padding: 2em;
 }
 
 .editSurface-line {
