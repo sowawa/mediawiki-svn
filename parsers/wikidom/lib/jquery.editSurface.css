@@ -41,6 +41,10 @@ body {
 	display: block;
 	width: 0px;
 }
+.editSurface-line .invisible {
+	color: green;
+	padding: 0 0.25em;
+}
 
 .editSurface-range {
 	display: none;

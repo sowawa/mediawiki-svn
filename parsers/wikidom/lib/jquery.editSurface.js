@@ -18,14 +18,29 @@ $.fn.editSurface = function( options ) {
 				+ '<div class="editSurface-range"></div>'
 				+ '<div class="editSurface-range"></div>');
 	
-	$(document)
-		.mousedown( function( e ) {
+	// Shortcuts
+	var $document = $this.find( '.editSurface-document' );
+	var ranges = {
+		'$all': $( '.editSurface-range' ),
+		'$first': $( '.editSurface-range:eq(0)' ),
+		'$fill': $( '.editSurface-range:eq(1)' ),
+		'$last': $( '.editSurface-range:eq(2)' )
+	};
+	
+	// Events
+	$(document).bind( {
+		'mousedown': function( e ) {
 			var $target = $( e.target );
 			if ( $target.is( '.editSurface-paragraph' ) ) {
 				$target = $target.children().closestToOffset( { 'left': e.pageX, 'top': e.pageY } );
 			}
 			if ( !$target.is( '.editSurface-line' ) ) {
-				return;
+				var $line = $target.closest( '.editSurface-line' );
+				if ( $line.length ) {
+					$target = $line;
+				} else {
+					return;
+				}
 			}
 			sel = {
 				'active': true,
@@ -45,8 +60,8 @@ $.fn.editSurface = function( options ) {
 			}
 			e.preventDefault();
 			return false;
-		} )
-		.mouseup( function( e ) {
+		},
+		'mouseup': function( e ) {
 			if ( sel.active ) {
 				if ( !sel.from || !sel.to
 						|| ( sel.from.line === sel.to.line && sel.from.char === sel.to.char ) ) {
@@ -61,8 +76,8 @@ $.fn.editSurface = function( options ) {
 				}
 				sel.active = false;
 			}
-		} )
-		.mousemove( function( e ) {
+		},
+		'mousemove': function( e ) {
 			if ( sel.active ) {
 				var $target = $( e.target );
 				if ( !$target.is( '.editSurface-line' ) ) {
@@ -86,16 +101,8 @@ $.fn.editSurface = function( options ) {
 				cursor.hide();
 				drawSelection( sel.start.$target.parent() );
 			}
-		} );
-	
-	// Shortcuts
-	var $document = $this.find( '.editSurface-document' );
-	var ranges = {
-		'$all': $( '.editSurface-range' ),
-		'$first': $( '.editSurface-range:eq(0)' ),
-		'$fill': $( '.editSurface-range:eq(1)' ),
-		'$last': $( '.editSurface-range:eq(2)' )
-	};
+		}
+	} );
 	
 	// Functions
 	function getSelectionText() {
@@ -124,12 +131,11 @@ $.fn.editSurface = function( options ) {
 			l,
 			r = 0,
 			cur = x - offset.left;
-		for ( var w = 0, eol = line.metrics.length; w <= eol; w++ ) {
-			var wi = Math.min( w, eol - 1 );
+		for ( var w = 0, eol = line.metrics.length - 1; w <= eol; w++ ) {
 			l = r;
-			r += line.metrics[wi];
+			r += line.metrics[w];
 			if ( ( w === 0 && cur <= l ) || ( cur >= l && cur <= r ) || ( w === eol ) ) {
-				var word = line.words[wi],
+				var word = line.words[w],
 					a,
 					b = { 'l': l, 'c': l, 'r': l };
 				for ( var c = 0, eow = word.metrics.length; c <= eow; c++ ) {
@@ -145,7 +151,7 @@ $.fn.editSurface = function( options ) {
 							'char': word.offset + Math.min( c, word.text.length - 1 ),
 							'word': word.index,
 							'line': line.index,
-							'x': offset.left + ( c < eow ? b.l : a.l ),
+							'x': offset.left + b.l,
 							'top': offset.top,
 							'bottom': offset.top + height,
 							'height': height
@@ -228,7 +234,7 @@ $.fn.editSurface = function( options ) {
 		for ( var i = 0; i < paragraph.lines.length; i++ ) {
 			lines.push( paragraph.lines[i].text );
 		}
-		$paragraph.flow( lines.join( ' ' ) );
+		$paragraph.flow( lines.join( '\n' ) );
 	}
 	
 	function update() {
