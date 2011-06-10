@@ -10,6 +10,8 @@ body {
 	border: solid 1px Highlight;
 	line-height: 1.5em;
 	cursor: text;
+	font-family: "Courier New", monospace;
+	white-space: pre-wrap;
 }
 
 #selection p {
@@ -35,14 +37,15 @@ body {
 	line-height: 1.5em;
 	cursor: text;
 	white-space: nowrap;
-	background-color: rgba(204, 204, 204, 0.25);
 }
+
 .editSurface-line.empty {
 	display: block;
 	width: 0px;
 }
-.editSurface-line .invisible {
-	color: green;
+
+.editSurface-line .editSurface-whitespace {
+	color: #888888;
 	padding: 0 0.25em;
 }
 
