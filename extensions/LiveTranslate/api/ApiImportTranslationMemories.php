@@ -47,7 +47,7 @@ class ApiImportTranslationMemories extends ApiBase {
 			);			
 			
 			foreach ( $res as $tm ) {
-				if ( $tm->memory_local != "0" ) {
+				if ( $tm->memory_local != '0' ) {
 					// Obtain the contents of the article.
 					$title = Title::newFromText( $location, NS_MAIN );
 					

@@ -22,10 +22,24 @@ class LTLTFParser extends LTTMParser {
 		
 		$translationSets = array();
 		
+		$text = preg_replace( '/\\<!--([^(--\\>)]*)--\\>/', '', $text );
 		$lines = explode( "\n", $text );
-		$languages = array_map( 'trim', explode( ',', array_shift( $lines ) ) );
+		
+		while ( true ) {
+			$languages = array_shift( $lines );
+			
+			if ( trim( $languages ) != '' ) {
+				break;
+			}
+		}
+		
+		$languages = array_map( 'trim', explode( ',', $languages ) );
 		
 		foreach ( $lines as $line ) {
+			if ( trim( $line ) == '' ) {
+				continue;
+			}
+			
 			$values = array_map( 'trim', explode( ',', $line ) );
 			$tu = new LTTMUnit();
 			
