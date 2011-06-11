@@ -48,6 +48,7 @@ $( document ).ready( function() {
 					data: {
 						action: 'opensearch',
 						search: query,
+						limit: 10,
 						namespace: 0,
 						suggest: ''
 					},
