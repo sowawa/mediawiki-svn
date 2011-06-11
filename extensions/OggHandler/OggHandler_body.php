@@ -448,7 +448,7 @@ class OggHandler extends MediaHandler {
 	}
 
 	function setHeaders( $out ) {
-		global $wgOggScriptVersion, $wgCortadoJarFile, $wgServer;
+		global $wgOggScriptVersion, $wgCortadoJarFile, $wgServer, $wgContLang;
 
 		if ( $out->hasHeadItem( 'OggHandlerScript' ) && $out->hasHeadItem( 'OggHandlerInlineScript' ) &&
 			$out->hasHeadItem( 'OggHandlerInlineCSS' ) ) {
@@ -471,6 +471,7 @@ class OggHandler extends MediaHandler {
 		}
 		$encCortadoUrl = Xml::encodeJsVar( $cortadoUrl );
 		$encExtPathUrl = Xml::encodeJsVar( $scriptPath );
+		$alignStart = $wgContLang->alignStart();
 
 		$out->addHeadItem( 'OggHandlerScript' , Html::linkedScript( "{$scriptPath}/OggPlayer.js?$wgOggScriptVersion" ) );
 
@@ -487,7 +488,7 @@ EOT
 .ogg-player-options {
 	border: solid 1px #ccc;
 	padding: 2pt;
-	text-align: left;
+	text-align: $alignStart;
 	font-size: 10pt;
 }
 
