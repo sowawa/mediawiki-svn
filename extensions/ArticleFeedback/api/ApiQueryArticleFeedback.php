@@ -111,7 +111,10 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 		}
 
 		foreach ( $ratings as $rat ) {
-			$result->setIndexedTagName( $rat['ratings'], 'r' );
+			if ( isset( $rat['ratings'] ) ) {
+				$result->setIndexedTagName( $rat['ratings'], 'r' );
+			}
+			
 			$result->addValue( array( 'query', $this->getModuleName() ), null, $rat );
 		}
 		
@@ -263,15 +266,15 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 
 	public function getParamDescription() {
 		return array(
-			'pageid' => 'Page ID to get feedbacks for',
-			'userrating' => "Whether to get the current user's ratings for the specific rev/article",
+			'pageid' => 'Page ID to get feedback ratings for',
+			'userrating' => "Whether to get the current user's ratings for the specified page",
 			'anontoken' => 'Token for anonymous users',
 		);
 	}
 
 	public function getDescription() {
 		return array(
-			'List all article feedbacks'
+			'List article feedback ratings for a specified page'
 		);
 	}
 
@@ -285,7 +288,6 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 
 	protected function getExamples() {
 		return array(
-			'api.php?action=query&list=articlefeedback',
 			'api.php?action=query&list=articlefeedback&afpageid=1',
 			'api.php?action=query&list=articlefeedback&afpageid=1&afuserrating=1',
 		);
