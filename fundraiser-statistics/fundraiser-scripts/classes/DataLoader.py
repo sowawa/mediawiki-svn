@@ -1,7 +1,7 @@
 """
 
 This module provides access to the datasource and enables querying.  The class
-atructure defined has DataLoader as the base which outlines the basic members
+structure defined has DataLoader as the base which outlines the basic members
 and functionality.  This interface is extended for interaction with specific 
 sources of data.
 
@@ -228,6 +228,7 @@ class IntervalReportingLoader(DataLoader):
         self.init_db()
         
         query_name = self.get_sql_filename_for_query()
+        print >> sys.stdout, 'Using query: ' + query_name
         
         metrics = Hlp.AutoVivification()
         times = Hlp.AutoVivification()
@@ -255,7 +256,7 @@ class IntervalReportingLoader(DataLoader):
             
         metric_index = QD.get_metric_index(query_name, metric_name)
         time_index = QD.get_time_index(query_name)
-        
+             
         """ Compose the data for each separate donor pipeline artifact """
         try:
             # err_msg = sql_stmnt
@@ -324,6 +325,11 @@ class IntervalReportingLoader(DataLoader):
         for key in metrics.keys():
             metrics_new = list()
             for i in range(len(metrics[key])):
+                
+                """ Change null values to 0 """
+                if metrics[key][i] == None or metrics[key][i] == 'NULL':
+                     metrics[key][i] = 0
+                
                 metrics_new.append(float(metrics[key][i]))
             metrics[key] = metrics_new
         
@@ -343,6 +349,7 @@ class IntervalReportingLoader(DataLoader):
     def combine_rows(self):
         
         query_name = self.get_sql_filename_for_query()
+        print >> sys.stdout, 'Using query: ' + query_name
         
         col_types = self._data_handler_.get_col_types(self._query_type_)
         key_index = QD.get_key_index(query_name)
@@ -361,7 +368,7 @@ class IntervalReportingLoader(DataLoader):
             key = row[key_index]
             
             try:
-                data_dict[key] == None
+                data_dict[key] == None  # check for a Index Error
             except KeyError as e:
                 data_dict[key] = dict()
                 
@@ -370,6 +377,10 @@ class IntervalReportingLoader(DataLoader):
                 col_type = col_types[i]
                 field = row[i]
                 
+                """ Change null values to 0 """
+                if field == None or field == 'NULL':
+                    field = 0.0
+
                 if col_type == self._data_handler_._COLTYPE_RATE_:
                     
                     try:
@@ -737,10 +748,11 @@ class CampaignReportingLoader(DataLoader):
         end_time = params['end_time']
         
         query_name = self.get_sql_filename_for_query()
+        print >> sys.stdout, 'Using query: ' + query_name
         
         """ Load the SQL File & Format """
         filename = self._sql_path_+ query_name + '.sql'
-        sql_stmnt = Hlp.read_sql(filename)        
+        sql_stmnt = Hlp.read_sql(filename)
         sql_stmnt = QD.format_query(query_name, sql_stmnt, [start_time, end_time])
         
         """ Get Indexes into Query """
@@ -789,6 +801,7 @@ class CampaignReportingLoader(DataLoader):
         end_time = params['end_time']
         
         query_name = self.get_sql_filename_for_query()
+        print >> sys.stdout, 'Using query: ' + query_name
         
         """ Load the SQL File & Format """
         filename = self._sql_path_+ query_name + '.sql'
@@ -1250,7 +1263,8 @@ class SquidLogTableLoader(TableLoader):
     def get_all_rows_unique_start_time(self):
         
         select_stmnt = 'select type, log_copy_time, start_time, end_time, log_completion_pct, total_rows from ' \
-        '(select max(log_copy_time) as max_copy_time from squid_log_record group by start_time) as temp join squid_log_record on max_copy_time = squid_log_record.log_copy_time'
+        '(select type as temp_type, max(log_copy_time) as max_copy_time from squid_log_record group by type, start_time) as temp join ' \
+        'squid_log_record on (max_copy_time = squid_log_record.log_copy_time and temp_type = type)'
         
         self.init_db()
         
@@ -1260,7 +1274,7 @@ class SquidLogTableLoader(TableLoader):
         except:
             self._db_.rollback()
             self.close_db()
-            print >> sys.stderr, 'Could not execute: ' + update_stmnt
+            print >> sys.stderr, 'Could not execute: ' + select_stmnt
             return -1
         else:
             self.close_db()
