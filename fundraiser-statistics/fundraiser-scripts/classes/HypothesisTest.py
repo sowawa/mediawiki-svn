@@ -301,6 +301,7 @@ class TTest(HypothesisTest):
         prob_diffs = [math.fabs(i-p) for i in probs]
         min_index = min((n, i) for i, n in enumerate(prob_diffs))[1]
         
+        lower_p = 1
         if min_index > 0:
             lower_p = probs[min_index - 1]
         
