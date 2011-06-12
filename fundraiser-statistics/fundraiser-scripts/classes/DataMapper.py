@@ -47,33 +47,76 @@ import Fundraiser_Tools.classes.FundraiserDataHandler as FDH
 class DataMapper(object):
     
     """
-        Copies mining logs from remote site
+        Copies mining logs from remote site for a given hour
     """
-    def copy_logs(self, type):
+    def copy_logs(self, type, **kwargs):
         
-        # '/archive/udplogs'
+        if type == FDH._TESTTYPE_BANNER_:
+            # prefix = 'bannerImpressions-2011-06-01-11PM*'
+            prefix = 'bannerImpressions'
+        elif type == FDH._TESTTYPE_LP_:
+            # prefix = 'landingpages-2011-06-01-11PM*'
+            prefix = 'landingpages'
+        
+        filename = prefix
         
         now = datetime.datetime.now()
+        year = str(now.year)
+        month = str(now.month)
+        day = str(now.day)
+        hour = now.hour
         
-    
-        if type == FDH._TESTTYPE_BANNER_:
-            prefix = 'bannerImpressions-'
-        elif type == FDH._TESTTYPE_LP_:
-            prefix = 'landingpages-'
+        """ If specified change the timestamp  Assume each arg is a string """
+        for key in kwargs:
+            
+            if key == 'year':
+                year = kwargs[key]
+            elif key == 'month':                
+                month = kwargs[key]
+            elif key == 'day':
+                day = kwargs[key]
+            elif key == 'hour':
+                hour = int(kwargs[key])
         
-        if now.hour > 12:
-            filename = prefix + str(now.year) + '-' + str(now.month) + '-' + str(now.day) + '-' + str(now.hour - 12) + 'PM*'
+        if int(month) < 10:
+            month = '0' + str(int(month))
+        if int(day) < 10:
+            day = '0' + str(int(day))
+            
+        """ adjust the hour based on time of day """ 
+        if hour > 12:
+            hour = str(hour-12)
+            day_part = 'PM*'
         else:
-            filename = prefix + str(now.year) + '-' + str(now.month) + '-' + str(now.day) + '-' + str(now.hour) + 'AM*'    
+            hour = str(hour)
+            day_part = 'AM*'
         
-        filename = 'bannerImpressions-2011-05-27-11PM--25*'
-        
+        if int(hour) < 10:
+            hour = '0' + str(int(hour))
+            
+        filename = filename + '-' + year + '-' + month + '-' + day + '-' + hour + day_part
+        #filename = 'bannerImpressions-2011-05-27-11PM--25*'
+        # filename = prefix + '-2011-06-01-11PM*' 
         cmd = 'sftp ' + projSet.__user__ + '@' + projSet.__squid_log_server__ + ':' + projSet.__squid_log_home__ + filename  + ' ' + projSet.__squid_log_local_home__
         
         os.system(cmd)
-
+        
         return filename
 
+    """
+        Return a listing of all of the squid logs
+    """
+    def get_list_of_logs(self):
+        
+        files = os.listdir(projSet.__squid_log_local_home__)
+        files.sort()
+        
+        new_files = list()
+        for f in files:
+            new_files.append(f.split('.')[0])
+            
+        return new_files[1:]
+        
 """
 
     CLASS :: FundraiserDataMapper
@@ -91,7 +134,6 @@ class FundraiserDataMapper(DataMapper):
     _db = None
     _cur = None
     
-    _squid_log_directory_ = projSet.__project_home__ + 'logs/' 
     _impression_table_name_ = 'banner_impressions'
     _landing_page_table_name_ = 'landing_page_requests'
     
@@ -135,32 +177,34 @@ class FundraiserDataMapper(DataMapper):
         
         
     """
+        Given the name of a log file extract the squid requests corresponding to banner impressions.
+        
+        Squid logs can be found under hume:/a/static/uncompressed/udplogs.  A sample request is documented in the source below.
         
     """
     def mine_squid_impression_requests(self, logFileName):
-    
+        
         self._init_db()
 
         sltl = DL.SquidLogTableLoader()
         itl = DL.ImpressionTableLoader()
         
         """ Retrieve the log timestamp from the filename """
-        time_stamps = Hlp.get_timestamps(logFileName)
+        time_stamps = TP.get_timestamps_with_interval(logFileName, 15)
         
         start = time_stamps[0]
         end = time_stamps[1]
         start_timestamp_in = "convert(\'" + start + "\', datetime)"
         curr_time = TP.timestamp_from_obj(datetime.datetime.now(),1,3)
-                
-        """ Initialization - open the file
-            logFileName = sys.argv[1]; """
-        if (re.search('\.gz', logFileName)):
-            logFile = gzip.open(self._squid_log_directory_ + logFileName, 'r')
-            total_lines_in_file = float(commands.getstatusoutput('zgrep -c "" ' + self._squid_log_directory_ + logFileName)[1])
-        else:
-            logFile = open(self._squid_log_directory_ + logFileName, 'r')
-            total_lines_in_file = float(commands.getstatusoutput('grep -c "" ' + self._squid_log_directory_ + logFileName)[1])
-    
+        
+        
+        """ retrieve the start time of the log """
+        start = self.get_first_timestamp_from_log(logFileName)
+        
+        """ Initialization - open the file """
+        logFile, total_lines_in_file = self.open_logfile(logFileName)
+        
+        
         queryIndex = 4;
     
         counts = Hlp.AutoVivification()
@@ -169,22 +213,39 @@ class FundraiserDataMapper(DataMapper):
         min_log = -1
         hr_change = 0
         clamp = 0
-    
+        
         """ Clear the old records """
         self._clear_squid_records(start, self._BANNER_REQUEST_)
         
         """ Add a row to the SquidLogTable """
         sltl.insert_row(type='banner_impression',log_copy_time=curr_time,start_time=start,end_time=end,log_completion_pct='0.0',total_rows='0')
         
-        # PROCESS LOG FILE
-        # ================
-    
+        """
+            PROCESS LOG FILE
+            ================
+            
+            Sample Request:
+            
+            line =
+            "sq63.wikimedia.org 757675855 2011-06-01T23:00:07.612 0 187.57.227.121 TCP_MEM_HIT/200 1790 GET \
+            http://meta.wikimedia.org/w/index.php?title=Special:BannerLoader&banner=B20110601_JWJN001_BR&userlang=pt&db=ptwiki&sitename=Wikip%C3%A9dia&country=BR NONE/- text/javascript http://pt.wikipedia.org/wiki/Modo_e_tempo_verbal \
+            - Mozilla/5.0%20(Windows%20NT%206.1)%20AppleWebKit/534.24%20(KHTML,%20like%20Gecko)%20Chrome/11.0.696.71%20Safari/534.24"
+
+        """
+        
         line_count = 0
         line = logFile.readline()
         while (line != ''):
     
             lineArgs = line.split()
+            
+            """ 
+                Parse the Timestamp:
                 
+                Sample timestamp:
+                    timestamp = "2011-06-01T23:00:07.612"
+            """
+            
             try:
                 time_stamp = lineArgs[2]
                 time_bits = time_stamp.split('T')
@@ -197,7 +258,7 @@ class FundraiserDataMapper(DataMapper):
                 continue
                 # pass
             
-            # Weird and confusing logic used to deal with logs that aren't sequential
+            """ Logic used to deal with logs that aren't sequential """
     
             if minute == 0 and not(hr_change) and not(clamp):
                 min_log = -1
@@ -206,7 +267,12 @@ class FundraiserDataMapper(DataMapper):
                 hr_change = 0
                 clamp = 1
     
-            # =================
+            """ 
+                Parse the URL:
+                
+                Sample url:
+                    url = "http://meta.wikimedia.org/w/index.php?title=Special:BannerLoader&banner=B20110601_JWJN001_BR&userlang=pt&db=ptwiki&sitename=Wikip%C3%A9dia&country=BR"
+            """
     
             try:
                 url = lineArgs[8]
@@ -217,7 +283,7 @@ class FundraiserDataMapper(DataMapper):
             query = parsedUrl[queryIndex]
             queryBits = cgi.parse_qs(query)
     
-            # Extract - project, banner, language, & country data
+            """ Extract - project, banner, language, & country data from the url """
             project = ''
             if ('db' in queryBits.keys()):
                 project = queryBits['db'][0]
@@ -244,20 +310,17 @@ class FundraiserDataMapper(DataMapper):
             else:
                 country = 'NONE'
     
-    
+            """ Group banner impression counts based on (banner, country, project, language) """
             try:
                 counts[banner][country][project][lang] = counts[banner][country][project][lang] + 1
             except TypeError:
                 counts[banner][country][project][lang] = 1
     
-            """
-            try:
-                counts[att_1][att_2][att_3] = counts[att_1][att_2][att_3] + 1
-            except TypeError:
-                counts[att_1][att_2][att_3] = 1
-            """
 
-            # Break out impression data by minute
+            """ 
+                Break out impression data by minute.  This conditional detects when a request with a previously unseen minute in the timestamp appears.
+                
+            """
             if min_log < minute and not(hr_change):
     
                 if minute == 0:
@@ -267,7 +330,7 @@ class FundraiserDataMapper(DataMapper):
                 time_stamp_in = "convert(\'" + date_fields[0] + date_fields[1] + date_fields[2] + time_fields[0] + time_fields[1]  + "00\', datetime)"
 
     
-                # print time_stamp_in
+                """ Run through the counts dictionary and insert a row into the banner impressions table for each entry """
     
                 bannerKeys = counts.keys()
                 for banner_ind in range(len(bannerKeys)):
@@ -304,15 +367,21 @@ class FundraiserDataMapper(DataMapper):
             line = logFile.readline()
             line_count = line_count + 1
             
-            if line_count % 10000 == 0:
+            """ Log Miner Logging - Update the squid_log_record table """
+            if line_count % 10000 == 0 or line_count == total_lines_in_file:
                 completion = float(line_count / total_lines_in_file) * 100.0
-                
                 sltl.update_table_row(type='banner_impression',log_copy_time=curr_time,start_time=start,end_time=end,log_completion_pct=completion.__str__(),total_rows=line_count.__str__())
 
+        logFile.close()
         self._close_db()
 
+
+
     """
+        Given the name of a log file Extract the squid requests corresponding to landing page views 
         
+        Squid logs can be found under hume:/a/static/uncompressed/udplogs.  A sample request is documented in the source below.
+
     """
     def mine_squid_landing_page_requests(self,  logFileName):
 
@@ -323,7 +392,8 @@ class FundraiserDataMapper(DataMapper):
         
         
         """ Retrieve the log timestamp from the filename """
-        time_stamps = Hlp.get_timestamps(logFileName)
+        #time_stamps = Hlp.get_timestamps(logFileName)
+        time_stamps = TP.get_timestamps_with_interval(logFileName, 15)
         
         start = time_stamps[0]
         end = time_stamps[1]
@@ -332,14 +402,11 @@ class FundraiserDataMapper(DataMapper):
         
         count_parse = 0
         
-        # open the file
-        # logFileName = sys.argv[1]
-        if (re.search('\.gz', logFileName)):
-            logFile = gzip.open(self._squid_log_directory_ + logFileName, 'r')
-            total_lines_in_file = float(commands.getstatusoutput('zgrep -c "" ' + self._squid_log_directory_ + logFileName)[1])        
-        else:
-            logFile = open(self._squid_log_directory_ + logFileName, 'r')
-            total_lines_in_file = float(commands.getstatusoutput('grep -c "" ' + self._squid_log_directory_ + logFileName)[1])
+        """ retrieve the start time of the log """
+        start = self.get_first_timestamp_from_log(logFileName)
+        
+        """ Initialization - open the file """
+        logFile, total_lines_in_file = self.open_logfile(logFileName)
     
         # Initialization
         hostIndex = 1;
@@ -360,21 +427,34 @@ class FundraiserDataMapper(DataMapper):
         count_total = 0
         line_count = 0
         
-        # PROCESS LOG FILE
-        # ================
+        """
+            PROCESS REQUESTS FROM FILE
+            ==========================
+            
+            Sample request:
+            
+            line = 
+                "sq63.wikimedia.org 757671483 2011-06-01T23:00:01.343 93 98.230.113.246 TCP_MISS/200 10201 GET \
+                http://wikimediafoundation.org/w/index.php?title=WMFJA085/en/US&utm_source=donate&utm_medium=sidebar&utm_campaign=20101204SB002&country_code=US&referrer=http%3A%2F%2Fen.wikipedia.org%2Fwiki%2FFile%3AMurphy_High_School.jpg CARP/208.80.152.83 text/html http://en.wikipedia.org/wiki/File:Murphy_High_School.jpg \
+                - Mozilla/4.0%20(compatible;%20MSIE%208.0;%20Windows%20NT%206.1;%20WOW64;%20Trident/4.0;%20FunWebProducts;%20GTB6.6;%20SLCC2;%20.NET%20CLR%202.0.50727;%20.NET%20CLR%203.5.30729;%20.NET%20CLR%203.0.30729;%20Media%20Center%20PC%206.0;%20HPDTDF;%20.NET4.0C)"
+        """
         line = logFile.readline()
         while (line != ''):
             lineArgs = line.split()
     
-            # Get the IP Address of the donor
+            """ Get the IP Address of the donor """
             ip_add = lineArgs[4];
     
     
-            # Process Timestamp
-            # ================
-            # 2010-10-21T23:55:01.431
             #  SELECT CAST('20070529 00:00:00' AS datetime)
-    
+
+            """ 
+                Parse the Timestamp:
+                
+                Sample timestamp:
+                    timestamp = "2011-06-01T23:00:07.612"
+            """
+
     
             date_and_time = lineArgs[2];
     
@@ -394,12 +474,16 @@ class FundraiserDataMapper(DataMapper):
                 total_lines_in_file = total_lines_in_file - 1
                 continue
     
-            timestamp_string = year + '-' + month + '-' + day + " " + hour + ":" + min + ":" + sec
+            timestamp_string = year + '-' + month + '-' + day + " " + hour + ":" + min + ":" + sec                
     
-    
-            # Process referrer URL
-            # ================
-    
+            """ 
+                Process referrer URL
+                =================== 
+                
+                Sample referrer:
+                    referrer_url = http://en.wikipedia.org/wiki/File:Murphy_High_School.jpg
+            """
+                
             try:
                 referrer_url = lineArgs[11]
             except IndexError:
@@ -413,20 +497,29 @@ class FundraiserDataMapper(DataMapper):
             else:
                 hostname = parsed_referrer_url[hostIndex].split('.')
                 
+                """ If the hostname of the form '<lang>.<project>.org' """
                 if ( len( hostname[0] ) <= 2 ) :
                     # referrer_path = parsed_referrer_url[pathIndex].split('/')
                     project = hostname[0]                  # wikimediafoundation.org
                     source_lang = hostname[0]
                 else:
                     try:
-                        project = hostname[0] if ( hostname[1] == 'wikimedia' ) else hostname[1]  # species.wikimedia vs en.wikinews
-                        source_lang = hostname[0] if ( len(hostname[1]) < 5 ) else 'en'  # pl.wikipedia vs commons.wikimedia
+                        """ species.wikimedia vs en.wikinews """
+                        project = hostname[0] if ( hostname[1] == 'wikimedia' ) else hostname[1]    
+                        """ pl.wikipedia vs commons.wikimedia """
+                        source_lang = hostname[0] if ( len(hostname[1]) < 5 ) else 'en'             
                     except:
-                        project = ''
-                        source_lang = 'en'
+                        project = 'wikipedia'   """ default project to 'wikipedia' """
+                        source_lang = 'en'      """ default lang to english """
+            
+            """
+                Process User agent string
+                ========================
                 
-            # Process User agent string
-            # =====================
+                sample user agent string:
+                    user_agent_string = Mozilla/4.0%20(compatible;%20MSIE%208.0;%20Windows%20NT%206.1;%20WOW64;%20Trident/4.0;%20FunWebProducts;%20GTB6.6;%20SLCC2;%20.NET%20CLR%202.0.50727;%20.NET%20CLR%203.5.30729;%20.NET%20CLR%203.0.30729;%20Media%20Center%20PC%206.0;%20HPDTDF;%20.NET4.0C)
+                
+            """
             
             try:
                 user_agent_string = lineArgs[13]
@@ -441,66 +534,38 @@ class FundraiserDataMapper(DataMapper):
                 if len(user_agent_fields['browser']['name']) != 0:
                     browser = user_agent_fields['browser']['name']
     
-    
-            # Process landing URL
-            # ================
-    
+            """
+                 Process landing URL
+                 ===================
+                 
+                 sample landing url
+                     landing_url = "http://wikimediafoundation.org/w/index.php?title=WMFJA085/en/US&utm_source=donate&utm_medium=sidebar&utm_campaign=20101204SB002&country_code=US&referrer=http%3A%2F%2Fen.wikipedia.org%2Fwiki%2FFile%3AMurphy_High_School.jpg"
+                     landing_url = "http://wikimediafoundation.org/wiki/WMFJA1/ru"
+            """
+            
             try:
                 landing_url = lineArgs[8]
             except IndexError:
                 landing_url = 'Unavailable'
     
+            include_request, index_str_flag = self.evaluate_landing_url(landing_url)
             
-            parsed_landing_url = up.urlparse(landing_url)
-            query_fields = cgi.parse_qs(parsed_landing_url[queryIndex]) # Get the banner name and lang
-            
-            
-            # Filter the landing URLs
-            #
-            # /wikimediafoundation.org/wiki/WMF/
-            # /wikimediafoundation.org/w/index.php?title=WMF/
-            path_pieces = parsed_landing_url[pathIndex].split('/')
-            try:
-                
-                c1 = re.search('WMF', path_pieces[2] )  != None
-                c2 = re.search('Hear_from_Kartika', path_pieces[2])   != None
-                cond1 = parsed_landing_url[hostIndex] == 'wikimediafoundation.org' and path_pieces[1] == 'wiki' and (c1 or c2)
-                
-                c1 = re.search('index.php', path_pieces[2] )  != None
-                index_str_flag = c1
-                try:
-                    c2 = re.search('WMF', query_fields['title'][0] ) != None
-                except KeyError:
-                    c2 = 0
-                cond2 = (parsed_landing_url[hostIndex] == 'wikimediafoundation.org' and path_pieces[1] == 'w' and c1 and c2)
-                
-                if cond2:
-                    count_parse = count_parse + 1
-                    
-                regexp_res = re.search('Special:LandingCheck',landing_url)
-                cond3 = (regexp_res == None)
-                
-                include_request = (cond1 or cond2) and cond3
-                 
-    
-            except: 
-                include_request = 0
-            
+           
             if include_request:
                 
-                # Address cases where the query string contains the landing page - ...wikimediafoundation.org/w/index.php?...
+                """ Address cases where the query string contains the landing page - ...wikimediafoundation.org/w/index.php?... """
                 if index_str_flag:
                     try:
-                        # URLs of the form ...?title=<lp_name>
+                        
+                        """ URLs of the form ...?title=<lp_name> """
                         lp_country = query_fields['title'][0].split('/')
                         landing_page = lp_country[0]
                         
-                        # URLs of the form ...?county_code=<iso_code>
+                        """ URLs of the form ...?county_code=<iso_code> """
                         try:
                             country = query_fields['country_code'][0]
-                            
-                        # URLs of the form ...?title=<lp_name>/<lang>/<iso_code>
                         except:
+                            """ URLs of the form ...?title=<lp_name>/<lang>/<iso_code> """
                             if len(lp_country) == 3:
                                 country = lp_country[2]
                             else:
@@ -510,7 +575,10 @@ class FundraiserDataMapper(DataMapper):
                         landing_page = 'NONE'
                         country = Hlp.localize_IP(self._cur, ip_add)
                         
-                else: # ...wikimediafoundation.org/wiki/...
+                else: 
+                    """ Address cases where the query string does not contain the landing page - ...wikimediafoundation.org/wiki/... """
+                    parsed_landing_url = up.urlparse(landing_url)
+                    query_fields = cgi.parse_qs(parsed_landing_url[queryIndex]) # Get the banner name and lang
                     
                     landing_path = parsed_landing_url[pathIndex].split('/')
                     landing_page = landing_path[2];
@@ -562,9 +630,113 @@ class FundraiserDataMapper(DataMapper):
             line = logFile.readline()
             line_count = line_count + 1 
     
-            if (line_count % 1000) == 0:
+            """ Log Miner Logging - Update the squid_log_record table """
+            if (line_count % 1000) == 0 or line_count == total_lines_in_file:
                 completion = float(line_count / total_lines_in_file) * 100.0
                 sltl.update_table_row(type='lp_view',log_copy_time=curr_time,start_time=start,end_time=end,log_completion_pct=completion.__str__(),total_rows=line_count.__str__())
 
         self._close_db()
         
+
+    """
+        Looks into the logfile and pull the timestamp of the first request
+    """
+    def get_first_timestamp_from_log(self, logFileName):
+        
+        logFile = self.open_logfile(logFileName)[0]
+        
+        """ Scan through the log file """
+        line = logFile.readline()
+        while (line != ''):
+            lineArgs = line.split()
+            
+            """ Try to extract Timestamp data """
+            try:
+                
+                time_stamp = lineArgs[2]
+                time_bits = time_stamp.split('T')
+                date_fields = time_bits[0].split('-')
+                time_fields = time_bits[1].split(':')
+                minute = int(time_fields[1])
+            
+            except (ValueError, IndexError):
+                
+                line = logFile.readline()
+                total_lines_in_file = total_lines_in_file - 1
+                continue
+                
+            """ Break the loop once we have a timestamp """
+            first_time_stamp = date_fields[0] + date_fields[1] + date_fields[2] + time_fields[0] + time_fields[1]  + '00'
+            break
+                
+        logFile.close()
+        
+        return first_time_stamp
+    
+
+
+    
+    """
+        Opens the logfile and counts the total number of lines
+    """
+    def open_logfile(self, logFileName):        
+        
+        if (re.search('\.gz', logFileName)):
+            logFile = gzip.open(projSet.__squid_log_local_home__ + logFileName, 'r')
+            total_lines_in_file = float(commands.getstatusoutput('zgrep -c "" ' + projSet.__squid_log_local_home__ + logFileName)[1])
+        else:
+            logFile = open(projSet.__squid_log_local_home__ + logFileName, 'r')
+            total_lines_in_file = float(commands.getstatusoutput('grep -c "" ' + projSet.__squid_log_local_home__ + logFileName)[1])
+
+        return logFile, total_lines_in_file
+
+
+
+    """
+        Parses the landing url and determines if its valid
+    """
+    def evaluate_landing_url(self, landing_url):        
+        
+        hostIndex = 1
+        queryIndex = 4
+        pathIndex = 2
+
+        parsed_landing_url = up.urlparse(landing_url)
+        query_fields = cgi.parse_qs(parsed_landing_url[queryIndex]) # Get the banner name and lang
+        path_pieces = parsed_landing_url[pathIndex].split('/')
+        
+        """ 
+            Filter the landing URLs
+        
+             /wikimediafoundation.org/wiki/WMF/
+             /wikimediafoundation.org/w/index.php?title=WMF/ 
+
+            Evaluate conditions which determine acceptance of request based on the landing url 
+        """
+        try: 
+            
+            c1 = re.search('WMF', path_pieces[2] ) != None or re.search('Junetesting001', path_pieces[2] ) != None 
+            c2 = re.search('Hear_from_Kartika', path_pieces[2])   != None
+            cond1 = parsed_landing_url[hostIndex] == 'wikimediafoundation.org' and path_pieces[1] == 'wiki' and (c1 or c2)
+            
+            c1 = re.search('index.php', path_pieces[2] )  != None
+            index_str_flag = c1
+            
+            try:
+                c2 = re.search('WMF', query_fields['title'][0] ) != None or re.search('L2011', query_fields['title'][0] ) != None 
+            except KeyError:
+                c2 = 0
+            cond2 = (parsed_landing_url[hostIndex] == 'wikimediafoundation.org' and path_pieces[1] == 'w' and c1 and c2)
+            
+            if cond2:
+                count_parse = count_parse + 1
+                
+            regexp_res = re.search('Special:LandingCheck',landing_url)
+            cond3 = (regexp_res == None)
+            
+            return [(cond1 or cond2) and cond3, index_str_flag]
+             
+        except: 
+            return [0, 0]
+
+    
