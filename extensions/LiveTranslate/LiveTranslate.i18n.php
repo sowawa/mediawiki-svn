@@ -949,9 +949,22 @@ $messages['zh-hans'] = array(
 	'livetranslate-button-translate' => '翻译',
 	'livetranslate-button-translating' => '翻译中。。。',
 	'livetranslate-button-revert' => '显示原文',
+	'livetranslate-dictionary-goto-edit' => '修改的翻译记忆库。',
+	'special-livetranslate' => '实时翻译',
+	'livetranslate-tmtype-ltf' => '实时翻译格式',
+	'livetranslate-tmtype-tmx' => '翻译库交换',
+	'livetranslate-tmtype-gcsv' => '谷歌 CSV',
+	'livetranslate-special-no-tms-yet' => '但没有翻译记忆库。',
 	'livetranslate-special-button' => '保存与更新',
 	'livetranslate-special-type' => '类型',
 	'livetranslate-special-location' => '位置',
+	'livetranslate-special-remove' => '删除',
+	'livetranslate-special-local' => '本地',
+	'livetranslate-special-add-tm' => '添加一个新翻译记忆',
+	'livetranslate-special-current-tms' => '现有的翻译记忆库',
+	'livetranslate-special-tms-update' => '更新翻译记忆库',
+	'livetranslate-special-update' => '更新翻译记忆库',
+	'livetranslate-importtms-param-miscmatch' => '之间的位置的数量和类型不匹配',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

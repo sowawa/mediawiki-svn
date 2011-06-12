@@ -2244,6 +2244,7 @@ $messages['yi'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
  * @author Liangent
  * @author Wrightbus
  */
@@ -2251,13 +2252,16 @@ $messages['zh-hans'] = array(
 	'importusers' => '汇入使用者',
 	'importusers-uploadfile' => '上载文件',
 	'importusers-form-button' => '汇入',
+	'importusers-log' => '导入用户登录',
 	'importusers-log-summary' => '摘要',
-	'importusers-log-summary-all' => '全部',
-	'importusers-log-summary-added' => '已加入',
-	'importusers-log-summary-updated' => '已更新',
+	'importusers-log-summary-all' => '所有：$1',
+	'importusers-log-summary-added' => '添加：$1',
+	'importusers-log-summary-updated' => '更新：$1',
+	'importusers-login-name' => '登录名',
 	'importusers-password' => '密码',
 	'importusers-email' => '电邮',
 	'importusers-realname' => '真实姓名',
+	'right-import_users' => '在大容量导入用户',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

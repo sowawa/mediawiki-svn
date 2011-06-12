@@ -159,8 +159,10 @@ $messages['ca'] = array(
 
 /** Czech (Česky)
  * @author Jkjk
+ * @author Mormegil
  */
 $messages['cs'] = array(
+	'articletocategory2-desc' => 'Přidává na stránku každé kategorie rámeček umožňující založení nové stránky přímo v kategorii',
 	'articletocategory2-create-article-under-category-text' => 'Přidat stránku do této kategorie',
 	'articletocategory2-create-article-under-category-button' => 'Vytvořit',
 	'articletocategory2-create-category-under-category-text' => 'Přidat kategorii do této kategorie',
@@ -740,6 +742,7 @@ $messages['zh-hans'] = array(
 	'articletocategory2-create-category-under-category-text' => '此类别中添加类别',
 	'articletocategory2-create-category-under-category-button' => '创建',
 	'right-ArticleToCategory2' => '将页面添加到分组',
+	'right-ArticleToCategory2AddCat' => '添加类别到类别',
 );
 
 /** Chinese (Hong Kong) (‪中文(香港)‬)

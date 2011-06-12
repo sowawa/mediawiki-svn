@@ -29,6 +29,25 @@ $messages['af'] = array(
 	'sql2wiki-cache_refresh' => 'Verfris',
 );
 
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author EugeneZelenko
+ * @author Wizardist
+ */
+$messages['be-tarask'] = array(
+	'sql2wiki' => 'SQL2Wiki',
+	'sql2wiki-desc' => 'Паказвае SQL-зьвесткі у зьмесьце старонак',
+	'sql2wiki-cache_refresh' => 'Абнавіць',
+	'sql2wiki-err-invalid_db_id' => 'SQL2Wiki: адсутнічае ці няслушны ідэнтыфікатар базы зьвестак',
+	'sql2wiki-err-invalid_type' => 'SQL2Wiki: Адсутнічае ці няслушны тып',
+	'sql2wiki-err-failed_to_connect' => 'SQL2Wiki: немагчыма далучыцца да $1!',
+	'sql2wiki-err-failed_to_execute' => 'SQL2Wiki: Немагчыма выканаць запыт:
+
+«$1».
+
+Паведамленьне пра памылку: «$2».',
+	'sql2wiki-err-feature_not_supported' => 'SQL2Wiki: функцыя не падтрымліваецца базамі зьвестак тыпу $1!',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

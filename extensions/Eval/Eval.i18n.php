@@ -775,8 +775,11 @@ $messages['vo'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Hydra
  */
 $messages['zh-hans'] = array(
+	'eval' => '评估',
+	'eval_submit' => '评估',
 	'eval_out' => '输出',
 	'eval_code' => '代码',
 );

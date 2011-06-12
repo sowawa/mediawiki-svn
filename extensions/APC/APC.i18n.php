@@ -3912,6 +3912,7 @@ $messages['kn'] = array(
  * @author Albamhandae
  * @author Cwt96
  * @author Kwj2772
+ * @author Ricolyuki
  */
 $messages['ko'] = array(
 	'apc' => 'APC 정보',
@@ -3922,6 +3923,8 @@ APC가 작동하지 않는 것으로 추정됩니다.',
 	'viewapc-clear-confirm' => '캐시를 갱신하시겠습니까?',
 	'viewapc-clear-user-cache' => '사용자 캐시 지우기',
 	'viewapc-php-version' => 'PHP 버전',
+	'viewapc-filecache-info' => '파일 캐시 정보',
+	'viewapc-usercache-info' => '사용자 캐시 정보',
 	'viewapc-rps' => '초당 요청 $1 개',
 	'viewapc-display-filename' => '파일 이름',
 );
@@ -4619,9 +4622,31 @@ $messages['mr'] = array(
  */
 $messages['ms'] = array(
 	'apc' => 'Maklumat APC',
+	'apc-desc' => "[[Special:APC|Lihat dan uruskan ''cache'' APC]] dengan MediaWiki",
+	'right-apc' => 'Gunakan semua ciri-ciri di [[Special:APC|APC]]',
+	'viewapc-apc-not-available' => "Tiada maklumat ''cache'' didapati.
+APC nampaknya tidak berjalan.",
+	'viewapc-clear-confirm' => 'Adakah anda ingin mengosongkan cache?',
+	'viewapc-clear-user-cache' => 'Kosongkan cache pengguna',
+	'viewapc-clear-code-cache' => 'Kosongkan cache opcode',
+	'viewapc-mode-stats' => 'Lihat statistik hos',
+	'viewapc-mode-system-cache' => 'Entri cache sistem',
+	'viewapc-mode-system-cache-dir' => 'Entri sedirektori',
+	'viewapc-mode-user-cache' => 'Entri cache pengguna',
+	'viewapc-mode-version-check' => 'Semak versi',
 	'viewapc-info-general' => 'Maklumat am',
 	'viewapc-apc-version' => 'Versi APC',
 	'viewapc-php-version' => 'Versi PHP',
+	'viewapc-shared-memory' => 'Ingatan terkongsi',
+	'viewapc-shared-memory-details' => '{{PLURAL:$1|1 segmen $2|$1 segmen $2 setiap satu}}.<br />
+(ingatan $3, penguncian $4)',
+	'viewapc-start-time' => 'Masa mula',
+	'viewapc-uptime' => 'Masa hidup',
+	'viewapc-upload-support' => 'Sokongan muat naik fail',
+	'viewapc-filecache-info' => 'Maklumat cache fail',
+	'viewapc-usercache-info' => 'Maklumat cache pengguna',
+	'viewapc-cached-files' => 'Fail yang dicachekan',
+	'viewapc-cached-files-d' => '$1 fail ($2)',
 	'viewapc-display-info' => 'Nama',
 	'viewapc-ls-header-name' => 'Nama',
 	'viewapc-ls-header-size' => 'Saiz',

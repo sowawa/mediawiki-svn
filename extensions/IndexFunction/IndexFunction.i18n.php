@@ -1428,10 +1428,13 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Bencmq
+ * @author Hydra
  */
 $messages['zh-hans'] = array(
 	'indexfunc-badtitle' => '无效标题：“$1”',
 	'indexfunc-index-exists' => '“$1”页面已存在',
+	'index' => '索引搜索',
+	'index-legend' => '搜索索引',
 	'index-search' => '搜索：',
 	'index-submit' => '提交',
 	'index-hide-detail' => '隐藏页面列表',

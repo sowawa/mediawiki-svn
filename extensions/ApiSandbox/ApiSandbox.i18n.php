@@ -669,3 +669,29 @@ $messages['vi'] = array(
 	'apisb-query-meta' => 'Siêu thông tin',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
+ */
+$messages['zh-hans'] = array(
+	'apisb-desc' => '允许调试 [http://www.mediawiki.org/wiki/API MediaWiki API] 从浏览器的调用',
+	'apisandbox' => 'API 沙箱',
+	'apisb-no-js' => "'''错误'''：此功能需要 JavaScript。",
+	'apisb-api-disabled' => '此站点上禁用了 API。',
+	'apisb-parameters' => '参数',
+	'apisb-result' => '结果',
+	'apisb-request-url' => '请求的 URL：',
+	'apisb-request-post' => '发布数据：',
+	'apisb-select-action' => '选择操作',
+	'apisb-select-query' => '查询又如何？',
+	'apisb-select-value' => '选择值',
+	'apisb-loading' => '正在加载...',
+	'apisb-load-error' => '加载 API 说明时出错',
+	'apisb-request-error' => '执行 API 请求时出错',
+	'apisb-namespaces-error' => '加载命名空间出错误',
+	'apisb-ns-main' => '（主）',
+	'apisb-submit' => '提出要求',
+	'apisb-query-prop' => '属性',
+	'apisb-query-list' => '列表',
+	'apisb-query-meta' => 'Meta 信息',
+);
+

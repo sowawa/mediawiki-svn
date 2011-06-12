@@ -25,12 +25,15 @@ $messages['en'] = array(
 	'notificator-notified-already' => '$1 has been notified about this page or page change before.',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author EugeneZelenko
+ */
 $messages['qqq'] = array(
 	'notificator' => 'Name',
 	'notificator-desc' => '{{desc}}',
 	'notificator-db-table-does-not-exist' => 'Error message',
-	'notificator-e-mail-address' => 'Hint in text entry field',
+	'notificator-e-mail-address' => 'Hint in text entry field
+{{Identical|E-mail address}}',
 	'notificator-notify' => 'Button label',
 	'notificator-notify-address-or-name' => 'Button label',
 	'notificator-revs-not-from-same-title' => 'Error message (unlikely to show up)',
@@ -38,12 +41,15 @@ $messages['qqq'] = array(
 	'notificator-special-page-accessed-directly' => 'Error message',
 	'notificator-e-mail-address-invalid' => 'Error message',
 	'notificator-notification-not-sent' => 'Message on special page',
-	'notificator-change-tag' => 'Tag that goes into the e-mail subject (should be as short as possible)',
-	'notificator-new-tag' => 'Tag that goes into the e-mail subject (should be as short as possible)',
+	'notificator-change-tag' => 'Tag that goes into the e-mail subject (should be as short as possible)
+{{Identical|Change}}',
+	'notificator-new-tag' => 'Tag that goes into the e-mail subject (should be as short as possible)
+{{Identical|New}}',
 	'notificator-notification-text-changes' => 'Message on special page',
 	'notificator-notification-text-new' => 'Message on special page',
 	'notificator-following-e-mail-sent-to' => 'Message on special page',
-	'notificator-subject' => 'Clarifies that the following text is an e-mail subject',
+	'notificator-subject' => 'Clarifies that the following text is an e-mail subject
+{{Identical|Subject}}',
 	'notificator-error-sending-e-mail' => 'Error message',
 	'notificator-error-parameter-missing' => 'Error message (unlikely to show up)',
 	'notificator-notified-already' => 'Message on special page',
@@ -75,28 +81,71 @@ $messages['af'] = array(
 	'notificator-notified-already' => '$1 is reeds in kennis gestel oor hierdie bladsy of veranderinge.',
 );
 
-/** German (Deutsch) */
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author EugeneZelenko
+ * @author Wizardist
+ */
+$messages['be-tarask'] = array(
+	'notificator' => 'Паведамленьні',
+	'notificator-desc' => 'Паведамляе ўдзельнікаў пра зьмены на старонках па націску кнопкі праз электронную пошту.',
+	'notificator-db-table-does-not-exist' => 'Табліца «notificator» не існуе ў базе зьвестак. Перад выкарыстаньнем пашырэньня патрэбна запусьціць скрыпт update.php.',
+	'notificator-e-mail-address' => 'адрас электроннай пошты',
+	'notificator-notify' => 'Паведамляць',
+	'notificator-notify-address-or-name' => 'Паведамляць $1',
+	'notificator-revs-not-from-same-title' => 'Ідэнтыфікатары вэрсіяй адпавядаюць розным старонкам',
+	'notificator-return-to' => 'Вярнуцца да',
+	'notificator-special-page-accessed-directly' => 'Гэтая спэцыяльная старонка не выкарыстоўваецца напрамую. Пераход да яе ажыцьцяўляецца пасьля націсканьня кнопкі.',
+	'notificator-e-mail-address-invalid' => 'Пададзены няслушны адрас электроннай пошты.',
+	'notificator-notification-not-sent' => 'Паведамленьне <em>не</em> дасланае.',
+	'notificator-change-tag' => 'зьмена',
+	'notificator-new-tag' => 'новае',
+	'notificator-notification-text-changes' => '$1 паведамляе Вам пра наступныя зьмены на $2:',
+	'notificator-notification-text-new' => '$1 паведамляе Вам пра $2.',
+	'notificator-following-e-mail-sent-to' => 'Наступны ліст быў дасланы на <em>$1</em>:',
+	'notificator-subject' => 'Тэма:',
+	'notificator-error-sending-e-mail' => 'Адбылася памылка падчас адпраўкі ліста да <em>$1</em>.',
+	'notificator-error-parameter-missing' => 'Памылка: бракуе парамэтру.',
+	'notificator-notified-already' => '$1 ужо паведамілі пра зьмены на старонцы ці саму старонку.',
+);
+
+/** German (Deutsch)
+ * @author Kghbln
+ */
 $messages['de'] = array(
 	'notificator' => 'Notificator',
-	'notificator-desc' => 'Sendet Benachrichtungs-Mails über Seitenänderungen, wenn ein Knopf auf der entsprechenden Seite betätigt wird.',
-	'notificator-db-table-does-not-exist' => 'Datenbanktabelle "notificator" existiert nicht. Das update.php Maintenance Script muss ausgeführt werden, bevor die Notificator-Extension verwendet werden kann.',
+	'notificator-desc' => 'Sendet Benachrichtigungen über Seitenänderungen per E-Mail, sofern eine auf der Seite vorhandene Schaltfläche angeklickt wird',
+	'notificator-db-table-does-not-exist' => 'Die Datenbanktabelle „notificator“ ist nicht vorhanden. Das Wartungsskript update.php muss ausgeführt werden, bevor die Softwareerweiterung Notificator verwendet werden kann.',
 	'notificator-e-mail-address' => 'E-Mail-Adresse',
 	'notificator-notify' => 'Benachrichtigen',
 	'notificator-notify-address-or-name' => '$1 benachrichtigen',
-	'notificator-revs-not-from-same-title' => 'Revision-IDs gehören nicht zum selben Titel/zur selben Seite',
+	'notificator-revs-not-from-same-title' => 'Die Versionskennungen gehören nicht zum selben Titel/ zur selben Seite',
 	'notificator-return-to' => 'Zurück zu',
-	'notificator-special-page-accessed-directly' => 'Auf diese Spezialseite kann nicht direkt zugegriffen werden. Sie sollte über einen Notificator-Knopf verwendet werden.',
+	'notificator-special-page-accessed-directly' => 'Auf diese Spezialseite kann nicht direkt zugegriffen werden. Sie kann nur über eine von der Softwareerweiterung „Notificator“ bereitgestellt Schaltfläche genutzt werden.',
 	'notificator-e-mail-address-invalid' => 'Die angegebene E-Mail-Adresse ist ungültig.',
-	'notificator-notification-not-sent' => 'Benachrichtigung <em>nicht</em> gesendet.',
+	'notificator-notification-not-sent' => 'Die Benachrichtigung wurde <em>nicht</em> versendet.',
 	'notificator-change-tag' => 'Änderung',
 	'notificator-new-tag' => 'Neu',
-	'notificator-notification-text-changes' => '$1 möchte dich zu folgenden Änderungen an $2 benachrichtigen:',
-	'notificator-notification-text-new' => '$1 möchte dich zu $2 benachrichtigen.',
-	'notificator-following-e-mail-sent-to' => 'Folgende E-Mail wurde an <em>$1</em> gesendet:',
+	'notificator-notification-text-changes' => '$1 möchte auf die folgenden Änderungen an $2 hinweisen:',
+	'notificator-notification-text-new' => '$1 möchte auf $2 hinweisen.',
+	'notificator-following-e-mail-sent-to' => 'Die folgende E-Mail wurde an <em>$1</em> gesendet:',
 	'notificator-subject' => 'Betreff:',
 	'notificator-error-sending-e-mail' => 'Beim Versenden der Benachrichtigungs-E-Mail an <em>$1</em> ist ein Fehler aufgetreten.',
 	'notificator-error-parameter-missing' => 'Fehler: Fehlender Parameter.',
 	'notificator-notified-already' => '$1 wurde bereits zu dieser Seite oder Seitenänderung benachrichtigt.',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'notificator' => 'Notificador',
+	'notificator-e-mail-address' => 'enderezo de correo electrónico',
+	'notificator-notify' => 'Notificar',
+	'notificator-return-to' => 'Volver a',
+	'notificator-change-tag' => 'cambio',
+	'notificator-new-tag' => 'novo',
+	'notificator-subject' => 'Asunto:',
+	'notificator-error-parameter-missing' => 'Erro: Falta o parámetro.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -139,7 +188,15 @@ $messages['mk'] = array(
  * @author SPQRobin
  */
 $messages['nl'] = array(
+	'notificator-e-mail-address' => 'e-mailadres',
+	'notificator-revs-not-from-same-title' => 'Versienummers zijn niet van dezelfde titel/pagina',
+	'notificator-return-to' => 'Terugkeren naar',
+	'notificator-e-mail-address-invalid' => 'Het opgegeven e-mailadres is ongeldig.',
+	'notificator-change-tag' => 'wijzigen',
+	'notificator-new-tag' => 'nieuw',
+	'notificator-following-e-mail-sent-to' => 'De volgende e-mail is verzonden naar <em>$1</em>:',
 	'notificator-subject' => 'Onderwerp:',
+	'notificator-error-parameter-missing' => 'Fout: Ontbrekende parameter.',
 );
 
 /** Portuguese (Português)

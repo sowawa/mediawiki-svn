@@ -944,10 +944,14 @@ Xem thêm [[Special:MostRevisors|'''trang có số người chỉnh sửa nhiề
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
  * @author Wilsonmess
  */
 $messages['zh-hans'] = array(
+	'cooperationstatistics' => '合作统计',
+	'cooperationstatistics-desc' => '显示 [[Special:CooperationStatistics|合作统计的主要命名空间]]。',
 	'cooperationstatistics-tablearticle' => '页面数',
 	'cooperationstatistics-tablevalue' => '编辑者数',
+	'cooperationstatistics-articles' => '$1 页面',
 );
 

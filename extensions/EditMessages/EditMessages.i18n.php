@@ -1714,12 +1714,17 @@ $messages['yi'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
  * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
 	'editmessages' => '编辑消息',
+	'editmsg-target' => '目标邮件：',
 	'editmsg-search' => '搜索',
+	'editmsg-get-patch' => '生成的修补程序',
 	'editmsg-new-search' => '新搜索',
+	'editmsg-apply-patch' => '应用修补程序',
+	'editmsg-patch-success' => '成功进行修补。',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

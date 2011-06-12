@@ -1246,10 +1246,25 @@ $messages['vi'] = array(
  * @author Hydra
  */
 $messages['zh-hans'] = array(
+	'e-mailpage' => '电子邮件页',
+	'ea-group-info' => '此外您可以向组成员发送页面',
+	'ea-nopage' => '没有页面被指定为发送，请使用电子邮件链接栏或页面的行动。',
+	'ea-norecipients' => '没有找到有效的电子邮件地址！',
+	'ea-denied' => '被拒绝的权限',
+	'ea-compose' => '撰写内容',
+	'ea-show' => '查看收件人列表',
 	'ea-from' => '从：',
 	'ea-to' => '至：',
+	'ea-to-info' => '可以与一个或多个分号、 逗号、 星号或换行字符分隔的电子邮件地址',
+	'ea-cc' => '抄送：',
 	'ea-send' => '发送',
+	'ea-subject' => '主题：',
 	'ea-message' => '性息：',
+	'ea-style' => '风格：',
+	'ea-selectcss' => '您可以选择样式表',
+	'ea-data' => '数据',
+	'ea-selectrecord' => '这些模板可用于填充邮件内容中的字段',
+	'ea-allusers' => '所有用户',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

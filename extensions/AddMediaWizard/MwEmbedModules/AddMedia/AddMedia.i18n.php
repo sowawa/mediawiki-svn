@@ -4163,6 +4163,7 @@ $messages['kn'] = array(
  * @author Gapo
  * @author Kwj2772
  * @author Purodha
+ * @author Ricolyuki
  */
 $messages['ko'] = array(
 	'mwe-cancel-confim' => '정말 취소 하시겠습니까?',
@@ -4182,8 +4183,10 @@ $messages['ko'] = array(
 	'mwe-summary' => '편집 요약',
 	'mwe-date-of-work' => '작업 날짜',
 	'mwe-error_not_loggedin' => '로그인 되어있지 않거나 파일 올리기 권한이 없습니다',
+	'mwe-link-login' => '로그인',
 	'mwe-ignore-any-warnings' => '모든 경고를 무시하기',
 	'mwe-add_media_wizard' => '미디어 추가 마법사',
+	'mwe-am-results_next' => '다음',
 	'mwe-am-results_prev' => '이전',
 	'mwe-upload_tab' => '파일 올리기',
 	'mwe-cc_by_title' => '저작자표시',

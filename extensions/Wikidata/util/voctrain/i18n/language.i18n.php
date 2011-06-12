@@ -2775,6 +2775,17 @@ $messages['kw'] = array(
 	'voctrain_other' => 'niver aral',
 );
 
+/** Latin (Latina)
+ * @author MissPetticoats
+ */
+$messages['la'] = array(
+	'voctrain_bye' => 'Vale',
+	'voctrain_Languages' => 'Linguae',
+	'voctrain_Switch_language' => 'Mutare linguam',
+	'voctrain_Language' => 'Lingua',
+	'voctrain_other' => 'alter',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

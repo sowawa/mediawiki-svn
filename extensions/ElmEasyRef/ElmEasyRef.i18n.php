@@ -195,3 +195,12 @@ $messages['tl'] = array(
 	'elm-easyref-close' => 'Isara',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
+ */
+$messages['zh-hans'] = array(
+	'elm-easyref-desc' => '添加弹出菜单字段来显示引用的内容',
+	'elm-easyref-ref' => '参考 $1',
+	'elm-easyref-close' => '关闭',
+);
+

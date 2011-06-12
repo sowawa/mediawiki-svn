@@ -643,9 +643,12 @@ $messages['vo'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Hydra
  */
 $messages['zh-hans'] = array(
 	'forcepreview' => '保存页面（需先预览）',
+	'forcepreview-desc' => '非特权用户力预览',
+	'right-forcepreviewexempt' => '可保存而不使用显示预览',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

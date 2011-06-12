@@ -305,3 +305,10 @@ $messages['uk'] = array(
 	'datediff-desc' => 'Приймає дві дати і повертає всі проміжні дні',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
+ */
+$messages['zh-hans'] = array(
+	'datediff-desc' => '采用两个日期并返回所有中间天',
+);
+

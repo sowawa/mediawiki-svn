@@ -510,7 +510,7 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
-	'articlefeedback' => 'Priziadenn pennadoù',
+	'articlefeedback' => 'Taolenn vourzh priziañ ar pennad',
 	'articlefeedback-desc' => 'Priziadenn pennadoù (stumm stur)',
 	'articlefeedback-survey-question-origin' => "E peseurt pajenn e oac'h p'hoc'h eus kroget gant an enselladenn-mañ ?",
 	'articlefeedback-survey-question-whyrated' => "Roit deomp an abeg d'ar perak ho peus priziet ar bajenn-mañ hiziv (kevaskit an abegoù gwirion) :",
@@ -529,7 +529,8 @@ $messages['br'] = array(
 	'articlefeedback-error' => "C'hoarvezet ez eus ur fazi. Esaeit en-dro diwezhtaoc'h, mar plij.",
 	'articlefeedback-form-switch-label' => "Reiñ un notenn d'ar bajenn-mañ",
 	'articlefeedback-form-panel-title' => "Reiñ un notenn d'ar bajenn-mañ",
-	'articlefeedback-form-panel-instructions' => 'Trugarez da gemer un tamm amzer da briziañ ar bajenn-mañ.',
+	'articlefeedback-form-panel-explanation' => 'Petra eo se ?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:ArticleFeedback',
 	'articlefeedback-form-panel-clear' => 'Lemel an notenn-mañ',
 	'articlefeedback-form-panel-expertise' => 'Gouzout a ran mat-tre diouzh an danvez-se (diret)',
 	'articlefeedback-form-panel-expertise-studies' => 'Un diplom skol-veur pe skol-uhel a zere am eus tapet',
@@ -541,6 +542,7 @@ $messages['br'] = array(
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Reolennoù prevezded',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Reolennoù prevezded',
 	'articlefeedback-form-panel-submit' => 'Kas ar priziadennoù',
+	'articlefeedback-form-panel-pending' => "N'eo ket bet kaset ho priziadenn evit c'hoazh",
 	'articlefeedback-form-panel-success' => 'Enrollet ervat',
 	'articlefeedback-form-panel-expiry-title' => "Aet eo ho priziadenn d'he zermen",
 	'articlefeedback-form-panel-expiry-message' => 'Adpriziit ar bajenn-mañ ha kasit en-dro ho priziadenn nevez.',
@@ -572,8 +574,8 @@ $messages['br'] = array(
 	'articlefeedback-survey-message-error' => "Ur fazi zo bet.
 Klaskit en-dro diwezhatoc'h.",
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Berzh ha droukverzh an devezh',
-	'articleFeedback-table-caption-dailyhighs' => 'Berzh an devezh',
-	'articleFeedback-table-caption-dailylows' => 'Droukverzh an devezh',
+	'articleFeedback-table-caption-dailyhighs' => 'Pajennoù gwellañ priziet : $1',
+	'articleFeedback-table-caption-dailylows' => 'Pajennoù priziet an nebeutañ : $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Ar re gemmet ar muiañ er sizhun-mañ',
 	'articleFeedback-table-caption-recentlows' => 'Droukverzh nevesañ',
 	'articleFeedback-table-heading-page' => 'Pajenn',
@@ -794,10 +796,34 @@ Zkuste to prosím později.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Dnešní maxima a minima',
 	'articleFeedback-table-caption-dailyhighs' => 'Stránky s nejvyšším hodnocením: $1',
 	'articleFeedback-table-caption-dailylows' => 'Stránky s nejnižším hodnocením: $1',
+	'articleFeedback-table-caption-weeklymostchanged' => 'Největší změny tohoto týdne',
+	'articleFeedback-table-caption-recentlows' => 'Nedávná minima',
 	'articleFeedback-table-heading-page' => 'Stránka',
 	'articleFeedback-table-heading-average' => 'Průměr',
 	'articleFeedback-copy-above-highlow-tables' => 'Toto je pokusná funkce. Sdělte nám svůj názor na [$1 diskusní stránce].',
-	'articleFeedback-copy-below-highlow-tables' => 'Tyto tabulky obsahují stránky, které byly v posledních 24 hodinách ohodnoceny alespoň 10krát. Průměry se počítají ze všech hodnocení odeslaných v posledních 24 hodinách.',
+	'articlefeedback-disable-preference' => 'Nezobrazovat na stránkách komponentu pro hodnocení článků',
+	'articlefeedback-emailcapture-response-body' => 'Dobrý den!
+
+Děkujeme za vyjádření zájmu pomoci vylepšit {{grammar:4sg|{{SITENAME}}}}.
+
+Věnujte prosím chvilku potvrzení vaší e-mailové adresy kliknutím na následující odkaz:
+
+$1
+
+Také můžete navštívit:
+
+$2
+
+A zadat následující potvrzovací kód:
+
+$3
+
+Brzy se vám ozveme s informacemi, jak můžete pomoci {{grammar:4sg|{{SITENAME}}}} vylepšit.
+
+Pokud tato žádost nepochází od vás, ignorujte prosím tento e-mail, nic dalšího vám posílat nebudeme.
+
+Děkujeme, s pozdravem
+tým {{grammar:2sg|{{SITENAME}}}}',
 );
 
 /** German (Deutsch)
@@ -1825,7 +1851,10 @@ $messages['he'] = array(
 	'articleFeedback-table-heading-page' => 'דף',
 	'articleFeedback-table-heading-average' => 'ממוצע',
 	'articleFeedback-copy-above-highlow-tables' => 'זוהי תכונה ניסיונית. נשמח לקבל משוב ב[$1 דף השיחה].',
-	'articleFeedback-copy-below-highlow-tables' => 'הטבלאות האלו מכילות דפים שקיהלו לפחות 10 דירוגים ב־24 השעות האחרונות. הממוצעים מחושבים על סמך ממוצעים של כל הדירוגים שנשלחו ב־24 השעות האחרונות.',
+	'articlefeedback-dashboard-bottom' => "'''שימו לב''': אנחנו נמשיך לערוך ניסויים עם דרכים שונות להציף ערכים בלוחות הבקרה האלה. כעת לוחות הברה כוללים את הערכים הבאים:
+* דפים עם דירוגים גבוהים ביותר או נמוכים ביותר: ערכים שקיבלו לפחות 10 דירוגים ב־24 השעות האחרונות. הממוצעים מחושבים לפי ממוצע על הדירוגים ב־24 השעות האחרונות.
+* נמוכים אחרונים: ערכים שקיבלו דירוג של 70% נמוך (2 כוכבים או פחות) בקטגוריה כלשהי ב־24 השעות האחרונות. רק ערכים שקיבלו לפחות 10 דירוגים ב־24 השעות האחרונות כלולים.",
+	'articlefeedback-disable-preference' => 'לא להציג את כלי דירוג הערכים בדפים',
 	'articlefeedback-emailcapture-response-body' => 'שלום!
 
 תודה שהבעתם עניין בסיוע לשיפור אתר {{SITENAME}}.
@@ -2415,6 +2444,7 @@ $messages['ka'] = array(
 
 /** Korean (한국어)
  * @author Kwj2772
+ * @author Ricolyuki
  */
 $messages['ko'] = array(
 	'articlefeedback' => '문서 평가',
@@ -2432,6 +2462,8 @@ $messages['ko'] = array(
 	'articlefeedback-survey-submit' => '제출',
 	'articlefeedback-survey-title' => '몇 가지 질문에 답해 주시기 바랍니다.',
 	'articlefeedback-survey-thanks' => '설문에 응해 주셔서 감사합니다.',
+	'articlefeedback-pitch-or' => '또는',
+	'articlefeedback-survey-message-success' => '설문을 작성해 주셔서 감사합니다.',
 );
 
 /** Colognian (Ripoarisch)
@@ -4685,7 +4717,9 @@ Xin hãy thử lại sau.',
 	'articleFeedback-table-heading-page' => 'Trang',
 	'articleFeedback-table-heading-average' => 'Trung bình',
 	'articleFeedback-copy-above-highlow-tables' => 'Đây là một tính năng thử nghiệm. Xin vui lòng đưa ra phản hồi tại [$1 trang thảo luận].',
-	'articleFeedback-copy-below-highlow-tables' => 'Các bảng này chứa các bài đã được đánh giá 10 lần trở lên trong vòng 24 giờ qua. Các trung bình tính các đánh giá được nhận trong vòng 24 giờ qua.',
+	'articlefeedback-dashboard-bottom' => "'''Lưu ý:''' Chúng tôi sẽ tiếp tục thử nghiệm những cách chọn lọc bài trong cách bảng điều khiển. Hiện nay các bảng điều khiển bao gồm các bài sau:
+* Các trang được đánh giá cao nhất hoặc thấp nhất: các bài đã được đánh giá 10 lần trở lên trong 24 giờ trước. Trung bình tính tất cả các đánh giá được nhận trong 24 giờ trước.
+* Các điểm thấp gần đây: các bài được đánh giá 70% (2 sao) trở xuống trong thể loại này trong 24 giờ trước. Chỉ tính các bài được đánh giá 10 lần trở lên trong 24 giờ trước.",
 	'articlefeedback-disable-preference' => 'Ẩn bảng Phản hồi bài khỏi các trang',
 	'articlefeedback-emailcapture-response-body' => 'Xin chào!
 
@@ -4742,7 +4776,7 @@ $messages['yo'] = array(
  * @author 阿pp
  */
 $messages['zh-hans'] = array(
-	'articlefeedback' => '条目评级',
+	'articlefeedback' => '文章反馈仪表板',
 	'articlefeedback-desc' => '条目评级（测试版）',
 	'articlefeedback-survey-question-origin' => '哪一页，你在你开始这项统计调查的时候？',
 	'articlefeedback-survey-question-whyrated' => '请告诉我们今天你为何评价了此页面(选择所有符合的):',
@@ -4761,7 +4795,8 @@ $messages['zh-hans'] = array(
 	'articlefeedback-error' => '发生了一个错误。请稍后重试。',
 	'articlefeedback-form-switch-label' => '评论此页',
 	'articlefeedback-form-panel-title' => '评论此页',
-	'articlefeedback-form-panel-instructions' => '请花些时间为这个条目打分',
+	'articlefeedback-form-panel-explanation' => '这是什么？',
+	'articlefeedback-form-panel-explanation-link' => 'Project:文章反馈',
 	'articlefeedback-form-panel-clear' => '删除此分级',
 	'articlefeedback-form-panel-expertise' => '我非常了解本主题（可选）',
 	'articlefeedback-form-panel-expertise-studies' => '我有与其有关的大学学位',
@@ -4773,6 +4808,7 @@ $messages['zh-hans'] = array(
 	'articlefeedback-form-panel-helpimprove-privacy' => '私隐政策',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:隐私政策',
 	'articlefeedback-form-panel-submit' => '提交意见',
+	'articlefeedback-form-panel-pending' => '没有尚未提交您的评级',
 	'articlefeedback-form-panel-success' => '成功保存',
 	'articlefeedback-form-panel-expiry-title' => '您的评级已过期',
 	'articlefeedback-form-panel-expiry-message' => '请重新评估此页并提交新的评级。',
@@ -4804,10 +4840,14 @@ $messages['zh-hans'] = array(
 	'articlefeedback-survey-message-error' => '出现错误。
 请稍后再试。',
 	'articleFeedback-table-caption-dailyhighsandlows' => '今天的新鲜事',
+	'articleFeedback-table-caption-dailyhighs' => '最高评级的页：$1',
+	'articleFeedback-table-caption-dailylows' => '最低评级的页：$1',
 	'articleFeedback-table-caption-weeklymostchanged' => '本周最多更改',
 	'articleFeedback-table-caption-recentlows' => '近期低点',
 	'articleFeedback-table-heading-page' => '页面',
 	'articleFeedback-table-heading-average' => '平均',
+	'articleFeedback-copy-above-highlow-tables' => '这是一个实验的功能。请在 [$1 讨论页] 提供反馈意见。',
+	'articlefeedback-disable-preference' => '不在页面上显示条反馈构件',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

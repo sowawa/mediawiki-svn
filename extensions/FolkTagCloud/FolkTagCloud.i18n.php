@@ -194,3 +194,10 @@ $messages['tl'] = array(
 	'folktagcloud-desc' => 'Nagdaragdag ng katangiang ari ng Semantikong MediaWiki para sa pagtatatak ng mga pahina na may mga tatak na tinukoy ng tagagamit at isang tatak ng pambanghay para sa pagpapakita ng mga ito sa loob ng isang ulap ng tatak',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
+ */
+$messages['zh-hans'] = array(
+	'folktagcloud-desc' => '添加语义 MediaWiki 属性的用户定义的标签的标签页和解析器标记显示在标签云',
+);
+

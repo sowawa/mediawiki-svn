@@ -877,6 +877,17 @@ $messages['yi'] = array(
 	'interwikilist-prefix' => 'אינטערוויקי פּרעפֿיקס:',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
+ */
+$messages['zh-hans'] = array(
+	'interwikilist' => '跨维基列表',
+	'interwikilist-linkname' => '跨语言链接',
+	'interwikilist-target' => '目标 URL',
+	'interwikilist-filter' => '筛选器列表',
+	'interwikilist-prefix' => '跨维基前缀：',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Mark85296341
  */

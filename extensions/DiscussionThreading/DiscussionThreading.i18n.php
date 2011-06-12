@@ -790,10 +790,15 @@ $messages['yi'] = array(
 	'discussionthreading-replysection' => 'אָנרופֿן',
 );
 
-/** Simplified Chinese (‪中文(简体)‬) */
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
+ */
 $messages['zh-hans'] = array(
+	'discussionthreading-desc' => '添加线程交谈页',
 	'discussionthreading-replysection' => '回复',
+	'discussionthreading-replysectionhint' => '回复本贴',
 	'discussionthreading-threadnewsection' => '新',
+	'discussionthreading-threadnewsectionhint' => '启动一个新的线程',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

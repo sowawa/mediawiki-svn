@@ -643,6 +643,16 @@ $messages['vo'] = array(
 	'logentry-invalidpage' => 'Pad no lonöföl',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
+ */
+$messages['zh-hans'] = array(
+	'logentry-append' => '追加',
+	'logentry' => '日志条目',
+	'logentry-invalidpage' => '无效的页',
+	'logentry-invalidtoken' => '无效的标记',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Mark85296341
  */

@@ -300,3 +300,14 @@ $messages['tl'] = array(
 	'fileattach-editcomment' => 'Nailakip ang talaksang [[File:$1|$1]]',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
+ */
+$messages['zh-hans'] = array(
+	'fileattach-desc' => '允许文件上载到当前页',
+	'fileattach-attachments' => '文件附件',
+	'fileattach-attachfile' => '附加文件',
+	'fileattach-uploadheading' => '附加文件到 $1',
+	'fileattach-editcomment' => '文件 [[File:$1|$1]] 连接',
+);
+

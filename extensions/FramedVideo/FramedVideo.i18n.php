@@ -1043,5 +1043,8 @@ $messages['vi'] = array(
  */
 $messages['zh-hans'] = array(
 	'framedvideo_position' => '对',
+	'framedvideo_errors' => '出现多个错误！',
+	'framedvideo_error' => '出现错误！',
+	'framedvideo_helppage' => 'Help:视频',
 );
 

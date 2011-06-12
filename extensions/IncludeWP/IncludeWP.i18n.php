@@ -413,3 +413,13 @@ $messages['uk'] = array(
 	'includewp-include-par-page' => 'Назва (віддаленої) сторінки, яку ви хочете показати.',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
+ */
+$messages['zh-hans'] = array(
+	'includewp-loading-page' => '正在加载页...',
+	'includewp-show-full-page' => '显示整页',
+	'includewp-show-fragment' => '只显示第一段',
+	'includewp-loading-failed' => '未能加载页。',
+);
+

@@ -726,3 +726,19 @@ Mga halimbawa:
 	'flagpage-tab' => 'Bandila',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
+ */
+$messages['zh-hans'] = array(
+	'flagpage' => '标记的页',
+	'flagpage-desc' => '标志使用预定义的模板的页面',
+	'flagpage-nopageselectedtitle' => '没有选定的页',
+	'flagpage-nopageselected' => '您未指定的页',
+	'flagpage-emptylisttitle' => '没有配置的模板',
+	'flagpage-emptylist' => '您需要配置您的模板的列表。编辑 [[{{ns:8}}:flagpage-templatelist]] 现在这样做。',
+	'flagpage-preview' => '预览选定的模板:',
+	'flagpage-confirmsave' => '请确认您的更改。',
+	'flagpage-submitbutton' => '使用此模板保存页',
+	'flagpage-tab' => '标志',
+);
+

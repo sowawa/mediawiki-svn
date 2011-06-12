@@ -1188,11 +1188,20 @@ $messages['yi'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
  * @author Wrightbus
  */
 $messages['zh-hans'] = array(
+	'inspectcache' => '检查缓存',
+	'inspectcache-desc' => '一个简单的调试工具以检查共享缓存的内容',
+	'inspectcache-general' => '一般的高速缓存',
+	'inspectcache-parser' => '解析器缓存',
+	'inspectcache-message' => '消息高速缓存',
+	'inspectcache-get' => '获取',
 	'inspectcache-delete' => '删除',
+	'inspectcache-deleted' => '已删除的缓存',
 	'inspectcache-list' => '列表',
+	'right-inspectcache' => '查看和删除缓存条目',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

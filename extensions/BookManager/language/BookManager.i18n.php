@@ -487,7 +487,10 @@ $messages['tl'] = array(
  */
 $messages['zh-hans'] = array(
 	'bookmanager-desc' => '书的工具',
+	'bm-booktools-section' => '本书的工具',
+	'bm-randomchapter-link' => '随机章',
 	'bm-printversion' => '打印版本',
+	'bm-printversion-desc' => '生成 [[Special:PrintVersion|打印版]] 的一本书',
 	'bm-printversion-no-book' => '请输入一本书以获取其打印版本的名称。',
 	'bm-printversion-inexistent-book' => '找不到的书。请输入现有的书，以获取其打印版本的名称。',
 );

@@ -51,6 +51,13 @@ $messages['br'] = array(
 	'customusersignup-desc' => 'Aotren a ra lakaat kemennadennoù a bep seurt pa vez krouet kontoù',
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'customusersignup-desc' => 'Poskytuje přizpůsobitelné zprávy při zakládání účtu',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
