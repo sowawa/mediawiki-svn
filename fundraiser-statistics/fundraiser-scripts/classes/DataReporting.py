@@ -23,6 +23,7 @@ import matplotlib
 import datetime
 import MySQLdb
 import pylab
+from matplotlib.lines import Line2D
 import HTML
 import math
 
@@ -229,8 +230,6 @@ class DataReporting(object):
 
 class IntervalReporting(DataReporting):
     
-    
-    
     """
         Constructor for IntervalReporting
         
@@ -257,7 +256,7 @@ class IntervalReporting(DataReporting):
         
          
     """
-        <description>
+        Usage instructions for executing a report via the IntervalReporting class
     """    
     def usage(self): 
         
@@ -297,9 +296,7 @@ class IntervalReporting(DataReporting):
     """
         Protected method.  Execute reporting query and generate plots.       
         
-        INPUT:
-                        
-        RETURN:
+        INPUT:    The inputs define the plot arguments                
         
     """        
     def _gen_plot(self, metrics, times, title, xlabel, ylabel, ranges, subplot_index, fname, labels):
@@ -313,9 +310,9 @@ class IntervalReporting(DataReporting):
         count = 0
         for key in metrics.keys():
             if self._plot_type_ == 'step':
-                pylab.step(times[key], metrics[key], line_types[count])
+                pylab.step(times[key], metrics[key], line_types[count], linewidth=3.0)
             elif self._plot_type_ == 'line':
-                pylab.plot(times[key][1:], metrics[key][1:], line_types[count])
+                pylab.plot(times[key][1:], metrics[key][1:], line_types[count], linewidth=3.0)
             count = count + 1
         
         """ Set the figure and font size """
@@ -346,6 +343,9 @@ class IntervalReporting(DataReporting):
         else:
             pylab.legend(metrics.keys(),loc=2)
         
+        # add_line(Line2D([0.5, 0.5], [0, 1], transform=a.transAxes, linewidth=2, color='b'))
+
+
         pylab.xlabel(xlabel)
         pylab.ylabel(ylabel)
 
@@ -404,13 +404,7 @@ class IntervalReporting(DataReporting):
         <generate state> -> <post processing of state data> -> <generate plot>
         
         INPUT:
-                start_time     - 
-                end_time       - 
-                interval       -
-                query_type     -
-                metric_name    -
-                campaign       - 
-                labels         -
+                The inputs serve as query arguments
          
     """        
     def run(self, start_time, end_time, interval, metric_name, campaign, labels):
@@ -424,10 +418,10 @@ class IntervalReporting(DataReporting):
         if len(self._item_keys_) > 0:
             self._counts_ = self.select_metric_keys(self._counts_)
             self._times_ = self.select_metric_keys(self._times_)
-        
+        print self._counts_
         """ Convert Times to Integers that indicate relative times AND normalize the intervals in case any are missing """
         for key in self._times_.keys():
-            self._times_[key] = TP.normalize_timestamps(self._times_[key], False, 2)
+            self._times_[key] = TP.normalize_timestamps(self._times_[key], False, 3)
             self._times_[key], self._counts_[key] = TP.normalize_intervals(self._times_[key], self._counts_[key], interval)
         
         """ Normalize times """
@@ -461,7 +455,7 @@ class IntervalReporting(DataReporting):
         ranges.append(0.0)
         ranges.append(times_max * 1.1)
         ranges.append(0.0)
-        ranges.append(metrics_max * 1.1)
+        ranges.append(metrics_max * 1.5)
         
         """ Generate plots given data """
         self._gen_plot(self._counts_, self._times_, title, xlabel, ylabel, ranges, subplot_index, fname, labels)
@@ -576,13 +570,11 @@ class ConfidenceReporting(DataReporting):
     
     def _gen_box_plot(self, data, title, ylabel, subplot_index, labels, fname):
                 
-        print data
-        print labels
         
         pylab.subplot(subplot_index)
         pylab.figure(num=None,figsize=[26,14])    
         
-        bp = pylab.boxplot(data)
+        bp = pylab.boxplot(data, sym='b+')
         pylab.xticks(range(1, len(labels) + 1), labels)
         
         """ Set the figure and font size """
@@ -652,7 +644,7 @@ class ConfidenceReporting(DataReporting):
             winner = labels[0]
         else:
             winner = labels[1]
-            
+        
         win_str =  '\nThe winner "' + winner + '" had a %.2f%s increase.'
         win_str = win_str % (percent_increase, '%')
         
@@ -741,7 +733,7 @@ class ConfidenceReporting(DataReporting):
         max_mean = max(max(means_1),max(means_2))
         max_sd = max(max(std_devs_1),max(std_devs_2))
         max_y = float(max_mean) + float(max_sd) 
-        max_y = max_y + 0.1 * max_y
+        max_y = max_y + 0.5 * max_y
         max_x = max(times_indices) + min(times_indices)
         ranges = [0.0, max_x, 0, max_y]
         
