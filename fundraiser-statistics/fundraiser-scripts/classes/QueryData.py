@@ -162,7 +162,7 @@ def format_query(query_name, sql_stmnt, args):
         imp_start_time_obj_str = TP.timestamp_from_obj(imp_start_time_obj, 1, 3)
         
         sql_stmnt = sql_stmnt % ('%', '%', '%',  '%', interval, interval, imp_start_time_obj_str, end_time, '%', '%',  '%',  '%', interval, interval, start_time, end_time, campaign, \
-                                '%', '%',  '%',  '%', interval, interval, start_time, end_time, '%', '%',  '%',  '%', interval, interval, start_time, end_time, campaign)
+                                '%', '%',  '%',  '%', interval, interval, start_time, end_time, '%', '%',  '%',  '%', interval, interval, start_time, end_time, campaign, campaign)
         
     elif query_name == 'report_LP_metrics_minutely':
         start_time = args[0]
@@ -170,7 +170,7 @@ def format_query(query_name, sql_stmnt, args):
         campaign = args[2]
         interval = args[3]
         
-        sql_stmnt = sql_stmnt % ('%', '%', '%',  '%', interval, interval, start_time, end_time, campaign, '%', '%',  '%',  '%', interval, interval, start_time, end_time, campaign)
+        sql_stmnt = sql_stmnt % ('%', '%', '%',  '%', interval, interval, start_time, end_time, campaign, '%', '%',  '%',  '%', interval, interval, start_time, end_time, campaign, campaign)
     
     elif query_name == 'report_campaign_metrics_minutely':
         start_time = args[0]
@@ -421,7 +421,7 @@ def get_metric_index(query_name, metric_name):
             return 2
         elif metric_name == 'name':
             return 0
-        elif metric_name == 'timestamp':
+        elif metric_name == 'earliest_timestamp':
             return 3
         else:
             return -1
