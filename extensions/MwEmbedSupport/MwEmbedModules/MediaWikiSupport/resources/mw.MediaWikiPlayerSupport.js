@@ -1,6 +1,4 @@
-
 ( function( mw, $ ) {
-	
 	/** 
 	 * Merge in the default video attributes supported by embedPlayer:
 	 */
@@ -21,17 +19,16 @@
 	 * Closure function wraps mediaWiki embedPlayer bindings
 	 */
 	mw.addMediaWikiPlayerSupport = function( embedPlayer ){
-		
 		// Set some local variables: 
-		if( ! $( embedPlayer).attr( 'data-mwtitle' ) ){			
+		if( ! embedPlayer['data-mwtitle'] ){			
 			return false;
 		} else {
-			var apiTitleKey = $( embedPlayer).attr( 'data-mwtitle');
+			var apiTitleKey = embedPlayer['data-mwtitle'];
 			// legacy support ( set as attribute ) 
 			embedPlayer.apiTitleKey = apiTitleKey;
 		}
 		// Set local apiProvider via config if not defined
-		var apiProvider = $( embedPlayer ).attr('data-mwprovider');
+		var apiProvider = embedPlayer['data-mwprovider'];
 		if( !apiProvider ){
 			apiProvider = mw.getConfig( 'EmbedPlayer.ApiProvider' );
 		}
@@ -228,7 +225,6 @@
 				callback( true );
 			} );
 		};
-		
 		/**
 		 * Adds embedPlayer Bindings
 		 */				
