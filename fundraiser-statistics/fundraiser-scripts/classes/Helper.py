@@ -42,8 +42,11 @@ def convert_Decimal_list_to_float(lst):
     new_lst = list()
     
     for i in lst:
-        new_lst.append(float(i))
-
+        if i == None or i == 'NULL':
+            new_lst.append(0.0)
+        else:
+            new_lst.append(float(i))
+            
     return new_lst
 
      
@@ -69,53 +72,6 @@ def stringify(str_to_stringify):
 
 """
 
-""" Determines the following hour based on the precise date to the hour """
-def getNextHour(year, month, day, hour):
-
-    lastDayofMonth = cal.monthrange(year,month)[1]
-
-    next_year = year
-    next_month = month
-    next_day = day
-    next_hour = hour + 1
-
-    if hour == 23:
-        next_hour = 0
-        if day == lastDayofMonth:
-            next_day = 1
-            if month == 12:
-                next_month = 1
-                next_year = year + 1
-
-    return [next_year, next_month, next_day, next_hour]
-
-""" Determines the previous hour based on the precise date to the hour """
-def getPrevHour(year, month, day, hour):
-    
-    if month == 1:
-        last_year = year - 1
-        last_month = 12
-    else:
-        last_year = year
-        last_month = month - 1
-        
-    lastDayofPrevMonth = cal.monthrange(year,last_month)[1]
-        
-    prev_year = year
-    prev_month = month
-    prev_day = day
-    prev_hour = hour - 1
-
-    if prev_hour == -1:
-        prev_hour = 23
-        if day == 1:
-            prev_day = lastDayofPrevMonth
-            prev_month = last_month
-            prev_year = last_year
-        else:
-            prev_day = day - 1
-            
-    return [prev_year, prev_month, prev_day, prev_hour]
 
 
 class AutoVivification(dict):
@@ -153,47 +109,7 @@ def drange(start, stop, step):
 
 def mod_list(lst, modulus):
     return [x % modulus for x in lst]
-        
-""" Extract a timestamp from the filename """
-def get_timestamps(logFileName):
-    
-    fname_parts = logFileName.split('-')
 
-    year = int(fname_parts[1])
-    month = int(fname_parts[2])
-    day = int(fname_parts[3])
-    hour = int(fname_parts[4][0:2])
-    
-    # Is this an afternoon log?
-    afternoon = (fname_parts[4][2:4] == 'PM') 
-     
-    # Adjust the hour as necessary if == 12AM or *PM
-    if afternoon and hour < 12:
-        hour = hour + 12
-        
-    if not(afternoon) and hour == 12:
-        hour = 0
-
-    prev_hr = getPrevHour(year, month, day, hour)
-    
-    str_month = '0' + str(month) if month < 10 else str(month)
-    str_day = '0' + str(day) if day < 10 else str(day)
-    str_hour = '0' + str(hour) if hour < 10 else str(hour)
-    
-    prev_month = prev_hr[1] 
-    prev_day = prev_hr[2]
-    prev_hour = prev_hr[3]
-    str_prev_month = '0' + str(prev_month) if prev_month < 10 else str(prev_month)
-    str_prev_day = '0' + str(prev_day) if prev_day < 10 else str(prev_day)
-    str_prev_hour = '0' + str(prev_hour) if prev_hour < 10 else str(prev_hour)
-    
-    log_end = str(year) + str_month + str_day + str_hour + '5500'
-    log_start = str(prev_hr[0]) + str_prev_month + str_prev_day + str_prev_hour + '5500' 
-    
-    #log_start = str(year) + str(month) + str(day) + str(hour) + '5500'
-    #log_end = str(prev_hr[0]) + str(prev_hr[1]) + str(prev_hr[2]) + str(prev_hr[3]) + '5500' 
-
-    return [log_start, log_end]
     
 
 """ Compute the difference among two timestamps """
