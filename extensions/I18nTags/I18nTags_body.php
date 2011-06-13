@@ -58,7 +58,7 @@ class I18nTags {
 			return '';
 		}
 		if ( !$outputLanguage ) {
-			$outputLanguage = $wgLang->getCode();
+			$outputLanguage = $parser->getOptions()->getUserLang();
 		}
 		$cldr   = is_callable( array( 'LanguageNames', 'getNames' ));
 		if ( $outputLanguage !== 'native' && $cldr ) {
