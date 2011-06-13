@@ -39,9 +39,8 @@ __date__ = "April 8th, 2011"
 
 
 import sys
-# sys.path.append('../')
-
 import datetime
+import calendar as cal
 import math
 import Fundraiser_Tools.classes.Helper as mh
 
@@ -89,15 +88,19 @@ def normalize_timestamps(time_lists, count_back, time_unit):
      else:
          start_date_obj = find_earliest_date_in_list(time_lists)
      
+     start_month = start_date_obj.month
      start_day = start_date_obj.day
      start_hr  = start_date_obj.hour
      start_mte = start_date_obj.minute
+     
+     length_of_month = cal.mdays[start_month]
      
      # Normalize dates
      time_norm = mh.AutoVivification()
      for key in time_lists.keys():
          for date_obj in time_lists[key]:
              
+             month = date_obj.month
              day = date_obj.day
              hr = date_obj.hour
              mte = date_obj.minute
@@ -108,7 +111,8 @@ def normalize_timestamps(time_lists, count_back, time_unit):
                  elem = (day - start_day) * 24 + (hr - start_hr)
              elif time_unit == 2:
                  elem = (day - start_day) * 24 * 60 + (hr - start_hr) * 60 + (mte - start_mte)
-                 
+             elif time_unit == 3:
+                 elem = (month - start_month) * 24 * 60 * length_of_month + (day - start_day) * 24 * 60 + (hr - start_hr) * 60 + (mte - start_mte)
              try: 
                  time_norm[key].append(elem)
              except:
@@ -471,7 +475,7 @@ def get_time_lists(start_time, end_time, interval, num_samples, format):
         if curr_datetime.month < 10:
             month_str_fill = '0'
         if curr_datetime.day < 10:
-            month_str_fill = '0'
+            day_str_fill = '0'
         if curr_datetime.hour < 10:
             hour_str_fill = '0'
         if curr_datetime.minute < 10:
@@ -499,3 +503,109 @@ def get_time_lists(start_time, end_time, interval, num_samples, format):
         
     return [times, time_indices]
 
+
+
+def get_timestamps_with_interval(logFileName, interval):
+    
+    log_start, log_end = get_timestamps(logFileName)
+    
+    end_obj = timestamp_to_obj(log_end, 1)
+    start_obj = end_obj + datetime.timedelta(minutes=-interval)
+    
+    start_timestamp = timestamp_from_obj(start_obj, 1, 2)
+    end_timestamp = timestamp_from_obj(end_obj, 1, 2)
+    
+    return [start_timestamp, end_timestamp]
+    
+    
+""" Extract a timestamp from the filename """
+def get_timestamps(logFileName):
+    
+    fname_parts = logFileName.split('-')
+
+    year = int(fname_parts[1])
+    month = int(fname_parts[2])
+    day = int(fname_parts[3])
+    hour = int(fname_parts[4][0:2])
+    minute = int(fname_parts[6][0:2])
+    
+    # Is this an afternoon log?
+    afternoon = (fname_parts[4][2:4] == 'PM') 
+     
+    # Adjust the hour as necessary if == 12AM or *PM
+    if afternoon and hour < 12:
+        hour = hour + 12
+        
+    if not(afternoon) and hour == 12:
+        hour = 0
+
+    prev_hr = getPrevHour(year, month, day, hour)
+    
+    str_month = '0' + str(month) if month < 10 else str(month)
+    str_day = '0' + str(day) if day < 10 else str(day)
+    str_hour = '0' + str(hour) if hour < 10 else str(hour)
+    str_minute = '0' + str(minute) if minute < 10 else str(minute)
+    
+    prev_month = prev_hr[1] 
+    prev_day = prev_hr[2]
+    prev_hour = prev_hr[3]
+    str_prev_month = '0' + str(prev_month) if prev_month < 10 else str(prev_month)
+    str_prev_day = '0' + str(prev_day) if prev_day < 10 else str(prev_day)
+    str_prev_hour = '0' + str(prev_hour) if prev_hour < 10 else str(prev_hour)
+    
+    log_end = str(year) + str_month + str_day + str_hour + str_minute + '00'
+    log_start = str(prev_hr[0]) + str_prev_month + str_prev_day + str_prev_hour + '5500' 
+    
+    #log_start = str(year) + str(month) + str(day) + str(hour) + '5500'
+    #log_end = str(prev_hr[0]) + str(prev_hr[1]) + str(prev_hr[2]) + str(prev_hr[3]) + '5500' 
+
+    return [log_start, log_end]
+
+
+""" Determines the following hour based on the precise date to the hour """
+def getNextHour(year, month, day, hour):
+
+    lastDayofMonth = cal.monthrange(year,month)[1]
+
+    next_year = year
+    next_month = month
+    next_day = day
+    next_hour = hour + 1
+
+    if hour == 23:
+        next_hour = 0
+        if day == lastDayofMonth:
+            next_day = 1
+            if month == 12:
+                next_month = 1
+                next_year = year + 1
+
+    return [next_year, next_month, next_day, next_hour]
+
+""" Determines the previous hour based on the precise date to the hour """
+def getPrevHour(year, month, day, hour):
+    
+    if month == 1:
+        last_year = year - 1
+        last_month = 12
+    else:
+        last_year = year
+        last_month = month - 1
+        
+    lastDayofPrevMonth = cal.monthrange(year,last_month)[1]
+        
+    prev_year = year
+    prev_month = month
+    prev_day = day
+    prev_hour = hour - 1
+
+    if prev_hour == -1:
+        prev_hour = 23
+        if day == 1:
+            prev_day = lastDayofPrevMonth
+            prev_month = last_month
+            prev_year = last_year
+        else:
+            prev_day = day - 1
+            
+    return [prev_year, prev_month, prev_day, prev_hour]
