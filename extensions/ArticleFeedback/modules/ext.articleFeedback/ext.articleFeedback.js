@@ -278,7 +278,7 @@ var config = {
 			'weight': 2,
 			'condition': function() {
 				// An empty restrictions array means anyone can edit
-				var restrictions =  mw.config.get( 'wgRestrictionEdit' );
+				var restrictions =  mw.config.get( 'wgRestrictionEdit', [] );
 				if ( restrictions.length ) {
 					var groups =  mw.config.get( 'wgUserGroups' );
 					// Verify that each restriction exists in the user's groups

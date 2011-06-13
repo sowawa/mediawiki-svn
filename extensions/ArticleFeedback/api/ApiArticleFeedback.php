@@ -5,9 +5,11 @@ class ApiArticleFeedback extends ApiBase {
 	}
 
 	public function execute() {
-		global $wgUser, $wgArticleFeedbackRatings, $wgArticleFeedbackSMaxage;
+		global $wgUser, $wgArticleFeedbackRatings, $wgArticleFeedbackSMaxage,
+			$wgArticleFeedbackNamespaces;
 		$params = $this->extractRequestParams();
 
+		// Anon token check
 		if ( $wgUser->isAnon() ) {
 			if ( !isset( $params['anontoken'] ) ) {
 				$this->dieUsageMsg( array( 'missingparam', 'anontoken' ) );
@@ -18,6 +20,21 @@ class ApiArticleFeedback extends ApiBase {
 			$token = $params['anontoken'];
 		} else {
 			$token = '';
+		}
+
+		// Load check, is this page ArticleFeedback-enabled ?
+		// Keep in sync with ext.articleFeedback.startup.js
+		$title = Title::newFromID( $params['pageid'] );
+		if (
+			// Inexisting page ? (newFromID returns null so we can't use $title->exists)
+			is_null( $title )
+			// Namespace not a valid ArticleFeedback namespace ?
+			|| !in_array( $title->getNamespace(), $wgArticleFeedbackNamespaces )
+			// Page a redirect ?
+			|| $title->isRedirect()
+		) {
+				// ...then error out
+				$this->dieUsage( 'ArticleFeedback is not enabled on this page', 'invalidpage' );
 		}
 
 		$dbr = wfGetDB( DB_SLAVE );
@@ -424,6 +441,7 @@ class ApiArticleFeedback extends ApiBase {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'missingparam', 'anontoken' ),
 			array( 'code' => 'invalidtoken', 'info' => 'The anontoken is not 32 characters' ),
+			array( 'code' => 'invalidpage', 'info' => 'ArticleFeedback is not enabled on this page' ),
 		) );
 	}
 

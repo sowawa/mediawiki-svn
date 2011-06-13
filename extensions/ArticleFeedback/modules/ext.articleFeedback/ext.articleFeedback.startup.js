@@ -3,8 +3,10 @@
  */
 
 jQuery( function( $ ) {
+	// Load check, is this page ArticleFeedback-enabled ?
+	// Keep in sync with ApiArticleFeedback.php
 	if (
-		// Main namespace articles
+		// Only on pages in namespaces where it is enabled
 		$.inArray( mw.config.get( 'wgNamespaceNumber' ), mw.config.get( 'wgArticleFeedbackNamespaces', [] ) ) > -1
 		// Existing pages
 		&& mw.config.get( 'wgArticleId' ) > 0
