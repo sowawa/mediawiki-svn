@@ -62,10 +62,6 @@ $( document ).ready( function() {
 						}
 					});
 					$this.data( 'request', request );
-				} else {
-				        // no need to send ajax request for empty input but clear the result div
-					var context = $this.data( 'suggestions-context' );
-					context.data.$container.hide();
                                 }
 			},
 			cancel: function () {
