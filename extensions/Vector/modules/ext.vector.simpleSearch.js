@@ -40,26 +40,33 @@ $( document ).ready( function() {
 
 	// General suggestions functionality for all search boxes
 	$( '#searchInput, #searchInput2, #powerSearchText, #searchText' )
+		.mouseover( function() { $(this).focus()
+		})
 		.suggestions( {
 			fetch: function( query ) {
 				var $this = $(this);
-				var request = $.ajax( {
-					url: mw.config.get( 'wgScriptPath' ) + '/api.php',
-					data: {
-						action: 'opensearch',
-						search: query,
-						limit: 10,
-						namespace: 0,
-						suggest: ''
-					},
-					dataType: 'json',
-					success: function( data ) {
-						if ( $.isArray( data ) && 1 in data ) {
-							$this.suggestions( 'suggestions', data[1] );
+			        if ( query.length != 0 ) {
+					var request = $.ajax( {
+						url: mw.config.get( 'wgScriptPath' ) + '/api.php',
+						data: {
+							action: 'opensearch',
+							search: query,
+							namespace: 0,
+							suggest: ''
+						},
+						dataType: 'json',
+						success: function( data ) {
+							if ( $.isArray( data ) && 1 in data ) {
+								$this.suggestions( 'suggestions', data[1] );
+							}
 						}
-					}
-				});
-				$(this).data( 'request', request );
+					});
+					$this.data( 'request', request );
+				} else {
+				        // no need to send ajax request for empty input but clear the result div
+					var context = $this.data( 'suggestions-context' );
+					context.data.$container.hide();
+                                }
 			},
 			cancel: function () {
 				var request = $(this).data( 'request' );
