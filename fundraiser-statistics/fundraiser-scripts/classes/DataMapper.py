@@ -131,8 +131,8 @@ class DataMapper(object):
 """
 class FundraiserDataMapper(DataMapper):
     
-    _db = None
-    _cur = None
+    _db_ = None
+    _cur_ = None
     
     _impression_table_name_ = 'banner_impressions'
     _landing_page_table_name_ = 'landing_page_requests'
@@ -146,13 +146,13 @@ class FundraiserDataMapper(DataMapper):
     
     """ !! MODIFY -- use dataloaders! """ 
     def _init_db(self):     
-        self._db = MySQLdb.connect(host='127.0.0.1', user='rfaulk', db='faulkner', port=3307)
-        self._cur = self._db.cursor()
+        self._db_ = MySQLdb.connect(host='127.0.0.1', user='rfaulk', db='faulkner', port=3307)
+        self._cur_ = self._db_.cursor()
         
     """ !! MODIFY -- use dataloaders! """ 
     def _close_db(self):
-        self._cur.close()
-        self._db.close()
+        self._cur_.close()
+        self._db_.close()
         
         
     
@@ -168,7 +168,7 @@ class FundraiserDataMapper(DataMapper):
             deleteStmnt = 'delete from ' + self._landing_page_table_name_ + ' where start_timestamp = \'' + timestamp + '\';'
         
         try:
-            self._cur.execute(deleteStmnt)
+            self._cur_.execute(deleteStmnt)
             print >> sys.stdout, "Executed delete from impression: " + deleteStmnt
         except:
             print >> sys.stderr, "Could not execute delete:\n" + deleteStmnt + "\nResuming insert ..."
@@ -356,9 +356,9 @@ class FundraiserDataMapper(DataMapper):
                                     val = '(' + start_timestamp_in + ',\'' + banner + '\',\'' + project + '\',\'' + country + '\',\'' + lang + '\',' \
                                     + str(count) + ',' + time_stamp_in + ');'
 
-                                    self._cur.execute(insertStmt + val)
+                                    self._cur_.execute(insertStmt + val)
                                 except:
-                                    self._db.rollback()
+                                    self._db_.rollback()
                                     sys.exit("Database Interface Exception - Could not execute statement:\n" + insertStmt + val)
     
                 # Re-initialize counts
@@ -399,8 +399,6 @@ class FundraiserDataMapper(DataMapper):
         end = time_stamps[1]
         start_timestamp_in = "convert(\'" + start + "\', datetime)"
         curr_time = TP.timestamp_from_obj(datetime.datetime.now(),1,3)
-        
-        count_parse = 0
         
         """ retrieve the start time of the log """
         start = self.get_first_timestamp_from_log(logFileName)
@@ -547,10 +545,21 @@ class FundraiserDataMapper(DataMapper):
                 landing_url = lineArgs[8]
             except IndexError:
                 landing_url = 'Unavailable'
-    
-            include_request, index_str_flag = self.evaluate_landing_url(landing_url)
+                
+            hostIndex = 1
+            queryIndex = 4
+            pathIndex = 2
             
-           
+            parsed_landing_url = up.urlparse(landing_url)
+            query_fields = cgi.parse_qs(parsed_landing_url[queryIndex]) # Get the banner name and lang
+            path_pieces = parsed_landing_url[pathIndex].split('/')
+
+            #print ''
+            #print landing_url
+            include_request, index_str_flag = self.evaluate_landing_url(landing_url, parsed_landing_url, query_fields, path_pieces)
+            #print [include_request, index_str_flag]
+            
+            
             if include_request:
                 
                 """ Address cases where the query string contains the landing page - ...wikimediafoundation.org/w/index.php?... """
@@ -573,7 +582,7 @@ class FundraiserDataMapper(DataMapper):
                             
                     except:
                         landing_page = 'NONE'
-                        country = Hlp.localize_IP(self._cur, ip_add)
+                        country = Hlp.localize_IP(self._cur_, ip_add)
                         
                 else: 
                     """ Address cases where the query string does not contain the landing page - ...wikimediafoundation.org/wiki/... """
@@ -597,11 +606,11 @@ class FundraiserDataMapper(DataMapper):
                                 country = landing_path[3]
                                 
                         except:
-                            country =  Hlp.localize_IP(self._cur, ip_add) 
+                            country =  Hlp.localize_IP(self._cur_, ip_add) 
                 
                 # If country is confused with the language use the ip
                 if country == country.lower():
-                    country = Hlp.localize_IP(self._cur, ip_add) 
+                    country = Hlp.localize_IP(self._cur_, ip_add) 
                                 
                 # ensure fields exist
                 try:
@@ -621,8 +630,8 @@ class FundraiserDataMapper(DataMapper):
                     + project + '\',\'' +  ip_add + '\',' + 'convert(\'' + timestamp_string + '\', datetime)' + ');'
                     
                     #print insertStmt + val
-                    self._cur.execute(insertStmt_lp + val)
-    
+                    self._cur_.execute(insertStmt_lp + val)
+                    
                 except:
                     print "Could not insert:\n" + insertStmt_lp + val
                     pass
@@ -695,16 +704,12 @@ class FundraiserDataMapper(DataMapper):
     """
         Parses the landing url and determines if its valid
     """
-    def evaluate_landing_url(self, landing_url):        
+    def evaluate_landing_url(self, landing_url, parsed_landing_url, query_fields, path_pieces):        
         
         hostIndex = 1
         queryIndex = 4
         pathIndex = 2
 
-        parsed_landing_url = up.urlparse(landing_url)
-        query_fields = cgi.parse_qs(parsed_landing_url[queryIndex]) # Get the banner name and lang
-        path_pieces = parsed_landing_url[pathIndex].split('/')
-        
         """ 
             Filter the landing URLs
         
@@ -714,11 +719,11 @@ class FundraiserDataMapper(DataMapper):
             Evaluate conditions which determine acceptance of request based on the landing url 
         """
         try: 
-            
             c1 = re.search('WMF', path_pieces[2] ) != None or re.search('Junetesting001', path_pieces[2] ) != None 
-            c2 = re.search('Hear_from_Kartika', path_pieces[2])   != None
-            cond1 = parsed_landing_url[hostIndex] == 'wikimediafoundation.org' and path_pieces[1] == 'wiki' and (c1 or c2)
+            c2 = re.search('Hear_from_Kartika', path_pieces[2]) != None
             
+            cond1 = parsed_landing_url[hostIndex] == 'wikimediafoundation.org' and path_pieces[1] == 'wiki' and (c1 or c2)
+
             c1 = re.search('index.php', path_pieces[2] )  != None
             index_str_flag = c1
             
@@ -727,16 +732,17 @@ class FundraiserDataMapper(DataMapper):
             except KeyError:
                 c2 = 0
             cond2 = (parsed_landing_url[hostIndex] == 'wikimediafoundation.org' and path_pieces[1] == 'w' and c1 and c2)
-            
-            if cond2:
-                count_parse = count_parse + 1
-                
+                            
             regexp_res = re.search('Special:LandingCheck',landing_url)
             cond3 = (regexp_res == None)
             
             return [(cond1 or cond2) and cond3, index_str_flag]
              
-        except: 
-            return [0, 0]
+        except Exception as e: 
+            #print type(e)     # the exception instance
+            #print e.args      # arguments stored in .args
+            #print e           # __str__ allows args to printed directly
+            
+            return [False, False]
 
     
