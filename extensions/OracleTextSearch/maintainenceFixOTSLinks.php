@@ -1,6 +1,11 @@
 <?php
-/* run this script out of your $IP/maintenance folder */
-require_once( 'Maintenance.php' );
+if ( getenv( 'MW_INSTALL_PATH' ) !== false ) {
+	$IP = getenv( 'MW_INSTALL_PATH' );
+} else {
+	$dir = dirname( __FILE__ ); 
+	$IP = "$dir/../..";
+}
+require_once( "$IP/maintenance/Maintenance.php" );
 
 class FixOTSLinks extends Maintenance {
 	public function __construct() {
@@ -12,9 +17,9 @@ class FixOTSLinks extends Maintenance {
 	public function execute() {
 		$doAll = $this->hasOption( 'all' );
 		if ($doAll) {
-			$this->output( "Recreate all index links to documents\n\n" );
+			$this->output( "Recreating all index links to documents ", 'OracleTextSearch' );
 		} else {
-			$this->output( "Recreate missing index links to documents\n\n" );
+			$this->output( "Recreating missing index links to documents ", 'OracleTextSearch' );
 		}
 		$this->doRecreate($doAll);
 	}
@@ -28,15 +33,15 @@ class FixOTSLinks extends Maintenance {
 		
 		$searchWhere = $all ? '' : ' AND NOT EXISTS (SELECT null FROM '.$tbl_idx.' WHERE si_page=p.page_id AND si_url IS NOT null)';
 		$result = $dbw->doQuery('SELECT p.page_id FROM '.$tbl_pag.' p WHERE p.page_namespace = '.NS_FILE.$searchWhere );
-		$this->output($result->numRows().' files found.'."\n\n");
+		$this->output( "[".$result->numRows()." files found] ", 'OracleTextSearch' );
 		
 		$syncIdx = false;
-		
+		$countDone = 0;
+		$countSkipped = 0;
+
 		while (($row = $result->fetchObject()) !== false) {
 			$titleObj = Title::newFromID($row->page_id);
 			$file = wfLocalFile($titleObj->getText());
-
-			$this->output('Updating "'.$titleObj->getText().'" ... ');
 
 			if (in_array( $file->getMimeType(), $wgExIndexMIMETypes )) {
 				$url = $wgExIndexOnHTTP ? preg_replace( '/^https:/i', 'http:', $file->getFullUrl() ) : $file->getFullUrl();
@@ -44,20 +49,24 @@ class FixOTSLinks extends Maintenance {
 					array( 'si_url' => $url ), 
 					array( 'si_page' => $row->page_id ),
 					'SearchIndexUpdate:update' );
-				$this->output('complete'."\n");
 				$syncIdx = true;
 			} else {
-				$this->output('skipped (unsupported or excluded mime-type)'."\n");
+				$countSkipped++;
 			}
+			$countDone++;
 		}
 		
 		if ( $syncIdx ) {
-			$this->output("\n".'Syncing Index'."\n");
+			$this->output( " Syncing... ", 'OracleTextSearch');
 			$index = $dbw->getProperty('mTablePrefix')."si_url_idx";
 			$dbw->query( "CALL ctx_ddl.sync_index('$index')" );
 		}
 		
-		$this->output('Recreate finished');
+		$this->output(" Finished ($countDone processed", 'OracleTextSearch');
+		if ( $countSkipped > 0 ) {
+			$this->output(", $countSkipped skipped ", 'OracleTextSearch');
+		}
+		$this->output(")", 'OracleTextSearch');
 	}
 }
 
