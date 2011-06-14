@@ -24,7 +24,7 @@ class MoodBarHooks {
 	 */
 	public static function onLoadExtensionSchemaUpdates( $updater = null ) {
 		$updater->addExtensionUpdate( array( 'addTable', 'moodbar_feedback',
-			dirname(__FILE__).'/moodbar.sql' ) );
+			dirname(__FILE__).'/sql/MoodBar.sql' ) );
 			
 		return true;
 	}
