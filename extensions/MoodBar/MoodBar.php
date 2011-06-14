@@ -20,6 +20,11 @@ $wgAutoloadClasses['MBFeedbackItem'] = dirname(__FILE__).'/FeedbackItem.php';
 $wgAutoloadClasses['ApiMoodBar'] = dirname(__FILE__).'/ApiMoodBar.php';
 $wgAPIModules['moodbar'] = 'ApiMoodBar';
 
+// Hooks
+$wgAutoloadClasses['MoodBarHooks'] = dirname(__FILE__).'/Hooks.php';
+$wgHooks['BeforePageDisplay'][] = 'MoodBarHooks::onPageDisplay';
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'MoodBarHooks::onLoadExtensionSchemaUpdates';
+
 // Internationalisation
 $wgExtensionMessagesFiles = dirname(__FILE__).'/Messages.php';
 
@@ -29,7 +34,7 @@ $mbResourceTemplate = array(
 	'remoteExtPath' => 'MoodBar'
 );
 
-$wgResourceModules['ext.moodBar'] = $mbResourceTemplate + array(
+$wgResourceModules['ext.moodbar'] = $mbResourceTemplate + array(
 	'styles' => array(  ),
 	'scripts' => array(  ),
 	'dependencies' => array(  ),
