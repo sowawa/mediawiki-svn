@@ -82,10 +82,11 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author YaronSh
  */
 $messages['he'] = array(
-	'snmpquery-desc' => 'הוספת פונקציות SNMPget ו־SNMPwalk והחזרת הנתונים לוויקי',
+	'snmpquery-desc' => 'הוספת פונקציות SNMPget ו־SNMPwalk ואפשרות הצגת התוצאות בוויקי',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

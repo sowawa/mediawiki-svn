@@ -203,6 +203,7 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'livetranslate-desc' => 'Omogućuje prevođenje uživo sadržaja stranice koristeći uslugu Google Translate',
+	'right-managetms' => '[[Special:SpecialLiveTranslate|Mijenjanje]] spiska memorije za prevođenje',
 	'livetranslate-translate-to' => 'Prevedi ovu stranicu na',
 	'livetranslate-button-translate' => 'Prevedi',
 	'livetranslate-button-translating' => 'Prevodim...',
@@ -211,6 +212,22 @@ $messages['bs'] = array(
 	'livetranslate-dictionary-empty' => "Još uvijek nema riječi u rječniku. Kliknite na jezičak ''uredi'' da ih dodate.",
 	'livetranslate-dictionary-count' => 'Ima {{PLURAL:$1|$1 riječ|$1 riječi}} na $2 {{PLURAL:$2|jeziku|jezika}}. Kliknite na jezičak "uredi" da dodate više.',
 	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Ovaj jezik nije|Ovi jezici nisu}} trenutno {{PLURAL:$2|postavljen|postavljeni}} kao dopušteni cilj prevođenja: $1. Promijenite dopuštene jezike u vašim postavkama wikija ili uklonite ove iz rječnika.',
+	'livetranslate-dictionary-goto-edit' => 'Izmijeni memorije prevoda.',
+	'special-livetranslate' => 'Prevođenje uživo',
+	'livetranslate-tmtype-ltf' => 'Format prevođenja uživo',
+	'livetranslate-tmtype-tmx' => 'Translation Memory eXchange',
+	'livetranslate-tmtype-gcsv' => 'Google CSV',
+	'livetranslate-special-no-tms-yet' => 'U memoriji još uvijek nema prevoda.',
+	'livetranslate-special-button' => 'Spremi i ažuriraj',
+	'livetranslate-special-type' => 'Vrsta',
+	'livetranslate-special-location' => 'Lokacija',
+	'livetranslate-special-remove' => 'Ukloni',
+	'livetranslate-special-local' => 'Lokalno',
+	'livetranslate-special-add-tm' => 'Dodaj novu memoriju prevoda',
+	'livetranslate-special-current-tms' => 'Postojeće memorije prevoda',
+	'livetranslate-special-tms-update' => 'Ažuriraj memorije prevoda',
+	'livetranslate-special-update' => 'Ažuriraj memorije prevoda',
+	'livetranslate-importtms-param-miscmatch' => 'Neslaganje između broja lokacija i vrsta',
 );
 
 /** German (Deutsch)

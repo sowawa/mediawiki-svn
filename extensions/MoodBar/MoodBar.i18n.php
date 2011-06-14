@@ -16,3 +16,10 @@ $messages['en'] = array(
 	'moodbar-desc' => 'Allows specified users to send their "mood" back to the site operator',
 );
 
+/** German (Deutsch)
+ * @author Kghbln
+ */
+$messages['de'] = array(
+	'moodbar-desc' => 'Ermöglicht es Benutzern ihre aktuelle Stimmung dem Seitenbetreiber mitzuteilen',
+);
+

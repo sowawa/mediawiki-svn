@@ -139,13 +139,25 @@ $messages['de'] = array(
  */
 $messages['gl'] = array(
 	'notificator' => 'Notificador',
+	'notificator-desc' => 'Envía unha notificación por correo electrónico sobre os cambios feitos nunha páxina cando se preme nun botón desa páxina.',
+	'notificator-db-table-does-not-exist' => 'O "notificator" da táboa da base de datos non existe. Cómpre executar a escritura de mantemento update.php antes de poder empregar a extensión de notificación.',
 	'notificator-e-mail-address' => 'enderezo de correo electrónico',
 	'notificator-notify' => 'Notificar',
+	'notificator-notify-address-or-name' => 'Notificar a $1',
+	'notificator-revs-not-from-same-title' => 'Os identificadores de revisión non son do mesmo título ou páxina',
 	'notificator-return-to' => 'Volver a',
+	'notificator-special-page-accessed-directly' => 'Non se pode acceder directamente a esta páxina especial. Cómpre empregala a través dun botón de notificación.',
+	'notificator-e-mail-address-invalid' => 'O enderezo de correo electrónico proporcionado non é válido.',
+	'notificator-notification-not-sent' => '<em>Non</em> se enviou a notificación.',
 	'notificator-change-tag' => 'cambio',
 	'notificator-new-tag' => 'novo',
+	'notificator-notification-text-changes' => '$1 quere notificarlle sobre os seguintes cambios feitos en $2:',
+	'notificator-notification-text-new' => '$1 quere notificarlle sobre $2:',
+	'notificator-following-e-mail-sent-to' => 'O seguinte correo electrónico enviouse a <em>$1</em>:',
 	'notificator-subject' => 'Asunto:',
+	'notificator-error-sending-e-mail' => 'Houbo un erro ao enviar a notificación por correo electrónico a <em>$1</em>.',
 	'notificator-error-parameter-missing' => 'Erro: Falta o parámetro.',
+	'notificator-notified-already' => '$1 xa fora notificado antes sobre esta páxina ou cambio na páxina.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -223,5 +235,13 @@ $messages['pt'] = array(
 	'notificator-error-sending-e-mail' => 'Ocorreu um erro ao enviar a notificação por correio electrónico a <em>$1</em>.',
 	'notificator-error-parameter-missing' => 'Erro: Parâmetro em falta.',
 	'notificator-notified-already' => '$1 já foi notificado acerca desta página ou da alteração desta página.',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'notificator-e-mail-address' => 'ఈ-మెయిలు చిరునామా',
+	'notificator-subject' => 'విషయం:',
 );
 

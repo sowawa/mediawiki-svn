@@ -36,10 +36,28 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'wikitweet-desc' => '{{desc}}',
+	'wikitweet-delete' => '{{Identical|Delete}}',
+);
+
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author EugeneZelenko
+ * @author Wizardist
+ */
+$messages['be-tarask'] = array(
+	'wikitweet-desc' => 'Стварэньне Twitter-падобнай стужкі ў MediaWiki',
+	'wikitweet-pleaselogin' => 'Калі ласка, увайдзіце ў сыстэму, каб дадаць паведамленьне.',
+	'wikitweet-moretweets' => 'Болей паведамленьняў…',
+	'wikitweet-infoajax' => 'выкарыстоўвае AJAX і абнаўляецца кожныя 5 сэкунд без перазагрузкі старонкі.',
+	'wikitweet-submit' => 'Дадаць паведамленьне',
+	'wikitweet-submitandmail' => 'Дадаць паведамленьне і даслаць электронны ліст',
+	'wikitweet-delete' => 'выдаліць',
+	'wikitweet-timeago' => '$1 таму',
+	'wikitweet-fewsecondsago' => 'Колькі сэкунд таму',
 );
 
 /** Bulgarian (Български)

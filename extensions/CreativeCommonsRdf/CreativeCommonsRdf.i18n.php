@@ -23,6 +23,13 @@ $messages['be-tarask'] = array(
 	'creativecommonsrdf-desc' => 'RDF-мэтазьвесткі CreativeCommons',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'creativecommonsrdf-desc' => 'Metaroadennoù RDF CreativeCommons',
+);
+
 /** Danish (Dansk)
  * @author Peter Alberti
  */

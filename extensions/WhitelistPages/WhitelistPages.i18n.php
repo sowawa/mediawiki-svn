@@ -20,6 +20,13 @@ $messages['qqq'] = array(
 	'whitelistpages-desc' => '{{desc}}',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'whitelistpages-desc' => "Aotren a ra ur [[MediaWiki:Public read whitelist|roll pajennoù gwenn]] war ur wiki prevez evit ma c'hallfe an implijerien dianv o lenn.",
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

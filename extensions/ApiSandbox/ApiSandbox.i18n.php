@@ -649,6 +649,17 @@ Sumangguni sa [http://www.mediawiki.org/wiki/API dokumentasyon ng API] para sa k
 	'apisb-query-meta' => 'Kabatirang meta',
 );
 
+/** Ukrainian (Українська)
+ * @author Microcell
+ */
+$messages['uk'] = array(
+	'apisb-desc' => 'Дозволяє налагоджувати виклики [http://www.mediawiki.org/wiki/API MediaWiki API] з браузера',
+	'apisandbox' => 'Майданчик для тестування API',
+	'apisb-no-js' => "'''Помилка''': ця функція вимагає JavaScript.",
+	'apisb-intro' => "Ця сторінка служить для експериментування з '''MediaWiki API'''.
+Звертайтеся до [http://www.mediawiki.org/wiki/API документації] для докладнішої інформації про використання API.",
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Trần Nguyễn Minh Huy

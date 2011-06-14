@@ -23,6 +23,13 @@ $messages['be-tarask'] = array(
 	'dublincorerdf-desc' => 'RDF-мэтазьвесткі Dublin Core',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'dublincorerdf-desc' => 'Metaroadennoù RDF Dublin Core',
+);
+
 /** Danish (Dansk)
  * @author Peter Alberti
  */

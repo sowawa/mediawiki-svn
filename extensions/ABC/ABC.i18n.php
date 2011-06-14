@@ -700,6 +700,14 @@ $messages['mhr'] = array(
 	'abcdownload' => 'Опташ:',
 );
 
+/** Minangkabau (Baso Minangkabau)
+ * @author Luthfi94
+ */
+$messages['min'] = array(
+	'abc-desc' => 'Tambahan tag <code>&lt;abc&gt;</code> untuak format musik ABC',
+	'abcdownload' => 'Unduah:',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

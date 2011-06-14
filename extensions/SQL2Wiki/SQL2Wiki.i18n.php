@@ -48,6 +48,13 @@ $messages['be-tarask'] = array(
 	'sql2wiki-err-feature_not_supported' => 'SQL2Wiki: функцыя не падтрымліваецца базамі зьвестак тыпу $1!',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'sql2wiki-cache_refresh' => 'Freskaat',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -65,6 +72,25 @@ $messages['de'] = array(
 
 mit Fehlermeldung „$2“.",
 	'sql2wiki-err-feature_not_supported' => "'''Fehler:''' Die Funktion wird nicht von Datenbanken des Typs $1 unterstützt.",
+);
+
+/** French (Français)
+ * @author Sherbrooke
+ */
+$messages['fr'] = array(
+	'sql2wiki' => 'SQL2Wiki',
+	'sql2wiki-desc' => 'Afficher les données SQL directement dans les pages',
+	'sql2wiki-special' => 'Exécuter le code SQL2Wiki sur le clic',
+	'sql2wiki-cache_refresh' => 'Actualiser',
+	'sql2wiki-err-invalid_db_id' => 'SQL2Wiki: ID de base de données manquant  ou non valide',
+	'sql2wiki-err-invalid_type' => 'SQL2Wiki: type manquant ou invalide',
+	'sql2wiki-err-failed_to_connect' => 'SQL2Wiki: Impossible de se connecter à $1 !',
+	'sql2wiki-err-failed_to_execute' => "SQL2Wiki: Impossible d'exécuter l'instruction : 
+
+<code>$1</code>
+
+Message d'erreur : <code>$2</code>",
+	'sql2wiki-err-feature_not_supported' => "SQL2Wiki : La fonction n'est pas prise en charge par les bases de données de type $1 !",
 );
 
 /** Franco-Provençal (Arpetan)

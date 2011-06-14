@@ -1391,13 +1391,14 @@ $messages['myv'] = array(
 
 /** Nahuatl (Nāhuatl)
  * @author Fluence
+ * @author Ricardo gs
  */
 $messages['nah'] = array(
 	'importusers-uploadfile' => 'Tlahcuilōlquetza',
 	'importusers-form-button' => 'Tiquicōhuāz',
 	'importusers-log-summary' => 'Tlahcuilōltōn',
-	'importusers-log-summary-all' => 'Mochīntīn',
-	'importusers-log-summary-updated' => 'Ōmoyancuīli',
+	'importusers-log-summary-all' => 'Mochintin: $1',
+	'importusers-log-summary-updated' => 'Ōmoyancuīlih: $1',
 	'importusers-password' => 'tlahtōlichtacāyōtl',
 	'importusers-email' => 'e-mail',
 	'importusers-realname' => 'melāhuac motōcā',

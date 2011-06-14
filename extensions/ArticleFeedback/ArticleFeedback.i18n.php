@@ -580,6 +580,11 @@ Klaskit en-dro diwezhatoc'h.",
 	'articleFeedback-table-caption-recentlows' => 'Droukverzh nevesañ',
 	'articleFeedback-table-heading-page' => 'Pajenn',
 	'articleFeedback-table-heading-average' => 'Keidenn',
+	'articleFeedback-copy-above-highlow-tables' => "Un arc'hwel arnodel eo hemañ. Lakait an evezhiadennoù er [$1 bajenn gaozeal].",
+	'articlefeedback-dashboard-bottom' => "'''Notenn''' : Kenderc'hel a raimp da amprouiñ doareoù disheñvel da ginnig ar pennadoù en taolennoù-bourzh-mañ. Evit ar mare emañ enno ar pennadoù da-heul :
+* Pajennoù ar gwellañ/fallañ priziet : pennadoù zo bet priziet da nebeutañ 10 gwezh e-kerzh an devezh diwezhañ. C'hoarvezout a ra ar c'heidennoù diwar jediñ keidenn an holl briziadennoù bet abaoe 24 eurvezh.
+* Pennadoù a zisplij : pennadoù bet priziet gant 2 steredenn pe nebeutoc'h, e-pad 70 % eus an amzer pe pelloc'h, ne vern o rummad e-pad ar 24 eurvezh tremenet. Ne sell nemet ouzh ar pennadoù bet priziet da nebeutañ 10 gwezh e-pad ar 24 eurvezh diwezhañ.",
+	'articlefeedback-disable-preference' => 'Arabat diskwel ar bitrak Priziañ ar pennadoù er pajennoù.',
 	'articlefeedback-emailcapture-response-body' => "Demat deoc'h !
 
 Trugarez deoc'h da vezañ diskouezet bezañ dedennet d'hor skoazellañ evit gwellaat {{SITENAME}}.
@@ -627,7 +632,7 @@ $messages['bs'] = array(
 	'articlefeedback-error' => 'Desila se greška. Molimo pokušajte kasnije.',
 	'articlefeedback-form-switch-label' => 'Ocijeni ovu stranicu',
 	'articlefeedback-form-panel-title' => 'Ocijeni ovu stranicu',
-	'articlefeedback-form-panel-instructions' => 'Molimo odvojite trenutak vremena da ocijenite ovu stranicu.',
+	'articlefeedback-form-panel-explanation' => 'Šta je ovo?',
 	'articlefeedback-form-panel-clear' => 'Ukloni ovu ocjenu',
 	'articlefeedback-form-panel-expertise' => 'Visoko sam obrazovan o ovoj temi (neobavezno)',
 	'articlefeedback-form-panel-expertise-studies' => 'Imam odgovarajući fakultetsku/univerzitetsku diplomu',
@@ -636,6 +641,7 @@ $messages['bs'] = array(
 	'articlefeedback-form-panel-expertise-other' => 'Izvor mog znanja nije prikazan ovdje',
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Politika privatnosti',
 	'articlefeedback-form-panel-submit' => 'Pošalji ocjene',
+	'articlefeedback-form-panel-pending' => 'Vaše ocjene još nisu poslane',
 	'articlefeedback-form-panel-success' => 'Uspješno sačuvano',
 	'articlefeedback-form-panel-expiry-title' => 'Vaše ocjene su istekle',
 	'articlefeedback-form-panel-expiry-message' => 'Molimo ponovo ocijenite ovu stranicu i pošaljite nove ocjene.',
@@ -666,6 +672,8 @@ $messages['bs'] = array(
 	'articlefeedback-survey-message-success' => 'Hvala vam na popunjavanju ankete.',
 	'articlefeedback-survey-message-error' => 'Desila se greška.
 Molimo pokušajte kasnije.',
+	'articleFeedback-table-caption-dailyhighsandlows' => 'Današnji najviši i najniži',
+	'articleFeedback-table-caption-dailyhighs' => 'Stranice sa najvišim ocjenama: $1',
 	'articleFeedback-table-heading-page' => 'Stranica',
 	'articleFeedback-table-heading-average' => 'Prosjek',
 );
@@ -1527,7 +1535,9 @@ Veuillez ré-essayer plus tard.',
 	'articleFeedback-table-heading-page' => 'Page',
 	'articleFeedback-table-heading-average' => 'Moyenne',
 	'articleFeedback-copy-above-highlow-tables' => "Il s'agit d'une fonctionnalité expérimentale. Veuillez fournir des commentaires sur la [$1 page de discussion].",
-	'articleFeedback-copy-below-highlow-tables' => 'Ces tableaux contiennent des pages qui ont reçu au moins 10 votes au cours des 24 dernières heures. Les moyennes sont calculées en prenant la moyenne de toutes les notes présentées au cours des 24 dernières heures.',
+	'articlefeedback-dashboard-bottom' => "'''Note''' : Nous allons continuer à expérimenter différentes façons de représenter les articles dans ces tableaux de bord. Ceux-ci contiennent les articles suivants :
+* pages qui ont les taux les plus faibles ou plus élevés : ce sont les articles qui ont reçu au moins 10 évaluations dans les dernières 24 heures. Les moyennes sont obtenues en calculant la moyenne de toutes les évaluations des dernières 24 heures.
+* bas récents : articles qui ont reçu deux étoiles ou moins, 70 % du temps ou plus, peu importe la catégorie dans les dernières 24 heures. Cela s'applique seulement aux articles qui ont reçu au moins 10 évaluations dans les dernières 24 heures.",
 	'articlefeedback-disable-preference' => 'Ne pas afficher le widget Évaluation d’article sur les pages',
 	'articlefeedback-emailcapture-response-body' => "Bonjour !
 
@@ -1687,6 +1697,9 @@ Inténteo de novo máis tarde.',
 	'articleFeedback-table-heading-page' => 'Páxina',
 	'articleFeedback-table-heading-average' => 'Media',
 	'articleFeedback-copy-above-highlow-tables' => 'Esta é unha característica experimental. Deixe os seus comentarios na [$1 páxina de conversa].',
+	'articlefeedback-dashboard-bottom' => "'''Nota:''' Continuaremos experimentando diferentes xeitos de seleccionar artigos neste taboleiro. Polo de agora, os taboleiros inclúen os seguintes artigos:
+* Páxinas coas mellores/peores valoracións: artigos que recibiron, polo menos, 10 avaliacións nas últimas 24 horas. As medias calcúlanse tomando a media de todas as valoracións enviadas nas últimas 24 horas.
+* Os baixos máis recentes: artigos que tiveron un 70% ou menos (2 estrelas ou menos) das valoracións en calquera categoría nas últimas 24 horas. Soamente se inclúen os artigos que recibiron, polo menos, 10 avaliacións nas últimas 24 horas.",
 	'articlefeedback-disable-preference' => 'Non mostrar o widget de avaliación de artigos nas páxinas',
 	'articlefeedback-emailcapture-response-body' => 'Ola!
 
@@ -4593,6 +4606,7 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author Arturyatsko
+ * @author Microcell
  * @author Тест
  */
 $messages['uk'] = array(
@@ -4612,11 +4626,26 @@ $messages['uk'] = array(
 	'articlefeedback-survey-title' => 'Будь ласка, дайте відповідь на кілька питань',
 	'articlefeedback-survey-thanks' => 'Дякуємо за заповнення опитування.',
 	'articlefeedback-error' => 'Сталася помилка. Будь ласка, повторіть спробу пізніше.',
+	'articlefeedback-form-panel-explanation' => 'Що це таке?',
+	'articlefeedback-form-panel-clear' => 'Вилучити оцінку',
+	'articlefeedback-form-panel-expertise' => 'Я маю широкі знання в цій галузі (опціонально)',
+	'articlefeedback-form-panel-expertise-studies' => 'В мене є відповідна ступінь від університету/коледжу',
+	'articlefeedback-form-panel-expertise-profession' => 'Це стосується моєї професії',
+	'articlefeedback-form-panel-expertise-hobby' => 'Це моє палке особисте захоплення',
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Політика конфіденційності',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Політика конфіденційності',
+	'articlefeedback-form-panel-pending' => 'Ваші оцінки ще не були відправлені',
+	'articlefeedback-form-panel-success' => 'Успішно збережено',
+	'articlefeedback-form-panel-expiry-title' => 'Ваші оцінки застарілі',
+	'articlefeedback-form-panel-expiry-message' => 'Будь ласка, перегляньте сторінку та поставте нові оцінки.',
 	'articlefeedback-report-switch-label' => 'Показати оцінки сторінки',
+	'articlefeedback-report-panel-title' => 'Оцінки сторінки',
+	'articlefeedback-report-panel-description' => 'Поточні середні оцінки.',
+	'articlefeedback-report-empty' => 'Не оцінювалася',
+	'articlefeedback-pitch-reject' => 'Можливо, пізніше',
 	'articlefeedback-pitch-or' => 'або',
 	'articlefeedback-pitch-join-accept' => 'Створити обліковий запис',
+	'articlefeedback-pitch-join-login' => 'Увійти до системи',
 	'articlefeedback-pitch-edit-accept' => 'Редагувати цю сторінку',
 	'articleFeedback-table-heading-page' => 'Сторінка',
 );
