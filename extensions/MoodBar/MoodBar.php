@@ -21,7 +21,7 @@ $wgAutoloadClasses['ApiMoodBar'] = dirname(__FILE__).'/ApiMoodBar.php';
 $wgAPIModules['moodbar'] = 'ApiMoodBar';
 
 // Hooks
-$wgAutoloadClasses['MoodBarHooks'] = dirname(__FILE__).'/Hooks.php';
+$wgAutoloadClasses['MoodBarHooks'] = dirname(__FILE__).'/MoodBar.hooks.php';
 $wgHooks['BeforePageDisplay'][] = 'MoodBarHooks::onPageDisplay';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'MoodBarHooks::onLoadExtensionSchemaUpdates';
 
