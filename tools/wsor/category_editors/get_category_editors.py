@@ -40,8 +40,7 @@ def main(args):
 			) < period
 	
 	for editor in db.enwiki_editors_raw.find():
-		logging.debug("Processing %(editor)s:%(username)s..." % editor)
-		
+		thresh = False
 		for year, month, edits in get_months_of_edits(editor['edits']):
 			catEdits = [e for e in edits if e['article'] in catIds]
 			if len(catEdits) >= args.n:
@@ -54,11 +53,12 @@ def main(args):
 						len(catEdits)
 					])
 				)
-				LOGGING_STREAM.write("o")
-			else:
-				LOGGING_STREAM.write("-")
+				thresh = True
 			
-		LOGGING_STREAM.write("\n")
+		if thresh:
+			LOGGING_STREAM.write("o")
+		else:
+			LOGGING_STREAM.write("-")
 					
 			
 		

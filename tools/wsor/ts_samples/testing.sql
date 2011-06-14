@@ -23,3 +23,20 @@ explain SELECT * FROM user
 WHERE user_registration BETWEEN "20040000000000" AND "20041231115959"
 ORDER BY RAND()
 LIMIT 10;
+
+
+CREATE TABLE halfak.user_meta (
+	user_id    INT, 
+	first_edit VARBINARY(14),
+	last_edit  VARBINARY(14)
+)
+
+INSERT INTO halfak.user_meta
+SELECT rev_user, min(rev_timestamp), max(rev_timestamp)
+FROM revision 
+WHERE rev_user IS NOT NULL
+GROUP BY rev_user;
+
+CREATE UNIQUE INDEX user_id_idx ON halfak.user_meta (user_id);
+CREATE INDEX first_edit_idx ON halfak.user_meta (first_edit);
+CREATE INDEX last_edit_idx ON halfak.user_meta (last_edit);
