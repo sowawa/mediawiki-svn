@@ -453,13 +453,17 @@ class DiffHistoryBlob implements HistoryBlob {
 		$header = unpack( 'Vofp/Vcsize', substr( $diff, 0, 8 ) );
 		
 		# Check the checksum if mhash is available
-		if ( function_exists( 'mhash' ) ) {
+		# TEMPORARY WMF PATCH -- temporarily disable hash check, since a large number of 
+		# revisions appear to have hash mismatches
+		/*
+		if ( extension_loaded( 'mhash' ) ) {
 			$ofp = mhash( MHASH_ADLER32, $base );
 			if ( $ofp !== substr( $diff, 0, 4 ) ) {
 				wfDebug( __METHOD__. ": incorrect base checksum\n" );
 				return false;
 			}
-		}
+		}*/
+		#### END WMF PATCH
 		if ( $header['csize'] != strlen( $base ) ) {
 			wfDebug( __METHOD__. ": incorrect base length\n" );
 			return false;
