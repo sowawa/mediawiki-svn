@@ -8,15 +8,16 @@ EOT;
         exit( 1 );
 }
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'OracleTextSearch',
 	'author' => 'freakolowsky [Jure Kajzer]',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:OracleTextSearch',
-	'description' => 'Show SQL data directly in the page contents..',
 	'descriptionmsg' => 'oracletextsearch-desc',
 	'version' => '1.0.0',
 );
 
 $dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['OracleTextSearch'] = $dir . 'OracleTextSearch.i18n.php';
 $wgAutoloadClasses['SearchOracleText'] = $dir . 'SearchOracleText.php';
 $wgHooks['UploadComplete'][] = 'SearchOracleText::onUploadCompleteHook';
 
