@@ -26,7 +26,7 @@ $wgHooks['BeforePageDisplay'][] = 'MoodBarHooks::onPageDisplay';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'MoodBarHooks::onLoadExtensionSchemaUpdates';
 
 // Internationalisation
-$wgExtensionMessagesFiles = dirname(__FILE__).'/MoodBar.i18n.php';
+$wgExtensionMessagesFiles['MoodBar'] = dirname(__FILE__).'/MoodBar.i18n.php';
 
 // Resources
 $mbResourceTemplate = array(
