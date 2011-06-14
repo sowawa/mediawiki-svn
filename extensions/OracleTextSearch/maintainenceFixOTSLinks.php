@@ -17,9 +17,9 @@ class FixOTSLinks extends Maintenance {
 	public function execute() {
 		$doAll = $this->hasOption( 'all' );
 		if ($doAll) {
-			$this->output( "Recreating all index links to documents ", 'OracleTextSearch' );
+			$this->output( "Recreating all index links to documents\n" );
 		} else {
-			$this->output( "Recreating missing index links to documents ", 'OracleTextSearch' );
+			$this->output( "Recreating missing index links to documents\n" );
 		}
 		$this->doRecreate($doAll);
 	}
@@ -33,7 +33,7 @@ class FixOTSLinks extends Maintenance {
 		
 		$searchWhere = $all ? '' : ' AND NOT EXISTS (SELECT null FROM '.$tbl_idx.' WHERE si_page=p.page_id AND si_url IS NOT null)';
 		$result = $dbw->doQuery('SELECT p.page_id FROM '.$tbl_pag.' p WHERE p.page_namespace = '.NS_FILE.$searchWhere );
-		$this->output( "[".$result->numRows()." files found] ", 'OracleTextSearch' );
+		$this->output( $result->numRows()." file(s) found\n" );
 		
 		$syncIdx = false;
 		$countDone = 0;
@@ -57,16 +57,17 @@ class FixOTSLinks extends Maintenance {
 		}
 		
 		if ( $syncIdx ) {
-			$this->output( " Syncing... ", 'OracleTextSearch');
+			$this->output( "Syncing index... " );
 			$index = $dbw->getProperty('mTablePrefix')."si_url_idx";
 			$dbw->query( "CALL ctx_ddl.sync_index('$index')" );
+			$this->output( "Done\n" );
 		}
 		
-		$this->output(" Finished ($countDone processed", 'OracleTextSearch');
+		$this->output("Finished ($countDone processed" );
 		if ( $countSkipped > 0 ) {
-			$this->output(", $countSkipped skipped ", 'OracleTextSearch');
+			$this->output(", $countSkipped skipped " );
 		}
-		$this->output(")", 'OracleTextSearch');
+		$this->output(")\n" );
 	}
 }
 
