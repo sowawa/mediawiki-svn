@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <wurfl-config>
     <wurfl>
-        <main-file>wurfl-2.0.27.zip</main-file>
+        <main-file>wurfl-2.0.30.zip</main-file>
         <patches>
             <patch>web_browsers_patch.xml</patch>
         </patches>
