@@ -125,6 +125,17 @@
 		'wikiGetlink' : function( str ) {
 			return wgServer + wgArticlePath.replace( '$1', this.wikiUrlencode( str ) );
 		},
+  
+		/**
+		 * Get address to a script in the wiki root.
+		 * For index.php use mw.config.get( 'wgScript' )
+		 *
+		 * @param str string Name of script (eg. 'api'), defaults to 'index'
+		 * @return string Address to script (eg. '/w/api.php' )
+		 */
+		'wikiScript' : function( str ) {
+			return mw.config.get( 'wgScriptPath' ) + '/' + ( str || 'index' ) + mw.config.get( 'wgScriptExtension' );
+		},
 
 		/**
 		 * Grab the URL parameter value for the given parameter.
