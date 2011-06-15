@@ -12,7 +12,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'wikitweet-desc' => 'Create a Twitter-like feed into MediaWiki',
-	'wikitweet-name' => 'MorphoTweets', // Do not translate, used as pagename
+	'wikitweet-name' => 'WikiTweet', // Do not translate, used as pagename
 	'wikitweet-pleaselogin' => 'Please login to tweet.',
 	'wikitweet-moretweets' => 'More tweets...',
 	'wikitweet-infoajax' => 'uses the AJAX technology and refresh itself every 5 seconds without loading the page.',

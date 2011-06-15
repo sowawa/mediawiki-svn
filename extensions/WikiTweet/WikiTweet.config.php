@@ -10,6 +10,7 @@
 		'refreshTime'       => 15000,                  // Time to refresh in milliseconds
 		
 		// SMTP configuration :
+		'email'=> True, // True or False
 		'SMTP'         => array(
 			 'host'    => "smtphost", //could also be an IP address
 			 'IDHost'  => "idhost",
@@ -47,5 +48,8 @@
 				'margin_left'       => '0px',
 				),
 			),
+		'inherit'      => array(
+			'main' => array('room1','room2','room3')		
+			)
 		);
 ?>

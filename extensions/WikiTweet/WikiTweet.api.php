@@ -115,6 +115,18 @@ class ApiQueryWikiTweet extends ApiQueryBase {
 			$type = $row1->type;
 			$sql_subscriptions .= " OR `$type`='$link'";
 		}
+		$roomssons = array();
+		foreach($wgWikiTweet['inherit'] as $roominherit=>$roominheritvalue)
+		{
+			if($roominherit == $room or in_array($roominherit,$roomssons))
+			{
+				foreach($wgWikiTweet['inherit'][$roominherit] as $roomson)
+				{
+					$sql_subscriptions .= " OR `room`='$roomson'";
+					$roomssons[] = $roomson;
+				}
+			}
+		}
 
 		if($tag!=''){
 			$res = $dbr->select( 
@@ -164,7 +176,7 @@ class ApiQueryWikiTweet extends ApiQueryBase {
 			}
 			if ( $show == 2 ) {
 				$background_color = "#C6DEFE";
-				$private = "<img src='$wgScriptPath/Extensions/WikiTweet/images/lock-small.png' />";
+				$private = "<img src='$wgScriptPath/extensions/WikiTweet/images/lock-small.png' />";
 			}
 			
 			$dateSrc = $date.' GMT';
@@ -177,7 +189,7 @@ class ApiQueryWikiTweet extends ApiQueryBase {
 			
 			$conversion_tab = array(
 				"/\>(\S*)/is"   => "><a href='$wgScriptPath/index.php/$1'>$1</a>",
-				"/\@(\S*)/is"   => "@<a href='$wgScriptPath/index.php/User:$1'>$1</a>", // TODO en anglais
+				"/\@(\S*)/is"   => "@<a href='$wgScriptPath/index.php/User:$1'>$1</a>",
 				"/\#(\S*)/is"   => "<a class='handmouse tag' value='$1'>#$1</a>",
 				"/http(\S*)/is" => "<a href='http$1' target='_blank'>http$1</a>",
 				"/ www(\S*)/is" => " <a href='http://www$1' target='_blank'>www$1</a>",
@@ -330,8 +342,7 @@ class ApiQueryWikiTweet extends ApiQueryBase {
 		}
 
 		mysql_close(); 
-		$o__response = new AjaxResponse($text);
-		return $o__response;
+		return $text;
 	}
 	public static function fnSubscribeAjax($link, $user, $type){
 		$o__text = '';

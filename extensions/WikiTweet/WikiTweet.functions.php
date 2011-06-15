@@ -13,6 +13,7 @@ class WikiTweetFunctions {
 	}
 	public static function send( $to, $from, $subject, $body, $replyto=null )
 	{
+		if(!$wgWikiTweet['email']){return false;}
 		$wgOutputEncoding = 'UTF-8';
 		$wgEnotifImpersonal = false;
 		$wgErrorString = '';
