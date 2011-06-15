@@ -77,7 +77,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * @return true
 	 */
 	public static function initGeoCoordsType() {
-		SMWDataValueFactory::registerDatatype( '_geo', __CLASS__, 'Geographic coordinate' );
+		SMWDataValueFactory::registerDatatype( '_geo', __CLASS__ );
 		return true;
 	}
 	
