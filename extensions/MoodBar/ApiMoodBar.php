@@ -58,7 +58,7 @@ class ApiMoodBar extends ApiBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiThreadAction.php 88574 2011-05-22 13:31:30Z werdna $';
+		return __CLASS__ . ': $Id$';
 	}
 	
 	public function getPossibleErrors() {
