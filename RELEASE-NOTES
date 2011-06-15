@@ -14,6 +14,8 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
 * Fixed bug in OpenLayers layer dependency loading code.
 
+* Fixed DMS coordinate parsing issue (bug 29419).
+
 * Removed dead code (initial code to support the RL, now used in SM 1.0 and later).
 
 * Use of Google Maps geocoding service v3 instead of v2.
