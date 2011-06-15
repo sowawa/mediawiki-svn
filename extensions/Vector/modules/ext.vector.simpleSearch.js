@@ -1,6 +1,6 @@
 /* JavaScript for SimpleSearch extension */
 
-$( document ).ready( function() {
+jQuery( document ).ready( function( $ ) {
 
 	// Compatibility map
 	var map = {
@@ -40,14 +40,12 @@ $( document ).ready( function() {
 
 	// General suggestions functionality for all search boxes
 	$( '#searchInput, #searchInput2, #powerSearchText, #searchText' )
-		.mouseover( function() { $(this).focus()
-		})
 		.suggestions( {
 			fetch: function( query ) {
 				var $this = $(this);
-			        if ( query.length != 0 ) {
+				if ( query.length !== 0 ) {
 					var request = $.ajax( {
-						url: mw.config.get( 'wgScriptPath' ) + '/api.php',
+						url: mw.util.wikiScript( 'api' ),
 						data: {
 							action: 'opensearch',
 							search: query,
@@ -56,15 +54,15 @@ $( document ).ready( function() {
 						},
 						dataType: 'json',
 						success: function( data ) {
-							if ( $.isArray( data ) && 1 in data ) {
+							if ( $.isArray( data ) !== -1 && 1 in data ) {
 								$this.suggestions( 'suggestions', data[1] );
 							}
 						}
 					});
 					$this.data( 'request', request );
-                                }
+				}
 			},
-			cancel: function () {
+			cancel: function() {
 				var request = $(this).data( 'request' );
 				// If the delay setting has caused the fetch to have not even happend yet, the request object will
 				// have never been set
@@ -96,7 +94,7 @@ $( document ).ready( function() {
 		},
 		special: {
 			render: function( query ) {
-				if ( $(this).children().size() === 0 ) {
+				if ( $(this).children().length === 0 ) {
 					$(this).show();
 					var $label = $( '<div></div>', {
 							'class': 'special-label',
