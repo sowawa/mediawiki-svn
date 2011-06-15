@@ -13,7 +13,7 @@ class ApiMoodBar extends ApiBase {
 		$item->save();
 		
 		$result = array( 'result' => 'success' );
-		$this->getResult()->addValue( null, $this->getModuleName(), 
+		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
 	
 	public function needsToken() {
