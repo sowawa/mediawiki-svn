@@ -64,10 +64,12 @@ class WikiLoveHooks {
 	}
 	
 	/**
-	 * Exports wikilove-recipient variable to JS
+	 * Exports wikilove-recipient and edittoken variables to JS
 	 */
 	public static function makeGlobalVariablesScript( &$vars ) {
+		global $wgUser;
 		$vars['wikilove-recipient'] = self::$recipient;
+		$vars['wikilove-edittoken'] = $wgUser->edittoken();
 		return true;
 	}
 	

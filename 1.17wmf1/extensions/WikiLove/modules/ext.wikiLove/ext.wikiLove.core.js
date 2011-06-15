@@ -384,7 +384,7 @@ return {
 			'text': wikitext,
 			'message': message,
 			'subject': subject,
-			'token': mw.user.tokens.get( 'editToken' )
+			'token': mw.config.get( 'wikilove-edittoken' ) // after 1.17 this can become mw.user.tokens.get( 'editToken' )
 		};
 		
 		if ( email ) {
