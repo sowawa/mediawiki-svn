@@ -877,18 +877,24 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Diagramma Della Verita
  * @author Zamwan
  */
 $messages['ms'] = array(
 	'chemicalsources' => 'Sumber-sumber kimia',
 	'chemicalsource-desc' => 'Tambah tag <nowiki><chemform></nowiki>, untuk formula kimia',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Laman khas]] untuk sumber kimia',
 	'chemFunctions_ListPage' => 'Sumber-sumber kimia',
+	'chemFunctions_DataList' => 'Berikut ialah senarai pautan kepada tapak-tapak web yang boleh menyumbangkan maklumat mengenai bahan kimia yang anda cari (bahasa Inggeris).<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Sebatian $MIXCASNameFormula di NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS di Universiti Oxford (UK) (tidak boleh digelintar)</a><br />',
 	'chemFunctions_CAS' => 'Nombor CAS',
 	'chemFunctions_ATCCode' => 'Kod ATC',
 	'chemFunctions_ECNumber' => 'Nombor EC',
 	'chemFunctions_Formula' => 'Formula',
 	'chemFunctions_Name' => 'Nama IUPAC',
+	'chemFunctions_ChemFormInputError' => 'Chemform: Ralat input!',
 );
 
 /** Nahuatl (Nāhuatl)

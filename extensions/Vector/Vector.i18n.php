@@ -993,7 +993,7 @@ $messages['kw'] = array(
 	'vector-editwarning-warning' => 'Mar qwrewgh whi gara an folen-ma, whi a alja kelly chanjyow eus gwres genowgh.
 Mars owgh whi omgelmys, whi a ell dialosegy an gwarnyans-ma yn trogh "Chanjya" agas dewisyansow.',
 	'vector-editwarning-preference' => 'Gwra ow gwarnya pan von gara folen chanjya gen chanjyow nag eus gwithys',
-	'vector-simplesearch-search' => 'Whilas',
+	'vector-simplesearch-search' => 'Hwilas',
 	'vector-simplesearch-containing' => 'ow sensy...',
 );
 

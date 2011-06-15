@@ -946,7 +946,7 @@ $messages['ku-latn'] = array(
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'editmsg-search' => 'Whilas',
+	'editmsg-search' => 'Hwilas',
 	'editmsg-new-search' => 'Whilans nowyth',
 );
 

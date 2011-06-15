@@ -4031,7 +4031,7 @@ Dan zou u niet langer kunnen aanmelden zonder een OpenID.",
 	'openid-dashboard-title-admin' => 'OpenID-dashboard (beheerder)',
 	'openid-dashboard-introduction' => 'De huidige instellingen van de OpenID-uitbreiding ([$1 hulp])',
 	'openid-dashboard-number-openid-users' => 'Aantal gebruikers met OpenID',
-	'openid-dashboard-number-openids-in-database' => 'Totaal aantal OpenIDs',
+	'openid-dashboard-number-openids-in-database' => "Totaal aantal OpenID's",
 	'openid-dashboard-number-users-without-openid' => 'Aantal gebruikers zonder OpenID',
 );
 

@@ -27,6 +27,15 @@ $messages['af'] = array(
 	'sql2wiki-desc' => 'Wys SQL-data direk in die bladsy-inhoud',
 	'sql2wiki-special' => 'Kliek om die SQL2Wiki-kode uit te voer',
 	'sql2wiki-cache_refresh' => 'Verfris',
+	'sql2wiki-err-invalid_db_id' => 'SQL2Wiki: Die databasis-ID ontbreek of is ongeldig.',
+	'sql2wiki-err-invalid_type' => 'SQL2Wiki: Die tipe ontbreek of is ongeldig',
+	'sql2wiki-err-failed_to_connect' => 'SQL2Wiki: Konneksie na $1 het gefaal!',
+	'sql2wiki-err-failed_to_execute' => '"SQL2Wiki: Die uitvoer van die opdrag het gefaal:
+
+"$1"
+
+met vermelding van fout: "$2".',
+	'sql2wiki-err-feature_not_supported' => 'SQL2Wiki: Die funksie word nie deur $1 tipe databasisse ondersteun nie!',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)

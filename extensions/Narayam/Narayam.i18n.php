@@ -647,6 +647,35 @@ $messages['ml'] = array(
 	'narayam-bn-nkb' => 'ബംഗാളി നാഷണൽ കീബോർഡ്',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'narayam-desc' => 'Membolehkan penambahan kaedah input tersuai untuk ruangan input',
+	'narayam-toggle-ime' => 'Untuk menogel IM ($1)',
+	'narayam-help-page' => 'Help:Menaip',
+	'narayam-checkbox-tooltip' => 'Untuk memasang/menutup kaedah input',
+	'narayam-disable-preference' => 'Matikan Editor Kaedah Input (IME) Narayam',
+	'narayam-eo' => 'Esperanto',
+	'narayam-hi-inscript' => 'InScript Hindi',
+	'narayam-kn' => 'Alih Huruf Kannada',
+	'narayam-kn-inscript' => 'InScript Kannada',
+	'narayam-ml' => 'Alih Huruf Malayalam',
+	'narayam-ml-inscript' => 'InScript Malayalam',
+	'narayam-or' => 'Alih Huruf Oriya',
+	'narayam-or-inscript' => 'InScript Oriya',
+	'narayam-sa' => 'Alih Huruf Sanskrit',
+	'narayam-sa-inscript' => 'InScript Sanskrit',
+	'narayam-si-singlish' => 'Singlish Sinhala',
+	'narayam-si-wijesekara' => 'Wijesekara Sinhala',
+	'narayam-ta99' => 'Tamil99',
+	'narayam-ta' => 'Alih Huruf Tamil',
+	'narayam-te-inscript' => 'InScript Telugu',
+	'narayam-bn-avro' => 'Arvo Benggala',
+	'narayam-bn-inscript' => 'InScript Benggala',
+	'narayam-bn-nkb' => 'NKB Benggala',
+);
+
 /** Dutch (Nederlands)
  * @author GerardM
  * @author Siebrand

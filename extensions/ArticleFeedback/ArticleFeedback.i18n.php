@@ -1022,9 +1022,10 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Glavkos
+ * @author ZaDiak
  */
 $messages['el'] = array(
-	'articlefeedback' => 'Αξιολόγηση Άρθρου',
+	'articlefeedback' => 'Ταμπλό ανατροφοδότησης άρθρου',
 	'articlefeedback-desc' => 'Αξιολόγηση Άρθρου (πιλοτική έκδοση)',
 	'articlefeedback-survey-question-origin' => 'Σε ποιά σελίδα  ήσασταν όταν ξεκινήσατε αυτή την έρευνα;',
 	'articlefeedback-survey-question-whyrated' => 'Bonvolu informigi nin  kial vi taksis ĉi tiun paĝon hodiaŭ (marku ĉion taŭgan):',
@@ -1043,7 +1044,7 @@ $messages['el'] = array(
 	'articlefeedback-error' => 'Παρουσιάστηκε σφάλμα. Παρακαλώ δοκιμάστε αργότερα.',
 	'articlefeedback-form-switch-label' => 'Βαθμολογήστε αυτή τη σελίδα',
 	'articlefeedback-form-panel-title' => 'Βαθμολογήστε αυτή τη σελίδα',
-	'articlefeedback-form-panel-instructions' => 'Παρακαλώ αφιερώστε  λίγο χρόνο για να αξιολογήσετε αυτή τη σελίδα.',
+	'articlefeedback-form-panel-explanation' => 'Τι είναι αυτό;',
 	'articlefeedback-form-panel-clear' => 'Καταργήστε αυτή την αξιολόγηση',
 	'articlefeedback-form-panel-expertise' => 'Είμαι πολύ καλά πληροφορημένος σχετικά με αυτό το θέμα (προαιρετικό)',
 	'articlefeedback-form-panel-expertise-studies' => 'Έχω ένα αντίστοιχο πτυχίο κολλεγίου/πανεπιστημίου',
@@ -1054,6 +1055,7 @@ $messages['el'] = array(
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Πολιτική απορρήτου',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Πολιτική απορρήτου',
 	'articlefeedback-form-panel-submit' => 'Υποβολή βαθμολογιών',
+	'articlefeedback-form-panel-pending' => 'Οι βαθμολογήσεις σας δεν έχουν καταχωρηθεί ακόμη',
 	'articlefeedback-form-panel-success' => 'Αποθηκεύτηκαν με επιτυχία',
 	'articlefeedback-form-panel-expiry-message' => 'Παρακαλούμε να επανεκτιμήσετε αυτή τη σελίδα και να υποβάλετε νέες βαθμολογίες.',
 	'articlefeedback-report-switch-label' => 'Δείτε τις βαθμολογήσεις της σελίδας',
@@ -3115,7 +3117,7 @@ Probeer het later opnieuw.',
 	'articleFeedback-table-heading-page' => 'Pagina',
 	'articleFeedback-table-heading-average' => 'Gemiddelde',
 	'articleFeedback-copy-above-highlow-tables' => 'Dit is experimentele functionaliteit. Geef alstublieft terugkoppeling op de [$1 overlegpagina].',
-	'articlefeedback-disable-preference' => "Toon de Artikel feedback widget niet op pagina's",
+	'articlefeedback-disable-preference' => "Widget paginaterugkoppeling niet op pagina's weergeven",
 	'articlefeedback-emailcapture-response-body' => 'Hallo!
 
 Dank u wel voor uw interesse in het verbeteren van {{SITENAME}}.

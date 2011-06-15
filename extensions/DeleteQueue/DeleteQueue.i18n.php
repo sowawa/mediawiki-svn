@@ -4237,7 +4237,7 @@ $messages['ku-latn'] = array(
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'deletequeue-list-search' => 'Whila',
+	'deletequeue-list-search' => 'Hwila',
 	'deletequeue-list-anyqueue' => '(vyth)',
 	'deletequeue-case-page' => 'Folen:',
 );

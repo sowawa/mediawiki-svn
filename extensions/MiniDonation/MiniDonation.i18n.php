@@ -374,6 +374,14 @@ $messages['mr'] = array(
 	'donationform-submit' => 'पेपाल (paypal) द्वारा दान करा',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'donationform-desc' => 'Membubuh tag <code>&lt;donateform&gt;</code> untuk menyokong pendermaan melalui PayPal',
+	'donationform-submit' => 'Derma melalui PayPal',
+);
+
 /** Burmese (မြန်မာဘာသာ)
  * @author Erikoo
  */

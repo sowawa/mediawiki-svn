@@ -412,15 +412,15 @@ $messages['frp'] = array(
  */
 $messages['gl'] = array(
 	'talkhere-desc' => 'Pon a páxina de conversa na páxina',
-	'talkhere-foottext' => 'Os comentarios anteriores poderían ter sido deixados polos visitantes.
+	'talkhere-foottext' => 'Os comentarios anteriores deixáronos os visitantes.
 
-Os operadores deste sitio non poden asumir a responsabilidade polo contido de ditos comentarios.',
+Os operadores deste sitio non son responsables do contido dos devanditos comentarios.',
 	'talkhere-talkpage' => 'páxina de conversa',
 	'talkhere-notalk' => "''(aínda sen comentarios)''",
-	'talkhere-addcomment' => 'engadir comentario',
-	'talkhere-beforeinput' => 'Vostede pode engadir un comentario a continuación',
-	'talkhere-loading' => 'cargando editor...',
-	'talkhere-collapse' => 'ocultar editor',
+	'talkhere-addcomment' => 'engadir un comentario',
+	'talkhere-beforeinput' => 'Pode engadir un comentario a continuación',
+	'talkhere-loading' => 'cargando o editor...',
+	'talkhere-collapse' => 'ocultar o editor',
 );
 
 /** Swiss German (Alemannisch)
