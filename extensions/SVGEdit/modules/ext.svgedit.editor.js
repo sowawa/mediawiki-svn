@@ -124,8 +124,8 @@ mw.svgedit = {
 				.show();
 		};
 		var spinnerOff = function() {
-			$('#mw-svgedit-summary').attr('disabled', null);
-			$('#mw-svgedit-save').attr('disabled', null);
+			$('#mw-svgedit-summary').removeAttr('disabled');
+			$('#mw-svgedit-save').removeAttr('disabled');
 			spinner.hide();
 		};
 
