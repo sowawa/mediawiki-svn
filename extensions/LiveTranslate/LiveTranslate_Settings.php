@@ -18,9 +18,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-# https://code.google.com/apis/console
-$egGoogleApiKey = '';
-
 # A list of languages that should be available to translate to.
 $egLiveTranslateLanguages = array(
 	$wgLanguageCode,
@@ -66,5 +63,10 @@ $egLTRequireSignificance = false;
 # When true, debugging messages will be logged using console.log(). Do not use on production wikis.
 $egLiveTranslateDebugJS = false;
 
+# Google API key, needed when using the Google Translation service.
+# https://code.google.com/apis/console
+$egGoogleApiKey = '';
+
 # Microsoft App Id, needed when using the Microsoft Translation service.
+# http://www.bing.com/developers/createapp.aspx
 $egLiveTranslateMSAppId = '';
