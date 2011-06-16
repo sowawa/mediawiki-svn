@@ -5,7 +5,7 @@
  *
  *  You can turn off the redirect by setting the cookie "stopMobileRedirect=true"
  */
-if ( /(iPhone|iPod|Android.*Mobile|webOS|NetFront|Opera Mini|SEMC-Browser|PlayStation Portable|Nintendo Wii|BlackBerry|Bada)/
+if ( /(iPhone|iPod|Android.*Mobile|webOS|NetFront|Opera Mini|SEMC-Browser|PlayStation Portable|Nintendo Wii|BlackBerry|Bada|NokiaBrowser|MeeGo)/
   .test( navigator.userAgent ) )
 {
   if (    (document.cookie.indexOf("irect=t") < 0)  // Don't redirect if we have the stop cookie ... only testing a subportion of the cookie. Should be REALLY unique!
