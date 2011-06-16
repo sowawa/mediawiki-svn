@@ -47,7 +47,7 @@ class MBFeedbackItem {
 	 * @param $info Associative array of values
 	 * Valid keys: type, user, comment, page, flags, timestamp,
 	 *             useragent, system, locale, bucket, anonymize
-	 * @return MBFeedback object.
+	 * @return MBFeedbackItem object.
 	 */
 	public static function create( $info ) {
 		$newObject = new self();
@@ -170,9 +170,9 @@ class MBFeedbackItem {
 	 */
 	public function validatePropertyValue( $key, $value ) {
 		if ( $key == 'user' ) {
-			return $value instanceof User || $value instanceof StubUser;
+			return $value instanceof User;
 		} elseif ( $key == 'page' ) {
-			return $value instanceof Title || $value instanceof StubTitle;
+			return $value instanceof Title;
 		} elseif ( $key == 'type' ) {
 			return in_array( $value, self::$validTypes );
 		}
