@@ -40,10 +40,11 @@ if '..' not in sys.path:
 
 from etl import variables
 from utils import file_utils
+from utils.ordered_dict import OrderedDict
 from classes import buffer
 from analyses.adhoc import bot_detector
 
-def parse_revision(revision, article, xml_namespace, cache, bots, md5hashes, size, reverts):
+def parse_revision(revision, article, xml_namespace, cache, bots, md5hashes, size, reverts, templates):
     '''
     This function has as input a single revision from a Wikipedia dump file, 
     article id it belongs to, the xml_namespace of the Wikipedia dump file, 
@@ -54,29 +55,33 @@ def parse_revision(revision, article, xml_namespace, cache, bots, md5hashes, siz
     if revision == None:
     #the entire revision is empty, weird. 
         #dump(revision)
-        return md5hashes, size, reverts
+        return md5hashes, size, reverts, templates
 
     contributor = revision.find('%s%s' % (xml_namespace, 'contributor'))
     contributor = variables.parse_contributor(contributor, bots, xml_namespace)
     if not contributor:
         #editor is anonymous, ignore
-        return md5hashes, size, reverts
+        return md5hashes, size, reverts, templates
 
     revision_id = revision.find('%s%s' % (xml_namespace, 'id'))
     revision_id = variables.extract_revision_id(revision_id)
     if revision_id == None:
         #revision_id is missing, which is weird
-        return md5hashes, size, reverts
+        return md5hashes, size, reverts, templates
 
     article['revision_id'] = revision_id
     text = variables.extract_revision_text(revision, xml_namespace)
     article.update(contributor)
 
-    #comment = variables.extract_comment_text(revision_id, revision)
-    #cache.comments.update(comment)
+    comment = variables.extract_comment_text(revision, xml_namespace, revision_id)
+    if comment != None:
+        cache.comments.update(comment)
 
     timestamp = revision.find('%s%s' % (xml_namespace, 'timestamp')).text
     article['timestamp'] = timestamp
+
+    #if templates == {} and text != None:
+    #    templates = variables.detect_speedy_deletion(text, templates)
 
     hash = variables.create_md5hash(text)
     revert = variables.is_revision_reverted(hash['hash'], md5hashes)
@@ -89,8 +94,9 @@ def parse_revision(revision, article, xml_namespace, cache, bots, md5hashes, siz
     article.update(size)
     article.update(revert)
     article.update(past_revert)
+
     cache.add(article)
-    return md5hashes, size, reverts
+    return md5hashes, size, reverts, templates
 
 
 def parse_xml(fh, rts, cache, process_id, file_id):
@@ -99,11 +105,11 @@ def parse_xml(fh, rts, cache, process_id, file_id):
     to extract / construct the variables from the XML stream. 
     '''
     bots = bot_detector.retrieve_bots(rts.storage, rts.language.code)
-    include_ns = {3: 'User Talk',
-                  5: 'Wikipedia Talk',
-                  1: 'Talk',
-                  2: 'User',
-                  4: 'Wikipedia'}
+    include_ns = OrderedDict(((3, 'User talk'),
+                (5, 'Wikipedia talk'),
+                (1, 'Talk'),
+                (2, 'User'),
+                (4, 'Wikipedia')))
 
     start = 'start'; end = 'end'
     context = iterparse(fh, events=(start, end))
@@ -111,7 +117,10 @@ def parse_xml(fh, rts, cache, process_id, file_id):
 
     article = {}
     size = {}
+    templates = {}
     reverts = {}
+    rev_count = 0
+    md5hashes = deque()
     id = False
     ns = False
     parse = False
@@ -140,13 +149,17 @@ def parse_xml(fh, rts, cache, process_id, file_id):
                 article['title'] = title
                 current_namespace = variables.determine_namespace(title, namespaces, include_ns)
                 title_meta = variables.parse_title_meta_data(title, current_namespace, namespaces)
+                title_meta['redirect'] = False
                 if current_namespace < 6:
                     parse = True
                     article['namespace'] = current_namespace
                     cache.count_articles += 1
                     if cache.count_articles % 10000 == 0:
                         print 'Worker %s parsed %s articles' % (process_id, cache.count_articles)
-                    md5hashes = deque()
+                elem.clear()
+
+            elif elem.tag.endswith('redirect'):
+                title_meta['redirect'] = True
                 elem.clear()
 
             elif elem.tag.endswith('revision'):
@@ -159,7 +172,19 @@ def parse_xml(fh, rts, cache, process_id, file_id):
                     if event is start:
                         clear = False
                     else:
-                        md5hashes, size, reverts = parse_revision(elem, article, xml_namespace, cache, bots, md5hashes, size, reverts)
+                        md5hashes, size, reverts, templates = parse_revision(elem, article, xml_namespace, cache, bots, md5hashes, size, reverts, templates)
+                        if templates != {}:
+                            article['templates'] = templates
+
+                        #add the timestamp when the article was created to
+                        #the article collection
+                        if rev_count == 0:
+                            timestamp = elem.find('%s%s' % (xml_namespace, 'timestamp')).text
+                            title_meta['date'] = timestamp
+                            rev_count += 1
+                        if current_namespace < 6:
+                            cache.articles[article['article_id']] = title_meta
+
                         cache.count_revisions += 1
                         clear = True
                     if clear:
@@ -172,8 +197,6 @@ def parse_xml(fh, rts, cache, process_id, file_id):
                 Determine id of article
                 '''
                 article['article_id'] = elem.text
-                if isinstance(current_namespace, int) and title_meta != {}:
-                    cache.articles[article['article_id']] = title_meta
                 id = True
                 elem.clear()
 
@@ -187,7 +210,10 @@ def parse_xml(fh, rts, cache, process_id, file_id):
                 article = {}
                 size = {}
                 reverts = {}
+                templates = {}
+                title_meta = {}
                 md5hashes = deque()
+                rev_count = 0
                 id = False
                 parse = False
 
