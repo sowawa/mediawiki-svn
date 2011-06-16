@@ -5,7 +5,7 @@
  * @author Ning
  * @file
  * @ingroup WikiObjectModels
- * 
+ *
  */
 
 class WOMTemplateModel extends WikiObjectModelCollection {
@@ -20,10 +20,10 @@ class WOMTemplateModel extends WikiObjectModelCollection {
 
 		if ( $this->m_title->getNamespace() == NS_MAIN ) {
 			// http://www.mediawiki.org/wiki/Help:Transclusion
-			// If the source is in the Main article namespace (e.g., "Cat"), 
+			// If the source is in the Main article namespace (e.g., "Cat"),
 			// you must put a colon (:) in front of the name, thus: {{:Cat}}
 
-			// If the source is in the Template namespace (e.g., "Template:Villagepumppages"), 
+			// If the source is in the Template namespace (e.g., "Template:Villagepumppages"),
 			// just use the name itself, alone, thus: {{Villagepumppages}}
 			if ( $this->m_name { 0 } != ':' ) {
 				$this->m_title = Title::makeTitleSafe( NS_TEMPLATE, $this->m_name );
@@ -34,7 +34,7 @@ class WOMTemplateModel extends WikiObjectModelCollection {
 	public function getName() {
 		return $this->m_name;
 	}
-	
+
 	public function setName( $name ) {
 		$this->m_name = $name;
 	}

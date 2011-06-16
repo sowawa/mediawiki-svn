@@ -24,7 +24,7 @@ class WOMHTMLTagParser extends WikiObjectModelParser {
 			$closed = false;
 			if ( isset( $m[2] ) ) {
 				$attr = $m[2];
-				$closed = ( $attr { strlen( $attr ) - 1 } == '/' );
+				$closed = ( $attr != '' && $attr { strlen( $attr ) - 1 } == '/' );
 				if ( $closed ) $attr = substr( $attr, 0, strlen( $attr ) - 1 );
 				while ( preg_match( '/^\s*([\w]+)\s*=\s*/', $attr, $m1 ) ) {
 					$attr = substr( $attr, strlen( $m1[0] ) );

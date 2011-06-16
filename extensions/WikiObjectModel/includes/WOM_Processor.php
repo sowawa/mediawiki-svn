@@ -36,15 +36,16 @@ class WOMProcessor {
 			WOMProcessor::setupParsers();
 		}
 		global $wgOMModelParserMapping;
-		$id = $wgOMModelParserMapping[$obj->getTypeID()];
-		if ( isset( WOMProcessor::$parsers[$id] ) ) {
-			$result = WOMProcessor::$parsers[$id];
-		} else {
-			$result = WOMProcessor::$base_parser;
+		if ( isset( $wgOMModelParserMapping[$obj->getTypeID()] ) ) {
+			$id = $wgOMModelParserMapping[$obj->getTypeID()];
+			if ( isset( WOMProcessor::$parsers[$id] ) ) {
+				wfProfileOut( $fname );
+				return WOMProcessor::$parsers[$id];
+			}
 		}
 		wfProfileOut( $fname );
 
-		return $result;
+		return WOMProcessor::$base_parser;
 	}
 
 	private static function applyObjID( WikiObjectModel $wom, WOMPageModel $root ) {
@@ -67,7 +68,7 @@ class WOMProcessor {
 
 		$root = new WOMPageModel();
 		WOMProcessor::parseNext( $text, $root, $root );
-		WOMProcessor::parseSentences($root);
+		WOMProcessor::parseSentences( $root );
 		WOMProcessor::applyObjID( $root, $root );
 		wfProfileOut( $fname );
 		return $root;
@@ -187,6 +188,11 @@ class WOMProcessor {
 			} else {
 				$parserInstance2 = $parserInstance;
 				$result = $parserInstance->parseNext( $text, $parentObj, $offset );
+				if ( $result == null ) {
+					// FIXME: just omit current char, this will not fit for Wiki parser
+					++ $offset;
+					continue;
+				}
 			}
 
 			$next_obj = $result['obj'];
@@ -204,10 +210,12 @@ class WOMProcessor {
 
 			WOMProcessor::assemble( $next_obj );
 
-			if ( $next_obj->isCollection() && !$result['closed'] ) {
+			if ( $next_obj->isCollection() && !( isset( $result['closed'] ) && $result['closed'] ) ) {
 				$collection_start = $offset;
-				$d = WOMProcessor::parseNext( $text, $next_obj, $rootObj, $offset, ( $parserInstance2 == null ? null :
-					WOMProcessor::$parsers[$parserInstance2->getSubParserID()] ) );
+				$d = WOMProcessor::parseNext( $text, $next_obj, $rootObj, $offset,
+					( ( $parserInstance2 != null && isset( WOMProcessor::$parsers[$parserInstance2->getSubParserID()] ) ) ?
+					WOMProcessor::$parsers[$parserInstance2->getSubParserID()] :
+					null ) );
 				if ( $d == 100 && $parserInstance2->isObjectClosed( $next_obj, $text, $offset ) === false ) {
 					// rollback
 					$p = WOMProcessor::getObjectParser( $parentObj );
@@ -491,7 +499,7 @@ class WOMProcessor {
 
 		wfProfileOut( $fname );
 	}
-	
+
 	public static function appendPageObject( $object, $title, $obj_id = '', $summary = '', $revision_id = 0, $force_update = true ) {
 		$fname = 'WikiObjectModel::appendPageObject (WOM)';
 		wfProfileIn( $fname );
@@ -627,7 +635,7 @@ class WOMProcessor {
 
 		wfProfileOut( $fname );
 	}
-	
+
 	public static function updatePageText( $text, $title, $obj_id, $summary = '', $revision_id = 0, $force_update = true ) {
 		$fname = 'WikiObjectModel::updatePageText (WOM)';
 		wfProfileIn( $fname );

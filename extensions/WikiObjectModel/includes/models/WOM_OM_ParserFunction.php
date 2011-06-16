@@ -5,7 +5,7 @@
  * @author Ning
  * @file
  * @ingroup WikiObjectModels
- * 
+ *
  */
 class WOMParserFunctionModel extends WikiObjectModelCollection {
 	protected $m_function_key;

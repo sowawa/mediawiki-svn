@@ -5,14 +5,14 @@
  * @author Ning
  * @file
  * @ingroup WikiObjectModels
- * 
+ *
  */
 
 class WOMLinkModel extends WikiObjectModel {
 	protected $m_link;
 	protected $m_caption;
 
-	public function __construct( $link, $caption = '' ) {
+	public function __construct( $link, $caption = null ) {
 		parent::__construct( WOM_TYPE_LINK );
 		$this->m_link = $link;
 		$this->m_caption = $caption;
@@ -31,11 +31,11 @@ class WOMLinkModel extends WikiObjectModel {
 	public function setLink( $link ) {
 		$this->m_link = $link;
 	}
-	
+
 	public function getCaption() {
 		return $this->m_caption;
 	}
-	
+
 	public function setCaption( $caption ) {
 		$this->m_caption = $caption;
 	}
@@ -44,14 +44,18 @@ class WOMLinkModel extends WikiObjectModel {
 		if ( $this->isInline() ) {
 			return "[[{$this->m_link}" . ( $this->m_caption ? "|{$this->m_caption}" : "" ) . "]]";
 		} else {
-			return "[{$this->m_link}" . ( $this->m_caption ? " {$this->m_caption}" : "" ) . "]";
+			if ( $this->m_caption === null ) {
+				return $this->m_link;
+			} else {
+				return "[{$this->m_link}" . ( $this->m_caption ? " {$this->m_caption}" : "" ) . "]";
+			}
 		}
 	}
 
 	protected function getXMLContent() {
 		return "
-<url>{$this->m_link}</url>
-<caption>{$this->m_caption}</caption>
+<url><![CDATA[{$this->m_link}]]></url>
+<caption><![CDATA[{$this->m_caption}]]></caption>
 ";
 	}
 }

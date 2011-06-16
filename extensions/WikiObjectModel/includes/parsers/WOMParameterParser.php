@@ -37,11 +37,11 @@ class WOMParameterParser extends WikiObjectModelParser {
 			return array( 'len' => $len, 'obj' => new WOMParameterModel( $key ) );
 		}
 	}
-	
+
 	public function getSubParserID() {
 		return WOM_PARSER_ID_PARAM_VALUE;
 	}
-	
+
 	public function isObjectClosed( $obj, $text, $offset ) {
 		if ( !( ( $obj instanceof WOMTemplateFieldModel )
 			|| ( $obj instanceof WOMParameterModel ) ) )

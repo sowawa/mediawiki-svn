@@ -5,7 +5,7 @@
  * @author Ning
  * @file
  * @ingroup WikiObjectModels
- * 
+ *
  */
 
 class WOMTemplateFieldModel extends WOMParameterModel {

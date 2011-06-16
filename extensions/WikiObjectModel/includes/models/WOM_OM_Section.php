@@ -5,7 +5,7 @@
  * @author Ning
  * @file
  * @ingroup WikiObjectModels
- * 
+ *
  */
 
 class WOMSectionModel extends WikiObjectModelCollection {
@@ -27,7 +27,7 @@ class WOMSectionModel extends WikiObjectModelCollection {
 	public function setName( $name ) {
 		$this->m_name = $name;
 	}
-	
+
 	public function getLevel() {
 		return $this->m_level;
 	}
@@ -35,9 +35,9 @@ class WOMSectionModel extends WikiObjectModelCollection {
 	public function setLevel( $level ) {
 		$this->m_level = $level;
 	}
-	
+
 	public function getHeaderText() {
-//		return "\n" . 
+//		return "\n" .
 		return substr( WOMSectionModel::$heading, 0, $this->m_level ) .
 			$this->m_name .
 			substr( WOMSectionModel::$heading, 0, $this->m_level ) .
@@ -47,7 +47,7 @@ class WOMSectionModel extends WikiObjectModelCollection {
 	public function getWikiText() {
 		return $this->getHeaderText() . parent::getWikiText();
 	}
-	
+
 	public function getContent() {
 		return parent::getWikiText();
 	}

@@ -5,12 +5,13 @@
  * @author Ning
  * @file
  * @ingroup WikiObjectModels
- * 
+ *
  */
 
 class WOMPropertyModel extends WikiObjectModel {
 	protected $m_property; // name
 	protected $m_smwdatavalue; // value, caption, type
+	protected $m_visible;
 
 	public function __construct( $property, $value, $caption = '' ) {
 		parent::__construct( WOM_TYPE_PROPERTY );
@@ -25,6 +26,7 @@ class WOMPropertyModel extends WikiObjectModel {
 
 		$this->m_property = $property;
 		$this->m_smwdatavalue = $smwdatavalue;
+		$this->m_visible = !preg_match( '/\s+/', $caption );
 	}
 
 	public function getProperty() {
@@ -34,7 +36,7 @@ class WOMPropertyModel extends WikiObjectModel {
 	public function setProperty( $property ) {
 		$this->m_property = $property;
 	}
-	
+
 	public function getSMWDataValue() {
 		return $this->m_smwdatavalue;
 	}
@@ -42,12 +44,14 @@ class WOMPropertyModel extends WikiObjectModel {
 	public function setSMWDataValue( $smwdatavalue ) {
 		$this->m_smwdatavalue = $smwdatavalue;
 	}
-	
+
 	public function getWikiText() {
 		$res = "[[{$this->getPropertyName()}::{$this->getPropertyValue()}";
 		if ( $this->getPropertyValue() != $this->getCaption()
 			&& $this->getCaption() != '' ) {
 				$res .= "|{$this->getCaption()}";
+		} else if ( !$this->m_visible ) {
+			$res .= "| ";
 		}
 		$res .= "]]";
 

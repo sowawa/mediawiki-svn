@@ -130,9 +130,3 @@ $wgAPIModules['womget'] = 'ApiWOMGetObjectModel';
 $wgAutoloadClasses['ApiWOMGetObjectModel'] = $wgOMIP . '/includes/apis/WOM_GetObjectModel.php';
 
 
-
-
-// constants for special properties
-define( 'WOM_WF_SP_HAS_TEMPLATE', 1 );
-define( 'WOM_WF_SP_HAS_MULTIPLE_TEMPLATE', 2 );
-define( 'WOM_WF_SP_HAS_TEMPLATEFIELD_CONNECTOR', 3 );

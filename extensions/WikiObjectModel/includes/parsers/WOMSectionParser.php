@@ -18,9 +18,9 @@ class WOMSectionParser extends WikiObjectModelParser {
 	public function parseNext( $text, WikiObjectModelCollection $parentObj, $offset = 0 ) {
 		$lastLF = ( $offset == 0 || $text { $offset - 1 } == "\n" );
 		$text = substr( $text, $offset );
-		if ( $lastLF ) {
-			$r = preg_match( '/^(={1,6})/', $text, $m );
-		}
+		if ( !$lastLF ) return null;
+
+		$r = preg_match( '/^(={1,6})/', $text, $m );
 		if ( $r ) {
 			$text1 = substr( $text, strlen( $m[0] ) );
 			$s = explode( "\n", $text1, 2 );
@@ -30,9 +30,9 @@ class WOMSectionParser extends WikiObjectModelParser {
 				$len = strlen( $m[0] ) + strlen( $s[0] ) + 1/* \n */;
 				$level = strlen( $m[1] ) < strlen( $m1[1][0] ) ? strlen( $m[1] ) : strlen( $m1[1][0] );
 
-				$obj = new WOMSectionModel(
+				$obj = new WOMSectionModel( trim(
 					substr( WOMSectionParser::$heading, 0, strlen( $m[1] ) - $level ) .
-						substr( $s[0], 0, $m1[1][1] + strlen( $m1[1][0] ) - $level ),
+						substr( $s[0], 0, $m1[1][1] + strlen( $m1[1][0] ) - $level ) ),
 					$level );
 
 				while ( $parentObj != null &&

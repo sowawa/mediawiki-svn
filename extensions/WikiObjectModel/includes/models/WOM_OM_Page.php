@@ -66,16 +66,20 @@ class WOMPageModel extends WikiObjectModelCollection {
 	}
 
 	public function appendChildObject( WikiObjectModel $obj, $id = '' ) {
-		$p = $this->m_page_objs[$id];
-		if ( !( $p instanceof WikiObjectModelCollection ) ) {
-			return;
+		if ( $id == '' ) {
+			$p = $this;
+		} else {
+			$p = $this->m_page_objs[$id];
+			if ( !( $p instanceof WikiObjectModelCollection ) ) {
+				return;
+			}
 		}
 		$obj->setObjectID( $this->getNextId() );
 		$p->insertObject( $obj );
 
 		$this->addToPageObjectSet( $obj );
 	}
-	
+
 	public function removePageObject( $id ) {
 		$old_obj = $this->m_page_objs[$id];
 		if ( $old_obj == null ) return;

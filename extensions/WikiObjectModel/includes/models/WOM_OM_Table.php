@@ -5,7 +5,7 @@
  * @author Ning
  * @file
  * @ingroup WikiObjectModels
- * 
+ *
  */
 
 class WOMTableModel extends WikiObjectModelCollection {
@@ -24,8 +24,20 @@ class WOMTableModel extends WikiObjectModelCollection {
 	public function setStyle( $style ) {
 		$this->m_style = $style;
 	}
-	
+
 	public function getWikiText() {
 		return "{| {$this->m_style}" . parent::getWikiText() . "\n|}";
+	}
+
+	public function setXMLAttribute( $key, $value ) {
+		if ( $key == 'style' ) {
+			$this->m_style = $value;
+			return;
+		}
+		throw new MWException( __METHOD__ . ": invalid key/value pair: style=table_style" );
+	}
+
+	protected function getXMLAttributes() {
+		return "style=\"{$this->m_style}\"";
 	}
 }

@@ -5,7 +5,7 @@
  * @author Ning
  * @file
  * @ingroup WikiObjectModels
- * 
+ *
  */
 
 class WOMCategoryModel extends WikiObjectModel {
@@ -13,13 +13,19 @@ class WOMCategoryModel extends WikiObjectModel {
 
 	public function __construct( $name ) {
 		parent::__construct( WOM_TYPE_CATEGORY );
-		$this->m_name = $name;
+		$title = Title::newFromText( $name, NS_CATEGORY );
+		if ( $title == null ) {
+			// no idea why, just leave it
+			$this->m_name = $name;
+		} else {
+			$this->m_name = $title->getText();
+		}
 	}
 
 	public function getName() {
 		return $this->m_name;
 	}
-	
+
 	public function setName( $name ) {
 		$this->m_name = $name;
 	}

@@ -19,12 +19,12 @@ class ApiWOMSetObjectModel extends ApiBase {
 			$this->dieUsage( 'Must specify xpath', 1 );
 
 		$page = $params['page'];
-		$type = $params['type'];
+		$verb = $params['verb'];
 		$xpath = $params['xpath'];
 		$value = $params['value'];
 		$summary = $params['summary'];
 		$rid = $params['rid'];
-		$force_update = $params['force_update'];
+		$force_update = ( intval( $params['force_update'] ) == 1 );
 
 		$articleTitle = Title::newFromText( $page );
 		if ( !$articleTitle )
@@ -52,9 +52,9 @@ class ApiWOMSetObjectModel extends ApiBase {
 				throw new MWException( __METHOD__ . ": object does not found, xpath: {$xpath}" );
 			}
 
-			if ( $type == 'remove' ) {
+			if ( $verb == 'remove' ) {
 				WOMProcessor::removePageObject( $articleTitle, $oid, $summary, $rid, $force_update );
-			} else if ( $type == 'removeall' ) {
+			} else if ( $verb == 'removeall' ) {
 				$wom = WOMProcessor::getPageObject( $articleTitle, $rid );
 				foreach ( $objs as $id ) {
 					if ( $id == '' ) continue;
@@ -76,13 +76,13 @@ class ApiWOMSetObjectModel extends ApiBase {
 				if ( is_null( $params['value'] ) )
 					$this->dieUsage( 'Must specify value', 2 );
 
-				if ( $type == 'insert' ) {
+				if ( $verb == 'insert' ) {
 					WOMProcessor::insertPageText( $value, $articleTitle, $oid, $summary, $rid, $force_update );
-				} else if ( $type == 'update' ) {
+				} else if ( $verb == 'update' ) {
 					WOMProcessor::updatePageText( $value, $articleTitle, $oid, $summary, $rid, $force_update );
-				} else if ( $type == 'append' ) {
+				} else if ( $verb == 'append' ) {
 					WOMProcessor::appendPageText( $value, $articleTitle, $oid, $summary, $rid, $force_update );
-				} else if ( $type == 'attribute' ) {
+				} else if ( $verb == 'attribute' ) {
 					$wom = WOMProcessor::getPageObject( $articleTitle, $rid );
 					$obj = $wom->getObject( $oid );
 					$kv = explode( '=', $value, 2 );
@@ -119,7 +119,7 @@ class ApiWOMSetObjectModel extends ApiBase {
 	protected function getAllowedParams() {
 		return array (
 			'page' => null,
-			'type' => array(
+			'verb' => array(
 				ApiBase :: PARAM_DFLT => 'update',
 				ApiBase :: PARAM_TYPE => array(
 					'update',
@@ -141,10 +141,10 @@ class ApiWOMSetObjectModel extends ApiBase {
                 ApiBase :: PARAM_MIN => 0
             ),
 			'force_update' => array(
-				ApiBase :: PARAM_DFLT => 'true',
+				ApiBase :: PARAM_DFLT => '1',
 				ApiBase :: PARAM_TYPE => array(
-					'true',
-					'false',
+					'1',
+					'0',
 				),
 			),
 		);
@@ -153,23 +153,27 @@ class ApiWOMSetObjectModel extends ApiBase {
 	protected function getParamDescription() {
 		return array (
 			'page' => 'Title of the page to modify',
-			'type' => 'Type to set to change wiki object instances',
+			'verb' => 'Action verb to set to change wiki object instances',
 			'xpath' => array(
 				'DOM-like xpath to locate WOM object instances (http://www.w3schools.com/xpath/xpath_syntax.asp)',
-				'type = update, xpath to elements to be updated',
-				'type = attribute, xpath to elements, the attribute will be updated',
-				'type = insert, the element will be inserted right before the element specified by xpath',
-				'type = append, the element will be appended right to the element children elements specified by xpath',
-				'type = remove, xpath to element to be removed',
-				'type = removeall, xpath to elements to be removed',
+				'verb = update, xpath to elements to be updated',
+				'verb = attribute, xpath to elements, the attribute will be updated',
+				'verb = insert, the element will be inserted right before the element specified by xpath',
+				'verb = append, the element will be appended right to the element children elements specified by xpath',
+				'verb = remove, xpath to element to be removed',
+				'verb = removeall, xpath to elements to be removed',
 			),
 			'value' => array(
 				'Value to set',
-				'type = attribute, attribute_name=attribute_value',
+				'verb = attribute, attribute_name=attribute_value',
 			),
 			'summary' => 'Edit summary',
 			'rid' => 'Revision id of specified page - by dafault latest updated revision (0) is used',
-			'force_update' => 'Force to update even if the revision id does not match the latest edition',
+			'force_update' => array(
+				'Force to update even if the revision id does not match the latest edition',
+				'force_update = 0, return "revision not match" exception if rid is not the latest one',
+				'force_update = 1, update anyway',
+			),
 		);
 	}
 

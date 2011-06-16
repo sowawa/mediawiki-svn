@@ -50,23 +50,37 @@ class ApiWOMGetObjectModel extends ApiBase {
 			$result['result'] = 'Success';
 
 			// pay attention to special xml tag, e.g., <property><value>...</value></property>
+			$result['return'] = array();
 			if ( $type == 'count' ) {
 				$count = 0;
 				foreach ( $objs as $id ) {
 					if ( $id == '' ) continue;
 					++ $count;
 				}
-				$result['return'] = $count;
+				$this->getResult()->setContent( $result['return'], $count );
 			} else {
-				$result['return'] = array();
+				$xml = '';
+				$page_obj = WOMProcessor::getPageObject( $articleTitle, $rid );
 				foreach ( $objs as $id ) {
 					if ( $id == '' ) continue;
+					$wobj = $page_obj->getObject( $id );
 					$result['return'][$id] = array();
 					if ( $type == 'xml' ) {
-						$this->getResult()->setContent( $result['return'][$id], WOMProcessor::getPageObject( $articleTitle, $rid )->getObject( $id )->toXML() );
+						$xml .= "<{$id} xml:space=\"preserve\">{$wobj->toXML()}</{$id}>";
+//						$this->getResult()->setContent( $result['return'][$id], $wobj->toXML() );
 					} else {
-						$this->getResult()->setContent( $result['return'][$id], WOMProcessor::getPageObject( $articleTitle, $rid )->getObject( $id )->getWikiText() );
+						$this->getResult()->setContent( $result['return'][$id], $wobj->getWikiText() );
 					}
+				}
+				if ( $type == 'xml' ) {
+					header ( "Content-Type: application/rdf+xml" );
+					echo <<<OUTPUT
+<?xml version="1.0" encoding="UTF-8" ?>
+<api><womget result="Success"><return>
+{$xml}
+</return></womget></api>
+OUTPUT;
+					exit( 1 );
 				}
 			}
 		}
@@ -78,9 +92,9 @@ class ApiWOMGetObjectModel extends ApiBase {
 			'page' => null,
 			'xpath' => null,
 			'type' => array(
-				ApiBase :: PARAM_DFLT => 'get',
+				ApiBase :: PARAM_DFLT => 'wiki',
 				ApiBase :: PARAM_TYPE => array(
-					'get',
+					'wiki',
 					'count',
 					'xml',
 				),
@@ -99,9 +113,9 @@ class ApiWOMGetObjectModel extends ApiBase {
 			'xpath' => 'DOM-like xpath to locate WOM object instances (http://www.w3schools.com/xpath/xpath_syntax.asp)',
 			'type' => array (
 				'Type to fetch useful wiki object data',
-				'type = get, get specified object',
+				'type = wiki, get wiki text of specified object',
 				'type = count, get objects count with specified xpath',
-				'type = xml, view objects\' xml format with specified xpath, usually use with format=xml',
+				'type = xml, view "encoded objects\' xml" with specified xpath, usually use with format=xml',
 			),
 			'rid' => 'Revision id of specified page - by dafault latest updated revision (0) is used',
 		);

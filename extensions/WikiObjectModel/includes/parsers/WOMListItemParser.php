@@ -16,9 +16,9 @@ class WOMListItemParser extends WikiObjectModelParser {
 	public function parseNext( $text, WikiObjectModelCollection $parentObj, $offset = 0 ) {
 		$lastLF = ( $offset == 0 || $text { $offset - 1 } == "\n" );
 		$text = substr( $text, $offset );
-		if ( $lastLF ) {
-			$r = preg_match( '/^([\*#]+)/', $text, $m );
-		}
+		if ( !$lastLF ) return null;
+
+		$r = preg_match( '/^([\*#]+)/', $text, $m );
 		if ( $r ) {
 			$len = strlen( $m[0] );
 			$obj = new WOMListItemModel( $m[1] );

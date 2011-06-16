@@ -1,9 +1,9 @@
 <?php
 /**
  * This file contains the WikiObjectModelFactory class.
- * 
+ *
  * @author Ning
- * 
+ *
  * @file
  * @ingroup WikiObjectModels
  */
@@ -12,14 +12,14 @@ class WikiObjectModelFactory {
 
 	/**
 	 * Array of type labels indexed by type ids. Used for model type resolution.
-	 * 
+	 *
 	 * @var array
 	 */
 	static private $mTypeLabels;
 
 	/**
 	 * Array of class names for creating new WikiObjectModel, indexed by type id.
-	 * 
+	 *
 	 * @var array of WikiObjectModel
 	 */
 	static private $mTypeClasses;
@@ -27,9 +27,9 @@ class WikiObjectModelFactory {
 	/**
 	 * Create a value from a type id. If no $value is given, an empty container
 	 * is created, the value of which can be set later on.
-	 * 
+	 *
 	 * @param $typeid id string for the given type
-	 * 
+	 *
 	 * @return WikiObjectModel
 	 */
 	static public function newTypeIDValue( $typeid ) {
@@ -78,7 +78,7 @@ class WikiObjectModelFactory {
 	/**
 	 * A function for registering/overwriting pomtypes for WOM. Should be
 	 * called from within the hook 'mwInitWOMTypes'.
-	 * 
+	 *
 	 * @param string $id
 	 * @param string $className
 	 * @param mixed $label
@@ -100,7 +100,7 @@ class WikiObjectModelFactory {
 	 *
 	 * This method may or may not take aliases into account. For unknown
 	 * labels, the normalised (DB-version) label is used as an ID.
-	 * 
+	 *
 	 * @param string $label
 	 */
 	static public function findTypeID( $label ) {
@@ -118,7 +118,7 @@ class WikiObjectModelFactory {
 	 * Get the translated user label for a given internal ID. If the ID does
 	 * not have a label associated with it in the current language, the ID
 	 * itself is transformed into a label (appropriate for user defined types).
-	 * 
+	 *
 	 * @param string $id
 	 */
 	static public function findTypeLabel( $id ) {
@@ -142,7 +142,7 @@ class WikiObjectModelFactory {
 	 * a property, and that are internal (i.e. not user defined). No labels are
 	 * returned for internal types without user labels (e.g. the special types
 	 * for wome special properties), and for user defined types.
-	 * 
+	 *
 	 * @return array
 	 */
 	static public function getKnownTypeLabels() {

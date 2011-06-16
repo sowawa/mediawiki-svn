@@ -5,7 +5,7 @@
  * @author Ning
  * @file
  * @ingroup WikiObjectModels
- * 
+ *
  */
 
 class WOMTextModel extends WikiObjectModel {
@@ -29,6 +29,6 @@ class WOMTextModel extends WikiObjectModel {
 	}
 
 	public function toXML() {
-		return htmlentities( $this->m_text );
+		return htmlspecialchars( $this->m_text );
 	}
 }

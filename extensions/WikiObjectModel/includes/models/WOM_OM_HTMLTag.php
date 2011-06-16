@@ -5,7 +5,7 @@
  * @author Ning
  * @file
  * @ingroup WikiObjectModels
- * 
+ *
  */
 
 class WOMHTMLTagModel extends WikiObjectModelCollection {
@@ -21,7 +21,7 @@ class WOMHTMLTagModel extends WikiObjectModelCollection {
 	public function getName() {
 		return $this->m_name;
 	}
-	
+
 	public function setName( $name ) {
 		$this->m_name = $name;
 	}
@@ -29,11 +29,11 @@ class WOMHTMLTagModel extends WikiObjectModelCollection {
 	public function getAttributes() {
 		return $this->m_attributes;
 	}
-	
+
 	public function setAttributes( $attrs ) {
 		$this->m_attributes = $attrs;
 	}
-	
+
 	public function getWikiText() {
 		return "<{$this->m_name}>" . parent::getWikiText() . "</{$this->m_name}>";
 	}

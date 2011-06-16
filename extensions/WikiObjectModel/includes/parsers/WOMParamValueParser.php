@@ -17,7 +17,7 @@ class WOMParamValueParser extends WikiObjectModelParser {
 		if ( !( $parentObj instanceof WOMParameterModel ) )
 			return null;
 
-		return array( 'len' => $len, 'obj' => new WOMParamValueModel() );
+		return array( 'len' => 0, 'obj' => new WOMParamValueModel() );
 	}
 
 	public function isObjectClosed( $obj, $text, $offset ) {

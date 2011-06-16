@@ -5,27 +5,29 @@
  * @author Ning
  * @file
  * @ingroup WikiObjectModels
- * 
+ *
  */
 
 class WOMMagicWordModel extends WikiObjectModel {
 	protected $m_magicword;
+	protected $m_doubleUnderscore;
 
-	public function __construct( $magicword ) {
+	public function __construct( $magicword, $doubleUnderscore = false ) {
 		parent::__construct( WOM_TYPE_MAGICWORD );
 		$this->m_magicword = $magicword;
+		$this->m_doubleUnderscore = $doubleUnderscore;
 	}
 
 	public function getMagicWord() {
 		return $this->m_magicword;
 	}
-	
+
 	public function setMagicWord( $magicword ) {
 		$this->m_magicword = $magicword;
 	}
 
 	public function getWikiText() {
-		return "{{{$this->m_magicword}}}";
+		return $this->m_doubleUnderscore ? $this->m_magicword : "{{{$this->m_magicword}}}";
 	}
 
 	public function setXMLAttribute( $key, $value ) {

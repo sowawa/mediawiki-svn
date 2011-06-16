@@ -1,7 +1,7 @@
 <?php
 /**
  * File holding class WikiObjectModelParser, the base for all object model parser in WOM.
- * 
+ *
  * Deal plain text only, just get next text token
  *
  * @author Ning
@@ -34,7 +34,7 @@ class WikiObjectModelParser {
 // /// Processing methods /////
 	public function parseNext( $text, WikiObjectModelCollection $parentObj, $offset = 0 ) {
 		$text = substr( $text, $offset );
-		$r = preg_match( '/^\w+/', $text, $m );
+		$r = preg_match( '/^[a-zA-Z0-9]+/', $text, $m );
 		if ( $r ) return array( 'len' => strlen( $m[0] ), 'obj' => new WOMTextModel( $m[0] ) );
 		// special case, <nowiki>, <noinclude>
 		$idx = stripos( $text, '<nowiki>' );
@@ -53,7 +53,7 @@ class WikiObjectModelParser {
 		return array( 'len' => 1, 'obj' => new WOMTextModel( $text { 0 } ) );
 	}
 
-	// E.g., 
+	// E.g.,
 	// semantic property is extended from internal links
 	// parser functions is extended from templates
 	public function subclassOf( $parserInstance ) {
