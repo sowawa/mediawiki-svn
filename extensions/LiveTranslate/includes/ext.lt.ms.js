@@ -14,9 +14,6 @@
 	
 	this.runningJobs = 0;
 	
-	// This is to enable a hack to decode quotes.
-	this.textAreaElement = document.createElement( 'textarea' );
-	
 	/**
 	 * Determines a chunk to translate of an DOM elements contents and calls the Microsoft Translate API.
 	 * Then calls itself if there is any remaining work to be done.
@@ -26,7 +23,7 @@
 	 * @param {integer} currentMaxSize
 	 * @param {string} sourceLang
 	 * @param {string} targetLang
-	 * @param {jQuery} element
+	 * @param {DOM element} element
 	 */
 	this.translateChunk = function( untranslatedsentences, chunks, currentMaxSize, sourceLang, targetLang, element ) {
 		ltdebug( 'MS: Translating chunk' );
@@ -105,8 +102,9 @@
 				
 				if ( untranslatedsentences.length == 0 ) {
 					// If the current chunk was smaller then the max size, node translation is complete, so update text.
-					self.textAreaElement.innerHTML = chunks.join( '' ); // This is a hack to decode quotes.
-					element.replaceData( 0, element.length, self.textAreaElement.value );
+					window.textAreaElement.innerHTML = chunks.join( '' ); // This is a hack to decode quotes.
+					element.replaceData( 0, element.length, window.textAreaElement.value );
+
 					self.handleTranslationCompletion( targetLang );
 				}
 				else {

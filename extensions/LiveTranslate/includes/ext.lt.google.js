@@ -29,7 +29,7 @@ google.setOnLoadCallback(function(){google.language.getBranding("googlebranding"
 	 * @param {integer} currentMaxSize
 	 * @param {string} sourceLang
 	 * @param {string} targetLang
-	 * @param {jQuery} element
+	 * @param {DOM element} element
 	 */
 	this.translateChunk = function( untranslatedsentences, chunks, currentMaxSize, sourceLang, targetLang, element ) {
 		ltdebug( 'Google: Translating chunk' );

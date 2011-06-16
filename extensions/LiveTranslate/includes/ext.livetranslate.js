@@ -20,7 +20,12 @@
 	
 	window.ltdebug = function( message ) {
 		if ( window.ltDebugMessages ) {
-			console.log( 'Live Translate: ' + message );
+			if ( typeof console === 'undefined' ) {
+				document.title = 'Live Translate: ' + message;
+			}
+			else {
+				console.log( 'Live Translate: ' + message );
+			}
 		}
 	};
 	
@@ -28,6 +33,8 @@
 	
 	// For the "show original" feature.
 	var originalHtml = false;
+	
+	window.textAreaElement = document.createElement( 'textarea' );
 	
 	// Compatibility with pre-RL code.
 	// Messages will have been loaded into wgPushMessages.
