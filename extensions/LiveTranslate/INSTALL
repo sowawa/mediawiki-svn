@@ -59,3 +59,11 @@ add it to your [[LocalSettings.php]] file AFTER the inclusion of the extension.
 
 # Microsoft App ID
 $egLiveTranslateMSAppId = 'INSERT-YOUR-ID-HERE';
+
+=== Permissions ===
+
+In order to edit the list of translation memories, you need the 'managetms' [[Permissions|permission]]. By default only sysops have this permission.
+
+<source lang="php">
+$wgGroupPermissions['sysop']['managetms'] = true;
+</source>
