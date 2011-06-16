@@ -24,7 +24,7 @@ final class LiveTranslateHooks {
 	 * @return true
 	 */
 	public static function onArticleViewHeader( Article &$article, &$outputDone, &$useParserCache ) {
-		global $egGoogleApiKey, $egLiveTranslateLanguages;
+		global $egLiveTranslateLanguages;
 
 		$title = $article->getTitle();
 		
@@ -36,7 +36,7 @@ final class LiveTranslateHooks {
 			$outputDone = true; // The translations themselves should not be shown. 
 		}
 		else if (
-			$egGoogleApiKey != ''
+			LiveTranslateFunctions::hasTranslationService()
 			&& $article->exists()
 			&& ( count( $egLiveTranslateLanguages ) > 1 || ( count( $egLiveTranslateLanguages ) == 1 && $egLiveTranslateLanguages[0] != $currentLang ) ) ) {
 			
@@ -152,7 +152,7 @@ final class LiveTranslateHooks {
 	 * @param string $currentLang
 	 */
 	protected static function displayTranslationControl( $currentLang ) {
-		global $wgOut, $egGoogleApiKey;
+		global $wgOut;
 		
 		$divContents = htmlspecialchars( wfMsg( 'livetranslate-translate-to' ) ) .
 			'&#160;' . 
@@ -168,10 +168,10 @@ final class LiveTranslateHooks {
 				'button',
 				array( 'id' => 'ltrevertbutton', 'style' => 'display:none' ),
 				wfMsg( 'livetranslate-button-revert' )
-			);				
+			);
 		
 		if ( $GLOBALS['egLiveTranslateService'] == LTS_GOOGLE ) {
-			$divContents .= '<br /><br /><div id="googlebranding" style="display:inline; float:right"></div>';
+			$divContents .= '<br /><br /><div id="googlebranding" style="display:inline; position:absolute; right: 0px"></div>';
 		}
 		
 		$wgOut->addHTML(

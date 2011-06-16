@@ -418,4 +418,18 @@ final class LiveTranslateFunctions {
 		return $type;
 	}
 	
+	/**
+	 * Returns if there is a translation service that can be used or not.
+	 * 
+	 * @since 1.1.1
+	 * 
+	 * @return boolean
+	 */
+	public static function hasTranslationService() {
+		global $egLiveTranslateService, $egGoogleApiKey, $egLiveTranslateMSAppId;
+		
+		return ( $egLiveTranslateService == LTS_GOOGLE && $egGoogleApiKey != '' )
+			|| ( $egLiveTranslateService == LTS_MS && $egLiveTranslateMSAppId != '' );
+	}
+	
 }

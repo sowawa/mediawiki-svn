@@ -24,7 +24,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define( 'LiveTranslate_VERSION', '1.1' );
+define( 'LiveTranslate_VERSION', '1.1.1 alpha' );
 
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
