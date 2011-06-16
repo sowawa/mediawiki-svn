@@ -178,7 +178,7 @@
 			$( '#bodyContent *' ).replaceText( 
 				new RegExp( "(\\W)*" + RegExp.escape( words[i] ) + "(\\W)*", "g" ),
 				function( str ) {
-					return '<span class="notranslate">' + str + '</span>'
+					return '<span class="notranslate">' + str + '</span>';
 				}
 			);
 		}
