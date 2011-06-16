@@ -17,7 +17,6 @@ __email__ = 'dvanliere at gmail dot com'
 __date__ = '2010-10-21'
 __version__ = '0.1'
 
-import cProfile
 import os
 import logging
 import logging.handlers
@@ -186,13 +185,6 @@ def init_args_parser(language_code=None, project=None):
         information and stores it in a MongoDB.')
     parser_create.set_defaults(func=extract_launcher)
 
-
-    #SORT
-    parser_sort = subparsers.add_parser('sort',
-        help='By presorting the data, significant processing time reductions \
-        are achieved.')
-    parser_sort.set_defaults(func=sort_launcher)
-
     #STORE
     parser_store = subparsers.add_parser('store',
         help='The store sub command parsers the XML chunk files, extracts the \
@@ -318,21 +310,6 @@ def extract_launcher(rts, logger):
     log.to_csv(logger, rts, 'Finish', 'Extract', extract_launcher)
 
 
-def sort_launcher(rts, logger):
-    '''
-    After the extracter has finished then the created output files need to be
-    sorted. This function takes care of that. 
-    '''
-    print 'Start sorting data'
-    stopwatch = timer.Timer()
-    log.to_db(rts, 'dataset', 'sort', stopwatch, event='start')
-    log.to_csv(logger, rts, 'Start', 'Sort', sort_launcher)
-    sort.launcher(rts)
-    stopwatch.elapsed()
-    log.to_db(rts, 'dataset', 'sort', stopwatch, event='finish')
-    log.to_csv(logger, rts, 'Finish', 'Sort', sort_launcher)
-
-
 def store_launcher(rts, logger):
     '''
     The data is ready to be stored once the sorted function has completed. This
@@ -343,7 +320,7 @@ def store_launcher(rts, logger):
     log.to_db(rts, 'dataset', 'store', stopwatch, event='start')
     log.to_csv(logger, rts, 'Start', 'Store', store_launcher)
     store.launcher(rts)
-    #store.launcher_articles(rts)
+    store.launcher_articles(rts)
     stopwatch.elapsed()
     log.to_db(rts, 'dataset', 'store', stopwatch, event='finish')
     log.to_csv(logger, rts, 'Finish', 'Store', store_launcher)
@@ -410,7 +387,7 @@ def all_launcher(rts, logger):
 
     functions = ordered_dict.OrderedDict(((downloader_launcher, 'download'),
                                           (extract_launcher, 'extract'),
-                                          (sort_launcher, 'sort'),
+                                          #(sort_launcher, 'sort'),
                                           (store_launcher, 'store'),
                                           (transformer_launcher, 'transform')))
 
@@ -459,4 +436,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-    #cProfile.run('main()')
