@@ -36,7 +36,7 @@ if ( ! defined( 'Validator_VERSION' ) ) {
 	die( '<b>Error:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Validator">Validator</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a>.<br />' );
 }
 
-define( 'Maps_VERSION', '0.7.7' );
+define( 'Maps_VERSION', '0.7.8 alpha' );
 
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
