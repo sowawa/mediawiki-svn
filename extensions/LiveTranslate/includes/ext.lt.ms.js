@@ -108,27 +108,16 @@
 			}
 		};
 		
-		// Trim, so the result does not contain preceding or tailing spaces.
-		var trimmedChunk = jQuery.trim( chunk );
-		
-//		if ( trimmedChunk.length < 50 ) {
-//			self.handleTranslationCompletion( targetLang );
-//			//chunckTranslationDone( trimmedChunk );
-//		}
-//		else {
-			$.getJSON(
-				'http://api.microsofttranslator.com/V2/Ajax.svc/Translate?oncomplete=?',
-				{
-					'appId': window.ltMsAppId,
-					'from': sourceLang,
-					'to': targetLang,
-					'text': trimmedChunk
-				},
-				chunckTranslationDone
-			);
-//		}
-		
-
+		$.getJSON(
+			'http://api.microsofttranslator.com/V2/Ajax.svc/Translate?oncomplete=?',
+			{
+				'appId': window.ltMsAppId,
+				'from': sourceLang,
+				'to': targetLang,
+				'text': jQuery.trim( chunk ) // Trim, so the result does not contain preceding or tailing spaces.
+			},
+			chunckTranslationDone
+		);
 	}
 	
 	/**
