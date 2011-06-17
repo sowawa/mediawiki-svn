@@ -13,6 +13,8 @@
 	this.done = function( targetLang ){};
 	
 	this.runningJobs = 0;
+	this.checkingForIdle = false;
+	this.lastCompletion;
 	
 	/**
 	 * Determines a chunk to translate of an DOM elements contents and calls the Microsoft Translate API.
@@ -76,43 +78,57 @@
 			this.handleTranslationCompletion( targetLang );
 			return;
 		}
-
+		
 		// Keep track of leading and tailing spaces, as they often get modified by the GT API.
 		var leadingSpace = chunk.substr( 0, 1 ) == ' ' ? ' ' : '';
 		var tailingSpace = ( chunk.length > 1 && chunk.substr( chunk.length - 1, 1 ) == ' ' ) ? ' ' : '';
 		
-		$.getJSON(
-			'http://api.microsofttranslator.com/V2/Ajax.svc/Translate?oncomplete=?',
-			{
-				'appId': window.ltMsAppId,
-				'from': sourceLang,
-				'to': targetLang,
-				'text': jQuery.trim( chunk ) // Trim, so the result does not contain preceding or tailing spaces.
-			},
-			function( translation ) {
-				ltdebug( 'MS: Translated chunk' );
-				
-				if ( translation ) {
-					chunks.push( leadingSpace + translation + tailingSpace );
-				}
-				else {
-					// If the translation failed, keep the original text.
-					chunks.push( chunk );
-				}
-				
-				if ( untranslatedsentences.length == 0 ) {
-					// If the current chunk was smaller then the max size, node translation is complete, so update text.
-					window.textAreaElement.innerHTML = chunks.join( '' ); // This is a hack to decode quotes.
-					element.replaceData( 0, element.length, window.textAreaElement.value );
-
-					self.handleTranslationCompletion( targetLang );
-				}
-				else {
-					// If there is more work to do, move on to the next chunk.
-					self.translateChunk( untranslatedsentences, chunks, currentMaxSize, sourceLang, targetLang, element );
-				}
+		var chunckTranslationDone = function( translation ) {
+			ltdebug( 'MS: Translated chunk' );
+			
+			if ( translation ) {
+				chunks.push( leadingSpace + translation + tailingSpace );
 			}
-		);
+			else {
+				// If the translation failed, keep the original text.
+				chunks.push( chunk );
+			}
+			
+			if ( untranslatedsentences.length == 0 ) {
+				// If the current chunk was smaller then the max size, node translation is complete, so update text.
+				window.textAreaElement.innerHTML = chunks.join( '' ); // This is a hack to decode quotes.
+				element.replaceData( 0, element.length, window.textAreaElement.value );
+
+				ltdebug( 'MS: Translated element' );
+				self.handleTranslationCompletion( targetLang );
+			}
+			else {
+				// If there is more work to do, move on to the next chunk.
+				self.translateChunk( untranslatedsentences, chunks, currentMaxSize, sourceLang, targetLang, element );
+			}
+		};
+		
+		// Trim, so the result does not contain preceding or tailing spaces.
+		var trimmedChunk = jQuery.trim( chunk );
+		
+//		if ( trimmedChunk.length < 50 ) {
+//			self.handleTranslationCompletion( targetLang );
+//			//chunckTranslationDone( trimmedChunk );
+//		}
+//		else {
+			$.getJSON(
+				'http://api.microsofttranslator.com/V2/Ajax.svc/Translate?oncomplete=?',
+				{
+					'appId': window.ltMsAppId,
+					'from': sourceLang,
+					'to': targetLang,
+					'text': trimmedChunk
+				},
+				chunckTranslationDone
+			);
+//		}
+		
+
 	}
 	
 	/**
@@ -163,6 +179,33 @@
 		this.handleTranslationCompletion( targetLang );
 	}
 	
+	this.invokeDone = function( targetLang ) {
+		ltdebug( 'MS: translation process done' );
+		ltdebug( this.runningJobs );
+		this.runningJobs = 0;
+		this.done( targetLang );		
+	}
+	
+	this.checkForIdleness = function( targetLang, hits ) {
+		ltdebug( 'MS: checkForIdleness' );
+		ltdebug( 'MS: last + 250: ' + ( this.lastCompletion + 250 ) );
+		ltdebug( 'MS: now: ' + (new Date()).getTime() );
+		
+		if ( this.lastCompletion + 250 < (new Date()).getTime() ) {
+			hits++;
+		}
+		else {
+			hits = 0;
+		}
+		
+		if ( hits > 4 ) {
+			this.invokeDone( targetLang );
+		}
+		else if ( this.runningJobs > 0 ) {
+			setTimeout( function() { self.checkForIdleness( targetLang, hits ); }, 250 );
+		}
+	}
+	
 	/**
 	 * Should be called every time a DOM element has been translated.
 	 * By use of the runningJobs var, completion of the translation process is detected,
@@ -171,10 +214,19 @@
 	 * @param {string} targetLang
 	 */
 	this.handleTranslationCompletion = function( targetLang ) {
+		if ( !this.checkingForIdle && this.runningJobs > 1 && this.runningJobs < 20 ) {
+			this.checkingForIdle = true;
+			setTimeout( function() { self.checkForIdleness( targetLang, 0 ); }, 250 );
+		}
+		
+		if ( this.checkingForIdle ) {
+			this.lastCompletion = (new Date()).getTime();
+		}
+		
 		if ( !--this.runningJobs ) {
-			ltdebug( 'MS: translation process done' );
-			this.done( targetLang );
+			this.invokeDone( targetLang );
 		}
 	}
+	
 	
 }; })( jQuery );

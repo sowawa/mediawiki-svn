@@ -4,7 +4,7 @@ Extension page on mediawiki.org: http://www.mediawiki.org/wiki/Extension:Live_Tr
 Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/LiveTranslate/RELEASE-NOTES?view=co
 
 
-=== Version 1.1.0 ===
+=== Version 1.1 ===
 2011-06-16
 
 * Added support for the Microsoft Translation service.

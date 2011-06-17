@@ -233,10 +233,10 @@
 		translator.done = handleTranslationCompletion;
 		ltdebug( 'Initiating remote translation' );
 		translator.translateElement( $( '#bodyContent' ), sourceLang, targetLang );
-		ltdebug( 'Remote translation completed' );
 	}
 	
 	function handleTranslationCompletion( targetLang ) {
+		ltdebug( 'Remote translation completed' );
 		currentLang = targetLang;
 		$( '#livetranslatebutton' ).attr( "disabled", false ).text( mediaWiki.msg( 'livetranslate-button-translate' ) );
 		$( '#ltrevertbutton' ).css( 'display', 'inline' );
