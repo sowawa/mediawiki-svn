@@ -141,8 +141,8 @@ function efDiscussionThread($efform){
 				 ctrl.focus();
 				 var end = ctrl.value.length;
 				 ctrl.setSelectionRange(end-".strlen($replaceMeText).",end-1);
-				 ctrl.scrollTop = ctrl.scrollHeight;                               
-			   } else if (ctrl.createTextRange) {
+				 ctrl.scrollTop = ctrl.scrollHeight;
+			   } elseif (ctrl.createTextRange) {
 				 var range = ctrl.createTextRange();
 				 range.collapse(false);
 				 range.moveStart('character', -".strlen($replaceMeText).");

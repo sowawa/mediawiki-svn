@@ -2,10 +2,10 @@
 /**
  * HTMLets extension - lets you inline HTML snippets from files in a given directory.
  *
- * Usage: on a wiki page, &lt;htmlet&gt;foobar&lt;/htmlet%gt; will inline the contents (HTML) of the 
+ * Usage: on a wiki page, &lt;htmlet&gt;foobar&lt;/htmlet%gt; will inline the contents (HTML) of the
  * file <tt>foobar.html</tt> from the htmlets directory. The htmlets directory can be
  * configured using <tt>$wgHTMLetsDirectory</tt>; it defaults to $IP/htmlets, i.e. the
- * directory <tt>htmlets</tt> in the installation root of MediaWiki. 
+ * directory <tt>htmlets</tt> in the installation root of MediaWiki.
  *
  * @file
  * @ingroup Extensions
@@ -19,10 +19,10 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 1 );
 }
 
-$wgExtensionCredits['parserhook'][] = array( 
+$wgExtensionCredits['parserhook'][] = array(
 	'path'           => __FILE__,
-	'name'           => 'HTMLets', 
-	'author'         => 'Daniel Kinzler', 
+	'name'           => 'HTMLets',
+	'author'         => 'Daniel Kinzler',
 	'url'            => 'http://mediawiki.org/wiki/Extension:HTMLets',
 	'descriptionmsg' => 'htmlets-desc',
 );
@@ -41,7 +41,7 @@ define( 'HTMLETS_NO_HACK', 'none' );
 define( 'HTMLETS_STRIP_HACK', 'strip' );
 
 /**
-* bypass late parser pass using ParserAfterTidy. 
+* bypass late parser pass using ParserAfterTidy.
 * This will get the file content safely into the final HTML.
 * There's no obvious trouble with it, but it just might interfere with other extensions.
 **/
@@ -72,7 +72,7 @@ function wfRenderHTMLet( $name, $argv, $parser ) {
 		$hack = HTMLETS_STRIP_HACK;
 	} elseif ( $hack == 'bypass' ) {
 		$hack = HTMLETS_BYPASS_HACK;
-	} else if ( $hack == 'none' || $hack == 'no' ) {
+	} elseif ( $hack == 'none' || $hack == 'no' ) {
 		$hack = HTMLETS_NO_HACK;
 	} else {
 		$hack = $wgHTMLetsHack;
@@ -134,7 +134,7 @@ function wfRenderHTMLetHackPostProcess( $parser, &$text ) {
 		'/<!-- @HTMLetsHACK@ ([0-9a-zA-Z\\+\\/]+=*) @HTMLetsHACK@ -->/esm',
 		'base64_decode("$1")',
 		$text
-	); 
+	);
 
 	return true;
 }

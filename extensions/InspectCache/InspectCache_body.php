@@ -13,7 +13,7 @@ class SpecialInspectCache extends SpecialPage {
 	function execute( $par ) {
 		global $wgRequest, $wgOut, $wgUser;
 
-		
+
 
 		$this->setHeaders();
 
@@ -69,7 +69,7 @@ END
 		if ( $delete && !is_null( $key ) ) {
 			$cache->delete( $key );
 			$wgOut->addWikiMsg( 'inspectcache-deleted' );
-		} else if ( $list ) {
+		} elseif ( $list ) {
 			$list = $cache->keys();
 			$str = "<ul>\n";
 			foreach( $list as $li ) {
@@ -81,7 +81,7 @@ END
 			}
 			$str .= "</ul>\n";
 			$wgOut->addHTML( $str );
-		} else if ( !is_null( $key ) ) {
+		} elseif ( !is_null( $key ) ) {
 			$value = $cache->get( $key );
 			if ( !is_string( $value ) ) {
 				$value = var_export( $value, true );

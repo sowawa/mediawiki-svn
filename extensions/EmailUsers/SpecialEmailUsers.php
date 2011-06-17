@@ -118,7 +118,7 @@ class SpecialEmailUsers extends SpecialPage {
 
 		if ( $recipients <= 0 ) {
 			return wfMsgExt( 'emailusers-norecipientselected', 'parse' );
-		} else if ( $wgEmailUsersMaxRecipients > 0 && $recipients > $wgEmailUsersMaxRecipients ) {
+		} elseif ( $wgEmailUsersMaxRecipients > 0 && $recipients > $wgEmailUsersMaxRecipients ) {
 			return wfMsgExt(
 				'emailusers-toomanyrecipientsselected', 'parse',
 				$wgLang->formatNum( $wgEmailUsersMaxRecipients )

@@ -117,7 +117,7 @@ function efForcePreviewLivePreview( &$out, $sk = null ) {
 		}
 		if( window.addEventListener ) {
 			liveButton.addEventListener( 'click', enableSave, false );
-		} else if( window.attachEvent ) {
+		} elseif( window.attachEvent ) {
 			liveButton.attachEvent( 'onclick', enableSave );
 		}
 		</script>"

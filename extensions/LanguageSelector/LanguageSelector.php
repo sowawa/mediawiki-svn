@@ -257,7 +257,7 @@ function wfLanguageSelectorTag( $input, $args, $parser ) {
 		$showcode = strtolower( $showcode );
 		if ( $showcode == "true" || $showcode == "yes" || $showcode == "on" ) {
 			$showcode = true;
-		} else if ( $showcode == "false" || $showcode == "no" || $showcode == "off" ) {
+		} elseif ( $showcode == "false" || $showcode == "no" || $showcode == "off" ) {
 			$showcode = false;
 		} else {
 			$showcode = null;
@@ -293,7 +293,7 @@ function wfLanguageSelectorSkinTemplateOutputPageBeforeExec( &$skin, &$tpl ) {
 				'active' => ($ln == $code),
 			);
 		}
-		
+
 		$tpl->data['sidebar']['languageselector'] = $lines;
 		return true;
 	}
@@ -306,7 +306,7 @@ function wfLanguageSelectorSkinTemplateOutputPageBeforeExec( &$skin, &$tpl ) {
 		case LANGUAGE_SELECTOR_INTO_SUBTITLE: $key = 'subtitle'; break;
 		case LANGUAGE_SELECTOR_INTO_CATLINKS: $key = 'catlinks'; break;
 	}
-	
+
 	if ($key) {
 		$html = wfLanguageSelectorHTML( $skin->getTitle() );
 		$tpl->set( $key, $tpl->data[ $key ] . $html );

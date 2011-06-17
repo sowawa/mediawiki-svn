@@ -52,7 +52,7 @@ function compareLowercase( $x, $y )
 {
 	if ( strtolower( $x ) == strtolower( $y ) )
 		return 0;
-	else if ( strtolower( $x ) < strtolower( $y ) )
+	elseif ( strtolower( $x ) < strtolower( $y ) )
 		return -1;
 	else
 		return 1;

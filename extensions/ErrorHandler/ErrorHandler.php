@@ -136,20 +136,20 @@ function efErrorHandler( $errType, $errMsg, $errFile, $errLine, $errVars ){
 				foreach( $call['args'] as $arg ){
 					if( is_object( $arg ) ){
 						$args[] = 'Object(' . get_class( $arg ) . ')';
-					} else if ( is_null( $arg ) ){
+					} elseif ( is_null( $arg ) ){
 						$args[] = 'null';
-					} else if ( is_array( $arg ) ){
+					} elseif ( is_array( $arg ) ){
 						$args[] = 'array()';
-					} else if ( is_string( $arg ) ){
+					} elseif ( is_string( $arg ) ){
 						if( strlen( $arg ) > $wgErrorHandlerMaxStringSize ){
 							$str = substr( $arg, 0, $wgErrorHandlerMaxStringSize ) . '...';
 						} else {
 							$str = $arg;
 						}
 						$args[] = '\'' . str_replace( "\n", '', $str ) . '\'';
-					} else if ( is_numeric( $arg ) ){
+					} elseif ( is_numeric( $arg ) ){
 						$args[] = (string)$arg;
-					} else if ( is_bool( $arg ) ){
+					} elseif ( is_bool( $arg ) ){
 						$args[] = 'bool(' . ( $arg ? 'true' : 'false' ) . ')';
 					} else {
 						$args[] = gettype( $arg ) . '(' . $arg . ')';

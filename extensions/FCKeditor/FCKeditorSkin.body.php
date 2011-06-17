@@ -59,18 +59,18 @@ class FCKeditorSkin {
 		if( $thumb ) {
 			$ret .= "_fck_mw_type=\"thumb"."\" ";
 			$class .= "fck_mw_frame";
-		} else if( $framed ) {
+		} elseif( $framed ) {
 			$ret .= "_fck_mw_type=\"frame"."\" ";
 			$class .= "fck_mw_frame";
 		}
 
 		if( $align == 'right' ) {
 			$class .= ( $class ? ' ' : '' ) . 'fck_mw_right';
-		} else if( $align == 'center' ) {
+		} elseif( $align == 'center' ) {
 			$class .= ( $class ? ' ' : '' ) . 'fck_mw_center';
-		} else if( $align == 'left' ) {
+		} elseif( $align == 'left' ) {
 			$class .= ( $class ? ' ' : '' ) . 'fck_mw_left';
-		} else if( $framed || $thumb ) {
+		} elseif( $framed || $thumb ) {
 			$class .= ( $class ? ' ' : '' ) . 'fck_mw_right';
 		}
 
@@ -170,21 +170,21 @@ class FCKeditorSkin {
 		if( isset( $fp['thumbnail'] ) ) {
 			$ret .= "_fck_mw_type=\"thumb" . "\" ";
 			$class .= 'fck_mw_frame';
-		} else if( isset( $fp['border'] ) ) {
+		} elseif( isset( $fp['border'] ) ) {
 			$ret .= "_fck_mw_type=\"border" . "\" ";
 			$class .= 'fck_mw_border';
-		} else if( isset( $fp['framed'] ) ) {
+		} elseif( isset( $fp['framed'] ) ) {
 			$ret .= "_fck_mw_type=\"frame" . "\" ";
 			$class .= 'fck_mw_frame';
 		}
 
 		if( $fp['align'] == 'right' ) {
 			$class .= ( $class ? ' ': '' ) . 'fck_mw_right';
-		} else if( $fp['align'] == 'center' ) {
+		} elseif( $fp['align'] == 'center' ) {
 			$class .= ( $class ? ' ' : ''  ) . 'fck_mw_center';
-		} else if( $fp['align'] == 'left' ) {
+		} elseif( $fp['align'] == 'left' ) {
 			$class .= ( $class ? ' ': '' ) . 'fck_mw_left';
-		} else if( isset( $fp['framed'] ) || isset( $fp['thumbnail'] ) ) {
+		} elseif( isset( $fp['framed'] ) || isset( $fp['thumbnail'] ) ) {
 			$class .= ( $class ? ' ' : '' ) . 'fck_mw_right';
 		}
 

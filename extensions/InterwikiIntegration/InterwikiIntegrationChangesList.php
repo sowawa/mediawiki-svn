@@ -55,7 +55,7 @@ class InterwikiIntegrationChangesList {
 			return $list;
 		}
 	}
-	
+
 	/**
 	 * Sets the list to use a <li class="watchlist-(namespace)-(page)"> tag
 	 * @param $value Boolean
@@ -178,7 +178,7 @@ class InterwikiIntegrationChangesList {
 		$this->rclistOpen = false;
 		return '';
 	}
-	
+
 	/**
 	 * Show formatted char difference
 	 * @param $old Integer: bytes
@@ -194,13 +194,13 @@ class InterwikiIntegrationChangesList {
 		if ( !isset($fastCharDiff[$code]) ) {
 			$fastCharDiff[$code] = $wgMiserMode || wfMsgNoTrans( 'rc-change-size' ) === '$1';
 		}
-			
+
 		$formatedSize = $wgLang->formatNum($szdiff);
 
 		if ( !$fastCharDiff[$code] ) {
 			$formatedSize = wfMsgExt( 'rc-change-size', array( 'parsemag', 'escape' ), $formatedSize );
 		}
-			
+
 		if( abs( $szdiff ) > abs( $wgRCChangedSizeThreshold ) ) {
 			$tag = 'strong';
 		} else {
@@ -288,7 +288,7 @@ class InterwikiIntegrationChangesList {
 		# Diff link
 		if( $rc->mAttribs['integration_rc_type'] == RC_NEW || $rc->mAttribs['integration_rc_type'] == RC_LOG ) {
 			$diffLink = $this->message['diff'];
-		} else if( !self::userCan($rc,Revision::DELETED_TEXT) ) {
+		} elseif( !self::userCan($rc,Revision::DELETED_TEXT) ) {
 			$diffLink = $this->message['diff'];
 		} else {
 			$query = array(
@@ -367,7 +367,7 @@ class InterwikiIntegrationChangesList {
 
 	public function insertTimestamp( &$s, $rc ) {
 		global $wgLang;
-		$s .= $this->message['semicolon-separator'] . 
+		$s .= $this->message['semicolon-separator'] .
 			$wgLang->time( $rc->mAttribs['integration_rc_timestamp'], true, true ) . ' . . ';
 	}
 
@@ -462,7 +462,7 @@ class InterwikiIntegrationChangesList {
 			return '<span class="mw-rc-unwatched">' . $link . '</span>';
 		}
 	}
-	
+
 	/** Inserts a rollback link */
 	public function insertRollback( &$s, &$rc ) {
 		global $wgUser;
@@ -487,7 +487,7 @@ class InterwikiIntegrationChangesList {
 	public function insertTags( &$s, &$rc, &$classes ) {
 		if ( empty($rc->mAttribs['ts_tags']) )
 			return;
-			
+
 		list($tagSummary, $newClasses) = ChangeTags::formatSummaryRow( $rc->mAttribs['ts_tags'], 'changeslist' );
 		$classes = array_merge( $classes, $newClasses );
 		$s .= ' ' . $tagSummary;
@@ -569,17 +569,17 @@ class OldInterwikiIntegrationChangesList extends InterwikiIntegrationChangesList
 		$this->insertRollback( $s, $rc );
 		# For subclasses
 		$this->insertExtra( $s, $rc, $classes );
-		
+
 		# How many users watch this page
 		if( $rc->numberofWatchingusers > 0 ) {
-			$s .= ' ' . wfMsgExt( 'number_of_watching_users_RCview', 
+			$s .= ' ' . wfMsgExt( 'number_of_watching_users_RCview',
 				array( 'parsemag', 'escape' ), $wgLang->formatNum( $rc->numberofWatchingusers ) );
 		}
-		
+
 		if( $this->watchlist ) {
 			$classes[] = Sanitizer::escapeClass( 'watchlist-'.$rc->mAttribs['integration_rc_namespace'].'-'.$rc->mAttribs['integration_rc_title'] );
 		}
-		
+
 		wfRunHooks( 'OldInterwikiIntegrationChangesListRecentChangesLine', array(&$this, &$s, $rc) );
 
 		wfProfileOut( __METHOD__ );
@@ -611,7 +611,7 @@ class EnhancedInterwikiIntegrationChangesList extends InterwikiIntegrationChange
 	 */
 	public function recentChangesLine( &$baseRC, $watched = false ) {
 		global $wgLang, $wgUser;
-		
+
 		wfProfileIn( __METHOD__ );
 
 		# Create a specialised object
@@ -650,14 +650,14 @@ class EnhancedInterwikiIntegrationChangesList extends InterwikiIntegrationChange
 				array(), array( 'redirect' => 'no' ) ),
 				$this->skin->linkKnown( $rc->getMovedToTitle() ) );
 		// New unpatrolled pages
-		} else if( $rc->unpatrolled && $integration_rc_type == RC_NEW ) {
+		} elseif( $rc->unpatrolled && $integration_rc_type == RC_NEW ) {
 			$clink = $this->skin->linkKnown( $rc->getTitle(), null, array(),
 				array( 'rcid' => $integration_rc_id ) );
 		// Log entries
-		} else if( $integration_rc_type == RC_LOG ) {
+		} elseif( $integration_rc_type == RC_LOG ) {
 			if( $integration_rc_log_type ) {
 				$logtitle = SpecialPage::getTitleFor( 'Log', $integration_rc_log_type );
-				$clink = '(' . $this->skin->linkKnown( $logtitle, 
+				$clink = '(' . $this->skin->linkKnown( $logtitle,
 					LogPage::logName($integration_rc_log_type) ) . ')';
 			} else {
 				$clink = $this->skin->link( $rc->getTitle() );
@@ -704,7 +704,7 @@ class EnhancedInterwikiIntegrationChangesList extends InterwikiIntegrationChange
 		if( !$showdifflinks ) {
 			$curLink = $this->message['cur'];
 			$diffLink = $this->message['diff'];
-		} else if( in_array( $integration_rc_type, array(RC_NEW,RC_LOG,RC_MOVE,RC_MOVE_OVER_REDIRECT) ) ) {
+		} elseif( in_array( $integration_rc_type, array(RC_NEW,RC_LOG,RC_MOVE,RC_MOVE_OVER_REDIRECT) ) ) {
 			if ( $integration_rc_type != RC_NEW ) {
 				$curLink = $this->message['cur'];
 			} else {
@@ -722,7 +722,7 @@ class EnhancedInterwikiIntegrationChangesList extends InterwikiIntegrationChange
 		# Make "last" link
 		if( !$showdifflinks || !$integration_rc_last_oldid ) {
 			$lastLink = $this->message['last'];
-		} else if( $integration_rc_type == RC_LOG || $integration_rc_type == RC_MOVE || $integration_rc_type == RC_MOVE_OVER_REDIRECT ) {
+		} elseif( $integration_rc_type == RC_LOG || $integration_rc_type == RC_MOVE || $integration_rc_type == RC_MOVE_OVER_REDIRECT ) {
 			$lastLink = $this->message['last'];
 		} else {
 			$lastLink = $this->skin->linkKnown( $rc->getTitle(), $this->message['last'],
@@ -830,7 +830,7 @@ class EnhancedInterwikiIntegrationChangesList extends InterwikiIntegrationChange
 			array_push( $users, $text );
 		}
 
-		$users = ' <span class="changedby">[' . 
+		$users = ' <span class="changedby">[' .
 			implode( $this->message['semicolon-separator'], $users ) . ']</span>';
 
 		# ID for JS visibility toggle
@@ -854,7 +854,7 @@ class EnhancedInterwikiIntegrationChangesList extends InterwikiIntegrationChange
 		# Article link
 		if( $namehidden ) {
 			$r .= ' <span class="history-deleted">' . wfMsgHtml( 'rev-deleted-event' ) . '</span>';
-		} else if( $allLogs ) {
+		} elseif( $allLogs ) {
 			$r .= $this->maybeWatchedLink( $block[0]->link, $block[0]->watched );
 		} else {
 			$this->insertArticleLink( $r, $block[0], $block[0]->unpatrolled, $block[0]->watched );
@@ -875,13 +875,13 @@ class EnhancedInterwikiIntegrationChangesList extends InterwikiIntegrationChange
 			$r .= '(';
 			if( !InterwikiIntegrationChangesList::userCan( $rcObj, Revision::DELETED_TEXT ) ) {
 				$r .= $nchanges[$n];
-			} else if( $isnew ) {
+			} elseif( $isnew ) {
 				$r .= $nchanges[$n];
 			} else {
 				$params = $queryParams;
 				$params['diff'] = $currentRevision;
 				$params['oldid'] = $oldid;
-				
+
 				$r .= $this->skin->link(
 					$block[0]->getTitle(),
 					$nchanges[$n],
@@ -895,7 +895,7 @@ class EnhancedInterwikiIntegrationChangesList extends InterwikiIntegrationChange
 		# History
 		if( $allLogs ) {
 			// don't show history link for logs
-		} else if( $namehidden || !$block[0]->getTitle()->exists() ) {
+		} elseif( $namehidden || !$block[0]->getTitle()->exists() ) {
 			$r .= $this->message['pipe-separator'] . $this->message['hist'] . ')';
 		} else {
 			$params = $queryParams;
@@ -966,7 +966,7 @@ class EnhancedInterwikiIntegrationChangesList extends InterwikiIntegrationChange
 			if( $integration_rc_type == RC_LOG ) {
 				$link = $rcObj->timestamp;
 			# Revision link
-			} else if( !InterwikiIntegrationChangesList::userCan($rcObj,Revision::DELETED_TEXT) ) {
+			} elseif( !InterwikiIntegrationChangesList::userCan($rcObj,Revision::DELETED_TEXT) ) {
 				$link = '<span class="history-deleted">'.$rcObj->timestamp.'</span> ';
 			} else {
 				if ( $rcObj->unpatrolled && $integration_rc_type == RC_NEW) {
@@ -1135,7 +1135,7 @@ class EnhancedInterwikiIntegrationChangesList extends InterwikiIntegrationChange
 			if( $this->isDeleted($rcObj,LogPage::DELETED_ACTION) ) {
 				$r .= ' <span class="history-deleted">' . wfMsgHtml('rev-deleted-event') . '</span>';
 			} else {
-				$r .= ' ' . LogPage::actionText( $integration_rc_log_type, $integration_rc_log_action, $rcObj->getTitle(), 
+				$r .= ' ' . LogPage::actionText( $integration_rc_log_type, $integration_rc_log_action, $rcObj->getTitle(),
 					$this->skin, LogPage::extractParams($integration_rc_params), true, true );
 			}
 		}

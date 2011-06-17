@@ -452,7 +452,7 @@ JAVASCRIPT;
                     }
 
                     if( $state == GOOGLE_MAPS_PARSE_ADD_MARKER ) {
-                        self::addMarker($exporter, $pParser, $pLocalParser, $lat, $lon, 
+                        self::addMarker($exporter, $pParser, $pLocalParser, $lat, $lon,
                             $icon, $title, $tabs, $caption, isset($lineColor));
 
                         $tabs    = array( );
@@ -470,12 +470,12 @@ JAVASCRIPT;
                 }
 
                 // if the line matches the tab format, add the tabs
-                else if( $syntax == "0" && preg_match( '/^\/([^\\\\]+)\\\\ *(.*)$/', $line, $matches ) ) {
+                elseif( $syntax == "0" && preg_match( '/^\/([^\\\\]+)\\\\ *(.*)$/', $line, $matches ) ) {
                     $parsed = self::parseWikiText($pParser, $pLocalParser, $matches[2], $pParser->mTitle, $pParser->mOptions);
                     $tabs[] = array( 'title' => $matches[1], 'gm-caption' => $parsed);
                     $state = GOOGLE_MAPS_PARSE_ADD_MARKER;
                 }
-                else if ($syntax != "0" && preg_match( '/^\/([^\\\\]+)\\\\ *$/', $line, $matches ) ) {
+                elseif ($syntax != "0" && preg_match( '/^\/([^\\\\]+)\\\\ *$/', $line, $matches ) ) {
                     if (count($tabs)) {
                         $parsed = self::parseWikiText($pParser, $pLocalParser, $caption, $pParser->mTitle, $pParser->mOptions);
                         $tabs[count($tabs)-1]['gm-caption'] = $parsed;
@@ -483,14 +483,14 @@ JAVASCRIPT;
                     }
                     $tabs[] = array( 'title' => $matches[1] );
                 }
-                else if( $state == GOOGLE_MAPS_PARSE_INCLUDES && preg_match( "/^http:\/\//", $line ) ) {
+                elseif( $state == GOOGLE_MAPS_PARSE_INCLUDES && preg_match( "/^http:\/\//", $line ) ) {
                     $exporter->addXmlSource($line);
                 }
                 // the line is a regular point
-                else if( preg_match( "/^(?:\(([.a-zA-Z0-9_-]*?)\))? *([0-9.-]+), *([0-9.-]+)(?:, ?(.+))?/", $line, $matches ) ) {
+                elseif( preg_match( "/^(?:\(([.a-zA-Z0-9_-]*?)\))? *([0-9.-]+), *([0-9.-]+)(?:, ?(.+))?/", $line, $matches ) ) {
                     // first create the previous marker, now that we have all the tab/caption info
                     if( $state == GOOGLE_MAPS_PARSE_ADD_MARKER ) {
-                        self::addMarker($exporter, $pParser, $pLocalParser, $lat, $lon, 
+                        self::addMarker($exporter, $pParser, $pLocalParser, $lat, $lon,
                             $icon, $title, $tabs, $caption, isset($lineColor));
 
                         $tabs    = array( );
@@ -531,7 +531,7 @@ JAVASCRIPT;
                     }
                 }
 
-                else if (($state == GOOGLE_MAPS_PARSE_POINTS || $state == GOOGLE_MAPS_PARSE_ADD_MARKER) && $syntax != "0") { // a caption line
+                elseif (($state == GOOGLE_MAPS_PARSE_POINTS || $state == GOOGLE_MAPS_PARSE_ADD_MARKER) && $syntax != "0") { // a caption line
                     if ($line != '') {
                         $caption .= $line . "\r\n";
                         $state = GOOGLE_MAPS_PARSE_ADD_MARKER;
@@ -541,7 +541,7 @@ JAVASCRIPT;
 
                 // if the last iteration was to add a marker, add it
                 if( $state == GOOGLE_MAPS_PARSE_ADD_MARKER ) {
-                    self::addMarker($exporter, $pParser, $pLocalParser, $lat, $lon, $icon, 
+                    self::addMarker($exporter, $pParser, $pLocalParser, $lat, $lon, $icon,
                         $title, $tabs, $caption, isset($lineColor));
                 }
 
@@ -551,14 +551,14 @@ JAVASCRIPT;
                 }
         }
 
-        static function addMarker(&$pExporter, &$pParser, &$pLocalParser, $pLat, $pLon, 
+        static function addMarker(&$pExporter, &$pParser, &$pLocalParser, $pLat, $pLon,
             $pIcon, $pTitle, $pTabs, $pCaption, $pLineColorSet) {
             global $wgUser;
             $parsed = self::parseWikiText($pParser, $pLocalParser, preg_replace('/\r\n/', '<br />', $pCaption), $pParser->mTitle, $pParser->mOptions);
             $title = Title::newFromText($pTitle);
             $revision = is_null($title) ? null :
                 Revision::newFromTitle($title);
-            $parsedArticleText = is_null($revision) ? null : 
+            $parsedArticleText = is_null($revision) ? null :
                 self::parseWikiText($pParser, $pLocalParser, $revision->getText(), $revision->getTitle(), $pParser->mOptions);
             $titleMaybeNonexistent = is_null($title) ? Title::makeTitleSafe(NS_MAIN, $pTitle) : $title;
             $skin = $wgUser->getSkin();
@@ -879,7 +879,7 @@ JAVASCRIPT;
 			$value = $this->mCustomMessages[$pKey];
 		}
 		// if it's in the regular messages with the desired language, return that value
-		else if( isset( $this->mMessages[$code] ) && is_array( $this->mMessages[$code] ) && isset( $this->mMessages[$code][$pKey] ) ) {
+		elseif( isset( $this->mMessages[$code] ) && is_array( $this->mMessages[$code] ) && isset( $this->mMessages[$code][$pKey] ) ) {
 			$value = $this->mMessages[$code][$pKey];
 		}
 

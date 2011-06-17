@@ -110,7 +110,7 @@ JAVASCRIPT;
                     "';";
             }
         // if there's tabs add them to the marker
-        } else if( is_array($pCaption) && count($pCaption) ) { // dump the tabs from the previous marker
+        } elseif( is_array($pCaption) && count($pCaption) ) { // dump the tabs from the previous marker
             $tabs = array();
             foreach($pCaption as $t) {
                 $tabs[] = "new GInfoWindowTab('" .
@@ -182,16 +182,16 @@ JAVASCRIPT;
           if (overlay) {
             if (overlay.tabs) {
               overlay.openInfoWindowTabsHtml(overlay.tabs);
-            } else if (overlay.title_link || overlay.caption || overlay.maxContent) {
+            } elseif (overlay.title_link || overlay.caption || overlay.maxContent) {
                 overlay.openInfoWindowHtml('<div class="gmapinfowindow">'+
-                    (overlay.title?('<b>'+overlay.title_link+'</b><br />'):'')+overlay.caption+'</div>', 
+                    (overlay.title?('<b>'+overlay.title_link+'</b><br />'):'')+overlay.caption+'</div>',
                     { 'maxTitle': overlay.maxContent?overlay.title:undefined, 'maxContent': overlay.maxContent });
                 if (overlay.maxContent) {
                     map.getInfoWindow().enableMaximize();
                 } else {
                     map.getInfoWindow().disableMaximize();
                 }
-            } 
+            }
           }
       });
 JAVASCRIPT;

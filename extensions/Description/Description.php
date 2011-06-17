@@ -41,13 +41,13 @@ $wgHooks['ArticleViewHeader'][] = 'DescriptionArticleViewHeader';
 
 function DescriptionArticleViewHeader(&$article, &$outputDone = null, &$pcache = null) {
 	global $wgOut;
-	
+
 	$desc = DescriptionFromArticle($article);
-	
+
 	if (!is_null($desc)) {
 		$wgOut->addMeta('description', htmlspecialchars($desc));
 	}
-	
+
 	return TRUE;
 }
 
@@ -56,11 +56,11 @@ function DescriptionFromArticle(&$article) {
 	if (defined('MWRDF_VERSION')) {
 		$desc = DescriptionFromRDF($article);
 	}
-	
+
 	if (is_null($desc) || strlen($desc) == 0) {
 		$desc = DescriptionFromText($article);
 	}
-	
+
 	return $desc;
 }
 
@@ -68,7 +68,7 @@ function DescriptionFromRDF(&$article) {
 
 	$nt = $article->getTitle();
 	$uri = $nt->getFullUrl();
-	
+
 	$model = MwRdfGetModel($article);
 
 	$results = $model->rdqlQuery("SELECT ?description " .
@@ -77,23 +77,23 @@ function DescriptionFromRDF(&$article) {
 								 FALSE);
 
 	$desc = '';
-	
+
 	foreach ($results as $row) {
 		$rowval = preg_replace("/^\"(.*?)\"$/", '\1', $row['?description']);
 		$desc .= (($desc) ? ' ' : '') . $rowval;
 	}
-	
+
 	return $desc;
 }
 
 function DescriptionFromText(&$article) {
 	global $wgParser, $wgContLang;
-	
+
 	# Expand all templates
-	
+
 	$text = $article->getContent(true);
 	$text = $wgParser->preprocess($text, $article->mTitle, new ParserOptions());
-	
+
 	# Find first non-ws, non-empty, non-image, non-table content
 
 	$imageLabel = $wgContLang->getNsText(NS_IMAGE);
@@ -101,18 +101,18 @@ function DescriptionFromText(&$article) {
 	$paragraphs = explode("\n", $text);
 
 	$desc = '';
-	
+
 	foreach ($paragraphs as $paragraph) {
 		if (preg_match("/^\s*(=|__|\[\[[Ii]mage:|\[\[$imageLabel:|\{\||\|#|\*)/", $paragraph)) {
 			continue;
-		} else if (preg_match("/^\s*$/", $paragraph)) {
+		} elseif (preg_match("/^\s*$/", $paragraph)) {
 			continue;
 		} else {
 			$desc = DescriptionStripParagraph($paragraph);
 			break;
 		}
 	}
-	
+
 	return $desc;
 }
 
@@ -120,11 +120,11 @@ function DescriptionStripParagraph($para) {
 		$para = preg_replace("/'''''(.*?)'''''/", '\1', $para);
 		$para = preg_replace("/'''(.*?)'''/", '\1', $para);
 		$para = preg_replace("/''(.*?)''/", '\1', $para);
-		$para = preg_replace("@<(.*?)>(.*?)</\1>@", '\2', $para);		
+		$para = preg_replace("@<(.*?)>(.*?)</\1>@", '\2', $para);
 		$para = preg_replace("/\[\[([^\]]*?)\|([^\]]*?)\]\]/", '\2', $para);
-		$para = preg_replace("/\[\[([^\]]*?)\]\]/", '\1', $para);	
+		$para = preg_replace("/\[\[([^\]]*?)\]\]/", '\1', $para);
 		$para = preg_replace("/\[(\S*)\s+(.*?)\]/", '\2', $para);
 		$para = preg_replace("/\[(\S*)\s*\]/", '\1', $para);
-	
+
 		return $para;
 }

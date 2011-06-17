@@ -43,7 +43,7 @@ class SpecialForm extends SpecialPage {
 	public function execute( $par ) {
 		global $wgRequest, $wgOut;
 
-		
+
 
 		# Must have a name, like Special:Form/Nameofform
 		# XXX: instead of an error, show a list of available forms
@@ -266,28 +266,28 @@ class SpecialForm extends SpecialPage {
 		if ( $wgSpamRegex && preg_match( $wgSpamRegex, $text, $matches ) ) {
 			$wgOut->showErrorPage( 'formsaveerror', 'formsaveerrortext' );
 			return false;
-		} else if ( $wgFilterCallback && $wgFilterCallback( $nt, $text, 0 ) ) {
+		} elseif ( $wgFilterCallback && $wgFilterCallback( $nt, $text, 0 ) ) {
 			$wgOut->showErrorPage( 'formsaveerror', 'formsaveerrortext' );
 			return false;
-		} else if ( !wfRunHooks( 'EditFilter', array( $editPage, $text, 0, &$errortext ) ) ) {
+		} elseif ( !wfRunHooks( 'EditFilter', array( $editPage, $text, 0, &$errortext ) ) ) {
 			# Hooks usually print their own error
 			return false;
-		} else if ( $errortext != '' ) {
+		} elseif ( $errortext != '' ) {
 			$wgOut->showErrorPage( 'formsaveerror', 'formsaveerrortext' );
 			return false;
-		} else if ( $wgUser->isBlockedFrom( $nt, false ) ) {
+		} elseif ( $wgUser->isBlockedFrom( $nt, false ) ) {
 			$wgOut->showErrorPage( 'formsaveerror', 'formsaveerrortext' );
 			return false;
-		} else if ( (int)( strlen( $text ) / 1024 ) > $wgMaxArticleSize ) {
+		} elseif ( (int)( strlen( $text ) / 1024 ) > $wgMaxArticleSize ) {
 			$wgOut->showErrorPage( 'formsaveerror', 'formsaveerrortext' );
 			return false;
-		} else if ( !$wgUser->isAllowed( 'edit' ) ) {
+		} elseif ( !$wgUser->isAllowed( 'edit' ) ) {
 			$wgOut->showErrorPage( 'formsaveerror', 'formsaveerrortext' );
 			return false;
-		} else if ( wfReadOnly() ) {
+		} elseif ( wfReadOnly() ) {
 			$wgOut->showErrorPage( 'formsaveerror', 'formsaveerrortext' );
 			return false;
-		} else if ( $wgUser->pingLimiter() ) {
+		} elseif ( $wgUser->pingLimiter() ) {
 			$wgOut->showErrorPage( 'formsaveerror', 'formsaveerrortext' );
 			return false;
 		}
@@ -331,21 +331,21 @@ class Form {
 			if ( preg_match( '/^(\w+)=(.*)$/', $line, $matches ) ) {
 				if ( strcasecmp( $matches[1], 'template' ) == 0 ) {
 					$this->template[0] = $matches[2];
-				} else if ( preg_match( '/template(\d+)/i', $matches[1], $tmatches ) ) {
+				} elseif ( preg_match( '/template(\d+)/i', $matches[1], $tmatches ) ) {
 					$this->template[intval( $tmatches[1] )] = $matches[2];
-				} else if ( strcasecmp( $matches[1], 'namePattern' ) == 0 ) {
+				} elseif ( strcasecmp( $matches[1], 'namePattern' ) == 0 ) {
 					$this->namePattern[0] = $matches[2];
-				} else if ( preg_match( '/namePattern(\d+)/i', $matches[1], $tmatches ) ) {
+				} elseif ( preg_match( '/namePattern(\d+)/i', $matches[1], $tmatches ) ) {
 					$this->namePattern[intval( $tmatches[1] )] = $matches[2];
-				} else if ( strcasecmp( $matches[1], 'title' ) == 0 ) {
+				} elseif ( strcasecmp( $matches[1], 'title' ) == 0 ) {
 					$this->title = $matches[2];
-				} else if ( strcasecmp( $matches[1], 'instructions' ) == 0 ) {
+				} elseif ( strcasecmp( $matches[1], 'instructions' ) == 0 ) {
 					$this->instructions = $matches[2];
 					wfDebug( __METHOD__ . ": Got instructions: '" . $this->instructions . "'.\n" );
 				} else {
 					wfDebug( __METHOD__ . ": unknown form attribute '$matches[1]'; skipping.\n" );
 				}
-			} else if ( preg_match( '/^(\w+)\|([^\|]+)\|(\w+)(\|([^\|]+)(\|(.*))?)?$/', $line, $matches ) ) {
+			} elseif ( preg_match( '/^(\w+)\|([^\|]+)\|(\w+)(\|([^\|]+)(\|(.*))?)?$/', $line, $matches ) ) {
 				# XXX: build an inheritance tree for different kinds of fields
 				$field = new FormField();
 				$field->setName( $matches[1] );

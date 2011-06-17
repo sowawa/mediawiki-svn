@@ -84,7 +84,7 @@ class GoogleMapsKmlExporter extends GoogleMapsExporter {
 			$this->mOutput .= '<description><![CDATA['.
 			GoogleMaps::fixBlockDirection(GoogleMaps::fixTidy($pCaption), $this->mLanguage->isRTL()).
 			']]></description>';
-                } else if (is_array($pCaption)) { // TODO tabs and max content
+                } elseif (is_array($pCaption)) { // TODO tabs and max content
 		}
 		$this->mOutput .= "</Placemark>\n";
 	}

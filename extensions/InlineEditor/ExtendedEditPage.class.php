@@ -12,9 +12,9 @@ class ExtendedEditPage extends EditPage {
 	 */
 	public function initInlineEditor( $inlineEditor ) {
 		global $wgRequest, $wgOut;
-		
+
 		$intro = '';
-		
+
 		$this->importFormData( $wgRequest );
 
 		if ( !empty( $this->section ) ) return false;
@@ -37,9 +37,9 @@ class ExtendedEditPage extends EditPage {
 		} else {
 			if ( $this->save ) {
 				$this->formtype = 'save';
-			} else if ( $this->preview ) {
+			} elseif ( $this->preview ) {
 				$this->formtype = 'preview';
-			} else if ( $this->diff ) {
+			} elseif ( $this->diff ) {
 				$this->formtype = 'diff';
 			} else { # First time through
 				$this->firsttime = true;
@@ -71,7 +71,7 @@ class ExtendedEditPage extends EditPage {
 			$intro .= $wgOut->getHTML();
 			$wgOut->clearHTML();
 		}
-		
+
 		if ( 'initial' == $this->formtype || 'preview' == $this->formtype || $this->firsttime ) {
 			if ( $this->initialiseForm() !== false ) {
 				// first init some other stuff (below)
@@ -93,7 +93,7 @@ class ExtendedEditPage extends EditPage {
 		else {
 			return false;
 		}
-		
+
 		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 		$wgOut->setArticleRelated( true );
 
@@ -101,12 +101,12 @@ class ExtendedEditPage extends EditPage {
 			$wgOut->clearHTML();
 			return false;
 		}
-		
+
 		$intro .= $wgOut->getHTML();
 		$wgOut->clearHTML();
-		
+
 		$inlineEditor->setIntro( $intro );
-		
+
 		return true;
 	}
 
@@ -125,11 +125,11 @@ class ExtendedEditPage extends EditPage {
 	public function getSummary() {
 		return $this->summary;
 	}
-	
+
 	public function getMinorEdit() {
 		return $this->minoredit;
 	}
-	
+
 	public function getWatchThis() {
 		return $this->watchthis;
 	}

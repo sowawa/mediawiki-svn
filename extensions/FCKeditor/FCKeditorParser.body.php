@@ -389,7 +389,7 @@ class FCKeditorParser extends FCKeditorParserWrapper {
 				if( $sum == 1 && $lastSum == 0 ) {
 					$stringToParse .= strtr( substr( $text, $startingPos, $pos - $startingPos ), $strtr );
 					$startingPos = $pos;
-				} else if( $sum == 0 ) {
+				} elseif( $sum == 0 ) {
 					$stringToParse .= 'Fckmw' . $this->fck_mw_strtr_span_counter . 'fckmw';
 					$inner = htmlspecialchars( strtr( substr( $text, $startingPos, $pos - $startingPos + 19 ), $strtr ) );
 					$this->fck_mw_strtr_span['href="Fckmw' . $this->fck_mw_strtr_span_counter . 'fckmw"'] = 'href="' . $inner . '"';
@@ -627,7 +627,7 @@ class FCKeditorParser extends FCKeditorParserWrapper {
 					} else {
 						$inBlockElem = true;
 					}
-				} else if ( !$inBlockElem && !$this->mInPre ) {
+				} elseif ( !$inBlockElem && !$this->mInPre ) {
 					if ( ' ' == $t{0} and ( $this->mLastSection == 'pre' or trim( $t ) != '' ) ) {
 						// pre
 						if( $this->mLastSection != 'pre' ) {
@@ -657,7 +657,7 @@ class FCKeditorParser extends FCKeditorParserWrapper {
 								$output .= $paragraphStack;
 								$paragraphStack = false;
 								$this->mLastSection = 'p';
-							} else if ($this->mLastSection != 'p') {
+							} elseif ($this->mLastSection != 'p') {
 								$output .= $this->closeParagraph().'<p>';
 								$this->mLastSection = 'p';
 							}

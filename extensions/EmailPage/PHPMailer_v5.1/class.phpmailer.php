@@ -1654,7 +1654,7 @@ class PHPMailer {
         if ( $dec == 32 ) {
           if ( $i == ( $linlen - 1 ) ) { // convert space at eol only
             $c = '=20';
-          } else if ( $space_conv ) {
+          } elseif ( $space_conv ) {
             $c = '=20';
           }
         } elseif ( ($dec == 61) || ($dec < 32 ) || ($dec > 126) ) { // always encode "\t", which is *not* required
