@@ -14,7 +14,7 @@ $wgExtensionCredits['parserhook']['geoserver'] = array(
 );
 
 $wgHooks['ParserFirstCallInit'][] = 'wfGeoserverSetHook';
-$wgHooks['ArticleSaveComplete'][] = 'articleDeleteGeo';
+#$wgHooks['ArticleSaveComplete'][] = 'articleDeleteGeo';
 $wgHooks['ArticleDelete'][] = 'articleDeleteGeo';
 $wgHooks['ArticleEditUpdatesDeleteFromRecentchanges'][] = 'articleSaveGeo';
 
