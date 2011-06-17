@@ -135,8 +135,7 @@ class Mongo(AbstractDatabase):
         return self.db[self.collection].save(data)
 
     def insert(self, data, qualifiers=None, safe=False):
-        assert isinstance(data, dict), 'You need to feed me dictionaries.'
-        data = self.stringify_keys(data)
+        assert isinstance(data, dict) or isinstance(data, list), 'You need to feed me dictionaries.'
         try:
             if qualifiers:
                 self.db[self.collection].insert(data, qualifiers, safe=safe)
@@ -144,8 +143,6 @@ class Mongo(AbstractDatabase):
                 self.db[self.collection].insert(data, safe=safe)
         except bson.errors.InvalidDocument, error:
             print error
-            print 'BSON document too large, unable to store %s' % \
-                (data.keys()[0])
         except OperationFailure, error:
             print 'It seems that you are running out of disk space. \
             Error message: %s' % error
@@ -160,7 +157,7 @@ class Mongo(AbstractDatabase):
         assert isinstance(data, dict), 'You need to feed me dictionaries.'
         self.db[self.collection].update({key: value}, {'$set': data})
 
-    def find(self, conditions, vars=None):
+    def find(self, conditions=None, vars=None):
         if conditions:
             return self.db[self.collection].find(conditions, fields=vars)
         else:
@@ -188,15 +185,6 @@ class Mongo(AbstractDatabase):
     def count(self):
         return self.db[self.collection].count()
 
-    def retrieve_editors(self):
-        q = queue.JoinableRetryQueue()
-        cursor = self.find('editor')
-        print 'Loading editors...'
-        for editor in cursor:
-            q.put(editor['editor'])
-        print 'Finished loading editors...'
-        return q
-
     def retrieve_distinct_keys(self, key, force_new=False):
         '''
         TODO: figure out how big the index is and then take appropriate action, 
@@ -216,9 +204,6 @@ class Mongo(AbstractDatabase):
                 ids = self.db[self.collection].distinct(key)
             else:
                 ids = self.retrieve_distinct_keys_mapreduce(key)
-            file_utils.store_object(ids, settings.binary_location, \
-                                    '%s_%s_%s.bin' % (self.dbname,
-                                                      self.collection, key))
         return ids
 
     def retrieve_distinct_keys_mapreduce(self, key):
@@ -226,16 +211,22 @@ class Mongo(AbstractDatabase):
         This is to work around a Mongo limitation, if the index is too large
         then the distinct() function does not work. You need to do a map/reduce.
         '''
-        emit = 'function () { emit(this.%s, 1)};' % key
-        mapper = Code(emit)
-        reducer = Code("function()")
+        q = queue.JoinableRetryQueue()
+        collection = '%s_%s_%s' % (self.dbname, 'mapreduce', key)
 
-        ids = []
-        collection = '%s_%s' % (self.dbname, 'mapreduce_editors')
-        cursor = self.db[self.collection].map_reduce(mapper, reducer, collection)
-        for c in cursor.find():
-            ids.append(c['_id'])
-        return ids
+        if self.db[collection].count() == 0:
+            emit = 'function () { emit(this.%s, 1)};' % key
+            mapper = Code(emit)
+            reducer = Code("function()")
+            result = self.db[self.collection].map_reduce(mapper, reducer, collection)
+        else:
+            result = self.db[collection]
+
+        print 'Loading %s keys in queue...' % key
+        for res in result.find():
+            q.put(res['_id'])
+        print 'Finished loading %s keys...' % key
+        return q
 
     def stringify_keys(self, data):
         '''

@@ -31,11 +31,9 @@ if '..' not in sys.path:
 from classes import settings
 settings = settings.Settings()
 
-
-from classes import storage
 from utils import file_utils
 from utils import messages
-
+from classes import storage
 from classes import consumers
 from classes import bots
 
