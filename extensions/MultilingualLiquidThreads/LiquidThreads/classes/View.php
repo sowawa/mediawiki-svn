@@ -1138,7 +1138,7 @@ class LqtView {
 				'href' => self::permalinkUrlWithQuery( $thread, 'action=watch' ),
 				'enabled' => true
 			);
-		} else if ( !$this->user->isAnon() ) {
+		} elseif ( !$this->user->isAnon() ) {
 			$commands['unwatch'] = array(
 				'label' => wfMsg( 'unwatch' ),
 				'href' => self::permalinkUrlWithQuery( $thread, 'action=unwatch' ),

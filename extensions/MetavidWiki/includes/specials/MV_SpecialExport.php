@@ -675,9 +675,9 @@ global $mvDefaultVideoQualityKey, $mvVidQualityMsgKeyType, $mvDefaultVideoHighQu
 //check a few different types in order of prefrence:
 if( $stream_url = $mvTitle->getWebStreamURL($mvDefaultVideoHighQualityKey) ){
 	$mk = $mvDefaultVideoHighQualityKey;
-}else if( $stream_url = $mvTitle->getWebStreamURL($mvDefaultVideoQualityKey) ) {
+}elseif( $stream_url = $mvTitle->getWebStreamURL($mvDefaultVideoQualityKey) ) {
 	$mk = $mvDefaultVideoQualityKey;
-}else if( $stream_url = $mvTitle->getWebStreamURL($mvDefaultFlashQualityKey) ) {
+}elseif( $stream_url = $mvTitle->getWebStreamURL($mvDefaultFlashQualityKey) ) {
 	$mk = $mvDefaultFlashQualityKey;
 }
 if($stream_url) {

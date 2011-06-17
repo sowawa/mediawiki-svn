@@ -69,7 +69,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 
 			if ( !is_null( $openid_url ) && strlen( $openid_url ) > 0 ) {
 				$this->login( $openid_url, $this->getTitle( 'Finish' ) );
-		 	} else if ( !is_null ( $wgOpenIDConsumerForce ) ) {
+		 	} elseif ( !is_null ( $wgOpenIDConsumerForce ) ) {
 		 		// if a forced OpenID provider specified, bypass the form
 		 		$this->login( $wgOpenIDConsumerForce, $this->getTitle( 'Finish' ) );
 			} else {

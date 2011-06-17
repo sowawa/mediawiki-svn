@@ -550,10 +550,10 @@ function npt2seconds( $str_time ) {
 		$hours 	= (int) $time_ary[0];
 		$min 	= (int) $time_ary[1];
 		$sec 	= (float) $time_ary[2];
-	} else if ( count( $time_ary ) == 2 ) {
+	} elseif ( count( $time_ary ) == 2 ) {
 		$min 	= (int) $time_ary[0];
 		$sec 	= (float) $time_ary[1];
-	} else if ( count( $time_ary ) == 1 ) {
+	} elseif ( count( $time_ary ) == 1 ) {
 		$sec 	= (float) $time_ary[0];
 	}
 	return ( $hours * 3600 ) + ( $min * 60 ) + $sec;
@@ -728,13 +728,13 @@ function mvGetMVStream( $stream_init ) {
 	// wfDebug('mv get stream: ' .$stream_name . "\n");
 	if ( is_object( $stream_init ) ) {
 		$stream_init = get_object_vars( $stream_init );
-	} else if ( is_string( $stream_init ) ) {
+	} elseif ( is_string( $stream_init ) ) {
 		// if a string is passed in assume its the stream name:
 		$stream_init = array( 'name' => $stream_init );
 	}
 	if ( isset( $stream_init['name'] ) ) {
 		$stream_name = $stream_init['name'];
-	} else if ( isset( $stream_init['id'] ) ) {
+	} elseif ( isset( $stream_init['id'] ) ) {
 		$stream_name = MV_Stream::getStreamNameFromId( $stream_init['id'] );
 	} else {
 		die('missing stream id or name'. $stream_init);

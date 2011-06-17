@@ -9,7 +9,7 @@
  */
 
 /**
- * An exception thrown by LuaWrapper on error; creates a big honking red 
+ * An exception thrown by LuaWrapper on error; creates a big honking red
  * message, which can be output to the page in place of the chunk's output.
  */
 class LuaError extends Exception {
@@ -19,14 +19,14 @@ class LuaError extends Exception {
 	 * @param $parameter \type{\string} Optional parameter for that message
 	 */
 	public function __construct($msg, $parameter = ''){
-		
+
 		$this->message = '<strong class="error">' . wfMsgForContent( "lua_$msg", htmlspecialchars( $parameter ) ) . '</strong>';
 	}
 }
 
 /**
  * Wraps a Lua interpreter in PHP for MediaWiki's use.
- * Chunks of Lua code are read in as strings, and executed in a single 
+ * Chunks of Lua code are read in as strings, and executed in a single
  * sandbox environment.
  */
 class LuaWrapper {
@@ -36,7 +36,7 @@ class LuaWrapper {
 	 * Creates a new LuaWrapper.
 	 */
 	public function __construct() {
-		global $wgLuaMaxLines, $wgLuaMaxCalls, 
+		global $wgLuaMaxLines, $wgLuaMaxCalls,
 		       $wgLuaExternalInterpreter, $wgLuaExternalCompiler;
 
 		# Optionally byte-compile the wrapper library
@@ -77,7 +77,7 @@ class LuaWrapper {
 			$this->defunct = FALSE;
 			return TRUE;
 		} else {
-			# We're using an external binary; run the wrapper 
+			# We're using an external binary; run the wrapper
 			# library as a shell-script, and it'll start an REPL
 			$luacmd = "$wgLuaExternalInterpreter $wrapperLib $wgLuaMaxLines $wgLuaMaxCalls";
 			# Create a new process and configure pipes to it
@@ -110,12 +110,12 @@ class LuaWrapper {
 	}
 
 	/**
-	 * Parses and executes a chunk of Lua code. The output of the chunk is 
+	 * Parses and executes a chunk of Lua code. The output of the chunk is
 	 * returned as a string; if this LuaWrapper has been marked defunct,
 	 * a blank string will be returned instead.
-	 * 
+	 *
 	 * @param $input \type{\string} Chunk of Lua code to parse and execute
-	 * @return \type{\string} The accumulated output of 
+	 * @return \type{\string} The accumulated output of
 	 *         print()/io.write()/etc. output by the chunk.
 	 * @throws LuaWrapperError
 	 */
@@ -166,7 +166,7 @@ class LuaWrapper {
 			$out = $success ? $match[1] : '';
 			$err = $success ? null      : $match[1];
 		}
-		# Either way, the output should now be in $out, and if 
+		# Either way, the output should now be in $out, and if
 		# applicable, the error in $err.
 
 		# If an error was raised, abort and throw an exception
@@ -174,7 +174,7 @@ class LuaWrapper {
 			if (preg_match('/LOC_LIMIT$/', $err)) {
 				$this->destroy();
 				throw new LuaError('overflow_loc');
-			} else if (preg_match('/RECURSION_LIMIT$/', $err)) {
+			} elseif (preg_match('/RECURSION_LIMIT$/', $err)) {
 				$this->destroy();
 				throw new LuaError('overflow_recursion');
 			} else {
@@ -189,7 +189,7 @@ class LuaWrapper {
 
 	/**
 	 * Destroy the Lua interpreter and mark this LuaWrapper defunct.
-	 * Afterwards, all future calls to wrap() on this object will return 
+	 * Afterwards, all future calls to wrap() on this object will return
 	 * a blank string.
 	 */
 	public function destroy() {

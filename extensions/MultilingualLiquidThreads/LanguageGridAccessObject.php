@@ -223,7 +223,7 @@ class LanguageGridAccessObject {
 
 		if ($targetLang == 'zh-hans') {
 			$targetLang = 'zh-CN';
-		} else if ($targetLang == 'pt') {
+		} elseif ($targetLang == 'pt') {
 			$targetLang = 'pt-PT';
 		}
 

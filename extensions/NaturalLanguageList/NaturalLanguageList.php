@@ -1,16 +1,16 @@
 <?php
 /**
- * Natural Language List allows for creation of simple lists in 
- * natural languages (e.g. 1, 2, 3, ... n-1 and n), and several 
+ * Natural Language List allows for creation of simple lists in
+ * natural languages (e.g. 1, 2, 3, ... n-1 and n), and several
  * other sophisticated and useful list related functions.
- * 
- * 
+ *
+ *
  * Copyright (C) 2010 'Svip', 'Happy-melon', and others.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2 of the License, or
- * (at your option) any later version; or the DWTFYWWI License version 1, 
+ * (at your option) any later version; or the DWTFYWWI License version 1,
  * as detailed below.
  *
  * This program is distributed in the hope that it will be useful,
@@ -22,7 +22,7 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
- * 
+ *
  * -----------------------------------------------------------------
  *                          DWTFYWWI LICENSE
  *                      Version 1, January 2006
@@ -58,26 +58,26 @@ $wgParserTestFiles[] = dirname( __FILE__ ) . "/nllParserTests.txt";
 $wgNllMaxListLength = 1000; # the maximum allowed length of a list.
 
 class NaturalLanguageList {
-	
+
 	public static function onParserFirstCallInit( $parser ) {
-		$parser->setFunctionHook( 
-			'list', 
-			array( __CLASS__, 'render' ), 
-			SFH_OBJECT_ARGS 
+		$parser->setFunctionHook(
+			'list',
+			array( __CLASS__, 'render' ),
+			SFH_OBJECT_ARGS
 		);
-		$parser->setFunctionHook( 
-			'rawlist', 
-			array ( __CLASS__, 'renderRaw' ), 
-			SFH_OBJECT_ARGS 
+		$parser->setFunctionHook(
+			'rawlist',
+			array ( __CLASS__, 'renderRaw' ),
+			SFH_OBJECT_ARGS
 		);
-		$parser->setFunctionHook( 
-			'rangelist', 
-			array ( __CLASS__, 'renderRange' ), 
-			SFH_OBJECT_ARGS 
+		$parser->setFunctionHook(
+			'rangelist',
+			array ( __CLASS__, 'renderRange' ),
+			SFH_OBJECT_ARGS
 		);
 		return true;
 	}
-	
+
 	/**
 	 * Render {{#list:}}
 	 *
@@ -95,7 +95,7 @@ class NaturalLanguageList {
 
 		return $obj->outputList();
 	}
-	
+
 	/**
 	 * Render {{#rawlist:}}
 	 *
@@ -107,7 +107,7 @@ class NaturalLanguageList {
 	public static function renderRaw ( $parser, $frame, $args ) {
 		if ( count( $args ) == 0 )
 			return '';
-		$obj = new self( $parser, $frame, $args );	
+		$obj = new self( $parser, $frame, $args );
 		# get separator between data
 		$separator = $obj->mArgs[0];
 		$obj->readOptions( true, $separator );
@@ -115,7 +115,7 @@ class NaturalLanguageList {
 
 		return $obj->outputList();
 	}
-	
+
 	/**
 	 * Render {{#rangelist:}}
 	 *
@@ -133,10 +133,10 @@ class NaturalLanguageList {
 
 		return $obj->outputList();
 	}
-	
+
 	private $mParser;
 	private $mFrame;
-	public $mArgs;	
+	public $mArgs;
 	private $mSeparator = null;
 	private $mOptions = array(
 		'fieldsperitem' => -1,     # size of pairs
@@ -170,7 +170,7 @@ class NaturalLanguageList {
 
 		# Convert each item from an array into a string according to the format.
 		$items = array_map( array( $this, 'formatOutputItem' ), $this->mParams );
-		
+
 		# If there are no items, there is nothing
 		if ( count( $items ) === 0 )
 			return '';
@@ -194,21 +194,21 @@ class NaturalLanguageList {
 	private function formatOutputItem( $pair ) {
 		return wfMsgReplaceArgs( $this->mOptions['itemoutput'], $pair );
 	}
-	
+
 	/**
 	 * Create $this->mParams from $this->mReaditems using $this->mOptions,
 	 * but treating it as a range.
 	 */
 	private function readRange() {
 		global $wgNllMaxListLength;
-		
+
 		# now this system follows a basic syntax:
 		# Element 1 is the start
 		# Element 2 is the end
 		# Element 3 is the optional step, if not set, guess either 1 or -1
 		#   depending on the difference between start and end.
 		# If they are the same (start and end) just assume no range.
-		
+
 		if ( !isset($this->mReaditems[0]) || !is_numeric($this->mReaditems[0]) )
 			return; # bail if the syntax is not upheld
 		$start = $this->mReaditems[0];
@@ -217,7 +217,7 @@ class NaturalLanguageList {
 		$end = $this->mReaditems[1];
 		if ( isset($this->mReaditems[2]) && is_numeric($this->mReaditems[2]) ) {
 			$step = $this->mReaditems[2];
-			if ( $start < $end && $step < 0 ) # a postive list with a 
+			if ( $start < $end && $step < 0 ) # a postive list with a
 		        $step = 1;                    # negative step; overwite
 			elseif ( $start > $end && $step > 0 ) # the reverse!  Overwite
 				$step = -1;
@@ -230,7 +230,7 @@ class NaturalLanguageList {
 			else # no range, 0 indicates just to bail
 				$step = 0;
 		}
-		
+
 		$items = array(); # array of args to include
 		if ( $step != 0 ) {
 			# eh, might could be done prettier, I guess.
@@ -248,7 +248,7 @@ class NaturalLanguageList {
 		} else {
 			$items = array ( $start );
 		}
-		
+
 		$this->treatParams( $items );
 	}
 
@@ -261,8 +261,8 @@ class NaturalLanguageList {
 		$items = array(); # array of args to include
 
 		# strip read items of duplicate elements if not permitted
-		$args = $this->mOptions['duplicates'] 
-			? $this->mReaditems 
+		$args = $this->mOptions['duplicates']
+			? $this->mReaditems
 			: array_unique( $this->mReaditems );
 
 		foreach ( $args as $arg ) {
@@ -271,13 +271,13 @@ class NaturalLanguageList {
 			if ( !self::parseArrayItem( $items, $arg, $separator ) )
 				break;
 		}
-		
+
 		# Remove the ignored elements from the array
 		$items = array_diff( $items, $this->mIgnores );
-		
+
 		$this->treatParams( $items );
 	}
-	
+
 	/**
 	 * Treat certain features in $this->mParams after it has been created,
 	 * as a help function for not to rewrite the same things in two functions.
@@ -294,12 +294,12 @@ class NaturalLanguageList {
 		if ( count( end( $this->mParams ) ) != $this->mOptions['fieldsperitem'] ) {
 			array_pop( $this->mParams );
 		}
-		
+
 		# Remove anything over the set length, if set
-		if ( $this->mOptions['length'] != -1 
+		if ( $this->mOptions['length'] != -1
 			&& count( $this->mParams ) > $this->mOptions['length'] )
 			$this->mParams = array_slice( $this->mParams, 0, $this->mOptions['length'] );
-		
+
 		# Remove anything over the allowed limit
 		$this->mParams = array_slice( $this->mParams, 0, $wgNllMaxListLength );
 	}
@@ -313,7 +313,7 @@ class NaturalLanguageList {
 	private function readOptions ( $ignorefirst, $separator=null ) {
 		global $wgNllMaxListLength;
  		$args = $this->mArgs;
- 
+
 		# an array of items not options
 		$this->mReaditems = array();
 
@@ -340,8 +340,8 @@ class NaturalLanguageList {
 			$this->maxDollar = 1;
 			if ( $this->mOptions['itemoutput'] !== null ) {
 				# set $this->maxDollar to the maxmimum found
-				preg_replace_callback( '/\$([1-9][0-9]*)/', 
-					array( $this, 'callbackMaxDollar' ), 
+				preg_replace_callback( '/\$([1-9][0-9]*)/',
+					array( $this, 'callbackMaxDollar' ),
 				    $this->mOptions['itemoutput'] );
 			}
 			$this->mOptions['fieldsperitem'] = $this->maxDollar;
@@ -351,21 +351,21 @@ class NaturalLanguageList {
 		if ( $this->mOptions['outputseparator'] === null ) {
 
 			$this->mOptions['outputseparator'] = wfMsgNoTrans( 'nll-separator' );
-			
+
 			if ( $this->mOptions['lastseparator'] === null ) {
 				$this->mOptions['lastseparator'] = wfMsgNoTrans( 'nll-lastseparator' );
 			}
 		# set the last separator to the regular separator if the separator is
 		# set and the last separator isn't set specifically
-		} else if ( $this->mOptions['lastseparator'] === null ) {
+		} elseif ( $this->mOptions['lastseparator'] === null ) {
 			$this->mOptions['lastseparator'] = $this->mOptions['outputseparator'];
 		}
-		
+
 		# use the default format if format not set
 		if ( $this->mOptions['itemoutput'] === null ) {
 			$this->mOptions['itemoutput'] = wfMsgNoTrans( 'nll-itemoutput' );
 		}
-		
+
 		# don't permit a length larger than the allowed
 		if ( $this->mOptions['length'] != -1
 			&& $this->mOptions['length'] > $wgNllMaxListLength ) {
@@ -388,7 +388,7 @@ class NaturalLanguageList {
 	 * This functions handles individual items found in the arguments,
 	 * and decides whether it is an option or not.
 	 * If it is, then it handles the option (and applies it).
-	 * If it isn't, then it just returns the string it found. 
+	 * If it isn't, then it just returns the string it found.
 	 *
 	 * @param $arg String Argument
 	 * @param $separator String [default:null] Input separator
@@ -456,7 +456,7 @@ class NaturalLanguageList {
 		static $magicWords = null;
 		if ( $magicWords === null ) {
 			$magicWords = new MagicWordArray( array(
-				'nll_blanks', 'nll_duplicates', 
+				'nll_blanks', 'nll_duplicates',
 				'nll_fieldsperitem', 'nll_itemoutput',
 				'nll_lastseparator', 'nll_outputseparator',
 				'nll_ignore', 'nll_data', 'nll_length',
@@ -466,11 +466,11 @@ class NaturalLanguageList {
 		if ( $name = $magicWords->matchStartToEnd( trim($value) ) ) {
 			return str_replace( 'nll_', '', $name );
 		}
-		
+
 		# blimey, so not an option!?
 		return false;
 	}
-	
+
 	/**
 	 * Insert a new element into an array.
 	 *
@@ -502,7 +502,7 @@ class NaturalLanguageList {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * Parse numeral
 	 *
@@ -530,7 +530,7 @@ class NaturalLanguageList {
 		return $default;
 	}
 
-	/** 
+	/**
 	 * Parse boolean
 	 *
 	 * @param $value String

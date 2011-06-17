@@ -116,7 +116,7 @@ class OnlineStatus {
 				return true;
 			$ret = wfMsgNoTrans( 'onlinestatus-toggle-' . $status );
 			$varCache['onlinestatus'] = $ret;
-		} else if( $index == 'onlinestatus_word_raw' ){
+		} elseif( $index == 'onlinestatus_word_raw' ){
 			$status = self::GetUserStatus( $parser->getTitle() );
 			if( $status === null )
 				return true;

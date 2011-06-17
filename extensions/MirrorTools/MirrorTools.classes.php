@@ -146,7 +146,7 @@ class MirrorEditPage extends EditPage {
 
 			$isComment = ( $this->section == 'new' );
 
-			# FIXME: paste contents from Article::doEdit here and 
+			# FIXME: paste contents from Article::doEdit here and
 			# actually handle errors it may return
 			$flags = EDIT_NEW | EDIT_DEFER_UPDATES | EDIT_AUTOSUMMARY |
 			( $isminor ? EDIT_MINOR : 0 ) |
@@ -200,7 +200,7 @@ class MirrorEditPage extends EditPage {
 			wfDebug( __METHOD__ . ": activating conflict; section replace failed.\n" );
 			$this->isConflict = true;
 			$text = $this->textbox1; // do not try to merge here!
-		} else if ( $this->isConflict ) {
+		} elseif ( $this->isConflict ) {
 			# Attempt merge
 			if ( $this->mergeChangesInto( $text ) ) {
 				// Successful merge! Maybe we should tell the user the good news?
@@ -300,9 +300,9 @@ class MirrorEditPage extends EditPage {
 		$flags = EDIT_UPDATE | EDIT_DEFER_UPDATES | EDIT_AUTOSUMMARY |
 			( $this->minoredit ? EDIT_MINOR : 0 ) |
 			( $bot ? EDIT_FORCE_BOT : 0 );
-		$status = $this->mArticle->doEdit( $text, $this->summary, $flags, 
+		$status = $this->mArticle->doEdit( $text, $this->summary, $flags,
 			false, $userObj, $this->watchthis, false, $sectionanchor, true );
-		
+
 		if ( $status->isOK() )
 		{
 			wfProfileOut( __METHOD__ );

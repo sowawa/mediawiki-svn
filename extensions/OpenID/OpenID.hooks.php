@@ -293,7 +293,7 @@ class OpenIDHooks {
 			if ( $wgDBtype == 'mysql' ) {
 				$wgExtNewTables[] = array( 'user_openid', "$base/openid_table.sql" );
 				$wgUpdates['mysql'][] = array( array( __CLASS__, 'makeUoiUserNotUnique' ) );
-			} else if ( $wgDBtype == 'postgres' ) {
+			} elseif ( $wgDBtype == 'postgres' ) {
 				$wgExtNewTables[] = array( 'user_openid', "$base/openid_table.pg.sql" );
 				# This doesn't work since MediaWiki doesn't use $wgUpdates when
 				# updating a PostgreSQL database

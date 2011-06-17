@@ -226,7 +226,7 @@ class MV_SpecialMediaSearch {
 							if ( $this->unified_term_search != '' )
 								$this->unified_term_search .= ' ';
 							$this->unified_term_search .= $f['v'];
-						} else if ( $f['t'] == 'spoken_by' ) {
+						} elseif ( $f['t'] == 'spoken_by' ) {
 							$this->unified_term_search = $f['v'];
 						}
 

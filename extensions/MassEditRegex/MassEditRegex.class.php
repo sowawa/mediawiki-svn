@@ -52,9 +52,9 @@ class MassEditRegex extends SpecialPage {
 		$strPageList = $wgRequest->getText( 'wpPageList', 'Sandbox' );
 		$this->aPageList = explode("\n", trim($strPageList));
 		$this->strPageListType = $wgRequest->getText( 'wpPageListType', 'pagenames' );
-		
+
 		$this->iNamespace = $wgRequest->getInt( 'namespace', NS_MAIN );
-		
+
 		$strMatch = $wgRequest->getText( 'wpMatch', '/hello (.*)\n/' );
 		$this->aMatch = explode("\n", trim($strMatch));
 
@@ -82,7 +82,7 @@ class MassEditRegex extends SpecialPage {
 		if ( $wgRequest->wasPosted() ) {
 			if ($wgRequest->getCheck( 'wpPreview' ) ) {
 				$this->showPreview();
-			} else if ( $wgRequest->getCheck('wpSave') ) {
+			} elseif ( $wgRequest->getCheck('wpSave') ) {
 				$this->perform();
 			}
 		} else {
@@ -126,7 +126,7 @@ class MassEditRegex extends SpecialPage {
 				'style' => 'list-style: none' // don't want any bullets for radio btns
 			))
 		);
-		
+
 		// Generate HTML for the radio buttons (one for each list type)
 		foreach (array('pagenames', 'pagename-prefixes', 'categories', 'backlinks')
 			as $strValue)
@@ -148,9 +148,9 @@ class MassEditRegex extends SpecialPage {
 		}
 		$wgOut->addHTML(
 			Xml::closeElement('ul') .
-			
+
 			// Display the textareas for the regex and replacement to go into
-			
+
 			// Can't use Xml::buildTable because we need to put code into the table
 			Xml::openElement('table', array(
 				'style' => 'width: 100%'
@@ -172,11 +172,11 @@ class MassEditRegex extends SpecialPage {
 					Xml::closeElement('td') .
 					Xml::closeElement('tr') .
 			Xml::closeElement('table') .
-			
+
 			Xml::openElement( 'div', array( 'class' => 'editOptions' ) ) .
 
 			// Display the edit summary and preview
-			
+
 			Xml::tags( 'span',
 				array(
 					'class' => 'mw-summary',
@@ -186,7 +186,7 @@ class MassEditRegex extends SpecialPage {
 					'for' => 'wpSummary'
 				), wfMsg( 'summary' ) )
 			) . ' ' .
-			
+
 			Xml::input( 'wpSummary',
 				60,
 				$this->strSummary,
@@ -196,7 +196,7 @@ class MassEditRegex extends SpecialPage {
 					'tabindex' => '1'
 				)
 			) .
-			
+
 			Xml::tags( 'div',
 				array( 'class' => 'mw-summary-preview' ),
 				wfMsgExt( 'summary-preview', 'parseinline' ) .
@@ -225,7 +225,7 @@ class MassEditRegex extends SpecialPage {
 			))
 
 		);
-		
+
 		$wgOut->addHTML( Xml::closeElement('form') );
 	}
 
@@ -276,9 +276,9 @@ class MassEditRegex extends SpecialPage {
 			)
 
 		)); // Xml::buildTable
-		
+
 	}
-	
+
 	function showPreview() {
 		$this->perform( false );
 		return;
@@ -383,10 +383,10 @@ class MassEditRegex extends SpecialPage {
 			$this->showForm( wfMsg( 'masseditregex-err-nopages' ) );
 			return;
 		}
-		
+
 		// Show the form again ready for further editing if we're just previewing
 		if (!$bPerformEdits) $this->showForm();
-		
+
 		$diff = new DifferenceEngine();
 		$diff->showDiffStyle(); // send CSS link to the browser for diff colours
 
@@ -401,7 +401,7 @@ class MassEditRegex extends SpecialPage {
 		}
 
 		$o_wgOut->addHTML( '<ul>' );
-		
+
 		if (count($aErrors))
 			$o_wgOut->addHTML( '<li>' . join( '</li><li> ', $aErrors) . '</li>' );
 
@@ -431,13 +431,13 @@ class MassEditRegex extends SpecialPage {
 					unset($this->aMatch[$i]);
 				}
 			}
-				
+
 			if ( $bPerformEdits ) {
 				// Not in preview mode, make the edits
 				// print_r( $p );
 				$o_wgOut->addHTML( '<li>' . wfMsg( 'masseditregex-num-changes',
 					$p['title'], $iCount ) . '</li>' );
-				
+
 				$req = new FauxRequest( array(
 					'action' => 'edit',
 					'bot' => true,
@@ -473,16 +473,16 @@ class MassEditRegex extends SpecialPage {
 			}
 
 		}
-		
+
 		$o_wgOut->addHTML( '</ul>' );
-		
+
 		if ( $bPerformEdits ) {
 			// Restore the state after the Edit API has messed with it
 			$wgTitle = $o_wgTitle;
 			$wgOut = $o_wgOut;
-		
+
 			$wgOut->addWikiMsg( 'masseditregex-num-articles-changed', $iArticleCount );
-			$wgOut->addHTML( 
+			$wgOut->addHTML(
 				$this->sk->makeKnownLinkObj(
 					SpecialPage::getSafeTitleFor( 'Contributions', $wgUser->getName() ),
 					wfMsgHtml( 'masseditregex-view-full-summary' )

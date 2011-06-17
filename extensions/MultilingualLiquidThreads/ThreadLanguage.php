@@ -9,7 +9,7 @@ class ThreadLanguage {
 
 		if ($language == 'zh-hans') {
 			$language = 'zh-CN';
-		} else if ($language == 'pt') {
+		} elseif ($language == 'pt') {
 			$language = 'pt-PT';
 		}
 

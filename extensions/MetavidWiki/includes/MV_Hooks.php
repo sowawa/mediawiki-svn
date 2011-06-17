@@ -63,7 +63,7 @@ function mvLinkBegin($skin, $target, &$text, &$customAttribs, &$query, &$options
 		 			if($v=='broken')
 		 				$options[$k]='known';
 		 		}
- 			}else if( !in_array( 'known', $options ) ){
+ 			}elseif( !in_array( 'known', $options ) ){
  				$options[]='known';
  			}
  		}
@@ -106,7 +106,7 @@ function mvLinkBegin($skin, $target, &$text, &$customAttribs, &$query, &$options
 		 			$timeSec = npt2seconds($start_str);
 		 			if( (int) $timeSec > 0 )
 		 				$start_ntp = seconds2npt($timeSec);
-		 		}else if(substr( $param, 0, 4 ) == 'end='){
+		 		}elseif(substr( $param, 0, 4 ) == 'end='){
 		 			$end_str =  substr( $param, 6 );
 		 			$timeSec = npt2seconds($start_str);
 		 			if( (int) $timeSec > 0 )
@@ -197,7 +197,7 @@ function mvDeleteHook( &$article, &$user, &$reason ) {
 	if ( $article->mTitle->getNamespace() == MV_NS_MVD ) {
 		// remove article with that title:
 		MV_Index::remove_by_wiki_title( $article->mTitle->getDBkey() );
-	} else if ( $article->mTitle->getNamespace() == MV_NS_STREAM ) {
+	} elseif ( $article->mTitle->getNamespace() == MV_NS_STREAM ) {
 		$article->mvTitle->mvStream->deleteDB();
 	}
 	return true; // always return true, in order not to stop MW's hook processing!

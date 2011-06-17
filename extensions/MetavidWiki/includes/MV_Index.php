@@ -72,7 +72,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 					$or = ' OR ';
 				}
 				$conds[] = $mvd_type_cond;
-			} else if ( is_string( $mvd_type ) ) {
+			} elseif ( is_string( $mvd_type ) ) {
 				$conds['mvd_type'] = $mvd_type;
 			}
 
@@ -618,7 +618,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 							if($propKey=='Spoken_By' || $propKey=='Speech_by'){
 								$v = current( $smwProps );
 								$row->spoken_by = $v->getXSDValue();
-							}else if($propKey=='Bill'){
+							}elseif($propKey=='Bill'){
 								$row->bills=array();
 								foreach($smwProps as $v){
 									$row->bills[$v->getXSDValue()] = true;
@@ -670,8 +670,8 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 						}
 					}
 					return ;
-				}// else if current fits into srange insert
-				else if ( $row->start_time >= $srange['s']  &&  $row->end_time <= $srange['e'] ) {
+				}// elseif current fits into srange insert
+				elseif ( $row->start_time >= $srange['s']  &&  $row->end_time <= $srange['e'] ) {
 					if ( $doRowInsert )
 						$srange['rows'][] = $row;
 					return ;

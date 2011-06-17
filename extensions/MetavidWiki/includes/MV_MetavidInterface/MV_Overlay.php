@@ -211,7 +211,7 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 			$this->mvd_pages[$mvd_id] = MV_Index::getMVDbyId( $mvd_id );
 		if ( $mode == 'inner' ) {
 			$this->outputMVD( $this->mvd_pages[$mvd_id] );
-		} else if ( $mode == 'enclosed' ) {
+		} elseif ( $mode == 'enclosed' ) {
 			$this->get_fd_mvd_page( $this->mvd_pages[$mvd_id], $content );
 		}
 		return $wgOut->getHTML();

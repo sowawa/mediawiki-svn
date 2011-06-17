@@ -408,7 +408,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 		foreach ( $arr as $root => $value ) {
 			if ( $value === false ) {
 				$record = implode( "\x1F", array( $root, 'no' ) );
-			} else if ( is_array( $value ) ) {
+			} elseif ( is_array( $value ) ) {
 				if ( count( $value ) == 0 ) {
 					$record = $root;
 				} else {

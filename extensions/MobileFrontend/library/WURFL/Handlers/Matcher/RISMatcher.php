@@ -19,7 +19,7 @@
  */
 
 class WURFL_Handlers_Matcher_RISMatcher implements WURFL_Handlers_Matcher_Interface {
-	
+
 	/**
 	 * Creates a RISMatcher
 	 *
@@ -31,7 +31,7 @@ class WURFL_Handlers_Matcher_RISMatcher implements WURFL_Handlers_Matcher_Interf
 		}
 		return self::$instance;
 	}
-	
+
 	/**
 	 *
 	 * @param array $collection
@@ -54,18 +54,18 @@ class WURFL_Handlers_Matcher_RISMatcher implements WURFL_Handlers_Matcher_Interf
 				$match = $find;
 				$bestDistance = $distance;
 			}
-			
+
 			$cmp = strcmp ( $find, $needle );
 			if ($cmp < 0) {
 				$low = $mid + 1;
-			} else if ($cmp > 0) {
+			} elseif ($cmp > 0) {
 				$high = $mid - 1;
-			
+
 			} else {
 				break;
 			}
 		}
-		
+
 		if ($bestDistance < $tollerance) {
 			return NULL;
 		}
@@ -74,34 +74,34 @@ class WURFL_Handlers_Matcher_RISMatcher implements WURFL_Handlers_Matcher_Interf
 		}
 		return $this->firstOfTheBests ( $collection, $needle, $bestIndex, $bestDistance );
 	}
-	
+
 	private function firstOfTheBests($collection, $needle, $bestIndex, $bestDistance) {
-		
+
 		while($bestIndex > 0 && $this->longestCommonPrefixLength ( $collection [$bestIndex-1], $needle ) == $bestDistance) {
 			$bestIndex = $bestIndex - 1;
 		}
 		return $collection [$bestIndex];
 	}
-	
+
 	private function longestCommonPrefixLength($s, $t) {
 		$length = min ( strlen ( $s ), strlen ( $t ) );
-		
+
 		$i = 0;
 		while ( $i < $length ) {
 			if ($s [$i] !== $t [$i]) {
 				break;
 			}
 			$i ++;
-		
+
 		}
-		
+
 		return $i;
-	
+
 	}
-	
+
 	private function __construct() {
 	}
-	
+
 	private static $instance;
 }
 

@@ -11,9 +11,9 @@ class MetadataEditHooks {
 		$editPage->mMetaData = '';
 		$s = '';
 		$t = $editPage->textbox1;
-	
+
 		# MISSING : <nowiki> filtering
-	
+
 		# Categories and language links
 		$t = explode( "\n" , $t );
 		$catlow = strtolower( $wgContLang->getNsText( NS_CATEGORY ) );
@@ -42,7 +42,7 @@ class MetadataEditHooks {
 		if ( count( $cat ) ) $s .= implode( ' ' , $cat ) . "\n";
 		if ( count( $ll ) ) $s .= implode( ' ' , $ll ) . "\n";
 		$t = implode( "\n" , $t );
-	
+
 		# Load whitelist
 		$sat = array () ; # stand-alone-templates; must be lowercase
 		$wl_title = Title::newFromText( $wgMetadataWhitelist );
@@ -61,9 +61,9 @@ class MetadataEditHooks {
 			if ( $isentry ) {
 				$sat[] = strtolower ( $x );
 			}
-	
+
 		}
-	
+
 		# Templates, but only some
 		$t = explode( '{{' , $t );
 		$tl = array() ;
@@ -80,39 +80,39 @@ class MetadataEditHooks {
 				}
 				else $t[$key] = '{{' . $x;
 			}
-			else if ( $key != 0 ) $t[$key] = '{{' . $x;
+			elseif ( $key != 0 ) $t[$key] = '{{' . $x;
 			else $t[$key] = $x;
 		}
 		if ( count( $tl ) ) $s .= implode( ' ' , $tl );
 		$t = implode( '' , $t );
-	
+
 		$t = str_replace( "\n\n\n", "\n", $t );
 		$editPage->textbox1 = $t;
 		$editPage->mMetaData = $s;
-		
+
 		return true;
 	}
-	
+
 	public static function wfMetadataEditOnImportData( $editPage, $request ) {
 		if ( self::isValidMetadataNamespace( $editPage->mTitle->getNamespace() ) && $request->wasPosted() ) {
 			$editPage->mMetaData = rtrim( $request->getText( 'metadata' ) );
 		} else {
 			$editPage->mMetaData = '';
 		}
-	
+
 		return true;
 	}
-	
+
 	public static function wfMetadataEditOnAttemptSave( $editPage ) {
 		# Reintegrate metadata
 		if ( $editPage->mMetaData != '' ) {
 			$editPage->textbox1 .= "\n" . $editPage->mMetaData;
 		}
 		$editPage->mMetaData = '';
-	
+
 		return true;
 	}
-	
+
 	public static function wfMetadataEditOnShowFields( $editPage ) {
 		if ( !self::isValidMetadataNamespace( $editPage->mTitle->getNamespace() ) ) {
 			return true;
@@ -133,17 +133,17 @@ class MetadataEditHooks {
 			Html::textarea( 'metadata', $metadata, $attribs )
 		);
 		$editPage->editFormTextAfterContent .= $metadata;
-	
+
 		return true;
 	}
-	
+
 	public static function wfMetadataEditOnGetPreviewText( $editPage, &$toparse ) {
 		if ( $editPage->mMetaData != '' ) {
 			$toparse .= "\n" . $editPage->mMetaData;
 		}
 		return true;
 	}
-	
+
 	public static function wfMetadataEditOnGetDiffText( $editPage, &$newText ) {
 		if ( $editPage->mMetaData != '' ) {
 			$newText .= "\n" . $editPage->mMetaData;
