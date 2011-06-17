@@ -71,9 +71,8 @@ def parse_title(title):
     return title.text
 
 
-def detect_speedy_deletion(revision_text):
+def detect_speedy_deletion(revision_text, templates):
     spds = re.findall(RE_SPEEDY_DELETION, revision_text)
-    templates = {}
     for spd in spds:
         templates[spd] = 1
     return templates
@@ -86,20 +85,23 @@ def parse_title_meta_data(title, ns, namespaces):
     http://meta.wikimedia.org/wiki/Contribution_Taxonomy_Project/Research_Questions
     '''
     title_meta = {}
-    re_ga = re.compile('/GA[\d]')
-    if not ns:
-        return title_meta
     namespace = '%s:' % namespaces[ns]
     title = title.replace(namespace, '')
+
     title_meta['title'] = title
     title_meta['ns'] = ns
+    title_meta['category'] = None
+
     if title.startswith('List of'):
         title_meta['category'] = 'List'
     elif ns == 1:
-        if re.search(RE_DEL_ARTICLE, title.find):
+        if re.search(RE_DEL_ARTICLE, title):
             title_meta['category'] = 'Good Article'
     elif ns == 4 or ns == 5:
-        if title.find('Arbitration') > -1:
+        if title.find('Articles for deletion') > -1:
+            if title.find('Articles for deletion/Log/') == -1:
+                title_meta['category'] = 'Deletion'
+        elif title.find('Arbitration') > -1:
             title_meta['category'] = 'Arbitration'
         elif title.find('Good Article') > -1:
             title_meta['category'] = 'Good Article'
@@ -121,8 +123,7 @@ def parse_title_meta_data(title, ns, namespaces):
                 title_meta['category'] = 'Featured Portal'
             elif title.find('Featured topic candidates') > -1:
                 title_meta['category'] = 'Featured Topic'
-        elif title.find('Articles for deletion') > -1 and title.find('Articles for deletion/Log/') > -1:
-            title_meta['category'] = 'Deletion'
+
 
     #print title_meta
     return title_meta
@@ -242,7 +243,7 @@ def parse_contributor(revision, bots, xml_namespace):
 def determine_namespace(title, namespaces, include_ns):
     '''
     You can only determine whether an article belongs to the Main Namespace
-    by ruling out that it does not belong to any other namepace
+    by ruling out that it does not belong to any other namespace
     '''
     if title != None:
         for key in include_ns:
@@ -260,16 +261,17 @@ def determine_namespace(title, namespaces, include_ns):
 
 def store_revert_information(hash, revision_id, contributor, reverts):
     hash = hash['hash']
-    reverts.setdefault(hash, {})
-    reverts[hash]['revision_id'] = revision_id
-    reverts[hash]['contributor'] = contributor
+    if hash not in reverts:
+        reverts.setdefault(hash, {})
+        reverts[hash]['revision_id'] = revision_id
+        reverts[hash]['contributor'] = contributor
     return reverts
 
 
 def determine_past_revert(hash, revert, reverts):
     past_revert = {}
-    hash = hash['hash']
     if revert['revert'] == 1:
+        hash = hash['hash']
         past_revert['reverted_revision_id'] = reverts[hash]['revision_id']
         past_revert['reverted_contributor'] = reverts[hash]['contributor']['id']
     else:
@@ -300,13 +302,15 @@ def extract_revision_id(revision_id):
         return None
 
 
-def extract_comment_text(revision, xml_namespace):
+def extract_comment_text(revision, xml_namespace, revision_id):
     '''
     Extract the comment associated with an edit. 
     '''
     comment_text = revision.find('%s%s' % (xml_namespace, 'comment'))
+    comment = {}
     if comment_text != None and comment_text.text != None:
-        return comment_text.text
+        comment[revision_id] = comment_text.text
+        return comment
     else:
         return None
 

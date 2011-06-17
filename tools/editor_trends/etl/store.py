@@ -30,17 +30,13 @@ from classes import consumers
 
 class Storer(consumers.BaseConsumer):
     '''
-    This function is called by multiple consumers who each take a sorted 
-    file and create a cache object. If the number of edits made by an 
-    editor is above the treshold then the cache object stores the data in 
-    Mongo, else the data is discarded.
-    The treshold is currently more than 9 edits and is not yet configurable. 
+    This function is called by multiple consumers who each read a file and store
+    the contents into the database.
     '''
     def run(self):
         db = storage.init_database(self.rts.storage, self.rts.dbname,
                                    self.rts.editors_raw)
         editor_cache = cache.EditorCache(db)
-        prev_editor = -1
         while True:
             try:
                 filename = self.tasks.get(block=False)
@@ -51,18 +47,19 @@ class Storer(consumers.BaseConsumer):
 
                 fh = file_utils.create_txt_filehandle(self.rts.sorted, filename,
                                                       'r', 'utf-8')
+                data = []
                 for line in file_utils.read_raw_data(fh):
-                    if len(line) == 1 or len(line) == 4:
+                    if len(line) == 1: # or len(line) == 4:
                         continue
-                    editor = line[0]
-                    #print 'Parsing %s' % editor
-                    if prev_editor != editor and prev_editor != -1:
-                        editor_cache.add(prev_editor, 'NEXT')
+                    obs = prepare_data(line)
+                    if obs != {}:
+                        data.append(obs)
+                    if len(data) == 10000:
+                        db.insert(data, safe=False)
+                        data = []
 
-                    data = prepare_data(line)
-                    #print editor, data['username']
-                    editor_cache.add(editor, data)
-                    prev_editor = editor
+                if data != []:
+                    db.insert(data, safe=False)
                 fh.close()
                 self.result.put(True)
             except Empty:
@@ -74,36 +71,48 @@ def prepare_data(line):
     Prepare a single line to store in the database, this entails converting
     to proper variable and taking care of the encoding.
     '''
+    user_id = line[0]
     article_id = int(line[1])
+    rev_id = int(line[2])
     username = line[3].encode('utf-8')
     ns = int(line[4])
     date = text_utils.convert_timestamp_to_datetime_utc(line[6])
     md5 = line[7]
     revert = int(line[8])
-    bot = int(line[9])
-    cur_size = int(line[10])
-    delta = int(line[11])
+    reverted_user = int(line[9])
+    reverted_rev_id = int(line[10])
+    bot = int(line[11])
+    cur_size = int(line[12])
+    delta = int(line[13])
 
     data = {'date': date,
-            'article': article_id,
+            'user_id': user_id,
+            'article_id': article_id,
+            'rev_id': rev_id,
             'username': username,
             'ns': ns,
             'hash': md5,
             'revert':revert,
             'cur_size':cur_size,
             'delta':delta,
-            'bot':bot
+            'bot':bot,
     }
+
+    if reverted_user > -1:
+        data['reverted_user'] = reverted_user,
+        data['reverted_rev_id'] = reverted_rev_id
+
     return data
 
 
 def store_articles(tasks, rts):
     db = storage.init_database(rts.storage, rts.dbname, rts.articles_raw)
+    filename = None
     while True:
         try:
             filename = tasks.get(block=False)
+            tasks.task_done()
             if filename == None:
-                self.result.put(None)
                 break
             print 'Processing %s...' % filename
             fh = file_utils.create_txt_filehandle(rts.txt, filename, 'r', 'utf-8')
@@ -124,7 +133,7 @@ def store_articles(tasks, rts):
             fh.close()
         except Empty:
             pass
-    print 'Done storing articles...'
+    print 'Finished processing %s...' % filename
 
 
 def launcher_articles(rts):
@@ -134,6 +143,8 @@ def launcher_articles(rts):
     * namespace
     * category (if any)
     * article id
+    * redirect (true / false)
+    * timestamp article created
     '''
     db = storage.init_database(rts.storage, rts.dbname, rts.articles_raw)
     db.drop_collection()
@@ -206,8 +217,15 @@ def launcher(rts):
 
     tasks.join()
     print '\nCreating indexes...'
-    db.add_index('editor')
+    db.add_index('user_id')
     db.add_index('username')
+    db.add_index('article_id')
+    db.add_index('reverted_by')
+    db.add_index('revert')
+    db.add_index('bot')
+    db.add_index('date')
+    db.add_index('ns')
+    db.add_index('delta')
 
 
 if __name__ == '__main__':

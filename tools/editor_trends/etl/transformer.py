@@ -24,7 +24,6 @@ from Queue import Empty
 
 import progressbar
 from classes import storage
-from utils import file_utils
 from utils import data_converter
 from classes import consumers
 from classes import queue
@@ -62,31 +61,39 @@ class Editor:
         self.editor_id = editor_id
         self.db_raw = db_raw
         self.db_dataset = db_dataset
-        self.rts = rts
+        self.edits = []
+        self.editor = self.db_raw.find({'user_id': self.editor_id})
         self.cutoff = 9
+        self.username = None
+        self.construct_edit_history()
 
     def __str__(self):
         return '%s' % (self.editor_id)
 
+    def construct_edit_history(self):
+        for x, edit in enumerate(self.editor):
+            edit.pop('_id')
+            edit.pop('user_id')
+            if x == 0:
+                self.username = edit['username']
+            edit.pop('username')
+            self.edits.append(edit)
+
     def __call__(self):
-        editor = self.db_raw.find_one('editor', self.editor_id)
-        if editor == None:
+        if self.edits == []:
             return
-        edits = editor['edits']
-        username = editor['username']
 
-        first_year, final_year = determine_year_range(edits)
+        first_year, final_year = determine_year_range(self.edits)
 
-        last_edit_by_year = determine_last_edit_by_year(edits, first_year, final_year)
-        articles_edited = determine_articles_workedon(edits, first_year, final_year)
+        last_edit_by_year = determine_last_edit_by_year(self.edits, first_year, final_year)
+        articles_edited = determine_articles_workedon(self.edits, first_year, final_year)
         article_count = determine_article_count(articles_edited, first_year, final_year)
 
-        namespaces_edited = determine_namespaces_workedon(edits, first_year, final_year)
-        character_count = determine_edit_volume(edits, first_year, final_year)
-        revert_count = determine_number_reverts(edits, first_year, final_year)
+        namespaces_edited = determine_namespaces_workedon(self.edits, first_year, final_year)
+        character_count = determine_edit_volume(self.edits, first_year, final_year)
+        revert_count = determine_number_reverts(self.edits, first_year, final_year)
 
-
-        edit_count = determine_number_edits(edits, first_year, final_year)
+        edit_count = determine_number_edits(self.edits, first_year, final_year)
 
         totals = {}
         counts = data_converter.create_datacontainer(first_year, final_year)
@@ -95,9 +102,9 @@ class Editor:
         totals = calculate_totals(totals, counts, article_count, 'article_count')
         totals = calculate_totals(totals, counts, edit_count, 'edit_count')
 
-        cum_edit_count_main_ns, cum_edit_count_other_ns = calculate_cum_edits(edits)
+        cum_edit_count_main_ns, cum_edit_count_other_ns = calculate_cum_edits(self.edits)
 
-        edits = sort_edits(edits)
+        edits = sort_edits(self.edits)
         if len(edits) > self.cutoff:
             new_wikipedian = edits[self.cutoff]['date']
         else:
@@ -106,8 +113,8 @@ class Editor:
         first_edit = edits[0]['date']
         final_edit = edits[-1]['date']
 
-        data = {'editor': self.editor_id,
-                'username': username,
+        data = {'user_id': self.editor_id,
+                'username': self.username,
                 'new_wikipedian': new_wikipedian,
                 'cum_edit_count_main_ns': cum_edit_count_main_ns,
                 'cum_edit_count_other_ns': cum_edit_count_other_ns,
@@ -170,10 +177,10 @@ def determine_number_edits(edits, first_year, final_year):
     '''
     dc = data_converter.create_datacontainer(first_year, final_year)
     dc = data_converter.add_months_to_datacontainer(dc, 'dict')
-    for year in edits:
-        for edit in edits[year]:
-            ns = edit['ns']
-            month = edit['date'].month
+    for edit in edits:
+            ns = str(edit['ns'])
+            year = str(edit['date'].year)
+            month = str(edit['date'].month)
             dc[year][month].setdefault(ns, 0)
             dc[year][month][ns] += 1
     dc = cleanup_datacontainer(dc, {})
@@ -183,12 +190,11 @@ def determine_number_edits(edits, first_year, final_year):
 def calculate_cum_edits(edits):
     cum_edit_count_main_ns = 0
     cum_edit_count_other_ns = 0
-    for year in edits:
-        for edit in edits[year]:
-            if edit['ns'] == 0:
-                cum_edit_count_main_ns += 1
-            else:
-                cum_edit_count_other_ns += 1
+    for edit in edits:
+        if edit['ns'] == 0:
+            cum_edit_count_main_ns += 1
+        else:
+            cum_edit_count_other_ns += 1
 
     return cum_edit_count_main_ns, cum_edit_count_other_ns
 
@@ -200,12 +206,12 @@ def determine_articles_workedon(edits, first_year, final_year):
     '''
     dc = data_converter.create_datacontainer(first_year, final_year)
     dc = data_converter.add_months_to_datacontainer(dc, 'dict')
-    for year in edits:
-        for edit in edits[year]:
-            month = edit['date'].month
-            ns = edit['ns']
-            dc[year][month].setdefault(ns, set())
-            dc[year][month][ns].add(edit['article'])
+    for edit in edits:
+        year = str(edit['date'].year)
+        month = str(edit['date'].month)
+        ns = str(edit['ns'])
+        dc[year][month].setdefault(ns, set())
+        dc[year][month][ns].add(edit['article_id'])
 
     #convert the set to a list as mongo cannot store sets. 
     for year in dc:
@@ -223,10 +229,10 @@ def determine_namespaces_workedon(edits, first_year, final_year):
     '''
     dc = data_converter.create_datacontainer(first_year, final_year)
     dc = data_converter.add_months_to_datacontainer(dc, 'set')
-    for year in edits:
-        for edit in edits[year]:
-            month = edit['date'].month
-            dc[year][month].add(edit['ns'])
+    for edit in edits:
+        year = str(edit['date'].year)
+        month = str(edit['date'].month)
+        dc[year][month].add(edit['ns'])
     for year in dc:
         for month in dc[year]:
             dc[year][month] = list(dc[year][month])
@@ -241,13 +247,13 @@ def determine_number_reverts(edits, first_year, final_year):
     '''
     dc = data_converter.create_datacontainer(first_year, final_year)
     dc = data_converter.add_months_to_datacontainer(dc, 'dict')
-    for year in edits:
-        for edit in edits[year]:
-            month = edit['date'].month
-            ns = edit['ns']
-            if edit['revert']:
-                dc[year][month].setdefault(ns, 0)
-                dc[year][month][ns] += 1
+    for edit in edits:
+        year = str(edit['date'].year)
+        month = str(edit['date'].month)
+        ns = str(edit['ns'])
+        if edit['revert']:
+            dc[year][month].setdefault(ns, 0)
+            dc[year][month][ns] += 1
     dc = cleanup_datacontainer(dc, {})
     return dc
 
@@ -259,17 +265,17 @@ def determine_edit_volume(edits, first_year, final_year):
     '''
     dc = data_converter.create_datacontainer(first_year, final_year)
     dc = data_converter.add_months_to_datacontainer(dc, 'dict')
-    for year in edits:
-        for edit in edits[year]:
-            month = edit['date'].month
-            ns = edit['ns']
-            dc[year][month].setdefault(ns, {})
-            if edit['delta'] < 0:
-                dc[year][month][ns].setdefault('removed', 0)
-                dc[year][month][ns]['removed'] += edit['delta']
-            elif edit['delta'] > 0:
-                dc[year][month][ns].setdefault('added', 0)
-                dc[year][month][ns]['added'] += edit['delta']
+    for edit in edits:
+        year = str(edit['date'].year)
+        month = str(edit['date'].month)
+        ns = str(edit['ns'])
+        dc[year][month].setdefault(ns, {})
+        if edit['delta'] < 0:
+            dc[year][month][ns].setdefault('removed', 0)
+            dc[year][month][ns]['removed'] += edit['delta']
+        elif edit['delta'] > 0:
+            dc[year][month][ns].setdefault('added', 0)
+            dc[year][month][ns]['added'] += edit['delta']
     dc = cleanup_datacontainer(dc, {})
     return dc
 
@@ -278,7 +284,8 @@ def determine_year_range(edits):
     '''
     This function determines the first and final year that an editor was active.
     '''
-    years = [year for year in edits if edits[year] != []]
+    #[x for b in a for x in b]
+    years = [edit['date'].year for edit in edits]
     first_year = int(min(years))
     final_year = int(max(years)) + 1
     return first_year, final_year
@@ -290,13 +297,12 @@ def determine_last_edit_by_year(edits, first_year, final_year):
     given editor. 
     '''
     dc = data_converter.create_datacontainer(first_year, final_year, 0)
-    for year in edits:
-        for edit in edits[year]:
-            date = str(edit['date'].year)
-            if dc[date] == 0:
-                dc[date] = edit['date']
-            elif dc[date] < edit['date']:
-                dc[date] = edit['date']
+    for edit in edits:
+        date = str(edit['date'].year)
+        if dc[date] == 0:
+            dc[date] = edit['date']
+        elif dc[date] < edit['date']:
+            dc[date] = edit['date']
     return dc
 
 
@@ -316,16 +322,20 @@ def determine_article_count(articles_edited, first_year, final_year):
 
 
 def sort_edits(edits):
-    edits = file_utils.merge_list(edits)
     return sorted(edits, key=itemgetter('date'))
 
 
 def add_indexes(rts):
     db_dataset = storage.init_database(rts.storage, rts.dbname, rts.editors_dataset)
     print '\nCreating indexes...'
-    db_dataset.add_index('editor')
+    db_dataset.add_index('user_id')
     db_dataset.add_index('new_wikipedian')
     db_dataset.add_index('username')
+    db_dataset.add_index('cum_edit_count_main_ns')
+    db_dataset.add_index('cum_edit_count_other_ns')
+    db_dataset.add_index('first_edit')
+    db_dataset.add_index('final_edit')
+
     print 'Finished creating indexes...'
 
 
@@ -337,7 +347,7 @@ def setup_database(rts):
     db_raw = storage.init_database(rts.storage, rts.dbname, rts.editors_raw)
     db_dataset = storage.init_database(rts.storage, rts.dbname, rts.editors_dataset)
     db_dataset.drop_collection()
-    editors = db_raw.retrieve_editors()
+    editors = db_raw.retrieve_distinct_keys('user_id', force_new=True)
     return editors, db_raw, db_dataset
 
 
