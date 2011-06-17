@@ -4,6 +4,13 @@ Extension page on mediawiki.org: http://www.mediawiki.org/wiki/Extension:Live_Tr
 Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/LiveTranslate/RELEASE-NOTES?view=co
 
 
+=== Version 1.1.1 ===
+2011-06-xx
+
+* Fixed Internet Explorer compatibility issue.
+* Fixed bug in Microsoft transltion script for MW < 1.17.
+* Made Microsoft transltion script more robust by adding timeouts.
+
 === Version 1.1 ===
 2011-06-16
 
