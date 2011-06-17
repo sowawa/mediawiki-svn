@@ -44,7 +44,7 @@ class RDFIOSMWBatchWriter {
             $this->m_unparseddata = $this->cleanupXML( $this->m_unparseddata );
             $this->m_parser = ARC2::getRDFXMLParser();
             $this->parse();
-        } else if ( $this->m_dataformat == 'turtle' ) {
+        } elseif ( $this->m_dataformat == 'turtle' ) {
             $this->m_unparseddata = $wgRequest->getText( 'importdata' );
             $this->m_parser = ARC2::getTurtleParser();
             $this->parse();
@@ -427,7 +427,7 @@ class RDFIOSMWBatchWriter {
     function convertARCTypeToSMWType( $arctype, $arcdatatype ) {
         if ( $arctype == 'uri' ) {
             return 'Page';
-        } else if ( $arctype == 'literal' ) {
+        } elseif ( $arctype == 'literal' ) {
             if ( $arcdatatype == 'http://www.w3.org/2001/XMLSchema#decimal' ) {
                 return 'Number';
             } else {
@@ -547,7 +547,7 @@ class RDFIOSMWBatchWriter {
             $titlebypropertyuriindex = $this->getWikiTitleByPropertyURIIndex( $uri );
             if ( $titlebypropertyuriindex != '' ) {
                 $wikititle = $titlebypropertyuriindex;
-            } else if ( ( $this->m_usenspintitles_entities && !$isproperty ) ||
+            } elseif ( ( $this->m_usenspintitles_entities && !$isproperty ) ||
             ( $this->m_usenspintitles_properties && $isproperty ) ) {
                 $wikititle = $this->abbreviateNSFromURI( $uri );
             } else {
@@ -632,18 +632,18 @@ class RDFIOSMWBatchWriter {
 
         if ( $localpart == '' ) {
             $uri = $basepart;
-        } else if ( substr( $basepart, 0, 1 ) == '_' ) {
+        } elseif ( substr( $basepart, 0, 1 ) == '_' ) {
             // Change ARC:s default "random string", to indicate more clearly that
             // it lacks title
             $uri = str_replace( 'arc', 'untitled', $localpart );
-        } else if ( substr( $basepart, 0, 7 ) == 'http://' ) {
+        } elseif ( substr( $basepart, 0, 7 ) == 'http://' ) {
             // If the abbreviation does not seem to have succeeded,
             // fall back to use only the local part
             $uri = $localpart;
-        } else if ( substr( $basepart, -1 ) == ':' ) {
+        } elseif ( substr( $basepart, -1 ) == ':' ) {
             // Don't add another colon
             $uri = $basepart . $localpart;
-        } else if ( $basepart == false || $basepart == '' ) {
+        } elseif ( $basepart == false || $basepart == '' ) {
             $uri = $localpart;
         } else {
             $uri = $basepart . ':' . $localpart;
@@ -664,7 +664,7 @@ class RDFIOSMWBatchWriter {
 
         if ( $localpart == '' ) {
             $uri = $basepart;
-        } else if ( substr( $basepart, 0, 1 ) == '_' ) {
+        } elseif ( substr( $basepart, 0, 1 ) == '_' ) {
             // Change ARC:s default "random string", to indicate more clearly that
             // it lacks title
             $uri = str_replace( 'arc', 'untitled', $localpart );
@@ -674,7 +674,7 @@ class RDFIOSMWBatchWriter {
                 // If the abbreviation does not seem to have succeeded,
                 // fall back to use only the local part
                 $uri = $localpart;
-            } else if ( substr( $basepart, -1 ) == ':' ) {
+            } elseif ( substr( $basepart, -1 ) == ':' ) {
                 // Don't add another colon
                 $uri = $basepart . $localpart;
             } else {

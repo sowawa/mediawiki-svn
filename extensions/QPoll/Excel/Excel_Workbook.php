@@ -1350,7 +1350,7 @@ class Spreadsheet_Excel_Writer_Workbook extends Spreadsheet_Excel_Writer_BIFFwri
 							$align = 1;
 						}
 						# Split section without header => split on even boundary
-						else if ($split_string && $space_remaining % 2 == 1) {
+						elseif ($split_string && $space_remaining % 2 == 1) {
 							$space_remaining--;
 							$align = 1;
 						}
@@ -1524,7 +1524,7 @@ class Spreadsheet_Excel_Writer_Workbook extends Spreadsheet_Excel_Writer_BIFFwri
 							$align = 1;
 						}
 						// Split section without header => split on even boundary
-						else if ($split_string && $space_remaining % 2 == 1) {
+						elseif ($split_string && $space_remaining % 2 == 1) {
 							$space_remaining--;
 							$align = 1;
 						}

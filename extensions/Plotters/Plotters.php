@@ -118,7 +118,7 @@ function wfLoadPlottersStructured( $forceNewText = null ) {
 		if ( preg_match( '/^==+ *([^*:\s|]+?)\s*==+\s*$/', $line, $m ) ) {
 			$section = $m[1];
 		}
-		else if ( preg_match( '/^\*+ *([a-zA-Z](?:[-_:.\w\d ]*[a-zA-Z0-9])?)\s*((\|[^|]*)+)\s*$/', $line, $m ) ) {
+		elseif ( preg_match( '/^\*+ *([a-zA-Z](?:[-_:.\w\d ]*[a-zA-Z0-9])?)\s*((\|[^|]*)+)\s*$/', $line, $m ) ) {
 			// NOTE: the plotter name is used as part of the name of a form field,
 			//      and must follow the rules defined in http://www.w3.org/TR/html4/types.html#type-cdata
 			//      Also, title-normalization applies.
@@ -157,7 +157,7 @@ function wfApplyPlotterCode( $code, $out, &$done ) {
 			$u = $t->getLocalURL( 'action=raw&ctype=' . $wgJsMimeType );
 			$out->addScript( '<script type="' . $wgJsMimeType . '" src="' . htmlspecialchars( $u ) . '"></script>' . "\n" );
 		}
-		else if ( preg_match( '/\.css/', $codePage ) ) {
+		elseif ( preg_match( '/\.css/', $codePage ) ) {
 			$u = $t->getLocalURL( 'action=raw&ctype=text/css' );
 			$out->addScript( '<style type="text/css">/*<![CDATA[*/ @import "' . $u . '"; /*]]>*/</style>' . "\n" );
 		}
@@ -228,7 +228,7 @@ function PlottersParserOutput( $outputPage, $parserOutput )  {
 		$plotkitname = "plotkit";
 		if ( $parserOutput->mplotter["$genericname"] ) {
 			Plotters::setPlottersHeaders( $outputPage, 'generic' );
-		} else if ( $parserOutput->mplotter["$plotkitname"] ) {
+		} elseif ( $parserOutput->mplotter["$plotkitname"] ) {
 			Plotters::setPlottersHeaders( $outputPage, 'plotkit' );
 		}
 

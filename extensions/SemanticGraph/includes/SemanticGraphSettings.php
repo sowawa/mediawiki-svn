@@ -42,17 +42,17 @@ class SemanticGraphSettings {
 			);
 		$this->options = array (
 			'smm' => array (
-				'resource' => array ('type' => 'page', 'check' => array('mand','someexist'), 
+				'resource' => array ('type' => 'page', 'check' => array('mand','someexist'),
 					'help' => 'the root node of the mind map'),
 				'property' => array ('type' => 'page', 'list' => true, 'action' => array('toarray','nsproperty'), 'check' => 'someexist', 'default' => $this->dummyCategoryLinkProperty.",".$this->dummyWikiLinkProperty,
 					'help' => $commonhelp['property']),
 				'depth' => array ('type' => 'num', 'default' => 5),
 				'height' => array ('type' => 'string', 'default' => 450),
-				'editform' => array ('type' => 'string', 'default' => false, 
+				'editform' => array ('type' => 'string', 'default' => false,
 					'help' => $commonhelp['editform']),
-				'editquery' => array ('type' => 'string', 'default' => false, 
+				'editquery' => array ('type' => 'string', 'default' => false,
 					'help' => $commonhelp['editquery']),
-				'fold' => array ('type' => 'string', 'default' => 'large', 'values' => array('level1', 'level2', 'level3', 'none', 'large'), 
+				'fold' => array ('type' => 'string', 'default' => 'large', 'values' => array('level1', 'level2', 'level3', 'none', 'large'),
 					'help' => 'folding of generated map: by default branches with more than 10 items are folded')
 			),
 			'sgraph' => array (
@@ -63,16 +63,16 @@ class SemanticGraphSettings {
 				'depth' => array ('type' => 'num', 'default' => 3,
 					'help' => 'deep graphs can be expensive'),
 				'engine' => array ('type' => 'string', 'default' => 'dot', 'values' => array('dot','neato','circo','twopi','fdp')),
-				'editform' => array ('type' => 'string', 'default' => false, 
+				'editform' => array ('type' => 'string', 'default' => false,
 					'help' => $commonhelp['editform']),
-				'editquery' => array ('type' => 'string', 'default' => false, 
+				'editquery' => array ('type' => 'string', 'default' => false,
 					'help' => $commonhelp['editquery']),
 				'dotoptions' => array ('type' => 'string', 'default' => "rankdir=LR, ranksep=1;\nnode [fontsize=10, fontname=Helvetica];\n",
 					'help' => 'a dot string which is inserted at the top of the graph'),
 				'width' => array ('type' => 'string', 'default' => '800'),
 				'height' => array ('type' => 'string', 'default' => '600'),
 				'svg' => array ('type' => 'string', 'default' => 'false'),
-				'boxresize' => array ('type' => 'string' , 'default' => 'none', 'values' => array('none','toimage'), 
+				'boxresize' => array ('type' => 'string' , 'default' => 'none', 'values' => array('none','toimage'),
 					'help' => "This option is for svg mode only. ".$commonhelp['boxresize']),
 				'zoom' => array ('type' => 'string', 'default' => 'tofit' ,
 					'help' => "This option is for svg mode only. ".$commonhelp['zoom']),
@@ -81,25 +81,25 @@ class SemanticGraphSettings {
 				'image' => array ('type' => 'page', 'action' => 'nsimage', 'check' => array('mand','someexist'),
 					'help' => 'a page name in the image namespace that refers to an uploaded freemind map e.g. Image:map.mm, also map.mm should work'),
 				'height' => array ('type' => 'string', 'default' => 450),
-				'editform' => array ('type' => 'string', 'default' => false, 
+				'editform' => array ('type' => 'string', 'default' => false,
 					'help' => $commonhelp['editform']),
-				'editquery' => array ('type' => 'string', 'default' => false, 
+				'editquery' => array ('type' => 'string', 'default' => false,
 					'help' => $commonhelp['editquery']),
 				'fold' => array ('type' => 'string', 'values' => array('level1', 'level2', 'level3', 'none', 'large'))
 			),
 			'shypergraph' => array (
 				'resource' => array ('type' => 'page','list' => true, 'action' => 'toarray', 'check' => array('mand','someexist'),
 					'help' => 'a set of pages that define the initial nodes of the hypergraph. This appears to behave best if it is single'),
-				'property' => array ('type' => 'page','list' => true, 'action' => array('toarray','nsproperty'), 'check' => 'someexist',  'default' => $this->dummyCategoryLinkProperty.",".$this->dummyWikiLinkProperty, 
+				'property' => array ('type' => 'page','list' => true, 'action' => array('toarray','nsproperty'), 'check' => 'someexist',  'default' => $this->dummyCategoryLinkProperty.",".$this->dummyWikiLinkProperty,
 					'help' => $commonhelp['property']),
 				'colours' => array ('type' => 'string', 'list' => true, 'default' => 'black', 'action' => 'toarray', 'values' => $this->colourlist,
 					'help' => 'a list of colours for the property links - not yet implemented'),
 				'depth' => array ('type' => 'num', 'default' => 5),
 				'width' => array ('type' => 'string', 'default' => 800),
 				'height' => array ('type' => 'string', 'default' => 600),
-				'editform' => array ('type' => 'string', 'default' => false, 
+				'editform' => array ('type' => 'string', 'default' => false,
 					'help' => $commonhelp['editform']),
-				'editquery' => array ('type' => 'string', 'default' => false, 
+				'editquery' => array ('type' => 'string', 'default' => false,
 					'help' => $commonhelp['editquery']),
 			),
 			'bigpic' => array (
@@ -107,7 +107,7 @@ class SemanticGraphSettings {
 					'help' => 'a reference to an image page (that contains an image file!)'),
 				'width' => array ('type' => 'num', 'default' => null),
 				'height' => array ('type' => 'num', 'default' => null),
-				'boxresize' => array ('type' => 'string' , 'default' => 'none', 'values' => array('none','toimage'), 
+				'boxresize' => array ('type' => 'string' , 'default' => 'none', 'values' => array('none','toimage'),
 					'help' => $commonhelp['boxresize']),
 				'zoom' => array ('type' => 'string', 'default' => 'tofit' ,
 					'help' => $commonhelp['zoom']),
@@ -123,7 +123,7 @@ class SemanticGraphSettings {
 			'dot' => array(
 				'preamble' => 'digraph "@NAME@" {'."\n",
 				'nodeExist' => "@CHILD_ID@ [label=\"@CHILD_LABEL@\" URL=\"$wgServer@CHILD_LNK@\", fontcolor=\"blue\"];"."\n",
-				'nodeNotExist'=> "@CHILD_ID@ [label=\"@CHILD_LABEL@\" URL=\"$wgServer@FORM_LNK@\", fontcolor=\"red\"];"."\n", 
+				'nodeNotExist'=> "@CHILD_ID@ [label=\"@CHILD_LABEL@\" URL=\"$wgServer@FORM_LNK@\", fontcolor=\"red\"];"."\n",
 				'link' => "@PAR_ID@ -> @CHILD_ID@;"."\n",
 				'conclusion' => "}"."\n"
 			),
@@ -149,9 +149,9 @@ class SemanticGraphSettings {
 				'notExistColour' => '#ff0000',
 			)
 		);
-		
+
 	}
-	
+
 	function usage($functn) {
 		$t = "<p><b>USAGE: {{#$functn:property=value|property=value1,value2,value3|...}}</b></p><table border='1'><tr><th>property</th><th>type</th><th>list</th><th>values</th><th>checks</th><th>help</th></tr>";
 		foreach ($this->options[$functn] as $rowk => $rowv) {
@@ -179,18 +179,18 @@ class SemanticGraphSettings {
 				$t .= '</ul></td>';
 			} else {
 				$t .= '<td></td>';
-			}	
+			}
 			if (isset($rowv['help'])) {
 				$t .= '<td>'.$rowv['help'].'</td>';
 			} else {
 				$t .= '<td></td>';
-			}	
+			}
 			$t .= '</tr>';
 		}
 		$t .= '</table>';
 		return $t;
 	}
-	
+
 	function parseOptions( $optarray, $type = 'ERROR' ) {
 		global $wgContLang, $wgScriptPath;
 		array_shift( $optarray ); //first is &$parser, strip it
@@ -200,9 +200,9 @@ class SemanticGraphSettings {
 		}
 		if ( !array_key_exists($type, $this->options) ) {
 			$this->lastError = 'unsupported function call '.$type;
-			return false; 
-		} 
-		
+			return false;
+		}
+
 		$argv = array();
 		//populate defaults in output array
 		foreach ((array) $this->options[$type] as $optionk => $optionv) {
@@ -227,7 +227,7 @@ class SemanticGraphSettings {
 		foreach ((array) $this->options[$type] as $optionk => $optionv) {
 			if (isset($argv[$optionk])) {
 				//options are now as strings, maybe comma seperated to represent arrays
-				//sometimes these will be converted to arrays 
+				//sometimes these will be converted to arrays
 				if (!is_array($argv[$optionk])) {
 						$argv[$optionk] = array($argv[$optionk]);
 				}
@@ -235,7 +235,7 @@ class SemanticGraphSettings {
 				if (!isset($optionv['check'])) $optionv['check']=array();
 				if (!isset($optionv['list'])) $optionv['list']=false;
 				//do actions on output array values
-				foreach ((array) $optionv['action'] as $action) { 
+				foreach ((array) $optionv['action'] as $action) {
 					switch ($action) {
 						case 'toarray':
 
@@ -250,17 +250,17 @@ class SemanticGraphSettings {
 							break; // split on whitespace and comma combinations - converts flat csv into an array
 						case 'infermode':
 							//HELLO
-							//here we do some advanced parsing looking for some assumptions about 
+							//here we do some advanced parsing looking for some assumptions about
 							//usually property relationships
 							//this assumes that the properties are now an array
 							//?property or property implies focus->property->object
 							//property? implies object->property->focus
 							//?propery? implies either (useful for transitivity)
-							
+
 							//=as assiging a label? do this first if so.
 							//*as defining transitivity?
 							//?property.?property as defining subrelationships?
-							
+
 							foreach ($argv[$optionk] as &$prop) {
 								if (strpos($prop,"?")===false) {
 									//this is the default unspecified condition equivalent to a non transitive
@@ -272,7 +272,7 @@ class SemanticGraphSettings {
 						case 'nscategory':
 						case 'nsform':
 						case 'nsimage':
-							if ($action == 'nsproperty') $y= SMW_NS_PROPERTY; 
+							if ($action == 'nsproperty') $y= SMW_NS_PROPERTY;
 							if ($action == 'nscategory') $y= NS_CATEGORY;
 							if ($action == 'nsform') $y= SF_NS_FORM;
 							if ($action == 'nsimage') $y= NS_IMAGE;
@@ -281,7 +281,7 @@ class SemanticGraphSettings {
 							foreach ($argv[$optionk] as $orig) {
 								$x = explode(":", $orig);
 								if (count($x) == 1) {
-									$t[] = $y.":".$x[0];	
+									$t[] = $y.":".$x[0];
 								} else {
 									if ($x[0] == $y) {
 										$t[] = $orig;
@@ -294,12 +294,12 @@ class SemanticGraphSettings {
 							}
 							$argv[$optionk] = $t;
 							break;
-						
+
 					}
 				}
 			}
 
-			
+
 			//do specific checks
 			foreach ((array) $optionv['check'] as $check) {
 				switch ($check) {
@@ -314,7 +314,7 @@ class SemanticGraphSettings {
 							// this can be null if it is not mandatory and not set
 							// but if it is not null and no valid page is found then there is an error.
 							// twisted logic.
-						
+
 							$valid = array();
 							foreach((array) $argv[$optionk] as $contender) {
 								$temp = Title::newFromText($contender);
@@ -343,7 +343,7 @@ class SemanticGraphSettings {
 				}
 			}
 
-			
+
 			// chack types and reconvert single elements to variables from arrays
 			if (isset($argv[$optionk])) {
 				$output = null;
@@ -378,13 +378,13 @@ class SemanticGraphSettings {
 		}
 		//ok variable initialised and checked for validity
 		//page type variables are held as array of PrefixedDBkeys or a single PrefixedDBkey.
-		
+
 		$name = '';
 		if (is_array($argv['resource'])) {
 		foreach ((array) $argv['resource'] as $r) {
 			$name .= $r;
 		}
-		} else if(isset($argv['resource'])) {
+		} elseif(isset($argv['resource'])) {
 			$name .= $argv['resource'];
 		} else {
 			$name .= "noresource";
@@ -401,7 +401,7 @@ class SemanticGraphSettings {
 		$argv['name'] = md5($name);
 
 
-	
+
 		//specific form edit link setup
 		if ($argv['editform'] != false) {
 			$argv['editform'] = $wgScriptPath."/index.php/Special:AddData?form=".$argv['editform']."&target=@CHILD_PAGE@";
@@ -428,7 +428,7 @@ class SemanticGraphSettings {
 		if ($type == 'mm2') {
 			$argv['renderer']='mm';
 		}
-		
+
 		return $argv;
 	}
 }

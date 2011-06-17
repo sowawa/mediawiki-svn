@@ -89,7 +89,7 @@ function renderPlayerTag( $name, $args, &$parser ) {
 		if ($ex->getCode() == '404') {
 			return $skin->makeBrokenLinkObj( Title::makeTitleSafe(NS_IMAGE, $name) );
 		}
-		else if (@$player && $ex->getCode() == '403') {
+		elseif (@$player && $ex->getCode() == '403') {
 			//TODO: show "normal" image thumbnail. requires parameter mangeling, though...
 			return $skin->makeKnownLinkObj( $player->title );
 		}
@@ -156,7 +156,7 @@ if (!function_exists('urlencodeMap')) {
 			$s.= urlencode($k);
 
 			if ($v === false || $v === null) continue;
-			else if ($v !== true) $s.= '=' . urlencode($v);
+			elseif ($v !== true) $s.= '=' . urlencode($v);
 		}
 
 		return $s;

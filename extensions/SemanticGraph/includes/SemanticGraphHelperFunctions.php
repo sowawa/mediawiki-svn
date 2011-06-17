@@ -1,29 +1,29 @@
 <?php
 function efBigPic($fileurl, $imgwidth, $imgheight, $boxwidth = null, $boxheight = null, $boxresize = 'none', $zoom = 'tofit') {
-	
+
 	global $wgBigPicCounter;
 	@$wgBigPicCounter += 1;
 	/*
 	$fileurl, the URL to the image
-	$imgwidth, 
-	$imgheight, 
+	$imgwidth,
+	$imgheight,
 	$boxwidth = null, if null the value is calculated to maintain aspect ratio of image using boxheight.
-	$boxheight = null, if null the value is calculated to maintain aspect ratio of image using boxwidth. 
-		If both boxwidth and boxheight null will default to size of image 
+	$boxheight = null, if null the value is calculated to maintain aspect ratio of image using boxwidth.
+		If both boxwidth and boxheight null will default to size of image
 	$boxresize = 'none'|'toimage', only does anything if both boxwidth and boxheight are specified
 	$zoom = 'tofit'|'topage'|numeric value>0, will fit image into box either to fit all (topage) or by width (tofit) or any zoom value
-	
+
 	more than one of these functions in a page generates cross talk between script functions and unpredictable effects.
 	*/
-	
+
 	$x=$imgwidth;
 	$y=$imgheight;
-	
+
 	list($imgwidth, $imgheight, $boxwidth, $boxheight, $offsetx, $offsety) = boxsizing($imgwidth, $imgheight, $boxwidth, $boxheight, $boxresize, $zoom);
-	
+
 	$c = $wgBigPicCounter;
 	//clip:rect(0px '.$boxheight.'px '.$boxwidth.'px 0px);
-	
+
 	$html = '<div id=maptable style="position:relative;overflow:hidden;height:'.$boxheight.'px;'
 		.'width:'.$boxwidth.'px;border:2px inset #aeaeae;">'
 		.'<div id=zoom style="position:absolute;top:10px;left:10px;color:yellow;background-color:transparent; z-index:10;">'
@@ -31,7 +31,7 @@ function efBigPic($fileurl, $imgwidth, $imgheight, $boxwidth = null, $boxheight 
 		.'<a style="border:1px solid black;background-color:white; text-decoration:none; padding:2px;line-height:1.8em;color:black;" onclick="zoomOut()">Zoom out</a></div>'
 		.'<div id=mover style="position:relative;height:'.$imgheight.'px;width:'.$imgwidth.'px;top:'.$offsety.'px;left:'.$offsetx.'px;" onmousedown="startDrag(event)">'
 		.'<img style="height:100%;width:100%" ondragstart="return false" onmousedown="return false" src="'.$fileurl.'" id=earthMap title="" /></div></div>';
-	
+
 	$js = "<script type=\"text/javascript\">/*@cc_on @*/
 		mapWidth=$imgwidth;
 		mapHeight=$imgheight;
@@ -66,7 +66,7 @@ function efBigPic($fileurl, $imgwidth, $imgheight, $boxwidth = null, $boxheight 
 		}
 		var offsetX,offsetY,draggingThing;
 		function startDrag(e) {
-			draggingThing=document.getElementById('mover'); 
+			draggingThing=document.getElementById('mover');
 			offsetX=e.clientX-draggingThing.offsetLeft;
 			offsetY=e.clientY-draggingThing.offsetTop;
 			document.body.onmousemove=moveDrag;
@@ -91,7 +91,7 @@ function efBigPic($fileurl, $imgwidth, $imgheight, $boxwidth = null, $boxheight 
 			document.onselectstart=null;
 		}
 		</script>";
-	
+
 	return $js."\n".$html;
 }
 
@@ -99,15 +99,15 @@ function boxsizing($imgwidth, $imgheight, $boxwidth = null, $boxheight = null, $
 	if ($boxwidth == null && $boxheight == null) {
 		$boxwidth = $imgwidth;
 		$boxheight = $imgheight;
-	} else if ($boxwidth == null && $boxheight != null) {
+	} elseif ($boxwidth == null && $boxheight != null) {
 		$boxwidth = $imgwidth * $boxheight/$imgheight;
 		$imgwidth = $boxwidth;
 		$imgheight = $boxheight;
-	} else if ($boxwidth != null && $boxheight == null) {
+	} elseif ($boxwidth != null && $boxheight == null) {
 		$boxheight = $imgheight * $boxwidth/$imgwidth;
 		$imgwidth = $boxwidth;
 		$imgheight = $boxheight;
-	} else if ($boxresize == "toimage") {
+	} elseif ($boxresize == "toimage") {
 		if (($imgwidth/$imgheight) < ($boxwidth/$boxheight)) {
 			// img is more portrait oriented than box
 			// shrink box width to correct aspect ratio
@@ -125,13 +125,13 @@ function boxsizing($imgwidth, $imgheight, $boxwidth = null, $boxheight = null, $
 				//shrink image to fit smallest dimension
 				$imgwidth = min($scale) * $imgwidth;
 				$imgheight = min($scale) * $imgheight;
-		} else if ($zoom == 'tofit') {
+		} elseif ($zoom == 'tofit') {
 				//shrink image to both dimensions
 				$imgwidth = max($scale) * $imgwidth;
 				$imgheight = max($scale) * $imgheight;
 		}
 	}
-	
+
 	/*
 	if ((int) $zoom > 0) {
 		//override calculated values if a percentage zoom has been specified
@@ -142,39 +142,39 @@ function boxsizing($imgwidth, $imgheight, $boxwidth = null, $boxheight = null, $
 		//centre image in box
 	$offsetx = ($boxwidth - $imgwidth)/2;
 	$offsety = ($boxheight - $imgheight)/2;
-	
+
 	$offsetx = floor($offsetx);
 	$offsety = floor($offsety);
 	$boxwidth = floor($boxwidth);
 	$imgwidth = floor($imgwidth);
 	$boxheight = floor($boxheight);
 	$imgheight = floor($imgheight);
-	
+
 	return array($imgwidth, $imgheight, $boxwidth, $boxheight, $offsetx, $offsety);
 }
 
 function efBigSvg($svgurl, $boxwidth = null, $boxheight = null, $boxresize = 'none', $zoom = 'tofit') {
-	
+
 	/*
 	$fileurl, the URL to the image
-	$imgwidth, 
-	$imgheight, 
+	$imgwidth,
+	$imgheight,
 	$boxwidth = null, if null the value is calculated to maintain aspect ratio of image using boxheight.
-	$boxheight = null, if null the value is calculated to maintain aspect ratio of image using boxwidth. 
-		If both boxwidth and boxheight both null will default to size of image. 
+	$boxheight = null, if null the value is calculated to maintain aspect ratio of image using boxwidth.
+		If both boxwidth and boxheight both null will default to size of image.
 	$boxresize = 'none'|'toimage', only does anything if both boxwidth and boxheight are specified when it will resize one dimension
 		to maintain the image aspect ratio.
 	$zoom = 'tofit'|'topage'|numeric value>0, will fit image into box either to fit all (topage) or by width (tofit) or any zoom value
-	
+
 	more than one of these functions in a page generates cross talk between script functions and unpredictable effects.
 	*/
-	
+
 //echo $svgurl; exit(0);
-	
+
 	$svg = new DOMDocument();
 	@$str = file_get_contents($svgurl);
 	$svg->loadXML($str);
-	
+
 	$svgnode = $svg->getElementsByTagName('svg')->item(0);
 	//get width and height from svg document - this is expressed in pt and needs to be changed to user units to align to browsers view of scale.
 	$imgwidth = (int) $svgnode->getAttribute('width');
@@ -186,7 +186,7 @@ function efBigSvg($svgurl, $boxwidth = null, $boxheight = null, $boxresize = 'no
 	$svgnode->setAttribute('width',$boxwidth);
 	$svgnode->setAttribute('height',$boxheight);
 	$scale = $imgwidth/$x;
-	
+
 	$js = ' var fx='.(-$x/2).';
 		var fy='.(-$y/2).';
 		var scale='.$scale.';
@@ -248,14 +248,14 @@ function efBigSvg($svgurl, $boxwidth = null, $boxheight = null, $boxresize = 'no
 		function translation(x, y, s) {
 			return \'translate('.($boxwidth/2).','.($boxheight/2).') scale(\'+s+\') translate(\'+x+\',\'+y+\')\';
 		}';
-		
+
 	$js=preg_replace('|^\s*\r?\n|m','',$js); //strip whitespace to prevent some spurious wiki parsing
 	$js=preg_replace('|^\s*|m','',$js);
-	$js=preg_replace('|\s*\r?\n|m','',$js);	
-	
+	$js=preg_replace('|\s*\r?\n|m','',$js);
+
 	$scriptnode = $svg->createElement('script', $js);
 	$scriptnode->setAttribute('type','text/ecmascript');
-	
+
 
 	//clear initial transforms applied by graphviz we will have to reimplement. should probably check here that current assumptions around way graphviz behaves are true.
 	$svgnode->removeAttribute('viewBox');
@@ -267,30 +267,30 @@ function efBigSvg($svgurl, $boxwidth = null, $boxheight = null, $boxresize = 'no
 		$tnode->setAttribute('style',$pt);
 	}
 	//export as svgtxt
-	
+
 	//fix javascript to interact with svg DOM mover element.
-	
-	
-	
+
+
+
 	$transform = 'translate('.($boxwidth/2).','.($boxheight/2).') ';
 	//the original scale factor. This is what will be changed with zooming
 	$transform .= 'scale('.$scale.') ';
 	//initial focus point is centre of original image. This is what is going to be changed with panning
 	$transform .= 'translate('.(-$x/2).','.(-$y/2).') ';
 	// the processing order of these feels wrong to me - i wonder if this is a bug in firefox.
-			
+
 	$graph0 = $svg->getElementsByTagName('g')->item(0);
 	$graph0->setAttribute('transform',$transform);
 	$graph0->setAttribute('id','mover');
 	$graph0->parentNode->insertBefore($scriptnode, $graph0);
-	
+
 	foreach($svg->getElementsByTagName('a') as $link) {
 		$link->setAttributeNS('http://www.w3.org/1999/xlink','xlink:show','new');
 	} // this needs to be done to get round usability iframe behaviour.
-	
+
 	$background = $svg->getElementsByTagName('polygon')->item(0);
 	$background->setAttribute('onmousedown','startDrag(evt)');
-		
+
 	$zoomcontrols = '<g id="zoomcontrols" class="graph">'
 		.'<rect id="background" style="fill:none;stroke:black;" x="0" y="0" width="'.$boxwidth.'" height="'.$boxheight.'"/>'
 		.'<g id="zoomin" class="node" onclick="zoomIn()"><rect style="fill:#f0f0f0;stroke:black;" x="10" y="10" width="20" height="15"/><text text-anchor="middle" x="20" y="20" style="font-family:Arial;font-size:7pt;fill:black;">in</text></g>'
@@ -301,13 +301,13 @@ function efBigSvg($svgurl, $boxwidth = null, $boxheight = null, $boxresize = 'no
 		.'<g id="down" class="node" onclick="panDown()"><polygon style="fill:#f0f0f0;stroke:black;" points="25,70 45,70 35,80"/></g>'
 		.'<g id="centre" class="node" onclick="centre()"><ellipse style="fill:#f0f0f0;stroke:black;" cx="35" cy="55" rx="10" ry="10"/></g>'
 		.'</g>';
-	
+
 	$svgtxt = $svg->saveXML($svg->documentElement);
 	$svgtxt = str_replace("</svg>", $zoomcontrols."</svg>", $svgtxt); //apologies to DOM purists out there.
 
 
 
-	
+
 	//return $js;
 	return $svgtxt;
 }

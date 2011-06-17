@@ -60,7 +60,7 @@ class SPARQLEndpoint extends SpecialPage {
                     $this->importTriplesInQuery();
                 }
                 $this->printHTMLForm();
-            } else if ( $this->m_querytype == 'delete' ) {
+            } elseif ( $this->m_querytype == 'delete' ) {
                 if ( $this->checkAllowDelete() ) {
                     $this->deleteTriplesInQuery();
                 }
@@ -74,7 +74,7 @@ class SPARQLEndpoint extends SpecialPage {
                         $this->printQueryStructure();
                         $executesparql = false;
                     }
-                } else if ( $this->m_outputtype == 'rdfxml' && $this->m_querytype != 'construct' ) {
+                } elseif ( $this->m_outputtype == 'rdfxml' && $this->m_querytype != 'construct' ) {
                     $errormessage = "RDF/XML can only be used with CONSTRUCT, if constructing triples";
                     $wgOut->addHTML( RDFIOUtils::formatErrorHTML( "Invalid choice", $errormessage ) );
                     $this->printHTMLForm();
@@ -105,7 +105,7 @@ class SPARQLEndpoint extends SpecialPage {
                         }
                         $output = $this->extractPrepareARCHTMLOutput( $output );
                         $wgOut->addHTML( $output );
-                    } else if ( $outputtype == 'rdfxml' ) {
+                    } elseif ( $outputtype == 'rdfxml' ) {
                         $output_structure = unserialize( $output );
                         $tripleindex = $output_structure['result'];
                         $triples = ARC2::getTriplesFromIndex( $tripleindex );
@@ -202,7 +202,7 @@ class SPARQLEndpoint extends SpecialPage {
     function convertURIsInQuery() {
         if ( $this->m_querybyoriguri ) {
             $this->convertOrigURIsToInternalURIsInQuery();
-        } else if ( $this->m_querybyequivuri ) {
+        } elseif ( $this->m_querybyequivuri ) {
             $query_structure = $this->m_query_parsed;
             $triple = $query_structure['query']['pattern']['patterns'][0]['patterns'][0];
             $s = $triple['s'];

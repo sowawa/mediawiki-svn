@@ -20,7 +20,7 @@ function smwf_nm_NotifyAccess( $method, $params ) {
 		$wgUser->saveSettings();
 		return wfMsg( 'smw_nm_ajax_mailupdate' );
 	}
-	else if ( $method == "addNotify" ) {
+	elseif ( $method == "addNotify" ) {
 		if ( $smwgQEnabled ) {
 			$result = SMWNotifyProcessor::addNotify( str_replace( '&amp;', '&', str_replace( '&comma;', ',', $p_array[0] ) ),
 				str_replace( '&amp;', '&', str_replace( '&comma;', ',', $p_array[3] ) ),
@@ -28,7 +28,7 @@ function smwf_nm_NotifyAccess( $method, $params ) {
 		}
 		return $result;
 	}
-	else if ( $method == "getQueryResult" ) {
+	elseif ( $method == "getQueryResult" ) {
 		if ( $smwgQEnabled ) {
 			$params .= '
 | format=table
@@ -76,31 +76,31 @@ function smwf_nm_NotifyAccess( $method, $params ) {
 		}
 		return $result;
 	}
-	else if ( $method == "updateStates" ) {
+	elseif ( $method == "updateStates" ) {
 		if ( $smwgQEnabled ) {
 			$result = SMWNotifyProcessor::updateStates( $p_array );
 		}
 		return $result;
 	}
-	else if ( $method == "updateReportAll" ) {
+	elseif ( $method == "updateReportAll" ) {
 		if ( $smwgQEnabled ) {
 			$result = SMWNotifyProcessor::updateReportAll( $p_array );
 		}
 		return $result;
 	}
-	else if ( $method == "updateShowAll" ) {
+	elseif ( $method == "updateShowAll" ) {
 		if ( $smwgQEnabled ) {
 			$result = SMWNotifyProcessor::updateShowAll( $p_array );
 		}
 		return $result;
 	}
-	else if ( $method == "updateDelegates" ) {
+	elseif ( $method == "updateDelegates" ) {
 		if ( $smwgQEnabled ) {
 			$result = SMWNotifyProcessor::updateDelegates( explode( "|", $params ) );
 		}
 		return $result;
 	}
-	else if ( $method == "delNotify" ) {
+	elseif ( $method == "delNotify" ) {
 		if ( $smwgQEnabled ) {
 			$result = SMWNotifyProcessor::delNotify( $p_array );
 		}

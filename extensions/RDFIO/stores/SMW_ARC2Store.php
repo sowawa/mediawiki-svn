@@ -74,7 +74,7 @@ class SMWARC2Store extends SMWSQLStore2 {
 
             if ( $object instanceof SMWExpLiteral ) {
                 $obj_str = "\"" . $object->getName() . "\"" . ( ( $object->getDatatype() == "" ) ? "" : "^^<" . $object->getDatatype() . ">" );
-            } else if ( $object instanceof SMWExpResource ) {
+            } elseif ( $object instanceof SMWExpResource ) {
                 $obj_str = "<" . SMWExporter::expandURI( $object->getName() ) . ">";
             } else {
                 $obj_str = "\"\"";

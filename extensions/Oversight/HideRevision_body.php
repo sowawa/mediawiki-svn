@@ -43,7 +43,7 @@ class HideRevisionForm extends SpecialPage {
 		$submitted = $wgRequest->wasPosted() &&
 			$wgRequest->getVal( 'action' ) == 'submit' &&
 			$wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) );
-		
+
 		if( $this->mPopulated && $submitted ) {
 			$this->submit();
 		} elseif( $this->mPopulated ) {
@@ -371,7 +371,7 @@ class SpecialOversight extends SpecialPage {
 		$revision = $wgRequest->getIntOrNull( 'revision' );
 		if( $wgRequest->getCheck( 'diff' ) && !is_null( $revision )) {
 			$this->showDiff( $revision);
-		} else if( is_null( $revision ) ) {
+		} elseif( is_null( $revision ) ) {
 			$this->showList( $page, $user, $offender );
 		} else {
 			$this->showRevision( $revision );
@@ -380,7 +380,7 @@ class SpecialOversight extends SpecialPage {
 
 	function showList( $page, $user, $offender ) {
 		global $wgOut, $wgScript;
-		
+
 		$title = Title::newFromURL( $page );
 		$u = User::newFromName( $user );
 		$page = $title ? $page : ''; // blank invalid titles
@@ -419,7 +419,7 @@ class SpecialOversight extends SpecialPage {
 			array(
 				'ORDER BY' => 'hidden_on_timestamp DESC' ) );
 	}
-	
+
 	public function getSelectFields() {
 		return array( 'hidden_page as page_id',
 			'hidden_namespace as page_namespace',
@@ -586,7 +586,7 @@ class SpecialOversight extends SpecialPage {
 		$dbr->freeResult( $result );
 	}
 }
-	
+
 /**
  * Query to list out stable versions for a page
  */
@@ -638,7 +638,7 @@ class HiddenRevisionsPager extends ReverseChronologicalPager {
 	function getIndexField() {
 		return 'hidden_on_timestamp';
 	}
-	
+
 	function getStartBody() {
 		wfProfileIn( __METHOD__ );
 		# Do a link batch query
@@ -650,7 +650,7 @@ class HiddenRevisionsPager extends ReverseChronologicalPager {
 		wfProfileOut( __METHOD__ );
 		return '<ul>';
 	}
-	
+
 	function getEndBody() {
 		return '</ul>';
 	}

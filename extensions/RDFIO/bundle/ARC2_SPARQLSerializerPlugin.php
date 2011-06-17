@@ -107,7 +107,7 @@ class ARC2_SPARQLSerializerPlugin extends ARC2_Class {
 				case 'literal2':
 					$string .= $this->term_to_string( $t['type'], $t['value'] );
 					if ( isset( $t['datatype'] ) ) $string .= '^^' . $t['datatype'];
-					else if ( isset( $t['lang'] ) ) $string .= '@' . $t['lang'];
+					elseif ( isset( $t['lang'] ) ) $string .= '@' . $t['lang'];
 					break;
 				case 'expression':
 					$expressions = array();
@@ -132,7 +132,7 @@ class ARC2_SPARQLSerializerPlugin extends ARC2_Class {
 			}
 
 		}
-		else if ( is_array( $t ) ) {
+		elseif ( is_array( $t ) ) {
 			foreach ( $t as $item ) {
 				$string .= $this->sparql_info_to_string( $item );
 			}

@@ -33,7 +33,7 @@ class RDFImport extends SpecialPage {
 		if ( $this->m_action == 'Import' ) {
 			if ( !$wgUser->matchEditToken( $this->m_edittoken ) ) {
 				die( 'Cross-site request forgery detected!' );
-			} else if ( !$this->m_haswriteaccess ) {
+			} elseif ( !$this->m_haswriteaccess ) {
 				$errortitle = "Permission error";
 				$errormessage = "The current user lacks access either to edit or create pages (or both) in this wiki.";
 				$wgOut->addHTML( RDFIOUtils::formatErrorHTML( $errortitle, $errormessage ) );
@@ -60,7 +60,7 @@ class RDFImport extends SpecialPage {
 					$this->executeSMWBatchWriter();
 				}
 			}
-		} else if ( $this->m_action == 'AddNsPrefixes' ) {
+		} elseif ( $this->m_action == 'AddNsPrefixes' ) {
 			$this->addNewNsPrefixes();
 			$this->executeSMWBatchWriter();
 		} else {

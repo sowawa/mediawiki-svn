@@ -1313,7 +1313,7 @@ class SMWNotifyUpdate {
 						$tmp_info[$key][del_vals][] = array( 'plain' => $v[value]->getWikiValue(), 'html' => $this->getFullLink( $v[value] ) );
 					}
 				}
-			} else if ( $i[type] == 2 ) {
+			} elseif ( $i[type] == 2 ) {
 				$mvalue = $info[$key];
 				foreach ( $value as $v1 ) {
 					$found = false;
@@ -1458,7 +1458,7 @@ class SMWNotifyUpdate {
 				}
 				$this->m_notifyHtmlMsgs[$notify_id] .= $hint;
 				$this->m_newMonitor[] = array( 'notify_id' => $notify_id, 'page_id' => $page_id );
-			} else if ( ( !$match ) && $monitoring ) {
+			} elseif ( ( !$match ) && $monitoring ) {
 				$hint = wfMsg( 'smw_nm_hint_nomatch_html', $page_html_name, htmlspecialchars( $notify[name] ) );
 				foreach ( $notify['user_ids'] as $uid ) {
 					$this->m_userMsgs[$uid] .= wfMsg( 'smw_nm_hint_nomatch', $page_name, $notify[name] );
@@ -1530,7 +1530,7 @@ class SMWNotifyUpdate {
 	private function getFullLink( $val ) {
 		if ( $val instanceof SMWWikiPageValue ) {
 			return '<a href="' . $val->getTitle()->getFullUrl() . '">' . htmlspecialchars( $val->getTitle()->getText() ) . '</a>';
-		} else if ( $val instanceof SMWPropertyValue ) {
+		} elseif ( $val instanceof SMWPropertyValue ) {
 			$val = $val->getWikiPageValue();
 			return '<a href="' . $val->getTitle()->getFullUrl() . '">' . htmlspecialchars( $val->getTitle()->getText() ) . '</a>';
 		} else {
@@ -1611,7 +1611,7 @@ class SMWNotifyUpdate {
 			if ( isset( $this->m_userHtmlPropMsgs[$user_id] ) ) {
 				$html_msg .= wfMsg( 'smw_nm_hint_nmtable_html', $this->m_userHtmlPropMsgs[$user_id] );
 			}
-			
+
 			global $wgNMReportModifier, $wgUser;
 			if ( $wgNMReportModifier ) {
 				$userText = $wgUser->getName();

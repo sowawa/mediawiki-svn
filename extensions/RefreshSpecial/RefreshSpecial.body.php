@@ -25,7 +25,7 @@ class RefreshSpecial extends SpecialPage {
 	public function execute( $par ) {
 		global $wgOut, $wgUser, $wgRequest;
 
-		
+
 
 		$wgOut->setPageTitle( wfMsg( 'refreshspecial-title' ) );
 
@@ -52,9 +52,9 @@ class RefreshSpecial extends SpecialPage {
 		$action = $wgRequest->getVal( 'action' );
 		if( 'success' == $action ) {
 			/* do something */
-		} else if( 'failure' == $action ) {
+		} elseif( 'failure' == $action ) {
 			$cSF->showForm( wfMsg('refreshspecial-fail') );
-		} else if( $wgRequest->wasPosted() && 'submit' == $action &&
+		} elseif( $wgRequest->wasPosted() && 'submit' == $action &&
 			$wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
 			$cSF->doSubmit();
 		} else {

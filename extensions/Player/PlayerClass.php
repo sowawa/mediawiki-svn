@@ -30,7 +30,7 @@ class Player {
 	var $playerTitle;
 
 	function __construct( $image, $options, $sizeDefault = 'imagesize' ) {
-		
+
 
 		if ( is_null( $options ) ) $options = array();
 		if ( is_string( $options ) ) $options = urldecodeMap( $options );
@@ -48,7 +48,7 @@ class Player {
 	}
 
 	static function newFromTitle( $title, $options, $sizeDefault = 'imagesize' ) {
-		
+
 
 		$image = wfFindFile( $title );
 		if ( !$image->exists() ) {
@@ -59,7 +59,7 @@ class Player {
 	}
 
 	static function newFromName( $name, $options, $sizeDefault = 'imagesize' ) {
-		
+
 
 		$title = Title::makeTitleSafe(NS_IMAGE, $name);
 		if (!$title) throw new PlayerException(wfMsg("player-invalid-title"), 400);
@@ -88,7 +88,7 @@ class Player {
 		if ( preg_match('!/(x-)?ogg$!', $this->mimetype) ) {
 
 			if ( $this->mediatype == MEDIATYPE_AUDIO ) $this->mimetype = 'audio/ogg';
-			else if ( $this->mediatype == MEDIATYPE_VIDEO ) $this->mimetype = 'video/ogg';
+			elseif ( $this->mediatype == MEDIATYPE_VIDEO ) $this->mimetype = 'video/ogg';
 			else $this->mimetype = 'application/ogg';
 		}
 	}
@@ -169,7 +169,7 @@ class Player {
 		#print "[WH2: $width, $height]";
 
 		if (!$width) $width = ceil($height * $imgratio);
-		else if (!$height) $height = ceil($width / $imgratio);
+		elseif (!$height) $height = ceil($width / $imgratio);
 
 		#print "[WH3: $width, $height]";
 
@@ -187,7 +187,7 @@ class Player {
 		if (!$mimetype) $mimetype = $image->getMimeType();
 
 		if (!is_array($wgPlayerVideoResolutionDetector)) $detector = $wgPlayerVideoResolutionDetector;
-		else if (isset($wgPlayerVideoResolutionDetector[$mimetype])) $detector = $wgPlayerVideoResolutionDetector[$mimetype];
+		elseif (isset($wgPlayerVideoResolutionDetector[$mimetype])) $detector = $wgPlayerVideoResolutionDetector[$mimetype];
 		else $detector = $wgPlayerVideoResolutionDetector['*'];
 
 		if (!$detector) return false;
@@ -224,7 +224,7 @@ class Player {
 	 */
 	static function setHeaders( &$outputPage ) {
 		global $wgJsMimeType, $wgPlayerExtensionPath, $wgContLang;
-		
+
 
 		# Register css file for Player
 		/*$outputPage->addLink(
@@ -446,9 +446,9 @@ class Player {
 		if (!$align) $align = 'none';
 
 		if ($align == 'left') $aligncls = 'tleft';
-		else if ($align == 'right') $aligncls = 'tright';
-		else if ($align == 'center') $aligncls = 'tnone';
-		else if ($align == 'none') $aligncls = 'tnone';
+		elseif ($align == 'right') $aligncls = 'tright';
+		elseif ($align == 'center') $aligncls = 'tnone';
+		elseif ($align == 'none') $aligncls = 'tnone';
 		else $aligncls = 'tnone'; //inlining complex boxes doesn't really work...
 
 		$cls = 'playerbox thumb ' . $aligncls;

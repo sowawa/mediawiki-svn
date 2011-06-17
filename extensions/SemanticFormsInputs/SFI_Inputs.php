@@ -667,7 +667,7 @@ JAVASCRIPT;
 			// find highlighted dates
 			if ( array_key_exists( "highlight dates", $other_args ) ) {
 				$highlightedDates = self::sortAndMergeRanges ( self::createRangesArray( explode( ',' , $other_args["highlight dates"] ) ) ) ;
-			} else if ( $sfigSettings->datePickerHighlightedDates ) {
+			} elseif ( $sfigSettings->datePickerHighlightedDates ) {
 				$highlightedDates = self::sortAndMergeRanges ( self::createRangesArray( explode( ',' , $sfigSettings->datePickerHighlightedDates  ) ) ) ;
 			} else {
 				$highlightedDates = null;

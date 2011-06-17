@@ -4,7 +4,7 @@ Class networkgraph {
 	var $gq;
 	var $nodes;
 	var $links;
-	
+
 	//make a temp table
 
 	function __construct($args) {
@@ -12,10 +12,10 @@ Class networkgraph {
 		$this->gq = new GraphQuery($args);
 		$this->args = $args;
 		$SMWengine = new SMWSQLStore2;
-		$this->dbr = wfGetDB( DB_SLAVE ); 
+		$this->dbr = wfGetDB( DB_SLAVE );
 		//need to hold onto this until all queries done as it controls the existance
 		//of the temporary tables
-		
+
 		$resources=array(); //can be subjects and / or objects
 		foreach ((array) $this->args['resource'] as $t) {
 			$x = Title::newFromDBkey($t);
@@ -25,7 +25,7 @@ Class networkgraph {
 			$temptable["page_title"] = $t;
 			$temptable["smw_id"] = $SMWengine->getSMWPageID($x->getDBkey(),$x->getNamespace(),$x->getInterwiki());
 		}
-		
+
 		$p = $this->args['property'];
 		if (!is_array($p)) $p = array($p);
 		if (!is_array($titlearr)) $titlearr = array($titlearr);
@@ -33,15 +33,15 @@ Class networkgraph {
 		foreach ($p as $prop) {
 			if ($prop == Title::makeTitle(SMW_NS_PROPERTY,$wgSemanticGraphSettings->dummyCategoryLinkProperty)->getPrefixedDBkey()) {
 				$this->getPagesFromCategory($titlearr);
-			} else if ($prop == Title::makeTitle(SMW_NS_PROPERTY,$wgSemanticGraphSettings->dummyWikiLinkProperty)->getPrefixedDBkey()) {
+			} elseif ($prop == Title::makeTitle(SMW_NS_PROPERTY,$wgSemanticGraphSettings->dummyWikiLinkProperty)->getPrefixedDBkey()) {
 				$this->getPagesFromWikilinks($titlearr);
 			} else {
 			 	$this->getPagesFromSemantics( $titlearr , $prop);
 			}
 		}
-		
+
 		//FIXME FIXME
-		
+
 		$properties=array();
 		foreach ((array) $this->args['property'] as $t) {
 			$x = Title::newFromDBkey($t); // these must exist
@@ -54,22 +54,22 @@ Class networkgraph {
 			$temptable["subj2obj"] = true;
 			$temptable["obj2subj"] = false;
 		}
-		
-		//build temp tables based on this and a rdf triple store for the result based on first pass query of 
+
+		//build temp tables based on this and a rdf triple store for the result based on first pass query of
 		//smw_rels2 for semantic queries
 		//what about normal wiki and category queries?
-		
+
 	}
 
 	/*function buildFromWiki() {
 		//deprecate this in preference of constructor
-		
+
 		$this->nodes = $this->args['resource']; // this can be singelton or array
 		if (!is_array($this->nodes)) $this->nodes = array($this->nodes);
 		$n = $this->nodes;
 		//identify smw_ids from page titles.
 		//identify normal page_ids from page titles.
-		
+
 		$this->links = array();
 		for ($i=0; $i < $this->args['depth']; $i++) {
 			$this->gq->doQuery($n);
@@ -131,7 +131,7 @@ Class networkgraph {
 	}
 
 	//private functions
-	
+
 	/*DO ME IN SQL
 	function arrayUnique($myArray) {
 		if(!is_array($myArray))
@@ -250,7 +250,7 @@ Class freemindmap {
 			}
 		}
 	}
-	 
+
 	function foldtype($level,$count) {
 		global $wgSemanticGraphSettings;
 		switch ($this->args['fold']) {
@@ -272,7 +272,7 @@ Class freemindmap {
 		}
 		return "false";
 	}
-	 
+
 	function backlink($newnode, $t) {
 		$element = $this->map->createElement('arrowlink');
 		$element->setAttribute('DESTINATION',$t); //this is potentially not unique behaviour may be unpredictable
@@ -293,7 +293,7 @@ Class localmap {
 	var $ng;
 	var $map;
 	var $output;
-	
+
 	function __construct($args) {
 		global $wgSemanticGraphSettings;
 		$this->args = $args;
@@ -308,7 +308,7 @@ Class localmap {
 		$title = $this->args['resource']; // this should already be validated to be a singleton
 		$this->output=$this->recursiveBuildTable($title, $level);
 	}
-	
+
 	function recursiveBuildTable($title, $level, $ancestry = array()) {
 		$this->call += 1;
 		$ancestry[] = $title;
@@ -326,7 +326,7 @@ Class localmap {
 		}
 		$html = "<table $defaultstyle id=\"$summary\" style=\"$initsummarystyle\"><tr><th onclick=\"$jscollapse\">(+)</th><th>$title</th><th></th></tr></table>";
 		$html .= "<table $defaultstyle id=\"$detail\" style=\"$initdetailstyle\">";
-		
+
 		//upstream properties
 		$upstream = $this->ng->getSubjectTriples($title);
 		foreach ($upstream as $property) {
@@ -337,16 +337,16 @@ Class localmap {
 				//} else {
 					//recurse here
 					//html .= recursiveBuildTable($source,$level+1,$family);
-				//}	
+				//}
 			}
 			$html .= "</td>";
 			$html .= "<td><i>$property</i></td><td></td>";
 			$html .= "</tr>";
 		}
-		
+
 		//
 		$html .= "<tr><td onclick=\"$jsexpand\">(-)</td><td>$title</td><td></td></tr>";
-		
+
 		//downstream properties
 		$downstream = $this->ng->getObjectTriples($title);
 		foreach ($downstream as $property) {
@@ -358,12 +358,12 @@ Class localmap {
 				//} else {
 					//recurse here
 					//html .= recursiveBuildTable($dest,$level+1,$family);
-				//}	
+				//}
 			}
 			$html .= "</td>";
 			$html .= "</tr>";
 		}
-		
+
 		$html .= "</table>";
 		return $html;
 	}

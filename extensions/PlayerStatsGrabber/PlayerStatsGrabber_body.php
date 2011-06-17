@@ -7,7 +7,7 @@ class SpecialPlayerStatsGrabber extends SpecialPage {
 
 	function __construct() {
 		parent::__construct( "PlayerStatsGrabber" );
-		
+
 	}
 
 	// used for page title
@@ -40,7 +40,7 @@ class SpecialPlayerStatsGrabber extends SpecialPage {
 			default:
 				if ( $wgRequest->getVal( 'action' ) == 'submit' ) {
 					$this->do_submit_survey();
-				} else if ( $wgRequest->getVal( 'action' ) == 'survey' ) {
+				} elseif ( $wgRequest->getVal( 'action' ) == 'survey' ) {
 					$this->do_survey_forum();
 				} else {
 					$this->do_stats_page();
@@ -77,7 +77,7 @@ class SpecialPlayerStatsGrabber extends SpecialPage {
 			// run the stats (if not internal oggPlay)
 			$this->runJS_Stats( $embed['url'] );
 			$embed_code = $embed['html_code'];
-		} else if ( isset( $embed['wiki_code'] ) ) {
+		} elseif ( isset( $embed['wiki_code'] ) ) {
 			$popts = new ParserOptions;
 			$parserOutput = $wgParser->parse( $embed['wiki_code'], $wgTitle, $popts );
 			$embed_code = $parserOutput->getText();

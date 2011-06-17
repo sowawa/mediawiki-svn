@@ -49,7 +49,7 @@ class Plotters {
 		if ( $this->argumentArray["script"] == "" ) {
 			$errors .= wfMsg( "plotters-missing-script" ) . "<br />";
 			$errcnt++;
-		} else if ( strlen( $this->argumentArray["script"] ) > 255 ) {
+		} elseif ( strlen( $this->argumentArray["script"] ) > 255 ) {
 			// Check to ensure scriptname is < 255 characters
 			$errors .= wfMsg( "plotters-excessively-long-scriptname" ) . "<br />";
 			$errcnt++;

@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Reflect API for getting and posting summary bullets and responses. 
- * 
- * Note, many of the methods for handling Responses are almost near 
+ * Reflect API for getting and posting summary bullets and responses.
+ *
+ * Note, many of the methods for handling Responses are almost near
  * duplicates of those handling Bullets.
  */
 class ApiReflectAction extends ApiBase {
@@ -27,9 +27,9 @@ class ApiReflectAction extends ApiBase {
 
 	/**
 	* Gets all the bullets and responses relevant for the given LQT threads.
-	* 
+	*
 	* The params listed below are the items posted in $params.
-	* @param $comments JSON encoded list of comment ids. 
+	* @param $comments JSON encoded list of comment ids.
 	* @return assoc array of commentIDs=>array(bullets = {bullet attributes, responses})
 	*/
 	public function actionGetData( $params ) {
@@ -51,7 +51,7 @@ class ApiReflectAction extends ApiBase {
 
 			foreach ( $curBullets as $curBullet ) {
 				// TODO: is it possible to make fewer DB calls?
-				$sel = array( 'bl_id as id', 'bl_timestamp as ts', 
+				$sel = array( 'bl_id as id', 'bl_timestamp as ts',
 						'bl_user as u', 'bl_text as txt' );
 
 				// TODO: create a Bullet model class for abstracting this away
@@ -71,7 +71,7 @@ class ApiReflectAction extends ApiBase {
 				foreach ( $highlights as $highlight ) {
 				 $bullet->highlights[] = $highlight;
 				}
-				
+
 				$curResponses = $dbr->select(
 						$table = 'reflect_response_current',
 						$vars = array( 'rsp_id', 'rsp_rev_id' ),
@@ -81,7 +81,7 @@ class ApiReflectAction extends ApiBase {
 				foreach ( $curResponses as $curResponse ) {
 					$response = $dbr->selectRow(
 						$table = 'reflect_response_revision',
-						$vars = array( 'rsp_id as id', 'rsp_timestamp as ts', 
+						$vars = array( 'rsp_id as id', 'rsp_timestamp as ts',
 								'rsp_user as u', 'rsp_text as txt', 'rsp_signal as sig' ),
 						$conds = 'rsp_rev_id = ' . $curResponse->rsp_rev_id );
 					$response->rev = $curResponse->rsp_rev_id;
@@ -99,9 +99,9 @@ class ApiReflectAction extends ApiBase {
 	/**
 	* Deletes a response by removing it from the current responses table.
 	* A record of the response is still kept in the response revisions table.
-	* 
+	*
 	* The params listed below are the items posted in $params.
-	* @param $response_id  
+	* @param $response_id
 	* @return db's return from delete
 	*/
 	private function deleteResponse( $params ) {
@@ -118,11 +118,11 @@ class ApiReflectAction extends ApiBase {
 	/**
 	* Deletes a bullet by removing it from the current bullets table.
 	* A record of the bullet is still kept in the bullet revisions table.
-	* 
+	*
 	* The params listed below are the items posted in $params.
-	* @param $bullet_id  
+	* @param $bullet_id
 	* @return db's return from delete
-	*/	
+	*/
 	private function deleteBullet( $params ) {
 		$dbw = wfGetDB( DB_MASTER );
 
@@ -134,16 +134,16 @@ class ApiReflectAction extends ApiBase {
 	}
 
 	/**
-	* Adds a new bullet or modifies an existing bullet. 
-	* 
+	* Adds a new bullet or modifies an existing bullet.
+	*
 	* The params listed below are the items posted in $params.
 	* @param $comment_id
 	* @param $bullet_id If set to valid bullet_id, signals a modification
 	* @param $text The bullet text
 	* @param $highlights Array of sentence ids that the bullet refers to
-	* 
+	*
 	* @return assoc array with $insert_id as the bullet id and $rev_id as the new rev id
-	*/	
+	*/
 	private function addBullet( $params ) {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbr = wfGetDB( DB_SLAVE );
@@ -155,9 +155,9 @@ class ApiReflectAction extends ApiBase {
 
 		$bulletText = $params['text'];
 		if ( $bulletText == '' ) {
-			return '';	
+			return '';
 		}
-		
+
 		$modify = isset( $params['bullet_id'] );
 
 		if ( $modify ) {
@@ -166,10 +166,10 @@ class ApiReflectAction extends ApiBase {
 			/*
 			* w/o lock, the following could lead to a race condition
 			* TODO: should $wgAntiLockFlags be used here?
-			*/ 			
+			*/
 			$dbw->begin();		// start transaction
 			$res = $dbr->query(
-				'SELECT MAX(bl_id)+1 AS next_bullet_id FROM ' . 
+				'SELECT MAX(bl_id)+1 AS next_bullet_id FROM ' .
 					$dbr->tableName( 'reflect_bullet_revision' )
 			);
 			$bulletID = $res->fetchRow();
@@ -193,7 +193,7 @@ class ApiReflectAction extends ApiBase {
 		}
 
 		if ( isset( $params['highlights'] ) ) {
-			$highlights = json_decode( str_replace( '\\', '', 
+			$highlights = json_decode( str_replace( '\\', '',
 					$params['highlights'] ) );
 			$highlightsToInsert = array();
 
@@ -204,7 +204,7 @@ class ApiReflectAction extends ApiBase {
 						'hl_element' => $value->eid,
 				);
 			}
-			
+
 			$dbw->insert( "reflect_highlight",  $highlightsToInsert );
 		}
 
@@ -223,9 +223,9 @@ class ApiReflectAction extends ApiBase {
 		}
 
 		/* send email notification to commenter that someone bulleted their point
-		* 
-		* TODO: consider possibility of someone submitting harmless bullet, 
-		* getting it approved, then modifying it maliciously. By not sending 
+		*
+		* TODO: consider possibility of someone submitting harmless bullet,
+		* getting it approved, then modifying it maliciously. By not sending
 		* notification on modification (as below), the commenter is opened to risk.
 		*/
 		global $wgReflectEnotif;
@@ -233,7 +233,7 @@ class ApiReflectAction extends ApiBase {
 			$threadObj = Threads::withId( $commentID );
 			$to = $threadObj->author();
 			$catalystUser = $wgUser;
-			$this->sendMail( $threadObj, $to, $catalystUser, 
+			$this->sendMail( $threadObj, $to, $catalystUser,
 					'reflect-bulleted', array( $params['text'] ), array() );
 		}
 		return array( "insert_id" => $bulletID, "rev_id" => $bulletRev, "u" => $user );
@@ -241,8 +241,8 @@ class ApiReflectAction extends ApiBase {
 
 
 	/**
-	* Adds a new response or modifies an existing response. 
-	* 
+	* Adds a new response or modifies an existing response.
+	*
 	* The params listed below are the items posted in $params.
 	* @param $comment_id
 	* @param $bullet_id The bullet to which this response addresses
@@ -250,9 +250,9 @@ class ApiReflectAction extends ApiBase {
 	* @param $response_id If set to valid bullet_id, signals a modification
 	* @param $text The bullet text
 	* @param $signal The accuracy rating for the respective bullet
-	* 
+	*
 	* @return assoc array with $insert_id as the bullet id and $rev_id as the new rev id
-	*/		
+	*/
 	function addResponse( $params ) {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbr = wfGetDB( DB_SLAVE );
@@ -264,7 +264,7 @@ class ApiReflectAction extends ApiBase {
 		$commentID = $params['comment_id'];
 
 		$responseText = $params['text'];
-		if ( $responseText == '' ){ 
+		if ( $responseText == '' ){
 			return '';
 		}
 
@@ -277,11 +277,11 @@ class ApiReflectAction extends ApiBase {
 			/*
 			* w/o lock, the following could lead to a race condition
 			* TODO: should $wgAntiLockFlags be used here?
-			*/ 
+			*/
 			$dbw->begin();		// start transaction
-			
+
 			$res = $dbr->query(
-				'select MAX(rsp_id)+1 as next_rsp_id from ' . 
+				'select MAX(rsp_id)+1 as next_rsp_id from ' .
 					$dbr->tableName( 'reflect_response_revision' )
 			);
 			$responseID = $res->fetchRow();
@@ -299,14 +299,14 @@ class ApiReflectAction extends ApiBase {
 			'rsp_signal' => $signal
 		));
 		$responseRev = $dbw->insertId();
-		
+
 		if (!$modify){
 			$dbw->commit();	// end transaction
 		}
 
 		if ( $modify ) {
 			/* shouldn't lead to race condition as long as
-			* only commenters can update their responses (DEFAULT) */			
+			* only commenters can update their responses (DEFAULT) */
 			$dbw->update( $table = 'reflect_response_current',
 						$values = array( 'rsp_rev_id' => $responseRev ),
 						$conds = array( 'rsp_id =' . $responseID ) );
@@ -323,39 +323,39 @@ class ApiReflectAction extends ApiBase {
 						$vars = array( 'bl_user as user', 'bl_text as text' ),
 						$conds = 'bl_rev_id = ' . $params['bullet_rev'] );
 
-		/* send email notification to bullet author that someone 
+		/* send email notification to bullet author that someone
 		* rated the accuracy of their bullet */
 		global $wgReflectEnotif;
 		if ($wgReflectEnotif && !$modify) {
 			$threadObj = Threads::withId( $commentID );
 			$to = User::newFromName( $bullet->user );
 			$catalystUser = $threadObj->author();
-			$this->sendMail( $threadObj, $to, $catalystUser, 'reflect-responded', 
+			$this->sendMail( $threadObj, $to, $catalystUser, 'reflect-responded',
 					array( $responseText, $bullet->text ), array() );
 		}
-		return array( "insert_id" => $responseID, "rev_id" => $responseRev, 
+		return array( "insert_id" => $responseID, "rev_id" => $responseRev,
 				"u" => $user, "sig" => $signal );
 	}
 
 	/**
 	* Sends a Reflect email in response to a new bullet or response.
-	* 
+	*
 	* @param $threadObj A reference to the relevant LQT Thread
 	* @param $to A User object to whom the email will be sent
 	* @param $catalystUser A User object who triggered this series of events
 	* @param $msgType The name of the message type to be used in accessing localized msg
 	* @param $bodyParams Additional parameters to be used in the sprintf of the body text
 	* @param $subjectParams Additional parameters to be used in the sprintf of the subject text
-	* 
-	*/			
-	private function sendMail( $threadObj, $to, $catalystUser, 
-			$msgType, $bodyParams, $subjectParams ) 
+	*
+	*/
+	private function sendMail( $threadObj, $to, $catalystUser,
+			$msgType, $bodyParams, $subjectParams )
 	{
 		global $wgPasswordSender, $wgLanguageCode;
 
 		// TODO: create Reflect mailing preferences for individuals & respect them
 		if ( !$to ) {
-			return;	
+			return;
 		}
 
 		$from = new MailAddress( $wgPasswordSender, 'WikiAdmin' );
@@ -365,7 +365,7 @@ class ApiReflectAction extends ApiBase {
 		$bodyParams = array_merge( $params, $bodyParams );
 		$subjectParams = array_merge( $params, $subjectParams );
 		$msg = wfMsgReal( $msgType, $bodyParams, true, $wgLanguageCode, true );
-		$subject = wfMsgReal( $msgType . '-subject', $subjectParams, 
+		$subject = wfMsgReal( $msgType . '-subject', $subjectParams,
 			true, $wgLanguageCode, true );
 
 		UserMailer::send( new MailAddress( $to ), $from, $subject, $msg );
@@ -374,74 +374,74 @@ class ApiReflectAction extends ApiBase {
 	/**
 	* Handles the bullet posts. Calls appropriate private helper functions
 	* for deletes and adds. Makes sure user has permission to perform requested
-	* actions. 
-	* 
+	* actions.
+	*
 	* The params listed below are the items posted in $params.
-	* @param $delete True if post is delete. Default is add. 
-	* 
+	* @param $delete True if post is delete. Default is add.
+	*
 	* @return The response from the respective helper function
-	*/		
+	*/
 	public function actionPostBullet( $params ) {
 		if ( isset( $params['delete'] ) && $params['delete'] == 'true' ) {
 			$verb = 'delete';
 		} else {
 			$verb = 'add';
 		}
-		
+
 		if ( !$this->hasPermission( $verb, 'bullet', $params ) ) {
 			return;
 		}
-		
+
 		if ( $verb == 'delete' ) {
 			$resp = $this->deleteBullet( $params );
 		} else {
 			$resp = $this->addBullet( $params );
 		}
-		
+
 		$this->getResult()->addValue( null, $this->getModuleName(), $resp );
 	}
 
 	/**
 	* Handles the response posts. Calls appropriate private helper functions
 	* for deletes and adds. Makes sure user has permission to perform requested
-	* actions. 
-	* 
+	* actions.
+	*
 	* The params listed below are the items posted in $params.
-	* @param $delete True if post is delete. Default is add. 
-	* 
+	* @param $delete True if post is delete. Default is add.
+	*
 	* @return The response from the respective helper function
-	*/			
+	*/
 	public function actionPostResponse( $params ) {
 		if ( isset( $params['delete'] ) && $params['delete'] == 'true' ) {
 			$verb = 'delete';
 		} else {
 			$verb = 'add';
 		}
-		
+
 		if ( !$this->hasPermission( $verb, 'response', $params ) ) {
 			return;
 		}
-		
+
 		if ( $verb == 'delete' ) {
 			$resp = $this->deleteResponse( $params );
 		} else {
 			$resp = $this->addResponse( $params );
 		}
-		
+
 		$this->getResult()->addValue( null, $this->getModuleName(), $resp );
 	}
 
 	/**
-	* Checks whether the current user has permission to execute a given action. 
-	* Some of the characteristics examined include the users' level (admin, 
+	* Checks whether the current user has permission to execute a given action.
+	* Some of the characteristics examined include the users' level (admin,
 	* registered, anon) and their ownership of the object being acted on.
-	* 
+	*
 	* @param $verb The action.
-	* @param $noun The object to be acted upon. 
-	* @param $params The params posted by the requester. 
-	* 
+	* @param $noun The object to be acted upon.
+	* @param $params The params posted by the requester.
+	*
 	* @return Returns true if the user has permission, false otherwise.
-	*/		
+	*/
 	private function hasPermission( $verb, $noun, $params ) {
 
 		$dbr = wfGetDB( DB_SLAVE );
@@ -464,42 +464,42 @@ class ApiReflectAction extends ApiBase {
 		} else {
 			$bulletAuthor = $wgUser->getName();
 		}
-		
+
 		if ( $wgUser->isAnon() ) {
 			$userLevel = -1;
-		} else if ( in_array( 'sysop', $wgUser->getGroups() ) ) {
+		} elseif ( in_array( 'sysop', $wgUser->getGroups() ) ) {
 			$userLevel = 2;
 		} else {
 			$userLevel = 1;
 		}
-		
+
 		$userName = $wgUser->getName();
 		if ( $noun == 'bullet' ) {
 			$denied =	( // only admins and bullet authors can delete bullets
-							$verb == 'delete' 
-							&& $bulletAuthor != $userName 
-							&& $userLevel < 2 
+							$verb == 'delete'
+							&& $bulletAuthor != $userName
+							&& $userLevel < 2
 						)
 					||	( // commenters can't add bullets to their comment
-							$verb == 'add' 
-							&& $commentAuthor == $userName 
+							$verb == 'add'
+							&& $commentAuthor == $userName
 						) ;
 		} elseif ( $noun == 'response' ) {
 			$denied =	( // only admins and response authors can delete responses
-							$verb == 'delete' 
-							&& $commentAuthor != $userName 
-							&& $userLevel < 2 
-						) 
+							$verb == 'delete'
+							&& $commentAuthor != $userName
+							&& $userLevel < 2
+						)
 					||	( // only comment authors can add responses
-						  	$verb == 'add' 
-							&& $commentAuthor != $userName 
+						  	$verb == 'add'
+							&& $commentAuthor != $userName
 						) ;
 		}
 		return !$denied;
 	}
 
 	/**** ApiBase functions *****/
-	
+
 	public function getDescription() {
 		return 'Enables Reflect on posts in Liquid-Threaded discussions.';
 	}

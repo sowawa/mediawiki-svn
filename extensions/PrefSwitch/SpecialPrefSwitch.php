@@ -9,7 +9,7 @@
 class SpecialPrefSwitch extends SpecialPage {
 
 	/* Private Members */
-	
+
 	private $origin = '';
 	private $originTitle = null;
 	private $originQuery = '';
@@ -28,7 +28,7 @@ class SpecialPrefSwitch extends SpecialPage {
 	}
 	/**
 	 * Checks if a user's preferences are switched on
-	 * 
+	 *
 	 * @param $user User object to check switched state for
 	 * @return switched state
 	 */
@@ -60,7 +60,7 @@ class SpecialPrefSwitch extends SpecialPage {
 	 * @param $user User object to set preferences for
 	 */
 	public static function switchOn( $user ) {
-		global $wgPrefSwitchPrefs;		
+		global $wgPrefSwitchPrefs;
 		foreach ( $wgPrefSwitchPrefs['on'] as $pref => $value ) {
 			$user->setOption( $pref, $value );
 		}
@@ -91,7 +91,7 @@ class SpecialPrefSwitch extends SpecialPage {
 			}
 		}
 	}
-	
+
 	private static function switchOffUser( $user ) {
 		global $wgPrefSwitchPrefs;
 		foreach ( $wgPrefSwitchPrefs['off'] as $pref => $value ) {
@@ -101,7 +101,7 @@ class SpecialPrefSwitch extends SpecialPage {
 	}
 
 	/* Methods */
-	
+
 	public function __construct() {
 		parent::__construct( 'PrefSwitch' );
 	}
@@ -148,7 +148,7 @@ class SpecialPrefSwitch extends SpecialPage {
 						self::switchOff( $wgUser, $wgPrefSwitchGlobalOptOut && in_array( 'yes', $wgRequest->getArray( 'prefswitch-survey-global', array() ) ) );
 						PrefSwitchSurvey::save( 'off', $wgPrefSwitchSurveys['feedback'] );
 						$wgOut->addWikiMsg( 'prefswitch-success-off' );
-					} else if ( !self::isSwitchedOn( $wgUser ) ) {
+					} elseif ( !self::isSwitchedOn( $wgUser ) ) {
 						// User is already switched off then reloaded the page or tried to switch off again
 						$wgOut->addWikiMsg( 'prefswitch-success-off' );
 					} else {
@@ -214,9 +214,9 @@ class SpecialPrefSwitch extends SpecialPage {
 		}
 		$wgOut->addHtml( '</div>' );
 	}
-	
+
 	/* Private Methods */
-	
+
 	private function render( $mode = null ) {
 		global $wgUser, $wgOut, $wgPrefSwitchSurveys, $wgPrefSwitchGlobalOptOut, $wgAllowUserCss, $wgAllowUserJs;
 		// Make sure links will retain the origin
@@ -259,7 +259,7 @@ class SpecialPrefSwitch extends SpecialPage {
 				$wgOut->addWikiMsgArray(
 					'prefswitch-main-logged-changes', array( 'parse' )
 				);
-				
+
 				$oldSkin = 'monobook'; // The skin we are migrating from
 
 				if ( $wgAllowUserJs ) {
@@ -274,7 +274,7 @@ class SpecialPrefSwitch extends SpecialPage {
 					if ( $cssPage->exists() ) {
 						$wgOut->addWikiMsg( 'prefswitch-csswarning', $wgUser->getName(), $oldSkin, array( 'parse' ) );
 					}
-				}				
+				}
 			}
 			$wgOut->addWikiMsgArray(
 					'prefswitch-main-feedback', wfMsgForContent( 'prefswitch-feedbackpage' ), array( 'parse' )
