@@ -66,28 +66,57 @@ class FileHandleDistributor:
     def reset_tracker(self, process_id):
         self.tracker[process_id] = {}
 
-
-class CSVBuffer:
-    def __init__(self, process_id, rts, fhd):
+class Buffer(object):
+    def __init__(self, rts, process_id):
         self.rts = rts
-        self.fhd = fhd
-        self.revisions = {}
-        self.comments = {}
-        self.articles = {}
         self.process_id = process_id
         self.count_articles = 0
         self.count_revisions = 0
         self.n = 0
-        self.filehandles = [file_utils.create_txt_filehandle(self.rts.txt,
-        file_id, 'a', 'utf-8') for file_id in xrange(self.rts.max_filehandles)]
+        self.revisions = {}
         self.keys = ['id', 'article_id', 'revision_id', 'username', 'namespace',
                      'title', 'timestamp', 'hash', 'revert',
                      'reverted_contributor', 'reverted_revision_id', 'bot',
                      'cur_size', 'delta']
+
+    def simplify(self, revision):
+        row = []
+        for key in self.keys:
+            value = revision.get(key, None)
+            if value != None:
+                row.append(value.decode('utf-8'))
+        return row
+
+    def stringify(self, revision):
+        for key, value in revision.iteritems():
+            value = revision[key]
+            try:
+                value = str(value)
+            except UnicodeEncodeError:
+                value = value.encode('utf-8')
+            revision[key] = value
+        return revision
+
+
+    def summary(self):
+        print 'Worker %s: Number of articles: %s' % (self.process_id, self.count_articles)
+        print 'Worker %s: Number of revisions: %s' % (self.process_id, self.count_revisions)
+
+class CSVBuffer(Buffer):
+    def __init__(self, process_id, rts, fhd):
+        super(CSVBuffer, self).__init__(rts, process_id)
+        self.fhd = fhd
+        self.comments = {}
+        self.articles = {}
+        self.filehandles = [file_utils.create_txt_filehandle(self.rts.txt,
+        file_id, 'a', 'utf-8') for file_id in xrange(self.rts.max_filehandles)]
+
         self.fh_articles = file_utils.create_txt_filehandle(self.rts.txt,
                             'articles_%s' % self.process_id, 'w', 'utf-8')
         self.fh_comments = file_utils.create_txt_filehandle(self.rts.txt,
                             'comments_%s' % self.process_id, 'w', 'utf-8')
+        self.fh_article_meta = file_utils.create_txt_filehandle(self.rts.txt,
+                            'articles_meta_%s' % self.process_id, 'w', 'utf-8')
 
     def get_hash(self, id):
         '''
@@ -116,56 +145,30 @@ class CSVBuffer:
         self.revisions[file_id].append(revision)
         if self.n > 10000:
             #print '%s: Emptying buffer %s - buffer size %s' % (datetime.datetime.now(), self.id, len(self.revisions))
-            self.store()
+            self.write()
             self.n = 0
         else:
             self.n += 1
 
-    def simplify(self, revision):
-        row = []
-        for key in self.keys:
-            value = revision.get(key, None)
-            if value != None:
-                row.append(value.decode('utf-8'))
-        return row
-
-    def stringify(self, revision):
-        for key, value in revision.iteritems():
-            value = revision[key]
-            try:
-                value = str(value)
-            except UnicodeEncodeError:
-                value = value.encode('utf-8')
-            revision[key] = value
-        return revision
-
-
-    def summary(self):
-        print 'Worker %s: Number of articles: %s' % (self.process_id, self.count_articles)
-        print 'Worker %s: Number of revisions: %s' % (self.process_id, self.count_revisions)
-
-    def store(self):
+    def write(self):
         self.write_revisions()
         self.write_articles()
         self.write_comments()
 
     def close(self):
-        self.store()
+        self.write()
         self.filehandles = [fh.close() for fh in self.filehandles]
 
     def write_comments(self):
-        rows = []
         try:
             for revision_id, comment in self.comments.iteritems():
-                #comment = comment.decode('utf-8')
-                #row = '\t'.join([revision_id, comment]) + '\n'
-                rows.append([revision_id, comment])
-            file_utils.write_list_to_csv(rows, self.fh_comments)
+                file_utils.write_list_to_csv([revision_id, comment, '\n'], self.fh_comments, newline=False)
         except Exception, error:
             print '''Encountered the following error while writing comment data 
                 to %s: %s''' % (self.fh_comments, error)
         self.comments = {}
         self.fh_comments.flush()
+
 
     def write_articles(self):
         #t0 = datetime.datetime.now()
@@ -173,15 +176,14 @@ class CSVBuffer:
             rows = []
             try:
                 for article_id, data in self.articles.iteritems():
+                    data['article_id'] = article_id
                     keys = data.keys()
-                    keys.insert(0, 'id')
-
-                    values = data.values()
-                    values.insert(0, article_id)
-
-                    row = zip(keys, values)
-                    row = list(itertools.chain(*row))
-                    #row = '\t'.join([article_id, title]) + '\n'
+                    keys.sort()
+                    row = []
+                    for key in keys:
+                        row.append(data[key])
+                        if key == 'category' and data[key] != None:
+                            self.fh_article_meta.write('%s\t%s\t%s\n' % (article_id, data[key], data['title']))
                     rows.append(row)
                 file_utils.write_list_to_csv(rows, self.fh_articles, newline=False)
             except Exception, error:
