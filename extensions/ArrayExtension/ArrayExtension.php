@@ -2,7 +2,7 @@
 
 /**
  * Initialization file for the ArrayExtension extension.
- * 
+ *
  * Documentation:	 		http://www.mediawiki.org/wiki/Extension:ArrayExtension
  * Support					http://www.mediawiki.org/wiki/Extension_talk:ArrayExtension
  * Source code:             http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/ArrayExtension
@@ -101,7 +101,7 @@ class ArrayExtension {
 
         if ( !$this->is_non_empty( $value ) ) {
             $this->mArrayExtension[$arrayid] = array();
-        } else if ( !$this->is_non_empty( $delimiter ) ) {
+        } elseif ( !$this->is_non_empty( $delimiter ) ) {
             $this->mArrayExtension[$arrayid] = array( $value );
         } else {
             if ( !$this->isValidRegEx( $delimiter ) ) {
@@ -124,9 +124,9 @@ class ArrayExtension {
             		if ( trim( $value ) == '' ) {
             			unset( $this->mArrayExtension[$arrayid][$key] );
             		}
-            	}            	
+            	}
             }
-            
+
             // make it unique if option is set
             if ( array_key_exists( 'unique', $ary_option ) ) {
 				$this->arrayunique( $parser, $arrayid );
@@ -139,7 +139,7 @@ class ArrayExtension {
 			if ( strcmp( 'list', $this->get_array_value( $ary_option, 'print' ) ) === 0 ) {
 				return $this->arrayprint( $parser, $arrayid );
 			}
-			else if ( strcmp( 'full', $this->get_array_value( $ary_option, 'print' ) ) === 0 ) {
+			elseif ( strcmp( 'full', $this->get_array_value( $ary_option, 'print' ) ) === 0 ) {
 				return $this->arrayprint( $parser, $arrayid,  $delimiter2, $search, $subject, $frame );
 			}
 		}

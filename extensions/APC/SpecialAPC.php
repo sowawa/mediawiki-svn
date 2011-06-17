@@ -259,7 +259,7 @@ class SpecialAPC extends SpecialPage {
 				list( , $ver ) = explode( ' ', $v, 2 );
 				if ( $i < 0 && version_compare( $apcversion, $ver, '>=' ) ) {
 					break;
-				} else if ( !$i-- ) {
+				} elseif ( !$i-- ) {
 					break;
 				}
 				$data = current( $match[2] );

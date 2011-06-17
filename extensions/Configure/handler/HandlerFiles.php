@@ -17,7 +17,7 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 		if ( $wgConfigureFilesPath === null ) {
 			global $IP;
 			$wgConfigureFilesPath = "$IP/serialized/";
-		} else if ( substr( $wgConfigureFilesPath, -1 ) != '/' && substr( $wgConfigureFilesPath, -1 ) != '\\' ) {
+		} elseif ( substr( $wgConfigureFilesPath, -1 ) != '/' && substr( $wgConfigureFilesPath, -1 ) != '\\' ) {
 			$wgConfigureFilesPath .= '/';
 		}
 		$this->mDir = $wgConfigureFilesPath;

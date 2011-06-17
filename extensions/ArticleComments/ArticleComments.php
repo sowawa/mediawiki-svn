@@ -251,7 +251,7 @@ function wfArticleCommentForm( $title, $params = array(), $parser ) {
 	if ( $parser === $wgParser ) { # Needed since r82645. Workaround the 'Invalid marker' problem by giving a new parser to wfMsgExt().
 		$wgParser = new StubObject( 'wgParser', $wgParserConf['class'], array( $wgParserConf ) );
 	}
-	
+
 	# Merge in global defaults if specified
 	$tmp = $wgArticleCommentDefaults;
 	foreach ( $params as $k => $v ) {
@@ -309,7 +309,7 @@ function wfArticleCommentForm( $title, $params = array(), $parser ) {
 		'ptu.getElementsByTagName("a")[0].innerHTML;};' . "\n" .
 		'if (window.addEventListener) window.addEventListener' .
 		'("load",prefillUserName,false);' . "\n" .
-		'else if (window.attachEvent) window.attachEvent' .
+		'elseif (window.attachEvent) window.attachEvent' .
 		'("onload",prefillUserName);' . "\n";
 
 	# Prefill comment text if it has been specified by a system message
@@ -329,7 +329,7 @@ function wfArticleCommentForm( $title, $params = array(), $parser ) {
 			'c.value="";}}' . "\n" .
 			'if (comment.addEventListener) comment.addEventListener' .
 			'("focus",clearCommentOnFirstFocus,false);' . "\n" .
-			'else if (comment.attachEvent) comment.attachEvent' .
+			'elseif (comment.attachEvent) comment.attachEvent' .
 			'("onfocus",clearCommentOnFirstFocus);' . "\n";
 	}
 

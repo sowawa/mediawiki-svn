@@ -26,7 +26,7 @@ class SpecialCrosswikiBlock extends SpecialPage {
 		global $wgOut, $wgUser, $wgRequest;
 
 		# Add messages
-		
+
 
 		$this->setHeaders();
 
@@ -53,12 +53,12 @@ class SpecialCrosswikiBlock extends SpecialPage {
 			);
 			if ( !$blockAddress ) {
 				$this->showForm( wfMsgWikiHtml( 'crosswikiblock-nousername' ) );
-			} else if ( $this->checkUser( $blockAddress, true ) ) {
-			} else if ( !( $expiry = $this->convertExpiry( $expiryStr ) ) ) {
+			} elseif ( $this->checkUser( $blockAddress, true ) ) {
+			} elseif ( !( $expiry = $this->convertExpiry( $expiryStr ) ) ) {
 				$this->showForm( wfMsgWikiHtml( 'crosswikiblock-noexpiry', htmlspecialchars( $expiryStr ) ) );
-			} else if ( !$reason ) {
+			} elseif ( !$reason ) {
 				$this->showForm( wfMsgWikiHtml( 'crosswikiblock-noreason', htmlspecialchars( $reason ) ) );
-			} else if ( !$wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
+			} elseif ( !$wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
 				$this->showForm( wfMsgWikiHtml( 'crosswikiblock-notoken' ) );
 			} else {
 				CrosswikiBlock::normalizeOptions( $this->mUsername, $options );

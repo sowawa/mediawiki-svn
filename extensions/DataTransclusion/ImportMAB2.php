@@ -55,7 +55,7 @@ class ImportMAB2 extends Maintenance {
 		$sql = "CREATE TABLE IF NOT EXISTS " . $this->index_table . " ( ";
 		$sql .= " field VARCHAR(255) NOT NULL, "; #FIXME: varchar vs varbinary!
 		$sql .= " value VARCHAR(255) NOT NULL, "; #FIXME: varchar vs varbinary!
-		$sql .= " data_id INT(12) NOT NULL, "; 
+		$sql .= " data_id INT(12) NOT NULL, ";
 		$sql .= " PRIMARY KEY (field, value, data_id) "; #NOTE: we don't require (field,value) to be unique!
 		$sql .= ") ";
 		$db->query( $sql, __METHOD__ );
@@ -122,7 +122,7 @@ class ImportMAB2 extends Maintenance {
 			if ( $this->hasOption('create') ) {
 				$this->output( "creating tables if neccessary.\n" );
 				$this->createTables( $this->blob_table, $this->index_table );
-			} 
+			}
 
 			if ( $this->hasOption('truncate') ) {
 				$this->output( "truncating tables.\n" );
@@ -179,7 +179,7 @@ class ImportMAB2 extends Maintenance {
 			if ( is_dir( $dir . $file ) && $recursive ) {
 				$this->importDir( $dir . $file, $recursive, $limit );
 				continue;
-			} else if ( !is_file( $dir . $file ) ) {
+			} elseif ( !is_file( $dir . $file ) ) {
 				$this->output( "not a file: $dir/$file\n" );
 				continue;
 			}
@@ -188,7 +188,7 @@ class ImportMAB2 extends Maintenance {
 
 			if ( !$ok ) {
 				$this->output( "error processing $file\n" );
-			} 
+			}
 
 			if ( $limit > 0 ) {
 				$limit -= 1;
@@ -245,7 +245,7 @@ class ImportMAB2 extends Maintenance {
 		$insert = array();
 		foreach ( $ids as $field => $values ) {
 			foreach ( $values as $v ) {
-				$insert[] = array( 
+				$insert[] = array(
 					  'field' => $field,
 					  'value' => $v,
 					  'data_id' => $id );
@@ -283,7 +283,7 @@ class ImportMAB2 extends Maintenance {
 
 		if ( $this->debug ) {
 			print "== $file =======================\n";
-		} else if ( $this->multiRecord ) {
+		} elseif ( $this->multiRecord ) {
 			$this->output( "reading records from $file\n" );
 		}
 

@@ -217,25 +217,25 @@ abstract class ConfigurationDiff {
 	function getSettingAsArray( $setting, $name, $type ) {
 		if ( $setting === null ) {
 			$val = array();
-		} else if ( $type == 'array' ) {
+		} elseif ( $type == 'array' ) {
 			if( !is_array( $setting ) )
 				return array();
 			$arrType = $this->getArrayType( $name );
 			if ( $arrType == 'simple' || $arrType == 'ns-simple' ) {
 				$val = array_values( $setting );
-			} else if ( $arrType == 'assoc' ) {
+			} elseif ( $arrType == 'assoc' ) {
 				$arrVal = array();
 				foreach ( $setting as $key => $value ) {
 					$arrVal[] = "$key: $value";
 				}
 				$val = $arrVal;
-			} else if ( $arrType == 'simple-dual' ) {
+			} elseif ( $arrType == 'simple-dual' ) {
 				$arrVal = array();
 				foreach ( $setting as $key => $value ) {
 					$arrVal[] = implode( ',', $value );
 				}
 				$val = $arrVal;
-			} else if ( $arrType == 'ns-bool' || $arrType == 'ns-text' || $arrType == 'ns-array' ) {
+			} elseif ( $arrType == 'ns-bool' || $arrType == 'ns-text' || $arrType == 'ns-array' ) {
 				$arrVal = array();
 				foreach ( $setting as $key => $value ) {
 					if ( $arrType == 'ns-bool' )
@@ -245,13 +245,13 @@ abstract class ConfigurationDiff {
 					$arrVal[] = "$key: $value";
 				}
 				$val = $arrVal;
-			} else if ( $arrType == 'group-array' ) {
+			} elseif ( $arrType == 'group-array' ) {
 				$arrVal = array();
 				foreach ( $setting as $key => $value ) {
 					$arrVal[] = "$key: " . implode( ',', $value );
 				}
 				$val = $arrVal;
-			} else if ( $arrType == 'group-bool' ) {
+			} elseif ( $arrType == 'group-bool' ) {
 				$arrVal = array();
 				ksort($setting);
 				foreach ( $setting as $key1 => $value1 ) {
@@ -262,7 +262,7 @@ abstract class ConfigurationDiff {
 					}
 				}
 				$val = $arrVal;
-			} else if ( $arrType == 'rate-limits' ) {
+			} elseif ( $arrType == 'rate-limits' ) {
 				$val = array();
 				## Just walk the tree and print out the data.
 				foreach( $setting as $action => $limits ) {
@@ -276,7 +276,7 @@ abstract class ConfigurationDiff {
 						}
 					}
 				}
-			} else if ( $arrType == 'promotion-conds' ) {
+			} elseif ( $arrType == 'promotion-conds' ) {
 				## For each group, print out the full conditions.
 				$val = array();
 
@@ -324,7 +324,7 @@ abstract class ConfigurationDiff {
 			} else {
 				$val = explode( "\n", var_export( $setting, 1 ) );
 			}
-		} else if ( $type == 'bool' ) {
+		} elseif ( $type == 'bool' ) {
 			$val = array( $setting ? 'true' : 'false' );
 		} else {
 			$val = explode( "\n", (string)$setting );

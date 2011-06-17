@@ -99,7 +99,7 @@ class DataTransclusionHandler {
 		if ( empty( $argv['source'] ) ) {
 			if ( empty( $argv[1] ) ) {
 				wfDebugLog( 'DataTransclusion', "no source specified\n" );
-				return DataTransclusionHandler::errorMessage( 'datatransclusion-missing-source', $asHTML ); 
+				return DataTransclusionHandler::errorMessage( 'datatransclusion-missing-source', $asHTML );
 			} else {
 				$sourceName = $argv[1];
 			}
@@ -110,20 +110,20 @@ class DataTransclusionHandler {
 		$source = DataTransclusionHandler::getDataSource( $sourceName );
 		if ( empty( $source ) ) {
 			wfDebugLog( 'DataTransclusion', "unknown source: $sourceName\n" );
-			return DataTransclusionHandler::errorMessage( 'datatransclusion-unknown-source', $asHTML, $sourceName ); 
+			return DataTransclusionHandler::errorMessage( 'datatransclusion-unknown-source', $asHTML, $sourceName );
 		}
 
 		// find out how to render the record
 		if ( !empty( $argv['template'] ) ) {
 			$template = $argv['template'];
-		} else if ( $template === null || $template === false ) {
+		} elseif ( $template === null || $template === false ) {
 			if ( empty( $argv[0] ) ) {
 				wfDebugLog( 'DataTransclusion', "missing 'template' argument\n" );
-				return DataTransclusionHandler::errorMessage( 'datatransclusion-missing-argument-template', $asHTML ); 
+				return DataTransclusionHandler::errorMessage( 'datatransclusion-missing-argument-template', $asHTML );
 			} else {
 				$template = $argv[0];
 			}
-		} 
+		}
 
 		// find key
 		$by = false;
@@ -140,8 +140,8 @@ class DataTransclusionHandler {
 		if ( !$by ) {
 			global $wgContLang;
 			wfDebugLog( 'DataTransclusion', "no key specified\n" );
-			return DataTransclusionHandler::errorMessage( 'datatransclusion-missing-key', $asHTML, $sourceName, 
-				$wgContLang->commaList( $keyFields ), count( $keyFields ) ); 
+			return DataTransclusionHandler::errorMessage( 'datatransclusion-missing-key', $asHTML, $sourceName,
+				$wgContLang->commaList( $keyFields ), count( $keyFields ) );
 		}
 
 		// collect options
@@ -159,17 +159,17 @@ class DataTransclusionHandler {
 		$record = $source->fetchRecord( $by, $key, $options );
 		if ( empty( $record ) ) {
 			wfDebugLog( 'DataTransclusion', "no record found matching $by=$key in $sourceName\n" );
-			return DataTransclusionHandler::errorMessage( 'datatransclusion-record-not-found', $asHTML, $sourceName, $by, $key ); 
+			return DataTransclusionHandler::errorMessage( 'datatransclusion-record-not-found', $asHTML, $sourceName, $by, $key );
 		}
 
 		// render the record into wiki text
 		if ( $template === "#dump" ) {
-			$t = null; 
+			$t = null;
 		} else {
 			$t = Title::newFromText( $template, NS_TEMPLATE );
 			if ( empty( $t ) ) {
 				wfDebugLog( 'DataTransclusion', "illegal template name: $template\n" );
-				return DataTransclusionHandler::errorMessage( 'datatransclusion-bad-template-name', $asHTML, $template ); 
+				return DataTransclusionHandler::errorMessage( 'datatransclusion-bad-template-name', $asHTML, $template );
 			}
 		}
 
@@ -180,7 +180,7 @@ class DataTransclusionHandler {
 
 		if ( $text === false ) {
 			wfDebugLog( 'DataTransclusion', "template not found: $template\n" );
-			return DataTransclusionHandler::errorMessage( 'datatransclusion-unknown-template', $asHTML, $template ); 
+			return DataTransclusionHandler::errorMessage( 'datatransclusion-unknown-template', $asHTML, $template );
 		}
 
 		// set parser output expiry
@@ -191,9 +191,9 @@ class DataTransclusionHandler {
 
 		if ( $asHTML && $parser ) { // render into HTML if desired
 			$html = $parser->recursiveTagParse( $text );
-			return $html; 
+			return $html;
 		} else {
-			return $text; 
+			return $text;
 		}
 	}
 
@@ -217,9 +217,9 @@ class DataTransclusionHandler {
 				$this->templateText .= "| $k || {{{{$k}}}}\n";
 			}
 			$this->templateText .= "|}\n";
-		} 
+		}
 
-		if ( $this->templateText ) { 
+		if ( $this->templateText ) {
 			// explicit template content set. Used for testing and debugging.
 			if ( is_string( $this->templateText ) ) {
 				$text = $this->templateText;
@@ -236,7 +236,7 @@ class DataTransclusionHandler {
 		$article = new Article( $this->template );
 
 		if ( !$article->exists() ) {
-			return false; 
+			return false;
 		}
 
 		$text = $article->getContent();
@@ -244,7 +244,7 @@ class DataTransclusionHandler {
 		//NOTE: would need extra work to record template inclusion to be recorded in the ParserOutput and consequently in the database.
 		*/
 
-		// NOTE: braceSubstitution caches pre-parsed templates. Much nicer. 
+		// NOTE: braceSubstitution caches pre-parsed templates. Much nicer.
 		// TODO: but how to check if the template exists? calling $article->exists() every time is slow.
 		//	 once we test for that agin, re-enable the test case for the datatransclusion-unknown-template failure mode
 		$frame = $this->parser->getPreprocessor()->newFrame( );
@@ -268,9 +268,9 @@ class DataTransclusionHandler {
 	function normalizeRecord( $record, $args ) {
 		$rec = array();
 
-		// add source meta info, so we can render links back to the source, 
+		// add source meta info, so we can render links back to the source,
 		// provide license info, etc
-		$info = $this->source->getSourceInfo(); 
+		$info = $this->source->getSourceInfo();
 		foreach ( $info as $f => $v ) {
 			if ( is_array( $v ) || is_object( $v ) || is_resource( $v ) ) {
 				continue;
@@ -299,7 +299,7 @@ class DataTransclusionHandler {
 				$v = '';
 			}
 
-			$rec[ $f ] = $this->sanitizeValue( $v ); 
+			$rec[ $f ] = $this->sanitizeValue( $v );
 		}
 
 		return $rec;
@@ -378,7 +378,7 @@ class DataTransclusionHandler {
 		if ( !is_object( $source ) ) {
 			throw new MWException( "\$wgDataTransclusionSources['$name'] must be an array or an object." );
 		}
-		
+
 		return $source;
 	}
 

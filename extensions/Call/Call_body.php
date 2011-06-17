@@ -31,7 +31,7 @@
 class Call extends SpecialPage {
 	function __construct() {
 		parent::__construct( "Call" );
-		
+
 	}
 
 
@@ -63,7 +63,7 @@ class Call extends SpecialPage {
 			}
 			if ( $argKey == 'title' ) {
 				$argTitle = $n;
-			} else if ( $argTitle >= 0 ) {
+			} elseif ( $argTitle >= 0 ) {
 				if ( preg_match( '/(UserName|UserID|_session|Token)$/', $argKey ) ) {
 					break;
 				}
@@ -144,7 +144,7 @@ class Call extends SpecialPage {
 			$template = preg_replace( '/\|.*/', '', $wikitext );
 			if ( strpos( ':', $template ) === false ) {
 				$template = 'Template:' . $template;
-			} else if ( $template[0] == ':' ) {
+			} elseif ( $template[0] == ':' ) {
 				$template = substr( $template, 1 );
 			}
 			$title = Title::newFromText( $template );
@@ -159,7 +159,7 @@ class Call extends SpecialPage {
 		if ( $wikitext == '' || $wikitext == 'Special:Call' ) {
 			// Called without parameters: dump explanation
 			$wgOut->addHTML( wfMsg( 'call-text' ) );
-		} else if ( $debug ) {
+		} elseif ( $debug ) {
 			// Called with DebuG target: dump parameter list
 			$wgOut->addHTML( "<pre>\n{{" . $wikitext . "}}\n</pre>" );
 			if ( $saveAsPage != '' ) {
@@ -233,18 +233,18 @@ class Call extends SpecialPage {
 					$n = -1;
 					$tpl = $field[0];
 					$field[0] = 'ID';
-				} else if ( strpos( $line, '|' ) == 0 ) {
+				} elseif ( strpos( $line, '|' ) == 0 ) {
 					$n++;
 					$field[$n] = substr( $line, 1 );
 				}
-			} else if ( strpos( $line, '|-' ) !== false ) {
+			} elseif ( strpos( $line, '|-' ) !== false ) {
 				$n = -1;
-			} else if ( strpos( $line, '|}' ) !== false ) {
+			} elseif ( strpos( $line, '|}' ) !== false ) {
 				$text[] = '}}';
 				break;
-			} else if ( $line == '' ) {
+			} elseif ( $line == '' ) {
 				$text[] = '';
-			} else if ( $line[0] == '|' ) {
+			} elseif ( $line[0] == '|' ) {
 				$n++;
 				if ( $n == 0 ) {
 					if ( $head ) {

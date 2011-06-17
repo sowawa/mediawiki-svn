@@ -63,7 +63,7 @@ $mab_field_map['author'][] = '369';
  * No configuration options are needed.
  */
 class MAB2RecordTransformer extends RecordTransformer {
-    
+
 	/**
 	 * Initializes the RecordTransformer from the given parameter array.
 	 * @param $spec associative array of options. See class-level documentation for details.
@@ -113,14 +113,14 @@ class MAB2RecordTransformer extends RecordTransformer {
 
 		foreach ($r as $f => $values) {
 		    if ( count($values) == 0 ) unset( $r[ $f ] );
-		    else if ( count($values) == 1 ) $r[ $f ] = MAB2RecordTransformer::mangleValue( $values[0] );
+		    elseif ( count($values) == 1 ) $r[ $f ] = MAB2RecordTransformer::mangleValue( $values[0] );
 		    else {
 			$values = array_unique( $values );
 			$values = array_map( array('MAB2RecordTransformer', 'mangleValue'), $values );
 			$r[ $f ] = join(', ', $values);
 		    }
 		}
-	      
+
 		return $r;
 	}
 
@@ -134,9 +134,9 @@ class MAB2RecordTransformer extends RecordTransformer {
 	}
 
 	/**
-	 * Extracts any error message from the $data from the data source. This is done 
+	 * Extracts any error message from the $data from the data source. This is done
 	 * by calling resolvePath() on the $spec['errorPath'] provided to the constructor.
-	 * 
+	 *
 	 * @param $rec a structured data response, as received from the data source
 	 */
 	public function extractError( $data ) {
@@ -154,9 +154,9 @@ class MAB2RecordTransformer extends RecordTransformer {
 	}
 
 	/**
-	 * Extracts the actual data record from the $data from the data source. This is done 
+	 * Extracts the actual data record from the $data from the data source. This is done
 	 * by calling resolvePath() on the $spec['dataPath'] provided to the constructor.
-	 * 
+	 *
 	 * @param $rec a structured data response, as received from the data source
 	 */
 	public function extractRecord( $data ) {

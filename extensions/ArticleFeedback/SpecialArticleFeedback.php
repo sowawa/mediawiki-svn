@@ -1,7 +1,7 @@
 <?php
 /**
  * SpecialPage for ArticleFeedback extension
- * 
+ *
  * @file
  * @ingroup Extensions
  */
@@ -22,19 +22,19 @@ class SpecialArticleFeedback extends SpecialPage {
 		if ( $wgArticleFeedbackDashboard ) {
 			// fetch the highest and lowest rated articles
 			$highs_lows = $this->getDailyHighsAndLows();
-			
+
 			// determine the highest rated articles
 			$highs = $this->getDailyHighs( $highs_lows );
-			
+
 			// .. and the lowest rated articles
 			$lows = $this->getDailyLows( $highs_lows );
-			
+
 			// provide some messaging above high/low tables
 			$wgOut->addWikiMsg( 'articleFeedback-copy-above-highlow-tables', $wgArticleFeedbackDashboardTalkPage );
-			
+
 			//render daily highs table
 			$this->renderDailyHighsAndLows( $highs, wfMsg( 'articleFeedback-table-caption-dailyhighs', $wgLang->date( time() )));
-			
+
 			//render daily lows table
 			$this->renderDailyHighsAndLows( $lows, wfMsg( 'articleFeedback-table-caption-dailylows', $wgLang->date( time() )));
 
@@ -42,7 +42,7 @@ class SpecialArticleFeedback extends SpecialPage {
 			This functionality does not exist yet.
 			$this->renderWeeklyMostChanged();*/
 			$this->renderProblems();
-			
+
 			$wgOut->addWikiMsg( 'articlefeedback-dashboard-bottom' );
 		} else {
 			$wgOut->addWikiText( 'This page has been disabled.' );
@@ -53,7 +53,7 @@ class SpecialArticleFeedback extends SpecialPage {
 
 	/**
 	 * Returns an HTML table containing data from a given two dimensional array.
-	 * 
+	 *
 	 * @param $headings Array: List of rows, each a list of column data (values will be escaped)
 	 * @param $rows Array: List of rows, each a list of either calss/column data pairs (values will
 	 * be escaped), or arrays containing attr, text and html fields, used to set attributes, text or
@@ -89,7 +89,7 @@ class SpecialArticleFeedback extends SpecialPage {
 					}
 					if ( isset( $column['text'] ) ) {
 						$table .= Html::element( 'td', $attr, $column['text'] );
-					} else if ( isset( $column['html'] ) ) {
+					} elseif ( isset( $column['html'] ) ) {
 						$table .= Html::rawElement( 'td', $attr, $column['html'] );
 					} else {
 						$table .= Html::element( 'td', $attr );
@@ -107,12 +107,12 @@ class SpecialArticleFeedback extends SpecialPage {
 
 	/**
 	 * Renders daily highs and lows
-	 * 
+	 *
 	 * @return String: HTML table of daily highs and lows
 	 */
 	protected function renderDailyHighsAndLows( $pages, $caption ) {
 		global $wgOut, $wgUser;
-		
+
 		// Pre-fill page ID cache
 		$ids = array();
 		foreach ( $pages as $page ) {
@@ -145,7 +145,7 @@ class SpecialArticleFeedback extends SpecialPage {
 				$rows[] = $row;
 			}
 		}
-		
+
 		$this->renderTable(
 			$caption,
 			array_merge(
@@ -160,7 +160,7 @@ class SpecialArticleFeedback extends SpecialPage {
 
 	/**
 	 * Renders weekly most changed
-	 * 
+	 *
 	 * @return String: HTML table of weekly most changed
 	 */
 	protected function renderWeeklyMostChanged() {
@@ -194,22 +194,22 @@ class SpecialArticleFeedback extends SpecialPage {
 
 	/**
 	 * Renders problem articles table
-	 * 
+	 *
 	 * @return String: HTML table of recent lows
 	 */
 	protected function renderProblems() {
 		global $wgOut, $wgUser, $wgArticleFeedbackRatings;
 
-		
+
 		$problems = $this->getProblems();
-		
+
 		// Pre-fill page ID cache
 		$ids = array();
 		foreach ( $problems as $page ) {
 			$ids[] = $page['page'];
 		}
 		self::populateTitleCache( $ids );
-		
+
 		$rows = array();
 		foreach ( $problems as $page ) {
 			$row = array();
@@ -266,12 +266,12 @@ class SpecialArticleFeedback extends SpecialPage {
 				__METHOD__,
 				array( "ORDER BY" => "afs_ts DESC", "LIMIT" => 1 )
 			);
-			
+
 			// if we have no results, just return
 			if ( !$row || !$row->afs_ts ) {
 				return array();
 			}
-			
+
 			// select ratings with that ts
 			$result = $dbr->select(
 				'article_feedback_stats',
@@ -280,7 +280,7 @@ class SpecialArticleFeedback extends SpecialPage {
 					'afs_orderable_data',
 					'afs_data'
 				),
-				array( 
+				array(
 					'afs_ts' => $row->afs_ts,
 					'afs_stats_type_id' => $typeID
 				),
@@ -290,17 +290,17 @@ class SpecialArticleFeedback extends SpecialPage {
 			$problems = $this->buildProblems( $result );
 			$wgMemc->set( $key, $problems, 86400 );
 		}
-		
+
 		return $problems;
 	}
-	
+
 	/**
 	 * Gets a list of articles which were rated exceptionally high or low.
-	 * 
+	 *
 	 * - Based on average of all rating categories
 	 * - Gets 50 highest rated and 50 lowest rated
 	 * - Only consider articles with 10+ ratings in the last 24 hours
-	 * 
+	 *
 	 * This data should be updated daily, ideally though a scheduled batch job
 	 */
 	protected function getDailyHighsAndLows() {
@@ -321,12 +321,12 @@ class SpecialArticleFeedback extends SpecialPage {
 				__METHOD__,
 				array( "ORDER BY" => "afs_ts DESC", "LIMIT" => 1 )
 			);
-			
+
 			// if we have no results, just return
 			if ( !$row || !$row->afs_ts ) {
 				return array();
 			}
-			
+
 			// select ratings with that ts
 			$result = $dbr->select(
 				'article_feedback_stats',
@@ -335,7 +335,7 @@ class SpecialArticleFeedback extends SpecialPage {
 					'afs_orderable_data',
 					'afs_data'
 				),
-				array( 
+				array(
 					'afs_ts' => $row->afs_ts,
 					'afs_stats_type_id' => $typeID,
 				),
@@ -345,20 +345,20 @@ class SpecialArticleFeedback extends SpecialPage {
 			$highs_lows = $this->buildHighsAndLows( $result );
 			$wgMemc->set( $key, $highs_lows, 86400 );
 		}
-		
+
 		return $highs_lows;
 	}
 
 	/**
 	 * Determine the 'highest' rated articles
-	 * 
+	 *
 	 * Divides the number of ratings in half to determine the range of
 	 * articles to consider 'highest'.  In the event of an odd number
 	 * of articles, (determined by checking for modulus of # of ratings / 2),
 	 * round up, giving preference to the 'highs' so
-	 * everyone feels warm and fuzzy about having more 'highs', as 
+	 * everyone feels warm and fuzzy about having more 'highs', as
 	 * it were...
-	 * 
+	 *
 	 * @param array Pre-orderd from lowest to highest
 	 * @return array Containing the... highest rated article data
 	 */
@@ -371,14 +371,14 @@ class SpecialArticleFeedback extends SpecialPage {
 		}
 		return array_slice( $highs_lows, -$num_highs, $num_highs );
 	}
-	
+
 	/**
 	 * Determine the 'lowest' rated articles
 	 *
 	 * @see getDailyHighs() However, if we are dealing with an odd number of
 	 * 	ratings, round up and then subtract 1 since we are giving preference
 	 * 	to the 'highs' when dealing with an odd number of ratings.  We do this
-	 * 	rather than rely on PHP's rounding 'modes' for compaitibility with 
+	 * 	rather than rely on PHP's rounding 'modes' for compaitibility with
 	 *  PHP < 5.3
 	 * @param array Pre-orderd from lowest to highest
 	 * @return array Containing the... lowest rated article data
@@ -392,7 +392,7 @@ class SpecialArticleFeedback extends SpecialPage {
 		}
 		return array_slice( $highs_lows, 0, $num_lows );
 	}
-	
+
 	/**
 	 * Build data store of highs/lows for use when rendering table
 	 * @param object Database result or array of rows
@@ -412,7 +412,7 @@ class SpecialArticleFeedback extends SpecialPage {
 		}
 		return $highs_lows;
 	}
-	
+
 	/**
 	 * Build data store of problems for use when rendering table
 	 * @param object Database result or array of rows
@@ -432,7 +432,7 @@ class SpecialArticleFeedback extends SpecialPage {
 		}
 		return $problems;
 	}
-	
+
 	/**
 	 * Get the stats type id for a given stat type
 	 * @param string $stats_type
@@ -444,7 +444,7 @@ class SpecialArticleFeedback extends SpecialPage {
 		if ( $cache ) {
 			return $cache;
 		}
-		
+
 		$dbr = wfGetDB( DB_SLAVE );
 		$row = $dbr->selectRow(
 			'article_feedback_stats_types',
@@ -456,14 +456,14 @@ class SpecialArticleFeedback extends SpecialPage {
 		$wgMemc->set( $key, $row->afst_id );
 		return $row->afst_id;
 	}
-	
+
 	/**
 	 * Gets a list of articles which have quickly changing ratings.
-	 * 
+	 *
 	 * - Based on any rating category
 	 * - Gets 50 most improved and 50 most worsened
 	 * - Only consider articles with 100+ ratings in the last 7 days
-	 * 
+	 *
 	 * This data should be updated daily, ideally though a scheduled batch job
 	 */
 	protected function getWeeklyMostChanged() {
@@ -499,7 +499,7 @@ class SpecialArticleFeedback extends SpecialPage {
 
 	protected static function formatNumber( $number ) {
 		global $wgLang;
-		
+
 		return $wgLang->formatNum( number_format( $number, 2 ) );
 	}
 
@@ -521,7 +521,7 @@ class SpecialArticleFeedback extends SpecialPage {
 		}
 		return self::$categories;
 	}
-	
+
 	protected static function getTitleFromID( $id ) {
 		// There's no caching in Title::newFromId() so we hack our own around it
 		if ( !isset( self::$titleCache[$id] ) ) {
@@ -529,7 +529,7 @@ class SpecialArticleFeedback extends SpecialPage {
 		}
 		return self::$titleCache[$id];
 	}
-	
+
 	protected static function populateTitleCache( $ids ) {
 		$toQuery = array_diff( $ids, array_keys( self::$titleCache ) );
 		$titles = Title::newFromIds( $toQuery );

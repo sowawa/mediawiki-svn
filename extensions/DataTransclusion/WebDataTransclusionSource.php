@@ -22,9 +22,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * WebDataTransclusionSource accepts some additional options
  *
  *	 * $spec['url']: base URL for building urls for retrieving individual records.
- *		If the URL contains placeholders of the form {xxx}, these get replaced 
+ *		If the URL contains placeholders of the form {xxx}, these get replaced
  *		by the respective key or option values.
- *		Otherwise, the key/value pair and options get appended to the URL as a 
+ *		Otherwise, the key/value pair and options get appended to the URL as a
  *		regular URL parameter (preceeded by ? or &, as appropriate). For more
  *		complex rules for building the url, override getRecordURL(). REQUIRED.
  *	 * $spec['dataFormat']: Serialization format returned from the web service.
@@ -33,12 +33,12 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  *		'xml' is supported, but requires a transformer that can handle an XML DOM
  * 		as input. To support more formats, override decodeData(). Default is 'php'.
  *	 * $spec['dataPath']: "path" to the actual data in the structure returned from the
- *		HTTP request. This is only used if no transformer is set. The syntax of the 
- *		path is the one defined for the dataPath parameter for the FlattenRecord 
+ *		HTTP request. This is only used if no transformer is set. The syntax of the
+ *		path is the one defined for the dataPath parameter for the FlattenRecord
  *		transformer. REQUIRED if no transformer is defined.
  *	 * $spec['errorPath']: "path" to error messages in the structure returned from the
- *		HTTP request. This is only used if no transformer is set. The syntax of the 
- *		path is the one defined for the dataPath parameter for the FlattenRecord 
+ *		HTTP request. This is only used if no transformer is set. The syntax of the
+ *		path is the one defined for the dataPath parameter for the FlattenRecord
  *		transformer. REQUIRED if no transformer is defined.
  *	 * $spec['httpOptions']: array of options to pass to Http::get. For details, see Http::request.
  *	 * $spec['timeout']: seconds before the request times out. If not given,
@@ -78,28 +78,28 @@ class WebDataTransclusionSource extends DataTransclusionSource {
 	}
 
 	public function fetchRawRecord( $field, $value, $options = null ) {
-		$raw = $this->loadRecordData( $field, $value, $options ); 
+		$raw = $this->loadRecordData( $field, $value, $options );
 		if ( !$raw ) {
 			wfDebugLog( 'DataTransclusion', "failed to fetch data for $field=$value\n" );
-			return false; 
+			return false;
 		}
 
-		$data = $this->decodeData( $raw, $this->dataFormat ); 
+		$data = $this->decodeData( $raw, $this->dataFormat );
 		if ( !$data ) {
 			wfDebugLog( 'DataTransclusion', "failed to decode data for $field=$value as {$this->dataFormat}\n" );
-			return false; 
+			return false;
 		}
 
-		$err = $this->extractError( $data ); 
+		$err = $this->extractError( $data );
 		if ( $err ) {
 			wfDebugLog( 'DataTransclusion', "error message when fetching $field=$value: $err\n" );
-			return false; 
+			return false;
 		}
 
-		$rec = $this->extractRecord( $data ); 
+		$rec = $this->extractRecord( $data );
 		if ( !$rec ) {
 			wfDebugLog( 'DataTransclusion', "no record found in data for $field=$value\n" );
-			return false; 
+			return false;
 		}
 
 		wfDebugLog( 'DataTransclusion', "loaded record for $field=$value from URL\n" );
@@ -113,7 +113,7 @@ class WebDataTransclusionSource extends DataTransclusionSource {
 
 		if ( $options ) {
 			$args = array_merge( $options, $args );
-		} 
+		}
 
 		foreach ( $args as $k => $v ) {
 			$u = str_replace( '{'.$k.'}', urlencode( $v ), $u, $n );
@@ -149,7 +149,7 @@ class WebDataTransclusionSource extends DataTransclusionSource {
 		if ( preg_match( '!^https?://!', $u ) ) {
 			$raw = Http::get( $u, $this->timeout, $this->httpOptions );
 		} else {
-			$raw = file_get_contents( $u ); 
+			$raw = file_get_contents( $u );
 		}
 
 		if ( $raw ) {
@@ -167,13 +167,13 @@ class WebDataTransclusionSource extends DataTransclusionSource {
 		}
 
 		if ( $format == 'json' || $format == 'js' ) {
-			return DataTransclusionSource::decodeJson( $raw ); 
-		} else if ( $format == 'wddx' ) {
-			return DataTransclusionSource::decodeWddx( $raw ); 
-		} else if ( $format == 'xml' ) {
-			return DataTransclusionSource::parseXml( $raw ); 
-		} else if ( $format == 'php' || $format == 'pser' ) {
-			return DataTransclusionSource::decodeSerialized( $raw ); 
+			return DataTransclusionSource::decodeJson( $raw );
+		} elseif ( $format == 'wddx' ) {
+			return DataTransclusionSource::decodeWddx( $raw );
+		} elseif ( $format == 'xml' ) {
+			return DataTransclusionSource::parseXml( $raw );
+		} elseif ( $format == 'php' || $format == 'pser' ) {
+			return DataTransclusionSource::decodeSerialized( $raw );
 		}
 
 		return false;

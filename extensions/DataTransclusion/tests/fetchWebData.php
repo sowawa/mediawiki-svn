@@ -10,9 +10,9 @@ if ( getenv( 'MW_INSTALL_PATH' ) ) {
 	$dir = dirname( __FILE__ );
 
 	if ( file_exists( "$dir/../../LocalSettings.php" ) ) $IP = "$dir/../..";
-	else if ( file_exists( "$dir/../../../LocalSettings.php" ) ) $IP = "$dir/../../..";
-	else if ( file_exists( "$dir/../../phase3/LocalSettings.php" ) ) $IP = "$dir/../../phase3";
-	else if ( file_exists( "$dir/../../../phase3/LocalSettings.php" ) ) $IP = "$dir/../../../phase3";
+	elseif ( file_exists( "$dir/../../../LocalSettings.php" ) ) $IP = "$dir/../../..";
+	elseif ( file_exists( "$dir/../../phase3/LocalSettings.php" ) ) $IP = "$dir/../../phase3";
+	elseif ( file_exists( "$dir/../../../phase3/LocalSettings.php" ) ) $IP = "$dir/../../../phase3";
 	else $IP = $dir;
 }
 

@@ -177,7 +177,7 @@ class WebExtension {
 	/**
 	 * Prettify boolean settings to be correctly displayed
 	 *
-	 * @return String 
+	 * @return String
 	 */
 	public static function prettifyForDisplay( $val ) {
 		if ( is_bool( $val ) )
@@ -277,7 +277,7 @@ class WebExtension {
 				$actual = $conf[$setting];
 			else
 				$actual = $GLOBALS[$setting];
-			 
+
 			if ( $actual !== $value ) {
 				$ret[] = array( $setting, $value, $actual );
 			}
@@ -333,7 +333,7 @@ class WebExtension {
 	public function isActivated() {
 		if( $this->mTempActivated !== null ) {
 			return $this->mTempActivated;
-		} else if( $this->useVariable() ) {
+		} elseif( $this->useVariable() ) {
 			return isset( $GLOBALS[$this->getVariable()] ) && $GLOBALS[$this->getVariable()];
 		} else {
 			global $wgConf;

@@ -10,7 +10,7 @@ abstract class CommunityVoiceRatings {
 	) {
 		if ( floor( $rating ) > $star ) {
 			return 6;
-		} else if ( floor( $rating ) < $star ) {
+		} elseif ( floor( $rating ) < $star ) {
 			return 0;
 		} else {
 			return round( ( 6 / 10 ) * ( ( $rating - floor( $rating ) ) * 10 ) );

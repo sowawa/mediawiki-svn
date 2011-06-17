@@ -38,11 +38,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  *		may allow different hints for each field. The following hints are known per
  *		default:
  *	     * $spec['fieldInfo'][$field]['type']: specifies the data types for the field:
- *		'int' for integers, 'float' or 'decimal' for decimals, or 'string' for 
+ *		'int' for integers, 'float' or 'decimal' for decimals, or 'string' for
  *		string fields. Serialization types 'json', 'wddx' and 'php' are also
  *		supported. Defaults to 'string'.
  *	     * $spec['fieldInfo'][$field]['normalization']: normalization to be applied for
- *		this field, when used as a query key. This may be a callable, or an object 
+ *		this field, when used as a query key. This may be a callable, or an object
  *		that supports the function normalize(), or a regular expression for patterns
  *		to be removed from the value.
  *	 * $spec['cacheDuration']: the number of seconds a result from this source
@@ -61,10 +61,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  *		class forces $spec['sourceInfo']['source-name'] = $spec['name'].
  *	 * $spec['transformer']: a record transformer specification. This may be an
  *		instance of RecordTransformer, or an associative array specifying a
- *		record transformer which can then be created using 
- *		RecordTransformer::newRecordTransformer. In that case, 
+ *		record transformer which can then be created using
+ *		RecordTransformer::newRecordTransformer. In that case,
  *		$spec['transformer']['class'] must be the class name of the desired
- *		RecordTransformer implementation. Other entries in that array are 
+ *		RecordTransformer implementation. Other entries in that array are
  *		specific to the individual transformers.
  *
  * Options used by DataTransclusionHandler but ignored by DataTransclusionSource:
@@ -108,14 +108,14 @@ abstract class DataTransclusionSource {
 
 		if ( isset( $spec[ 'fieldNames' ] ) ) {
 			$this->fieldNames = self::splitList( $spec[ 'fieldNames' ] );
-		} else if ( isset( $spec[ 'fieldInfo' ] ) ) {
+		} elseif ( isset( $spec[ 'fieldInfo' ] ) ) {
 			$this->fieldNames = array_keys( $spec[ 'fieldInfo' ] );
 		} else {
 			$this->fieldNames = $this->keyFields;
 
 			if ( !empty( $this->fieldInfo ) ) {
 				$this->fieldNames = array_merge( $this->fieldNames, array_keys( $this->fieldInfo ) );
-			} 
+			}
 
 			$this->fieldNames = array_unique( $this->fieldNames );
 		}
@@ -149,7 +149,7 @@ abstract class DataTransclusionSource {
 
 	public function normalize( $key, $value, $norm = null ) {
 		if ( $norm );
-		else if ( isset( $this->fieldInfo[ $key ]['normalization'] ) ) {
+		elseif ( isset( $this->fieldInfo[ $key ]['normalization'] ) ) {
 			$norm = trim( $this->fieldInfo[ $key ]['normalization'] );
 		} else {
 			return $value;
@@ -157,9 +157,9 @@ abstract class DataTransclusionSource {
 
 		if ( is_object( $norm ) ) {
 			return $norm->normalize( $value );
-		} else if ( is_callable( $norm ) || preg_match( '/^(\w[\w\d]*::)?(\w[\w\d]*)$/', $norm ) ) {
+		} elseif ( is_callable( $norm ) || preg_match( '/^(\w[\w\d]*::)?(\w[\w\d]*)$/', $norm ) ) {
 			return call_user_func( $norm, $value );
-		} else if ( is_array( $norm ) ) {
+		} elseif ( is_array( $norm ) ) {
 			return preg_replace( $norm[0], $norm[1], $value );
 		} else {
 			return preg_replace( $norm, '', $value );
@@ -168,24 +168,24 @@ abstract class DataTransclusionSource {
 
 	public function convert( $key, $value, $format = null ) {
 		if ( $format );
-		else if ( isset( $this->fieldInfo[ $key ]['type'] ) ) {
+		elseif ( isset( $this->fieldInfo[ $key ]['type'] ) ) {
 			$format = strtolower( trim( $this->fieldInfo[ $key ]['type'] ) );
 		} else {
 			return (string)$value;
 		}
-		
+
 		if ( $format == 'int' ) {
 			return (int)$value;
-		} else if ( $format == 'decimal' || $format == 'float' ) {
+		} elseif ( $format == 'decimal' || $format == 'float' ) {
 			return (float)$value;
-		} else if ( $format == 'json' || $format == 'js' ) {
-			return DataTransclusionSource::decodeJson( $value ); 
-		} else if ( $format == 'wddx' ) {
-			return DataTransclusionSource::decodeWddx( $value ); 
-		} else if ( $format == 'xml' ) {
+		} elseif ( $format == 'json' || $format == 'js' ) {
+			return DataTransclusionSource::decodeJson( $value );
+		} elseif ( $format == 'wddx' ) {
+			return DataTransclusionSource::decodeWddx( $value );
+		} elseif ( $format == 'xml' ) {
 			return DataTransclusionSource::parseXml( $value ); #WARNING: returns DOM
-		} else if ( $format == 'php' || $format == 'pser' ) {
-			return DataTransclusionSource::decodeSerialized( $value ); 
+		} elseif ( $format == 'php' || $format == 'pser' ) {
+			return DataTransclusionSource::decodeSerialized( $value );
 		} else {
 			return (string)$value;
 		}
@@ -220,7 +220,7 @@ abstract class DataTransclusionSource {
 
 	public function fetchRecord( $field, $value, $options = null ) {
 		$value = $this->normalize( $field, $value );
-		$value = $this->convert( $field, $value ); 
+		$value = $this->convert( $field, $value );
 
 		$rec = $this->fetchRawRecord( $field, $value, $options );
 
@@ -232,16 +232,16 @@ abstract class DataTransclusionSource {
 	}
 
 	public static function decodeSerialized( $raw ) {
-		return unserialize( $raw ); 
+		return unserialize( $raw );
 	}
 
 	public static function decodeJson( $raw ) {
 		$raw = preg_replace( '/^\s*(var\s)?\w([\w\d]*)\s+=\s*|\s*;\s*$/sim', '', $raw);
-		return FormatJson::decode( $raw, true ); 
+		return FormatJson::decode( $raw, true );
 	}
 
 	public static function decodeWddx( $raw ) {
-		return wddx_unserialize( $raw ); 
+		return wddx_unserialize( $raw );
 	}
 
 	public static function parseXml( $raw ) {
@@ -249,7 +249,7 @@ abstract class DataTransclusionSource {
 		$dom->loadXML( $raw );
 
 		#NOTE: returns a DOM, RecordTransformer must be aware!
-		return $dom->documentElement; 
+		return $dom->documentElement;
 	}
 }
 
@@ -302,30 +302,30 @@ class CachingDataTransclusionSource extends DataTransclusionSource {
 
 	public function fetchRecord( $field, $value, $options = null ) {
 		global $wgDBname, $wgUser;
-		
+
 		$k = "$field=$value";
 		if ( $options ) {
 			$k .= "&" . sha1( var_export( $options, false ) );
 		}
 
 		$cacheKey = "$wgDBname:DataTransclusion(" . $this->getName() . ":$k)";
-		
+
 		$rec = $this->cache->get( $cacheKey );
-		
+
 		if ( !$rec ) {
 			wfDebugLog( 'DataTransclusion', "fetching fresh record for $field=$value\n" );
 			$rec = $this->source->fetchRecord( $field, $value, $options );
-			
+
 			if ( $rec ) { // XXX: also cache negatives??
 				$duration = $this->getCacheDuration();
-				
+
 				wfDebugLog( 'DataTransclusion', "caching record for $field=$value for $duration sec\n" );
-				$this->cache->set( $cacheKey, $rec, $duration ) ; 
+				$this->cache->set( $cacheKey, $rec, $duration ) ;
 			}
 		} else {
 			wfDebugLog( 'DataTransclusion', "using cached record for $field=$value\n" );
 		}
-		
+
 		return $rec;
 	}
 }

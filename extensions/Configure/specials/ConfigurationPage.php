@@ -396,7 +396,7 @@ abstract class ConfigurationPage extends SpecialPage {
 			if( !$data['userwiki'] || !$data['username'] ) {
 				$userLink = '';
 				$username = '';
-			} else if ( $data['userwiki'] == wfWikiId() ) {
+			} elseif ( $data['userwiki'] == wfWikiId() ) {
 				$userLink = $skin->link( Title::makeTitle( NS_USER, $data['username'] ), htmlspecialchars( $data['username'] ) );
 				$username = $data['username'];
 			} elseif ( $wiki = WikiMap::getWiki( $data['userwiki'] ) ) {
@@ -595,7 +595,7 @@ abstract class ConfigurationPage extends SpecialPage {
 								}
 								if ( $val )
 									$settings[$name][$group][$right] = true;
-							} else if ( $wgRequest->getCheck( $id ) ) {
+							} elseif ( $wgRequest->getCheck( $id ) ) {
 								$settings[$name][$group][] = $right;
 							}
 						}
@@ -1378,7 +1378,7 @@ abstract class ConfigurationPage extends SpecialPage {
 		}
 
 		$row .= Html::openElement( 'table', array( 'class' => 'configure-table-promotion' ) );
-		
+
 		$row .= Html::rawElement( 'tr', array(), Html::element( 'th', array(), wfMsg( 'configure-condition-name' ) ) .
 			Html::element( 'th', array(), wfMsg( 'configure-condition-requirement' ) ) )."\n";
 		foreach ( $conds as $condName => $condType ) {
@@ -1431,7 +1431,7 @@ abstract class ConfigurationPage extends SpecialPage {
 	 */
 	public static function buildGroupSettingRow( $conf, $type, $all, $allowed, $group, $levs ){
 		$attr = ( !$allowed ) ? array( 'disabled' => 'disabled' ) : array();
-		
+
 		$row = Html::openElement( 'div', array( 'class' => 'configure-biglist '.$type.'-element' ) ) . Html::openElement( 'ul' );
 		foreach ( $all as $right ) {
 			if ( $type == 'group-bool' )

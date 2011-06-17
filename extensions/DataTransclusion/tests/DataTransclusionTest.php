@@ -4,24 +4,24 @@ if ( !defined('MW_PHPUNIT_TEST') ) {
 		echo( "This file cannot be run from the web.\n" );
 		die( 1 );
 	}
-	
+
 	if ( getenv( 'MW_INSTALL_PATH' ) ) {
 		$IP = getenv( 'MW_INSTALL_PATH' );
 	} else {
 		$dir = dirname( __FILE__ );
-	
+
 		if ( file_exists( "$dir/../../LocalSettings.php" ) ) $IP = "$dir/../..";
-		else if ( file_exists( "$dir/../../../LocalSettings.php" ) ) $IP = "$dir/../../..";
-		else if ( file_exists( "$dir/../../phase3/LocalSettings.php" ) ) $IP = "$dir/../../phase3";
-		else if ( file_exists( "$dir/../../../phase3/LocalSettings.php" ) ) $IP = "$dir/../../../phase3";
+		elseif ( file_exists( "$dir/../../../LocalSettings.php" ) ) $IP = "$dir/../../..";
+		elseif ( file_exists( "$dir/../../phase3/LocalSettings.php" ) ) $IP = "$dir/../../phase3";
+		elseif ( file_exists( "$dir/../../../phase3/LocalSettings.php" ) ) $IP = "$dir/../../../phase3";
 		else $IP = $dir;
 	}
-	
+
 	require_once( "$IP/maintenance/commandLine.inc" );
-	
+
 	// requires PHPUnit 3.4
 	require_once 'PHPUnit/Framework.php';
-	
+
 	error_reporting( E_ALL );
 }
 
@@ -46,7 +46,7 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 			return Parser::statelessFetchTemplate( $title, $parser );
 		}
 	}
-	
+
 	static function setUpBeforeClass() {
 		global $wgTitle, $wgParser;
 		$wgTitle = Title::newFromText( "Test" );
@@ -60,7 +60,7 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 		$wgParser->clearState();
 		$wgParser->setTitle( $wgTitle );
 	}
-	
+
 	function testErrorMessage() {
 		$m = DataTransclusionHandler::errorMessage( 'datatransclusion-test-wikitext', false );
 		$this->assertEquals( '<span class="error datatransclusion-test-wikitext">some <span class="test">html</span> and \'\'markup\'\'.</span>', $m );
@@ -130,12 +130,12 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 
 		$src = DataTransclusionHandler::getDataSource( 'FOO' );
 		$this->assertTrue( $src instanceof FakeDataTransclusionSource );
-		
+
 		$rec = $src->fetchRecord( 'id', 3 );
 		$this->assertEquals( 3, $rec['id'] );
 		$this->assertEquals( 'foo', $rec['name'] );
 		$this->assertEquals( 'test 1', $rec['info'] );
-		
+
 		$rec = $src->fetchRecord( 'name', 'bar' );
 		$this->assertEquals( 5, $rec['id'] );
 		$this->assertEquals( 'bar', $rec['name'] );
@@ -150,12 +150,12 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 		$src = DataTransclusionHandler::getDataSource( 'BAR' );
 		$this->assertTrue( $src instanceof FakeDataTransclusionSource );
 		$this->assertEquals( 'BAR', $src->getName() );
-		
+
 		$rec = $src->fetchRecord( 'id', 3 );
 		$this->assertEquals( 3, $rec['id'] );
 		$this->assertEquals( 'foo', $rec['name'] );
 		$this->assertEquals( 'test 1', $rec['info'] );
-		
+
 		$rec = $src->fetchRecord( 'name', 'bar' );
 		$this->assertEquals( 5, $rec['id'] );
 		$this->assertEquals( 'bar', $rec['name'] );
@@ -177,7 +177,7 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 			'fieldNames' => 'id,name,info',
 			'defaultKey' => 'id'
 		);
-		
+
 		$wgDataTransclusionSources[ 'FOO' ] = $spec;
 
 		# failure mode: no source given
@@ -219,11 +219,11 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 		# success: render record
 		$res = DataTransclusionHandler::handleRecordTransclusion( "Test", array( 'source' => 'FOO', 'id' => 3 ), $wgParser, false, "'''{{{id}}}'''|{{{name}}}|{{{info}}}" );
 		$this->assertEquals( '\'\'\'3\'\'\'|foo|test&X', $res );
-		
+
 		# success: render record (find by name)
 		$res = DataTransclusionHandler::handleRecordTransclusion( "Test", array( 'source' => 'FOO', 'name' => 'foo'), $wgParser, false, "'''{{{id}}}'''|{{{name}}}|{{{info}}}" );
 		$this->assertEquals( '\'\'\'3\'\'\'|foo|test&X', $res );
-		
+
 		# success: render record (as HTML)
 		$res = DataTransclusionHandler::handleRecordTransclusion( "Test", array( 'source' => 'FOO', 'id' => 3 ), $wgParser, true, "'''{{{id}}}'''|{{{name}}}|{{{info}}}" );
 		$this->assertEquals( $res, '<b>3</b>|foo|test&X' ); // FIXME: & should have been escaped to &amp; here, no? why not?
@@ -240,7 +240,7 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 			'fieldNames' => 'id,name,info,url,evil',
 			'defaultKey' => 'id',
 		);
-		
+
 		$wgDataTransclusionSources[ 'FOO' ] = $spec;
 
 		global $wgParser;
@@ -254,7 +254,7 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 		$html = $wgParser->getOutput()->getText();
 		$this->assertEquals( '<p>xx FOO:<b>3</b>|foo|Hallo|&lt;test&gt;&amp;&#91;&#91;X&#93;&#93;&#39;|<a href="http://test.org/" class="external text" rel="nofollow">link</a>|[javascript:alert("evil") click me] xx'."\n".'</p>', $html ); // XXX: should be more lenient wrt whitespace
 		$templates = $wgParser->getOutput()->getTemplates();
-		$this->assertTrue( isset( $templates[ NS_TEMPLATE ]['Test'] ) ); 
+		$this->assertTrue( isset( $templates[ NS_TEMPLATE ]['Test'] ) );
 	}
 
 	function testHandleRecordTag() {
@@ -268,7 +268,7 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 			'fieldNames' => 'id,name,info,url,evil',
 			'defaultKey' => 'id'
 		);
-		
+
 		$wgDataTransclusionSources[ 'FOO' ] = $spec;
 
 		global $wgParser;
@@ -279,10 +279,10 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 		$text = 'xx <record source="FOO" id=3 extra="Hallo">Test</record> xx';
 		$wgParser->parse( $text, $title, $options );
 
-		$html = $wgParser->getOutput()->getText();      
+		$html = $wgParser->getOutput()->getText();
 		$this->assertEquals( '<p>xx FOO:<b>3</b>|foo|Hallo|&lt;test&gt;&amp;&#91;&#91;X&#93;&#93;&#39;|<a href="http://test.org/" class="external text" rel="nofollow">link</a>|[javascript:alert("evil") click me] xx'."\n".'</p>', $html ); // XXX: should be more lenient wrt whitespace
 		$templates = $wgParser->getOutput()->getTemplates();
-		$this->assertTrue( isset( $templates[ NS_TEMPLATE ]['Test'] ) ); 
+		$this->assertTrue( isset( $templates[ NS_TEMPLATE ]['Test'] ) );
 	}
 
 	function testNormalizeRecord() {
@@ -340,7 +340,7 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 			'cacheDuration' => 2,
 			'cache' => new HashBagOStuff(),
 		);
-		
+
 		$wgDataTransclusionSources[ 'FOO' ] = $spec;
 
 		$src = DataTransclusionHandler::getDataSource( 'FOO' );
@@ -379,7 +379,7 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 
 		$source = new DBDataTransclusionSource( $spec );
 		$sql = $source->getQuery( 'name', 'foo"' );
-		
+
 		$this->assertTrue( preg_match( '/^SELECT \* FROM foo/', $sql ) === 1 );
 		$this->assertTrue( preg_match( '/GROUP BY id$/', $sql ) === 1 );
 		$this->assertTrue( preg_match( "/WHERE \\( *name *= *'foo\\\\\"' *\\)/", $sql ) === 1 );
@@ -417,10 +417,10 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 		$u = $source->getRecordURL( 'name', 'foo&bar', array( 'x' => '42', 'y' => 57 ) );
 		$this->assertEquals( 'http://acme.com/foo%26bar?x=42&y=57', $u );
 
-		$rec = array( 
-			"name" => array( 'type' => 'string', 'value' => "foo" ), 
-			"id" => 3,  
-			"info" => array( 'type' => 'string', 'value' => "test X" ), 
+		$rec = array(
+			"name" => array( 'type' => 'string', 'value' => "foo" ),
+			"id" => 3,
+			"info" => array( 'type' => 'string', 'value' => "test X" ),
 		);
 
 		$data = array( 'response' => array(
@@ -496,11 +496,11 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 
 if ( !defined('MW_PHPUNIT_TEST') ) {
 	$wgShowExceptionDetails = true;
-	
+
 	DataTransclusionTest::setUpBeforeClass();
 	$t = new DataTransclusionTest();
 	$t->setUp();
-	
+
 	$t->testErrorMessage();
 	$t->testSanitizeValue();
 	$t->testNormalizeRecord();
@@ -514,6 +514,6 @@ if ( !defined('MW_PHPUNIT_TEST') ) {
 	$t->testDBDataTransclusionSource();
 	$t->testWebDataTransclusionSource();
 	$t->testXmlDataTransclusionSource();
-	
+
 	echo "OK.\n";
 }

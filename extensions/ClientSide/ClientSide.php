@@ -235,7 +235,7 @@ abstract class CsJs {
 		foreach( $functions as $name => $arguments ) {
 			if ( is_int( $name ) ) {
 				$jsFunctions[] = sprintf( '%s()', $arguments );
-			} else if ( is_array( $arguments ) ) {
+			} elseif ( is_array( $arguments ) ) {
 				$jsFunctions[] = sprintf(
 					'%s(%s)', $name, implode( ',', $arguments )
 				);
@@ -378,7 +378,7 @@ abstract class CsJs {
 			return sprintf(
 				'function(%s){%s}', implode( ',', $arguments ), $body
 			);
-		} else if ( $arguments !== null ) {
+		} elseif ( $arguments !== null ) {
 			return sprintf( 'function(%s){%s}', $arguments, $body );
 		} else {
 			return sprintf( 'function(){%s}', $body );
