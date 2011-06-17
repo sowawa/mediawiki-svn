@@ -76,8 +76,8 @@ $.flow = {
 						.replace( '>', '&gt;' )
 						.replace( '\'', '&apos;' )
 						.replace( '"', '&quot;' )
-						.replace( '\n', '<span class="editSurface-whitespace">&#9166;</span>' )
-						.replace( '\t', '<span class="editSurface-whitespace">&#8677;</span>' );
+						.replace( '\n', '<span class="editSurface-whitespace">\\n</span>' )
+						.replace( '\t', '<span class="editSurface-whitespace">\\t</span>' );
 				word.html += charHtml;
 				if ( typeof $.flow.charCache[char] === 'undefined' ) {
 					// Cache miss
