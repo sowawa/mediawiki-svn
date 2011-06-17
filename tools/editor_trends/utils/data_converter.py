@@ -12,13 +12,11 @@ See the GNU General Public License for more details, at
 http://www.fsf.org/licenses/gpl.html
 '''
 
-
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
 __email__ = 'dvanliere at gmail dot com'
 __date__ = '2011-01-24'
 __version__ = '0.1'
 
-import datetime
 import datetime
 import math
 
@@ -60,7 +58,7 @@ def add_months_to_datacontainer(datacontainer, datatype):
     for dc in datacontainer:
         datacontainer[dc] = {}
         for x in xrange(1, 13):
-            datacontainer[dc][x] = add_datatype(datatype)
+            datacontainer[dc][str(x)] = add_datatype(datatype)
 
     return datacontainer
 
@@ -69,7 +67,7 @@ def add_years_to_datacontainer(first_year, final_year, datacontainer, datatype):
     for dc in datacontainer:
         datacontainer[dc] = {}
         for x in range(first_year, final_year):
-            datacontainer[dc][x] = datatype
+            datacontainer[dc][str(x)] = datatype
     return datacontainer
 
 
