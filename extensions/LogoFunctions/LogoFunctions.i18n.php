@@ -98,11 +98,12 @@ $messages['eu'] = array(
 
 /** French (Français)
  * @author Jean-Frédéric
+ * @author Od1n
  * @author Peter17
  */
 $messages['fr'] = array(
 	'logofunctions-desc' => 'Ajoute une fonction au parseur pour définir le logo du wiki',
-	'logofunctions-filenotexist' => 'Erreur: [[File:$1]] n’existe pas',
+	'logofunctions-filenotexist' => 'Erreur : [[File:$1]] n’existe pas',
 );
 
 /** Franco-Provençal (Arpetan)

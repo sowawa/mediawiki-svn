@@ -1894,10 +1894,12 @@ Ang makukuha ay "payak", "pangkaraniwan" at "wiki".',
 );
 
 /** Turkish (Türkçe)
+ * @author 82-145
  * @author Emperyan
  * @author Karduelis
  */
 $messages['tr'] = array(
+	'article-comments-desc' => 'İçerik sayfalarında yorum bölümlerini devreye sokar',
 	'article-comments-title-string' => 'başlık',
 	'article-comments-name-string' => 'Adı',
 	'article-comments-name-field' => 'Adı (gerekli)',

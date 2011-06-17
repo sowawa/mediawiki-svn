@@ -50,6 +50,13 @@ $messages['qqq'] = array(
 * $2 is the number of pages in the previous column',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|bladsy|bladsye}}',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

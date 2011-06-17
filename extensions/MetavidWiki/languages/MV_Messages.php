@@ -7112,6 +7112,7 @@ $messages['mzn'] = array(
 
 /** Nahuatl (Nāhuatl)
  * @author Fluence
+ * @author Teòtlalili
  */
 $messages['nah'] = array(
 	'mv_remove_reason' => 'Tlapololiztli īxtlamatiliztli:',
@@ -7123,11 +7124,11 @@ $messages['nah'] = array(
 	'mv_end_desc' => 'Ihcuāc motlamia',
 	'mv_viewnext' => 'Tiquittāz ($1)',
 	'mv_viewprevnext' => 'Tiquittāz ($1) ($2)',
-	'mv_search_category' => 'Neneuhcāyōtl',
+	'mv_search_category' => 'Tlaìxmatkàtlàlilòtl',
 	'mv_search_and' => 'īhuān',
 	'mv_search_or' => 'nozo',
 	'mv_search_not' => 'ahmo',
-	'mv_category' => 'neneuhcāyōtl',
+	'mv_category' => 'tlaìxmatkàtlàlilòtl',
 );
 
 /** Nedersaksisch (Nedersaksisch)
@@ -9777,7 +9778,7 @@ $messages['sr-ec'] = array(
 	'mv_add_stream_submit' => 'Додај стрим',
 	'mv_no_stream_files' => 'Нема постојећих стрим фајлова',
 	'mv_edit_stream_files' => 'Измени фајлове стрима',
-	'mv_path_type_label' => 'тип путање',
+	'mv_path_type_label' => 'врста путање',
 	'mv_duration_label' => 'Трајање',
 	'mv_file_desc_label' => 'порука са описом стрима',
 	'mv_delete_stream_file' => 'обриши референцу стрим фајла',

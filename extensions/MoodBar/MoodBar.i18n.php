@@ -30,6 +30,13 @@ $messages['de'] = array(
 	'moodbar-desc' => 'Ermöglicht es Benutzern ihre aktuelle Stimmung dem Seitenbetreiber mitzuteilen',
 );
 
+/** Spanish (Español)
+ * @author Fitoschido
+ */
+$messages['es'] = array(
+	'moodbar-desc' => 'Permite a usuarios específicos enviar su «estado de ánimo» hacia el operador del sitio',
+);
+
 /** French (Français)
  * @author Crochet.david
  */

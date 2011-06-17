@@ -109,6 +109,13 @@ $messages['ksh'] = array(
 	'elm-easyref-close' => 'Zohmaache',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'elm-easyref-close' => 'Bigre',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -22,10 +22,12 @@ $messages['af'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author Jim-by
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'oracletextsearch' => 'OracleTextSearch',
+	'oracletextsearch-desc' => 'Пошук у зьмесьце/мэтазьвестках загружаных файлаў з выкарыстаньнем тэкставай індэксацыі Oracle',
 );
 
 /** German (Deutsch)
@@ -34,6 +36,14 @@ $messages['be-tarask'] = array(
 $messages['de'] = array(
 	'oracletextsearch' => '„Oracle TEXT“-Suche',
 	'oracletextsearch-desc' => 'Ermöglicht das Durchsuchen von Inhalt und Metadaten hochgeladener Dateien unter Verwendung der „Oracle TEXT“-Indexierung',
+);
+
+/** Spanish (Español)
+ * @author Fitoschido
+ */
+$messages['es'] = array(
+	'oracletextsearch' => 'OracleTextSearch',
+	'oracletextsearch-desc' => 'Buscar contenido y metadatos de los archivos subidos mediante la indización de texto de Oracle',
 );
 
 /** Galician (Galego)

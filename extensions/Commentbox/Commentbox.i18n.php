@@ -645,7 +645,11 @@ Häß De en Aamerkung zoh heh dä Sigg? Donn se heh enjävve, udder <span class=
  * @author George Animal
  */
 $messages['ku-latn'] = array(
+	'commentbox-savebutton' => 'Şîroveyê tomar bike',
 	'commentbox-name' => 'Nav:',
+	'commentbox-log' => 'Şîroveyên nû',
+	'commentbox-first-comment-heading' => '== Şîrove ==',
+	'commentbox-error-page-nonexistent' => 'Ev rûpel tune ye!',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

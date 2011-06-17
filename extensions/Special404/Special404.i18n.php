@@ -122,10 +122,18 @@ Snaź coš se slědujucy bok woglědaś:
 );
 
 /** Spanish (Español)
+ * @author Fitoschido
  * @author Locos epraix
  */
 $messages['es'] = array(
+	'special404-desc' => 'Proporciona un destino para los errores 404',
 	'error404' => '404 No encontrado',
+	'special404-body' => 'No se pudo encontrar la URL solicitada.
+
+¿Quizás buscabas {{fullurl:$1}}?
+
+Tal vez te gustaría ir a:
+* [[{{MediaWiki:Mainpage}}|La página principal]]',
 );
 
 /** French (Français)

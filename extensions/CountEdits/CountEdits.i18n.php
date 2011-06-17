@@ -904,10 +904,11 @@ Donn ene Metmaache nit doh de Aanzahl fun singe Änderunge aam Wiki enstufe!",
 /** Kurdish (Latin) (Kurdî (Latin))
  * @author Bangin
  * @author Erdal Ronahi
+ * @author George Animal
  */
 $messages['ku-latn'] = array(
 	'countedits' => 'Guherandinan bihesbîne',
-	'countedits-username' => 'Navî bikarhêner:',
+	'countedits-username' => 'Navê bikarhêner:',
 	'countedits-ok' => 'OK',
 	'countedits-nosuchuser' => 'Li vê derê ne bikarhênerek bi navê $1 heye.',
 	'countedits-resultheader' => 'Encamên ji bo $1',

@@ -12862,6 +12862,14 @@ $messages['ksh'] = array(
 	'configure-setting-wgUDPProfilerPort' => 'De „Pooz“ (<code lang="en">port</code>) för dat Projramm, öm övver <i lang="en">UDP</i> de Projramme ier Leißdung ze beshtemme (<code lang="en">UDP-profiler</code>)',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'configure-setting-wgArticleRobotPolicies-key' => 'Sernavê rûpelê',
+	'configure-setting-wgDebugLogGroups-value' => 'Dosye',
+);
+
 /** Latin (Latina)
  * @author Omnipaedista
  */

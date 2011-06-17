@@ -398,10 +398,11 @@ $messages['mzn'] = array(
 
 /** Nahuatl (Nāhuatl)
  * @author Fluence
+ * @author Teòtlalili
  */
 $messages['nah'] = array(
 	'catboxattop-desc' => 'Ticcēntilīz in neneuhcāyōcaxitl ahco in zāzanilpan',
-	'catboxattop-categories' => 'Neneuhcāyōtl',
+	'catboxattop-categories' => 'Tlaìxmatkàtlàlilòmë',
 );
 
 /** Dutch (Nederlands)

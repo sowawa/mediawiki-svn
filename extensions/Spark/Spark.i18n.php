@@ -37,6 +37,14 @@ $messages['de'] = array(
 	'spark-missing-query' => 'Es muss eine eine Abfrage mit dem Parameter „data-spark-query“ erstellt werden.',
 );
 
+/** Spanish (Español)
+ * @author Fitoschido
+ */
+$messages['es'] = array(
+	'spark-desc' => "Añade una etiqueta <code><nowiki><spark /></nowiki></code> que permite incrustar ''mash-ups'' de [http://km.aifb.kit.edu/sites/spark/ Spark]. La biblioteca spark fue creada por Denny Vrandecic y Andreas Harth.",
+	'spark-missing-query' => 'Es necesario especificar una consulta con el parámetro «data-spark-query».',
+);
+
 /** French (Français)
  * @author Sherbrooke
  */

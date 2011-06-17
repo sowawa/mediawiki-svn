@@ -48,6 +48,13 @@ $messages['gl'] = array(
 	'semanticgraph-desc' => 'Permite a visualización de datos estruturados que foron almacenados a través de Semantic MediaWiki en forma de gráficas',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'semanticgraph-desc' => 'תצוגה של נתונים מבניים שמאוחסנים באמצעות מדיה־ויקי סמנטית בצורת תרשימים',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

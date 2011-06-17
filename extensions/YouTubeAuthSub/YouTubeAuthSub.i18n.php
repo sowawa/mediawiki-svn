@@ -2387,13 +2387,14 @@ $messages['myv'] = array(
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  * @author Ricardo gs
+ * @author Teòtlalili
  */
 $messages['nah'] = array(
 	'youtubeauthsub' => 'Videoquetza īhuīc YouTube',
 	'youtubeauthsub_title' => 'Tōcāitl',
 	'youtubeauthsub_password' => 'YouTube tlahtōlichtacāyōtl',
 	'youtubeauthsub_username' => 'YouTube tlatequitiltilīltōcāitl',
-	'youtubeauthsub_category' => 'Neneuhcāyōtl',
+	'youtubeauthsub_category' => 'Tlaìxmatkàtlàlilòtl',
 	'youtubeauthsub_submit' => 'Tiquihuāz',
 	'youtubeauthsub_uploadbutton' => 'Ticquetzāz',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.

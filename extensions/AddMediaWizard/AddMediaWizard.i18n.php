@@ -612,10 +612,12 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author 82-145
  * @author Joseph
  */
 $messages['tr'] = array(
 	'addmediawizard-desc' => 'Ortam ekleme sihirbazı, Kaltura ve Vikimedya Kuruluşu ortaklığıyla geliştirilmiştir',
+	'addmediawizard-loading' => 'Ortam ekleme sihirbazı yükleniyor',
 );
 
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))

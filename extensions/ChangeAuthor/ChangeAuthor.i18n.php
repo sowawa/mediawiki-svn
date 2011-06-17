@@ -1379,6 +1379,13 @@ un kei eije Fommolaa.',
 	'right-changeauthor' => 'Dä Metmaacher ußwääßelle, dä en Version jemaat hät',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'changeauthor-comment' => 'Şîrove:',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Les Meloures
  * @author Robby

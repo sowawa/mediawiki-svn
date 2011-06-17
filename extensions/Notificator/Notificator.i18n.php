@@ -134,6 +134,32 @@ $messages['de'] = array(
 	'notificator-notified-already' => '$1 wurde bereits zu dieser Seite oder Seitenänderung benachrichtigt.',
 );
 
+/** Spanish (Español)
+ * @author Fitoschido
+ */
+$messages['es'] = array(
+	'notificator' => 'Notificador',
+	'notificator-desc' => 'Notifica a alguien por correo electrónico sobre cambios en una página cuando se hace clic en un botón de esa página',
+	'notificator-db-table-does-not-exist' => 'La tabla «notificator» de la base de datos no existe. El script de mantenimiento update.php debe ejecutarse antes de poder utilizar la extensión Notificator.',
+	'notificator-e-mail-address' => 'dirección de correo electrónico',
+	'notificator-notify' => 'Notificar',
+	'notificator-notify-address-or-name' => 'Notificar a $1',
+	'notificator-revs-not-from-same-title' => 'Los ID de revisiones no pertenecen al mismo título/página',
+	'notificator-return-to' => 'Volver a',
+	'notificator-special-page-accessed-directly' => 'No se puede acceder a esta página especial directamente. Está destinada a ser utilizada a través de un botón de Notificador.',
+	'notificator-e-mail-address-invalid' => 'La dirección de correo electrónico proporcionada no es válida.',
+	'notificator-notification-not-sent' => 'Notificación <em>no</em> enviada.',
+	'notificator-change-tag' => 'cambio',
+	'notificator-new-tag' => 'nuevo',
+	'notificator-notification-text-changes' => '$1 quiere informarle acerca de los siguientes cambios en $2:',
+	'notificator-notification-text-new' => '$1 quiere informarle sobre $2.',
+	'notificator-following-e-mail-sent-to' => 'Se ha enviado el correo electrónico siguiente a <em>$1</em>:',
+	'notificator-subject' => 'Asunto:',
+	'notificator-error-sending-e-mail' => 'Hubo un error al enviar el correo electrónico de notificación a <em>$1</em>.',
+	'notificator-error-parameter-missing' => 'Error: Falta un parámetro.',
+	'notificator-notified-already' => '$1 ha sido notificado sobre esta página o cambio de página antes.',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
