@@ -174,10 +174,12 @@ class VectorHooks {
 		}
 		return true;
 	}
-	
+
+	/**
+	 * @param $vars array
+	 * @return bool
+	 */
 	public static function makeGlobalVariablesScript( &$vars ) {
-		global $wgVectorFeatures;
-		
 		// Build and export old-style wgVectorEnabledModules object for back compat
 		$enabledModules = array();
 		foreach ( self::$features as $name => $feature ) {
