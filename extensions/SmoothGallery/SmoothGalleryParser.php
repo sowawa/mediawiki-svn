@@ -26,7 +26,7 @@ class SmoothGalleryParser {
 						"delay" => "9000", "showarrows" => true, "showinfopane" => true,
 						"slideinfozoneslide" => true, "slideinfozoneopacity" => "0.7", "fallback" => "gallery",
 						"nolink" => false );
-						
+
 		if ( isset( $argv["height"] ) && is_numeric( $argv["height"] ) ) {
 			$this->argumentArray["height"] = $argv["height"] . "px";
 		}
@@ -164,7 +164,7 @@ class SmoothGalleryParser {
 
 			if ( $ns == NS_IMAGE ) {
 				$galleryArray = $this->parseImage( $title, $parser, $galleryArray, $img_desc );
-			} else if ( $ns == NS_CATEGORY ) {
+			} elseif ( $ns == NS_CATEGORY ) {
 				// list images in category
 				$cat_images = $this->smoothGalleryImagesByCat( $title );
 				if ( $cat_images ) {

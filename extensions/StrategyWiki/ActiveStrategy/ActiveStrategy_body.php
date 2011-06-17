@@ -3,13 +3,13 @@
 class ActiveStrategy {
 	static function getTaskForces( $limit ) {
 		$dbr = wfGetDB( DB_SLAVE );
-		
+
 		$options = array();
-		
+
 		if ($limit) {
 			$options['LIMIT'] = $limit;
 		}
-		
+
 		$res = $dbr->select(
 			array( "page", 'categorylinks',
 				'categorylinks as finishedcategory' ),
@@ -42,13 +42,13 @@ class ActiveStrategy {
 						),
 					),
 			) );
-		
+
 		return $res;
 	}
-	
+
 	static function getProposals() {
 		$dbr = wfGetDB( DB_SLAVE );
-		
+
 		$res = $dbr->select(
 			array( "page",
 				'categorylinks as finishedcategory' ),
@@ -73,7 +73,7 @@ class ActiveStrategy {
 						),
 					),
 			) );
-		
+
 		return $res;
 	}
 
@@ -97,15 +97,15 @@ class ActiveStrategy {
 		$colors = null;
 		$color = null;
 		$style = '';
-		
+
 		if ( isset( $wgActiveStrategyColors[$sort] ) ) {
 			$colors = $wgActiveStrategyColors[$sort];
 		} else {
 			$colors = $wgActiveStrategyColors['default'];
 		}
-		
+
 		ksort($colors);
-		
+
 		foreach( $colors as $threshold => $curColor ) {
 			if ( $number >= $threshold ) {
 				$color = $curColor;
@@ -113,38 +113,38 @@ class ActiveStrategy {
 				break;
 			}
 		}
-		
+
 		if ($color) {
 			$style = 'padding-left: 3px; border-left: 1em solid #'.$color;
 		}
-		
+
 		if ( $sort == 'members' ) {
 			$pageLink .= ' ('.wfMsg( 'nmembers', $number ).')';
 		}
-		
+
 		$pageLink .= " <!-- $number -->";
-		
+
 		if ($style) {
 			$item = Xml::tags( 'span', array( 'style' => $style ), $pageLink );
 		} else {
 			$item = $pageLink;
 		}
-		
+
 		$item .= "<br/>";
-		
+
 		return $item;
 	}
-	
+
 	static function getTaskForceName( $text ) {
 		$text = substr( $text, strpos($text, '/') + 1 );
-		
+
 		if ( strpos( $text, '/' ) ) {
 			$text = substr( $text, 0, strpos( $text, '/' ) );
 		}
-		
+
 		return $text;
 	}
-	
+
 	static function getTaskForcePageConditions( $taskForces, &$tables, &$fields, &$conds,
 							&$joinConds, &$lookup ) {
 		$categories = array();
@@ -155,65 +155,65 @@ class ActiveStrategy {
 			$categories[$tempTitle->getDBkey()."_task_force"] = $row->tf_name;
 			$categories[$tempTitle->getDBkey()."_Task_Force"] = $row->tf_name;
 		}
-		
+
 		$tables[] = 'categorylinks';
 		$fields[] = 'categorylinks.cl_to AS keyfield';
 		$conds['categorylinks.cl_to'] = array_keys($categories);
 		$joinConds = array( 'categorylinks' =>
 				array( 'left join', 'categorylinks.cl_from=page.page_id' ) );
-				
+
 		$lookup = $categories;
 	}
-	
+
 	static function getProposalPageConditions( &$tables, &$fields, &$conds,
 							&$join_conds, &$lookup ) {
 		$fields[] = 'page.page_title AS keyfield';
 		$conds['page_namespace'] = 106;
-		
+
 		$tables[] = 'categorylinks as finishedcategory';
 		$conds[] = 'finishedcategory.cl_from IS NULL';
 		$join_conds['categorylinks as finishedcategory'] =
 			array( 'left join', array( 'cl_from=page_id',
 				'cl_to' => 'Archived_Done' ) );
 	}
-	
+
 	static function getOutput( $args ) {
 		global $wgUser, $wgActiveStrategyPeriod;
-		
+
 		$html = '';
 		$db = wfGetDB( DB_MASTER );
 		$sk = $wgUser->getSkin();
 		$limit = null;
-		
+
 		if ( empty( $args['type'] ) ) {
 			$args['type'] = 'taskforce';
 		}
-		
+
 		$sortField = 'members';
-		
+
 		if ( isset($args['sort']) ) {
 			$sortField = $args['sort'];
 		}
-		
+
 		if ( isset( $args['max'] ) ) {
 			$limit = intval($args['max']);
 		}
-		
+
 		if ( $args['type'] == 'taskforce' ) {
 			$masterPages = self::getTaskForces( $limit );
 		}
-		
+
 		$tables = array( );
 		$fields = array( );
 		$conds = array();
 		$joinConds = array();
 		$options = array( 'GROUP BY' => 'keyfield', 'ORDER BY' => 'value DESC' );
 		$lookup = NULL;
-		
+
 		if ( $limit ) {
 			$options['LIMIT'] = intval($limit);
 		}
-		
+
 		if ( $args['type'] == 'taskforce' ) {
 			self::getTaskForcePageConditions( $masterPages, $tables, $fields,
 								$conds, $joinConds, $lookup );
@@ -221,9 +221,9 @@ class ActiveStrategy {
 			self::getProposalPageConditions( $tables, $fields,
 							$conds, $joinConds, $lookup );
 		}
-		
+
 		$tables[] = 'page';
-		
+
 		if ( $sortField == 'edits' ) {
 			$cutoff = $db->timestamp( time() - $wgActiveStrategyPeriod );
 			$cutoff = $db->addQuotes( $cutoff );
@@ -239,7 +239,7 @@ class ActiveStrategy {
 							array( 'ug_user != 0', 'ug_user=rev_user',
 								'ug_group' => 'bot' ) );
 			$conds[] = 'ug_user IS NULL';
-			
+
 			// Include LQT posts
 			$tables[] = 'thread';
 			$joinConds['thread'] =
@@ -258,105 +258,105 @@ class ActiveStrategy {
 				array( 'pl_from=page_id', 'pl_namespace' => NS_USER ) );
 			$fields[] = 'count(distinct pl_title) AS value';
 		}
-		
+
 		$result = $db->select( $tables, $fields, $conds,
 					__METHOD__, $options, $joinConds );
-		
+
 		$count = array();
-		
+
 		foreach( $result as $row ) {
 			$number = $row->value;
 			$taskForce = $lookup ? $lookup[$row->keyfield] : $row->keyfield;
-			
+
 			if (!$lookup && $args['type'] == 'proposal') {
 				$title = Title::makeTitleSafe( 106, $taskForce );
 				$taskForce = $title->getPrefixedText();
 			}
-			
+
 			if ( isset( $count[$taskForce] ) ) {
 				$count[$taskForce] += $number;
-			} else if ( $number > 0 ) {
+			} elseif ( $number > 0 ) {
 				$count[$taskForce] = $number;
 			}
 		}
-		
+
 		foreach( $count as $taskForce => $number ) {
 			if ( $number > 0 ) {
 				$html .= self::formatResult( $sk, $taskForce, $number, $sortField, $args['type'] );
 			}
 		}
-		
+
 		$html = Xml::tags( 'div', array( 'class' => 'mw-activestrategy-output' ),
 				$html );
-		
+
 		return $html;
 	}
-	
+
 	static function handleSortByMembers( $taskForces ) {
 		global $wgUser;
-		
+
 		$memberCount = array();
 		$output = '';
 		$sk = $wgUser->getSkin();
-		
+
 		foreach( $taskForces as $row ) {
 			$title = Title::makeTitle( $row->page_namespace, $row->page_title );
 			$memberCount[$row->tf_name] =
 				self::getMemberCount( $title->getPrefixedText() );
 		}
-		
+
 		asort( $memberCount );
 		$memberCount = array_reverse( $memberCount );
-		
+
 		foreach( $memberCount as $name => $count ) {
 			if ( $count > 0 ) {
 				$output .= self::formatResult( $sk, $name, $count, 'members' );
 			}
 		}
-		
+
 		$output = Xml::tags( 'div', array( 'class' => 'mw-activestrategy-output' ),
 				$output );
-		
+
 		return $output;
 	}
-	
+
 	static function getMemberCount( $taskForce ) {
 		global $wgMemc;
-		
+
 		$key = wfMemcKey( 'taskforce-member-count', $taskForce );
 		$cacheVal = $wgMemc->get( $key );
-		
+
 		if ( $cacheVal > 0 || $cacheVal === 0 ) {
 			return $cacheVal;
 		}
-		
+
 		$article = new Article( Title::newFromText( $taskForce ) );
 
 		$dbr = wfGetDB( DB_SLAVE );
-		
+
 		$count = $dbr->selectField( 'pagelinks', 'count(*)',
 				array( 'pl_from' => $article->getId(),
 					'pl_namespace' => NS_USER ), __METHOD__ );
-		
+
 		$wgMemc->set( $key, $count, 86400 );
-		
+
 		return $count;
 	}
-	
+
 	// FIXME THIS IS TOTALLY AWFUL
 	static function parseMemberList( $text ) {
 		$regex = "/'''Members'''.*<!--- begin --->(.*)?<!--- end --->/s";
 		$matches = array();
-		
+
 		if ( !preg_match( $regex, $text, $matches ) ) {
 			return -1;
 		} else {
 			$regex = "/^\* .*/m";
 			$text = $matches[1];
 			$matches = array();
-			
+
 			preg_match_all( $regex, $text, $matches );
-			
+
 			return count( $matches[0] );
 		}
 	}

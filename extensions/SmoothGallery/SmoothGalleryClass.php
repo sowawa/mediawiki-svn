@@ -25,15 +25,15 @@ class SmoothGallery {
 			// If even one gallery is missing all images, we
 			// are going to return an error to the user.
 			if ( !isset( $galleryArray["images"] ) ) {
-				
+
 				$error = wfMsg( "smoothgallery-error" );
 
 				if ( isset( $galleryArray["missing_images"] )  && isset( $galleryArray["invalid_images"] ) ) {
 					$error .= wfMsg( "smoothgallery-no-images", implode( ", " , $galleryArray["missing_images"] , count( $galleryArray["missing_images"] ) , count( $galleryArray["missing_images"] ) + count( $galleryArray["invalid_images"] ) ) );	// FIXME: 3rd (last) parameter should have the number of good images added.
 					$error .= wfMsg( "smoothgallery-invalid-images", implode( ", " , $galleryArray["invalid_images"] , count( $galleryArray["invalid_images"] ) ) );
-				} else if ( isset( $galleryArray["invalid_images"] ) ) {
+				} elseif ( isset( $galleryArray["invalid_images"] ) ) {
 					$error .= wfMsg( "smoothgallery-invalid-images", implode( ", " , $galleryArray["invalid_images"] , count( $galleryArray["invalid_images"] ) ) );
-				} else if ( isset( $galleryArray["missing_images"] ) ) {
+				} elseif ( isset( $galleryArray["missing_images"] ) ) {
 					$error .= wfMsg( "smoothgallery-no-images", implode( ", " , $galleryArray["missing_images"] , count( $galleryArray["missing_images"] ) , count( $galleryArray["missing_images"] ) ) );	// FIXME: 3rd (last) parameter should have the number of good images added.
 				} else {
 					$error .= wfMsg( "smoothgallery-not-found" );
@@ -164,7 +164,7 @@ class SmoothGallery {
 
 			$output .= '<div id="' . $galleryArray['gallery_name'] . '-fallback" class="MediaWikiSGalleryWarning" style="width: ' . $this->argumentArray["width"] . ';height: ' . $this->argumentArray["height"] . ';" alt="' . $galleryArray["images"][0]["description"] . '">';
 
-			
+
 			$output .= wfMsg( "smoothgallery-javascript-disabled" );
 
 			$output .= '<div class="MediaWikiSGallerySingleImage">';

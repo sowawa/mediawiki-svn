@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
 # older versions of MW did not have the NewFromId method, let's define our own
-function WhiteListUserFromId($id) {	
+function WhiteListUserFromId($id) {
 	$realFunction = array( 'User', 'newfromid' );
 	if ( is_callable( $realFunction ) ) {
 		return User::NewFromId($id);
@@ -43,7 +43,7 @@ function WhiteListUserFromId($id) {
 class WhiteListEdit extends SpecialPage
 {
 	function __construct() {
-		
+
 		parent::__construct( 'WhiteListEdit', 'editwhitelist' );
 	}
 
@@ -51,12 +51,12 @@ class WhiteListEdit extends SpecialPage
 		global $wgRequest, $wgOut, $wgUser;
 
 		# sanity check
-		if ($wgUser->isAnon()) 
+		if ($wgUser->isAnon())
 		{
 			$wgOut->PermissionRequired('editwhitelist');
 			return;
 		}
-	
+
 		$this->setHeaders();
 		$wgOut->setPagetitle( wfMsg( 'whitelistedit' ) );
 
@@ -124,7 +124,7 @@ class WhiteListEdit extends SpecialPage
 				}
 				$dbr->commit();
 			}
-		} else if ( ( $action == 'SetEdit' ) || ( $action == 'SetView' ) ) {
+		} elseif ( ( $action == 'SetEdit' ) || ( $action == 'SetView' ) ) {
 			foreach ( $modify_array as $entry => $rowid )
 			{
 				$dbr->begin();
@@ -149,7 +149,7 @@ class WhiteListEdit extends SpecialPage
 				}
 				$dbr->commit();
 			}
-		} else if ( $action == 'Remove' ) {
+		} elseif ( $action == 'Remove' ) {
 			foreach ( $modify_array as $entry => $rowid )
 			{
 				$dbr->begin();
@@ -437,7 +437,7 @@ END;
 		} else {
 			$wgOut->addHTML( "<form method=\"post\">" );
 			$wgOut->addHTML( '<select name="contractor">' );
-	
+
 			asort( $users );
 			foreach ( $users as $id => $name ) {
 				$wgOut->addHTML( "<option value=\"$id\">" . $name . "</option>" );
@@ -534,12 +534,12 @@ if ($debug)
 		foreach ( $expanded as $entry ) {
 			$sql = "SELECT `page_id` FROM " . $dbr->tableName( 'page' ) .
 				" WHERE CONVERT(`page_namespace` USING utf8) LIKE CONVERT('" . $entry['ns'] .
-				"' USING utf8) AND CONVERT(`page_title` USING utf8) LIKE CONVERT('" . $entry['title'] . 
+				"' USING utf8) AND CONVERT(`page_title` USING utf8) LIKE CONVERT('" . $entry['title'] .
 				"' USING utf8)";
 			if ($wgWhiteListWildCardInsensitive) {
 				$sql = "SELECT `page_id` FROM ". $dbr->tableName('page') .
 				" WHERE UPPER(CONVERT(`page_namespace` USING utf8)) LIKE CONVERT('" . strtoupper($entry['ns']) .
-				"' USING utf8) AND UPPER(CONVERT(`page_title` USING utf8)) LIKE CONVERT('" . strtoupper($entry['title']) . 
+				"' USING utf8) AND UPPER(CONVERT(`page_title` USING utf8)) LIKE CONVERT('" . strtoupper($entry['title']) .
 				"' USING utf8)";
 			}
 if ($debug) $wgOut->addWikiText("the SQL query is :$sql:\n<br />");

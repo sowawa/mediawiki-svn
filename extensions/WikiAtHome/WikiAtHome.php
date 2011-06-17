@@ -233,9 +233,9 @@ function wahDoEncode($source, $target, $encodeSettings ){
 		if( isset( $wah->foggMap[$key] ) ){
 			if( is_array(  $wah->foggMap[$key] ) ){
 				$cmd.= ' '. implode(' ', $wah->foggMap[$key] );
-			}else if($val == 'true' || $val===true){
+			}elseif($val == 'true' || $val===true){
 		 		$cmd.= ' '. $wah->foggMap[$key];
-			}else if( $val === false){
+			}elseif( $val === false){
 				//ignore "false" flags
 			}else{
 				//normal get/set value

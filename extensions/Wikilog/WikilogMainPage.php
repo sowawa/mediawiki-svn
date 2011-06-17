@@ -105,7 +105,7 @@ class WikilogMainPage
 
 		# Get query parameter array, for the following links.
 		$qarr = $query->getDefaultQuery();
-		
+
 		# Add feed links.
 		$wgOut->setSyndicated();
 		if ( isset( $qarr['show'] ) ) {
@@ -147,7 +147,7 @@ class WikilogMainPage
 			if ( $this->mTitle->quickUserCan( 'edit' ) ) {
 				$wgOut->addHTML( $this->formNewItem() );
 			}
-		} else if ( $this->mTitle->userCan( 'create' ) ) {
+		} elseif ( $this->mTitle->userCan( 'create' ) ) {
 			$text = wfMsgExt( 'wikilog-missing-wikilog', 'parse' );
 			$text = WikilogUtils::wrapDiv( 'noarticletext', $text );
 			$wgOut->addHTML( $text );
@@ -178,7 +178,7 @@ class WikilogMainPage
 		if ( is_array( $st ) ) {
 			$tc = new WlTextConstruct( $st[0], $st[1] );
 			$s .= Xml::tags( 'div', array( 'class' => 'wl-subtitle' ), $tc->getHTML() );
-		} else if ( is_string( $st ) && !empty( $st ) ) {
+		} elseif ( is_string( $st ) && !empty( $st ) ) {
 			$s .= Xml::element( 'div', array( 'class' => 'wl-subtitle' ), $st );
 		}
 

@@ -14,7 +14,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  *    This array is cached.
  * 3. Applies the transliteration map to the word, case-insensitively, but respecting either NFD
  *    or NFC and combining characters, and word start-and-end markers.
- * 
+ *
  * It also provides syntax checking for the transliteration pages, both on save and preview.
  * Perhaps in the future it will provide an API interface to assist javascript transliteration.
  *
@@ -32,9 +32,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * much more often than not.
  *
  * The need to handle NFD is illustrated best by Korean which has a tractable map in NFD but
- * would require thousands of NFC rules.  Word start and end markers are required by Greek and other 
+ * would require thousands of NFC rules.  Word start and end markers are required by Greek and other
  * languages that treat initial and final letters separately. Code-points are combined because of the
- * mess that letting stray combining characters through on their own can cause, and the confusion 
+ * mess that letting stray combining characters through on their own can cause, and the confusion
  * that this causes.
  *
  * Most methods are static, with the exception of those methods that must interact (at some level)
@@ -97,7 +97,7 @@ class ExtTransliterator  {
 			$output = '';
 
 		// An error message (these should have been caught by ::validate, but you can't be too careful)
-		} else if ( is_string( $map ) ) {
+		} elseif ( is_string( $map ) ) {
 			$output = self::wrapError( $map );
 
 		// Success!, now do the transliteration
@@ -424,7 +424,7 @@ class ExtTransliterator  {
 					}
 				}
 
-			} else if ( !$naturalCased ) {
+			} elseif ( !$naturalCased ) {
 
 				$naturalCased = true;
 				$naturalCasedFrom = $from;
@@ -441,7 +441,7 @@ class ExtTransliterator  {
 					$prefixedFrom = $from;
 				}
 
-			} else if ( $wasPrefixed ) {
+			} elseif ( $wasPrefixed ) {
 
 				if ( strpos( $from, $prefixedFrom ) === 0 ) {
 					if ( $from !== $prefixedFrom . self::WORD_END ) {
@@ -573,7 +573,7 @@ class ExtTransliterator  {
 
 	/**
 	 * Show any errors that would be caused by trying to use this map.
-         * 
+         *
          * Does not follow redirects.
          *
 	 * (EditFilter hook)

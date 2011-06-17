@@ -46,7 +46,7 @@ function doJobLoop(){
 			print "no jobs found waiting $wahJobDelay \n";
 		sleep($wahJobDelay);
 		return doJobLoop();
-	}else if(!$job  && $wahRunOnce == true){
+	}elseif(!$job  && $wahRunOnce == true){
 		if($wahStatusOutput)
 			print "no job found \n";
 		return ;

@@ -22,9 +22,9 @@ class SpecialStory extends IncludableSpecialPage {
 	public function execute( $title ) {
 		wfProfileIn( __METHOD__ );
 		global $wgOut, $wgRequest, $wgUser;
-		
+
 		$title = str_replace( '_', ' ', $title );
-		
+
 		if ( $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
 			if ( $wgUser->isAllowed( 'storyreview' ) ) {
 				// If the user is allowed to actually modify the story, save it.
@@ -34,31 +34,31 @@ class SpecialStory extends IncludableSpecialPage {
 				$wgOut->addWikiMsg( 'storyboard-cantedit' );
 			}
 		}
-		
+
 		// Redirect the user when the redirect parameter is set.
 		if ( $wgRequest->getVal( 'returnto' ) && !$wgRequest->getCheck( 'action' ) ) {
  			$titleObj = Title::newFromText( $wgRequest->getVal( 'returnto' ) );
 			$wgOut->redirect( $titleObj->getFullURL() );
-		} else if ( trim( $title ) != '' || $wgRequest->getIntOrNull( 'id' ) ) {
+		} elseif ( trim( $title ) != '' || $wgRequest->getIntOrNull( 'id' ) ) {
 			$this->queryAndShowStory( $title );
 		} else {
 			$wgOut->setPageTitle( wfMsg( 'storyboard-viewstories' ) );
 			$wgOut->addWikiMsg( 'storyboard-nostorytitle' );
 		}
-		
+
 		wfProfileOut( __METHOD__ );
 	}
-	
+
 	/**
 	 * Queries for the requested story and shows it in either display or edit mode when it's found.
 	 */
 	private function queryAndShowStory( $title ) {
 		global $wgOut, $wgRequest, $wgUser;
-		
+
 		$hasTitle = trim( $title ) != '';
-		
+
 		$dbr = wfGetDB( DB_SLAVE );
-		
+
 		// If an id is provided, query for the story title and redirect to have a nicer url,
 		// or continue with function execution to display an error that there is no such story.
 		if ( !$hasTitle ) {
@@ -97,26 +97,26 @@ class SpecialStory extends IncludableSpecialPage {
 			);
 		}
 
-		// If there is such a story, display it, or the edit form. 
+		// If there is such a story, display it, or the edit form.
 		// If there isn't, display an error message.
 		if ( $story ) {
 			$isEdit = $wgRequest->getVal( 'action' ) == 'edit';
-			
+
 			if ( $isEdit && $wgUser->isAllowed( 'storyreview' ) ) {
 				$this->showStoryForm( $story );
 			} else {
 				$wgOut->setPageTitle( $story->story_title );
-				
+
 				if ( $isEdit ) {
 					$wgOut->addWikiMsg( 'storyboard-cantedit' );
 				}
-				
+
 				if ( $story->story_state == Storyboard_STORY_PUBLISHED ) {
 					$this->showStory( $story );
 				}
 				elseif ( !$isEdit ) {
 					$wgOut->addWikiMsg( 'storyboard-storyunpublished' );
-					
+
 					if ( $wgUser->isAllowed( 'storyreview' ) ) {
 						$wgOut->addWikiMsg(
 							'storyboard-canedit',
@@ -130,33 +130,33 @@ class SpecialStory extends IncludableSpecialPage {
 			$wgOut->addWikiMsg( 'storyboard-nosuchstory' );
 		}
 	}
-	
+
 	/**
 	 * Ouputs the story in regular display mode.
-	 * 
+	 *
 	 * @param $story
-	 * 
+	 *
 	 * TODO: Improve layout, add social sharing stuff, add story meta data and show edit stuff for people with stroyreview permission.
 	 */
 	private function showStory( $story ) {
 		global $wgOut, $wgLang, $wgUser, $egStoryboardScriptPath;
-		
+
 		$wgOut->addStyle( $egStoryboardScriptPath . '/storyboard.css' );
 
 		if ( $story->story_author_image != '' && $story->story_image_hidden != 1 ) {
 			$story->story_author_image = htmlspecialchars( $story->story_author_image );
 			$wgOut->addHTML( "<img src=\"$story->story_author_image\" class='story-image'>" );
 		}
-		
+
 		$wgOut->addWikiText( $story->story_text );
-		
+
 		// If the user that submitted the story was logged in, create a link to his/her user page.
 		if ( $story->story_author_id ) {
 			$user = User::newFromId( $story->story_author_id );
 			$userPage = $user->getUserPage();
 			$story->story_author_name = '[[' . $userPage->getFullText() . '|' . $story->story_author_name . ']]';
 		}
-		
+
 		$wgOut->addWikiText(
 			htmlspecialchars( wfMsgExt(
 				'storyboard-submittedbyon',
@@ -166,7 +166,7 @@ class SpecialStory extends IncludableSpecialPage {
 				$wgLang->date( $story->story_created )
 			) )
 		);
-		
+
 		// FIXME: this button is a temporary solution untill the SkinTemplateNavigation on special pages issue is fixed.
 		if ( $wgUser->isAllowed( 'storyreview' ) ) {
 			$editMsg = htmlspecialchars( wfMsg( 'edit' ) );
@@ -176,37 +176,37 @@ class SpecialStory extends IncludableSpecialPage {
 			);
 		}
 	}
-	
+
 	/**
 	 * Outputs a form to edit the story with. Code based on <storysubmission>.
-	 * 
+	 *
 	 * @param $story
 	 */
 	private function showStoryForm( $story ) {
 		global $wgOut, $wgLang, $wgRequest, $wgUser, $wgScriptPath, $wgContLanguageCode;
 		global $egStoryboardScriptPath, $egStorysubmissionWidth, $egStoryboardMaxStoryLen, $egStoryboardMinStoryLen;
-		
+
 		$wgOut->setPageTitle( $story->story_title );
-		
+
 		efStoryboardAddJSLocalisation();
-		
+
 		$wgOut->addStyle( $egStoryboardScriptPath . '/storyboard.css' );
 		$wgOut->includeJQuery();
 		$wgOut->addScriptFile( $egStoryboardScriptPath . '/jquery/jquery.validate.js' );
 		$wgOut->addScriptFile( $egStoryboardScriptPath . '/storyboard.js' );
-		
+
 		$fieldSize = 50;
-		
+
 		$width = $egStorysubmissionWidth;
-		
+
 		$maxLen = $wgRequest->getVal( 'maxlength' );
 		if ( !is_int( $maxLen ) ) $maxLen = $egStoryboardMaxStoryLen;
-		
+
 		$minLen = $wgRequest->getVal( 'minlength' );
 		if ( !is_int( $minLen ) ) $minLen = $egStoryboardMinStoryLen;
-		
+
 		$formBody = "<table width=\"$width\">";
-			
+
 		// The current value will be selected on page load with jQuery.
 		$formBody .= '<tr>' .
 			'<td width="100%"><label for="storystate">' .
@@ -223,30 +223,30 @@ class SpecialStory extends IncludableSpecialPage {
 				'<option value="' . Storyboard_STORY_HIDDEN . '">' . htmlspecialchars( wfMsg( 'storyboard-option-hidden' ) ) . '</option>'
 			) .
 		'</td></tr>';
-		
+
 		$languages = Language::getLanguageNames( false );
-		
+
 		$currentLang = array_key_exists( $story->story_lang_code, $languages ) ? $story->story_lang_code : $wgContLanguageCode;
-		
+
 		$options = array();
 		ksort( $languages );
-		
+
 		foreach ( $languages as $code => $name ) {
 			$display = wfBCP47( $code ) . ' - ' . $name;
 			$options[$display] = $code;
-		}	
-			
+		}
+
 		$languageSelector = new HTMLSelectField( array(
 			'name' => 'language',
 			'options' => $options
 		) );
-		
+
 		$formBody .= '<tr>' .
 			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-language' ) ) .
 			'<td>' .
 			$languageSelector->getInputHTML( $currentLang ) .
 			'</td></tr>';
-		
+
 		$formBody .= '<tr>' .
 			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-authorname' ) ) .
 			'<td>' .
@@ -261,7 +261,7 @@ class SpecialStory extends IncludableSpecialPage {
 					'maxlength' => 255
 				)
 			) . '</td></tr>';
-		
+
 		$formBody .= '<tr>' .
 			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-authorlocation' ) ) .
 			'<td>' . Html::input(
@@ -274,7 +274,7 @@ class SpecialStory extends IncludableSpecialPage {
 					'minlength' => 2
 				)
 			) . '</td></tr>';
-		
+
 		$formBody .= '<tr>' .
 			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-authoroccupation' ) ) .
 			'<td>' . Html::input(
@@ -300,7 +300,7 @@ class SpecialStory extends IncludableSpecialPage {
 					'class' => 'required email'
 				)
 			) . '</td></tr>';
-		
+
 		$formBody .= '<tr>' .
 			'<td width="100%"><label for="storytitle">' .
 				htmlspecialchars( wfMsg( 'storyboard-storytitle' ) ) .
@@ -318,7 +318,7 @@ class SpecialStory extends IncludableSpecialPage {
 					'remote' => "$wgScriptPath/api.php?format=json&action=storyexists&currentid=$story->story_id"
 				)
 			) . '</td></tr>';
-		
+
 		$formBody .= '<tr><td colspan="2">' .
 			wfMsg( 'storyboard-thestory' ) .
 			Html::element(
@@ -343,10 +343,10 @@ class SpecialStory extends IncludableSpecialPage {
 		$returnTo = $wgRequest->getVal( 'returnto' );
 		$query = "id=$story->story_id";
 		if ( $returnTo ) $query .= "&returnto=$returnTo";
-		
+
 		$formBody .= '<tr><td colspan="2">' .
 			Html::input( '', wfMsg( 'htmlform-submit' ), 'submit', array( 'id' => 'storysubmission-button' ) ) .
-			"&#160;&#160;<span class='editHelp'>" . 
+			"&#160;&#160;<span class='editHelp'>" .
 			Html::element(
 				'a',
 				array( 'href' => $this->getTitle()->getLocalURL( $query ) ),
@@ -356,10 +356,10 @@ class SpecialStory extends IncludableSpecialPage {
 			'</td></tr>';
 
 		$formBody .= '</table>';
-		
+
 		$formBody .= Html::hidden( 'wpEditToken', $wgUser->editToken() );
 		$formBody .= Html::hidden( 'storyId', $story->story_id );
-		
+
 		$formBody = '<fieldset><legend>' .
 			htmlspecialchars( wfMsgExt(
 				'storyboard-createdandmodified',
@@ -370,10 +370,10 @@ class SpecialStory extends IncludableSpecialPage {
 				$wgLang->date( $story->story_modified )
 			) ) .
 		'</legend>' . $formBody . '</fieldset>';
-			
+
 		$query = "id=$story->story_id";
 		if ( $returnTo ) $query .= "&returnto=$returnTo";
-		
+
 		$formBody = Html::rawElement(
 			'form',
 			array(
@@ -384,25 +384,25 @@ class SpecialStory extends IncludableSpecialPage {
 			),
 			$formBody
 		);
-		
+
 		$wgOut->addHTML( $formBody );
-		
+
 		$state = htmlspecialchars( $story->story_state );
 		$wgOut->addInlineScript( <<<EOT
 jQuery(document).ready(function() {
 	jQuery('#storystate option[value="$state"]').attr('selected', 'selected');
-	
+
 	jQuery("#storyform").validate({
 		messages: {
 			storytitle: {
 				remote: jQuery.validator.format( stbMsg( 'storyboard-alreadyexistschange' ) )
 			}
 		}
-	});		
+	});
 });
-		
+
 addOnloadHook(
-	function() {	
+	function() {
 		stbValidateStory( document.getElementById('storytext'), $minLen, $maxLen, 'storysubmission-charlimitinfo', 'storysubmission-button' )
 	}
 );
@@ -412,15 +412,15 @@ jQuery(document).ready(function(){
 EOT
 		);
 	}
-	
+
 	/**
 	 * Saves the story after a story edit form has been submitted.
 	 */
 	private function saveStory() {
 		global $wgOut, $wgRequest, $wgUser;
-		
+
 		$dbw = wfGetDB( DB_MASTER );
-		
+
 		$dbw->update(
 			'storyboard',
 			array(

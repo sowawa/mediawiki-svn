@@ -185,7 +185,7 @@ class SpecialTradeTrack extends SpecialPage {
         $eList = $errorsArray[$target];
         if (!$eList) { $eList = array( ); }
         array_push($eList, $errorString);
-         
+
         $this->errors[$target] = $eList;
     }
 
@@ -204,7 +204,7 @@ class SpecialTradeTrack extends SpecialPage {
         global $wgRequest, $wgOut;
 
         global $wgExtensionAssetsPath;
-            
+
         foreach ( self::$scriptFiles as $script ) {
             $wgOut->addScriptFile( $wgExtensionAssetsPath . "/TradeTrack/{$script['src']}", $script['version'] );
         }
@@ -225,7 +225,7 @@ class SpecialTradeTrack extends SpecialPage {
 
 
         $success = false;
-        
+
         // open wide.
         ob_start();
 
@@ -239,7 +239,7 @@ class SpecialTradeTrack extends SpecialPage {
                 $purpose = $wgRequest->getVal( 'tradetrack-purpose' );
                 if ( !isset( $purpose ) ) {
                     $this->addError( 'tradetrack-purpose', wfMsg( 'tradetrack-errors-no-route' ) );
-                } else if ( ( $purpose != 'Commercial' )
+                } elseif ( ( $purpose != 'Commercial' )
                         && ( $purpose != 'Non-Commercial' )
                         && ( $purpose != 'Media' ) ) {
                     $this->addError( 'tradetrack-purpose', wfMsg( 'tradetrack-errors-invalid-route' ) );
@@ -276,7 +276,7 @@ class SpecialTradeTrack extends SpecialPage {
                 $agreementType = $wgRequest-> getVal( 'tradetrack-elements-agreement' );
                 if ( !isset( $agreementType ) ) {
                     $this->addError( 'tradetrack-elements-agreement', wfMsg( 'tradetrack-errors-noncom-no-selection' ) );
-                } else if ( ( $agreementType != 'Yes' )
+                } elseif ( ( $agreementType != 'Yes' )
                             && ( $agreementType != 'No' )
                             && ( $agreementType != 'Mistake' ) ) {
                     $this->addError( 'tradetrack-elements-agreement', wfMsg( 'tradetrack-errors-noncom-invalid-selection' ) );
@@ -284,7 +284,7 @@ class SpecialTradeTrack extends SpecialPage {
                 if ( $this->hasErrors() ) {
                     // Oh no!  The thing in the lake grabbed Frodo!
                     $tmp = new TradeTrackScreenNonComAgreement();
-                } else if ( $agreementType == 'Mistake' ) {
+                } elseif ( $agreementType == 'Mistake' ) {
                     // For completeness' sake, we must give the user an escape route.
                     // Frodo decides to ditch the entire process and marry some poor hobbit back
                     // in the Shire.
@@ -335,7 +335,7 @@ class SpecialTradeTrack extends SpecialPage {
                     'statementagreement',
                     'otherval'
                 );
-                
+
 
                 // This runs validation on the bulk of our fields.
                 foreach ( $checkElements as $e ) {
@@ -346,7 +346,7 @@ class SpecialTradeTrack extends SpecialPage {
 
                 // Now we cycle through the trademarks list and see if any of them are set.
                 $tData['trademarks'] = array();
-                
+
                 foreach ( self::$TRADEMARK_LIST as $property ) {
                     if ( $wgRequest->getBool( "tradetrack-which-$property" ) ) {
                         $tData['trademarks'][$property] = $property;
@@ -357,7 +357,7 @@ class SpecialTradeTrack extends SpecialPage {
                     // Didn't select a single mark
                     $this->addError( 'tradetrack-element-list', wfMsg( 'tradetrack-errors-zero-marks' ) );
                 }
-                
+
 
                 // Now, if errors, kick back.
                 if ( $this->hasErrors() ) {
@@ -393,16 +393,16 @@ class SpecialTradeTrack extends SpecialPage {
         }
 
         $wgOut->addHtml( ob_get_clean() );
-        
+
         if ( $success ) {
-            
+
             // Change the page title
             $wgOut->setPageTitle( wfMsg( 'tradetrack-thanks-header' ) );
-            
-            
+
+
             // Insert to the database.
             $this->insertTradeTrackRequest( $tData );
-            
+
             // Now build the email
             global $wgTradeTrackEmailCommercial;
             global $wgTradeTrackEmailNonCommercial;
@@ -411,7 +411,7 @@ class SpecialTradeTrack extends SpecialPage {
             global $wgTradeTrackFromEmail;
 
             $toEmail = "";
-            
+
             // Who gets the email?
             switch ( $tData['purpose'] ) {
                 case 'Commercial':
@@ -427,7 +427,7 @@ class SpecialTradeTrack extends SpecialPage {
                     $toEmail = $wgTradeTrackEmailNonCommercial;
                     break;
             }
-             
+
             ob_start();
 
             $emailTmp = new TradeTrackEmail();
@@ -435,18 +435,18 @@ class SpecialTradeTrack extends SpecialPage {
             $emailTmp->execute();
             $generatedEmail = ob_get_clean();
             $mailer = new UserMailer();
-            
+
             $mailer->send( new MailAddress( $toEmail ) , new MailAddress( $wgTradeTrackFromEmail ), $wgTradeTrackEmailSubject, $generatedEmail);
 
             // debug line to dump this to the end screen.
             $wgOut->addHtml( "<pre>" );
             $wgOut->addHtml( $generatedEmail );
             $wgOut->addHtml( "</pre>" );
-            
+
         }
-        
+
     }
-        
+
     /**
      * This does field validation.  It looks up fields in the VALIDATION_FIELDS array
      * and runs tests on them.  This, combined with VALIDATION_FIELDS, is really a
@@ -523,13 +523,13 @@ class SpecialTradeTrack extends SpecialPage {
         return true;
     }
 
-  
+
 	private function insertTradeTrackRequest( array $tData ) {
 		$dbw = wfGetDB( DB_MASTER );
 
 		// Ugly.
 		$markMapping = array();
-		
+
 		$res = $dbw->select(
 			'tradetrack_trademarks',
 			array ('tt_mark_id', 'tt_mark')
@@ -537,7 +537,7 @@ class SpecialTradeTrack extends SpecialPage {
 		foreach ( $res as $row ) {
 		    $markMapping[$row->tt_mark] = $row->tt_mark_id;
 		}
-		
+
 		$timestamp = $dbw->timestamp();
 
 		$dbw->insert(
@@ -557,10 +557,10 @@ class SpecialTradeTrack extends SpecialPage {
 			__METHOD__,
 			 array( 'IGNORE' )
 		);
-		
+
         $lastId = $dbw->insertId();
         // Now we insert rows for every mark requested.
-        
+
         foreach ( $tData['trademarks'] as $trademark ) {
 		    $dbw->insert(
 				'tradetrack_mark_requests',
@@ -572,11 +572,11 @@ class SpecialTradeTrack extends SpecialPage {
 			    __METHOD__,
 			    array( 'IGNORE' )
 		    );
-            
+
         }
-        
-        
+
+
 	}
-    
+
 
 }

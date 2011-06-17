@@ -27,7 +27,7 @@ class SpecialSignDocument extends SpecialPage {
 	function execute( $par = null ) {
 		global $wgOut, $wgRequest, $wgUser;
 
-		
+
 
 		$this->setHeaders();
 		if ( $wgUser->isAllowed( 'sigadmin' ) ) {
@@ -41,7 +41,7 @@ class SpecialSignDocument extends SpecialPage {
 
 			if ( $this->mDocumentId == null )
 				$this->showSelectDocument();
-			else if ( !$wgRequest->wasPosted() ) {
+			elseif ( !$wgRequest->wasPosted() ) {
 				$this->mCurrentSig = SignDocumentSignature::newBasic();
 				$this->showSignForm();
 			}
@@ -318,7 +318,7 @@ class SignatureViewer {
 		if ( $wgRequest->wasPosted() && $wgUser->isAllowed( 'sigadmin' ) ) {
 		   	if ( !is_null( $wgRequest->getVal( 'opensigning' ) ) )
 				$this->openSigning();
-			else if ( !is_null( $wgRequest->getVal( 'closesigning' ) ) )
+			elseif ( !is_null( $wgRequest->getVal( 'closesigning' ) ) )
 				$this->closeSigning();
 		}
 

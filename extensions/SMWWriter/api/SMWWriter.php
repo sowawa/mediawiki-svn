@@ -577,7 +577,7 @@ class SMWWriter {
 				foreach ( $vals as $value )
 					if ( $this->updateable->contains( $propertyname, $value ) )
 						$rr->addPropertyValue( $property, $value );
-					else if ( $this->fixed->contains( $propertyname, $value ) )
+					elseif ( $this->fixed->contains( $propertyname, $value ) )
 						$rc->addPropertyValue( $property, $value );
 					else
 						$rx->addPropertyValue( $property, $value );

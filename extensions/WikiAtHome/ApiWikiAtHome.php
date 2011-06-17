@@ -28,7 +28,7 @@ class ApiWikiAtHome extends ApiBase {
 			//do job req:
 			return $this->proccessJobReq();
 
-		}else if ( $this->mParams['jobkey'] ){
+		}elseif ( $this->mParams['jobkey'] ){
 			//process a completed job:
 			return $this->doProccessJobKey ( $this->mParams['jobkey'] ) ;
 		}
@@ -172,7 +172,7 @@ class ApiWikiAtHome extends ApiBase {
 						'setdone'		=> false
 					)
 				);
-		}else if( $percDone == 1 ){
+		}elseif( $percDone == 1 ){
 			//all the files are "done" according to the DB:
 			//make sure all the files exist in the
 			$fileList = array();
@@ -305,7 +305,7 @@ class ApiWikiAtHome extends ApiBase {
 	public function needsToken() {
 		return true;
 	}
-	
+
 	public function getTokenSalt() {
 		return '';
 	}

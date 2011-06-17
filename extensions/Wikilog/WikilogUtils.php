@@ -83,7 +83,7 @@ class WikilogUtils
 		$parserOpt->setTidy( true );
 		if ( $feed ) {
 			$parserOpt->setEditSection( false );
-			
+
 			# NOTE (Mw1.16- COMPAT) ParserOptions::addExtraKey() added in
 			# MediaWiki 1.17 (r70822) makes WikilogParserCache obsolete.
 			if ( method_exists( $parserOpt, 'addExtraKey' ) ) {
@@ -196,7 +196,7 @@ class WikilogUtils
 		if ( is_string( $list ) ) {
 			return self::authorSig( $list );
 		}
-		else if ( is_array( $list ) ) {
+		elseif ( is_array( $list ) ) {
 			$authors = array_map( array( __CLASS__, 'authorSig' ), $list );
 			return $wgContLang->listToText( $authors );
 		}

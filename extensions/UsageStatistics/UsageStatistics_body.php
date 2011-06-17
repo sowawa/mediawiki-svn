@@ -362,41 +362,41 @@ plot '-' using 1:2 t 'edits' with linesp lt 1 lw 3, '-' using 1:2 t 'pages'  wit
 
 		$wgOut->addHTML(
 				Xml::openElement( 'table', array( 'border' => '0' ) ) .
-					Xml::openElement( 'tr' ) . 
-						Xml::openElement( 'td', array( 'class' => 'mw-label' ) ) . Xml::label( wfMsg( 'usagestatisticsnamespace' ), 'namespace' ) . 
-						Xml::closeElement( 'td' ) . 			
-						Xml::openElement( 'td', array( 'class' => 'mw-input' ) ) . 
-						Xml::namespaceSelector( $namespace, 'all' ) .			
-						Xml::closeElement( 'td' ) . 			
-					Xml::closeElement( 'tr' ) . 
-					Xml::openElement( 'tr' ) . 
-						Xml::openElement( 'td', array( 'class' => 'mw-label' ) ) . wfMsg( 'usagestatisticsinterval' ) . 
-						Xml::closeElement( 'td' ) . 			
-						Xml::openElement( 'td', array( 'class' => 'mw-input' ) ) . 
-							Xml::openElement( 'select', array( 'name' => 'interval' ) ) . 
-							Xml::openElement( 'option', array( 'value' => '86400' ) ) . wfMsg( 'usagestatisticsintervalday' ) . 
-							Xml::openElement( 'option', array( 'value' => '604800' ) ) . wfMsg( 'usagestatisticsintervalweek' ) . 
-							Xml::openElement( 'option', array( 'value' => '2629744', 'selected' => 'selected' )) . wfMsg( 'usagestatisticsintervalmonth' ) . 
-						Xml::closeElement( 'select' ) . 			
-						Xml::closeElement( 'td' ) . 			
-					Xml::closeElement( 'tr' ) . 
-					Xml::openElement( 'tr' ) . 
-						Xml::openElement( 'td', array( 'class' => 'mw-label' ) ) . wfMsg( 'usagestatisticstype' ) . Xml::closeElement( 'td' ) . 
-						Xml::openElement( 'td', array( 'class' => 'mw-input' ) ) . 
-							Xml::openElement( 'select', array( 'name' => 'type' ) ) . 
-								Xml::openElement( 'option', array( 'value' => 'incremental' ) ) . wfMsg( 'usagestatisticsincremental' ) . 
-								Xml::openElement( 'option', array( 'value' => 'cumulative', 'selected' => 'selected' ) ) . wfMsg( 'usagestatisticscumulative' ) . 
-							Xml::closeElement( 'select' ) . 			
-						Xml::closeElement( 'td' ) . 			
+					Xml::openElement( 'tr' ) .
+						Xml::openElement( 'td', array( 'class' => 'mw-label' ) ) . Xml::label( wfMsg( 'usagestatisticsnamespace' ), 'namespace' ) .
+						Xml::closeElement( 'td' ) .
+						Xml::openElement( 'td', array( 'class' => 'mw-input' ) ) .
+						Xml::namespaceSelector( $namespace, 'all' ) .
+						Xml::closeElement( 'td' ) .
 					Xml::closeElement( 'tr' ) .
-						Xml::openElement( 'tr' ) . 
-						Xml::openElement( 'td', array( 'class' => 'mw-label' ) ) . Xml::label( wfMsg( 'usagestatisticsexcluderedirects' ), '' ) . Xml::closeElement( 'td' ) . 
-						Xml::openElement( 'td', array( 'class' => 'mw-input' ) ) . 
-						Xml::check( 'noredirects', $noredirects ) . 			
-						Xml::closeElement( 'td' ) . 			
+					Xml::openElement( 'tr' ) .
+						Xml::openElement( 'td', array( 'class' => 'mw-label' ) ) . wfMsg( 'usagestatisticsinterval' ) .
+						Xml::closeElement( 'td' ) .
+						Xml::openElement( 'td', array( 'class' => 'mw-input' ) ) .
+							Xml::openElement( 'select', array( 'name' => 'interval' ) ) .
+							Xml::openElement( 'option', array( 'value' => '86400' ) ) . wfMsg( 'usagestatisticsintervalday' ) .
+							Xml::openElement( 'option', array( 'value' => '604800' ) ) . wfMsg( 'usagestatisticsintervalweek' ) .
+							Xml::openElement( 'option', array( 'value' => '2629744', 'selected' => 'selected' )) . wfMsg( 'usagestatisticsintervalmonth' ) .
+						Xml::closeElement( 'select' ) .
+						Xml::closeElement( 'td' ) .
 					Xml::closeElement( 'tr' ) .
-					Xml::openElement( 'tr' ) . 
-						Xml::openElement( 'td', array( 'class' => 'mw-label' ) ) . wfMsg( 'usagestatisticsstart' ) . Xml::closeElement( 'td' ) . 
+					Xml::openElement( 'tr' ) .
+						Xml::openElement( 'td', array( 'class' => 'mw-label' ) ) . wfMsg( 'usagestatisticstype' ) . Xml::closeElement( 'td' ) .
+						Xml::openElement( 'td', array( 'class' => 'mw-input' ) ) .
+							Xml::openElement( 'select', array( 'name' => 'type' ) ) .
+								Xml::openElement( 'option', array( 'value' => 'incremental' ) ) . wfMsg( 'usagestatisticsincremental' ) .
+								Xml::openElement( 'option', array( 'value' => 'cumulative', 'selected' => 'selected' ) ) . wfMsg( 'usagestatisticscumulative' ) .
+							Xml::closeElement( 'select' ) .
+						Xml::closeElement( 'td' ) .
+					Xml::closeElement( 'tr' ) .
+						Xml::openElement( 'tr' ) .
+						Xml::openElement( 'td', array( 'class' => 'mw-label' ) ) . Xml::label( wfMsg( 'usagestatisticsexcluderedirects' ), '' ) . Xml::closeElement( 'td' ) .
+						Xml::openElement( 'td', array( 'class' => 'mw-input' ) ) .
+						Xml::check( 'noredirects', $noredirects ) .
+						Xml::closeElement( 'td' ) .
+					Xml::closeElement( 'tr' ) .
+					Xml::openElement( 'tr' ) .
+						Xml::openElement( 'td', array( 'class' => 'mw-label' ) ) . wfMsg( 'usagestatisticsstart' ) . Xml::closeElement( 'td' ) .
 "
   <td class='mw-input'>
     <input type='text' size='20'  name='start' value='$start'/>
@@ -405,9 +405,9 @@ plot '-' using 1:2 t 'edits' with linesp lt 1 lw 3, '-' using 1:2 t 'pages'  wit
       cal1.showNavigationDropdowns();
     </script>
     <a href='#' onClick=\"cal1.select(document.forms[0].start,'anchor1','MM/dd/yyyy'); return false;\" name='anchor1' id='anchor1'>" . wfMsg( 'usagestatisticscalselect' ) .
-					Xml::closeElement( 'a' ) . 	Xml::closeElement( 'td' ) . Xml::closeElement( 'tr' ) . 
-					Xml::openElement( 'tr' ) . 
-						Xml::openElement( 'td', array( 'class' => 'mw-label' ) ) . wfMsg( 'usagestatisticsend' ) . Xml::closeElement( 'td' ) . 
+					Xml::closeElement( 'a' ) . 	Xml::closeElement( 'td' ) . Xml::closeElement( 'tr' ) .
+					Xml::openElement( 'tr' ) .
+						Xml::openElement( 'td', array( 'class' => 'mw-label' ) ) . wfMsg( 'usagestatisticsend' ) . Xml::closeElement( 'td' ) .
 "
   <td class='mw-input'>
     <input type='text' size='20'  name='end' value='$end'/>
@@ -416,7 +416,7 @@ plot '-' using 1:2 t 'edits' with linesp lt 1 lw 3, '-' using 1:2 t 'pages'  wit
       cal2.showNavigationDropdowns();
     </script>
     <a href='#' onClick=\"cal2.select(document.forms[0].end,'anchor2','MM/dd/yyyy'); return false;\" name='anchor2' id='anchor2'>" . wfMsg( 'usagestatisticscalselect' ) .
-					Xml::closeElement( 'a' ) . Xml::closeElement( 'td' ) . Xml::closeElement( 'tr' ) . 		
+					Xml::closeElement( 'a' ) . Xml::closeElement( 'td' ) . Xml::closeElement( 'tr' ) .
 				Xml::closeElement( 'table' ) . 			"
 <input type='submit' name=\"wpSend\" value=\"" . wfMsg( 'usagestatisticssubmit' ) . "\" /> ".
 			Xml::closeElement( 'form' ) ."
@@ -516,23 +516,23 @@ function getAnchorPosition(anchorname) {
         // Browser capability sniffing
         var use_gebi=false, use_css=false, use_layers=false;
         if (document.getElementById) { use_gebi=true; }
-        else if (document.all) { use_css=true; }
-        else if (document.layers) { use_layers=true; }
+        elseif (document.all) { use_css=true; }
+        elseif (document.layers) { use_layers=true; }
         // Logic to find position
         if (use_gebi && document.all) {
                 x=AnchorPosition_getPageOffsetLeft(document.all[anchorname]);
                 y=AnchorPosition_getPageOffsetTop(document.all[anchorname]);
                 }
-        else if (use_gebi) {
+        elseif (use_gebi) {
                 var o=document.getElementById(anchorname);
                 x=AnchorPosition_getPageOffsetLeft(o);
                 y=AnchorPosition_getPageOffsetTop(o);
                 }
-        else if (use_css) {
+        elseif (use_css) {
                 x=AnchorPosition_getPageOffsetLeft(document.all[anchorname]);
                 y=AnchorPosition_getPageOffsetTop(document.all[anchorname]);
                 }
-        else if (use_layers) {
+        elseif (use_layers) {
                 var found=0;
                 for (var i=0; i<document.anchors.length; i++) {
                         if (document.anchors[i].name==anchorname) { found=1; break; }
@@ -568,11 +568,11 @@ function getAnchorWindowPosition(anchorname) {
                         y=coordinates.y+window.screenY+(window.outerHeight-24-window.innerHeight)-window.pageYOffset;
                         }
                 }
-        else if (document.all) {
+        elseif (document.all) {
                 x=coordinates.x-document.body.scrollLeft+window.screenLeft;
                 y=coordinates.y-document.body.scrollTop+window.screenTop;
                 }
-        else if (document.layers) {
+        elseif (document.layers) {
                 x=coordinates.x+window.screenX+(window.outerWidth-window.innerWidth)-window.pageXOffset;
                 y=coordinates.y+window.screenY+(window.outerHeight-24-window.innerHeight)-window.pageYOffset;
                 }
@@ -670,7 +670,7 @@ function compareDates(date1,dateformat1,date2,dateformat2) {
         if (d1==0 || d2==0) {
                 return -1;
                 }
-        else if (d1 > d2) {
+        elseif (d1 > d2) {
                 return 1;
                 }
         return 0;
@@ -712,7 +712,7 @@ function formatDate(date,format) {
         value["H"]=H;
         value["HH"]=LZ(H);
         if (H==0){value["h"]=12;}
-        else if (H>12){value["h"]=H-12;}
+        elseif (H>12){value["h"]=H-12;}
         else {value["h"]=H;}
         value["hh"]=LZ(value["h"]);
         if (H>11){value["K"]=H-12;} else {value["K"]=H;}
@@ -801,7 +801,7 @@ function getDateFromFormat(val,format) {
                                 else { year=2000+(year-0); }
                                 }
                         }
-                else if (token=="MMM"||token=="NNN"){
+                elseif (token=="MMM"||token=="NNN"){
                         month=0;
                         for (var i=0; i<MONTH_NAMES.length; i++) {
                                 var month_name=MONTH_NAMES[i];
@@ -816,7 +816,7 @@ function getDateFromFormat(val,format) {
                                 }
                         if ((month < 1)||(month>12)){return 0;}
                         }
-                else if (token=="EE"||token=="E"){
+                elseif (token=="EE"||token=="E"){
                         for (var i=0; i<DAY_NAMES.length; i++) {
                                 var day_name=DAY_NAMES[i];
                                 if (val.substring(i_val,i_val+day_name.length).toLowerCase()==day_name.toLowerCase()) {
@@ -825,41 +825,41 @@ function getDateFromFormat(val,format) {
                                         }
                                 }
                         }
-                else if (token=="MM"||token=="M") {
+                elseif (token=="MM"||token=="M") {
                         month=_getInt(val,i_val,token.length,2);
                         if(month==null||(month<1)||(month>12)){return 0;}
                         i_val+=month.length;}
-                else if (token=="dd"||token=="d") {
+                elseif (token=="dd"||token=="d") {
                         date=_getInt(val,i_val,token.length,2);
                         if(date==null||(date<1)||(date>31)){return 0;}
                         i_val+=date.length;}
-                else if (token=="hh"||token=="h") {
+                elseif (token=="hh"||token=="h") {
                         hh=_getInt(val,i_val,token.length,2);
                         if(hh==null||(hh<1)||(hh>12)){return 0;}
                         i_val+=hh.length;}
-                else if (token=="HH"||token=="H") {
+                elseif (token=="HH"||token=="H") {
                         hh=_getInt(val,i_val,token.length,2);
                         if(hh==null||(hh<0)||(hh>23)){return 0;}
                         i_val+=hh.length;}
-                else if (token=="KK"||token=="K") {
+                elseif (token=="KK"||token=="K") {
                         hh=_getInt(val,i_val,token.length,2);
                         if(hh==null||(hh<0)||(hh>11)){return 0;}
                         i_val+=hh.length;}
-                else if (token=="kk"||token=="k") {
+                elseif (token=="kk"||token=="k") {
                         hh=_getInt(val,i_val,token.length,2);
                         if(hh==null||(hh<1)||(hh>24)){return 0;}
                         i_val+=hh.length;hh--;}
-                else if (token=="mm"||token=="m") {
+                elseif (token=="mm"||token=="m") {
                         mm=_getInt(val,i_val,token.length,2);
                         if(mm==null||(mm<0)||(mm>59)){return 0;}
                         i_val+=mm.length;}
-                else if (token=="ss"||token=="s") {
+                elseif (token=="ss"||token=="s") {
                         ss=_getInt(val,i_val,token.length,2);
                         if(ss==null||(ss<0)||(ss>59)){return 0;}
                         i_val+=ss.length;}
-                else if (token=="a") {
+                elseif (token=="a") {
                         if (val.substring(i_val,i_val+2).toLowerCase()=="am") {ampm="AM";}
-                        else if (val.substring(i_val,i_val+2).toLowerCase()=="pm") {ampm="PM";}
+                        elseif (val.substring(i_val,i_val+2).toLowerCase()=="pm") {ampm="PM";}
                         else {return 0;}
                         i_val+=2;}
                 else {
@@ -882,7 +882,7 @@ function getDateFromFormat(val,format) {
                 }
         // Correct hours value
         if (hh<12 && ampm=="PM") { hh=hh-0+12; }
-        else if (hh>11 && ampm=="AM") { hh-=12; }
+        elseif (hh>11 && ampm=="AM") { hh-=12; }
         var newdate=new Date(year,month-1,date,hh,mm,ss);
         return newdate.getTime();
         }
@@ -1023,10 +1023,10 @@ function PopupWindow_refresh() {
                 if (this.use_gebi) {
                         document.getElementById(this.divName).innerHTML = this.contents;
                         }
-                else if (this.use_css) {
+                elseif (this.use_css) {
                         document.all[this.divName].innerHTML = this.contents;
                         }
-                else if (this.use_layers) {
+                elseif (this.use_layers) {
                         var d = document.layers[this.divName];
                         d.document.open();
                         d.document.writeln(this.contents);
@@ -1063,12 +1063,12 @@ function PopupWindow_showPopup(anchorname) {
                         document.getElementById(this.divName).style.top = this.y + "px";
                         document.getElementById(this.divName).style.visibility = "visible";
                         }
-                else if (this.use_css) {
+                elseif (this.use_css) {
                         document.all[this.divName].style.left = this.x;
                         document.all[this.divName].style.top = this.y;
                         document.all[this.divName].style.visibility = "visible";
                         }
-                else if (this.use_layers) {
+                elseif (this.use_layers) {
                         document.layers[this.divName].left = this.x;
                         document.layers[this.divName].top = this.y;
                         document.layers[this.divName].visibility = "visible";
@@ -1101,10 +1101,10 @@ function PopupWindow_hidePopup() {
                 if (this.use_gebi) {
                         document.getElementById(this.divName).style.visibility = "hidden";
                         }
-                else if (this.use_css) {
+                elseif (this.use_css) {
                         document.all[this.divName].style.visibility = "hidden";
                         }
-                else if (this.use_layers) {
+                elseif (this.use_layers) {
                         document.layers[this.divName].visibility = "hidden";
                         }
                 }
@@ -1127,7 +1127,7 @@ function PopupWindow_isClicked(e) {
                                 }
                         else { return false; }
                         }
-                else if (document.all) { // Need to hard-code this to trap IE for error-handling
+                elseif (document.all) { // Need to hard-code this to trap IE for error-handling
                         var t = window.event.srcElement;
                         while (t.parentElement != null) {
                                 if (t.id==this.divName) {
@@ -1137,7 +1137,7 @@ function PopupWindow_isClicked(e) {
                                 }
                         return false;
                         }
-                else if (this.use_gebi && e) {
+                elseif (this.use_gebi && e) {
                         var t = e.originalTarget;
                         while (t.parentNode != null) {
                                 if (t.id==this.divName) {
@@ -1217,8 +1217,8 @@ function PopupWindow() {
         this.use_css = false;
         this.use_layers = false;
         if (document.getElementById) { this.use_gebi = true; }
-        else if (document.all) { this.use_css = true; }
-        else if (document.layers) { this.use_layers = true; }
+        elseif (document.all) { this.use_css = true; }
+        elseif (document.layers) { this.use_layers = true; }
         else { this.type = "WINDOW"; }
         this.offsetX = 0;
         this.offsetY = 0;
@@ -1557,7 +1557,7 @@ function CP_addDisabledDates(start, end) {
         if (start!=null) { start = parseDate(start); start=""+start.getFullYear()+LZ(start.getMonth()+1)+LZ(start.getDate());}
         if (end!=null) { end=parseDate(end); end=""+end.getFullYear()+LZ(end.getMonth()+1)+LZ(end.getDate());}
         if (start==null) { this.disabledDatesExpression+="(ds<="+end+")"; }
-        else if (end  ==null) { this.disabledDatesExpression+="(ds>="+start+")"; }
+        elseif (end  ==null) { this.disabledDatesExpression+="(ds>="+start+")"; }
         else { this.disabledDatesExpression+="(ds>="+start+"&&ds<="+end+")"; }
         }
 
@@ -1633,7 +1633,7 @@ function CP_select(inputobj, linkname, format) {
         if (selectedDate!=null) {
                 time = getDateFromFormat(selectedDate,format)
                 }
-        else if (inputobj.value!="") {
+        elseif (inputobj.value!="") {
                 time = getDateFromFormat(inputobj.value,format);
                 }
         if (selectedDate!=null || inputobj.value!="") {
@@ -1781,7 +1781,7 @@ function CP_getCalendar() {
                                 if ((display_month == this.currentDate.getMonth()+1) && (display_date==this.currentDate.getDate()) && (display_year==this.currentDate.getFullYear())) {
                                         dateClass = "cpCurrentDate";
                                         }
-                                else if (display_month == month) {
+                                elseif (display_month == month) {
                                         dateClass = "cpCurrentMonthDate";
                                         }
                                 else {

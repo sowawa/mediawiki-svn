@@ -50,7 +50,7 @@ class WOMPropertyModel extends WikiObjectModel {
 		if ( $this->getPropertyValue() != $this->getCaption()
 			&& $this->getCaption() != '' ) {
 				$res .= "|{$this->getCaption()}";
-		} else if ( !$this->m_visible ) {
+		} elseif ( !$this->m_visible ) {
 			$res .= "| ";
 		}
 		$res .= "]]";

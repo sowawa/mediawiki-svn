@@ -345,7 +345,7 @@ class SpecialTasks extends IncludableSpecialPage {
 				# Open or assigned
 				$txt[] = $sk->makeLinkObj( $title, wfMsgHTML( 'tasks_close' ), "action=tasks&mode=close&taskid={$tid}{$returnto}" );
 				$txt[] = $sk->makeLinkObj( $title, wfMsgHTML( 'tasks_wontfix' ), "action=tasks&mode=wontfix&taskid={$tid}{$returnto}" );
-			} else if( $this->get_task_type( $task->task_type ) != 'create' ) {
+			} elseif( $this->get_task_type( $task->task_type ) != 'create' ) {
 				# Closed or wontfix, can reopen (maybe)
 				$txt[] = $sk->makeLinkObj( $title, wfMsgHTML( 'tasks_reopen' ), "action=tasks&mode=reopen&taskid={$tid}{$returnto}" );
 			}
@@ -458,7 +458,7 @@ class SpecialTasks extends IncludableSpecialPage {
 			if( $mode == 'unassignme' ) {
 				# Unassign me; this can be invoked for every user by editing the URL!
 				$user_id = 0;
-			} else if ( $mode == 'assignto' ) {
+			} elseif ( $mode == 'assignto' ) {
 				$user_id = $wgUser->idFromName($name);
 				if ( empty($user_id) ) {
 					break; # break as though "mode" were undefined (no action)

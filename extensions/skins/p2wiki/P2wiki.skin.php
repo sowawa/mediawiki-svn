@@ -48,10 +48,10 @@ class P2wikiTemplate extends BaseTemplate {
 
 		// Suppress warnings to prevent notices about missing indexes in $this->data
 		wfSuppressWarnings();
-		
+
 		// Generate additional footer links
 		$footerlinks = $this->data["footerlinks"];
-		
+
 		// Reduce footer links down to only those which are being used
 		$validFooterLinks = array();
 		foreach( $footerlinks as $category => $links ) {
@@ -62,7 +62,7 @@ class P2wikiTemplate extends BaseTemplate {
 				}
 			}
 		}
-		
+
 		// Generate additional footer icons
 		$footericons = $this->data["footericons"];
 		// Unset any icons which don't have an image
@@ -79,13 +79,13 @@ class P2wikiTemplate extends BaseTemplate {
 				unset($footericons[$footerIconsKey]);
 			}
 		}
-		
+
 		$isWide = false;
 		if ( $this->skin->getTitle()->getNamespace() == NS_SPECIAL )
 			$isWide = "extrawide";
-		else if ( $action == "edit" )
+		elseif ( $action == "edit" )
 			$isWide = "wide";
-		
+
 		// Output HTML Page
 		$this->html( 'headelement' ); ?>
 <div id="header"<?php if ( $isWide ) { ?> class="<?php echo $isWide; ?>"<?php } ?>>
@@ -95,7 +95,7 @@ class P2wikiTemplate extends BaseTemplate {
 		<small><?php $this->msg( 'tagline' ) ?></small>
 		<a class="secondary" href="<?php echo htmlspecialchars($this->data['nav_urls']['mainpage']['href']) ?>"></a>
 	</div>
-	
+
 	<div class="sleeve sleeve_personal"<?php $this->html('userlangattributes') ?>>
 <?php
 		$first = true;
@@ -194,9 +194,9 @@ class P2wikiTemplate extends BaseTemplate {
 				}
 			} ?>
 		</ul>
-	
+
 		<div class="visualClear"></div>
-	
+
 	</div> <!-- // sidebar -->
 
 <div class="sleeve_main">
@@ -205,7 +205,7 @@ class P2wikiTemplate extends BaseTemplate {
 		<?php if ( $this->data['sitenotice'] ): ?>
 		<div id="siteNotice"><?php $this->html( 'sitenotice' ) ?></div>
 		<?php endif; ?>
-		
+
 		<h2>
 			<?php $this->html( 'title' ) ?>
 			<span class="controls"<?php $this->html('userlangattributes') ?>>
@@ -235,7 +235,7 @@ class P2wikiTemplate extends BaseTemplate {
 				} ?>
 			</span>
 		</h2>
-		
+
 		<div id="bodyContent">
 			<div class="actions">
 			<?php
@@ -281,7 +281,7 @@ class P2wikiTemplate extends BaseTemplate {
 			<div class="bottom_of_entry">&#160;</div>
 			<div class="visualClear"></div>
 		</div>
-		
+
 	</div> <!-- main -->
 
 </div> <!-- sleeve -->

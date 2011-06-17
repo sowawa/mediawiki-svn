@@ -126,7 +126,7 @@ class WOMProcessor {
 
 				if ( $obj->getTypeID() == WOM_TYPE_HTMLTAG ) {
 					// special case, html tag
-				} else if ( $obj instanceof WikiObjectModelCollection ) {
+				} elseif ( $obj instanceof WikiObjectModelCollection ) {
 					WOMProcessor::parseSentences( $obj );
 				}
 				$new_objs[] = $obj;

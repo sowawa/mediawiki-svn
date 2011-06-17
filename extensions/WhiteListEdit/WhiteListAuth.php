@@ -70,7 +70,7 @@ class WhiteListExec
 
 		/* Check global allow/deny lists */
 		$override = self::GetOverride($true_title, $action);
-                
+
 		/* Check if page is on whitelist */
 		if( WHITELIST_NOACTION == $override )
 			$override = self::IsAllowedNamespace( $true_title, $user, $action );
@@ -104,7 +104,7 @@ class WhiteListExec
 		global $wgWhiteListOverride;
 
 		$allowView = $allowEdit = $denyView = $denyEdit = false;
- 
+
 		foreach( $wgWhiteListOverride['always']['read'] as $value )
 		{
 			if( self::RegexCompare($title, $value) )
@@ -112,7 +112,7 @@ class WhiteListExec
 				$allowView = true;
 			}
 		}
- 
+
 		foreach( $wgWhiteListOverride['always']['edit'] as $value )
 		{
 			if ( self::RegexCompare($title, $value) )
@@ -130,7 +130,7 @@ class WhiteListExec
 				$denyView = true;
 			}
 		}
- 
+
 		foreach( $wgWhiteListOverride['never']['edit'] as $value )
 		{
 			if ( self::RegexCompare($title, $value) )
@@ -143,7 +143,7 @@ class WhiteListExec
 		{
 			if( $denyEdit || $denyView )
 				$override = WHITELIST_DENY;
-			else if( $allowEdit )
+			elseif( $allowEdit )
 				$override = WHITELIST_GRANT;
 			else
 				$override = WHITELIST_NOACTION;
@@ -152,7 +152,7 @@ class WhiteListExec
 		{
 			if( $denyView )
 				$override = WHITELIST_DENY;
-			else if( $allowView || $allowEdit )
+			elseif( $allowView || $allowEdit )
 				$override = WHITELIST_GRANT;
 			else
 				$override = WHITELIST_NOACTION;
@@ -181,7 +181,7 @@ class WhiteListExec
 	{
 		$page_ns = $title->getNamespace();
 		if ( ( $page_ns == NS_MEDIAWIKI ) ||
-				 ( $page_ns == NS_FILE ) || 
+				 ( $page_ns == NS_FILE ) ||
 				 ( $page_ns == NS_HELP ) )
 		{
 			return WHITELIST_GRANT;
@@ -206,10 +206,10 @@ class WhiteListExec
 
 		$wl_table_name = $dbr->tableName( 'whitelist' );
 		$current_date = date("Y-m-d H:i:s");
-		$sql = "SELECT wl_page_title 
+		$sql = "SELECT wl_page_title
 			FROM " . $wl_table_name . "
 			WHERE wl_user_id = "     . $dbr->addQuotes($user->getId()) . "
-			AND ( (wl_expires_on >= " . $dbr->addQuotes($current_date)  . ") 
+			AND ( (wl_expires_on >= " . $dbr->addQuotes($current_date)  . ")
 			 OR ( wl_expires_on = "  . $dbr->addQuotes('') . "))";
 		if( $action == 'edit' ) {
 			$sql .= "
@@ -224,7 +224,7 @@ class WhiteListExec
 			$pagetext = $article->getContent();
 			$redirecttitle = Title::newFromRedirect($pagetext);
 		}
-                        
+
 		/* Loop through each result returned and
 		 * check for matches.
 		 */
@@ -259,30 +259,30 @@ class WhiteListExec
 	static function RegexCompare(&$title, $sql_regex)
 	{
 		global $wgWhiteListWildCardInsensitive;
-                
+
 		$ret_val = false;
-                
+
 		/* Convert regex to PHP format */
 		$illegal_chars = array(
-			'%', 
-			'_', 
-			'\\', 
+			'%',
+			'_',
+			'\\',
 			'(',
-			')', 
-			'$', 
-			'^', 
-			'[', 
+			')',
+			'$',
+			'^',
+			'[',
 			']'
 		);
 		$escaped_chars = array(
-			'.*',  
-			' ', 
-			'\\\\', 
-			'\(', 
-			'\)', 
-			'\$', 
-			'\^', 
-			'\[', 
+			'.*',
+			' ',
+			'\\\\',
+			'\(',
+			'\)',
+			'\$',
+			'\^',
+			'\[',
 			'\]'
 		);
 		$php_regex = str_replace($illegal_chars, $escaped_chars, $sql_regex);
@@ -298,13 +298,13 @@ class WhiteListExec
 			if( preg_match( $php_regex_full, $title->getPrefixedText() ) ) {
 //print("** MATCH\n");
 				$ret_val = true;
-			} 
+			}
 			else
 			{
-//print("** fail\n");			
+//print("** fail\n");
 			}
 		}
-		
+
 		return $ret_val;
 	}
 
@@ -329,7 +329,7 @@ class WhiteListHooks {
 	    $userIsRestricted = in_array( $wgWhiteListRestrictedGroup, $wgUser->getGroups() );
 
 	    if ($wgUser->isLoggedIn() && $userIsRestricted) {
-		
+
 		$personal_urls['mypages'] = array(
 		    'text' => wfMsg('mywhitelistpages'),
 		    'href' => Skin::makeSpecialUrl('WhiteList')

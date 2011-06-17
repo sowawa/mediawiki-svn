@@ -54,7 +54,7 @@ class ApiWOMSetObjectModel extends ApiBase {
 
 			if ( $verb == 'remove' ) {
 				WOMProcessor::removePageObject( $articleTitle, $oid, $summary, $rid, $force_update );
-			} else if ( $verb == 'removeall' ) {
+			} elseif ( $verb == 'removeall' ) {
 				$wom = WOMProcessor::getPageObject( $articleTitle, $rid );
 				foreach ( $objs as $id ) {
 					if ( $id == '' ) continue;
@@ -78,11 +78,11 @@ class ApiWOMSetObjectModel extends ApiBase {
 
 				if ( $verb == 'insert' ) {
 					WOMProcessor::insertPageText( $value, $articleTitle, $oid, $summary, $rid, $force_update );
-				} else if ( $verb == 'update' ) {
+				} elseif ( $verb == 'update' ) {
 					WOMProcessor::updatePageText( $value, $articleTitle, $oid, $summary, $rid, $force_update );
-				} else if ( $verb == 'append' ) {
+				} elseif ( $verb == 'append' ) {
 					WOMProcessor::appendPageText( $value, $articleTitle, $oid, $summary, $rid, $force_update );
-				} else if ( $verb == 'attribute' ) {
+				} elseif ( $verb == 'attribute' ) {
 					$wom = WOMProcessor::getPageObject( $articleTitle, $rid );
 					$obj = $wom->getObject( $oid );
 					$kv = explode( '=', $value, 2 );

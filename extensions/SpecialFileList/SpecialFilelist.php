@@ -115,7 +115,7 @@ class SpecialFilelist extends SpecialPage {
 
 		if( $params['until'] != "" ) {
 			$where[] = 'img_timestamp >= ' . $this->dbr->timestamp( $params['until'] );
-		} else if ( $params['date'] != "" ) {
+		} elseif ( $params['date'] != "" ) {
 			$where[] = 'img_timestamp < ' . $this->dbr->timestamp( $params['date'] );
 		}
 

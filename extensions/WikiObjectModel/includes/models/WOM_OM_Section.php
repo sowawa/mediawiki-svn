@@ -58,7 +58,7 @@ class WOMSectionModel extends WikiObjectModelCollection {
 		if ( $key == 'name' ) {
 			$this->m_name = $value;
 			return;
-		} else if ( $key == 'level' ) {
+		} elseif ( $key == 'level' ) {
 			$i = intval( $value );
 			if ( $i > 0 && $i <= strlen( WOMSectionModel::$heading ) ) {
 				$this->m_level = $i;

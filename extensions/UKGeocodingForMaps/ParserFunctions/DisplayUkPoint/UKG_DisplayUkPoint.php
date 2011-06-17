@@ -40,39 +40,39 @@ function efUKGRegisterDisplayPoint( &$wgParser ) {
 
 /**
  * Class containing the rendering functions for the display_uk_point parser function.
- * 
+ *
  * @ingroup UKGeocodingForMaps
- * 
+ *
  * @author Jeroen De Dauw
  */
 final class UKGDisplayUkPoint {
-	
+
 	public static $parameters = array();
-	
+
 	public static function initialize() {
 		self::initializeParams();
 	}
-	
+
 	/**
 	 * Returns the output for a display_uk_point call.
 	 * A lot of this code has been copied from @see MapsParserFunctions::getMapHtml in Maps.
 	 *
 	 * @param unknown_type $parser
-	 * 
+	 *
 	 * @return array
 	 */
 	public static function displayUkPointRender( &$parser ) {
 		global $wgLang, $egValidatorErrorLevel;
-		
+
 		$params = func_get_args();
-        
+
         array_shift( $params ); // We already know the $parser.
 
         $map = array();
         $coordFails = array();
-        
+
         $paramInfo = array_merge( MapsMapper::getMainParams(), self::$parameters );
-        
+
 		// Go through all parameters, split their names and values, and put them in the $map array.
         foreach ( $params as $param ) {
 			$split = explode( '=', $param );
@@ -86,32 +86,32 @@ final class UKGDisplayUkPoint {
                 	}
                 }
             }
-            else if ( count( $split ) == 1 ) { // Default parameter (without name)
+            elseif ( count( $split ) == 1 ) { // Default parameter (without name)
             	$split[0] = trim( $split[0] );
                 if ( strlen( $split[0] ) > 0 ) $map['coordinates'] = $split[0];
             }
         }
-        
+
 		if ( ! MapsParserFunctions::paramIsPresent( 'service', $map, $paramInfo ) ) $map['service'] = '';
 
 		$map['service'] = MapsMapper::getValidService( $map['service'], 'display_uk_point' );
 
 		$mapClass = MapsParserFunctions::getParserClassInstance( $map['service'], 'display_uk_point' );
-    
+
 		// Call the function according to the map service to get the HTML output
 		$output = $mapClass->displayMap( $parser, $map );
 
 		if ( $egValidatorErrorLevel >= Validator_ERRORS_WARN && count( $coordFails ) > 0 ) {
 			$output .= '<i>' . wfMsgExt( 'maps_unrecognized_coords_for', array( 'parsemag' ), $wgLang->listToText( $coordFails ), count( $coordFails ) ) . '</i>';
 		}
-        
+
         // Return the result
         return $parser->insertStripItem( $output, $parser->mStripState );
 	}
-	
+
 	private static function initializeParams() {
 		global $egMapsDefaultCentre, $egMapsDefaultTitle, $egMapsDefaultLabel, $egMapsAvailableServices, $egMapsDefaultServices;
-		
+
 		self::$parameters = array(
 			'service' => array(
 				'criteria' => array(
@@ -135,4 +135,4 @@ final class UKGDisplayUkPoint {
 			),
 		);
 	}
-}	
+}

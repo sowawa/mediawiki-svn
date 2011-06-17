@@ -49,7 +49,7 @@ function efSubpageList3( &$parser ) {
 function efRenderSubpageList3( $input, $args, $parser ) {
 	$list = new SubpageList3( $parser );
 	$list->options( $args );
-	
+
 	# $parser->disableCache();
 	return $list->render();
 }
@@ -232,7 +232,7 @@ class SubpageList3 {
 		if( isset( $options['debug'] ) ) {
 			if( $options['debug'] == 'true' || intval( $options['debug'] ) == 1 ) {
 				$this->debug = 1;
-			} else if( $options['debug'] == 'false' || intval( $options['debug'] ) == 0 ) {
+			} elseif( $options['debug'] == 'false' || intval( $options['debug'] ) == 0 ) {
 				$this->debug = 0;
 			} else {
 				$this->error( wfMsg('spl3_debug','debug') );
@@ -241,7 +241,7 @@ class SubpageList3 {
 		if( isset( $options['sort'] ) ) {
 			if( strtolower( $options['sort'] ) == 'asc' ) {
 				$this->order = 'asc';
-			} else if( strtolower( $options['sort'] ) == 'desc' ) {
+			} elseif( strtolower( $options['sort'] ) == 'desc' ) {
 				$this->order = 'desc';
 			} else {
 				$this->error( wfMsg('spl3_debug','sort') );
@@ -280,7 +280,7 @@ class SubpageList3 {
 		if( isset( $options['parent'] ) ) {
 			if( intval( $options['parent'] ) == -1 ) {
 				$this->parent = -1;
-			} else if( is_string( $options['parent'] ) ) {
+			} elseif( is_string( $options['parent'] ) ) {
 				$this->parent = $options['parent'];
 			} else {
 				$this->error( wfMsg('spl3_debug','parent') );
@@ -309,7 +309,7 @@ class SubpageList3 {
 		if( isset( $options['kidsonly'] ) ) {
 			if( $options['kidsonly'] == 'true' || $options['kidsonly'] == 'yes' || intval( $options['kidsonly'] ) == 1 ) {
 				$this->kidsonly = 1;
-			} else if( $options['kidsonly'] == 'false' || $options['kidsonly'] == 'no' || intval( $options['kidsonly'] ) == 0 ) {
+			} elseif( $options['kidsonly'] == 'false' || $options['kidsonly'] == 'no' || intval( $options['kidsonly'] ) == 0 ) {
 				$this->kidsonly = 0;
 			} else {
 				$this->error( wfMsg('spl3_debug','kidsonly') );
@@ -318,7 +318,7 @@ class SubpageList3 {
 		if( isset( $options['showparent'] ) ) {
 			if( $options['showparent'] == 'true' || $options['showparent'] == 'yes' || intval( $options['showparent'] ) == 1 ) {
 				$this->showparent = 1;
-			} else if( $options['showparent'] == 'false' || $options['showparent'] == 'no' || intval( $options['showparent'] ) == 0 ) {
+			} elseif( $options['showparent'] == 'false' || $options['showparent'] == 'no' || intval( $options['showparent'] ) == 0 ) {
 				$this->showparent = 0;
 			} else {
 				$this->error( wfMsg('spl3_debug','showparent') );
@@ -363,7 +363,7 @@ class SubpageList3 {
 
 		if( $this->ordermethod == 'title' ) {
 			$options['ORDER BY'] = 'page_title' . $order;
-		} else if( $this->ordermethod == 'lastedit' ) {
+		} elseif( $this->ordermethod == 'lastedit' ) {
 			$options['ORDER BY'] = 'page_touched ' . $order;
 		}
 		if( $this->parent !== -1) {
@@ -460,7 +460,7 @@ class SubpageList3 {
 		$parlv = substr_count($this->ptitle->getPrefixedText(), '/');
 		$list = array();
 		foreach( $titles as $title ) {
-			$lv = substr_count($title, '/') - $parlv;	
+			$lv = substr_count($title, '/') - $parlv;
 			if ( $this->kidsonly!=1 || $lv < 2 ) {
 				if ($this->showparent) {
 					$lv++;
@@ -506,5 +506,5 @@ class SubpageList3 {
 		wfProfileOut( __METHOD__ );
 		return $output->getText();
 	}
-	
+
 }

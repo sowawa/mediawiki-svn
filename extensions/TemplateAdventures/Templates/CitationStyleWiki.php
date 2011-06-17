@@ -12,7 +12,7 @@ class CitationStyleWiki extends Citation {
 	public function __construct( $parser, $frame, $args ) {
 		parent::__construct($parser, $frame, $args);
 	}
-	
+
 	/**
 	 * Our rendition
 	 */
@@ -20,32 +20,32 @@ class CitationStyleWiki extends Citation {
 		# authors
 		if ( count( $this->dAuthors ) > 1 ) {
 			# remember element 0 is always set
-			$authorArea = $this->createWriterSection ( 
-				$this->dAuthors, 
-				$this->dAuthorLinks, 
+			$authorArea = $this->createWriterSection (
+				$this->dAuthors,
+				$this->dAuthorLinks,
 				$this->dAuthorTruncate );
 			if ( $this->notNull ( $this->dCoAuthors ) )
-				$authorArea = wfMsg ( 'ta-citecoauthors', 
-					$authorArea, 
-					$this->getSeparator( 'author' ), 
+				$authorArea = wfMsg ( 'ta-citecoauthors',
+					$authorArea,
+					$this->getSeparator( 'author' ),
 					$this->dCoAuthors );
 			if ( $this->notNull ( $this->dDate )
 				|| $this->notNull ( $this->dYear ) ) {
-				$authorArea = wfMsg ( 'ta-citeauthordate', 
-					$authorArea, 
+				$authorArea = wfMsg ( 'ta-citeauthordate',
+					$authorArea,
 					$this->notNull ( $this->dDate ) ? $this->dDate : $this->dYear );
-				if ( $this->notNull ( $this->dYearNote ) ) 
-					$authorArea = wfMsg ( 'ta-citeauthoryearnote', 
-						$authorArea, 
+				if ( $this->notNull ( $this->dYearNote ) )
+					$authorArea = wfMsg ( 'ta-citeauthoryearnote',
+						$authorArea,
 						$this->dYearNote );
 			}
 			$this->addSection ( $authorArea, array ( 'writer', 'author' ) );
 		# editors
 		} elseif ( count ( $this->dEditors ) > 1 ) {
 			# remember element 0 is always set
-			$editorArea = $this->createWriterSection ( 
-				$this->dEditors, 
-				$this->dEditorLinks, 
+			$editorArea = $this->createWriterSection (
+				$this->dEditors,
+				$this->dEditorLinks,
 				$this->dEditorTruncate );
 			if ( count ( $this->dEditors ) > 2 )
 				$editorArea = wfMsg ( 'ta-citeeditorsplural', $editorArea );
@@ -54,19 +54,19 @@ class CitationStyleWiki extends Citation {
 			$editorArea .= $this->getSeparator ( 'section' );
 			if ( $this->notNull ( $this->dDate )
 				|| $this->notNull ( $this->dYear ) ) {
-				$editorArea = wfMsg ( 'ta-citeauthordate', 
-					$editorArea, 
+				$editorArea = wfMsg ( 'ta-citeauthordate',
+					$editorArea,
 					$this->notNull ( $this->dDate ) ? $this->dDate : $this->dYear );
-				if ( $this->notNull ( $this->dYearNote ) ) 
-					$editorArea .= wfMsg ( 'ta-citeauthoryearnote', 
+				if ( $this->notNull ( $this->dYearNote ) )
+					$editorArea .= wfMsg ( 'ta-citeauthoryearnote',
 					$editorArea, $this->dYearNote );
 			}
 			$this->addSection ( $editorArea, array ( 'writer', 'editor' ) );
 		}
 		# included work title
-		if ( $this->notNull( $this->dWorkTitle['includedwork'] ) 
-			&& ( $this->notNull( $this->dPeriodical['name'] ) 
-				|| $this->notNull( $this->dWorkTitle['transitalic'] ) 
+		if ( $this->notNull( $this->dWorkTitle['includedwork'] )
+			&& ( $this->notNull( $this->dPeriodical['name'] )
+				|| $this->notNull( $this->dWorkTitle['transitalic'] )
 				|| $this->notNull( $this->dWorkTitle['transtitle'] ) ) ) {
 			# let's get the url
 			if ( $this->notNull ( $this->dWorkLink['includedwork'] ) ) {
@@ -100,15 +100,15 @@ class CitationStyleWiki extends Citation {
 			}
 			$this->addSection ( $this->makeLink ( $url, $title ),
 				array ( 'title', 'includedlink' ) );
-		} else if ( $this->notNull ( $this->dWorkTitle['title'] ) ) {
+		} elseif ( $this->notNull ( $this->dWorkTitle['title'] ) ) {
 			# if only the title is set, assume url is the URL of the title
 			$url = $this->dWorkLink['url'];
 			if ( $this->notNull ( $this->dWorkTitle['transtitle'] ) ) {
-				$title = wfMsg ( 'ta-citetitletrans', 
-					$this->dWorkTitle['title'], 
+				$title = wfMsg ( 'ta-citetitletrans',
+					$this->dWorkTitle['title'],
 					$this->dWorkTitle['transtitle'] );
 				if ( $this->notNull ( $this->dLanguage ) ) {
-					$this->addSection ( wfMsg ( 'ta-citeinlanguage', 
+					$this->addSection ( wfMsg ( 'ta-citeinlanguage',
 						$this->makeLink ( $url, $title ), $this->dLanguage ),
 						array ( 'title', 'transtitle', 'language' ) );
 				} else {
@@ -121,19 +121,19 @@ class CitationStyleWiki extends Citation {
 					array ( 'title' ) );
 			}
 			$urlDisplayed = true;
-		} else if ( $this->citeType == 'book'
+		} elseif ( $this->citeType == 'book'
 			&& $this->notNull ( $this->dBook['title'] ) ) {
 			$this->addSection ( wfMsg ( 'ta-citebooktitle', $this->dBook['title'] ),
 				array ( 'title', 'book' ) );
 		}
 		# place, but only if different from publication place.
-		if ( $this->notNull ( $this->dPlace ) 
+		if ( $this->notNull ( $this->dPlace )
 			&& (
 				!$this->notNull ( $this->dPublication['place'] )
-				|| $this->dPlace != $this->dPublication['place'] 
-			) && ( 
+				|| $this->dPlace != $this->dPublication['place']
+			) && (
 				$this->isTagInSections ( 'writer' )
-				|| $this->notNull ( $this->dWorkTitle['includedwork'] ) 
+				|| $this->notNull ( $this->dWorkTitle['includedwork'] )
 			) && ( !in_array ( $this->citeType, array ( 'news', 'book' ) ) )
 		) {
 			if ( $this->notNull ( $this->dPublisher )
@@ -179,7 +179,7 @@ class CitationStyleWiki extends Citation {
 					array ( 'publisher', 'place', 'book' ) );
 			} else {
 				$this->addSection ( wfMsg ( 'ta-citebookpublisher',
-					$this->dPublisher ), 
+					$this->dPublisher ),
 					array ( 'publisher', 'book' ) );
 			}
 			if ( $this->notNull ( $this->dBook['page'] ) ) {
@@ -209,7 +209,7 @@ class CitationStyleWiki extends Citation {
 						# |{{#ifexpr:{{#time: U}} > {{#time: U | {{{Embargo|2001-10-10}}} }}
 							if ( $this->dPubMed['pmc'] != null ) {
 								$url = wfMsg ( 'ta-citepubmed-url', $this->dPubMed['pmc'] );
-							}				
+							}
 						}
 					}
 				} else {
@@ -221,7 +221,7 @@ class CitationStyleWiki extends Citation {
 					# |{{#ifexpr:{{#time: U}} > {{#time: U | {{{Embargo|2001-10-10}}} }}
 						if ( $this->dPubMed['pmc'] != null ) {
 							$url = wfMsg ( 'ta-citepubmed-url', $this->dPubMed['pmc'] );
-						}				
+						}
 					}
 				}
 				# and now the title
@@ -295,7 +295,7 @@ class CitationStyleWiki extends Citation {
 						# |{{#ifexpr:{{#time: U}} > {{#time: U | {{{Embargo|2001-10-10}}} }}
 							if ( $this->dPubMed['pmc'] != null ) {
 								$url = wfMsg ( 'ta-citepubmed-url', $this->dPubMed['pmc'] );
-							}				
+							}
 						}
 					}
 				} else {
@@ -307,7 +307,7 @@ class CitationStyleWiki extends Citation {
 					# |{{#ifexpr:{{#time: U}} > {{#time: U | {{{Embargo|2001-10-10}}} }}
 						if ( $this->dPubMed['pmc'] != null ) {
 							$url = wfMsg ( 'ta-citepubmed-url', $this->dPubMed['pmc'] );
-						}				
+						}
 					}
 				}
 				# and now the title
@@ -326,17 +326,17 @@ class CitationStyleWiki extends Citation {
 			# may change this into some if () statements though,
 			# it is easier to write this, but it also means that all of the
 			# second input is actually evaluated, even if it contains nothing.
-			$newPerArea .= $this->addNotNull ( $this->dWorkTitle['type'], 
+			$newPerArea .= $this->addNotNull ( $this->dWorkTitle['type'],
 				wfMsg ( 'ta-citetitletyperender', $this->dWorkTitle['type'] ) . $this->getSeparator ( 'section' ) );
-			$newPerArea .= $this->addNotNull ( $this->dSeries, 
+			$newPerArea .= $this->addNotNull ( $this->dSeries,
 				wfMsg ( 'ta-citeseries', $this->dSeries ) . $this->getSeparator ( 'section' ) );
-			$newPerArea .= $this->addNotNull ( $this->dVolume, 
+			$newPerArea .= $this->addNotNull ( $this->dVolume,
 				wfMsg ( 'ta-citevolumerender', $this->dVolume ) . $this->getSeparator ( 'section' ) );
-			$newPerArea .= $this->addNotNull ( $this->dOther, 
+			$newPerArea .= $this->addNotNull ( $this->dOther,
 				wfMsg ( 'ta-citeother', $this->dOther ) );
-			$newPerArea .= $this->addNotNull ( $this->dEdition, 
+			$newPerArea .= $this->addNotNull ( $this->dEdition,
 				wfMsg ( 'ta-citeeditionrender', $this->dEdition ) . $this->getSeparator ( 'section' ) );
-			$newPerArea .= $this->addNotNull ( $this->dPublication['place'], 
+			$newPerArea .= $this->addNotNull ( $this->dPublication['place'],
 				wfMsg ( 'ta-citepublication', $this->dPublication['place'] ) );
 			if ( $this->notNull ( $this->dPublisher ) ) {
 				if ( $this->notNull ( $this->dPublication['place'] ) ) {
@@ -351,7 +351,7 @@ class CitationStyleWiki extends Citation {
 		}
 		# date if no author/editor
 		if ( !$this->isTagInSections ( 'writer' ) ) {
-			if ( $this->notNull ( $this->dDate ) 
+			if ( $this->notNull ( $this->dDate )
 				|| $this->notNull ( $this->dYear ) ) {
 				$tmp = wfMsg ( 'ta-citealonedate', $this->notNull ( $this->dDate ) ? $this->dDate : $this->dYear );
 				if ( $this->notNull ( $this->dYearNote ) ) {
@@ -361,7 +361,7 @@ class CitationStyleWiki extends Citation {
 			}
 		}
 		# publication date
-		if ( $this->notNull ( $this->dPublication['date'] ) 
+		if ( $this->notNull ( $this->dPublication['date'] )
 			&& $this->dPublication['date'] != $this->dDate ) {
 			if ( $this->isTagInSections ( 'editor' ) ) {
 				if ( $this->isTagInSections ( 'author' ) ) {
@@ -382,7 +382,7 @@ class CitationStyleWiki extends Citation {
 			}
 		}
 		# page within included work
-		if ( !$this->notNull ( $this->dPeriodical['name'] ) 
+		if ( !$this->notNull ( $this->dPeriodical['name'] )
 			&& $this->notNull ( $this->dAt ) ) {
 			$this->addSection ( wfMsg ( 'ta-citeatseparated', $this->dAt ),
 				array ( 'at', 'periodical' ) );
@@ -447,14 +447,14 @@ class CitationStyleWiki extends Citation {
 				if ( $this->notNull ( $this->dWorkTitle['title'] )
 					|| $this->notNull ( $this->dWorkTitle['includedwork'] )
 					|| $this->notNull ( $this->dWorkTitle['transtitle'] ) ) {
-					$this->addSection ( $this->printOnly ( 
+					$this->addSection ( $this->printOnly (
 							( $this->notNull ( $this->dWorkLink['includedwork'] )
 								? $this->dWorkLink['includedwork']
 								: $this->dWorkLink['url'] ) ),
 							array ( 'url', 'printonly' ),
 							false );
 				} else {
-					$this->addSection ( 
+					$this->addSection (
 						( $this->notNull ( $this->dWorkLink['includedwork'] )
 							? $this->dWorkLink['includedwork']
 							: $this->dWorkLink['url'] ),
@@ -481,7 +481,7 @@ class CitationStyleWiki extends Citation {
 		# some other shit nobody cares about.
 		# COinS?  waaaaat
 		# TODO
-		
+
 		$this->finishRender();
-	}	
+	}
 }
