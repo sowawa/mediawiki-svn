@@ -237,7 +237,8 @@ function doPageSpecificRewrite() {
 
 
 	// Upload page -> Firefogg / upload API / uploadWizard integration
-	if ( wgPageName == "Special:Upload" ) {
+	// disabled upload per bug 29423 ( new upload efforts focus on UploadWizard anyway )
+	/*if ( wgPageName == "Special:Upload" ) {
 		var scriptUrl = null;
 		var scriptName = null;
 		var libraries = [];
@@ -258,7 +259,7 @@ function doPageSpecificRewrite() {
 			mw.load( scriptUrl );
 		} );
 		return ;
-	}
+	}*/
 
 	// Special api proxy page
 	if ( wgPageName == 'MediaWiki:ApiProxy' ) {
