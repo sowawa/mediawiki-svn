@@ -1,2 +1,2 @@
-def process(page, out):
-	out.put([page.getId(), page.getTitle()])
+def process(dump, page):
+	yield (page.getId(), page.getTitle())
