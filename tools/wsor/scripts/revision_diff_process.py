@@ -28,9 +28,22 @@ def simpleDiff(a, b):
 
 
 
-def process(page, output):
+def process(dump, page):
 	recentRevs = LimitedDictLists(maxsize=15)
 	lastTokens = []
+	metaHeaders = [
+		'rev_id',
+		'checksum',
+		'tokens',
+		'cs_added',
+		'cs_removed',
+		'ts_added',
+		'ts_removed',
+		'ws_added',
+		'ws_removed',
+		'ms_added',
+		'ms_removed'
+	]
 	for revision in page.readRevisions():
 		checksum = hashlib.md5(revision.getText().encode("utf-8")).hexdigest()
 		if checksum in recentRevs:
@@ -38,27 +51,23 @@ def process(page, output):
 			revertedToRev = recentRevs[checksum]
 			
 			#get the revisions that were reverted
-			revertedRevs = [r for (c, r) in recentRevs if r.getId() > revertedToRev.getId()]
+			revertedRevs = [r for (c,r) in reversed(recentRevs.getQueue()) if r.getId() > revertedToRev.getId()]
 			
 			#write revert row
-			revert.write(
-				['revert']+
-				[
-					revision.getId(), 
-					revertedToRev.getId(), 
-					len(revertedRevs)
-				]
+			yield (
+				'revert',
+				revision.getId(), 
+				revertedToRev.getId(), 
+				len(revertedRevs)
 			)
 			
 			for rev in revertedRevs:
-				out.push(
-					['reverted']+
-					[
-						rev.getId(),
-						revision.getId(),
-						revertedToRev.getId(), 
-						len(revertedRevs)
-					]
+				yield (
+					'reverted',
+					rev.getId(),
+					revision.getId(),
+					revertedToRev.getId(), 
+					len(revertedRevs)
 				)
 		else:
 			pass
@@ -94,6 +103,7 @@ def process(page, output):
 			elif token not in STOP_WORDS: row['ws_removed'] += 1
 			
 		
-		output.pushRow(['meta']+[row[h] for h in metaHeaders])
+		yield tuple(['meta']+[row[h] for h in metaHeaders])
 		
 		lastTokens = tokens
+		recentRevs.insert(checksum, revision)
