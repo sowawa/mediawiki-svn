@@ -112,21 +112,6 @@ $wgWebFonts = array(
 			'ttf' => "$fontsPath/hi/SamyakDevanagari.ttf",
 			'woff' => "$fontsPath/hi/SamyakDevanagari.woff",
 				),
-		'David CLM' => array(
-			'eot' => "$fontsPath/he/DavidCLM-Medium.eot",
-			'ttf' => "$fontsPath/he/DavidCLM-Medium.ttf",
-			'woff' => "$fontsPath/he/DavidCLM-Medium.woff",
-				),
-		'Hadasim CLM' => array(
-			'eot' => "$fontsPath/he/HadasimCLM-Regular.eot",
-			'ttf' => "$fontsPath/he/HadasimCLM-Regular.ttf",
-			'woff' => "$fontsPath/he/HadasimCLM-Regular.woff",
-				),
-		'Ezra SIL' => array(
-			'eot' => "$fontsPath/he/EzraSILSR.eot",
-			'ttf' => "$fontsPath/he/EzraSILSR.ttf",
-			'woff' => "$fontsPath/he/EzraSILSR.woff",
-				),
 		'Miriam CLM' => array(
 			'eot' => "$fontsPath/he/MiriamCLM-Book.eot",
 			'ttf' => "$fontsPath/he/MiriamCLM-Book.ttf",
@@ -250,7 +235,7 @@ $wgWebFonts = array(
 		'hi' => array( 'Samyak Devanagari', 'Lohit Hindi' ),
 		'mr' => array( 'Samyak Devanagari', 'Lohit Hindi' ),
 		'ks' => array( 'Samyak Devanagari', 'Lohit Hindi' ),
-		'he' => array( 'Ezra SIL', 'Taamey Frank CLM' , 'Miriam CLM', 'David CLM', 'Hadasim CLM' ),
+		'he' => array( 'Miriam CLM', 'Taamey Frank CLM' ),
 		'kn' => array( 'Kedage', 'Lohit Kannada' ),
 		'my' => array( 'Masterpiece Uni Sans', 'Padauk-Regular', 'Myanmar3', 'Yunghkio' ),
 		'km' => array( 'KhmerOSbattambang', 'KhmerOSsiemreap', 'KhmerOS', 'KhmerOSbokor', 'KhmerOSmuollight', 'KhmerOSmuol', 'KhmerOSmuolpali', 'KhmerOSfreehand', 'KhmerOSfasthand' ),
