@@ -232,8 +232,8 @@ class CheckVars {
 			'$col' => array( 'UtfNormalTest2.php' ),
 			'$lineNo' => array( 'UtfNormalTest2.php' ),
 			'$cliUpgrade' => array( 'CliInstaller.php' ),
-			'$mediaWiki' => array( 'index.php' ),
-			'$wgArticle' => array( 'index.php' ),
+			'$wgArticle' => array( 'Wiki.php' ),
+			'$wgConfiguration' => array( 'Conf.php' ), # It's just an experiment for now
 		);
 
 	function setGenerateDeprecatedList( $bool = true ) {
