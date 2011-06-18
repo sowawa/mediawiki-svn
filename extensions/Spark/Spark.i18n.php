@@ -61,6 +61,14 @@ $messages['gl'] = array(
 	'spark-missing-query' => 'Cómpre especificar unha pescuda a través do parámetro "data-spark-query".',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'spark-desc' => 'הוספת תג <code><nowiki><spark /></nowiki></code> שמפעיל הטמעת ערבולים של [http://km.aifb.kit.edu/sites/spark/ ספארק]. ספריית ספארק נוצרה על־ידי דֵני ורנדצ׳יץ׳ ואנדרֵאס הארת.',
+	'spark-missing-query' => 'יש להזין שאילתה באמצעות הפרמטר "data-spark-query".',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

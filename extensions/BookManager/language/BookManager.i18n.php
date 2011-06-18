@@ -477,6 +477,7 @@ $messages['te'] = array(
 $messages['tl'] = array(
 	'bookmanager-desc' => 'Mga kasangkapan para sa mga aklat',
 	'bm-booktools-section' => 'Mga kasangkapan ng aklat',
+	'bm-randomchapter-link' => 'Alin mang kabanata',
 	'bm-printversion' => 'Bersyong maililimbag',
 	'bm-printversion-desc' => 'Gumagawa ng isang [[Special:PrintVersion|bersyong naililimbag]] ng isang aklat',
 	'bm-printversion-no-book' => 'Pakipasok ang pangalan ng isang aklat upang makuha ang bersyong maililimbag.',

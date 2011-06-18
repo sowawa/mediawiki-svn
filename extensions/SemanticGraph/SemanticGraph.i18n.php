@@ -97,3 +97,10 @@ $messages['ru'] = array(
 	'semanticgraph-desc' => 'Позволяет визуализовать  структурированные данных, хранящихся в Semantic MediaWiki в виде графов',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Lesko987
+ */
+$messages['sl'] = array(
+	'semanticgraph-desc' => 'Omogoča vizualizacijo strukturiranih podatkov shranjenih preko Semantic MediaWiki v obliki grafov',
+);
+

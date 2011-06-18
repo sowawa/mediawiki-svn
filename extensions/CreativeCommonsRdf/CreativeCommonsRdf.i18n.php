@@ -58,6 +58,13 @@ $messages['gl'] = array(
 	'creativecommonsrdf-desc' => 'Metadatos RDF de Creative Commons',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'creativecommonsrdf-desc' => 'מטא־נתונים של קריאייטיב קומונז בתסדיר RDF',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

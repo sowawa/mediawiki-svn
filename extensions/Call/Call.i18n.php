@@ -1277,6 +1277,19 @@ $messages['tg-latn'] = array(
 	'call-save-success' => 'Matni zerin ba sahifa <big>[[$1]]</big> zaxira şud.',
 );
 
+/** Thai (ไทย)
+ * @author Akkhaporn
+ */
+$messages['th'] = array(
+	'call' => 'ทั้งหมด',
+	'call-desc' => 'สร้างการเชื่อมโยงไปยังแม่แบบ (หรือหน้าวิกิปกติ) ด้วยำารามิเตอร์ที่ผ่านมา.
+สามารถใช้บรรทัดคำสั่งที่เบราว์เซอร์หรือในข้อความวิกิ',
+	'call-text' => '',
+	'call-save' => "การส่งออกของคำร้องถูกบันทึกไปยังหน้า ''$1''",
+	'call-save-success' => 'ข้อความต่อไปนี้ถูกบันทึกไปยังหน้า <big>[[$1]]</big>',
+	'call-save-failed' => 'ข้อความต่อไปนี้ไม่ได้บันทึกไปยังหน้า <big>[[$1]]</big> เพราะหน้านั้นมีอยู่แล้ว',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

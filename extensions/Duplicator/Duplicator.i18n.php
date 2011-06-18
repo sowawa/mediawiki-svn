@@ -1403,7 +1403,7 @@ $messages['pt'] = array(
 	'duplicator-toolbox' => 'Duplicar esta página',
 	'duplicator-header' => 'Esta página permite a duplicação completa de uma página de conteúdo, criando cópias independentes de todo o seu histórico. Isto é útil para separar versões de páginas, etc.',
 	'duplicator-options' => 'Opções',
-	'duplicator-source' => 'Fonte:',
+	'duplicator-source' => 'Origem:',
 	'duplicator-dest' => 'Destino:',
 	'duplicator-dotalk' => 'Duplicar página de discussão (se aplicável)',
 	'duplicator-submit' => 'Duplicar',
@@ -1414,10 +1414,10 @@ $messages['pt'] = array(
 	'duplicator-success-talknotcopied' => 'Não foi possível copiar a página de discussão.',
 	'duplicator-failed' => 'Não foi possível duplicar a página.
 Ocorreu um erro desconhecido.',
-	'duplicator-source-invalid' => 'Por favor, forneça um título fonte válido.',
-	'duplicator-source-notexist' => '[[$1]] não existe. Por favor, forneça o título de uma página que exista.',
-	'duplicator-dest-invalid' => 'Por favor, forneça um título de destino válido.',
-	'duplicator-dest-exists' => '[[$1]] já existe. Por favor, forneça um título de destino que ainda não exista.',
+	'duplicator-source-invalid' => 'Forneça um título válido para a origem, por favor.',
+	'duplicator-source-notexist' => '[[$1]] não existe. Forneça o título de uma página que exista, por favor.',
+	'duplicator-dest-invalid' => 'Forneça um título válido para o destino, por favor.',
+	'duplicator-dest-exists' => '[[$1]] já existe. Forneça um título de destino que ainda não exista, por favor.',
 	'duplicator-toomanyrevisions' => '[[$1]] possui demasiadas ($2) revisões e não pode ser copiada. O limite actual é $3.',
 	'right-duplicate' => 'Duplicar páginas',
 );

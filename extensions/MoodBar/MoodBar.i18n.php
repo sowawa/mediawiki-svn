@@ -51,6 +51,13 @@ $messages['gl'] = array(
 	'moodbar-desc' => 'Permite que os usuarios especificados envíen ao operador do sitio o seu "humor"',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'moodbar-desc' => 'מתן אפשרות למשתמשם לשלוח את "מצב הרוח" שלהם למפעיל האתר',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

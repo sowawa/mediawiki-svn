@@ -4830,11 +4830,13 @@ $messages['tt-cyrl'] = array(
 	'voctrain_User_name' => 'Кулланучы исеме',
 	'voctrain_Password' => 'Серсүз:',
 	'voctrain_Login' => 'Керү',
+	'voctrain_Create_new_user' => 'Яңа кулланучы язмасын төзү',
 	'voctrain_Switch_language' => 'Тел сайлау',
 	'voctrain_Language' => 'Тел',
 	'voctrain_Log_in' => 'Керү',
 	'voctrain_Omegawiki_vocabulary_trainer' => 'Omegawiki сүзләр өйрәнү программасы',
 	'voctrain_Definitions' => 'Билгеләмәләр',
+	'voctrain_Could_not_create_new_user' => 'Яңа кулланучы язмасын төзү мөмкин түгел',
 	'voctrain_Type_a_username_and_optional_password_or_try_a_different_username_' => 'Хисап язмасы исемен һәм серсүзне кертегез (яки башка исем кулланып карагыз)',
 	'voctrain_Vocview' => 'Сүзләрне карау',
 	'voctrain_Dictionary_definitions' => 'сүзлек_билгеләмәләре',
@@ -4842,6 +4844,9 @@ $messages['tt-cyrl'] = array(
 	'voctrain_unhide_definition' => 'билгеләмәне күрсәтергә',
 	'voctrain_unhide_words' => 'сүзләрне күрсәтергә',
 	'voctrain_hiding' => 'Качыру',
+	'voctrain_hide_definitions_in_question_language' => 'Сораулар телендәге билгеләмәләрне качырырга',
+	'voctrain_hide_words_in_question_language' => 'Сораулар телендәге сүзләрне качырырга',
+	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'Берничә тел кулланыр өчен мәгънәләрне өтер белән аерыгыз',
 	'voctrain_other' => 'Башка',
 );
 

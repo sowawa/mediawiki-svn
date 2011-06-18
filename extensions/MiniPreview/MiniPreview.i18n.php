@@ -716,12 +716,12 @@ $messages['ps'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
-	'minipreview-desc' => 'MiniPreview apresenta, junto a uma imagem, pequenas antevisões de outros ficheiros multimédia nas mesmas categorias ou existentes nas mesmas páginas',
+	'minipreview-desc' => 'MiniAntevisão apresenta, junto a uma imagem, pequenas antevisões de outros ficheiros multimédia nas mesmas categorias ou existentes nas mesmas páginas',
 	'minipreview-files_in_category' => "'''$1''' {{PLURAL:$1|ficheiro|ficheiros}} no total nesta categoria.",
 	'minipreview-files_in_gallery' => '$1 {{PLURAL:$1|ficheiro|ficheiros}} no total nesta galeria.',
 	'minipreview-no_more_files_here' => 'Não há mais ficheiros nesta direcção.',
 	'minipreview-no_category_gallery' => 'Não existem categorias ou galerias!',
-	'minipreview-ignore_categories' => 'A seguinte lista contém nomes de categorias ou prefixos de nomes. Estas categorias não serão mostradas pelo MiniPreview.
+	'minipreview-ignore_categories' => 'A seguinte lista contém nomes de categorias ou prefixos de nomes. Estas categorias não serão mostradas pela MiniAntevisão.
 Por exemplo, "* PD-" não mostrará todas as categorias que começam com "PD-", tal como "PD-old".
 * GFDL-
 * GFDL

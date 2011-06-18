@@ -1482,6 +1482,20 @@ $messages['li'] = array(
 	'ct-update-table' => 'Wèrk tabel bie',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Eitvys200
+ */
+$messages['lt'] = array(
+	'ct-total-header' => 'Viso paspaudimų',
+	'ct-start-date' => 'Pradžios data (MMMM MM DD)',
+	'ct-end-date' => 'Pabaigos data (MMMM MM DD)',
+	'ct-beginner' => 'Pradedantysis',
+	'ct-expert' => 'Ekspertas',
+	'ct-anon-users' => 'Anoniminiai vartotojai',
+	'ct-and' => 'ir',
+	'ct-update-table' => 'Atnaujinti lentelę',
+);
+
 /** Latvian (Latviešu)
  * @author GreenZeb
  * @author Papuass

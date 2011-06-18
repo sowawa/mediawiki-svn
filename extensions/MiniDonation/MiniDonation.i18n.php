@@ -452,8 +452,8 @@ $messages['ps'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
-	'donationform-desc' => 'Adiciona um elemento <code>&lt;donateform&gt;</code> para suportar donativos via PayPal',
-	'donationform-submit' => 'Doe pelo PayPal',
+	'donationform-desc' => 'Adiciona um elemento <code>&lt;donateform&gt;</code> para fazer donativos através do PayPal',
+	'donationform-submit' => 'Fazer donativo através do PayPal',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

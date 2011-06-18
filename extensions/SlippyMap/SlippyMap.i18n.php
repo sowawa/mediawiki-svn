@@ -1295,6 +1295,20 @@ $messages['sk'] = array(
 	'slippymap_clicktoactivate' => 'Mapu aktivujete kliknutím',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Lesko987
+ */
+$messages['sl'] = array(
+	'slippymap_desc' => 'Doda <tt>&lt;slippymap&gt;</tt> oznako, ki omogoča vgradnjo statičnega ali dinamičnega zemljevida. Podpira več ponudnikov zemljevidov, vključno z [http://openstreetmap.org OpenStreetMap] in NASA Worldwind',
+	'slippymap_error' => '$1 napaka: $2',
+	'slippymap_errors' => '$1 napake:',
+	'slippymap_error_tag_content_given' => '<tt>&lt;$1&gt;</tt> oznaka uporabi le atribute (&lt;$1 [...]/&gt;), ne pa tekste (&lt;$1&gt; ... &lt;/$1&gt;)',
+	'slippymap_error_missing_arguments' => 'Niste podali nobenih atributov oznake &lt;$1&gt;, poglej [http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax usage information] za primer klicanja.',
+	'slippymap_error_missing_attribute_lat' => 'Manjka atribut <tt>lat</tt> (za zemljepisno širino).',
+	'slippymap_error_missing_attribute_lon' => 'Manjka atribut <tt>lon</tt> (za zemljepisno dolžino).',
+	'slippymap_error_missing_attribute_zoom' => 'Manjka atribut <tt>zoom</tt> (za povečavo).',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  * @author M.M.S.

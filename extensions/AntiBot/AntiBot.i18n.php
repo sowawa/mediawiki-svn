@@ -88,10 +88,11 @@ $messages['be-tarask'] = array(
 );
 
 /** Bulgarian (Български)
+ * @author DCLXVI
  * @author Stanqo
  */
 $messages['bg'] = array(
-	'antibot-desc' => 'Инструмент за защита от спам и стартиране на скрити процеси',
+	'antibot-desc' => 'Платформа за проверки за спам и срещу скрити процеси',
 );
 
 /** Breton (Brezhoneg)

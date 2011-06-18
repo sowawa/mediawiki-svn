@@ -2073,7 +2073,7 @@ $messages['ia'] = array(
 	'articlefeedback-form-switch-label' => 'Evalutar iste pagina',
 	'articlefeedback-form-panel-title' => 'Evalutar iste pagina',
 	'articlefeedback-form-panel-explanation' => 'Que es isto?',
-	'articlefeedback-form-panel-explanation-link' => 'Project:CommentarArticulos',
+	'articlefeedback-form-panel-explanation-link' => 'Project:Commentar articulos',
 	'articlefeedback-form-panel-clear' => 'Remover iste evalutation',
 	'articlefeedback-form-panel-expertise' => 'Io es multo ben informate super iste thema (optional)',
 	'articlefeedback-form-panel-expertise-studies' => 'Io ha un grado relevante de collegio/universitate',
@@ -2124,7 +2124,10 @@ Per favor reproba plus tarde.',
 	'articleFeedback-table-heading-page' => 'Pagina',
 	'articleFeedback-table-heading-average' => 'Medie',
 	'articleFeedback-copy-above-highlow-tables' => 'Iste function es experimental.  Per favor lassa tu opinion in le [$1 pagina de discussion].',
-	'articleFeedback-copy-below-highlow-tables' => 'Iste tabellas contine paginas que ha recipite al minus 10 evalutationes durante le ultime 24 horas. Le medias es calculate per prender le media de tote le evalutationes submittite durante le ultime 24 horas.',
+	'articlefeedback-dashboard-bottom' => "'''Nota''': Nos continua a experimentar con differente modos de mitter articulos in evidentia in iste pannellos.  A presente, le pannellos include le sequente articulos:
+* Paginas con le evalutationes le plus alte/basse: articulos que ha recipite al minus 10 evalutationes durante le ultime 24 horas.  Le media es calculate usante tote le evalutationes submittite durante le ultime 24 horas.
+* Bassos recente: articulos que recipeva 70% o plus de evalutationes basse (2 stellas o minus) in qualcunque categoria durante le ultime 24 horas. Solmente le articulos que ha recipite al minus 10 evalutationes durante le ultime 24 horas es includite.",
+	'articlefeedback-disable-preference' => 'Non monstrar le widget de evalutation de articulos in paginas',
 	'articlefeedback-emailcapture-response-body' => 'Salute!
 
 Gratias pro tu interesse in adjutar a meliorar {{SITENAME}}.
@@ -4887,12 +4890,11 @@ $messages['yo'] = array(
 	'articlefeedback-survey-question-useful' => '你认为提供的评价有用并清晰吗？',
 	'articlefeedback-survey-question-useful-iffalse' => '为什么？',
 	'articlefeedback-survey-question-comments' => '你还有什么想说的吗？',
-	'articlefeedback-survey-submit' => '提交',
+	'articlefeedback-survey-submit' => 'Fúnsílẹ̀',
 	'articlefeedback-survey-title' => '请回答几个问题',
 	'articlefeedback-survey-thanks' => '谢谢您回答问卷。',
 	'articlefeedback-form-switch-label' => '提供意见',
 	'articlefeedback-form-panel-title' => '您的意见',
-	'articlefeedback-form-panel-instructions' => '请花些时间为这个条目打分',
 	'articlefeedback-form-panel-submit' => '上载意见',
 	'articlefeedback-field-complete-label' => '完成',
 );

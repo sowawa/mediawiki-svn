@@ -58,6 +58,13 @@ $messages['gl'] = array(
 	'dublincorerdf-desc' => 'Metadatos RDF de Dublin Core',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'dublincorerdf-desc' => 'מטא־נתונים של Dublin Core בתסדיר RDF',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

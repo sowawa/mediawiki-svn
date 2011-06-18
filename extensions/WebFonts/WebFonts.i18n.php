@@ -178,12 +178,14 @@ $messages['it'] = array(
 );
 
 /** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
  * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
 	'webfonts' => 'ពុម្ពអក្សរ WebFonts',
 	'webfonts-desc' => 'បង្កប់ពុម្ពអក្សរក្នុងទំព័រនេះ',
 	'webfonts-load' => 'ជ្រើសរើសពុម្ពអក្សរ',
+	'webfonts-reset' => 'កំណត់ឡើងវិញ',
 	'webfonts-disable-preference' => 'ដកពុម្ពអក្សរបង្កប់ចេញ (WebFonts)',
 );
 

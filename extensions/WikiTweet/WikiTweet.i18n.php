@@ -65,6 +65,8 @@ $messages['be-tarask'] = array(
  */
 $messages['bg'] = array(
 	'wikitweet-delete' => 'изтриване',
+	'wikitweet-timeago' => 'Преди $1',
+	'wikitweet-fewsecondsago' => 'Преди няколко секунди',
 );
 
 /** Breton (Brezhoneg)

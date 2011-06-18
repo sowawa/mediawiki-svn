@@ -82,6 +82,15 @@ $messages['gl'] = array(
 	'elm-easyref-close' => 'Pechar',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'elm-easyref-desc' => 'הוספת שדה צץ להצגת תוכן ההערה',
+	'elm-easyref-ref' => 'הפניה $1',
+	'elm-easyref-close' => 'סגירה',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
