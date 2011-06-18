@@ -311,6 +311,10 @@ class CheckVars {
 			$this->mTokens = array();
 			return;
 		}
+
+		/* Skip HipHop specific requires */
+		$source = preg_replace( '/if \( isset\( \$_SERVER\[\'MW_COMPILED\'\] \) \) {\\s+require \( \'phase3\/.*\' \);\\s+} else {/', 'if ( true ) {', $source );
+		
 		$this->mTokens = token_get_all( $source );
 	}
 
