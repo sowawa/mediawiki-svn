@@ -1115,7 +1115,7 @@ foreach ( $argv as $arg ) {
 	}
 }
 
-$cv->preloadFiles( array( $IP . '/includes/GlobalFunctions.php' ) );
+$cv->preloadFiles( array( "$IP/includes/GlobalFunctions.php", "$IP/includes/normal/UtfNormalUtil.php" ) );
 
 foreach ( $argv as $arg ) {
 	if ( substr( $arg, 0, 2 ) == '-W' )
