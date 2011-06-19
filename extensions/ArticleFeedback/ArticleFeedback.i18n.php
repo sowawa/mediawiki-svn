@@ -430,10 +430,12 @@ $messages['bg'] = array(
 	'articlefeedback-survey-submit' => 'Изпращане',
 	'articlefeedback-survey-title' => 'Моля, отговорете на няколко въпроса',
 	'articlefeedback-survey-thanks' => 'Благодарим ви, че попълнихте въпросника!',
+	'articlefeedback-form-panel-explanation' => 'Какво е това?',
 	'articlefeedback-report-switch-label' => 'Показване на резултатите',
 	'articlefeedback-pitch-join-accept' => 'Създаване на сметка',
 	'articlefeedback-pitch-join-login' => 'Влизане',
 	'articlefeedback-pitch-edit-accept' => 'Редактиране на тази страница',
+	'articleFeedback-table-heading-page' => 'Страница',
 );
 
 /** Bengali (বাংলা)
@@ -2698,6 +2700,7 @@ Probéiert w.e.g. méi spéit nach emol.',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Déi gréisst Ännerungen an dëser Woch',
 	'articleFeedback-table-heading-page' => 'Säit',
 	'articleFeedback-table-heading-average' => 'Duerchschnëtt',
+	'articleFeedback-copy-above-highlow-tables' => 'Dëst ass eng experimentell Fonctioun. Gitt eis w.e.g. Äre Feedback op der [$1 Diskussiouns-Säit].',
 );
 
 /** Limburgish (Limburgs)

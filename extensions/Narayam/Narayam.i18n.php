@@ -118,6 +118,13 @@ $messages['be-tarask'] = array(
 	'narayam-bn-nkb' => 'Бэнгальская NKB',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'narayam-eo' => 'Есперанто',
+);
+
 /** Bengali (বাংলা)
  * @author Bellayet
  * @author Wikitanvir

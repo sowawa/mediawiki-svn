@@ -190,6 +190,8 @@ $messages['gl'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'notificator-e-mail-address' => 'E-Mailadress',
+	'notificator-return-to' => 'Zréck op',
 	'notificator-change-tag' => 'Ännerung',
 	'notificator-new-tag' => 'nei',
 	'notificator-subject' => 'Sujet:',

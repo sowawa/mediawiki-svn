@@ -972,6 +972,7 @@ $messages['da'] = array(
 /** German (Deutsch)
  * @author Als-Holder
  * @author Imre
+ * @author Kghbln
  * @author Leithian
  * @author Melancholie
  * @author Revolus
@@ -989,7 +990,7 @@ Bitte lies das gesammte Dokument und wenn du ihm deine Zustimmung gibt, fülle b
 	'sign-city' => 'Stadt:',
 	'sign-state' => 'Bundesland:',
 	'sign-zip' => 'Postleitzahl:',
-	'sign-country' => 'Land:',
+	'sign-country' => 'Staat:',
 	'sign-phone' => 'Telefonnummer:',
 	'sign-bday' => 'Alter:',
 	'sign-email' => 'E-Mail-Adresse:',
@@ -1018,7 +1019,7 @@ $1',
 	'sign-viewfield-address' => 'Adresse',
 	'sign-viewfield-city' => 'Stadt',
 	'sign-viewfield-state' => 'Bundesland',
-	'sign-viewfield-country' => 'Land',
+	'sign-viewfield-country' => 'Staat',
 	'sign-viewfield-zip' => 'Postleitzahl',
 	'sign-viewfield-ip' => 'IP-Adresse',
 	'sign-viewfield-agent' => 'Browser',

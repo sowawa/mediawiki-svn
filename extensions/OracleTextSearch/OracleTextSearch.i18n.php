@@ -54,6 +54,14 @@ $messages['gl'] = array(
 	'oracletextsearch-desc' => 'Procurar nos contidos ou metadatos dos ficheiros cargados mediante a indexación de texto Oracle',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'oracletextsearch' => 'OracleTextSearch – חיפוש טקסט באורקל',
+	'oracletextsearch-desc' => 'חיפוש בתוכן ובמטא־נתונים של קבצים שהועלו באמצעות מפתוח טקסט של אורקל',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

@@ -179,7 +179,7 @@ $messages['de'] = array(
 	'piwik-desc' => 'Ermöglicht das Einfügen eines Trackingskripts von Piwik und ergänzt eine Spezialseite mit ein paar [[Special:Piwik|Statistiken]]',
 	'piwik' => 'Piwik',
 	'piwik-lastvisits' => 'Letzte Besuche',
-	'piwik-countries' => 'Länder',
+	'piwik-countries' => 'Staaten',
 	'piwik-browsers' => 'Browser',
 	'right-viewpiwik' => '[[Special:Piwik|Piwik-Statistiken]] anschauen',
 );
