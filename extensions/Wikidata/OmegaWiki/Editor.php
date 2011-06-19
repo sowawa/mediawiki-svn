@@ -1500,6 +1500,7 @@ class OptionAttributeEditor extends AttributeEditor {
 			$parameters = array(
 				"level" => $this->attributesLevelName,
 				"definedMeaningId" => $idPath->getDefinedMeaningId(),
+				"syntransId" => $syntransId,
 				"annotationAttributeId" => $idPath->getAnnotationAttribute()->getId(),
 				"onUpdate" => 'updateSelectOptions(\'' . $this->addId( $idPath->getId() ) . $wgOptionSuffix . '\',' . $syntransId
 			);
