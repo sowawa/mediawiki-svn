@@ -63,6 +63,7 @@ $wgResourceModules['ext.parserPlayground'] = array(
 	'scripts' => array(
 		'lib.jsdiff.js',
 		'lib.pegjs.js',
+		'jquery.nodetree.js',
 		'ext.parserPlayground.hashMap.js',
 		'ext.parserPlayground.fakeParser.js',
 		'ext.parserPlayground.classicParser.js',
@@ -70,6 +71,7 @@ $wgResourceModules['ext.parserPlayground'] = array(
 		'ext.parserPlayground.js',
 	),
 	'styles' => array(
+		'jquery.nodetree.css',
 		'ext.parserPlayground.css',
 	),
 	'dependencies' => array(
