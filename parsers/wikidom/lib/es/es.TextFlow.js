@@ -8,7 +8,7 @@ function TextFlow() {
 TextFlow.prototype.render = function( $container, text ) {
 	//console.time( 'TextFlow.render' );
 	var metrics = [],
-		$ruler = $( '<div class="editSurface-line"></div>' ).appendTo( $(this) ),
+		$ruler = $( '<div class="editSurface-line"></div>' ).appendTo( $container ),
 		$line = $( '<div class="editSurface-line"></div>' ),
 		lines = this.getLines( this.getWords( text, $ruler[0] ), $ruler.innerWidth() );
 	$container.empty();
@@ -20,14 +20,14 @@ TextFlow.prototype.render = function( $container, text ) {
 			$container.append( $line.clone().html( lines[i].html ) );
 		}
 	}
-	//console.timeEnd( 'TextFlow.render' );
-	return metrics;
+	console.timeEnd( 'TextFlow.render' );
+	//return metrics;
 };
 
 TextFlow.prototype.getWord = function( text, ruler ) {
 	var word = {
 		'text': text,
-		'html': word.text
+		'html': text
 			.replace( /&/g, '&amp;' )
 			.replace( / /g, '&nbsp;' )
 			.replace( /</g, '&lt;' )
@@ -35,7 +35,7 @@ TextFlow.prototype.getWord = function( text, ruler ) {
 			.replace( /'/g, '&apos;' )
 			.replace( /"/g, '&quot;' )
 			.replace( /\n/g, '<span class="editSurface-whitespace">\\n</span>' )
-			.replace( /\t/g, '<span class="editSurface-whitespace">\\t</span>' );
+			.replace( /\t/g, '<span class="editSurface-whitespace">\\t</span>' )
 	};
 	ruler.innerHTML = word.html;
 	word.width = ruler.clientWidth;

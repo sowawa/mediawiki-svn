@@ -3,7 +3,7 @@
  * @returns {Block}
  */
 function Block() {
-	this.document = document;
+	this.document = null;
 }
 
 /**
@@ -12,6 +12,9 @@ function Block() {
  * @returns {Integer} Index of block
  */
 Block.prototype.index = function() {
+	if ( !this.document ) {
+		throw 'Missing document error. Block is not attached to a document.';
+	}
 	return this.document.blocks.indexOf( this );
 };
 
@@ -21,6 +24,9 @@ Block.prototype.index = function() {
  * @returns {Block|Null} Block directly proceeding this one, or null if none exists
  */
 Block.prototype.nextBlock = function() {
+	if ( !this.document ) {
+		throw 'Missing document error. Block is not attached to a document.';
+	}
 	var index = this.index() + 1;
 	return this.document.blocks.length < index ? this.document.blocks[index] : null;
 };
@@ -31,6 +37,9 @@ Block.prototype.nextBlock = function() {
  * @returns {Block|Null} Block directly preceding this one, or null if none exists
  */
 Block.prototype.previousBlock = function() {
+	if ( !this.document ) {
+		throw 'Missing document error. Block is not attached to a document.';
+	}
 	var index = this.index() - 1;
 	return index >= 0 ? this.document.blocks[index] : null;
 };

@@ -7,6 +7,7 @@
 function Surface( $container, document ) {
 	this.$container = $container;
 	this.document = document;
+	this.reflow();
 }
 
 /**
@@ -167,5 +168,9 @@ Surface.prototype.moveCursorLeft = function() {
  * @param from Location: Where to start re-flowing from (optional)
  */
 Surface.prototype.reflow = function( from ) {
-	//
+	this.$container.empty();
+	for ( var i = 0; i < this.document.blocks.length; i++ ) {
+		$block = $( '<div></div>' ).appendTo( this.$container );
+		this.document.blocks[i].renderContent( $block );
+	}
 };

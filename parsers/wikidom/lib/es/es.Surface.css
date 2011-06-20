@@ -1,0 +1,49 @@
+body {
+	font-family: "Arial";
+	font-size: 0.8em;
+}
+
+.editSurface-container {
+	position: absolute;
+	left: 3%;
+	width: 45%;
+	border: solid 1px red;
+	cursor: text;
+}
+
+.editSurface-paragraph {
+	padding: 2em;
+}
+
+.editSurface-line {
+	display: inline-block;
+	height: 1.5em;
+	line-height: 1.5em;
+	cursor: text;
+	white-space: nowrap;
+}
+
+.editSurface-line.empty {
+	display: block;
+	width: 0px;
+}
+
+.editSurface-line .editSurface-whitespace {
+	color: #888888;
+	padding: 0 0.25em;
+}
+
+.editSurface-range {
+	display: none;
+	position: absolute;
+	background-color: Highlight;
+	cursor: text;
+}
+
+.editSurface-cursor {
+	position: absolute;
+	background-color: black;
+	width: 1px;
+	height: 1.5em;
+	display: none;
+}

@@ -48,7 +48,8 @@ Document.prototype.prependBlock = function( block ) {
 /**
  * Adds a block to the document after an existing block.
  * 
- * @param {Block} Block to insert
+ * @param block {Block} Block to insert
+ * @param before {Block} Block to insert before, if null then block will be inserted at the end
  */
 Document.prototype.insertBlockBefore = function( block, before ) {
 	block.document = this;
