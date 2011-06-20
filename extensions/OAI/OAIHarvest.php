@@ -536,15 +536,9 @@ class OAIUpdateRecord {
 		}
 		
 		# We assume the filename has already been validated by code above us.
-		if( function_exists( 'wfImageDir' ) ) {
-			// < 1.10
-			$filename = wfImageDir( $upload['filename'] ) . '/' . $upload['filename'];
-		} else {
-			// 1.11
-			echo "File updating temporarily broken on 1.11, sorry!\n";
-			return;
-		}
-		
+		echo "File updating temporarily broken on 1.11, sorry!\n";
+		return;
+
 		$timestamp = wfTimestamp( TS_UNIX, $this->getTimestamp( $upload['timestamp'] ) );
 		if( file_exists( $filename )
 			&& filemtime( $filename ) == $timestamp

@@ -6,14 +6,6 @@ if( !defined( 'MEDIAWIKI' ) ) {
 global $IP;
 require_once( "$IP/extensions/OAI/OAIFunctions.php" );
 
-if( !function_exists( 'wfTimestamp2ISO8601' ) ) {
-	// Back compat; gone in 1.6
-	function wfTimestamp2ISO8601( $ts ) {
-		#2003-08-05T18:30:02Z
-		return preg_replace( '/^(....)(..)(..)(..)(..)(..)$/', '$1-$2-$3T$4:$5:$6Z', $ts );
-	}
-}
-
 class SpecialOAIRepository extends UnlistedSpecialPage {
 	function __construct() {
 		parent::__construct( 'OAIRepository' );
@@ -890,7 +882,7 @@ class WikiOAIRecord extends OAIRecord {
 			}
 			return implode( "\n", array(
 				"<upload>",
-				oaiTag( 'timestamp', array(), wfTimestamp2ISO8601( $imageRow->img_timestamp ) ),
+				oaiTag( 'timestamp', array(), wfTimestamp( TS_ISO_8601, $imageRow->img_timestamp ) ),
 				$this->renderContributor( $imageRow->img_user, $imageRow->img_user_text ),
 				oaiTag( 'comment',   array(), $imageRow->img_description ),
 				oaiTag( 'filename',  array(), $imageRow->img_name ),
