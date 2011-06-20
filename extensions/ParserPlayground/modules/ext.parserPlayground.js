@@ -40,12 +40,13 @@ var makeMagicBox = function(inside) {
     $('#mw-parser-popup').remove();
     // line-height is needed to compensate for oddity in WikiEditor extension, which zeroes the line-height on a parent container
     var box = $('#wpTextbox1');
-    var target = $('<div id="mw-parser-popup" style="position: relative; z-index: 9999; overflow: auto; background: white"><div class="editor" style="line-height: 1.5em; top: 0px; left: 0px; right: 0px; bottom: 0px; border: 1px solid gray">' + inside + '</div></div>').insertAfter(box);
+    var target = $('<div id="mw-parser-popup" style="width: 100%; overflow-y: auto; background: white"><div class="editor" style="line-height: 1.5em; top: 0px; left: 0px; right: 0px; bottom: 0px; border: 1px solid gray">' + inside + '</div></div>').insertAfter(box);
     $('#wpTextbox1').css('display', 'none');
 
     onResize = function() {
-        target.width(box.width())
-            .height(box.height());
+        //target.width(box.width())
+        //    .height(box.height());
+        target.height(box.height());
     };
     onResize();
     return target;
@@ -85,15 +86,17 @@ var setupInspector = function(left, right, leftMap, rightMap) {
             callback(aNode, bNode);
         };
         a.delegate('.parseNode', 'mouseenter', function(event) {
+			$('.parseNodeHighlight').removeClass('parseNodeHighlight');
             match(this, function(node, other) {
                 $(node).addClass('parseNodeHighlight');
                 $(other).addClass('parseNodeHighlight');
             });
+			event.preventDefault();
+			return false;
         }).delegate('.parseNode', 'mouseleave', function(event) {
-            match(this, function(node, other) {
-                $(node).removeClass('parseNodeHighlight');
-                $(other).removeClass('parseNodeHighlight');
-            });
+			$('.parseNodeHighlight').removeClass('parseNodeHighlight');
+			event.preventDefault();
+			return false;
         }).delegate('.parseNode', 'click', function(event) {
             match(this, function(node, other) {
                 if (other) {
@@ -118,60 +121,15 @@ var setupInspector = function(left, right, leftMap, rightMap) {
 };
 
 var addParserModes = function(modes, parserClass, className, detail) {
-    detail = detail || '';
-    modes[className] = {
-    	label: className,
-		desc: '<p>Showing the page rendered with ' + className + '.</p>' + detail,
-        render: function(src, dest) {
-            var parser = new parserClass();
-            parser.parseToTree(src, function(tree, err) {
-                parser.treeToHtml(tree, function(node, err) {
-                    dest.append(node);
-                });
-            });
-        }
-	};
-	modes[className + '-tree'] = {
-		label: className + ' tree',
-		desc: '<p>Showing the page broken down to parse tree with ' + className + '.</p>' + detail,
-        render: function(src, dest) {
-            var parser = new parserClass();
-            parser.parseToTree(src, function(tree, err) {
-				$(dest).nodeTree( tree );
-            });
-        }
-	};
-	modes[className + '-roundtrip'] = {
-		label: className + ' round-trip',
-		desc: '<p>Showing the page as parsed, then returned to source via ' + className + '.</p>' + detail,
-        render: function(src, dest) {
-            var parser = new parserClass();
-            parser.parseToTree(src, function(tree, err) {
-                parser.treeToSource(tree, function(src2, err) {
-                    var target = $('<div style="white-space: pre-wrap; font-family: monospace">').appendTo(dest);
-                    target.html(diffString(src, src2));
-                });
-            });
-        }
-	};
-	modes[className + '-inspect'] = {
-		label: className + ' inspect',
-		desc: '<p>Shows ' + className + '\'s HTML output and parse tree side-by-side.</p>' + detail,
-        render: function(src, dest) {
-            var parser = new parserClass();
-            var treeMap = new HashMap(), renderMap = new HashMap();
-            parser.parseToTree(src, function(tree, err) {
-                var target = makeInspectorColumns(dest);
-                var left = target.find('.left'), right = target.find('.right');
-				left.nodeTree( tree, function( node, el ) {
-					treeMap.put( node, el );
-				});
-                parser.treeToHtml(tree, function(node, err) {
-                    right.append(node);
-                    setupInspector(left, right, treeMap, renderMap);
-                }, renderMap);
-            });
-        }
+	modes[className] = {
+		'label': className,
+		'action': {
+			'type': 'callback',
+			'execute': function( context ) {
+				context.parserPlayground.parser = new parserClass();
+				context.parserPlayground.fn.initDisplay();
+			}
+		}
 	};
 };
 
@@ -180,60 +138,123 @@ $(document).ready( function() {
     var editor = $('#wpTextbox1');
     if (editor.length > 0 && typeof $.fn.wikiEditor === 'function') {
         //$('#wpTextbox1').bind('wikiEditor-toolbar-buildSection-main', function() {
-        var modes = {
-            'source': {
-                label: 'Source',
-                desc: 'Showing the page\'s original wikitext source code, as you are used to editing it.',
-                render: false
-            }
-        };
-        addParserModes(modes, MediaWikiParser, 'MediaWikiParser');
-        addParserModes(modes, FakeParser, 'FakeParser');
-        addParserModes(modes, PegParser, 'PegParser', '<p>Peg-based parser plus FakeParser\'s output. <a href="http://pegjs.majda.cz/documentation">pegjs documentation</a>; edit and reselect to reparse with updated parser</p>');
-
-        window.setTimeout(function() {
-            // Great, now let's hook the booklet buttons... (explicit callbacks would be better)
-            var hook = function(key, callback) {
-                // using live since they haven't been created yet...
-                // 'mouseup' as a hack since the upstream click handler cancels other event handlers
-                $('#wikiEditor-ui-toolbar .sections .section-parser .index div[rel=' + key + ']').live('mouseup', callback);
-            };
-            var pages = {};
-            $.each(modes, function(name, mode) {
-                pages[name] = {
-					'layout': 'table',
-					'label': mode.label,
-					'rows': [
-						{
-							'desc': { 'html': mode.desc }
-						}
-					]
-				};
-                var render = mode.render;
-                hook(name, function() {
-                    $('#pegparser-source').hide(); // it'll reshow; others won't need it
-                    if (mode.render) {
-                        var target = makeMagicBox('');
-                        var src = $('#wpTextbox1').val();
-                        var dest = target.find('div');
-                        render(src, dest);
-                    } else {
-                        $('#mw-parser-popup').remove();
-                        onResize = null;
-                        $('#wpTextbox1').css('display', 'block');
-                    }
-                });
-            });
-            editor.wikiEditor( 'addToToolbar', {
-                'sections': {
-                    'parser': {
-                        'label': 'Parser',
-            			'type': 'booklet',
-						'pages': pages
+        var listItems = {
+			'sourceView': {
+				'label': 'Source',
+				'action': {
+					'type': 'callback',
+					'execute': function( context ) {
+						context.parserPlayground.parser = undefined;
+						context.parserPlayground.tree = undefined;
+						context.parserPlayground.fn.hide();
 					}
 				}
-            } );
+			}
+        };
+        addParserModes(listItems, MediaWikiParser, 'MediaWikiParser');
+        addParserModes(listItems, FakeParser, 'FakeParser');
+        addParserModes(listItems, PegParser, 'PegParser', '<p>Peg-based parser plus FakeParser\'s output. <a href="http://pegjs.majda.cz/documentation">pegjs documentation</a>; edit and reselect to reparse with updated parser</p>');
 
+        window.setTimeout(function() {
+			var context = editor.data('wikiEditor-context');
+			context.parserPlayground = {
+				parser: new FakeParser(),
+				tree: undefined,
+				useInspector: true,
+				fn: {
+					initDisplay: function() {
+						if (context.$parserContainer) {
+							context.parserPlayground.fn.hide();
+						}
+                        var $target = makeMagicBox('');
+						$('#mw-parser-inspector').remove();
+						var $inspector = $('<div id="mw-parser-inspector" style="position: relative; width: 100%; overflow-y: auto; height: 200px"></div>');
+						$inspector.insertAfter($target);
+						if (!context.parserPlayground.useInspector) {
+							$inspector.hide();
+						}
+
+						context.$parserContainer = $target;
+						context.$parserInspector = $inspector;
+
+                        var src = $('#wpTextbox1').val();
+                        var $dest = $target.find('div');
+
+						var parser = context.parserPlayground.parser;
+						var treeMap = context.parserPlayground.treeMap = new HashMap(),
+						    renderMap = new HashMap();
+						parser.parseToTree(src, function(tree, err) {
+							context.parserPlayground.tree = tree;
+							if (context.parserPlayground.useInspector) {
+								$inspector.nodeTree( tree, function( node, el ) {
+									treeMap.put( node, el );
+								});
+							}
+							parser.treeToHtml(tree, function(node, err) {
+								$dest.append(node);
+			                    setupInspector($target, $inspector, renderMap, treeMap);
+							}, renderMap);
+						});
+					},
+					hide: function() {
+	                    $('#pegparser-source').hide(); // it'll reshow; others won't need it
+						context.$iframe = undefined;
+						context.$parserContainer.remove();
+						context.$parserContainer = undefined;
+						context.$parserInspector.remove();
+						context.$parserInspector = undefined;
+						context.$textarea.show();
+					},
+					toggleInspector: function() {
+						if (context.parserPlayground.useInspector) {
+							context.parserPlayground.useInspector = false;
+							context.$parserInspector.hide();
+						} else if ( context.parserPlayground.parser ) {
+							context.parserPlayground.useInspector = true;
+							context.$parserInspector.empty().show();
+							context.$parserInspector.nodeTree( context.parserPlayground.tree, function( node, el ) {
+								context.parserPlayground.treeMap.put( node, el );
+							});
+						}
+						var target = 'img.tool[rel=inspector]';
+						var $img = context.modules.toolbar.$toolbar.find( target );
+						$img.attr('src', context.parserPlayground.fn.inspectorToolbarIcon());
+					},
+					inspectorToolbarIcon: function() {
+						// When loaded as a gadget, one may need to override the wiki's own assets path.
+						var iconPath = mw.config.get('wgParserPlaygroundAssetsPath', mw.config.get('wgExtensionAssetsPath')) + '/ParserPlayground/modules/images/';
+						return iconPath + (context.parserPlayground.useInspector ? 'inspector-active.png' : 'inspector.png');
+					}
+				}
+			}
+			editor.wikiEditor( 'addToToolbar', {
+				'sections': {
+					'richedit': {
+						'label': 'Rich editor',
+						'type': 'toolbar',
+						'groups': {
+							'mode': {
+								'tools': {
+									'mode': {
+										'label': 'Mode',
+										'type': 'select',
+										'list': listItems
+									},
+									'inspector': {
+										'label': 'Toggle inspector',
+										'type': 'button',
+										'icon': context.parserPlayground.fn.inspectorToolbarIcon(),
+										'action': {
+											'type': 'callback',
+											'execute': context.parserPlayground.fn.toggleInspector
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			} );
         }, 500 );
     } else {
         mw.log('No wiki editor');

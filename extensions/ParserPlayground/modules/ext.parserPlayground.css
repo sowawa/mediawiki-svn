@@ -1,7 +1,9 @@
-#mw-parser-popup .parseNode {
+#mw-parser-popup .parseNode,
+#mw-parser-inspector .parseNode {
     border: solid 1px transparent;
 }
-#mw-parser-popup .parseNodeHighlight {
+#mw-parser-popup .parseNodeHighlight,
+#mw-parser-inspector .parseNodeHighlight {
     border: solid 1px blue;
 }
 
