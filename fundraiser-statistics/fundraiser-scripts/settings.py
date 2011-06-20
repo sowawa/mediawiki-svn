@@ -1,3 +1,4 @@
+__home__ = '/home/rfaulkner/trunk/projects/'
 __project_home__ = '/home/rfaulkner/trunk/projects/Fundraiser_Tools/'
 __web_home__ = '/home/rfaulkner/trunk/projects/Fundraiser_Tools/web_reporting/'
 __squid_log_server__ = 'hume.wikimedia.org'
