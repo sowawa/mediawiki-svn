@@ -3,14 +3,14 @@
 {% block content %}
 
 <h1>Choose a Campaign:</h1><br>
-<u><h3>Campaign, Donations (>50) </h1></u><br>
+<u><h3>Report name -- Earliest Access -- Campaign -- Donations -- Report Link </h1></u><br>
 {% if campaigns %}
     <ul>
     {% for c in campaigns %}
-    	{% if c.4 %}
-        	<li>{{ c.2 }} , {{ c.3 }}, <a href="/campaigns/{{ c.0 }}">{{ c.0 }}</a> , {{ c.1 }}, <a href="/tests/report/{{ c.0 }}">view report</a></li><br>
+    	{% if c.5 %}
+        	<li>{{ c.2 }} -- {{ c.3 }} -- <a href="/campaigns/{{ c.0 }}">{{ c.0 }}</a> -- {{ c.4 }} -- <a href="/tests/report/{{ c.0 }}">view report</a></li><br>
         {% else %}
-        	<li>{{ c.2 }} , {{ c.3 }}, <a href="/campaigns/{{ c.0 }}">{{ c.0 }}</a> , {{ c.1 }}</li><br>
+        	<li>{{ c.2 }} -- {{ c.3 }} -- <a href="/campaigns/{{ c.0 }}">{{ c.0 }}</a> -- {{ c.4 }}</li><br>
         {% endif %}
     {% endfor %}
     </ul>
@@ -22,6 +22,8 @@
 <u>Go to:</u>
 <br><br>
 <a href="/tests">Test Generation</a>
+<br><br>
+<a href="/">Home</a>
 <br>
 
 {% endblock %}

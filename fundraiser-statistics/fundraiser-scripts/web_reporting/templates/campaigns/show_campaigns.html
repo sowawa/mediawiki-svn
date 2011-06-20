@@ -31,7 +31,11 @@ This is a <u><b>{{ test_type }}</u></b> test with the following artifacts:
 <label for="test_name"> 
 <pre>TEST NAME:	</pre>		
 </label>
- <input type="text" name="test_name" />
+{% if test_name != '' %}
+<input type="text" name="test_name" value="{{ test_name }}" />
+{% else %}
+<input type="text" name="test_name" value="{{ utm_campaign }}" />
+{% endif %}
 <br/>
 <label for="start_time"> 
 <pre>START TIMESTAMP:	</pre>		
@@ -42,7 +46,17 @@ This is a <u><b>{{ test_type }}</u></b> test with the following artifacts:
 <pre>END TIMESTAMP:		</pre>
 </label>
 <input type="text" name="end_time" value="{{ end_time }}"/>
-<br><br>
+<br/>
+<label for="test_type_override">
+<pre>Overrride the Test Type? (leave blank if not)		</pre>
+</label>
+<select name="test_type_override">
+<option></option>
+<option>Banner</option>
+<option>Landing Page</option>
+<option>Banner and LP</option>
+</select>
+<br/><br/>
 <input type="submit" value="Test" />
 </form>
 
@@ -52,6 +66,8 @@ This is a <u><b>{{ test_type }}</u></b> test with the following artifacts:
 <a href="/campaigns">Latest Campaigns</a>
 <br><br>
 <a href="/tests">Test Generation</a>
+<br><br>
+<a href="/">Home</a>
 <br>
 
 {% endblock %}
