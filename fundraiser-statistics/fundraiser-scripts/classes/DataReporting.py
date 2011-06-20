@@ -23,7 +23,7 @@ import matplotlib
 import datetime
 import MySQLdb
 import pylab
-from matplotlib.lines import Line2D
+# from matplotlib.lines import Line2D
 import HTML
 import math
 
@@ -34,7 +34,7 @@ import Fundraiser_Tools.classes.DataLoader as DL
 import Fundraiser_Tools.classes.HypothesisTest as HT
 
 
-matplotlib.use('Agg')
+# matplotlib.use('Agg')
 
         
         
@@ -259,9 +259,7 @@ class IntervalReporting(DataReporting):
         Usage instructions for executing a report via the IntervalReporting class
     """    
     def usage(self): 
-        
-        """ !! MODIFY -- include instructions on using **kwargs """
-        
+                
         print 'Types of queries:'
         print '    (1) banner'
         print '    (2) LP'
@@ -270,8 +268,20 @@ class IntervalReporting(DataReporting):
         print "    run('20101230160400', '20101230165400', 2, 'banner', 'imp', '20101230JA091_US', ['banner1', 'banner2'])"
         print "    run('20101230160400', '20101230165400', 2, 'LP', 'views', '20101230JA091_US', [])"
         print ''
-        
+        print "    Keyword arguments may also be passed to the constructor:"
+        print ''
+        print "    font_size            - font size related to plots"
+        print "    fig_width_pt         - width of the plot"    
+        print "    inches_per_pt        - define point size relative to screen"
+        print "    use_labels           - whether to include specified labels in plot"
+        print "    fig_file_format      - file format of the image (default = .png)"
+        print "    plot_type            - line or step plot"
+        print "    item_keys            - the item keys expected (only these will be included)"
+        print "    file_path            - override the file path to store the plot output" 
+        print "    query_type           - the type of query to use"
+    
         return
+    
 
     """
         Selecting a subset of the key items in a dictionary       
@@ -418,14 +428,19 @@ class IntervalReporting(DataReporting):
         if len(self._item_keys_) > 0:
             self._counts_ = self.select_metric_keys(self._counts_)
             self._times_ = self.select_metric_keys(self._times_)
-        print self._counts_
+        
         """ Convert Times to Integers that indicate relative times AND normalize the intervals in case any are missing """
         for key in self._times_.keys():
             self._times_[key] = TP.normalize_timestamps(self._times_[key], False, 3)
             self._times_[key], self._counts_[key] = TP.normalize_intervals(self._times_[key], self._counts_[key], interval)
         
-        """ Normalize times """
-        
+        """ If there are missing metrics add them as zeros """
+        for label in labels:
+            
+            if not(label in self._times_.keys()):
+                self._times_[label] = self._times_[self._times_.keys()[0]]
+                self._counts_[label] = [0.0] * len(self._times_[label])
+
         min_time = min(self._times_)
         ranges = [min_time, 0]
         
@@ -470,13 +485,8 @@ class IntervalReporting(DataReporting):
 
     CLASS :: ConfidenceReporting
     
-    Reports confidence values on specified metrics
+    This class uses ConfidenceReportingLoader and HypothesisTest to execute a confidence analysis over a given campaign. 
     
-    Types of queries supported:
-    
-        report_banner_confidence
-        report_LP_confidence
-
 """
 class ConfidenceReporting(DataReporting):
     
@@ -508,22 +518,31 @@ class ConfidenceReporting(DataReporting):
         DataReporting.__init__(self, **kwargs)
         
     """
-        Describes how to run a report !! MODIFY !!
+        Describes how to run a confidence report
     """    
     def usage(self): 
-        
+
+        print 'Method Signature:'
+        print "    run(self, test_name, query_name, metric_name, campaign, items, start_time, end_time, interval, num_samples)"
         print ''
+        print 'e.g.'
+        print "    cr.run('mytest!','report_banner_confidence','don_per_imp', 'C_JMvTXT_smallcountry_WS', ['banner1','banner2'], '20110101000000', '20100101000000', 2, 20)"
+        print ''
+        print "    Keyword arguments may also be specified to modify plots:"
+        print ''
+        print "    font_size            - font size related to plots"
+        print "    fig_width_pt         - width of the plot"    
+        print "    inches_per_pt        - define point size relative to screen"
+        print "    use_labels           - whether to include specified labels in plot"
+        print "    fig_file_format      - file format of the image (default = .png)"
+        print "    hyp_test             - the type of hypothesis test" 
         
         return
     
     
     """
-        <description>
+        Confidence plotting over test intervals.  This plot takes into consideration test intervals displaying the means with error bars over each interval
         
-        INPUT:
-                        
-        RETURN:
-             
     """
     def _gen_plot(self,means_1, means_2, std_devs_1, std_devs_2, times_indices, title, xlabel, ylabel, ranges, subplot_index, labels, fname):
                 
@@ -568,6 +587,9 @@ class ConfidenceReporting(DataReporting):
         pylab.savefig(self._file_path_ + fname + '.' + self._fig_file_format_, format=self._fig_file_format_)
     
     
+    """
+        Generates a box plot of all of the data.  Does not visualize test intervals.
+    """
     def _gen_box_plot(self, data, title, ylabel, subplot_index, labels, fname):
                 
         
@@ -600,9 +622,7 @@ class ConfidenceReporting(DataReporting):
         pylab.rcParams.update(params)
         
         pylab.grid()
-        #pylab.ylim(ranges[2], ranges[3])
-        #pylab.xlim(ranges[0], ranges[1])
-        # pylab.legend([e1[0], e2[0]], labels,loc=2)
+
         
         pylab.ylabel(ylabel)
         
@@ -610,12 +630,10 @@ class ConfidenceReporting(DataReporting):
         pylab.savefig(self._file_path_ + fname + '.' + self._fig_file_format_, format=self._fig_file_format_)
         
     """ 
-        Print in Tabular form the means and standard deviation of each group over each 
-        interval
+        Print in Tabular form the means and standard deviation of each group over each interval.  Provides a detailed numerical output 
+        of the analysis.
         
-        INPUT:
-                        
-        RETURN: 
+        RETURN: the winner string, percent increase of the winner for the metric
         
     """
     def print_metrics(self, filename, metric_name, means_1, means_2, std_devs_1, std_devs_2, times_indices, labels, test_call):
@@ -624,10 +642,20 @@ class ConfidenceReporting(DataReporting):
         file = open(self._file_path_ + filename, 'w')
         
         """ Compute % increase and report """
-        av_means_1 = sum(means_1) / len(means_1)
-        av_means_2 = sum(means_2) / len(means_2)
-        percent_increase = math.fabs(av_means_1 - av_means_2) / min(av_means_1,av_means_2) * 100.0
+        try:
+            av_means_1 = sum(means_1) / len(means_1)
+            av_means_2 = sum(means_2) / len(means_2)
+            percent_increase = math.fabs(av_means_1 - av_means_2) / min(av_means_1,av_means_2) * 100.0
         
+        except Exception as inst:
+            
+            print 'Percent increase could not be computed.'
+            print type(inst)     # the exception instance
+            print inst.args      # arguments stored in .args
+            print inst           # __str__ allows args to printed directly
+            
+            percent_increase = 0.0
+            
         """ Compute the average standard deviations """
         av_std_dev_1 = 0
         av_std_dev_2 = 0
@@ -648,15 +676,9 @@ class ConfidenceReporting(DataReporting):
         win_str =  '\nThe winner "' + winner + '" had a %.2f%s increase.'
         win_str = win_str % (percent_increase, '%')
         
-        #print '\nCOMMAND = ' + test_call
         file.write('\nCOMMAND = ' + test_call)
                  
-         
-#        print  '\n\n' +  metric_name 
-#        print '\nitem 1  = ' + labels[0] 
-#        print 'item 2  = ' + labels[1]
-#        print win_str
-#        print '\ninterval\tmean1\t\tmean2\t\tstddev1\t\tstddev2\n'
+
         file.write('\n\n' +  metric_name)
         file.write('\nitem 1  = ' + labels[0] + '\n')
         file.write('\nitem 2  = ' + labels[1] + '\n')
@@ -675,10 +697,7 @@ class ConfidenceReporting(DataReporting):
         """ Print out the averaged parameters """
         line_args = '%.5f\t\t' + '%.5f\t\t' + '%.5f\t\t' + '%.5f\n'
         line_str = line_args % (av_means_1, av_means_2, av_std_dev_1, av_std_dev_2)
-        
-#        print '\n\nOverall Parameters -- the confidence test was run with these parameters:\n'
-#        print '\nmean1\t\tmean2\t\tstddev1\t\tstddev2\n'
-#        print line_str
+
         
         file.write('\n\nOverall Parameters:\n')
         file.write('\nmean1\t\tmean2\t\tstddev1\t\tstddev2\n')
@@ -689,11 +708,17 @@ class ConfidenceReporting(DataReporting):
         return [winner, percent_increase]
     
     """ 
-        Executes the test reporting
+        Executes the test reporting.
         
-        INPUT:
-                        
-        RETURN:
+        @param num_samples: the number of samples per test interval
+        @type num_samples: integer
+        
+        @param interval: the length of the test interval in minutes
+        @type interval: integer
+        
+        @param items: datasets for paired testing
+        @type items: dictionary
+        
         
     """
     def run(self, test_name, query_name, metric_name, campaign, items, start_time, end_time, interval, num_samples):
