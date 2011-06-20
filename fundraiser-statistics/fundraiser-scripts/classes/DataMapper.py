@@ -41,7 +41,9 @@ import Fundraiser_Tools.classes.FundraiserDataHandler as FDH
     
     METHODS:
         
-        copy_logs                             - copies logs from source to destination for processing 
+        copy_logs         - copies logs from source to destination for processing for the current hour
+        log_exists        - determines if a log exists in the squid local folder based on name
+        get_list_of_logs  - returns a list of logs in the squid local folder 
 
 """
 class DataMapper(object):
@@ -117,6 +119,20 @@ class DataMapper(object):
             
         return new_files[1:]
         
+    """
+        Determine if a squid log exists
+    """
+    def log_exists(self, log_name):
+        
+        files = os.listdir(projSet.__squid_log_local_home__)
+        files.sort()
+        
+        new_files = list()
+        for f in files:
+            if f == log_name:
+                return True
+            
+        return False
 """
 
     CLASS :: FundraiserDataMapper
@@ -155,7 +171,9 @@ class FundraiserDataMapper(DataMapper):
         self._db_.close()
         
         
-    
+    """
+        Remove banner impression or landing page squid records from tables before loading 
+    """
     def _clear_squid_records(self, start, request_type):
         
         
@@ -169,7 +187,7 @@ class FundraiserDataMapper(DataMapper):
         
         try:
             self._cur_.execute(deleteStmnt)
-            print >> sys.stdout, "Executed delete from impression: " + deleteStmnt
+            print >> sys.stdout, "Executed delete: " + deleteStmnt
         except:
             print >> sys.stderr, "Could not execute delete:\n" + deleteStmnt + "\nResuming insert ..."
             pass
@@ -180,6 +198,9 @@ class FundraiserDataMapper(DataMapper):
         Given the name of a log file extract the squid requests corresponding to banner impressions.
         
         Squid logs can be found under hume:/a/static/uncompressed/udplogs.  A sample request is documented in the source below.
+        
+        @param logFileName: the full name of the logfile.  The local squid log folder is stored in web_reporting/settings.py
+        @type logFileName: string
         
     """
     def mine_squid_impression_requests(self, logFileName):
@@ -355,7 +376,7 @@ class FundraiserDataMapper(DataMapper):
                                 try:
                                     val = '(' + start_timestamp_in + ',\'' + banner + '\',\'' + project + '\',\'' + country + '\',\'' + lang + '\',' \
                                     + str(count) + ',' + time_stamp_in + ');'
-
+                                    #print insertStmt + val
                                     self._cur_.execute(insertStmt + val)
                                 except:
                                     self._db_.rollback()
@@ -372,6 +393,7 @@ class FundraiserDataMapper(DataMapper):
                 completion = float(line_count / total_lines_in_file) * 100.0
                 sltl.update_table_row(type='banner_impression',log_copy_time=curr_time,start_time=start,end_time=end,log_completion_pct=completion.__str__(),total_rows=line_count.__str__())
 
+        
         logFile.close()
         self._close_db()
 
@@ -381,6 +403,9 @@ class FundraiserDataMapper(DataMapper):
         Given the name of a log file Extract the squid requests corresponding to landing page views 
         
         Squid logs can be found under hume:/a/static/uncompressed/udplogs.  A sample request is documented in the source below.
+        
+        @param logFileName: the full name of the logfile.  The local squid log folder is stored in web_reporting/settings.py
+        @type logFileName: string
 
     """
     def mine_squid_landing_page_requests(self,  logFileName):
@@ -649,6 +674,10 @@ class FundraiserDataMapper(DataMapper):
 
     """
         Looks into the logfile and pull the timestamp of the first request
+        
+        @param logFileName: the full name of the logfile.  The local squid log folder is stored in web_reporting/settings.py
+        @type logFileName: string
+        
     """
     def get_first_timestamp_from_log(self, logFileName):
         
@@ -687,6 +716,10 @@ class FundraiserDataMapper(DataMapper):
     
     """
         Opens the logfile and counts the total number of lines
+        
+        @param logFileName: the full name of the logfile.  The local squid log folder is stored in web_reporting/settings.py
+        @type logFileName: string
+        
     """
     def open_logfile(self, logFileName):        
         
@@ -728,7 +761,7 @@ class FundraiserDataMapper(DataMapper):
             index_str_flag = c1
             
             try:
-                c2 = re.search('WMF', query_fields['title'][0] ) != None or re.search('L2011', query_fields['title'][0] ) != None 
+                c2 = re.search('WMF', query_fields['title'][0] ) != None or re.search('L2011', query_fields['title'][0] ) != None  or re.search('L11', query_fields['title'][0] ) != None 
             except KeyError:
                 c2 = 0
             cond2 = (parsed_landing_url[hostIndex] == 'wikimediafoundation.org' and path_pieces[1] == 'w' and c1 and c2)
