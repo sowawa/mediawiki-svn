@@ -100,18 +100,18 @@ var setupInspector = function(left, right, leftMap, rightMap) {
         }).delegate('.parseNode', 'click', function(event) {
             match(this, function(node, other) {
                 if (other) {
-                    // try to scroll the other into view. how... feasible is this? :DD
-                    var visibleStart = b.scrollTop();
-                    var visibleEnd = visibleStart + b.height();
-                    var otherStart = visibleStart + $(other).position().top;
-                    var otherEnd = otherStart + $(other).height();
-                    if (otherStart > visibleEnd) {
-                        b.scrollTop(otherStart);
-                    } else if (otherEnd < visibleStart) {
-                        b.scrollTop(otherStart);
-                    }
-                    event.preventDefault();
-                    return false;
+					// try to scroll the other into view. how... feasible is this? :DD
+					var visibleStart = b.scrollTop();
+					var visibleEnd = visibleStart + b.height();
+					var otherStart = visibleStart + $(other).position().top;
+					var otherEnd = otherStart + $(other).height();
+					if (otherStart > visibleEnd) {
+						b.scrollTop(otherStart);
+					} else if (otherEnd < visibleStart) {
+						b.scrollTop(otherStart);
+					}
+					event.preventDefault();
+					return false;
                 }
             });
         });
@@ -160,7 +160,7 @@ $(document).ready( function() {
 			context.parserPlayground = {
 				parser: new FakeParser(),
 				tree: undefined,
-				useInspector: true,
+				useInspector: false,
 				fn: {
 					initDisplay: function() {
 						if (context.$parserContainer) {
@@ -192,6 +192,7 @@ $(document).ready( function() {
 							}
 							parser.treeToHtml(tree, function(node, err) {
 								$dest.append(node);
+								context.parserPlayground.fn.setupEditor($target);
 			                    setupInspector($target, $inspector, renderMap, treeMap);
 							}, renderMap);
 						});
@@ -224,6 +225,23 @@ $(document).ready( function() {
 						// When loaded as a gadget, one may need to override the wiki's own assets path.
 						var iconPath = mw.config.get('wgParserPlaygroundAssetsPath', mw.config.get('wgExtensionAssetsPath')) + '/ParserPlayground/modules/images/';
 						return iconPath + (context.parserPlayground.useInspector ? 'inspector-active.png' : 'inspector.png');
+					},
+					setupEditor: function($target) {
+						$target.delegate('.parseNode', 'click', function(event) {
+							if (context.parserPlayground.useInspector) {
+								return true;
+							}
+							var node = $(this).data('parseNode');
+							if ( node ) {
+								// Ok, not 100% kosher right now but... :D
+								var parser = context.parserPlayground.parser;
+								parser.treeToSource(node, function(src, err) {
+									alert( src );
+								});
+								event.preventDefault();
+								return false;
+							}
+						});
 					}
 				}
 			}
