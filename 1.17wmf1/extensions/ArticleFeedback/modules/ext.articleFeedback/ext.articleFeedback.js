@@ -219,7 +219,8 @@ var config = {
 	},
 	'pitches': {
 		'survey': {
-			'weight': 1,
+			//'weight': 1,
+			'weight': 0,
 			'condition': function() {
 				return isPitchVisible( 'survey' );
 			},
@@ -237,7 +238,8 @@ var config = {
 			'reject': 'articlefeedback-pitch-reject'
 		},
 		'join': {
-			'weight': 1,
+			//'weight': 1,
+			'weight': 0,
 			'condition': function() {
 				return isPitchVisible( 'join' ) && mw.user.anonymous();
 			},
