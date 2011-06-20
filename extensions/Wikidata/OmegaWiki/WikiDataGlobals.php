@@ -1,5 +1,7 @@
 <?php
 
+define( 'NS_EXPRESSION', 16 );
+
 require_once( "Wikidata.php" );
 
 // Ids
@@ -146,5 +148,26 @@ function owNoGoMatchHook( &$title ) {
 }
 
 
+
+// Hook: The Go button should search (first) in the Expression namespace instead of Article namespace
+$wgHooks[ 'SearchGetNearMatchBefore' ][] = 'owGoClicked';
+
+function owGoClicked( $allSearchTerms, &$title ) {
+	$term = $allSearchTerms[0] ;
+	$title = Title::newFromText( $term ) ;
+	if ( is_null( $title ) ){
+		return true;
+	}
+
+	# Replace normal namespace with expression namespace
+	if ( $title->getNamespace() == NS_MAIN ) {
+		$title = Title::newFromText( $term, NS_EXPRESSION ) ; // $expressionNamespaceId ) ;
+	}
+
+	if ( $title->exists() ) {
+		return false; // match!
+	}
+	return true; // no match
+}
 
 ?>
