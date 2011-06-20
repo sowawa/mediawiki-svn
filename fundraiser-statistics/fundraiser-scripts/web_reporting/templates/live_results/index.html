@@ -1,0 +1,122 @@
+
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Live Results:</h1><br>
+<h4>The plots below are representative of the latest Fundraiser results:</h4><br>
+
+<!-- jscript for live plots -->
+
+<div id="placeholder0" style="width:800px;height:600px;"></div>
+<p>Donations for the latest campaigns over the last 6 hours.</p>
+<br><br>
+<div id="placeholder1" style="width:800px;height:600px;"></div>
+<p>Donations for the latest banners over the last 6 hours.</p>
+<br><br>
+<div id="placeholder2" style="width:800px;height:600px;"></div>
+<p>Donations for the latest landing pages over the last 6 hours.</p>
+
+<script type="text/javascript">
+$(function () {
+
+
+    var total_plots = 3;
+
+    // Extract the django variables
+	var data = {{ data }};
+	var max_data = {{ max_data }};
+	var counts = {{ counts }};
+	var num_elems = {{ num_elems }};
+	var labels = "{{ labels }}";
+	
+	labels = labels.split("!")
+	var num_label_lists = (labels.length - 1) / 2;
+	var new_labels = new Array(num_label_lists);
+	// document.write (num_label_lists);
+	for (i = 0; i < num_label_lists; i++) { 
+		new_labels[i] = labels[2*i + 1]
+		}
+	labels = new_labels
+	
+	for (plot_index = 0; plot_index < total_plots; plot_index++) {
+		
+		labels[plot_index] = labels[plot_index].split("?")
+		// document.write ("test" + plot_index.toString());
+		var all_data = new Array(num_elems[plot_index]);
+		for (x = 0; x < num_elems[plot_index]; x++) { 
+			//document.write (data[plot_index][x]);
+			var elem = new Object();
+			elem["data"] = data[plot_index][x];
+			elem["label"] = labels[plot_index][x];
+			all_data[x] = elem;	
+			//document.write (data[plot_index][x]);
+			//document.write ("<br>");
+			//document.write (labels[plot_index][x]);
+			//document.write ("<br><br>");
+		}
+
+	    // $.plot($("#placeholder"), [{"data": [[0.0, 0.0], [2.0, 0.0], [4.0, 0.0], [6.0, 0.0], [8.0, 0.0], [10.0, 0.0], [12.0, 0.0], [14.0, 0.0], [16.0, 0.0], [18.0, 0.0], [20.0, 0.0]], "label": "empty"}, {"data": [[0.0, 0.0], [2.0, 0.0], [4.0, 0.0], [6.0, 1.0], [8.0, 1.0], [10.0, 0.0], [12.0, 0.0], [14.0, 0.0], [16.0, 0.0], [18.0, 0.0], [20.0, 0.0]], "label": "C20110603_JWJN001_US"}, {"data": [[0.0, 1.0], [2.0, 1.0], [4.0, 0.0], [6.0, 0.0], [8.0, 0.0], [10.0, 0.0], [12.0, 0.0], [14.0, 0.0], [16.0, 0.0], [18.0, 0.0], [20.0, 0.0]], "label": "20101204SB002"}], {
+	    $.plot($("#placeholder" + plot_index.toString()), all_data, {
+	        series: {
+	        lines: { show: true },
+	        points: { show: true }
+		    },
+		    grid: { hoverable: true, clickable: true },
+		    yaxis: { min: 0, max: max_data[plot_index] * 1.6 }
+	  	});
+	    //document.write ("<br><br><br><br>");
+		enable_plothover("#placeholder" + plot_index.toString());
+	}
+
+   
+    function showTooltip(x, y, contents) {
+        $('<div id="tooltip">' + contents + '</div>').css( {
+            position: 'absolute',
+            display: 'none',
+            top: y + 5,
+            left: x + 5,
+            border: '1px solid #fdd',
+            padding: '2px',
+            'background-color': '#fee',
+            opacity: 0.80
+        }).appendTo("body").fadeIn(200);
+    }
+
+    function enable_plothover(image_class) {
+	    var previousPoint = null;
+	    $(image_class).bind("plothover", function (event, pos, item) {
+	        $("#x").text(pos.x.toFixed(2));
+	        $("#y").text(pos.y.toFixed(2));
+	
+	        if (item) {
+	            if (previousPoint != item.dataIndex) {
+	                previousPoint = item.dataIndex;
+	                
+	                $("#tooltip").remove();
+	                var x = item.datapoint[0].toFixed(2),
+	                    y = item.datapoint[1].toFixed(2);
+	                
+	                showTooltip(item.pageX, item.pageY,
+	                            item.series.label + " of " + x + " = " + y);
+	            }
+	        }
+	        else {
+	            $("#tooltip").remove();
+	            previousPoint = null;            
+	        }
+	    
+	    });
+    }
+});
+</script>
+
+
+
+
+<br><br>
+<u>Go to:</u>
+<br><br>
+<a href="/">Home</a>
+<br>
+
+{% endblock %}
