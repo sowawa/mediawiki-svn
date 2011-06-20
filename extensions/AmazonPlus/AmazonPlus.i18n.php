@@ -495,20 +495,21 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Drini
+ * @author Fitoschido
  */
 $messages['es'] = array(
-	'amazonplus-desc' => 'Una extensión altamente personalizable para desplegar informaciónde Amazon',
-	'amazonplus-nores' => 'Error: Sin resultados encontrados!',
-	'amazonplus-noidres' => 'Error: ¡No se pudo encontrar el ID del producto!',
-	'amazonplus-fgcerr' => 'Error: ¡No se pudo obtener los datos desde Amazon!',
-	'amazonplus-slserr' => 'Error: ¡no se pudo procesar los datos desde Amazon!',
+	'amazonplus-desc' => 'Una extensión altamente personalizable para mostrar información de Amazon',
+	'amazonplus-nores' => 'Error: ¡No hay resultados!',
+	'amazonplus-noidres' => 'Error: ¡No se pudo encontrar un identificador de producto!',
+	'amazonplus-fgcerr' => 'Error: ¡No se pudieron obtener los datos desde Amazon!',
+	'amazonplus-slserr' => 'Error: ¡No se pudieron procesar los datos desde Amazon!',
 	'amazonplus-used' => 'usado',
 	'amazonplus-german' => 'Alemán',
 	'amazonplus-french' => 'Francés',
 	'amazonplus-japanese' => 'Japonés',
-	'amazonplus-amazon' => 'precio amazon',
+	'amazonplus-amazon' => 'Precio de Amazon',
 	'amazonplus-new' => 'nuevo',
-	'amazonplus-none' => 'No hay copias de este item para venta.',
+	'amazonplus-none' => 'No hay copias de este artículo a la venta.',
 	'amazonplus-cp-none' => 'Ninguno',
 	'amazonplus-more' => 'más',
 	'amazonplus-less' => 'menos',

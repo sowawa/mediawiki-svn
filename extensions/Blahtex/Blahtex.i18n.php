@@ -2236,6 +2236,14 @@ $messages['lb'] = array(
 	'math_WrongFontEncoding' => 'D\'Symbol "$1" däerf net an der Zeechecodéierung "$2" virkommen',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Eitvys200
+ */
+$messages['lt'] = array(
+	'math_CannotCreateTexFile' => 'Neįmanoma sukurti tex failo',
+	'math_CannotWriteTexFile' => 'Negalima rašyti į tex failą',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

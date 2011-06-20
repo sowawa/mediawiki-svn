@@ -169,6 +169,13 @@ $messages['no'] = array(
 	'elm-easyref-close' => 'Lukk',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'elm-easyref-close' => 'تړل',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

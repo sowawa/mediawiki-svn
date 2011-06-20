@@ -781,7 +781,7 @@ $messages['sk'] = array(
 $messages['sr-ec'] = array(
 	'mwe-loading' => 'Учитавање ...',
 	'mwe-ok' => 'У реду',
-	'mwe-cancel' => 'Поништи',
+	'mwe-cancel' => 'Откажи',
 	'mwe-test-plural' => 'Покренуо/ла сам {{PLURAL:$1|$1 тест|$1 тестова}}',
 );
 

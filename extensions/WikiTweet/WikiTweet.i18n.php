@@ -349,6 +349,14 @@ $messages['nl'] = array(
 	'wikitweet-fewsecondsago' => 'Een paar seconden geleden',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'wikitweet-delete' => 'ړنګول',
+	'wikitweet-anonymous' => 'ورکنومی',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

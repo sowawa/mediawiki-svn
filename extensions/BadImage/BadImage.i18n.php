@@ -1640,6 +1640,8 @@ $messages['lt'] = array(
 	'badimages-remove-btn' => 'Pašalinti',
 	'badimages-remove-confirm' => 'Patvirtinkite, jog norite pašalinti $1 iš sąrašo:',
 	'badimages-removed' => '$1 buvo pašalintas iš sąrašo.',
+	'badimages-log-name' => 'Blogų vaizdų sąrašas',
+	'right-badimages' => 'Atnaujinti blogų vaizdų sąrašą',
 );
 
 /** Latvian (Latviešu)

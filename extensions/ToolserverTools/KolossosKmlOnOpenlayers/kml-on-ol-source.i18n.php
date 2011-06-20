@@ -549,6 +549,7 @@ $messages['pms'] = array(
 $messages['ps'] = array(
 	'ts-kml-on-ol-options' => 'خوښنې',
 	'ts-kml-on-ol-languages' => 'ژبې',
+	'ts-kml-on-ol-help' => 'لارښود',
 	'ts-kml-on-ol-all' => 'ټول',
 );
 

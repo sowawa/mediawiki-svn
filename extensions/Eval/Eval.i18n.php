@@ -570,6 +570,13 @@ $messages['pms'] = array(
 	'eval_code' => 'Còdes',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'eval_code' => 'کوډ',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

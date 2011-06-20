@@ -458,7 +458,7 @@ Bitte sei dir ebenfalls sicher, dass du alle nötigen Felder angegeben hast, ''b
 	'createsigndoc-introtext' => 'Anleitung:',
 	'createsigndoc-hidden' => 'Versteckt',
 	'createsigndoc-optional' => 'Optional',
-	'createsigndoc-create' => 'Erstelle',
+	'createsigndoc-create' => 'Erstellen',
 	'createsigndoc-error-generic' => 'Fehler: $1',
 	'createsigndoc-error-pagenoexist' => 'Fehler: Die Seite [[$1]] ist nicht vorhanden.',
 	'createsigndoc-success' => 'Das Signieren wurde auf [[$1]] erfolgreich aktiviert.

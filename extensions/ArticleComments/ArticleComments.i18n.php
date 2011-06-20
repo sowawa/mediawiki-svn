@@ -1151,6 +1151,9 @@ $messages['lt'] = array(
 	'article-comments-submit-button' => 'Siųsti',
 	'article-comments-leave-comment-link' => 'Palikite komentarą ...',
 	'article-comments-required-field' => '" $1 "laukas yra būtinas.',
+	'article-comments-commenter-said' => '$1 sakė ...',
+	'article-comments-comment-missing-name-parameter' => 'Trūksta pavadinimo',
+	'article-comments-comment-missing-date-parameter' => 'Trūksta komentaro datos',
 );
 
 /** Latvian (Latviešu)

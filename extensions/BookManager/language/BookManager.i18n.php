@@ -314,7 +314,10 @@ $messages['lb'] = array(
  * @author Eitvys200
  */
 $messages['lt'] = array(
+	'bookmanager-desc' => 'Įrankiai knygoms',
+	'bm-booktools-section' => 'Knygų įrankiai',
 	'bm-printversion' => 'Versija spausdinimui',
+	'bm-printversion-no-book' => 'Įveskite knygos pavadinimą, kad gautumėt versiją spausdinimui.',
 	'bm-printversion-inexistent-book' => 'Knyga nerasta. Įveskite esamos knygos pavadinimą kad gautumėte spausdinimo versiją.',
 );
 

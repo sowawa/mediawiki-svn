@@ -186,6 +186,26 @@ $messages['gl'] = array(
 	'notificator-notified-already' => '$1 xa fora notificado antes sobre esta páxina ou cambio na páxina.',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'notificator' => 'Notificator',
+	'notificator-desc' => 'Notifica qualcuno per e-mail super le modificationes in un pagina si on clicca super un button in iste pagina.',
+	'notificator-db-table-does-not-exist' => 'Le tabella de base de datos "notificator" non existe. Le script de mantenentia "update.php" debe esser executate ante de poter usar le extension Notificator.',
+	'notificator-e-mail-address' => 'adresse de e-mail',
+	'notificator-notify' => 'Notificar',
+	'notificator-notify-address-or-name' => 'Notificar $1',
+	'notificator-revs-not-from-same-title' => 'Le IDs de version non pertine al mesme titulo/pagina',
+	'notificator-return-to' => 'Retornar a',
+	'notificator-special-page-accessed-directly' => 'Non es possibile acceder directemente a iste pagina special. Iste pagina pote solmente esser usate via un button de Notificator.',
+	'notificator-e-mail-address-invalid' => 'Le adresse de e-mail fornite es invalide.',
+	'notificator-notification-not-sent' => 'Notification <em>non</em> inviate.',
+	'notificator-change-tag' => 'cambiar',
+	'notificator-new-tag' => 'nove',
+	'notificator-notification-text-changes' => '$1 vole notificar te del sequente modificationes in $2:',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

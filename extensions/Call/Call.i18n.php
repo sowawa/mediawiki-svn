@@ -761,7 +761,8 @@ $messages['li'] = array(
  * @author Eitvys200
  */
 $messages['lt'] = array(
-	'call-save-success' => 'Šis tekstas buvo įrašytas į puslapį <big>[[ $1 ]].</big>',
+	'call' => 'Skambinti',
+	'call-save-success' => 'Šis tekstas buvo įrašytas į puslapį <big> [[$1]] </big> .',
 	'call-save-failed' => 'Šis tekstas nebuvo įrašytas į puslapį <big>[[$1]]</big> nes puslapis jau egzistuoja.',
 );
 

@@ -1633,11 +1633,12 @@ Provu la lastan version de <a href="http://www.microsoft.com/ie">Interreta Esplo
  * @author <anonymous>
  * @author Acrida
  * @author Crazymadlover
+ * @author Fitoschido
  * @author Imre
  * @author Sanbec
  */
 $wgGoogleMapsMessages['es'] = array(
-	'gm-desc' => 'Crear fácilmente mapas con marcadores wiki-fiados',
+	'gm-desc' => 'Crear mapas fácilmente con marcadores wikificados',
 	'gm-incompatible-browser' => 'Para ver el mapa que hay en esta p&aacute;gina, necesitas usar un navegador compatible.',
 	'gm-incompatible-browser-link' => 'Haga click aquí para ver una lista de navegadores compatibles.',
 	'gm-no-editor' => 'Desgraciadamente, tu navegador no soporta la funci&oacute;n interactiva de construcci&oacute;n de mapas. Prueba la &oucute;ltima versi&oacute;n de <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) o <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac y Linux).',
@@ -1647,7 +1648,7 @@ $wgGoogleMapsMessages['es'] = array(
 	'gm-remove' => 'eliminar',
 	'gm-caption' => 'Leyenda',
 	'gm-tab-title' => 'T&iacute;tulo de tab',
-	'gm-tab' => 'Tab',
+	'gm-tab' => 'Pestaña',
 	'gm-start-path' => 'inicia una ruta',
 	'gm-trace-area' => 'Trazar una área',
 	'gm-save-point' => 'guarda y cierra',
@@ -3228,7 +3229,7 @@ $wgGoogleMapsMessages['km'] = array(
 	'gm-height' => 'កំពស់',
 	'gm-scale-control' => 'មាត្រដ្ឋាន',
 	'gm-overview-control' => 'ទិដ្ឋភាពទូទៅ',
-	'gm-zoom-control' => 'នាំទិស',
+	'gm-zoom-control' => 'ការណែនាំ',
 	'gm-large' => 'ធំ',
 	'gm-medium' => 'មធ្យម',
 	'gm-small' => 'តូច',

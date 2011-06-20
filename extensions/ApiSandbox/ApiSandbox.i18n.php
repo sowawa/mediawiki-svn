@@ -366,9 +366,12 @@ $messages['lt'] = array(
 	'apisb-api-disabled' => 'API yra išjungtas šioje svetainėje.',
 	'apisb-parameters' => 'Parametrai',
 	'apisb-result' => 'Rezultatai',
+	'apisb-request-url' => 'Prašyti URL:',
 	'apisb-select-action' => 'Pasirinkite veiksmą',
+	'apisb-select-value' => 'Pasirinkite vertę',
 	'apisb-loading' => 'Kraunasi ...',
 	'apisb-submit' => 'Pateikti prašymą',
+	'apisb-query-prop' => 'Nusttymai',
 	'apisb-query-list' => 'Sąrašai',
 );
 

@@ -23,6 +23,13 @@ $messages['af'] = array(
 	'moodbar-desc' => 'Laat spesifieke gebruikers toe om hulle gemoedstoestand aan die webwerf se operateur terug te stuur',
 );
 
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'moodbar-desc' => 'Дазваляе вызначаным удзельнікам дасылаць іх «настрой» апэратару сайта',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -56,6 +63,13 @@ $messages['gl'] = array(
  */
 $messages['he'] = array(
 	'moodbar-desc' => 'מתן אפשרות למשתמשם לשלוח את "מצב הרוח" שלהם למפעיל האתר',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'moodbar-desc' => 'Permitte al usatores specificate de inviar lor "humor" retro al operator del sito',
 );
 
 /** Macedonian (Македонски)

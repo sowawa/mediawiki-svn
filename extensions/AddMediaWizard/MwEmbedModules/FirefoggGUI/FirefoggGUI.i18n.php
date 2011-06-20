@@ -3020,6 +3020,7 @@ $messages['lt'] = array(
 	'fogg-organization-help' => 'Organizacijos pavadinimas (studija)',
 	'fogg-copyright-title' => 'Autorinės teisės',
 	'fogg-copyright-help' => 'Įrašo autorinės teisės',
+	'fogg-license-title' => 'Licencija',
 	'fogg-contact-title' => 'Kontaktai',
 	'fogg-contact-help' => 'Kontakto nuorodą',
 	'fogg-select_file' => 'Pasirinkite failą',

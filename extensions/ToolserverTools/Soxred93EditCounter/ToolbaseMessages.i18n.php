@@ -429,6 +429,46 @@ $messages['el'] = array(
 	'toolbase-error-nowiki' => 'Το $1.$2.org δεν είναι ένα έγκυρο βίκι',
 );
 
+/** Spanish (Español)
+ * @author Fitoschido
+ */
+$messages['es'] = array(
+	'toolbase-header-title' => 'Herramientas de X! (BETA)',
+	'toolbase-header-bugs' => 'Bugs',
+	'toolbase-header-sitenotice' => 'Mensaje global de Toolserver: $1',
+	'toolbase-replag' => 'Servidor con un retraso de $1',
+	'toolbase-replag-years' => 'años',
+	'toolbase-replag-months' => 'meses',
+	'toolbase-replag-weeks' => 'semanas',
+	'toolbase-replag-days' => 'días',
+	'toolbase-replag-hours' => 'horas',
+	'toolbase-replag-minutes' => 'minutos',
+	'toolbase-replag-seconds' => 'segundos',
+	'toolbase-footer-exectime' => 'Ejecutado en $1 segundos',
+	'toolbase-footer-source' => 'Ver código fuente',
+	'toolbase-footer-language' => 'Cambiar idioma',
+	'toolbase-footer-translate' => 'Traducir',
+	'toolbase-navigation' => 'Navegación',
+	'toolbase-navigation-homepage' => 'Página principal',
+	'toolbase-navigation-user_id' => 'Encontrar el ID de usuario',
+	'toolbase-navigation-autoedits' => 'Contador de ediciones automatizadas',
+	'toolbase-userid-submit' => 'Obtener el ID de usuario',
+	'toolbase-userid-title' => 'Encontrar un ID de usuario',
+	'toolbase-userid-result' => 'El ID de usuario para <b>$1</b> en <a href="$3"><b>$3</b></a> es <b>$2</b>.',
+	'toolbase-autoedits-title' => 'Calculadora de ediciones automatizada',
+	'toolbase-autoedits-submit' => 'Calcular',
+	'toolbase-autoedits-approximate' => 'Número <b>aproximado</b> de ediciones usando...',
+	'toolbase-autoedits-totalauto' => 'Número total de ediciones automatizadas',
+	'toolbase-autoedits-totalall' => 'Recuento total de ediciones',
+	'toolbase-autoedits-pct' => 'Porcentaje de ediciones automatizadas',
+	'toolbase-main-title' => '¡Bienvenidos!',
+	'toolbase-main-404' => 'Archivo no encontrado',
+	'toolbase-form-wiki' => 'Wiki',
+	'toolbase-error-nouser' => '$1 no es un usuario válido',
+	'toolbase-error-nowiki' => '$1.$2.org no es un wiki válido',
+	'toolbase-error-toomanyedits' => '$1 tiene $2 ediciones. Esta herramienta tiene un máximo de $3 ediciones.',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Nike
@@ -880,6 +920,13 @@ $messages['it'] = array(
 	'toolbase-navigation-autoedits' => 'Contatore di modifiche automatico',
 	'toolbase-autoedits-totalall' => 'Totale delle modifiche',
 	'toolbase-main-404' => 'File non trovato',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
+ */
+$messages['km'] = array(
+	'toolbase-navigation' => 'ការណែនាំ',
 );
 
 /** Kurdish (Latin) (Kurdî (Latin))

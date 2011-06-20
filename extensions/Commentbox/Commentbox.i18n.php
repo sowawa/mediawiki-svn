@@ -288,21 +288,22 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Fitoschido
  */
 $messages['es'] = array(
 	'commentbox-desc' => 'Agrega un cuadro de comentarios a ciertas páginas',
 	'commentbox-intro' => '== Agregar un comentario... ==
 Tienes un comentario a esta página? Agrégalo aquí o <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} edita la página directamente]</span>.',
-	'commentbox-savebutton' => 'Grabar comentario',
+	'commentbox-savebutton' => 'Guardar comentario',
 	'commentbox-name' => 'Nombre:',
 	'commentbox-name-explanation' => '<small>(Tip: Si [[Special:UserLogin|inicias sesión]], no tendrás que llenar tu nombre manualmente)</small>',
 	'commentbox-log' => 'Nuevos comentarios',
 	'commentbox-first-comment-heading' => '== Comentarios==',
 	'commentbox-regex' => '/\\n==\\s*Comentarios\\s*==\\s*\\n/i',
-	'commentbox-errorpage-title' => 'Error cuando se creaba un comentario',
-	'commentbox-error-page-nonexistent' => 'Esta página no existe!',
-	'commentbox-error-namespace' => 'Los comentarios no estan permitidos en este espacio de nombre!',
-	'commentbox-error-empty-comment' => 'Comentarios vacíos no están permitidos!',
+	'commentbox-errorpage-title' => 'Error al crear el comentario',
+	'commentbox-error-page-nonexistent' => '¡Esta página no existe!',
+	'commentbox-error-namespace' => '¡No se permiten comentarios en este espacio de nombres!',
+	'commentbox-error-empty-comment' => 'No se permiten comentarios vacíos.',
 );
 
 /** Estonian (Eesti)

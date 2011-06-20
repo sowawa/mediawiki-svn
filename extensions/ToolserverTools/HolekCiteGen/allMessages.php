@@ -883,6 +883,8 @@ $messages['pl'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'ts-citegen-Output-title' => 'پايله',
+	'ts-citegen-Skin-skins' => 'پوښۍ',
 	'ts-citegen-Template-lang' => 'د کينډۍ ژبه',
 	'ts-citegen-Tools' => 'اوزارونه',
 	'ts-citegen-Other-languages' => 'نورې ژبې',
