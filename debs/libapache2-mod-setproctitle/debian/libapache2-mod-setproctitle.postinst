@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -e
+
+case "$1" in
+  configure)
+    :
+    if test "${2+set}" != set; then
+    a2enmod setproctitle
+      :
+    elif test -z "$2" -o "$2" = "<unknown>"; then
+    a2enmod setproctitle
+      :
+    fi ;;
+  abort-upgrade | abort-remove | abort-deconfigure)
+  	:
+    ;;
+  *) echo "$0: didn't understand being called with \`$1'" 1>&2
+     exit 1;;
+esac
+
+#DEBHELPER#
+
+exit 0

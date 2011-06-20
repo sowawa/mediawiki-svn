@@ -1,0 +1,12 @@
+Source: libapache2-mod-setproctitle
+Section: web
+Priority: optional
+Maintainer: Domas Mituzas <domas@wikimedia.org>
+Build-Depends: debhelper (>> 5.0.0), apache2-prefork-dev (>= 2.0)
+Standards-Version: 3.8.4
+
+Package: libapache2-mod-setproctitle
+Architecture: any
+Depends: apache2.2-common, ${shlibs:Depends}, ${misc:Depends}
+Description: Sets proctitle for apache2 processes
+ With request URI and vhost and IP

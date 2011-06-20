@@ -1,0 +1,5 @@
+libapache2-mod-setproctitle (0.1) unstable; urgency=low
+
+  * Initial release
+
+ -- Domas Mituzas <domas@wikimedia.org>  Sun, 19 Jun 2011 16:04:20 +0200
