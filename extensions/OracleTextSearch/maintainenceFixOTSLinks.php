@@ -32,7 +32,7 @@ class FixOTSLinks extends Maintenance {
 		$tbl_idx = $dbw->tableName( 'searchindex' );
 		
 		$searchWhere = $all ? '' : ' AND NOT EXISTS (SELECT null FROM '.$tbl_idx.' WHERE si_page=p.page_id AND si_url IS NOT null)';
-		$result = $dbw->doQuery('SELECT p.page_id FROM '.$tbl_pag.' p WHERE p.page_namespace = '.NS_FILE.$searchWhere );
+		$result = $dbw->query('SELECT p.page_id FROM '.$tbl_pag.' p WHERE p.page_namespace = '.NS_FILE.$searchWhere );
 		$this->output( $result->numRows()." file(s) found\n" );
 		
 		$syncIdx = false;

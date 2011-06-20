@@ -132,7 +132,7 @@ class SQL2Wiki {
 		$ignore = $this->mDB->ignoreErrors( true );
 		$this->initDBMSOutput();
 		
-		$this->mResult = $this->mDB->doQuery( $sql );
+		$this->mResult = $this->mDB->query( $sql );
 
 		$this->getDBMSOutput();
 		$this->mDB->ignoreErrors( $ignore );
@@ -181,7 +181,7 @@ class SQL2Wiki {
 			return;
 		}
 		
-		$this->mDB->doQuery ('BEGIN dbms_output.enable(null); END;');
+		$this->mDB->query ('BEGIN dbms_output.enable(null); END;');
 	}
 	
 	private function disableDBMSOutput() {
@@ -189,7 +189,7 @@ class SQL2Wiki {
 			return;
 		}
 		
-		$this->mDB->doQuery ('BEGIN dbms_output.disable; END;');
+		$this->mDB->query ('BEGIN dbms_output.disable; END;');
 	}
 
 	private function getDBMSOutput() {
@@ -199,7 +199,7 @@ class SQL2Wiki {
 
 		$this->mOutput = array();
 
-		$ret = $dbObj->doQuery('SELECT column_value FROM TABLE(get_output_lines())');
+		$ret = $dbObj->query('SELECT column_value FROM TABLE(get_output_lines())');
 		while(($line = $ret->fetchObject()) !== FALSE) {
 			$this->mOutput[] = $line->column_value;
 		}

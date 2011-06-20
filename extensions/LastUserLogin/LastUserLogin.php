@@ -61,7 +61,7 @@ function wfUpdateUserTouched() {
 	if ( isset( $_COOKIE ) && isset( $_COOKIE["{$wgCookiePrefix}UserID"] ) ) {
 		$dbw = wfGetDB( DB_MASTER );
 		$query = "UPDATE " . $dbw->tableName( 'user' ) . " SET user_touched = '" . $dbw->timestamp() . "' WHERE user_id = " . intval( $_COOKIE["{$wgCookiePrefix}UserID"] );
-		$dbw->doQuery( $query );
+		$dbw->query( $query );
 	}
 }
 
