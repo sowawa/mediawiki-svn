@@ -20,8 +20,8 @@ TextFlow.prototype.render = function( $container, text ) {
 			$container.append( $line.clone().html( lines[i].html ) );
 		}
 	}
-	console.timeEnd( 'TextFlow.render' );
-	//return metrics;
+	//console.timeEnd( 'TextFlow.render' );
+	return metrics;
 };
 
 TextFlow.prototype.getWord = function( text, ruler ) {
