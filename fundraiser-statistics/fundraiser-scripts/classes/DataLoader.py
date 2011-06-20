@@ -33,15 +33,19 @@ import Fundraiser_Tools.classes.FundraiserDataHandler as FDH
 
     BASE CLASS :: DataLoader
     
-    This is the base class for data handling functionality of metrics.
+    This is the base class for data handling functionality of metrics.  Inherited classes will be associated with a set of SQL files that loosely define a set related query types.
+    
+    Handles database connections.  Stores state values based on query results and also meta data for the queries themselves which can be resolved to full statements by interacting with QueryData.
+    
+    Data is stored according to a key name on which sets are separated.  Subclasses can further specify how the data is split and related.
     
     METHODS:
             init_db         
             close_db     
-            compose_key
-            include_keys
-            exclude_keys
-            get_sql_filename_for_query
+            compose_key                    - build a new key in the results based on existing one
+            include_keys                   - include only certain keys based on key name
+            exclude_keys                   - explicitly remove certain types of keys based on key name 
+            get_sql_filename_for_query     - resolve a sql filename based on the simpler query type   
             
                
 """
@@ -172,11 +176,8 @@ class DataLoader(object):
     """
         Return a specific query name given a query type
         
-        INPUT:
-                query_type        -
-                
         RETURN: 
-                 query_name       - 
+                 query_name       - name of the sql file
                 
     """
     def get_sql_filename_for_query(self):
@@ -184,13 +185,17 @@ class DataLoader(object):
         try:
             return self._query_names_[self._query_type_]
         except KeyError:
-            print >> sys.stderr, 'Could not find a query for type: ' + query_type  
+            print >> sys.stderr, 'Could not find a query for type: ' + self._query_type_  
             sys.exit(2)
 
 
         
-        
+"""
+
+    This Loader inherits the functionality of DaatLoader and handles SQL queries that group data by time intervals.  These are generally preferable for most
+    of the time dependent data analysis and also provides functionality that enables the raw results to be combined over all keys
     
+"""
 class IntervalReportingLoader(DataLoader):
     
     _summary_data_ = None
@@ -201,11 +206,15 @@ class IntervalReportingLoader(DataLoader):
         self._query_names_['campaign'] = 'report_campaign_metrics_minutely'
         self._query_names_['campaign_total'] = 'report_campaign_metrics_minutely_total'
         
+        self._query_names_[FDH._QTYPE_BANNER_ + FDH._QTYPE_TIME_] = 'report_banner_metrics_minutely_all'
+        self._query_names_[FDH._QTYPE_LP_ + FDH._QTYPE_TIME_] = 'report_lp_metrics_minutely_all'
+        self._query_names_[FDH._QTYPE_CAMPAIGN_ + FDH._QTYPE_TIME_] = 'report_campaign_metrics_minutely_all'
+        
         self._query_type_ = query_type
         
         """ hardcode the data handler for now """
         self._data_handler_ = FDH
-         
+    
     """
         Executes the query which generates interval metrics and sets _results_ and _col_names_
         
@@ -256,7 +265,7 @@ class IntervalReportingLoader(DataLoader):
             
         metric_index = QD.get_metric_index(query_name, metric_name)
         time_index = QD.get_time_index(query_name)
-             
+        #print sql_stmnt
         """ Compose the data for each separate donor pipeline artifact """
         try:
             # err_msg = sql_stmnt
@@ -337,14 +346,9 @@ class IntervalReportingLoader(DataLoader):
 
 
     """
-        Post process raw data from query.  Combines data rows according to column type definitions.  This must be run *after*
+        Post process raw data from query.  Combines data rows according to column type definitions.  This must be run *after* run_query.
         
-        INPUT:
-                data             - a list of rows
-                data_handler     - the data handler module
-                query_name       - 
-        RETURN:
-                the dictionary of combined rows (note that there must be a key column)
+        This allows aggregates of query data to be performed after the actual processing of the query.
     """
     def combine_rows(self):
         
@@ -380,7 +384,13 @@ class IntervalReportingLoader(DataLoader):
                 """ Change null values to 0 """
                 if field == None or field == 'NULL':
                     field = 0.0
-
+                
+                """ 
+                    COMBINE THE DATA FOR EACH KEY
+                    
+                    Based on the column type compile an aggregate (e.g. sum, average) 
+                    
+                """
                 if col_type == self._data_handler_._COLTYPE_RATE_:
                     
                     try:
@@ -395,11 +405,14 @@ class IntervalReportingLoader(DataLoader):
                     except KeyError as e:
                         data_dict[key][self._col_names_[i]] = float(field)
         
-        """ !! MODIFY --- this could cause issues in the case of missing data """
+        """ !! MODIFY / FIXME --- this could cause issues in the case of missing data """
         num_rows = len(self._results_) / len(data_dict.keys())
         
-        """ POST PROCESSING
-            Normalize rate columns """
+        """ 
+            POST PROCESSING
+            
+            Normalize rate columns 
+        """
         for i in range(len(col_types)):
             if col_types[i] == self._data_handler_._COLTYPE_RATE_:
                 for key in data_dict.keys():
@@ -411,6 +424,10 @@ class IntervalReportingLoader(DataLoader):
 
 """
 
+    This class inherits the IntrvalLoader functionality but utilizes the campaign DataLoader instead.  Also the results generated incorporate campaign totals also --
+    the result fully specifies each campaign item (campaign - banner - landing page) and the number of views resulting.
+    
+    This differs from the interval reporter in that it compiles results for views and donations only for an entire donation process or pipeline.
 
 """
 class CampaignIntervalReportingLoader(IntervalReportingLoader):
@@ -453,181 +470,40 @@ class CampaignIntervalReportingLoader(IntervalReportingLoader):
             
         return [metrics, times]
 
-
+    
 """
-
-    CLASS :: BannerLPReportingLoader
-    
-    This dataloader handles reporting on banners and landing pages.
-    
-    METHODS:
-            run_query
-            
-               
+    This class is concerned with preparing the data for a hypothesis test and is consumed by classes which perform this analysis in HypothesisTest.py
 """
-class BannerLPReportingLoader(DataLoader):
-    
-    def __init__(self, query_type):
-        self._query_names_['LP'] = 'report_LP_metrics'
-        self._query_names_['BAN'] = 'report_banner_metrics'
-        self._query_names_['BAN-TEST'] = 'report_banner_metrics'
-        self._query_names_['LP-TEST'] = 'report_LP_metrics'
-        
-        self._query_type_ = query_type
-        
-    """
-         <description>
-        
-        INPUT:
-                        
-        RETURN:
-        
-    """ 
-    def run_query(self,start_time, end_time, campaign, metric_name):
-        
-        self.init_db()
-    
-        metric_lists = Hlp.AutoVivification()
-        time_lists = Hlp.AutoVivification()
-        # table_data = []        # store the results in a table for reporting
-        
-        # Load the SQL File & Format
-        filename = self._sql_path_ + query_name + '.sql'
-        sql_stmnt = Hlp.read_sql(filename)
-        
-        sql_stmnt = QD.format_query(query_name, sql_stmnt, [start_time, end_time, campaign])
-        
-        key_index = QD.get_key_index(query_name)
-        time_index = QD.get_time_index(query_name)
-        metric_index = QD.get_metric_index(query_name, metric_name)
-        
-        """ Composes the data for each banner or LP """
-        try:
-            err_msg = sql_stmnt
-            self.cur.execute(sql_stmnt)
-            
-            results = self.cur.fetchall()
-            
-            for row in results:
-    
-                key_name = row[key_index]
-                
-                try:
-                    metric_lists[key_name].append(row[metric_index])
-                    time_lists[key_name].append(row[time_index])
-                except:
-                    metric_lists[key_name] = list()
-                    time_lists[key_name] = list()
-    
-                    metric_lists[key_name].append(row[metric_index])
-                    time_lists[key_name].append(row[time_index])
-    
-        except:
-            self.db.rollback()
-            sys.exit("Database Interface Exception:\n" + err_msg)
-        
-        """ Convert Times to Integers """
-        max_i = 0
-        
-        for key in time_lists.keys():
-            for date_str in time_lists[key]:
-                day_int = int(date_str[8:10])
-                hr_int = int(date_str[11:13])
-                date_int = int(date_str[0:4]+date_str[5:7]+date_str[8:10]+date_str[11:13])
-                if date_int > max_i:
-                    max_i = date_int
-                    max_day = day_int
-                    max_hr = hr_int 
-        
-        
-        # Normalize dates
-        time_norm = Hlp.AutoVivification()
-        for key in time_lists.keys():
-            for date_str in time_lists[key]:
-                day = int(date_str[8:10])
-                hr = int(date_str[11:13])
-                # date_int = int(date_str[0:4]+date_str[5:7]+date_str[8:10]+date_str[11:13])
-                elem = (day - max_day) * 24 + (hr - max_hr)
-                try: 
-                    time_norm[key].append(elem)
-                except:
-                    time_norm[key] = list()
-                    time_norm[key].append(elem)
-
-    
-        self.close_db()
-        
-        return [metric_lists, time_norm]
-
-    
-    """ 
-
-     <description>
-    
-    INPUT:
-                    
-    RETURN:
-    
-    """    
-    def get_latest_campaign(self):
-        
-        query_name = 'report_latest_campaign'
-        self.init_db()
-        
-        """ Look at campaigns over the past 24 hours - TS format=1, TS resolution=1 """
-        now = datetime.datetime.now()
-        hours_back = 72
-        times = self.gen_date_strings(now, hours_back,1,1)
-        
-        sql_stmnt = Hlp.read_sql('./sql/report_latest_campaign.sql')
-        sql_stmnt = QD.format_query(query_name, sql_stmnt, [times[0]])
-        
-        campaign_index = QD.get_campaign_index(query_name)
-        time_index = QD.get_time_index(query_name)
-        
-        try:
-            err_msg = sql_stmnt
-            self.cur.execute(sql_stmnt)
-            
-            row = self.cur.fetchone()
-        except:
-            self.db.rollback()
-            sys.exit("Database Interface Exception:\n" + err_msg)
-            
-        campaign = row[campaign_index]
-        timestamp = row[time_index] 
-            
-        self.close_db()
-        
-        return [campaign, timestamp]
-    
-    
-    
 class HypothesisTestLoader(DataLoader):
     
     """
-        Execute data acquisition for hypothesis tester
+        Execute data acquisition for hypothesis tester.  The idea is that data sampled identically over time for item 1 and item 2 will be generated on which analysis may be carried out.
+        
+        !! MODIFY/ FIXME -- the sampling is awkward, sampling interval and test interval should be specified explicitly !!
         
         INPUT:
-            query_name     -   
-            metric_name    -
+            query_name     -   non-formatted sql filename  !!MODIFY / FIXME  -- this should be a type instead !!
+            metric_name    -   metric to be extracted from the data  
             campaign       - 
-            item_1         -   
-            item_2         -   
+            item_1         -   artifact or key name 
+            item_2         -   artifact or key name
             start_time     -   
             end_time       - 
-            interval       - 
-            num_samples    -
+            interval       -   test interval; this groups a set of samples together to perform a paired t-test
+            num_samples    -   samples per test interval (sampling interval = interval / num_samples)
             
         RETURN:
-            metrics_1        -
-            metrics_2        -
-            times_indices    -
+            metrics_1        - the metrics for item 1
+            metrics_2        - the metrics for item 2
+            times_indices    - the sampling intervals
        
     """
     def run_query(self, query_name, metric_name, campaign, item_1, item_2, start_time, end_time, interval, num_samples):
         
-        """ retrieve time lists with timestamp format 1 (yyyyMMddhhmmss) """
+        """ 
+            Retrieve time lists with timestamp format 1 (yyyyMMddhhmmss) 
+            This breaks the metrics into evenly sampled intervals
+        """
         ret = TP.get_time_lists(start_time, end_time, interval, num_samples, 1)
         times = ret[0]
         times_indices = ret[1]
@@ -641,6 +517,12 @@ class HypothesisTestLoader(DataLoader):
         metrics_1 = []
         metrics_2 = []
         
+        """
+            EXECUTE THE QUERIES FOR EACH INTERVAL
+            
+            Generates metrics for each artifact, sampled in the same way
+            
+        """
         for i in range(len(times) - 1):
             
             # print '\nExecuting number ' + str(i) + ' batch of of data.'
@@ -693,12 +575,10 @@ class HypothesisTestLoader(DataLoader):
 
     CLASS :: CampaignReportingLoader
     
-    This dataloader handles reporting on utm_campaigns.
-    
-    METHODS:
-            run_query
-            
-               
+    This inherits from the DataLoader base class and handles reporting on utm_campaigns.  This reporter handles returning lists of banners and lps from a given campaign and also handles 
+    reporting donation totals across all campaigns.  While this interface is concerned with campaign reporting it does not associated results with time intervals within the start and 
+    end times 
+      
 """
 class CampaignReportingLoader(DataLoader):
     
@@ -711,7 +591,7 @@ class CampaignReportingLoader(DataLoader):
         self._query_type_ = query_type
         
     """
-        !! MODIFY -- use python reflection !! ... maybe
+        !! MODIFY / FIXME -- use python reflection !! ... maybe
         
         This method is retrieving campaign names 
        
@@ -737,7 +617,7 @@ class CampaignReportingLoader(DataLoader):
     
         Handle queries from  "report_campaign_totals"
         
-        Gets metric totals for campaigns
+        Gets metric totals across campaigns
         
     """
     def query_totals(self, params):
@@ -790,7 +670,7 @@ class CampaignReportingLoader(DataLoader):
     
         Handle queries from "report_campaign_banners" and "report_campaign_lps" 
         
-        Gets a list of banners and landing pages running on the campaign in a time frame
+        Gets a list of banners and landing pages running for a given campaign over a given time frame
         
     """
     def query_artifacts(self, params):
@@ -840,11 +720,14 @@ class CampaignReportingLoader(DataLoader):
 
     CLASS :: TableLoader
     
-    Provides data access particular to the t-test
+    Base class for providing MySQL table access.  Inherits DataLoader.
     
     METHODS:
-            init_db         -
-            close_db        -
+            record_exists     - return a boolean value reflecting whether a record exists in the table
+            insert_row        - try to insert a new record into the table
+            delete_row        - try to delete a record from the table
+            update            - try to modify a record in the table
+            
 """
 class TableLoader(DataLoader):
     
@@ -867,6 +750,8 @@ class TableLoader(DataLoader):
     
     Provides data access particular to the t-test
     
+    storage3.pmtpa.wmnet.faulkner.ttest:
+        
     +--------------------+--------------+------+-----+---------+-------+
     | Field              | Type         | Null | Key | Default | Extra |
     +--------------------+--------------+------+-----+---------+-------+
@@ -884,11 +769,11 @@ class TTestLoaderHelp(TableLoader):
     given the degrees of freedom and statistic t test
     
     INPUT:
-        degrees_of_freedom     -   
-        t                      -
+        degrees_of_freedom     - computed degrees of freedom of a dataset modeled on a student's t distribution
+        t                      - test statistic; random variable whose value is to be measured
 
     RETURN:
-        p        -
+        p        - the highest p value based on the input 
    
     """
     def get_pValue(self, degrees_of_freedom, t):
@@ -1099,23 +984,31 @@ class TestTableLoader(TableLoader):
     """
     def get_test_field(self, row, key):
         
-        if key == 'test_name':
-            return row[0]
-        elif key == 'test_type':
-            return row[1]
-        elif key == 'utm_campaign':           
-            return row[2]
-        elif key == 'start_time':
-            return row[3].__str__()
-        elif key == 'end_time':
-            return row[4].__str__()
-        elif key == 'winner':
-            return row[5]
-        elif key == 'is_conclusive':
-            return row[6]
-        elif key == 'html_report':                
-            return row[7]
+        try:
+            if key == 'test_name':
+                return row[0]
+            elif key == 'test_type':
+                return row[1]
+            elif key == 'utm_campaign':           
+                return row[2]
+            elif key == 'start_time':
+                return row[3].__str__()
+            elif key == 'end_time':
+                return row[4].__str__()
+            elif key == 'winner':
+                return row[5]
+            elif key == 'is_conclusive':
+                return row[6]
+            elif key == 'html_report':                
+                return row[7]
         
+        except Exception as inst:
+            
+            print type(inst)     # the exception instance
+            print inst.args      # arguments stored in .args
+            print inst           # __str__ allows args to printed directly
+            
+            return ''
 
     
     def delete_row(self):
