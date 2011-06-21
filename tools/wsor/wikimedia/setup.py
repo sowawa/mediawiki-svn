@@ -13,15 +13,12 @@ setup(
 		utilities have been specifically designed to allow 
 		processing of the massive about of data (currently) found 
 		in the full history dump of the English Wikipedia
-	"""
+	""",
 	author='Aaron Halfaker',
 	author_email='aaron.halfaker@gmail.com',
 	url='http://meta.wikimedia.org/wiki/User:EpochFail',
 	packages=find_packages(),
 	entry_points = {
-        'distutils.commands': [
-            'dump_map = util.dump.map:main',
-            ]
-        },
-	
+		'console_scripts': ['dump_map = wmf.dump.map:main']
+	}
 )
