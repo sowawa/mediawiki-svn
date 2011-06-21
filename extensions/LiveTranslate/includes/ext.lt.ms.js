@@ -156,7 +156,7 @@
 //				}
 				
 				self.translateChunk(
-					this.data.split( new RegExp( "[.!?](?=\\s+|$)", "gi" ) ), // "(\\S.+?[.!?])(?=\\s+|$)"
+					this.data.split( new RegExp( "([.!?])(?=\\s+|$)", "gi" ) ), // "(\\S.+?[.!?])(?=\\s+|$)"
 					[],
 					maxChunkLength,
 					sourceLang,

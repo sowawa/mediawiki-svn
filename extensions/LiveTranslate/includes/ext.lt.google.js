@@ -139,7 +139,7 @@ google.setOnLoadCallback(function(){google.language.getBranding("googlebranding"
 				
 				self.runningJobs++;
 				self.translateChunk(
-					this.data.split( new RegExp( "(\\S.+?[.!?])(?=\\s+|$)", "gi" ) ),
+					this.data.split( new RegExp( "([.!?])(?=\\s+|$)", "gi" ) ), // "(\\S.+?[.!?])(?=\\s+|$)"
 					[],
 					maxChunkLength,
 					sourceLang,
