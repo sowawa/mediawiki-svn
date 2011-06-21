@@ -15,6 +15,7 @@
 	this.runningJobs = 0;
 	this.checkingForIdle = false;
 	this.lastCompletion;
+//	window.fooz = 0;
 	
 	/**
 	 * Determines a chunk to translate of an DOM elements contents and calls the Microsoft Translate API.
@@ -114,7 +115,7 @@
 				'appId': window.ltMsAppId,
 				'from': sourceLang,
 				'to': targetLang,
-				'text': jQuery.trim( chunk ) // Trim, so the result does not contain preceding or tailing spaces.
+				'text': $.trim( chunk ) // Trim, so the result does not contain preceding or tailing spaces.
 			},
 			chunckTranslationDone
 		);
@@ -142,8 +143,20 @@
 				ltdebug( 'MS: Found content node' );
 				
 				self.runningJobs++;
+				
+//				if ( window.fooz < 7 ) {
+//					window.fooz++;
+//					if ( window.fooz > 6 ) {
+//						alert( this.data + "\n---------------" );
+//						var partz = this.data.split( new RegExp( "[.!?](?=\\s+|$)", "gi" ) );
+//						for ( i in partz ) {
+//							alert( partz[i] );
+//						}						
+//					}
+//				}
+				
 				self.translateChunk(
-					this.data.split( new RegExp( "(\\S.+?[.!?])(?=\\s+|$)", "gi" ) ),
+					this.data.split( new RegExp( "[.!?](?=\\s+|$)", "gi" ) ), // "(\\S.+?[.!?])(?=\\s+|$)"
 					[],
 					maxChunkLength,
 					sourceLang,
