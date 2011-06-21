@@ -273,7 +273,7 @@ class ScanSet {
 	function doError( $msg /*, ...*/) {
 		$args = func_get_args();
 		array_shift( $args );
-		$this->text .= "<p>" . wfMsgReal( 'scanset_' . $msg, $args, true ) . "</p>";
+		$this->text .= "<p>" . wfMsg( 'scanset_' . $msg, $args ) . "</p>";
 	}
 
 	/**
