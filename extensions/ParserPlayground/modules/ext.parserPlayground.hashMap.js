@@ -9,8 +9,8 @@
  * Used to map parse tree nodes to output nodes for the inspector mode.
  */
 function HashMap() {
-    this.keyBuckets = {};
-    this.valBuckets = {};
+	this.keyBuckets = {};
+	this.valBuckets = {};
 }
 
 /**
@@ -18,17 +18,17 @@ function HashMap() {
  * @return {object} original object, or null if no match found.
  */
 HashMap.prototype.get = function(keyObj) {
-    var key = this.hash(keyObj);
-    if (typeof this.keyBuckets[key] !== 'undefined') {
-        var keys = this.keyBuckets[key],
-            max = keys.length;
-        for (var i = 0; i < max; i++) {
-            if (keyObj === keys[i]) {
-                return this.valBuckets[key][i];
-            }
-        }
-    }
-    return null;
+	var key = this.hash(keyObj);
+	if (typeof this.keyBuckets[key] !== 'undefined') {
+		var keys = this.keyBuckets[key],
+			max = keys.length;
+		for (var i = 0; i < max; i++) {
+			if (keyObj === keys[i]) {
+				return this.valBuckets[key][i];
+			}
+		}
+	}
+	return null;
 };
 
 /**
@@ -36,18 +36,18 @@ HashMap.prototype.get = function(keyObj) {
  * @param {object} val
  */
 HashMap.prototype.put = function(keyObj, val) {
-    var key = this.hash(keyObj);
-    if (typeof this.keyBuckets[key] === 'undefined') {
-        this.keyBuckets[key] = [];
-        this.valBuckets[key] = [];
-    }
-    this.keyBuckets[key].push(keyObj);
-    this.valBuckets[key].push(val);
+	var key = this.hash(keyObj);
+	if (typeof this.keyBuckets[key] === 'undefined') {
+		this.keyBuckets[key] = [];
+		this.valBuckets[key] = [];
+	}
+	this.keyBuckets[key].push(keyObj);
+	this.valBuckets[key].push(val);
 };
 
 /**
  * This will do for us for now. :)
  */
 HashMap.prototype.hash = function(keyObj) {
-    return JSON.stringify(keyObj).substr(0, 40);
+	return JSON.stringify(keyObj).substr(0, 40);
 };

@@ -7,38 +7,38 @@
  * is 'MediaWiki:Gadget-ParserPlayground-PegParser.pegjs'.
  */
 function PegParser(options) {
-    FakeParser.call(this, options);
+	FakeParser.call(this, options);
 }
 
 $.extend(PegParser.prototype, FakeParser.prototype);
 
 PegParser.prototype.parseToTree = function(text, callback) {
-    this.initField(function() {
-        var $src = $('#pegparser-source');
-        if ($src.length) {
-            var parserSource = $src.val();
-        } else {
-            var parserSource = '';
-        }
-        var out, err;
-        try {
-            var parser = PEG.buildParser(parserSource);
-            out = parser.parse(text);
-        } catch (e) {
-            err = e;
-        } finally {
-            callback(out, err);
-        }
-    });
+	this.initField(function() {
+		var $src = $('#pegparser-source');
+		if ($src.length) {
+			var parserSource = $src.val();
+		} else {
+			var parserSource = '';
+		}
+		var out, err;
+		try {
+			var parser = PEG.buildParser(parserSource);
+			out = parser.parse(text);
+		} catch (e) {
+			err = e;
+		} finally {
+			callback(out, err);
+		}
+	});
 }
 
 PegParser.prototype.initField = function(callback) {
-    var src = $('#pegparser-source');
-    if (src.length) {
-        src.show();
-        callback();
-    } else {
-        var area = $('<textarea id="pegparser-source" rows=25></textarea>').insertBefore('#wpTextbox1');
+	var src = $('#pegparser-source');
+	if (src.length) {
+		src.show();
+		callback();
+	} else {
+		var area = $('<textarea id="pegparser-source" rows=25></textarea>').insertBefore('#wpTextbox1');
 		if ( typeof parserPlaygroundPegPage !== 'undefined' ) {
 			$.get(wgScriptPath + '/api' + wgScriptExtension, {
 				format: 'json',
@@ -60,5 +60,5 @@ PegParser.prototype.initField = function(callback) {
 				callback();
 			}, 'text' );
 		}
-    }
+	}
 };

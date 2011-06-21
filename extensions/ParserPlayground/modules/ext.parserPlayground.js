@@ -23,33 +23,33 @@
 
 var onResize = null;
 $(window).resize(function() {
-    if (onResize) {
-        onResize();
-    }
+	if (onResize) {
+		onResize();
+	}
 });
 $('.mw-pp-node').live('click', function() {
-    var ul = $(this.parentNode).find('ul:first');
-    if (ul.is(":hidden")) {
-        ul.slideDown();
-    } else {
-        ul.slideUp();
-    }
+	var ul = $(this.parentNode).find('ul:first');
+	if (ul.is(":hidden")) {
+		ul.slideDown();
+	} else {
+		ul.slideUp();
+	}
 });
 
 var makeMagicBox = function(inside) {
-    $('#mw-parser-popup').remove();
-    // line-height is needed to compensate for oddity in WikiEditor extension, which zeroes the line-height on a parent container
-    var box = $('#wpTextbox1');
-    var target = $('<div id="mw-parser-popup" style="width: 100%; overflow-y: auto; background: white"><div class="editor" style="line-height: 1.5em; top: 0px; left: 0px; right: 0px; bottom: 0px; border: 1px solid gray">' + inside + '</div></div>').insertAfter(box);
-    $('#wpTextbox1').css('display', 'none');
+	$('#mw-parser-popup').remove();
+	// line-height is needed to compensate for oddity in WikiEditor extension, which zeroes the line-height on a parent container
+	var box = $('#wpTextbox1');
+	var target = $('<div id="mw-parser-popup" style="width: 100%; overflow-y: auto; background: white"><div class="editor" style="line-height: 1.5em; top: 0px; left: 0px; right: 0px; bottom: 0px; border: 1px solid gray">' + inside + '</div></div>').insertAfter(box);
+	$('#wpTextbox1').css('display', 'none');
 
-    onResize = function() {
-        //target.width(box.width())
-        //    .height(box.height());
-        target.height(box.height());
-    };
-    onResize();
-    return target;
+	onResize = function() {
+		//target.width(box.width())
+		//    .height(box.height());
+		target.height(box.height());
+	};
+	onResize();
+	return target;
 };
 
 /**
@@ -58,17 +58,17 @@ var makeMagicBox = function(inside) {
  * @return {jQuery}
  */
 var makeInspectorColumns = function(dest) {
-    var h = $('#wpTextbox1').height(); // hack
-    var target = $(
-        '<table style="width: 100%; height: ' + h + 'px">' +
-        '<tr>' +
-        '<td width="50%"><div class="left" style="overflow:auto; ' +
-            'height: ' + h + 'px"></div></td>' +
-        '<td width="50%"><div class="right" style="overflow:auto; ' +
-            'height: ' + h + 'px"></div></td>' +
-        '</tr>' +
-        '</table>').appendTo(dest);
-    return target;
+	var h = $('#wpTextbox1').height(); // hack
+	var target = $(
+		'<table style="width: 100%; height: ' + h + 'px">' +
+		'<tr>' +
+		'<td width="50%"><div class="left" style="overflow:auto; ' +
+			'height: ' + h + 'px"></div></td>' +
+		'<td width="50%"><div class="right" style="overflow:auto; ' +
+			'height: ' + h + 'px"></div></td>' +
+		'</tr>' +
+		'</table>').appendTo(dest);
+	return target;
 };
 
 /**
@@ -79,27 +79,27 @@ var makeInspectorColumns = function(dest) {
  * @param {jQUery} right
  */
 var setupInspector = function(left, right, leftMap, rightMap) {
-    var makeMagic = function(a, b, inspectorMap) {
-        var match = function(aNode, callback) {
-            var treeNode = $(aNode).data('parseNode');
-            var bNode = treeNode && inspectorMap.get(treeNode);
-            callback(aNode, bNode);
-        };
-        a.delegate('.parseNode', 'mouseenter', function(event) {
+	var makeMagic = function(a, b, inspectorMap) {
+		var match = function(aNode, callback) {
+			var treeNode = $(aNode).data('parseNode');
+			var bNode = treeNode && inspectorMap.get(treeNode);
+			callback(aNode, bNode);
+		};
+		a.delegate('.parseNode', 'mouseenter', function(event) {
 			$('.parseNodeHighlight').removeClass('parseNodeHighlight');
-            match(this, function(node, other) {
-                $(node).addClass('parseNodeHighlight');
-                $(other).addClass('parseNodeHighlight');
-            });
+			match(this, function(node, other) {
+				$(node).addClass('parseNodeHighlight');
+				$(other).addClass('parseNodeHighlight');
+			});
 			event.preventDefault();
 			return false;
-        }).delegate('.parseNode', 'mouseleave', function(event) {
+		}).delegate('.parseNode', 'mouseleave', function(event) {
 			$('.parseNodeHighlight').removeClass('parseNodeHighlight');
 			event.preventDefault();
 			return false;
-        }).delegate('.parseNode', 'click', function(event) {
-            match(this, function(node, other) {
-                if (other) {
+		}).delegate('.parseNode', 'click', function(event) {
+			match(this, function(node, other) {
+				if (other) {
 					// try to scroll the other into view. how... feasible is this? :DD
 					var visibleStart = b.scrollTop();
 					var visibleEnd = visibleStart + b.height();
@@ -112,12 +112,12 @@ var setupInspector = function(left, right, leftMap, rightMap) {
 					}
 					event.preventDefault();
 					return false;
-                }
-            });
-        });
-    };
-    makeMagic(left, right, rightMap);
-    makeMagic(right, left, leftMap);
+				}
+			});
+		});
+	};
+	makeMagic(left, right, rightMap);
+	makeMagic(right, left, leftMap);
 };
 
 var addParserModes = function(modes, parserClass, className, detail) {
@@ -134,11 +134,11 @@ var addParserModes = function(modes, parserClass, className, detail) {
 };
 
 $(document).ready( function() {
-    /* Start trying to add items... */
-    var editor = $('#wpTextbox1');
-    if (editor.length > 0 && typeof $.fn.wikiEditor === 'function') {
-        //$('#wpTextbox1').bind('wikiEditor-toolbar-buildSection-main', function() {
-        var listItems = {
+	/* Start trying to add items... */
+	var editor = $('#wpTextbox1');
+	if (editor.length > 0 && typeof $.fn.wikiEditor === 'function') {
+		//$('#wpTextbox1').bind('wikiEditor-toolbar-buildSection-main', function() {
+		var listItems = {
 			'sourceView': {
 				'label': 'Source',
 				'action': {
@@ -150,12 +150,12 @@ $(document).ready( function() {
 					}
 				}
 			}
-        };
-        addParserModes(listItems, MediaWikiParser, 'MediaWikiParser');
-        addParserModes(listItems, FakeParser, 'FakeParser');
-        addParserModes(listItems, PegParser, 'PegParser', '<p>Peg-based parser plus FakeParser\'s output. <a href="http://pegjs.majda.cz/documentation">pegjs documentation</a>; edit and reselect to reparse with updated parser</p>');
+		};
+		addParserModes(listItems, MediaWikiParser, 'MediaWikiParser');
+		addParserModes(listItems, FakeParser, 'FakeParser');
+		addParserModes(listItems, PegParser, 'PegParser', '<p>Peg-based parser plus FakeParser\'s output. <a href="http://pegjs.majda.cz/documentation">pegjs documentation</a>; edit and reselect to reparse with updated parser</p>');
 
-        window.setTimeout(function() {
+		window.setTimeout(function() {
 			var context = editor.data('wikiEditor-context');
 			context.parserPlayground = {
 				parser: new FakeParser(),
@@ -166,7 +166,7 @@ $(document).ready( function() {
 						if (context.$parserContainer) {
 							context.parserPlayground.fn.hide();
 						}
-                        var $target = makeMagicBox('');
+						var $target = makeMagicBox('');
 						$('#mw-parser-inspector').remove();
 						var $inspector = $('<div id="mw-parser-inspector" style="position: relative; width: 100%; overflow-y: auto; height: 200px"></div>');
 						$inspector.insertAfter($target);
@@ -177,12 +177,12 @@ $(document).ready( function() {
 						context.$parserContainer = $target;
 						context.$parserInspector = $inspector;
 
-                        var src = $('#wpTextbox1').val();
-                        var $dest = $target.find('div');
+						var src = $('#wpTextbox1').val();
+						var $dest = $target.find('div');
 
 						var parser = context.parserPlayground.parser;
 						var treeMap = context.parserPlayground.treeMap = new HashMap(),
-						    renderMap = new HashMap();
+							renderMap = new HashMap();
 						parser.parseToTree(src, function(tree, err) {
 							context.parserPlayground.tree = tree;
 							if (context.parserPlayground.useInspector) {
@@ -193,12 +193,12 @@ $(document).ready( function() {
 							parser.treeToHtml(tree, function(node, err) {
 								$dest.append(node);
 								context.parserPlayground.fn.setupEditor($target);
-			                    setupInspector($target, $inspector, renderMap, treeMap);
+								setupInspector($target, $inspector, renderMap, treeMap);
 							}, renderMap);
 						});
 					},
 					hide: function() {
-	                    $('#pegparser-source').hide(); // it'll reshow; others won't need it
+						$('#pegparser-source').hide(); // it'll reshow; others won't need it
 						context.$iframe = undefined;
 						context.$parserContainer.remove();
 						context.$parserContainer = undefined;
@@ -273,10 +273,10 @@ $(document).ready( function() {
 					}
 				}
 			} );
-        }, 500 );
-    } else {
-        mw.log('No wiki editor');
-    }
+		}, 500 );
+	} else {
+		mw.log('No wiki editor');
+	}
 });
 
 })(jQuery);
