@@ -18,7 +18,7 @@ public static function notificator_Render( $parser, $receiver = '', $receiverLab
 	// Check that the database table is in place
 	if ( ! Notificator::checkDatabaseTableExists() ) {
 		$output = '<span class="error">' .
-			wfMsg( 'notificator-db-table-does-not-exist' ) . '</span>';
+			htmlspecialchars( wfMsg( 'notificator-db-table-does-not-exist' ) ) . '</span>';
 		return array( $output, 'noparse' => true, 'isHTML' => true );
 	}
 
@@ -145,7 +145,7 @@ public static function getNotificationDiffHtml( $oldRevId, $revId ) {
 
 	if ( $oldRevisionObj->getTitle() != $newRevisionObj->getTitle() ) {
 		return '<span class="error">' .
-			wfMsg( 'notificator-revs-not-from-same-title' ) . '</span>';
+			htmlspecialchars( wfMsg( 'notificator-revs-not-from-same-title' ) ) . '</span>';
 	}
 
 	$titleObj = $oldRevisionObj->getTitle();
@@ -207,8 +207,19 @@ public static function recordNotificationInDatabase( $pageId, $revId, $receiver 
 }
 
 public static function getReturnToText( $linkToPage, $pageTitle ) {
-	return '<p style="margin-top: 2em;">' .
-		wfMsg( 'notificator-return-to' ) . ' <a href="' . $linkToPage . '">' . $pageTitle . '</a>.';
+	$aElement = Html::element(
+		'a',
+		array( 'href' => $linkToPage ),
+		$pageTitle
+	);
+
+	$returnToText = Html::rawElement(
+		'p',
+		array( 'style' => 'margin-top: 2em;' ),
+		htmlspecialchars( wfMsg( 'notificator-return-to' ) ) . ' ' . $aElement
+	);
+
+	return $returnToText;
 }
 
 }
