@@ -171,10 +171,10 @@ class RecordAdmin {
 			$template = "<noinclude>" . $this->valuesToText( $type, $values ) . "</noinclude>";
 
 			# Replace any instance of the template in the text with the new parameters
-			$text = preg_replace( "|\{\{$type\}\}|", $template, $text, -1, $count );
+			$text = str_replace( '{{' . $type . '}}', $template, $text, $count );
 
 			# If there were no matches, prepend it (either its newly added, or is a prepended one)
-			if( $count == 0) $text = "$template\n$text";
+			if( $count == 0 ) $text = "$template\n$text";
 
 		}
 
@@ -598,7 +598,7 @@ class RecordAdmin {
 
 			# Modify the element according to its type
 			# - clears default value, then adds new value
-			$v = isset( $values[$k] ) ? $values[$k] : '';
+			$v = str_replace( '$', '\$', isset( $values[$k] ) ? $values[$k] : '' );
 			switch ( $type ) {
 				case 'text':
 					$html = preg_replace( "|value\s*=\s*\".*?\"|i", "", $html );
