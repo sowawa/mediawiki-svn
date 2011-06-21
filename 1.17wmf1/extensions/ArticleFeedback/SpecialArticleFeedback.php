@@ -125,6 +125,9 @@ class SpecialArticleFeedback extends SpecialPage {
 			foreach ( $pages as $page ) {
 				$row = array();
 				$pageTitle = self::getTitleFromID( $page['page'] );
+				if ( !$pageTitle ) {
+					continue;
+				}
 				$row['page'] = $wgUser->getSkin()->link( $pageTitle, $pageTitle->getPrefixedText() );
 				foreach ( $page['ratings'] as $id => $value ) {
 					$row[] = array(
