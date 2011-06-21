@@ -22,8 +22,7 @@ public static function notificator_Render( $parser, $receiver = '', $receiverLab
 		return array( $output, 'noparse' => true, 'isHTML' => true );
 	}
 
-	// Check whether the parameter is a valid e-mail address or not
-	if ( $receiver && Notificator::checkEmailAddress( $receiver ) ) {
+	if ( Notificator::receiverIsValid( $receiver ) ) {
 		// Valid e-mail address available, so just show a button
 		$output = '<form action="' . $wgScript .
 			'/Special:Notificator" method="post" enctype="multipart/form-data">
@@ -65,55 +64,22 @@ private function getDiffCss() {
 	return $ret;
 }
 
-public static function checkEmailAddress( $string ) {
-// from http://www.linuxjournal.com/article/9585
-	$isValid = true;
-	$atIndex = strrpos( $string, "@" );
-	if ( is_bool( $atIndex ) && !$atIndex ) {
-		$isValid = false;
+public static function receiverIsValid( $receiver ) {
+	// Returns true if the parameter is a valid e-mail address, false if not
+	$receiverIsValid = false;
+
+	// User::isValidEmailAddr() has been moved to Sanitizer::validateEmail as of
+	// MediaWiki version 1.18 (I think).
+	if ( method_exists( Sanitizer, validateEmail ) ) {
+		if ( Sanitizer::validateEmail( $receiver ) ) {
+			$receiverIsValid = true;
+		}
 	} else {
-		$domain = substr( $string, $atIndex + 1 );
-		$local = substr( $string, 0, $atIndex );
-		$localLen = strlen( $local );
-		$domainLen = strlen( $domain );
-		if ( $localLen < 1 || $localLen > 64 ) {
-			// local part length exceeded
-			$isValid = false;
-		}
-		elseif ( $domainLen < 1 || $domainLen > 255 ) {
-			// domain part length exceeded
-			$isValid = false;
-		}
-		elseif ( $local[0] == '.' || $local[$localLen -1] == '.' ) {
-			// local part starts or ends with '.'
-			$isValid = false;
-		}
-		elseif ( preg_match( '/\\.\\./', $local ) ) {
-			// local part has two consecutive dots
-			$isValid = false;
-		}
-		elseif ( !preg_match( '/^[A-Za-z0-9\\-\\.]+$/', $domain ) ) {
-			// character not valid in domain part
-			$isValid = false;
-		}
-		elseif ( preg_match( '/\\.\\./', $domain ) ) {
-			// domain part has two consecutive dots
-			$isValid = false;
-		}
-		elseif ( !preg_match( '/^(\\\\.|[A-Za-z0-9!#%&`_=\\/$\'*+?^{}|~.-])+$/',
-			str_replace( "\\\\", "", $local ) ) ) {
-			// character not valid in local part unless
-			// local part is quoted
-			if ( !preg_match( '/^"(\\\\"|[^"])+"$/', str_replace( "\\\\", "", $local ) ) ) {
-				$isValid = false;
-			}
-		}
-		if ( $isValid && !( checkdnsrr( $domain, "MX" ) || checkdnsrr( $domain, "A" ) ) ) {
-			// domain not found in DNS
-			$isValid = false;
+		if ( User::isValidEmailAddr( $receiver ) ) {
+			$receiverIsValid = true;
 		}
 	}
-	return $isValid;
+	return $receiverIsValid;
 }
 
 public static function getLastNotifiedRevId( $pageId, $revId, $receiver ) {
