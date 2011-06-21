@@ -40,3 +40,30 @@ GROUP BY rev_user;
 CREATE UNIQUE INDEX user_id_idx ON halfak.user_meta (user_id);
 CREATE INDEX first_edit_idx ON halfak.user_meta (first_edit);
 CREATE INDEX last_edit_idx ON halfak.user_meta (last_edit);
+
+
+SELECT
+	year,
+	biannual,
+	count(*)
+FROM
+(
+SELECT 
+	u.user_id,
+	SUBSTRING(first_edit, 1,4)         as year,
+	SUBSTRING(first_edit, 5,2) >= "07" as biannual
+FROM halfak.user_meta um
+INNER JOIN user u
+	ON u.user_id = um.user_id
+INNER JOIN page p
+	ON p.page_title = u.user_name
+	AND p.page_namespace = 3
+INNER JOIN revision r
+	ON  um.user_id != r.rev_user
+	AND p.page_id  = r.rev_page
+GROUP BY 
+	user_id,
+	SUBSTRING(first_edit, 1,4),
+	SUBSTRING(first_edit, 5,2)
+) as foo
+GROUP BY year, biannual;
