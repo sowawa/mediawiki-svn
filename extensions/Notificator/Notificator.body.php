@@ -22,28 +22,51 @@ public static function notificator_Render( $parser, $receiver = '', $receiverLab
 		return array( $output, 'noparse' => true, 'isHTML' => true );
 	}
 
+	// The rendering is different, depending on whether a valid e-mail address
+	// has been provided, or not - the differing part of the HTML form is being
+	// built here
 	if ( Notificator::receiverIsValid( $receiver ) ) {
-		// Valid e-mail address available, so just show a button
-		$output = '<form action="' . $wgScript .
-			'/Special:Notificator" method="post" enctype="multipart/form-data">
-<input type="hidden" name="pageId" value="' . $wgTitle->getArticleID() . '" />
-<input type="hidden" name="revId" value="' . $wgTitle->getLatestRevID() . '" />
-<input type="hidden" name="receiver" value="' . $receiver . '" />
-<input type="submit" value="' .
-wfMsg( 'notificator-notify-address-or-name', htmlspecialchars( $receiverLabel ) ) . '" />
-</form>';
+		// Valid e-mail address available, so build a hidden input with that address
+		// set, and a button
+		$receiverInputAndSubmitButton = Html::hidden( receiver, $receiver ) .
+		Html::element(
+			'input',
+			array( 'type' => 'submit',
+				     'value' => wfMsg( 'notificator-notify-address-or-name', $receiverLabel )
+				)
+			);
 	} else {
-		// No valid e-mail address available, show text entry field and button
-		$output = '<form action="' . $wgScript .
-			'/Special:Notificator" method="post" enctype="multipart/form-data">
-<input type="hidden" name="pageId" value="' . $wgTitle->getArticleID() . '" />
-<input type="hidden" name="revId" value="' . $wgTitle->getLatestRevID() . '" />
-<input type="text" name="receiver" value="' . wfMsg( 'notificator-e-mail-address' ) .
-'" onfocus="if (this.value == \'' . wfMsg( 'notificator-e-mail-address' ) .
-'\') {this.value=\'\'}" />
-<input type="submit" value="' . wfMsg( 'notificator-notify' ) . '" />
-</form>';
+		// No (valid) e-mail address available, build a text input and a button
+		$receiverInputAndSubmitButton = Html::element(
+			'input',
+			array( 'type' => 'text',
+				     'name' => 'receiver',
+				     'value' => wfMsg( 'notificator-e-mail-address' ),
+				     'onfocus' => 'if (this.value == \'' .
+					                wfMsg( 'notificator-e-mail-address' ) .
+					                '\') {this.value=\'\'}'
+				)
+			) .
+		Html::element(
+			'input',
+			array( 'type' => 'submit',
+				     'value' => wfMsg( 'notificator-notify' )
+				)
+			);
 	}
+
+	// Now we assemble the form, consisting of two hidden inputs for page ID and rev ID,
+	// as well as the $receiverInputAndSubmitButton built above
+	$output = Html::rawElement(
+			'form',
+			array( 'action' => SpecialPage::getTitleFor( 'Notificator' )->getLocalURL(),
+				     'method' => 'post',
+				     'enctype' => 'multipart/form-data'
+				),
+			Html::hidden( pageId, $wgTitle->getArticleID() ) .
+				Html::hidden( revId, $wgTitle->getLatestRevID() ) .
+				$receiverInputAndSubmitButton
+		);
 
 	return $parser->insertStripItem( $output, $parser->mStripState );
 }
