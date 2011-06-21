@@ -144,9 +144,7 @@ $(document).ready( function() {
 				'action': {
 					'type': 'callback',
 					'execute': function( context ) {
-						context.parserPlayground.parser = undefined;
-						context.parserPlayground.tree = undefined;
-						context.parserPlayground.fn.hide();
+						context.parserPlayground.fn.disable();
 					}
 				}
 			}
@@ -196,15 +194,38 @@ $(document).ready( function() {
 								setupInspector($target, $inspector, renderMap, treeMap);
 							}, renderMap);
 						});
+
+						context.$textarea.closest('form').submit( context.parserPlayground.fn.onSubmit );
+
 					},
 					hide: function() {
 						$('#pegparser-source').hide(); // it'll reshow; others won't need it
 						context.$iframe = undefined;
-						context.$parserContainer.remove();
+						if (context.$parserContainer !== undefined) {
+							context.$parserContainer.remove();
+						}
 						context.$parserContainer = undefined;
-						context.$parserInspector.remove();
+						if (context.$parserInspector !== undefined) {
+							context.$parserInspector.remove();
+						}
 						context.$parserInspector = undefined;
 						context.$textarea.show();
+					},
+					disable: function() {
+						var pp = context.parserPlayground;
+						var finish = function() {
+							pp.parser = undefined;
+							pp.tree = undefined;
+							pp.fn.hide();
+						};
+						if (pp.parser && pp.tree) {
+							pp.parser.treeToSource( pp.tree, function( src, err ) {
+								context.$textarea.val( src );
+								finish();
+							});
+						} else {
+							finish();
+						}
 					},
 					toggleInspector: function() {
 						if (context.parserPlayground.useInspector) {
@@ -242,6 +263,11 @@ $(document).ready( function() {
 								return false;
 							}
 						});
+					},
+					onSubmit: function() {
+						// @fixme if we're really doing async, this might not apply right
+						// disable the old thingy and record the updated text before finishing submit
+						context.parserPlayground.fn.disable();
 					}
 				}
 			}
