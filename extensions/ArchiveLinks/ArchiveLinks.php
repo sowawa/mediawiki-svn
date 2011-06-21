@@ -45,10 +45,16 @@ function findOutWhatTheHellThisHookGivesUs ( &$url, &$text, &$link, &$attributes
 
 //$wgHooks['LinkerMakeExternalLink'][] = 'getExternalLinks';
 //$wgHooks['EditPage::attemptSave'][] = 'getExternalLinks';
-$wgHooks['ArticleSaveComplete'][] = 'ArchiveLinks::getExternalLinks'; #We want to use this hook in production
+
+$wgHooks['ArticleSaveComplete'][] = 'ArchiveLinks::queueExternalLinks';
+$wgHooks['LinkerMakeExternalLink'][] = 'ArchiveLinks::rewriteLinks';
+
+$wgArchiveService = 'wikiwix';
+$wgUseMultipleArchives = false;
+$wgWhatToCallArchive = '[cache]';
 
 class ArchiveLinks {
-    public static function getExternalLinks ( &$article ) {
+    public static function queueExternalLinks ( &$article ) {
 	global $wgParser;
 	$external_links = $wgParser->getOutput();
 	$external_links = $external_links->mExternalLinks;
@@ -59,7 +65,7 @@ class ArchiveLinks {
 	$db_slave = wfGetDB( DB_SLAVE );
 	$db_result = array();
 
-	//$db_master->begin();
+	$db_master->begin();
 
 	foreach ( $external_links as $link => $unused_value ) {
 	    //$db_result['resource'] = $db_slave->select( 'el_archive_resource', '*', '`el_archive_resource`.`resource_url` = "' . $db_slave->strencode( $link ) . '"');
@@ -76,7 +82,7 @@ class ArchiveLinks {
 		    $db_master->insert( 'el_archive_queue', array (
 			'page_id' => $article->getID(),
 			'url' => $link,
-			//'delay_time' => '',
+			'delay_time' => '0',
 			'insertion_time' => time(),
 			'in_progress' => '0',
 			));
@@ -94,10 +100,47 @@ class ArchiveLinks {
 	    //$db_master->insert('el_archive_queue', $array );
 	}
 
-	//$db_master->commit();
+	$db_master->commit();
 
 	return true;   
     }
+    
+    public static function rewriteLinks (  &$url, &$text, &$link, &$attributes ) {
+	if ( array_key_exists('rel', $attributes) && $attributes['rel'] === 'nofollow' ) {
+	    global $wgArchiveService;
+	    global $wgUseMultipleArchives;
+	    global $wgWhatToCallArchive;
+	    if ( $wgUseMultipleArchives ) {
+		//add support for more than one archival service at once
+		// (a page where you can select more than one)
+	    } else {
+		switch ( $wgArchiveService ) {
+		    case 'local':
+			//We need to have something to figure out where the filestore is...
+			$link_to_archive = urlencode( substr_replace( $url, '', 0, 7 ) );
+			break;
+		    case 'wikiwix':
+			$link_to_archive = 'http://archive.wikiwix.org/cache/?url=' . $link;
+			break;
+		    case 'internet_archive':
+			$link_to_archive = 'http://wayback.archive.org/web/*/' . $link;
+			break;
+		    case 'webcitation':
+			$link_to_archive = 'http://webcitation.org/query?url=' . $link;
+			break;
+		}
+	    }
+	    $link = "<a rel=\"nofollow\" class=\"{$attributes['class']}\" href=\"{$url}\">{$text}</a>&nbsp;<sup><small><a href=\""
+	    . $link_to_archive . "\">{$wgWhatToCallArchive}</a></small></sup>&nbsp;";
+	    return false;
+	} else {
+	    return true;
+	}
+    }
+    
+    /*function retrieveLinks ( ) {
+	
+    }*/
 
     /*function queueURL ( $url, &$db_master ) {
 
@@ -115,16 +158,18 @@ function test ( ) {
 	'bl_reason' => 'test'
 	));*/
     
-    $db_slave = wfGetDB( DB_SLAVE );
+    //$db_slave = wfGetDB( DB_SLAVE );
     
     /*$db_result = $db_slave->select( 'el_archive_blacklist', '*',
 	    '`el_archive_blacklist`.`bl_url` = "' . $db_slave->strencode( 'http://example.com' ) . '"');
     */
-    $db_result['queue'] = $db_slave->select( 'el_archive_queue', '*', '`el_archive_queue`.`url` = "' . $db_slave->strencode( 'http://example.com' ) . '"' );
+    //$db_result['queue'] = $db_slave->select( 'el_archive_queue', '*', '`el_archive_queue`.`url` = "' . $db_slave->strencode( 'http://example.com' ) . '"' );
     
-    file_put_contents ( './extensions/ArchiveLinks/stuff.txt', var_export( $db_result['queue']->numRows() , TRUE ));
+    //file_put_contents ( './extensions/ArchiveLinks/stuff.txt', var_export( $db_result['queue']->numRows() , TRUE ));
     //$add_quotes = 'http://example.com';
     //file_put_contents ( './extensions/ArchiveLinks/stuff.txt', var_export( $db_slave->addQuotes( $add_quotes ) , TRUE ));
+    
+    
     
     return false;
 }
