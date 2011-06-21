@@ -28,7 +28,14 @@ $messages['af'] = array(
 	'wikimediamobile-desc' => 'Ondersteunende funksies in MediaWiki vir die projek Wikipedia-mobiel by http://github.com/hcatlin/wikimedia-mobile',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'wikimediamobile-desc' => 'MediaWiki tien encontu pa les funciones del proyeutu Wikimedia-mobile agospiáu en http://github.com/hcatlin/wikimedia-mobile',
+);
+
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
@@ -115,6 +122,13 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'wikimediamobile-desc' => 'Funciones de apoyo de MediaWiki para el proyecto Wikimedia-mobile hospedado en http://github.com/hcatlin/wikimedia-mobile',
+);
+
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'wikimediamobile-desc' => 'مدیاویکی از توابع پروژه ویکی‌مدیا-همراه که در http://github.com/hcatlin/wikimedia-mobile میزبانی شده حمایت می‌کند',
 );
 
 /** French (Français)
@@ -216,6 +230,13 @@ $messages['lb'] = array(
 	'wikimediamobile-desc' => 'MediaWiki ënnerstetzt Fonctioune fir de Wikimedia-Mobile Projet deen Dir op http://github.com/hcatlin/wikimedia-mobile fannt',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Eitvys200
+ */
+$messages['lt'] = array(
+	'wikimediamobile-desc' => 'MediaWiki priima funkcijas Wikimedia-mobile patalpinta http://github.com/hcatlin/wikimedia-mobile',
+);
+
 /** Latvian (Latviešu)
  * @author Xil
  */
@@ -228,6 +249,13 @@ $messages['lv'] = array(
  */
 $messages['mk'] = array(
 	'wikimediamobile-desc' => 'Функции на МедијаВики за поддршка на проектот на Википедија-мобилен, вдомен на http://github.com/hcatlin/wikimedia-mobile',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'wikimediamobile-desc' => 'http://github.com/hcatlin/wikimedia-mobile എന്ന് ഹോസ്റ്റ് ചെയ്യപ്പെട്ടിരിക്കുന്ന വിക്കിമീഡിയ-മൊബൈൽ പദ്ധതിയുടെ മീഡിയവിക്കി സഹായ ഫങ്ഷനുകൾ',
 );
 
 /** Mongolian (Монгол)
@@ -277,7 +305,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'wikimediamobile-desc' => 'ويکيمېډيا د ويکيمېډيا د موبايل پروژې د چارو چې په http://github.com/hcatlin/wikimedia-mobile باندې کوربه دی ملاتړ کوي',
+	'wikimediamobile-desc' => 'ويکيرسنۍ د ويکيرسنۍ د موبايل پروژې د چارو چې په http://github.com/hcatlin/wikimedia-mobile باندې کوربه دی ملاتړ کوي',
 );
 
 /** Portuguese (Português)
