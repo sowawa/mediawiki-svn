@@ -946,8 +946,8 @@ $messages['ku-latn'] = array(
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'editmsg-search' => 'Hwilas',
-	'editmsg-new-search' => 'Whilans nowyth',
+	'editmsg-search' => 'Whilas',
+	'editmsg-new-search' => 'Whilans noweth',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

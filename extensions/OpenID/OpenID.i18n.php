@@ -2846,6 +2846,9 @@ Il esserea impossibile aperir un session sin OpenID.',
 	'openid-dashboard-title' => 'Pannello de instrumentos OpenID',
 	'openid-dashboard-title-admin' => 'Pannello de instrumentos OpenID (administrator)',
 	'openid-dashboard-introduction' => 'Le configuration actual del extension OpenID ([$1 adjuta])',
+	'openid-dashboard-number-openid-users' => 'Numero de usatores con OpenID',
+	'openid-dashboard-number-openids-in-database' => 'Numero de OpenIDs (total)',
+	'openid-dashboard-number-users-without-openid' => 'Numero de usatores sin OpenID',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -3930,10 +3933,11 @@ $messages['myv'] = array(
 
 /** Nahuatl (Nāhuatl)
  * @author Fluence
+ * @author Teòtlalili
  */
 $messages['nah'] = array(
 	'openidemail' => 'E-mailcān',
-	'openidlanguage' => 'Tlahtōlli',
+	'openidlanguage' => 'Tlâtòlli',
 	'openidchoosepassword' => 'Motlahtōlichtacāyo',
 );
 

@@ -1000,15 +1000,52 @@ $messages['ca'] = array(
 /** Czech (Česky)
  * @author Kuvaly
  * @author Matěj Grabovský
+ * @author Utar
  */
 $messages['cs'] = array(
+	'voctrain_Hello_World' => 'AHOJ, WIKI!',
 	'voctrain_Permission_Denied' => 'Přístup odmítnut',
 	'voctrain_try_again_' => 'zkusit znovu?',
 	'voctrain_Action_unknown' => 'Neznámá akce',
+	'voctrain_I_don_t_know_what_to_do_with_action_' => 'Nevím, co dělat s „%action“.',
 	'voctrain_User_added' => 'Uživatel přidán',
+	'voctrain_Hello_username_welcome_to_the_omega_language_trainer' => 'Ahoj %username, vítej v programu na procvičování slovní zásoby Omega',
 	'voctrain_continue' => 'pokračovat',
+	'voctrain_hello_place' => 'ahoj, %place',
+	'voctrain_bye' => 'na shledanou',
+	'voctrain_Set_up_your_exercise' => 'Nastavení cvičení',
+	'voctrain_Number_of_questions' => 'Počet otázek',
+	'voctrain_Languages' => 'Jazyky',
+	'voctrain_Please_specify_the_languages_you_want_to_test_in' => 'Prosím uveďte jazyky, v nichž chcete býti zkoušen/a',
+	'voctrain_eg_eng_for_English_deu_for_Deutch_German_' => '(např. eng pro angličtinu, deu pro němčinu).',
+	'voctrain_Depending_on_your_test_set_some_combinations_might_work_better_than_others_' => 'V závislosti na nastavení vašeho testu mohou některé kombinace fungovat lépe než jiné.',
 	'voctrain_Questions' => 'Otázky',
 	'voctrain_Answers' => 'Odpovědi',
+	'voctrain_start_exercise' => 'zahájit cvičení',
+	'voctrain_collection' => 'sbírka',
+	'voctrain_ISO_639_3_format' => 'formát ISO-639-3',
+	'voctrain_There_are_questions_remaining_questions_remaining_out_of_a_total_of_questions_total_' => 'Z celkem %questions_total otázek jich ještě zbývá zodpovědět %questions_remaining.',
+	'voctrain_Definition' => 'Definice',
+	'voctrain_Dictionary_definition_to_help_you' => 'Pomocná slovníková definice',
+	'voctrain_Word' => 'Slovo',
+	'voctrain_Please_type_your_answer_here' => 'Svou odpověď zadejte prosím zde',
+	'voctrain_submit_answer' => 'odeslat odpověď',
+	'voctrain_peek' => 'podívat se',
+	'voctrain_skip' => 'přeskočit',
+	'voctrain_I_know_it_do_not_ask_again' => 'Tohle znám / znovu se nedotazovat',
+	'voctrain_abort_exercise' => 'přerušit cvičení',
+	'voctrain_list_answers' => 'vypsat odpovědi',
+	'voctrain_Question' => 'Otázka',
+	'voctrain_The_word_to_translate' => 'Slovo k překladu',
+	'voctrain_Answer' => 'Odpověď',
+	'voctrain_one_of' => 'jedno z',
+	'voctrain_list_of_questions_and_answers' => 'seznam otázek a odpovědí',
+	'voctrain_Answer_s_' => 'Odpověď(i)',
+	'voctrain_logout' => 'odhlásit se',
+	'voctrain_Powered_by' => 'Běží na',
+	'voctrain_Exercise_complete' => 'Cvičení dokončeno',
+	'voctrain_Exercise_terminated' => 'Cvičení přerušeno',
+	'voctrain_Start_a_new_exercise' => 'Začít nové cvičení',
 	'voctrain_User_name' => 'Uživatelské jméno',
 	'voctrain_Password' => 'Heslo',
 	'voctrain_Login' => 'Přihlášení',
@@ -1016,6 +1053,20 @@ $messages['cs'] = array(
 	'voctrain_Switch_language' => 'Vyberte jazyk',
 	'voctrain_Language' => 'Jazyk',
 	'voctrain_Log_in' => 'Přihlásit se',
+	'voctrain_Omegawiki_vocabulary_trainer' => 'Procvičování slovní zásoby Omegawiki',
+	'voctrain_Definitions' => 'Definice',
+	'voctrain_Could_not_create_new_user' => 'Nový uživatel nemohl být vytvořen',
+	'voctrain_Type_a_username_and_optional_password_or_try_a_different_username_' => 'Zadejte uživatelské jméno a nepovinné heslo (nebo zkuste jiné uživatelské jméno)',
+	'voctrain_Vocview' => 'Prohlížeč slovní zásoby',
+	'voctrain_Dictionary_definitions' => 'slovníkové_definice',
+	'voctrain_Translation' => 'Překlad',
+	'voctrain_unhide_definition' => 'zobrazit definici',
+	'voctrain_unhide_words' => 'zobrazit slova',
+	'voctrain_hiding' => 'Skryté',
+	'voctrain_hide_definitions_in_question_language' => 'Skrýt definice v jazyce otázky',
+	'voctrain_hide_words_in_question_language' => 'Skrýt slova v jazyce otázky',
+	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'Pro použití více jazyků je oddělte čárkami.',
+	'voctrain_other' => 'jiný',
 );
 
 /** German (Deutsch)
@@ -4282,6 +4333,7 @@ $messages['si'] = array(
 
 /** Slovak (Slovenčina)
  * @author Helix84
+ * @author Utar
  */
 $messages['sk'] = array(
 	'voctrain_Hello_World' => 'AHOJ WIKI!',
@@ -4307,14 +4359,14 @@ $messages['sk'] = array(
 	'voctrain_ISO_639_3_format' => 'formát ISO-639-3',
 	'voctrain_There_are_questions_remaining_questions_remaining_out_of_a_total_of_questions_total_' => 'Zostáva zodpovedať %questions_remaining z celkového počtu %questions_total otázok.',
 	'voctrain_Definition' => 'Definícia',
-	'voctrain_Dictionary_definition_to_help_you' => 'Slovíková definícia, ktorá vám pomôže',
+	'voctrain_Dictionary_definition_to_help_you' => 'Slovníková definícia, ktorá vám pomôže',
 	'voctrain_Word' => 'Slovo',
 	'voctrain_Please_type_your_answer_here' => 'Sem napíšte svoju odpoveď',
 	'voctrain_submit_answer' => 'poslať odpoveď',
 	'voctrain_peek' => 'nazrieť',
 	'voctrain_skip' => 'preskočiť',
 	'voctrain_I_know_it_do_not_ask_again' => 'Už to viem/už sa nepýtať',
-	'voctrain_abort_exercise' => 'o cvičení',
+	'voctrain_abort_exercise' => 'prerušiť cvičení',
 	'voctrain_list_answers' => 'vypísať odpovede',
 	'voctrain_Question' => 'Otázka',
 	'voctrain_The_word_to_translate' => 'Slovo, ktoré treba preložiť',

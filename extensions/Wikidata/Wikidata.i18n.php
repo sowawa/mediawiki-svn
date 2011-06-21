@@ -8091,7 +8091,7 @@ $messages['kw'] = array(
 	'ow_exporttsv_languages' => 'Yethow:',
 	'ow_save' => 'Gwitha',
 	'ow_history' => 'Istory',
-	'ow_transaction_no_action' => 'Gwra tra vyth',
+	'ow_transaction_no_action' => 'Gwra tra veth',
 	'ow_dm_OK' => 'Sur',
 );
 
@@ -9052,7 +9052,7 @@ $messages['nah'] = array(
 	'ow_SynonymsAndTranslations' => 'Neneuhtlahtōl īhuān tlahtōlcuepaliztli',
 	'ow_Source' => 'Īhuīcpa:',
 	'ow_Text' => 'Tlahcuilōlli',
-	'ow_TranslatedText' => 'Tlahtōlli ōmotlahtōlcuep',
+	'ow_TranslatedText' => 'Tlatlâtòlkuepìlli tlâkuilòmantli',
 	'ow_TranslatedTextAttributeValue' => 'Tlahcuilōlli',
 	'ow_LinkAttributeValues' => 'Tzonhuiliztli',
 	'ow_meaningsofsubtitle' => '<em>Huiquitzonhuiliztli:</em> [[$1]]',

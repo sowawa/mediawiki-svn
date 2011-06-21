@@ -373,7 +373,7 @@ $messages['ksh'] = array(
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'ajaxquerypages-desc' => 'Keworra nebes AJAX dhe folennow govyn kepar ha [[Special:Shortpages|{{int:shortpages}}]]',
+	'ajaxquerypages-desc' => "Keworra nebes AJAX dhe folednow govyn pecar'a [[Special:Shortpages|{{int:shortpages}}]]",
 );
 
 /** Kirghiz (Кыргызча)

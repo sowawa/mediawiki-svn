@@ -426,6 +426,7 @@ $messages['ar'] = array(
 );
 
 /** Arabic (العربية)
+ * @author Aiman titi
  * @author Majid Al-Dharrab
  * @author Meno25
  * @author Moemin05
@@ -446,6 +447,7 @@ $messages['ar'] = array(
 	'mwe-fileexists-thumb' => 'ملف موجود',
 	'mwe-ignorewarning' => 'تجاهل التحذير واحفظ الملف',
 	'mwe-file-thumbnail-no' => 'اسم الملف يبدأ ب‍<b><code>$1</code></b>',
+	'mwe-go-to-resource' => 'اذهب إلى صفحة الموارد',
 	'mwe-upload-misc-error' => 'خطأ غير معروف في الرفع',
 	'mwe-wgfogg_warning_bad_extension' => 'لقد اخترت ملفًا بامتداد غير مدعوم. Firefogg لا يدعم سوى الأنواع التي يدعمها (<a href="http://ar.wikipedia.org/wiki/إف إف إم بي إي جي">إف إف إم بي إي جي</a>).',
 	'mwe-thumbnail-more' => 'كبّر',

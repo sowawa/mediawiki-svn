@@ -1462,6 +1462,7 @@ Identifikátor, ktorý musíte zadať, sú písmená a číslice medzi „$2” 
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1469,7 +1470,7 @@ $messages['sr-ec'] = array(
 	'imstatus_default' => 'Подразумевано',
 	'imstatus_example' => 'Пример',
 	'imstatus_possible_val' => 'Могуће вредности',
-	'imstatus_max' => 'макс',
+	'imstatus_max' => 'највише',
 	'imstatus_min' => 'мин',
 	'imstatus_or' => 'или',
 	'imstatus_action' => 'акција по клику дугмета',

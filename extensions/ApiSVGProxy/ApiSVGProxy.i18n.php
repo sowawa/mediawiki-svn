@@ -245,7 +245,7 @@ $messages['ksh'] = array(
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'apisvgproxy-desc' => "Y whra cannasya folennow SVG dhort tresorva restrennow (pell martesen) dhe'n tireth leek",
+	'apisvgproxy-desc' => "Y whra proxya folednow SVG dhort tresorva restrednow (pell martesen) dhe'n tireth leel",
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -403,7 +403,7 @@ $messages['ksh'] = array(
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'seealso' => 'Gweles ynwedh',
+	'seealso' => 'Gweles ywedh',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

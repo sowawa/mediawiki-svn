@@ -471,7 +471,7 @@ $messages['ksh'] = array(
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'discussionthreading-threadnewsection' => 'nowyth',
+	'discussionthreading-threadnewsection' => 'noweth',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

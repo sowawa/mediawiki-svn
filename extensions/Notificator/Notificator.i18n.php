@@ -204,6 +204,12 @@ $messages['ia'] = array(
 	'notificator-change-tag' => 'cambiar',
 	'notificator-new-tag' => 'nove',
 	'notificator-notification-text-changes' => '$1 vole notificar te del sequente modificationes in $2:',
+	'notificator-notification-text-new' => '$1 vole notificar te super $2.',
+	'notificator-following-e-mail-sent-to' => 'Le sequente e-mail ha essite inviate a $1:',
+	'notificator-subject' => 'Subjecto:',
+	'notificator-error-sending-e-mail' => 'Un error occurreva durante le invio del e-mail de notification a $1.',
+	'notificator-error-parameter-missing' => 'Error: Parametro mancante.',
+	'notificator-notified-already' => '$1 ha jam essite notificate super iste pagina o cambiamento.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

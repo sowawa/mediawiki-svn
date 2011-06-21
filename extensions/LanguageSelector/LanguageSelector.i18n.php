@@ -732,9 +732,10 @@ $messages['myv'] = array(
 
 /** Nahuatl (Nāhuatl)
  * @author Fluence
+ * @author Teòtlalili
  */
 $messages['nah'] = array(
-	'languageselector' => 'Tlahtōlli',
+	'languageselector' => 'Tlâtòlli',
 );
 
 /** Low German (Plattdüütsch)

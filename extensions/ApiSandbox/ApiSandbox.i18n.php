@@ -353,6 +353,7 @@ $messages['lb'] = array(
 	'apisb-select-action' => 'Aktioun eraussichen',
 	'apisb-select-value' => 'Wäert eraussichen',
 	'apisb-loading' => 'Lueden...',
+	'apisb-ns-main' => '(Haapt)',
 	'apisb-query-prop' => 'Eegeschaften',
 	'apisb-query-list' => 'Lëschten',
 	'apisb-query-meta' => 'Meta-Informatioun',

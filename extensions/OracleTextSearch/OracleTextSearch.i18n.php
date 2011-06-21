@@ -62,6 +62,14 @@ $messages['he'] = array(
 	'oracletextsearch-desc' => 'חיפוש בתוכן ובמטא־נתונים של קבצים שהועלו באמצעות מפתוח טקסט של אורקל',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'oracletextsearch' => 'OracleTextSearch',
+	'oracletextsearch-desc' => 'Cercar contento/metadatos de files incargate usante le indexation Oracle Text',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

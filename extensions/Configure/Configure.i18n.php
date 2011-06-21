@@ -6627,7 +6627,7 @@ $messages['ku-latn'] = array(
 $messages['kw'] = array(
 	'configure-section-pages' => 'Folennow',
 	'configure-section-upload' => 'Ughcarga',
-	'configure-section-search' => 'Hwilas',
+	'configure-section-search' => 'Whilas',
 	'configure-throttle-action-edit' => 'Chanjya',
 );
 

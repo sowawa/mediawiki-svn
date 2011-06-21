@@ -65,6 +65,13 @@ $messages['de'] = array(
 	'customusersignup-desc' => 'Ermöglicht die Ausgabe angepasster Benutzernachrichten im Verlauf der Benutzerkontenerstellung',
 );
 
+/** Spanish (Español)
+ * @author Fitoschido
+ */
+$messages['es'] = array(
+	'customusersignup-desc' => 'Permite mensajes personalizados durante el proceso de creación de cuentas',
+);
+
 /** French (Français)
  * @author IAlex
  */

@@ -990,11 +990,11 @@ $messages['ku-latn'] = array(
  */
 $messages['kw'] = array(
 	'vector-collapsiblenav-more' => 'Moy a yethow',
-	'vector-editwarning-warning' => 'Mar kwrewgh whi gara an folen-ma, hwi a alja kelli chanjyow eus gwres genowgh.
-Mars owgh hwi omgelmys, hwi a ell dialosegi an gwarnyans-ma en trogh "Chanjya" agas dowisyansow.',
+	'vector-editwarning-warning' => 'Mar qwrewgh whi gara an folen-ma, whi a alja kelly chanjyow eus gwres genowgh.
+Mars owgh whi omgelmys, whi a ell dialosegy an gwarnyans-ma en trogh "Chanjya" agas dowisyanjow.',
 	'vector-editwarning-preference' => 'Gwra ow gwarnya pan von gara folen chanjya gen chanjyow nag eus gwithys',
-	'vector-simplesearch-search' => 'Hwilas',
-	'vector-simplesearch-containing' => 'ow sensy...',
+	'vector-simplesearch-search' => 'Whilas',
+	'vector-simplesearch-containing' => 'ow senjy...',
 );
 
 /** Latin (Latina) */
@@ -1169,9 +1169,10 @@ $messages['mt'] = array(
 
 /** Nahuatl (Nāhuatl)
  * @author Ricardo gs
+ * @author Teòtlalili
  */
 $messages['nah'] = array(
-	'vector-collapsiblenav-more' => 'Ocachi tlahtōlli',
+	'vector-collapsiblenav-more' => 'Okseki tlâtòltìn',
 	'vector-simplesearch-search' => 'Tlatēmoliztli',
 );
 

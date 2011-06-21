@@ -462,7 +462,17 @@ $messages['es'] = array(
 	'toolbase-autoedits-totalall' => 'Recuento total de ediciones',
 	'toolbase-autoedits-pct' => 'Porcentaje de ediciones automatizadas',
 	'toolbase-main-title' => '¡Bienvenidos!',
+	'toolbase-main-content' => '¡Bienvenido a las herramientas de X! Esta suite de herramientas aún está en proceso de adaptarse al framework <a href="$1">Symfony</a>. Este proceso tomará un tiempo, pero debería funcionar ahora.
+
+Para la lista de herramientas que están funcionando actualmente en este framework, ve la columna de la derecha.
+
+Puedes informar errores en <a href="$2">Google Code</a>.',
 	'toolbase-main-404' => 'Archivo no encontrado',
+	'toolbase-main-404-content' => '¡Vaya, no se encontró la página!
+
+Asegúrate que escribiste la URL correctamente.
+Si llegaste hasta aquí por medio de un enlace, por favor <a href="$1">informa del error</a>.
+</ul>',
 	'toolbase-form-wiki' => 'Wiki',
 	'toolbase-error-nouser' => '$1 no es un usuario válido',
 	'toolbase-error-nowiki' => '$1.$2.org no es un wiki válido',
