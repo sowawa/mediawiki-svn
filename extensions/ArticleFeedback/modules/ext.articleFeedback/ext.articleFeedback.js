@@ -251,7 +251,7 @@ var config = {
 						'title': 'Special:UserLogin',
 						'type': 'signup',
 						'returnto': mw.config.get( 'wgPageName' )
-					} ), 'pitch-signup-accept' );
+					} ), 'pitch-join-accept-signup' );
 				return false;
 			},
 			'title': 'articlefeedback-pitch-thanks',
@@ -270,7 +270,7 @@ var config = {
 					mw.config.get( 'wgScript' ) + '?' + $.param( {
 						'title': 'Special:UserLogin',
 						'returnto': mw.config.get( 'wgPageName' )
-					} ), 'pitch-join-accept' );
+					} ), 'pitch-join-accept-login' );
 				return false;
 			}
 		},
