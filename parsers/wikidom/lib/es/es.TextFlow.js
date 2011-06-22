@@ -37,35 +37,65 @@ TextFlow.prototype.getOffset = function( x, y ) {
 	
 };
 
-TextFlow.prototype.getPosition = function( start, end ) {
-	var i = 0,
-		startLine,
-		endLine,
+TextFlow.prototype.getPosition = function( offset ) {
+	if ( offset < 0 ) {
+		throw 'Out of range error. Offset is expected to be greater than or equal to 0.';
+	}
+	var line = 0,
+		lineCount = this.lines.length,
 		position = {
+			'left': 0,
 			'top': 0,
-			'right': 0,
-			'bottom': 0,
-			'left': 0
+			'bottom': 0
 		};
-	while ( i++ < lines.length ) {
-		if ( start >= lines[i].start && start <= lines[i].end ) {
-			startLine = i;
+	
+	/*
+	 * Line finding
+	 * 
+	 * It's possible that a more efficient method could be used here, but the number of lines to be
+	 * iterated through will rarely be over 100, so it's unlikely that any significant gains will be
+	 * had. Plus, as long as we are iterating over each line, we can also sum up the top and bottom
+	 * positions, which is a nice benefit of this method.
+	 */
+	while ( line < lineCount ) {
+		if ( offset >= lines[line].start && offset < lines[line].end ) {
+			position.bottom = position.top + lines[line].height;
 			break;
 		}
-		position.top += lines[i].height;
+		position.top += lines[line].height;
+		line++;
 	};
-	position.bottom = top
-	if ( length !== undefined ) {
-		i = startLine;
-		while ( i++ < lines.length ) {
-			if ( end >= lines[i].start && end <= lines[i].end ) {
-				startLine = i;
-				position.bottom += lines[i].height;
-				break;
-			}
-		};
+	
+	/*
+	 * Virtual n+1 position
+	 * 
+	 * To allow access to position information of the right side of the last character on the last
+	 * line, a virtual n+1 position is supported. Offsets beyond this virtual position will cause
+	 * an exception to be thrown.
+	 */
+	if ( line === lineCount ) {
+		if ( offset !== lines[line].end + 1 ) {
+			line--;
+			position.bottom = position.top;
+			position.top -= lines[line].height;
+		} else {
+			throw 'Out of range error. Offset is expected to be less than or equal to text length.';
+		}
 	}
-	// TODO: Calculate left and right positions
+	
+	/*
+	 * Offset measuring
+	 * 
+	 * Since the left position will be zero for the first character in the line, so we can skip
+	 * measuring for those cases.
+	 */
+	if ( lines[line].start < offset ) {
+		var $lineRuler = $( '<div class="editSurface-line"></div>' ).appendTo( this.$ ),
+			lineRuler = $lineRuler[0];
+		lineRuler.innerHTML = this.htmlEncode( text.substring( lines[startLine].start, offset ) );
+		position.left = lineRuler.clientWidth;
+		$lineRuler.remove();
+	} 
 	return position;
 };
 
