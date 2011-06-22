@@ -13,11 +13,11 @@ from
 DATE_FORMAT(request_time,'%sY%sm%sd%sH') as dt_hr,
 FLOOR(MINUTE(request_time) / %s) * %s as dt_min,
 count(*) as views
-from landing_page
+from landing_page_requests
 where request_time >=  '%s' and request_time < '%s' and utm_campaign REGEXP '%s'
 group by 1,2) as lp_tot
 
-join
+left join
 
 (select 
 
