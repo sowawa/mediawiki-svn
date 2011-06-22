@@ -21,7 +21,7 @@ class SQL2Wiki {
 	public static function initTags( &$parser ) {
 		$parser->setHook( "sql2wiki", "SQL2Wiki::renderSQL" );
 		$parser->setHook( "plsql2wiki", "SQL2Wiki::renderPLSQL" );
-		return false;
+		return true;
 	}
 
 	public static function renderSQL( $input, $args, $parser, $frame ) {
