@@ -11,6 +11,7 @@ $allowedBases = array(
 	'http://svn.wikimedia.org/svnroot/mediawiki',
 	'http://svn.wikimedia.org/svnroot/pywikipedia',
 	'http://svn.wikimedia.org/svnroot/mysql',
+	'http://svn.wikimedia.org/svnroot/wikimedia',
 );
 
 $base = inputStr( 'base', $allowedBases[0] );
