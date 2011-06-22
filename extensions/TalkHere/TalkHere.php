@@ -47,7 +47,7 @@ function mangleEditForm( &$out, $returnto = false, $ajax = false ) { //HACK! too
 	$html = $out->getHTML();
 
 	if ( $returnto ) { //re-target cancel link
-		$cancel = $sk->makeLink( $returnto, wfMsgExt('cancel', array('parseinline')) );
+		$cancel = $sk->makeLinkObj( Title::newFromText( $returnto ), wfMsgExt('cancel', array( 'parseinline' ) ) );
 		$html = preg_replace( '!<a[^<>]+>[^<>]+</a>( *\| *<a target=["\']helpwindow["\'])!smi', $cancel . '\1', $html );
 	}
 	else  {

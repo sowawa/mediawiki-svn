@@ -13,7 +13,7 @@ class SpecialAsksql extends SpecialPage {
 	function execute( $par ) {
 		global $wgAllowSysopQueries, $wgUser, $wgRequest, $wgOut;
 
-		
+
 
 		if ( !$wgAllowSysopQueries ) {
 			throw new ErrorPageError( 'nosuchspecialpage', 'nospecialpagetext' );
@@ -141,8 +141,9 @@ class SqlQueryForm {
 					} else {
 						$link = "$sTitle";
 					}
+					$title = Title::newFromText( $link );
 					$skin = $wgUser->getSkin();
-					$link = $skin->makeLink( $link );
+					$link = $skin->makeLinkObj( $title );
 					$r .= "* [[$link]]<br />\n";
 				}
 			} else {

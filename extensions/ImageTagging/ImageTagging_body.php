@@ -1,6 +1,6 @@
 <?php
 /**
- * TaggedImages class 
+ * TaggedImages class
  *
  * @file
  * @ingroup Extensions
@@ -235,7 +235,7 @@ class TaggedImages extends SpecialPage {
 	 * - the size of the image
 	 */
 	function toHTML() {
-		global $wgLang, $wgUser, $wgOut;
+		global $wgLang, $wgUser;
 
 		$sk = $wgUser->getSkin();
 
@@ -260,9 +260,6 @@ class TaggedImages extends SpecialPage {
 				$i++;
 				continue;
 			}
-
-			// TODO - getUser() doesn't exist, do you mean NS_USER?
-			// $ul = $sk->makeLink( $wgContLang->getNsText( MWNamespace::getUser() ) . ":{$ut}", $ut );
 
 			$nb = '';
 			$textlink = $this->mShowFilename ?

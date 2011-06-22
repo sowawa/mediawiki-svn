@@ -2107,7 +2107,7 @@ class UserEditor extends ScalarEditor {
 			$wgUser;
 			
 		if ( $value != "" )
-			return $wgUser->getSkin()->makeLink( "User:" . $value, $value );
+			return $wgUser->getSkin()->makeLinkObj( Title::newFromText( "User:" . $value ), $value );
 		else
 			return "";
 	}
