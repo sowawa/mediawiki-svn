@@ -30,7 +30,7 @@ TextFlow.prototype.render = function( text ) {
 	
 	// Build list of line break offsets
 	var words = [0],
-		boundary = /[ \-\t\r\n\f]/,
+		boundary = /[ \.\,\;\:\-\t\r\n\f]/,
 		left = 0,
 		right = 0,
 		search = 0;
@@ -46,7 +46,7 @@ TextFlow.prototype.render = function( text ) {
 	var pos = 0,
 		index = 0,
 		metrics = [];
-	while ( pos < words.length - 1 ) {
+	while ( pos < words.length ) {
 		// Create line
 		var $line = $( '<div class="editSurface-line"></div>' )
 				.attr( 'line-index', index )
@@ -81,7 +81,7 @@ TextFlow.prototype.render = function( text ) {
 		
 		// Step forward
 		index++;
-		pos = m;
+		pos = l;
 	}
 	
 	//console.timeEnd( 'TextFlow.render' );
