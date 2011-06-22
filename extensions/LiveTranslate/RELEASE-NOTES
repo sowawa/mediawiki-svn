@@ -5,7 +5,7 @@ Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/t
 
 
 === Version 1.1.1 ===
-2011-06-xx
+2011-06-22
 
 * Fixed Internet Explorer compatibility issue.
 * Fixed bug in Microsoft transltion script for MW < 1.17.
