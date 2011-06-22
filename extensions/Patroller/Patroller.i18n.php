@@ -1462,10 +1462,12 @@ $messages['myv'] = array(
 
 /** Nahuatl (Nāhuatl)
  * @author Fluence
+ * @author Teòtlalili
  */
 $messages['nah'] = array(
 	'patrol-revert' => 'Tlacuepāz',
 	'patrol-revert-reason' => 'Īxtlamatiliztli:',
+	'group-patroller' => 'Tlapîpiànimë',
 );
 
 /** Nedersaksisch (Nedersaksisch)

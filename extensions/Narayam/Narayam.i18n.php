@@ -593,6 +593,22 @@ $messages['lb'] = array(
 	'narayam-ta' => 'Tamil-Transliteratioun',
 );
 
+/** Maithili (मैथिली)
+ * @author Vinitutpal
+ */
+$messages['mai'] = array(
+	'narayam-help-page' => ' टाइपिंग',
+	'narayam-hi-inscript' => 'हिन्दी इनस्क्रिप्ट',
+	'narayam-kn' => 'कन्नड़ लिप्यंतरण',
+	'narayam-kn-inscript' => 'कन्नड़ इनस्क्रिप्ट',
+	'narayam-ml' => 'मलयालम लिप्यंतरण',
+	'narayam-ml-inscript' => 'मलयालम इनस्क्रिप्ट',
+	'narayam-or' => 'ओडिया लिप्यंतरण',
+	'narayam-or-inscript' => 'ओडिया इनस्क्रिप्ट',
+	'narayam-sa' => ' संस्कृत लिप्यंतरण',
+	'narayam-sa-inscript' => 'संस्कृत इनस्क्रिप्ट',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

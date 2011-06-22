@@ -299,10 +299,11 @@ $messages['ca'] = array(
 /** Czech (Česky)
  * @author Matěj Grabovský
  * @author Mormegil
+ * @author Utar
  */
 $messages['cs'] = array(
 	'imstatus-desc' => 'Přidává značky zobrazující stav přítomnosti uživatelů různých IM sítí (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo!)',
-	'imstatus_syntax' => 'Sntaxe',
+	'imstatus_syntax' => 'Syntaxe',
 	'imstatus_default' => 'Výchozí',
 	'imstatus_example' => 'Příklad',
 	'imstatus_possible_val' => 'Možné hodnoty',

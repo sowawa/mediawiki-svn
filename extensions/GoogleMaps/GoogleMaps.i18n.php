@@ -4007,12 +4007,13 @@ $wgGoogleMapsMessages['myv'] = array(
 
 /** Nahuatl (Nāhuatl)
  * @author Fluence
+ * @author Teòtlalili
  */
 $wgGoogleMapsMessages['nah'] = array(
 	'gm-balloon-title' => 'Tōcāitl:',
 	'gm-balloon-link-article' => 'Tzonhuiliztli inīn zāzanilhuīc (mohuelīti):',
 	'gm-map' => 'Āmatohtli',
-	'gm-zoom-control' => 'Ācalpapanōliztli',
+	'gm-zoom-control' => 'Nènemòwalistli',
 	'gm-large' => 'Huēyi',
 	'gm-medium' => 'Nepantlah',
 	'gm-small' => 'Tepitōn',

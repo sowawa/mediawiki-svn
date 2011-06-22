@@ -46,6 +46,14 @@ $messages['es'] = array(
 	'oracletextsearch-desc' => 'Buscar contenido y metadatos de los archivos subidos mediante la indización de texto de Oracle',
 );
 
+/** French (Français)
+ * @author Sherbrooke
+ */
+$messages['fr'] = array(
+	'oracletextsearch' => 'OracleTextSearch',
+	'oracletextsearch-desc' => "Rechercher des contenus/métadonnées des fichiers téléchargés en utilisant l'indexation d'<i>Oracle Text</i>",
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

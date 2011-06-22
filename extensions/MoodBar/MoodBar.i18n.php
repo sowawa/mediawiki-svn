@@ -86,3 +86,10 @@ $messages['pt'] = array(
 	'moodbar-desc' => 'Permite que os utilizadores especificados enviem ao operador do site uma indicação da sua "disposição".',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'moodbar-desc' => 'Позволяет определенным участникам отправлять свои «настроения» обратно на сайт оператора',
+);
+
