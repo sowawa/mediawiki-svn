@@ -1,8 +1,14 @@
 /**
- * TODO: Don't re-flow lines beyond a given offset, an optimization for insert/delete operations
+ * Renders and provides access to flowed text.
+ * 
+ * @param $container {jQuery Selection} Element to render into
+ * @returns {TextFlow}
  */
 function TextFlow( $container ) {
 	this.$ = $container;
+	this.lines = [];
+	this.words = [];
+	this.html = [];
 }
 
 TextFlow.prototype.htmlEncode = function( text, trim ) {
@@ -25,15 +31,59 @@ TextFlow.prototype.htmlEncode = function( text, trim ) {
 };
 
 /**
- * Renders text into a series of div elements, each a single line of wrapped text.
+ * Gets an offset within from x and y coordinates.
+ */
+TextFlow.prototype.getOffset = function( x, y ) {
+	
+};
+
+TextFlow.prototype.getPosition = function( start, end ) {
+	var i = 0,
+		startLine,
+		endLine,
+		position = {
+			'top': 0,
+			'right': 0,
+			'bottom': 0,
+			'left': 0
+		};
+	while ( i++ < lines.length ) {
+		if ( start >= lines[i].start && start <= lines[i].end ) {
+			startLine = i;
+			break;
+		}
+		position.top += lines[i].height;
+	};
+	position.bottom = top
+	if ( length !== undefined ) {
+		i = startLine;
+		while ( i++ < lines.length ) {
+			if ( end >= lines[i].start && end <= lines[i].end ) {
+				startLine = i;
+				position.bottom += lines[i].height;
+				break;
+			}
+		};
+	}
+	// TODO: Calculate left and right positions
+	return position;
+};
+
+/**
+ * Renders text into a series of HTML elements, each a single line of wrapped text.
  * 
  * TODO: Allow re-flowing from a given offset on to make re-flow faster when modifying the text
  * 
  * @param text {String} Text to render
  */
 TextFlow.prototype.render = function( text ) {
-	
-	// Measure the container width
+	/*
+	 * Container measurement
+	 * 
+	 * To get an accurate measurement of the inside of the container, without having to deal with
+	 * inconsistencies between browsers and box models, we can just create an element inside the
+	 * container and measure it.
+	 */
 	var $ruler = $( '<div>&nbsp;</div>' ).appendTo( this.$ );
 	var width = $ruler.innerWidth()
 	$ruler.remove();
@@ -51,9 +101,11 @@ TextFlow.prototype.render = function( text ) {
 	 * build a list of HTML encoded strings for each gap between the offsets stored in the "words"
 	 * array. Slices of the "html" array can be joined, producing the encoded HTML of the words. In
 	 * the final pass, each line will get encoded 1 more time, to allow for whitespace trimming.
+	 * 
+	 * Both "words" and "html" data is kept around between renders.
 	 */
-	var words = [0],
-		html = [],
+	var words = this.words = [0],
+		html = this.html = [],
 		boundary = /([ \.\,\;\:\-\t\r\n\f])/g,
 		match,
 		right,
@@ -78,14 +130,15 @@ TextFlow.prototype.render = function( text ) {
 	 * Line wrapping
 	 * 
 	 * Now that we have linear access to the offsets around non-breakable areas within the text, we
-	 * can perform a binary-search for the best fit of words within a line.
+	 * can perform a binary-search for the best fit of words within a line. Line data is kept around
+	 * between renders.
 	 * 
 	 * TODO: It may be possible to improve the efficiency of this code by making a best guess and
 	 * working from there, rather than always starting with [i .. words.length], which results in
 	 * reducing the right position in all but the last line, and in most cases 2 or 3 times.
 	 */
-	var lineOffset = 0,
-		lines = [],
+	var lines = this.lines = [],
+		lineOffset = 0,
 		$lineRuler = $( '<div class="editSurface-line"></div>' ).appendTo( this.$ ),
 		lineRuler = $lineRuler[0];	
 	while ( lineOffset < words.length ) {
@@ -119,6 +172,7 @@ TextFlow.prototype.render = function( text ) {
 			'start': words[lineOffset],
 			'end': words[clampedLeft],
 			'width': lineRuler.clientWidth
+			// 'height': (will be added after final rendering)
 		});
 		
 		// Step forward
@@ -133,12 +187,10 @@ TextFlow.prototype.render = function( text ) {
 	// Make way for the new lines
 	this.$.empty();
 	for ( var i = 0; i < lines.length; i++ ) {
-		this.$.append(
-			$( '<div class="editSurface-line"></div>' )
+		var $line = $( '<div class="editSurface-line"></div>' )
 			.attr( 'line-index', i )
 			.html( this.htmlEncode( text.substring( lines[i].start, lines[i].end ), true ) )
-		);
+			.appendTo( this.$ );
+		lines[i].height = $line.outerHeight();
 	}
-	
-	return lines;
 };
