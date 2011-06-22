@@ -5,9 +5,10 @@
  * @returns {Surface}
  */
 function Surface( $container, document ) {
-	this.$container = $container;
+	this.$ = $container;
 	this.document = document;
-	this.reflow();
+	this.rendered = false;
+	this.render();
 }
 
 /**
@@ -167,10 +168,12 @@ Surface.prototype.moveCursorLeft = function() {
  * 
  * @param from Location: Where to start re-flowing from (optional)
  */
-Surface.prototype.reflow = function( from ) {
-	this.$container.empty();
-	for ( var i = 0; i < this.document.blocks.length; i++ ) {
-		$block = $( '<div></div>' ).appendTo( this.$container );
-		this.document.blocks[i].renderContent( $block );
+Surface.prototype.render = function( from ) {
+	if ( !this.rendered ) {
+		this.rendered = true;
+		this.$.append( this.document.$ );
+		this.document.renderBlocks();
+	} else {
+		this.document.updateBlocks();
 	}
 };

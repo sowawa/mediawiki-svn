@@ -74,6 +74,15 @@ Block.prototype.renderContent = function( $container ) {
 };
 
 /**
+ * Updates the rendered content in a container.
+ * 
+ * @param $container {jQuery Selection} Container to update content in
+ */
+Block.prototype.updateContent = function( $container ) {
+	throw 'Block.updateContent not implemented in this subclass.';
+};
+
+/**
  * Gets the location of a position.
  * 
  * @param position {Position} Position to translate

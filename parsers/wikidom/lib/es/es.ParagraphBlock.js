@@ -6,7 +6,10 @@
 function ParagraphBlock( lines ) {
 	Block.call( this );
 	this.lines = lines || [];
-	this.metrics = [];
+	this.lineMetrics = [];
+	this.$ = $( '<div class="editSurface-block editSurface-paragraph"></div>' )
+		.data( 'block', this );
+	this.flow = new TextFlow( this.$ );
 }
 
 /**
@@ -78,13 +81,12 @@ Block.prototype.deleteContent = function( offset, length ) {
  * 
  * @param $container {jQuery Selection} Container to render into
  */
-Block.prototype.renderContent = function( $container ) {
-	var flow = new TextFlow(),
-		text = [];
+Block.prototype.renderContent = function() {
+	var text = [];
 	for ( var i = 0; i < this.lines.length; i++ ) {
 		text.push( this.lines[i].text );
 	}
-	this.metrics = flow.render( $container, text.join( '\n' ) );
+	this.lineMetrics = this.flow.render( text.join( '\n' ) );
 };
 
 /**

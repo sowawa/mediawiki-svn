@@ -5,6 +5,9 @@
  */
 function Document( blocks ) {
 	this.blocks = blocks || [];
+	this.width = null;
+	this.$ = $( '<div class="editSurface-document"></div>' )
+		.data( 'document', this );
 }
 
 /**
@@ -68,4 +71,28 @@ Document.prototype.insertBlockBefore = function( block, before ) {
 Document.prototype.removeBlock = function( block ) {
 	this.blocks.splice( block.index(), 1 );
 	block.document = null;
+};
+
+Document.prototype.renderBlocks = function() {
+	// Remember width, to avoid updates when without width changes
+	this.width = this.$.innerWidth();
+	// Render blocks
+	for ( var i = 0; i < this.blocks.length; i++ ) {
+		this.$.append( this.blocks[i].$ );
+		this.blocks[i].renderContent();
+	}
+};
+
+Document.prototype.updateBlocks = function() {
+	// Bypass rendering when width has not changed
+	var width = this.$.innerWidth();
+	if ( this.width === width ) {
+		return;
+	}
+	this.width = width;
+	// Render blocks
+	var doc;
+	this.$.children( '.editSurface-block' ).each( function( i ) {
+		$(this).data( 'block' ).renderContent();
+	} );
 };

@@ -3,16 +3,14 @@ body {
 	font-size: 0.8em;
 }
 
-.editSurface-container {
-	position: absolute;
-	left: 3%;
-	width: 45%;
-	border: solid 1px red;
+.editSurface-document {
+	border: solid 1px silver;
 	cursor: text;
+	width: 50%;
 }
 
 .editSurface-paragraph {
-	padding: 2em;
+	margin: 2em;
 }
 
 .editSurface-line {
@@ -21,6 +19,7 @@ body {
 	line-height: 1.5em;
 	cursor: text;
 	white-space: nowrap;
+	background-color: #eeeeee;
 }
 
 .editSurface-line.empty {
