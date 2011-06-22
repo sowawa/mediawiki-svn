@@ -21,7 +21,6 @@ class FCKeditorSkin {
 	$thumb = false, $manual_thumb = '', $valign = '' ) {
 		$orginal = $nt->getText();
 		$img = wfFindFile( $nt );
-		$imgName = $img->getName();
 		$found = $img->getURL();
 
 		if( !is_null( $alt ) && ( $alt == 'RTENOTITLE' ) ) { // 2223
@@ -30,7 +29,17 @@ class FCKeditorSkin {
 
 		if( $found ) {
 			// trick to get real URL for image:
-			$originalLink = strip_tags( Linker::makeImageLink2( $nt, $label, $alt, $align, $params, $framed, $thumb, $manual_thumb, $valign ), '<img>' );
+			$frameParams = array(
+				'alt' => $alt,
+				'caption' => $label,
+				'align' => $align,
+				'framed' => $framed,
+				'thumbnail' => $thumb,
+				'manualthumb' => $manual_thumb,
+				'valign' => $valign
+			);
+
+			$originalLink = strip_tags( Linker::makeImageLink2( $nt, $img, $frameParams, $params ), '<img>' );
 			$srcPart = substr( $originalLink, strpos( $originalLink, "src=" ) + 5 );
 			$url = strtok( $srcPart, '"' );
 		}
