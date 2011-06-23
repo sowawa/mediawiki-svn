@@ -362,7 +362,7 @@ class SubpageList3 {
 		$order = strtoupper( $this->order );
 
 		if( $this->ordermethod == 'title' ) {
-			$options['ORDER BY'] = 'page_title' . $order;
+			$options['ORDER BY'] = 'page_title ' . $order;
 		} elseif( $this->ordermethod == 'lastedit' ) {
 			$options['ORDER BY'] = 'page_touched ' . $order;
 		}
