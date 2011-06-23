@@ -4,6 +4,7 @@
 select
 
 lp.utm_source,
+lp.landing_page,
 impressions as total_impressions,
 impressions * (views / total_views) as impressions,
 views as views,
