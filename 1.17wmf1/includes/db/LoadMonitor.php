@@ -123,6 +123,8 @@ class LoadMonitor_MySQL implements LoadMonitor {
 		}
 		$status = $conn->getStatus("Thread%");
 		if ( $status['Threads_running'] > $threshold ) {
+			$server = $conn->getProperty( 'mServer' );																																				
+			wfLogDBError( "LB backoff from $server - Threads_running = {$status['Threads_running']}\n" );  
 			return $status['Threads_connected'];
 		} else {
 			return 0;
