@@ -20,13 +20,13 @@ from
 landing_page, 
 utm_campaign,
 count(*) as views
-from landing_page
+from landing_page_requests
 where request_time >= '%s' and request_time < '%s'
 and utm_campaign REGEXP '%s'
 and landing_page REGEXP '%s'
 group by 1,2) as lp
 
-join
+left join
 
 (select 
 SUBSTRING_index(substring_index(utm_source, '.', 2),'.',-1) as landing_page,

@@ -25,7 +25,7 @@ from
 (select 
 utm_source, 
 sum(counts) as impressions
-from impression 
+from banner_impressions 
 where on_minute > '%s' and on_minute < '%s' 
 and utm_source REGEXP '%s'
 group by 1) as imp
@@ -35,7 +35,7 @@ join
 (select 
 utm_source, 
 count(*) as views
-from landing_page
+from landing_page_requests
 where request_time >= '%s' and request_time < '%s'
 and utm_campaign REGEXP '%s'
 group by 1) as lp
@@ -47,14 +47,14 @@ join
 (select 
 utm_source, 
 count(*) as total_views
-from landing_page
+from landing_page_requests
 where request_time >= '%s' and request_time < '%s'
 and utm_source REGEXP '%s'
 group by 1) as lp_tot
 
 on imp.utm_source =  lp_tot.utm_source
 
-join
+left join
 
 (select 
 SUBSTRING_index(substring_index(utm_source, '.', 2),'.',1) as banner,
