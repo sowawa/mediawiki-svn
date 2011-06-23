@@ -61,6 +61,7 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author CERminator
  * @author EugeneZelenko
+ * @author McDutchie
  * @author Purodha
  * @author Raymond
  * @author Siebrand
@@ -76,7 +77,7 @@ $messages['qqq'] = array(
 	'recordadmin-buttonreset' => '{{Identical|Reset}}',
 	'recordadmin-buttonsave' => '{{Identical|Save}}',
 	'recordadmin-editlink' => '{{Identical|Edit}}',
-	'recordadmin-actions' => '{{Identical|Action}}',
+	'recordadmin-actions' => '',
 	'right-recordadmin' => '{{doc-right|recordadmin}}',
 	'recordadmin-export-csv' => '{{Optional}}',
 	'recordadmin-export-pdf' => '{{Optional}}',
@@ -89,14 +90,46 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'recordadmin' => 'Rekord-administrasie',
+	'recordadmin-desc' => 'Soek, navrae, vorms en verslae van wikidata wat uit sjabloonparameters afgelei is',
+	'recordadmin-specialdesc' => "'n [[Special:RecordAdmin|Spesiale bladsy]] vir die soek en skep van bladsye met geassosieerde vorms",
+	'recordadmin-noforms' => 'Daar is tans geen vorms gedefinieer wat vir soek en skep gebruik kan word nie',
+	'recordadmin-select' => 'Kies',
+	'recordadmin-createtype' => "Sleutel die naam van 'n nuwe rekord-tipe om te skep in",
+	'recordadmin-recordtype' => 'tipe rekord',
+	'recordadmin-newsearch' => 'Nuwe soekopdrag vir $1',
+	'recordadmin-newrecord' => "Kies 'n ander rekord-tipe",
 	'recordadmin-submit' => 'Dien in',
+	'recordadmin-create' => 'Vind of te skep rekords van tipe "$1"',
+	'recordadmin-alreadyexist' => 'Jammer, "$1" bestaan reeds!',
+	'recordadmin-createsuccess' => '$1 geskep',
+	'recordadmin-createerror' => "'n Fout het voorgekom tydens die skep van $1!",
+	'recordadmin-badtitle' => 'Ongeldige titel!',
+	'recordadmin-recordid' => 'Rekord-ID/naam:',
 	'recordadmin-invert' => 'Omgekeerde seleksie',
 	'recordadmin-buttonsearch' => 'Soek',
 	'recordadmin-buttoncreate' => 'Skep',
 	'recordadmin-buttonreset' => 'Herstel',
+	'recordadmin-searchresult' => 'Soekresultate',
+	'recordadmin-nomatch' => 'Geen oorstemmende rekords is gevind nie!',
+	'recordadmin-typeupdated' => '$1 eienskappe opgedateer',
 	'recordadmin-buttonsave' => 'Stoor',
+	'recordadmin-noform' => 'Daar is nie \'n vorm vir rekords van tipe "$1" nie!',
+	'recordadmin-createlink' => 'skep een',
+	'recordadmin-newcreated' => 'Nuwe $1 geskep vanaf openbare vorm',
+	'recordadmin-summary-typecreated' => 'Nuwe $1 geskep',
+	'recordadmin-viewlink' => 'wys',
 	'recordadmin-editlink' => 'wysig',
-	'recordadmin-actions' => 'Aksies',
+	'recordadmin-created' => 'Geskep',
+	'recordadmin-modified' => 'Gewysig',
+	'recordadmin-actions' => 'Wysig',
+	'recordadmin-needscontent' => 'Voeg inhoud by...',
+	'right-recordadmin' => 'Vind en wysig rekordbladsye',
+	'recordadmin-export-csv' => 'CSV',
+	'recordadmin-export-pdf' => 'PDF',
+	'recordadmin-notset' => 'Geen "$1"',
+	'recordadmin-edit-info' => 'Hierdie bladsy lys sjablone wat hul eie vorms wat ingevul kan word bevat.<br /> U kan ook die <a href="$1">normale MediaWiki fasiliteite sonder sjabloonvorms gebruik</a>.',
+	'recordadmin-properties' => 'Eienskappe',
 );
 
 /** Aragonese (Aragonés)

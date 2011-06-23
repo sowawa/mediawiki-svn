@@ -615,7 +615,7 @@ Zurück zu:
 	'crosswikiblock-nouser' => 'Benutzer „$3“ nicht gefunden.',
 	'crosswikiblock-noexpiry' => 'Ungültige Sperrdauer: $1.',
 	'crosswikiblock-noreason' => 'Begründung fehlt.',
-	'crosswikiblock-notoken' => 'Ungültiges Bearbeitungs-Token.',
+	'crosswikiblock-notoken' => 'Ungültiges Bearbeitungstoken',
 	'crosswikiblock-alreadyblocked' => 'Benutzer „$3“ ist bereits gesperrt.',
 	'crosswikiblock-noblock' => 'Dieser Benutzer ist nicht gesperrt.',
 	'crosswikiblock-success' => "Benutzer '''„$3“''' erfolgreich gesperrt.

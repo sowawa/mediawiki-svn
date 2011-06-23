@@ -78,6 +78,13 @@ $messages['ia'] = array(
 	'oracletextsearch-desc' => 'Cercar contento/metadatos de files incargate usante le indexation Oracle Text',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'oracletextsearch' => '"OracleText"-Sich',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

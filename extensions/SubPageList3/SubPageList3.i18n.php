@@ -438,6 +438,15 @@ $messages['sk'] = array(
 	'spl3_nosubpages' => '$1 nemá zobraziteľné podstránky.',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'spl3-desc' => 'Samodejno ustvari seznam podstrani strani z uporabo etikete <code><nowiki><splist /></nowiki></code>',
+	'spl3_debug' => 'Neznana vrednost možnosti $1.',
+	'spl3_nosubpages' => '$1 nima podstrani za navesti.',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
