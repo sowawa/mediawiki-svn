@@ -344,7 +344,11 @@ class DatabaseMysql extends DatabaseBase {
 
 	/**
 	 * Returns slave lag.
-	 * At the moment, this will only work if the DB user has the PROCESS privilege
+	 *
+	 * On MySQL 4.1.9 and later, this will do a SHOW SLAVE STATUS. On earlier
+	 * versions of MySQL, it uses SHOW PROCESSLIST, which requires the PROCESS
+	 * privilege.
+	 *
 	 * @result int
 	 */
 	function getLag() {
@@ -352,6 +356,31 @@ class DatabaseMysql extends DatabaseBase {
 			wfDebug( "getLag: fake slave lagged {$this->mFakeSlaveLag} seconds\n" );
 			return $this->mFakeSlaveLag;
 		}
+
+		if ( version_compare( $this->getServerVersion(), '4.1.9', '>=' ) ) {
+			return $this->getLagFromSlaveStatus();
+		} else {
+			return $this->getLagFromProcesslist();
+		}
+	}
+
+	function getLagFromSlaveStatus() {
+		$res = $this->query( 'SHOW SLAVE STATUS', __METHOD__ );
+		if ( !$res ) {
+			return false;
+		}
+		$row = $res->fetchObject();
+		if ( !$row ) {
+			return false;
+		}
+		if ( strval( $row->Seconds_Behind_Master ) === '' ) {
+			return false;
+		} else {
+			return intval( $row->Seconds_Behind_Master );
+		}
+	}
+
+	function getLagFromProcesslist() {
 		$res = $this->query( 'SHOW PROCESSLIST', __METHOD__ );
 		if( !$res ) {
 			return false;
