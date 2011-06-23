@@ -16,6 +16,12 @@ if ( !function_exists( 'version_compare' ) || ( version_compare( phpversion(), '
 	die( 1 );
 }
 
+/**
+ * update.php is verboten on WMF cluster. It's *not* how you do schema updates
+ */
+die( "Do not run update.php on the cluster. If you're seeing this you should
+probably ask for some help in performing your schema changes.\n" );
+
 $wgUseMasterForMaintenance = true;
 require_once( dirname( __FILE__ ) . '/Maintenance.php' );
 
