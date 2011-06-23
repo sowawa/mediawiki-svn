@@ -184,6 +184,17 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 			)
 		);
 
+	// Add in remove control to submittingDiv
+	_this.$removeCtrl = $j.fn.removeCtrl( 
+			'mwe-upwiz-remove', 
+			'mwe-upwiz-remove-upload', 
+			function() { _this.upload.remove(); } 
+		).addClass( "mwe-upwiz-file-status-line-item" );
+
+	_this.submittingDiv.find( '.mwe-upwiz-file-status-line' )
+		.append( _this.$removeCtrl );
+	
+	
 	$j( _this.dataDiv ).append( 
 		_this.$form,
 		_this.submittingDiv
@@ -255,7 +266,7 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 	
 	// make this a category picker
 	var hiddenCats = [];
-	if ( mw.isDefined( mw.UploadWizard.config.autoCategory ) ) {
+	if ( mw.isDefined( mw.UploadWizard.config.autoCategory ) && mw.UploadWizard.config.autoCategory !== '' ) {
 		hiddenCats.push( mw.UploadWizard.config.autoCategory );
 	}
 	$categoriesDiv.find( '.mwe-upwiz-details-input' )
@@ -441,7 +452,12 @@ mw.UploadWizardDetails.prototype = {
 	 */
 	populate: function() {
 		var _this = this;
-		_this.upload.setThumbnail( _this.thumbnailDiv, mw.UploadWizard.config['thumbnailWidth'], mw.UploadWizard.config['thumbnailMaxHeight'] );
+		_this.upload.setThumbnail( 
+			_this.thumbnailDiv, 
+			mw.UploadWizard.config['thumbnailWidth'], 
+			mw.UploadWizard.config['thumbnailMaxHeight'],
+			true
+		 );
 		_this.prefillDate();
 		_this.prefillSource();
 		_this.prefillAuthor(); 
@@ -469,8 +485,9 @@ mw.UploadWizardDetails.prototype = {
 			$j.each( [ 'datetimeoriginal', 'datetimedigitized', 'datetime', 'date' ], function( i, propName ) {
 				var dateInfo = metadata[propName];
 				if ( ! mw.isEmpty( dateInfo ) ) {
-					var matches = $j.trim( dateInfo ).match( yyyyMmDdRegex );   
-					if ( ! mw.isEmpty( matches ) ) {
+					var matches = $j.trim( dateInfo ).match( yyyyMmDdRegex );  
+					// EXIF was founded in 1995, so anything before that is very unlikely 
+					if ( ! mw.isEmpty( matches ) && parseInt( matches[1], 10 ) > 1994) {
 						dateObj = new Date( parseInt( matches[1], 10 ), 
 								    parseInt( matches[2], 10 ) - 1, 
 								    parseInt( matches[3], 10 ) );
@@ -686,7 +703,7 @@ mw.UploadWizardDetails.prototype = {
 	 */
 	submit: function() {
 		var _this = this;
-
+		
 		_this.upload.state = 'submitting-details';
 		_this.setStatus( gM( 'mwe-upwiz-submitting-details' ) ); 
 		_this.showIndicator( 'progress' );

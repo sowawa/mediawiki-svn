@@ -15,15 +15,17 @@ class UploadWizardHooks {
 			'scripts' => 'resources/mediawiki.language.parser.js'
 		),
 		'ext.uploadWizard' => array(
-			'dependencies' => array( 
+			'dependencies' => array(
+				'jquery.autoEllipsis',
 				'jquery.ui.core',
 				'jquery.ui.dialog',
 				'jquery.ui.datepicker',
 				'jquery.ui.progressbar',
+				'jquery.suggestions',
 				'jquery.ui.widget',
 				'mediawiki.language',
 				'mediawiki.util',
-				'ext.uploadwizard.mediawiki.language.parser'
+				'ext.uploadwizard.mediawiki.language.parser',
 			),
 			'scripts' => array(
 
@@ -34,8 +36,6 @@ class UploadWizardHooks {
 				'resources/jquery/jquery.arrowSteps.js',
 				'resources/jquery/jquery.autocomplete.js',
 				'resources/jquery/jquery.spinner.js',
-				'resources/jquery/jquery.autoEllipsis.js',
-				'resources/jquery/jquery.suggestions.js',
 				'resources/jquery/jquery.removeCtrl.js',
 				'resources/jquery/jquery.pubsub.js',
 
@@ -46,6 +46,9 @@ class UploadWizardHooks {
 				'resources/jquery/jquery.validate.wmCommonsBlacklist.js',
 
 				// common utilities
+				'resources/mw.fileApi.js',
+				'resources/mw.units.js',
+				'resources/mw.canvas.js',
 				'resources/mw.Log.js',
 				'resources/mw.Utilities.js',
 				'resources/mw.UtilitiesTime.js',
@@ -64,7 +67,12 @@ class UploadWizardHooks {
 				'resources/mw.ApiUploadHandler.js',
 				'resources/mw.DestinationChecker.js',
 				'resources/mw.UploadWizardUtil.js',
-
+				
+				// firefogg support libraries
+				'resources/mw.Firefogg.js',
+				'resources/mw.FirefoggHandler.js',
+				'resources/mw.FirefoggTransport.js',
+			
 				// interface libraries
 				'resources/mw.GroupProgressBar.js',
 
@@ -87,7 +95,6 @@ class UploadWizardHooks {
 			),
 			'styles' => array(
 				'resources/jquery/jquery.tipsy.css',
-				'resources/jquery/jquery.suggestions.css',
 				'resources/uploadWizard.css',
 				'resources/jquery/jquery.arrowSteps.css',
 				'resources/jquery/jquery.mwCoolCats.css',
@@ -151,12 +158,10 @@ class UploadWizardHooks {
 				'mwe-upwiz-uploading',
 				'mwe-upwiz-transported',
 				'mwe-upwiz-stashed-upload',
-				'mwe-upwiz-published',
 				'mwe-upwiz-getting-metadata',
 				'mwe-upwiz-submitting-details',
 				'mwe-upwiz-published',
 				'mwe-upwiz-failed',
-				'mwe-upwiz-click-here',
 				'mwe-upwiz-remove',
 				'mwe-upwiz-remove-upload',
 				'mwe-upwiz-remove-description',
@@ -209,6 +214,7 @@ class UploadWizardHooks {
 				'mwe-upwiz-thanks-explain',
 				'mwe-upwiz-thanks-wikitext',
 				'mwe-upwiz-thanks-url',
+				'mwe-upwiz-upload-error-bad-extension-video-firefogg',
 				'mwe-upwiz-upload-error-bad-filename-extension',
 				'mwe-upwiz-upload-error-bad-filename-no-extension',
 				'mwe-upwiz-allowed-filename-extensions',
@@ -269,8 +275,6 @@ class UploadWizardHooks {
 				'mwe-upwiz-license-cc-by-sa-3.0',
 				'mwe-upwiz-license-cc-by-3.0',
 				'mwe-upwiz-license-cc-zero',
-				'mwe-upwiz-license-gfdl',
-				'mwe-upwiz-license-pd-us',
 				'mwe-upwiz-license-cc-by-sa-2.5',
 				'mwe-upwiz-license-cc-by-2.5',
 				'mwe-upwiz-license-cc-by-sa-2.0',
@@ -332,7 +336,11 @@ class UploadWizardHooks {
 				'mwe-upwiz-feedback-adding',
 				'mwe-upwiz-feedback-error1',
 				'mwe-upwiz-feedback-error2',
-				'mwe-upwiz-feedback-error3'
+				'mwe-upwiz-feedback-error3',
+ 				'size-gigabytes',
+ 				'size-megabytes',
+ 				'size-kilobytes',
+ 				'size-bytes'
 			),
 			'group' => 'ext.uploadWizard'
 		),
