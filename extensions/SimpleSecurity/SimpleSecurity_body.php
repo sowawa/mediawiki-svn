@@ -14,6 +14,13 @@ class SimpleSecurity {
 
 
 	function __construct() {
+		global $wgExtensionFunctions;
+
+		# Put SimpleSecurity's setup function before all others
+		array_unshift( $wgExtensionFunctions, array( $this, 'setup' ) );
+	}
+	
+	function setup() {
 		global $wgParser, $wgHooks, $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions,
 			$wgSecurityMagicIf, $wgSecurityMagicGroup, $wgSecurityExtraActions, $wgSecurityExtraGroups,
 			$wgRestrictionTypes, $wgRestrictionLevels, $wgGroupPermissions,
@@ -37,9 +44,7 @@ class SimpleSecurity {
 		$wgLogHeaders['security']      = 'securitylogpagetext';
 		$wgLogActions['security/deny'] = 'securitylogentry';
 
-		# Load messages
-		
-
+		# Each extra action is also a restriction type
 		foreach ( $wgSecurityExtraActions as $k => $v ) {
 			$wgRestrictionTypes[] = $k;
 		}
@@ -68,6 +73,9 @@ class SimpleSecurity {
 			$wgGroupPermissions[$k][$k] = true;      # members of $k must be allowed to perform $k
 			$wgGroupPermissions['sysop'][$k] = true; # sysops must be allowed to perform $k as well
 		}
+
+		$db = &wfGetDB( DB_SLAVE );
+
 	}
 
 
@@ -372,34 +380,103 @@ class SimpleSecurity {
 		}
 	}
 
-
 	/**
-	 * Updates passed LoadBalancer's DB servers to secure class
+	 * Add hooks into the database classes query() and fetchObject() methods
 	 */
-	static function updateLB( &$lb ) {
-		$lb->closeAll();
-		$serverCount = $lb->getServerCount(); 
-		for ( $i = 0; $i < $serverCount; $i++ ) {
-			$server = $lb->getServerInfo( $i );
-			$sever['type'] = 'SimpleSecurity';
-			$lb->setServerInfo ( $i, $server );
+	static function applyDatabaseHook() {
+		global $wgDBtype, $wgLBFactoryConf;
+
+		# Create a new "Database_SimpleSecurity" database class with hooks into its query() and fetchObject() methods
+		# - hooks are added in a sub-class of the database type specified in $wgDBtype
+		# - query method is overriden to ensure that old_id field is returned for all queries which read old_text field
+		# - only SELECT statements are ever patched
+		# - fetchObject method is overridden to validate row content based on old_id
+		$oldClass = ucfirst( $wgDBtype );
+		eval( "class Database_SimpleSecurity extends Database{$oldClass}" . ' {
+			public function query( $sql, $fname = "", $tempIgnore = false ) {
+				$patched = preg_replace_callback( "/(?<=SELECT ).+?(?= FROM)/", array("SimpleSecurity", "patchSQL"), $sql, 1 );
+				return parent::query( $patched, $fname, $tempIgnore );
+			}
+			function fetchObject( $res ) {
+				global $wgSimpleSecurity;
+				$row = parent::fetchObject( $res );
+				if( isset( $row->old_text ) ) $wgSimpleSecurity->validateRow( $row );
+				return $row;
+			}
+		}' );
+
+		# Make sure our new LBFactory is used which in turn uses our LoadBalancer and Database classes
+		$wgLBFactoryConf = array( 'class' => 'LBFactory_SimpleSecurity' );
+
+	}
+
+}
+
+/**
+ * Create a new class based on LoadBalancer which opens connections to our new hooked database class
+ */
+class LoadBalancer_SimpleSecurity extends LoadBalancer {
+
+	function reallyOpenConnection( $server, $dbNameOverride = false ) {
+		if( !is_array( $server ) ) {
+			throw new MWException( 'You must update your load-balancing configuration. See DefaultSettings.php entry for $wgDBservers.' );
 		}
+		$host = $server['host'];
+		$dbname = $server['dbname'];
+		if ( $dbNameOverride !== false ) {
+			$server['dbname'] = $dbname = $dbNameOverride;
+		}
+		wfDebug( "Connecting to $host $dbname...\n" );
+		$db = new Database_SimpleSecurity(
+			isset( $server['host'] ) ? $server['host'] : false,
+			isset( $server['user'] ) ? $server['user'] : false,
+			isset( $server['password'] ) ? $server['password'] : false,
+			isset( $server['dbname'] ) ? $server['dbname'] : false,
+			isset( $server['flags'] ) ? $server['flags'] : 0,
+			isset( $server['tableprefix'] ) ? $server['tableprefix'] : 'get from global'
+		);
+		if ( $db->isOpen() ) {
+			wfDebug( "Connected to $host $dbname.\n" );
+		} else {
+			wfDebug( "Connection failed to $host $dbname.\n" );
+		}
+		$db->setLBInfo( $server );
+		if ( isset( $server['fakeSlaveLag'] ) ) {
+			$db->setFakeSlaveLag( $server['fakeSlaveLag'] );
+		}
+		if ( isset( $server['fakeMaster'] ) ) {
+			$db->setFakeMaster( true );
+		}
+		return $db;
 	}
 
+}
 
-	/**
-	 * Hack to ensure proper search class is used
-	 * - $wgDBtype determines search class unless already defined in $wgSearchType
-	 * - just copied method from SearchEngine::create()
-	 */
-	static function fixSearchType() {
-		global $wgDBtype, $wgSearchType;
-		if ( $wgSearchType ) return;
-		elseif ( $wgDBtype == 'mysql' )    $wgSearchType = 'SearchMySQL';
-		elseif ( $wgDBtype == 'postgres' ) $wgSearchType = 'SearchPostgres';
-		elseif ( $wgDBtype == 'sqlite' )   $wgSearchType = 'SearchSqlite';
-		elseif ( $wgDBtype == 'oracle' )   $wgSearchType = 'SearchOracle';
-		elseif ( $wgDBtype == 'ibm_db2' )  $wgSearchType = 'SearchIBM_DB2';
-		else                               $wgSearchType = 'SearchEngineDummy';
+/**
+ * Create a new LBFactory class based on LBFactory_Simple which uses our new LoadBalancer class
+ */
+class LBFactory_SimpleSecurity extends LBFactory_Simple {
+
+	function newMainLB( $wiki = false ) {
+		global $wgDBservers, $wgMasterWaitTimeout;
+		if ( $wgDBservers ) {
+			$servers = $wgDBservers;
+		} else {
+			global $wgDBserver, $wgDBuser, $wgDBpassword, $wgDBname, $wgDBtype, $wgDebugDumpSql;
+			$servers = array(array(
+				'host' => $wgDBserver,
+				'user' => $wgDBuser,
+				'password' => $wgDBpassword,
+				'dbname' => $wgDBname,
+				'type' => $wgDBtype,
+				'load' => 1,
+				'flags' => ($wgDebugDumpSql ? DBO_DEBUG : 0) | DBO_DEFAULT
+			));
+		}
+		return new LoadBalancer_SimpleSecurity( array(
+			'servers' => $servers,
+			'masterWaitTimeout' => $wgMasterWaitTimeout
+		));
 	}
+
 }
