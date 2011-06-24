@@ -130,7 +130,9 @@ $messages['bg'] = array(
  * @author Wikitanvir
  */
 $messages['bn'] = array(
+	'narayam-desc' => 'ইনপুট ক্ষেত্রের জন্য কাস্টম ইনপুট পদ্ধতির যোগ অনুমোদন করে',
 	'narayam-help-page' => 'Help:টাইপিং',
+	'narayam-disable-preference' => 'Narayam ইনপুট মেথড এডিটর (IME) নিষ্ক্রিয়',
 	'narayam-eo' => 'এসপারেন্টো',
 	'narayam-hi-inscript' => 'হিন্দি ইন্সক্রিপ্ট',
 	'narayam-kn' => 'কন্নড় প্রতিবর্ণীকরণ',

@@ -4306,6 +4306,7 @@ $messages['lb'] = array(
 	'deletequeue-vote-success-endorse' => 'Dir hutt dem läsche vun dëser Säit zougestëmmt.',
 	'deletequeue-showvotes-restrict-endorse' => 'Nëmmem Zoustëmmunge weisen',
 	'deletequeue-showvotes-showingonly-endorse' => "Nëmmen d'Zoustëmmunge gi gewisen",
+	'deletequeue-showvotes-none-object' => 'Et gëtt keng Objectioune fir dës Säit ze läschen.',
 	'deletequeue' => 'Läsch-Queue',
 	'deletequeue-list-text' => 'Op dëser Säit stinn all déi Säiten déi am Läschsystem dra sinn.',
 	'deletequeue-list-search-legend' => 'Säite sichen:',

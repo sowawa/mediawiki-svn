@@ -948,6 +948,7 @@ $messages['lb'] = array(
 	'push-tab-template-override' => 'Dës Schabloune gëtt et schonn: $1',
 	'special-push' => 'Säite pushen',
 	'push-special-button-text' => 'Säite pushen',
+	'push-special-target-is' => 'Zilwiki: $1',
 	'push-special-select-targets' => 'Zielwikien:',
 	'push-special-item-pushing' => '$1: Pushen',
 	'push-special-item-completed' => '$1: Push ofgeschloss',

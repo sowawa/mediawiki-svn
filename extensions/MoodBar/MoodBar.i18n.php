@@ -72,6 +72,13 @@ $messages['ia'] = array(
 	'moodbar-desc' => 'Permitte al usatores specificate de inviar lor "humor" retro al operator del sito',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'moodbar-desc' => 'Erméiglecht et spezifesche Benotzer fir dem Responsabele vum Site hir Stëmmung ze schécken',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

@@ -13032,6 +13032,7 @@ $messages['lb'] = array(
 	'configure-setting-wgDebugRedirects' => "Viruleedungszil weisen an net direkt op d'Zil URL viruleeden",
 	'configure-setting-wgShowSQLErrors' => "D'Datebankfeeler op de Säite weisen",
 	'configure-setting-wgUpdateRowsPerJob' => 'Zuel vu Reien déi pro Job aktualiséiert ginn',
+	'configure-setting-wgDBtestuser' => "Datebankbenotzer deen nëmmen d'Testdatebank uleeën a läschen däerf",
 	'configure-setting-wgAPICacheHelp' => 'Den API Hëllefstext tëschespäicheren',
 	'configure-setting-wgAPIMaxResultSize' => 'Maximal Gréisst (a Bytes) vun engem API-Resultat',
 	'configure-setting-wgDisableQueryPageUpdate' => 'Spezialsäiten déi ausgeschalt sinn',

@@ -383,7 +383,7 @@ $messages['bg'] = array(
 	'youtubeauthsub_category' => 'Категория',
 	'youtubeauthsub_submit' => 'Изпращане',
 	'youtubeauthsub_clickhere' => 'Щракнете тук за влизане в YouTube',
-	'youtubeauthsub_tokenerror' => 'Грешка в генерирането на оторизиращата информация. Моля опреснете страницата в браузъра си.',
+	'youtubeauthsub_tokenerror' => 'Грешка при генериране на оторизиращата информация, опитайте да опресните.',
 	'youtubeauthsub_success' => "Поздравления!
 Видеото беше качено.
 Можете да прегледате видеото <a href='http://www.youtube.com/watch?v=$1'>тук</a>.

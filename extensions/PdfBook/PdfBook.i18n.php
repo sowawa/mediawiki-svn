@@ -113,7 +113,7 @@ $messages['da'] = array(
 $messages['de'] = array(
 	'pdfbook-action' => 'Als PDF-Datei ausgeben',
 	'pdfbook-log' => '$1 wurde als Zusammenstellung in einer PDF-Datei erstellt',
-	'pdfbook-desc' => 'Ermöglicht die Erstellung von PDF-Dateien einzelner Seiten oder eine Zusammenstellung aller in einer Kategorie vorhandenen Seiten in einer PDF-Datei',
+	'pdfbook-desc' => 'Ermöglicht die Erstellung von PDF-Dateien einzelner Seiten oder gesammelt aller in einer Kategorie vorhandener Seiten',
 );
 
 /** Lower Sorbian (Dolnoserbski)
