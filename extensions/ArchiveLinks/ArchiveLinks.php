@@ -46,12 +46,15 @@ function findOutWhatTheHellThisHookGivesUs ( &$url, &$text, &$link, &$attributes
 //$wgHooks['LinkerMakeExternalLink'][] = 'getExternalLinks';
 //$wgHooks['EditPage::attemptSave'][] = 'getExternalLinks';
 
+$wgExtensionMessagesFiles['ArchiveLinks'] = dirname( __FILE__ ) . '/ArchiveLinks.i18n.php';
+
 $wgHooks['ArticleSaveComplete'][] = 'ArchiveLinks::queueExternalLinks';
 $wgHooks['LinkerMakeExternalLink'][] = 'ArchiveLinks::rewriteLinks';
 
-$wgArchiveService = 'wikiwix';
-$wgUseMultipleArchives = false;
-$wgWhatToCallArchive = '[cache]';
+$wgArchiveLinksConfig = array (
+    'archive_service' => 'wikiwix',
+    'use_multiple_archives' => false,
+);
 
 class ArchiveLinks {
     public static function queueExternalLinks ( &$article ) {
@@ -70,9 +73,7 @@ class ArchiveLinks {
 	foreach ( $external_links as $link => $unused_value ) {
 	    //$db_result['resource'] = $db_slave->select( 'el_archive_resource', '*', '`el_archive_resource`.`resource_url` = "' . $db_slave->strencode( $link ) . '"');
 	    $db_result['blacklist'] = $db_slave->select( 'el_archive_blacklist', '*', '`el_archive_blacklist`.`bl_url` = "' . $db_slave->strencode( $link ) . '"');
-	    
-	    //we need to know if the URL is already in the queue to prevent a page from being archived twice, so we will query the master
-	    $db_result['queue'] = $db_master->select( 'el_archive_queue', '*', '`el_archive_queue`.`url` = "' . $db_slave->strencode( $link ) . '"' );
+	    $db_result['queue'] = $db_slave->select( 'el_archive_queue', '*', '`el_archive_queue`.`url` = "' . $db_slave->strencode( $link ) . '"' );
 
 	    if ( $db_result['blacklist']->numRows() === 0 ) {
 		if ( $db_result['queue']->numRows() === 0 ) {
@@ -107,31 +108,30 @@ class ArchiveLinks {
     
     public static function rewriteLinks (  &$url, &$text, &$link, &$attributes ) {
 	if ( array_key_exists('rel', $attributes) && $attributes['rel'] === 'nofollow' ) {
-	    global $wgArchiveService;
-	    global $wgUseMultipleArchives;
-	    global $wgWhatToCallArchive;
-	    if ( $wgUseMultipleArchives ) {
-		//add support for more than one archival service at once
-		// (a page where you can select more than one)
+	    global $wgArchiveLinksConfig;
+	    if ( $wgArchiveLinksConfig['use_multiple_archives'] ) {
+		//need to add support for more than one archival service at once
+		//  (a page where you can select one from a list of choices)
 	    } else {
-		switch ( $wgArchiveService ) {
+		switch ( $wgArchiveLinksConfig['archive_service'] ) {
 		    case 'local':
 			//We need to have something to figure out where the filestore is...
 			$link_to_archive = urlencode( substr_replace( $url, '', 0, 7 ) );
 			break;
 		    case 'wikiwix':
-			$link_to_archive = 'http://archive.wikiwix.org/cache/?url=' . $link;
+			$link_to_archive = 'http://archive.wikiwix.com/cache/?url=' . $url;
 			break;
 		    case 'internet_archive':
-			$link_to_archive = 'http://wayback.archive.org/web/*/' . $link;
+			$link_to_archive = 'http://wayback.archive.org/web/*/' . $url;
 			break;
 		    case 'webcitation':
-			$link_to_archive = 'http://webcitation.org/query?url=' . $link;
+			$link_to_archive = 'http://webcitation.org/query?url=' . $url;
 			break;
 		}
 	    }
-	    $link = "<a rel=\"nofollow\" class=\"{$attributes['class']}\" href=\"{$url}\">{$text}</a>&nbsp;<sup><small><a href=\""
-	    . $link_to_archive . "\">{$wgWhatToCallArchive}</a></small></sup>&nbsp;";
+	    //Note to self: need to fix this to use Html.php instead of direct html
+	    $link = "<a rel=\"nofollow\" class=\"{$attributes['class']}\" href=\"{$url}\">{$text}</a>&#160;<sup><small><a href=\""
+	    . "{$link_to_archive}\">" . wfMsg( 'archive-links-cache-title' ) . '</a></small></sup>&#160;';  
 	    return false;
 	} else {
 	    return true;
@@ -160,7 +160,7 @@ function test ( ) {
     
     //$db_slave = wfGetDB( DB_SLAVE );
     
-    /*$db_result = $db_slave->select( 'el_archive_blacklist', '*',
+    /*db_result = $db_slave->select( 'el_archive_blacklist', '*',
 	    '`el_archive_blacklist`.`bl_url` = "' . $db_slave->strencode( 'http://example.com' ) . '"');
     */
     //$db_result['queue'] = $db_slave->select( 'el_archive_queue', '*', '`el_archive_queue`.`url` = "' . $db_slave->strencode( 'http://example.com' ) . '"' );
