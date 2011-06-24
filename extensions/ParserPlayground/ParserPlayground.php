@@ -74,6 +74,10 @@ $wgResourceModules['ext.parserPlayground'] = array(
 		'jquery.nodetree.css',
 		'ext.parserPlayground.css',
 	),
+	'messages' => array(
+		'vis-edit-source-ok',
+		'vis-edit-source-cancel',
+	),
 	'dependencies' => array(
 		'ext.wikiEditor'
 	),

@@ -155,7 +155,7 @@ $(document).ready( function() {
 
 		window.setTimeout(function() {
 			var context = editor.data('wikiEditor-context');
-			context.parserPlayground = {
+			var pp = context.parserPlayground = {
 				parser: new FakeParser(),
 				tree: undefined,
 				useInspector: false,
@@ -176,27 +176,30 @@ $(document).ready( function() {
 						context.$parserInspector = $inspector;
 
 						var src = $('#wpTextbox1').val();
-						var $dest = $target.find('div');
 
-						var parser = context.parserPlayground.parser;
-						var treeMap = context.parserPlayground.treeMap = new HashMap(),
-							renderMap = new HashMap();
+						var parser = pp.parser;
 						parser.parseToTree(src, function(tree, err) {
-							context.parserPlayground.tree = tree;
-							if (context.parserPlayground.useInspector) {
-								$inspector.nodeTree( tree, function( node, el ) {
-									treeMap.put( node, el );
-								});
-							}
-							parser.treeToHtml(tree, function(node, err) {
-								$dest.append(node);
-								context.parserPlayground.fn.setupEditor($target);
-								setupInspector($target, $inspector, renderMap, treeMap);
-							}, renderMap);
+							pp.tree = tree;
+							pp.fn.displayTree();
 						});
 
 						context.$textarea.closest('form').submit( context.parserPlayground.fn.onSubmit );
 
+					},
+					displayTree: function() {
+						pp.treeMap = new HashMap();
+						pp.renderMap = new HashMap();
+						if (pp.useInspector) {
+							context.$parserInspector.nodeTree( pp.tree, function( node, el ) {
+								pp.treeMap.put( node, el );
+							});
+						}
+						pp.parser.treeToHtml(pp.tree, function(node, err) {
+							var $dest = context.$parserContainer.find('div');
+							$dest.empty().append(node);
+							context.parserPlayground.fn.setupEditor(context.$parserContainer);
+							setupInspector(context.$parserContainer, context.$parserInspector, pp.renderMap, pp.treeMap);
+						}, pp.renderMap);
 					},
 					hide: function() {
 						$('#pegparser-source').hide(); // it'll reshow; others won't need it
@@ -257,7 +260,12 @@ $(document).ready( function() {
 								// Ok, not 100% kosher right now but... :D
 								var parser = context.parserPlayground.parser;
 								parser.treeToSource(node, function(src, err) {
-									alert( src );
+									//alert( src );
+									pp.sel = {
+										node: node,
+										src: src
+									};
+									context.$textarea.wikiEditor('openDialog', 'vis-edit-source');
 								});
 								event.preventDefault();
 								return false;
@@ -271,6 +279,81 @@ $(document).ready( function() {
 					}
 				}
 			}
+			editor.wikiEditor( 'addDialog', {
+				'vis-edit-source': {
+					title: 'Edit source fragment',
+					id: 'vis-edit-source-dialog',
+					html: '\
+						<fieldset>\
+							<div class="wikieditor-toolbar-field-wrapper">\
+								<textarea id="vis-edit-source-text"></textarea>\
+							</div>\
+						</fieldset>',
+					init: function() {
+						//
+					},
+					dialog: {
+						width: 500,
+						dialogClass: 'wikiEditor-toolbar-dialog',
+						buttons: {
+							'vis-edit-source-ok': function() {
+								var origNode = pp.sel.node,
+									$textarea = $('#vis-edit-source-text'),
+									$dlg = $(this);
+
+								pp.parser.parseToTree($textarea.val(), function(tree, err) {
+									// Silly and freaky hack :D
+									// Crap... no good way to replace or find parent here. Bad temp dom. ;)
+									var replaceNode = function(searchFor, replaceWithNodes, haystack) {
+										// Look in 'data' arrays for subnodes.
+										if ('content' in haystack) {
+											var content = haystack.content, len = content.length;
+											for (var i = 0; i < len; i++) {
+												if (content[i] === searchFor) {
+													//Array.splice.apply(content, [i, 1].concat(replaceWithNodes));
+													var before = content.slice(0, i),
+														after = content.slice(i + 1);
+													content = before.concat(replaceWithNodes).concat(after);
+													haystack.content = content;
+													return true;
+												} else {
+													if (replaceNode(searchFor, replaceWithNodes, content[i])) {
+														return true;
+													}
+												}
+											}
+										}
+										return false;
+									};
+									// @fixme avoid bad nesting
+									var newNodes = tree.content;
+									if (origNode.type != 'para' && newNodes.length == 1 && newNodes[0].type == 'para') {
+										// To avoid funky nesting; find the good stuff!
+										// Ideally, we would pass proper parse context in so wouldn't need to do this.
+										newNodes = newNodes[0].content;
+									}
+									if (replaceNode(origNode, newNodes, pp.tree)) {
+										pp.sel = null;
+										$textarea.empty();
+										$dlg.dialog( 'close' );
+
+										pp.fn.displayTree(); // todo: nicer update :D
+									} else {
+										alert('Could not find original node to replace!');
+									}
+								});
+							},
+							'vis-edit-source-cancel': function() {
+								pp.sel = null;
+								$(this).dialog( 'close' );
+							}
+						},
+						open: function() {
+							$('#vis-edit-source-text').val(pp.sel.src);
+						}
+					}
+				}
+			});
 			editor.wikiEditor( 'addToToolbar', {
 				'sections': {
 					'richedit': {
