@@ -102,6 +102,36 @@
 	width: auto;
 }
 
+
+.level2 {
+	font-size:150% ;
+	background-color: #ffe0eb;
+	border-style:solid;
+	border-width:1px;
+	border-color:grey;
+	margin-top:10px;
+	padding:5px;
+}
+
+.level3 {
+	font-size:120% ;
+	font-weight: bold;
+	background-color: #e0ffff;
+	margin-top:10px;
+	padding:5px;
+}
+
+.level4 {
+	font-size:110% ;
+	font-weight: bold;
+	padding:5px;
+}
+
+.level5 {
+	font-weight: bold;
+	padding:5px;
+}
+
 td.add {
 	text-align: center;
 }
