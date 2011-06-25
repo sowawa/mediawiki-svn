@@ -22,7 +22,7 @@ if( version_compare( $wgVersion, '1.17.0' ) < 0 ) die( 'This version of SimpleSe
  * @copyright © 2007-2011 Aran Dunkley
  * @license GNU General Public Licence 2.0 or later
  */
-define( 'SIMPLESECURITY_VERSION', '5.0.0, 2011-06-24' );
+define( 'SIMPLESECURITY_VERSION', '5.0.1, 2011-06-25' );
 
 # Load the SimpleSecurity class and messages
 $dir = dirname( __FILE__ ) . '/';
@@ -55,7 +55,7 @@ $wgPageRestrictions = array();
 # protection to apply to all instances of that record type
 $wgSecurityProtectRecords = true;
 
-# Don;t use the DB hook by default since it's voodoo
+# Don't use the DB hook by default since it's voodoo
 if( !isset( $wgSecurityUseDBHook ) ) $wgSecurityUseDBHook = false;
 
 $wgHooks['LanguageGetMagic'][] = 'wfSimpleSecurityLanguageGetMagic';

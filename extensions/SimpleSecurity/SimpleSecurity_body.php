@@ -74,8 +74,6 @@ class SimpleSecurity {
 			$wgGroupPermissions['sysop'][$k] = true; # sysops must be allowed to perform $k as well
 		}
 
-		$db = &wfGetDB( DB_SLAVE );
-
 	}
 
 
