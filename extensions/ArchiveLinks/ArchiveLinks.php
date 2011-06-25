@@ -54,6 +54,7 @@ $wgHooks['LinkerMakeExternalLink'][] = 'ArchiveLinks::rewriteLinks';
 $wgArchiveLinksConfig = array (
     'archive_service' => 'wikiwix',
     'use_multiple_archives' => false,
+    'run_spider_in_loop' => false,
 );
 
 class ArchiveLinks {
@@ -121,12 +122,14 @@ class ArchiveLinks {
 		    case 'wikiwix':
 			$link_to_archive = 'http://archive.wikiwix.com/cache/?url=' . $url;
 			break;
-		    case 'internet_archive':
-			$link_to_archive = 'http://wayback.archive.org/web/*/' . $url;
-			break;
 		    case 'webcitation':
 			$link_to_archive = 'http://webcitation.org/query?url=' . $url;
 			break;
+		    case 'internet_archive':
+		    default:
+			$link_to_archive = 'http://wayback.archive.org/web/*/' . $url;
+			break;
+
 		}
 	    }
 	    //Note to self: need to fix this to use Html.php instead of direct html
