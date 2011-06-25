@@ -304,6 +304,8 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'bookmanager-desc' => 'Fonctioune fir Bicher',
+	'bm-booktools-section' => 'Geschirkëscht fir Bicher',
+	'bm-randomchapter-link' => 'Zoufällegt Kapitel',
 	'bm-printversion' => 'Drockversioun',
 	'bm-printversion-desc' => 'Generéiert eng [[Special:PrintVersion|Drockversioun]] vun engem Buch',
 	'bm-printversion-no-book' => 'Gitt w.e.g. den Numm vun engem Buch a fir seng Drockversioun ze kréien.',

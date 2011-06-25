@@ -1013,7 +1013,7 @@ $messages['lb'] = array(
 	'vector-editwarning-warning' => 'Wann Dir dës Säit verloosst kann dat dozou féieren datt Dir all Ännerungen, déi Dir gemaach hutt, verléiert.
 Wann Dir ageloggt sidd, kënnt Dir dës Warnung an der Sektioun "Änneren" vun Ären Astellungen ausschalten.',
 	'vector-editwarning-preference' => "Mech warne wann ech d'Ännerung vun enger Säit verloosen, ouni Ännerunge gespäichert ze hunn",
-	'vector-simplesearch-search' => 'Sich',
+	'vector-simplesearch-search' => 'Sichen',
 	'vector-simplesearch-containing' => 'mat ...',
 	'vector-noexperiments-preference' => 'Mech vun Experimenter mat neie Fonctiounen eraushuelen',
 );

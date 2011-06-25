@@ -177,7 +177,7 @@ $messages['br'] = array(
 	'talkhere-foottext' => "Gant sellerien eo bet lezet an evezhiadennoù a-us moarvat.
 
 N'eo ket atebek an dud e-karg eus al lec'hienn eus ar pezh a c'hall bezañ bet skrivet.",
-	'talkhere-talkpage' => 'pajenn kaozeal',
+	'talkhere-talkpage' => 'pajenn gaozeal',
 	'talkhere-notalk' => '"(addispleg ebet evit poent)"',
 	'talkhere-addcomment' => 'Ouzhpennañ un evezhiadenn',
 	'talkhere-beforeinput' => "Un notenn a c'hallit skrivañ a-is",
