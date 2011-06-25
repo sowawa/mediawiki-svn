@@ -49,7 +49,7 @@ class CustomHeaderCollation extends Collation {
 			}
 
 			$m = array();
-			if ( preg_match( '/^[^\n^]*\^([^\n^]*)\^/', $string, $m ) ) {
+			if ( preg_match( '/^\^([^\n^]*)\^/', $string, $m ) ) {
 				return $m[1];
 			} else {
 				// Probably shouldn't happen.

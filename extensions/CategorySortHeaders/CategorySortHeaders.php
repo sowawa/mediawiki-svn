@@ -11,7 +11,7 @@ if (!defined( 'MEDIAWIKI' ) ) die('Not an entry point');
  * in LocalSettings.php. It defines its own Collation that is
  * roughly equivalent to 'uppercase', and thus can't be used
  * with 'uca-default' or any other custom collation.
- * Additionally, this extension requires at least MediaWiki 1.17.
+ * Additionally, this extension requires at least MediaWiki 1.19.
  *
  * To install:
  * Add to the bottom of LocalSettings.php:
