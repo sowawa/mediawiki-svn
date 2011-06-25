@@ -96,7 +96,7 @@ class ApiSignup extends ApiBase {
 			
 			case SignupForm::IP_BLOCKED:
 				$result['result'] = 'IPBlocked';
-				break:
+				break;
 			
 			case SignupForm::NO_NAME:
 				$result['result'] = 'NoName';

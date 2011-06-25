@@ -153,14 +153,13 @@ class SignupForm extends SpecialPage {
 	//Used for mailing password reset request
 	function addNewAccountMailPassword() {
 		global $wgOut;
-		
+
 		//check if no email id was provided
 		if ( $this->mEmail == '' ) {
 			$this->mainSignupForm( wfMsgExt( 'noemail', array( 'parsemag', 'escape' ), $this->mUsername ) );
 			return;
 		}
-		
-		
+
 		$mUser = $this->addNewaccountInternal();
 
 		if ( $mUser == null ) {
@@ -344,6 +343,7 @@ class SignupForm extends SpecialPage {
 		$mUser->setEmail( $this->mEmail );
 		$mUser->setRealName( $this->mRealName );
 
+		$abortError = '';
 		if( !wfRunHooks( 'AbortNewAccount', array( $mUser, &$abortError ) ) ) {
 			// Hook point to add extra creation throttles and blocks
 			return self::BLOCKED_BY_HOOK;
@@ -380,7 +380,7 @@ class SignupForm extends SpecialPage {
 	 * @return User object.
 	 * @private
 	 */
-	function initUser( $mUser, $autocreate ) {
+	function initUser( $mUser, $autocreate = false ) {
 		global $wgAuth;
 
 		$mUser->addToDatabase();
@@ -415,7 +415,7 @@ class SignupForm extends SpecialPage {
 
 	
 	function processSignup() {
-		global $wgUser;
+		global $wgUser, $wgOut;
 		
 		switch ( $this->addNewAccountInternal() ) {
 			case self::SUCCESS:
@@ -457,11 +457,12 @@ class SignupForm extends SpecialPage {
 				break;
 			case self::INVALID_PASS:
 				if ( is_array( $valid ) ) {
-				$message = array_shift( $valid );
-				$params = $valid;
+					$message = array_shift( $valid );
+					$params = $valid;
 				} else {
-				$message = $valid;
-				$params = array( $wgMinimalPasswordLength );
+					global $wgMinimalPasswordLength;
+					$message = $valid;
+					$params = array( $wgMinimalPasswordLength );
 				}
 				$this->mainSignupForm( wfMsgExt( $message, array( 'parsemag' ), $params ) );
 				break;
@@ -479,6 +480,7 @@ class SignupForm extends SpecialPage {
 				$this->mainSignupForm( wfMsg( 'externaldberror' ) );
 				break;
 			case self::THROTLLED;
+				global $wgAccountCreationThrottle;
 				$this->mainSignupForm( wfMsgExt( 'acct_creation_throttle_hit', array( 'parseinline' ), $wgAccountCreationThrottle ) );
 				break;
 			default:

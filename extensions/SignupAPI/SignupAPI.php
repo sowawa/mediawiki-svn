@@ -6,7 +6,7 @@
  * @file
  * @ingroup Extensions
  * @author Akshay Agarwal, akshayagarwal.in
- * @copyright © 2011 Akshay Agarwal
+ * @copyright Â© 2011 Akshay Agarwal
  * @licence GNU General Public Licence 2.0 or later
  */
 
