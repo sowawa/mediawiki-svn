@@ -574,7 +574,7 @@
 
 
 		if ( $this->mvd_id == 'seq' ) {
-			$cancel = $sk->makeKnownLink( $this->mTitle->getPrefixedText(),
+			$cancel = $sk->makeKnownLinkObj( $this->mTitle,
 				wfMsgExt( 'cancel', array( 'parseinline' ) ) );
 			$edithelpurl = Skin::makeInternalOrExternalUrl( wfMsgForContent( 'mv_edithelpsequence' ) );
 		} else {
