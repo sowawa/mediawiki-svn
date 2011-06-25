@@ -11,11 +11,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * @ingroup API
  */
 class ApiSignup extends ApiBase {
-	
+
 	public function __construct( $main, $action ) {
 		parent::__construct( $main, $action);
 	}
-    
+
 	public function execute() {
 		$params = $this->extractRequestParams();
 
@@ -29,31 +29,31 @@ class ApiSignup extends ApiBase {
 			'wpDomain' => $params['domain'],
 			'wpRemember' => ''
 		) );
-		
+
 		// Init session if necessary
 		if ( session_id() == '' ) {
 			wfSetupSession();
 		}
-		
+
 		$signupForm = new SignupForm( $req );
-		
-		global $wgCookiePrefix, $wgUser, $wgAccountCreationThrottle;
-		
+
+		global $wgCookiePrefix, $wgUser;
+
 		$signupRes = $signupForm->addNewAccountInternal();
 		switch( $signupRes ) {
 			case SignupForm::SUCCESS:
 				$signupForm->initUser();
-				
+
 				wfRunHooks( 'AddNewAccount', array( $wgUser, false ) );
 				# Run any hooks; display injected HTML
 				$injected_html = '';
 				$welcome_creation_msg = 'welcomecreation';
-					
+
 				wfRunHooks( 'UserLoginComplete', array( &$wgUser, &$injected_html ) );
-					
+
 				//let any extensions change what message is shown
 				wfRunHooks( 'BeforeWelcomeCreation', array( &$welcome_creation_msg, &$injected_html ) );
-				
+
 				$result['result'] = 'Success';
 				$result['lguserid'] = intval( $wgUser->getId() );
 				$result['lgusername'] = $wgUser->getName();
@@ -61,94 +61,94 @@ class ApiSignup extends ApiBase {
 				$result['cookieprefix'] = $wgCookiePrefix;
 				$result['sessionid'] = session_id();
 				break;
-			
+
 			case SignupForm::INVALID_DOMAIN:
 				$result['result'] = 'WrongPassword';
 				$result['domain']= $signupForm->mDomain;
 				break;
-			
+
 			case SignupForm::READ_ONLY_PAGE:
 				$result['result'] = 'ReadOnlyPage';
 				break;
-			
+
 			case SignupForm::NO_COOKIES:
 				$result['result'] = 'NoCookies';
 				break;
-			
+
 			case SignupForm::NEED_TOKEN:
 				$result['result'] = 'NeedToken';
 				$result['token'] = $signupForm->getCreateaccountToken();
 				$result['cookieprefix'] = $wgCookiePrefix;
 				$result['sessionid'] = session_id();
 				break;
-			
+
 			case SignupForm::WRONG_TOKEN:
 				$result['result'] = 'WrongToken';
 				break;
-			
+
 			case SignupForm::INSUFFICIENT_PERMISSION:
 				$result['result'] = 'InsufficientPermission';
 				break;
-			
+
 			case SignupForm::CREATE_BLOCKED:
 				$result['result'] = 'CreateBlocked';
 				break;
-			
+
 			case SignupForm::IP_BLOCKED:
 				$result['result'] = 'IPBlocked';
 				break;
-			
+
 			case SignupForm::NO_NAME:
 				$result['result'] = 'NoName';
 				break;
-			
+
 			case SignupForm::USER_EXISTS:
 				$result['result'] = 'UserExists';
 				break;
-			
+
 			case SignupForm::WRONG_RETYPE:
 				$result['result'] = 'WrongRetype';
 				break;
-			
+
 			case SignupForm::INVALID_PASS:
 				$result['result'] = 'InvalidPass';
 				break;
-			
+
 			case SignupForm::NO_EMAIL:
 				$result['result'] = 'NoEmail';
 				break;
-			
+
 			case SignupForm::INVALID_EMAIL:
 				$result['result'] = 'InvalidEmail';
 				break;
-			
+
 			case SignupForm::BLOCKED_BY_HOOK:
 				$result['result'] = 'BlockedByHook';
 				break;
-			
+
 			case SignupForm::EXTR_DB_ERROR:
 				$result['result'] = 'ExternalDBError';
 				break;
-			
+
 			case SignupForm::THROTLLED:
 				$result['result'] = 'Throttled';
 				break;
-			
+
 			default:
 				ApiBase::dieDebug( __METHOD__, "Unhandled case value: {$signupRes}" );
 		}
-		
-		$this->getResult()->addValue( null, 'signup', $result );	
+
+		$this->getResult()->addValue( null, 'signup', $result );
         }
-    
+
 	public function mustBePosted() {
 		return true;
 	}
-	
+
 	public function isReadMode() {
 		return false;
 	}
-	
+
 	public function getAllowedParams() {
 		return array(
 			'name' => null,
@@ -168,8 +168,8 @@ class ApiSignup extends ApiBase {
 			'domain' => 'Domain (optional)',
 		);
 	}
-	
-	
+
+
 
 	public function getDescription() {
 		return array(
@@ -215,7 +215,6 @@ class ApiSignup extends ApiBase {
 	public function getVersion() {
 		return __CLASS__ . ': $Id$';
 	}
-	
+
 }
-	
-    
+

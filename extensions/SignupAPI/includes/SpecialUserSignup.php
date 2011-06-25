@@ -29,7 +29,7 @@
 class SignupForm extends SpecialPage {
 
 	const SUCCESS = 0;
-	const NO_NAME = 1;	
+	const NO_NAME = 1;
 	const CREATE_BLOCKED = 2;
 	const NEED_TOKEN = 3;
 	const WRONG_TOKEN = 4;
@@ -82,7 +82,7 @@ class SignupForm extends SpecialPage {
 	 * @param $request WebRequest object
 	 */
 	function load( $request ) {
-		global $wgAuth, $wgHiddenPrefs, $wgEnableEmail, $wgRedirectOnLogin;
+		global $wgAuth, $wgHiddenPrefs, $wgEnableEmail;
 
 		$this->mType = $request->getText( 'type' );
 		$this->mUsername = $request->getText( 'wpName' );
@@ -102,9 +102,9 @@ class SignupForm extends SpecialPage {
 		$this->mStickHTTPS = $request->getCheck( 'wpStickHTTPS' );
 		$this->mLanguage = $request->getText( 'uselang' );
 		$this->mSkipCookieCheck = $request->getCheck( 'wpSkipCookieCheck' );
-		
+
 		//Decide whether login or signup request
-		
+
 		$this->mToken = $request->getVal( 'wpCreateaccountToken' );
 
 		if( $wgEnableEmail ) {
@@ -112,7 +112,7 @@ class SignupForm extends SpecialPage {
 		} else {
 			$this->mEmail = '';
 		}
-		
+
 		if( !in_array( 'realname', $wgHiddenPrefs ) ) {
 			$this->mRealName = $request->getText( 'wpRealName' );
 		} else {
@@ -142,7 +142,7 @@ class SignupForm extends SpecialPage {
 				return $this->processSignup();
 			} elseif ( $this->mCreateaccountMail ) {
 				return $this->addNewAccountMailPassword();
-			} 
+			}
 		}
 		$this->mainSignupForm( '' );
 	}
@@ -262,13 +262,13 @@ class SignupForm extends SpecialPage {
 		// to check this for domains that aren't local.
 		if( 'local' != $this->mDomain && $this->mDomain != '' ) {
 			if( !$wgAuth->canCreateAccounts() && ( !$wgAuth->userExists( $this->mUsername )
-				|| !$wgAuth->authenticate( $this->mUsername, $this->mPassword ) ) ) {				
+				|| !$wgAuth->authenticate( $this->mUsername, $this->mPassword ) ) ) {
 				return self::INVALID_DOMAIN;
 			}
 		}
 
 		if ( wfReadOnly() ) {
-			
+
 			return self::READ_ONLY_PAGE;
 		}
 
@@ -284,7 +284,7 @@ class SignupForm extends SpecialPage {
 		}
 
 		# Validate the createaccount token
-		if ( $this->mToken !== self::getCreateaccountToken() ) {		
+		if ( $this->mToken !== self::getCreateaccountToken() ) {
 			return self::WRONG_TOKEN;
 		}
 
@@ -332,9 +332,9 @@ class SignupForm extends SpecialPage {
 		if ( $wgEmailConfirmToEdit && empty( $this->mEmail ) ) {
 			return self::NO_EMAIL;
 		}
-                
+
 		# if email is provided then validate it
-		if( !empty( $this->mEmail ) && !User::isValidEmailAddr( $this->mEmail ) ) {
+		if( !empty( $this->mEmail ) && !Sanitizer::validateEmail( $this->mEmail ) ) {
 			return self::INVALID_EMAIL;
 		}
 
@@ -413,15 +413,14 @@ class SignupForm extends SpecialPage {
 		return $mUser;
 	}
 
-	
 	function processSignup() {
 		global $wgUser, $wgOut;
-		
+
 		switch ( $this->addNewAccountInternal() ) {
 			case self::SUCCESS:
 				//$this->initUser( $mUser, false );
 				//$this->addNewAccount($mUser);
-				break;			
+				break;
 			case self::INVALID_DOMAIN:
 				$this->mainSignupForm( wfMsg( 'wrongpassword' ) );
 				break;
@@ -488,8 +487,6 @@ class SignupForm extends SpecialPage {
 		}
 	}
 
-
-
 	/**
 	 * @param $mUser User object
 	 * @param $throttle Boolean
@@ -522,8 +519,6 @@ class SignupForm extends SpecialPage {
 		return $result;
 	}
 
-
-	
 	/**
 	 * Run any hooks registered for logins, then display a message welcoming
 	 * the user.
@@ -535,12 +530,12 @@ class SignupForm extends SpecialPage {
 		# Run any hooks; display injected HTML
 		$injected_html = '';
 		$welcome_creation_msg = 'welcomecreation';
-		
+
 		wfRunHooks( 'UserLoginComplete', array( &$wgUser, &$injected_html ) );
-		
+
 		//let any extensions change what message is shown
 		wfRunHooks( 'BeforeWelcomeCreation', array( &$welcome_creation_msg, &$injected_html ) );
-		
+
 		$this->displaySuccessfulCreation( $welcome_creation_msg, $injected_html );
 	}
 
@@ -575,7 +570,7 @@ class SignupForm extends SpecialPage {
 			$block_reason,
 			$block->getBlocker()->getName()
 		);
-		
+
 		$wgOut->returnToMain( false );
 	}
 
@@ -585,27 +580,26 @@ class SignupForm extends SpecialPage {
 	function mainSignupForm( $msg, $msgtype = 'error' ) {
 		global $wgUser, $wgOut, $wgHiddenPrefs;
 		global $wgEnableEmail, $wgEnableUserEmail;
-		global $wgRequest, $wgLoginLanguageSelector;
+		global $wgLoginLanguageSelector;
 		global $wgAuth, $wgEmailConfirmToEdit, $wgCookieExpiration;
 		global $wgSecureLogin, $wgPasswordResetRoutes;
 
 		$titleObj = SpecialPage::getTitleFor( 'Usersignup' );
 
-		
-			// Block signup here if in readonly. Keeps user from
-			// going through the process (filling out data, etc)
-			// and being informed later.
-			if ( wfReadOnly() ) {
-				$wgOut->readOnlyPage();
-				return;
-			} elseif ( $wgUser->isBlockedFromCreateAccount() ) {
-				$this->userBlockedMessage( $wgUser->isBlockedFromCreateAccount() );
-				return;
-			} elseif ( count( $permErrors = $titleObj->getUserPermissionsErrors( 'createaccount', $wgUser, true ) )>0 ) {
-				$wgOut->showPermissionsErrorPage( $permErrors, 'createaccount' );
-				return;
-			}
-		
+		// Block signup here if in readonly. Keeps user from
+		// going through the process (filling out data, etc)
+		// and being informed later.
+		if ( wfReadOnly() ) {
+			$wgOut->readOnlyPage();
+			return;
+		} elseif ( $wgUser->isBlockedFromCreateAccount() ) {
+			$this->userBlockedMessage( $wgUser->isBlockedFromCreateAccount() );
+			return;
+		} elseif ( count( $permErrors = $titleObj->getUserPermissionsErrors( 'createaccount', $wgUser, true ) )>0 ) {
+			$wgOut->showPermissionsErrorPage( $permErrors, 'createaccount' );
+			return;
+		}
+
 
 		if ( $this->mUsername == '' ) {
 			if ( $wgUser->isLoggedIn() ) {
@@ -615,13 +609,11 @@ class SignupForm extends SpecialPage {
 			}
 		}
 
-		
 		$template = new UsercreateTemplate();
 		$q = 'action=submitlogin&type=signup';
 		$linkq = 'type=login';
 		$linkmsg = 'gotaccount';
-		
-		
+
 		if ( !empty( $this->mReturnTo ) ) {
 			$returnto = '&returnto=' . wfUrlencode( $this->mReturnTo );
 			if ( !empty( $this->mReturnToQuery ) ) {
@@ -677,13 +669,11 @@ class SignupForm extends SpecialPage {
 		$template->set( 'cansecurelogin', ( $wgSecureLogin === true ) );
 		$template->set( 'stickHTTPS', $this->mStickHTTPS );
 
-		
 		if ( !self::getCreateaccountToken() ) {
 			self::setCreateaccountToken();
 		}
 		$template->set( 'token', self::getCreateaccountToken() );
-		
-		
+
 		# Prepare language selection links as needed
 		if( $wgLoginLanguageSelector ) {
 			$template->set( 'languages', $this->makeLanguageSelector() );
@@ -693,9 +683,8 @@ class SignupForm extends SpecialPage {
 
 		// Give authentication and captcha plugins a chance to modify the form
 		$wgAuth->modifyUITemplate( $template, $this->mType );
-		
+
 		wfRunHooks( 'UserCreateForm', array( &$template ) );
-		
 
 		// Changes the title depending on permissions for creating account
 		if ( $wgUser->isAllowed( 'createaccount' ) ) {
@@ -803,7 +792,7 @@ class SignupForm extends SpecialPage {
 	 *
 	 * @return string
 	 */
-	
+
 	function makeLanguageSelector() {
 		global $wgLang;
 
@@ -849,7 +838,7 @@ class SignupForm extends SpecialPage {
 			$attr
 		);
 	}
-	
+
 	/**
 	 * Display a "login successful" page.
 	 */
@@ -860,7 +849,7 @@ class SignupForm extends SpecialPage {
 		if( $msgname ){
 			$wgOut->addWikiMsg( $msgname, $wgUser->getName() );
 		}
-		
+
 		$wgOut->addHTML( $injected_html );
 
 		if ( !empty( $this->mReturnTo ) ) {
