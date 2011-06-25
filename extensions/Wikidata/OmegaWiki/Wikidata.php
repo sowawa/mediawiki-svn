@@ -20,7 +20,7 @@ class DefaultWikidataApplication {
 	protected $viewInformation;
 
 	// Show a panel to select expressions from available data-sets
-	protected $showDataSetPanel = true;
+	protected $showDataSetPanel = false;
 
 	public function __construct() {
 		global
