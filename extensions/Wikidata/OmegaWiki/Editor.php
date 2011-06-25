@@ -1949,7 +1949,7 @@ class RecordSetListEditor extends RecordSetEditor {
 				$this->setExpansion( $this->childrenExpanded, $valueClass );
 	
 				$idPath->pushAttribute( $captionAttribute );
-				$result .= '<li><div class=level"' . $this->headerLevel . '"><span id="collapse-' . $recordId . '" class="toggle ' . addCollapsablePrefixToClass( $captionClass ) . '" onclick="toggle(this, event);">' . $captionExpansionPrefix . '&#160;' . $this->captionEditor->edit( $idPath, $record->getAttributeValue( $captionAttribute ) ) . '</span></div>' . EOL;
+				$result .= '<li><div class="level' . $this->headerLevel . '"><span id="collapse-' . $recordId . '" class="toggle ' . addCollapsablePrefixToClass( $captionClass ) . '" onclick="toggle(this, event);">' . $captionExpansionPrefix . '&#160;' . $this->captionEditor->edit( $idPath, $record->getAttributeValue( $captionAttribute ) ) . '</span></div>' . EOL;
 				$idPath->popAttribute();
 	
 				$idPath->pushAttribute( $valueAttribute );
@@ -2100,7 +2100,7 @@ class UserEditor extends ScalarEditor {
 			$wgUser;
 			
 		if ( $value != "" )
-			return $wgUser->getSkin()->makeLinkObj( Title::newFromText( "User:" . $value ), $value );
+			return $wgUser->getSkin()->makeLink( "User:" . $value, $value );
 		else
 			return "";
 	}
