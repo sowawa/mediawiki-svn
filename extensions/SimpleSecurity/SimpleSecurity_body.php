@@ -379,7 +379,7 @@ class SimpleSecurity {
 	}
 
 	/**
-	 * Add hooks into the database classes query() and fetchObject() methods
+	 * Create the new Database class with hooks in its query() and fetchObject() methods and use our LBFactory_SimpleSecurity class
 	 */
 	static function applyDatabaseHook() {
 		global $wgDBtype, $wgLBFactoryConf;
@@ -411,7 +411,7 @@ class SimpleSecurity {
 }
 
 /**
- * The new LBFactory_SimpleSecurity class identical to LBFactory_Simple except that it returns a LoadBalancer_SimpleSecurity onject
+ * The new LBFactory_SimpleSecurity class identical to LBFactory_Simple except that it returns a LoadBalancer_SimpleSecurity object
  */
 class LBFactory_SimpleSecurity extends LBFactory_Simple {
 
