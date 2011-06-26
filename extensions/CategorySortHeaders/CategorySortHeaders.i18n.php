@@ -11,9 +11,10 @@ $messages = array();
  * @author Brian Wolff
  */
 $messages['en'] = array(
-	'categorysortheaders-desc' => 'Allow to specify custom multi-character \'first-character\' sorting headers to list pages under in categories, using syntax like <nowiki>[[category:Foo|^Header^Invisible part of sortkey]]</nowiki>.',
+	'categorysortheaders-desc' => 'Allow to specify custom multi-character \'first-character\' sorting headers to list pages under in categories, using syntax like <nowiki>[[category:Foo|^Header^Invisible part of sortkey]]</nowiki>',
 );
 
 $messages['qqq'] = array(
 	'categorysortheaders-desc' => '{{desc}}',
 );
+
