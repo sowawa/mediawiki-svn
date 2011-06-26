@@ -411,7 +411,36 @@ class SimpleSecurity {
 }
 
 /**
- * Create a new class based on LoadBalancer which opens connections to our new hooked database class
+ * The new LBFactory_SimpleSecurity class identical to LBFactory_Simple except that it returns a LoadBalancer_SimpleSecurity onject
+ */
+class LBFactory_SimpleSecurity extends LBFactory_Simple {
+
+	function newMainLB( $wiki = false ) {
+		global $wgDBservers, $wgMasterWaitTimeout;
+		if ( $wgDBservers ) {
+			$servers = $wgDBservers;
+		} else {
+			global $wgDBserver, $wgDBuser, $wgDBpassword, $wgDBname, $wgDBtype, $wgDebugDumpSql;
+			$servers = array(array(
+				'host' => $wgDBserver,
+				'user' => $wgDBuser,
+				'password' => $wgDBpassword,
+				'dbname' => $wgDBname,
+				'type' => $wgDBtype,
+				'load' => 1,
+				'flags' => ($wgDebugDumpSql ? DBO_DEBUG : 0) | DBO_DEFAULT
+			));
+		}
+		return new LoadBalancer_SimpleSecurity( array(
+			'servers' => $servers,
+			'masterWaitTimeout' => $wgMasterWaitTimeout
+		));
+	}
+
+}
+
+/**
+ * LoadBalancer_SimpleSecurity always returns Database_SimpleSecurity regardles of $wgDBtype
  */
 class LoadBalancer_SimpleSecurity extends LoadBalancer {
 
@@ -446,35 +475,6 @@ class LoadBalancer_SimpleSecurity extends LoadBalancer {
 			$db->setFakeMaster( true );
 		}
 		return $db;
-	}
-
-}
-
-/**
- * Create a new LBFactory class based on LBFactory_Simple which uses our new LoadBalancer class
- */
-class LBFactory_SimpleSecurity extends LBFactory_Simple {
-
-	function newMainLB( $wiki = false ) {
-		global $wgDBservers, $wgMasterWaitTimeout;
-		if ( $wgDBservers ) {
-			$servers = $wgDBservers;
-		} else {
-			global $wgDBserver, $wgDBuser, $wgDBpassword, $wgDBname, $wgDBtype, $wgDebugDumpSql;
-			$servers = array(array(
-				'host' => $wgDBserver,
-				'user' => $wgDBuser,
-				'password' => $wgDBpassword,
-				'dbname' => $wgDBname,
-				'type' => $wgDBtype,
-				'load' => 1,
-				'flags' => ($wgDebugDumpSql ? DBO_DEBUG : 0) | DBO_DEFAULT
-			));
-		}
-		return new LoadBalancer_SimpleSecurity( array(
-			'servers' => $servers,
-			'masterWaitTimeout' => $wgMasterWaitTimeout
-		));
 	}
 
 }
