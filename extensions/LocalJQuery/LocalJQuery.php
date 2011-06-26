@@ -26,8 +26,11 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'Local jQuery',
 	'author' => array( 'Timo Tijhof' ),
 	'url' => 'http://mediawiki.org/wiki/Extension:Local_jQuery',
-	'description' => 'Load jQuery from [[MediaWiki:JQuery.js]] (with ResourceLoader)',
+	'descriptionmsg' => 'localjquery-desc',
 );
+
+$dir = dirname(__FILE__);
+$wgExtensionMessagesFiles['LocalJQuery'] = $dir . '/LocalJQuery.i18n.php';
 
 // Create a wiki module for MediaWiki:JQuery.js
 class JQueryWikiModule extends ResourceLoaderWikiModule {
