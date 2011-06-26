@@ -21,11 +21,12 @@ $wgExtensionCredits['specialpage'][] = array(
         'version' => 1.0,
         'author' => 'Akshay Agarwal',
         'url' => 'http://www.mediawiki.org/wiki/Extension:SignupAPI',
-        'description' => 'Cleans up SpecialUserLogin from signup related stuff & adds an API for signup',
-//        'descriptionmsg' => 'signupapiextension-desc',
+	'descriptionmsg' => 'signupapi-desc',
 );
 
-$wgMyExtensionIncludes = dirname(__FILE__) . '/includes';
+$dir = dirname(__FILE__);
+$wgExtensionMessagesFiles['SignupAPI'] = $dir . '/SignupAPI.i18n.php';
+$wgMyExtensionIncludes = $dir . '/includes';
  
 ## Special page class
 $wgAutoloadClasses['SignupForm'] 
