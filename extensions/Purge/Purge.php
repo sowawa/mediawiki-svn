@@ -16,10 +16,10 @@ $wgExtensionCredits['other'][] = array(
 );
 
 $dir = dirname( __FILE__ ) . '/';
-$wgHooks['SkinTemplateContentActions'][] = 'PurgeAction::contentHook';
+$wgHooks['SkinTemplateContentActions'][] = 'PurgeActionExtension::contentHook';
 $wgExtensionMessagesFiles['Purge'] = $dir . 'Purge.i18n.php';
 
-class PurgeAction {
+class PurgeActionExtension{
 	public static function contentHook( array &$content_actions ) {
 		global $wgRequest, $wgTitle, $wgUser;
 
