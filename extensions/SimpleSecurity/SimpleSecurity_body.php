@@ -389,8 +389,7 @@ class SimpleSecurity {
 		# - query method is overriden to ensure that old_id field is returned for all queries which read old_text field
 		# - only SELECT statements are ever patched
 		# - fetchObject method is overridden to validate row content based on old_id
-		$oldClass = ucfirst( $wgDBtype );
-		eval( "class Database_SimpleSecurity extends Database{$oldClass}" . ' {
+		eval( 'class Database_SimpleSecurity extends Database' .  ucfirst( $wgDBtype ) . ' {
 			public function query( $sql, $fname = "", $tempIgnore = false ) {
 				$patched = preg_replace_callback( "/(?<=SELECT ).+?(?= FROM)/", array("SimpleSecurity", "patchSQL"), $sql, 1 );
 				return parent::query( $patched, $fname, $tempIgnore );
