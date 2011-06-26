@@ -57,7 +57,7 @@ Dit vervang ook ontlederfunksies soos
 <nowiki>{{</nowiki>#if:…}}, en veranderlikes soos
 <nowiki>{{</nowiki>CURRENTDAY}}&mdash; omtrent alles tussen dubbele krulhakkies word vervang.
 Dit word gedoen deur die relevante funksies in die MediaWiki-ontleder te roep.',
-	'expand_templates_title' => 'Kontekstitel, vir {{PAGENAME}}, ensovoorts:',
+	'expand_templates_title' => 'Kontekstitel, vir {{FULLPAGENAME}}, ensovoorts:',
 	'expand_templates_input' => 'Invoerteks:',
 	'expand_templates_output' => 'Resultaat',
 	'expand_templates_xml_output' => 'XML-afvoer',
@@ -82,7 +82,7 @@ $messages['an'] = array(
 	'expandtemplates-desc' => '[[Special:ExpandTemplates|Estendilla as plantillas, funcions de parseyo y variables]] ta amostrar o wikitesto estendillato y preveyer a pachina',
 	'expand_templates_intro' => 'Ista pachina especial prene bel testo y espande recursivament todas as plantillas que bi ha en el. Tamién espande as funcions parser como <nowiki>{{</nowiki>#if:...}}, y as variables como <nowiki>{{</nowiki>CURRENTDAY}}&mdash; en cheneral tot o que sía entre dobles claus.
 Isto lo fa clamando ta o parser correspondient dende o propio MediaWiki.',
-	'expand_templates_title' => 'Títol ta contestualizar ({{PAGENAME}} etz.):',
+	'expand_templates_title' => 'Títol ta contestualizar ({{FULLPAGENAME}} etz.):',
 	'expand_templates_input' => 'Testo ta espandir:',
 	'expand_templates_output' => 'Resultau',
 	'expand_templates_xml_output' => 'salida XML',
@@ -105,7 +105,7 @@ $messages['ar'] = array(
 <nowiki>{{</nowiki>#if:...}}، والمتغيرات مثل
 <nowiki>{{</nowiki>يوم}}-- وتقوم التعامل مع كل ما بين الأقواس المزدوجة.
 تقوم بفعل هذا عن طريق استدعاء المعالج المناسب من الميدياويكي.',
-	'expand_templates_title' => 'عنوان صفحة هذا النص، لأجل معالجة {{PAGENAME}} إلخ.:',
+	'expand_templates_title' => 'عنوان صفحة هذا النص، لأجل معالجة {{FULLPAGENAME}} إلخ.:',
 	'expand_templates_input' => 'النص المدخل:',
 	'expand_templates_output' => 'النتيجة',
 	'expand_templates_xml_output' => 'خرج XML',
@@ -138,7 +138,7 @@ $messages['arz'] = array(
 <nowiki>{{</nowiki>#if:…}}, و المتغيرات زي
 <nowiki>{{</nowiki>CURRENTDAY}}&mdash;فى الحقيقة كل حاجة بين قوسين مزدوجين.
 و بتعمل دا عن طريق استعداء المعالج المناسب من الميدياويكى نفسها..',
-	'expand_templates_title' => 'عنوان السياق, لـ {{PAGENAME}} الخ.:',
+	'expand_templates_title' => 'عنوان السياق, لـ {{FULLPAGENAME}} الخ.:',
 	'expand_templates_input' => 'النص المدخل:',
 	'expand_templates_output' => 'النتيجه',
 	'expand_templates_xml_output' => 'خرج XML',
@@ -172,7 +172,7 @@ plantíes de forma recursiva. Tamién esparde les funciones d'análisis sintáut
 como <nowiki>{{</nowiki>#if:...}}, y variables como
 <nowiki>{{</nowiki>CURRENTDAY}}, en realidá cuasi tolo qu'heba ente llaves dobles. Funciona
 llamando a les funciones afechisques d'análisis sintáuticu de MediaWiki.",
-	'expand_templates_title' => 'Títulu del contestu, pa {{PAGENAME}}, etc.:',
+	'expand_templates_title' => 'Títulu del contestu, pa {{FULLPAGENAME}}, etc.:',
 	'expand_templates_input' => "Testu d'entrada:",
 	'expand_templates_output' => 'Resultáu',
 	'expand_templates_xml_output' => 'Salida XML',
@@ -200,7 +200,7 @@ $messages['ba'] = array(
 	'expand_templates_intro' => 'Был махсус бит бирелгән тексттың бөтә ҡалыптарын ҡабатланмалы рәүештә йәйелдерә.
 Шулай уҡ <nowiki>{{</nowiki>#if:…}} һымаҡ уҡыу ҡоралдары һәм <nowiki>{{</nowiki>CURRENTDAY}} һымаҡ үҙгәреүсән дәүмәлдәр,— ғөмүмән, икәүле йәйәләр эсендә барыһы ла йәйелдерелә.
 Был MediaWiki-ның кәрәкле эшкәртеүсе ҡоралын саҡырыу ярҙамында эшләнә.',
-	'expand_templates_title' => '{{PAGENAME}} һ.б. өсөн бит исеме:',
+	'expand_templates_title' => '{{FULLPAGENAME}} һ.б. өсөн бит исеме:',
 	'expand_templates_input' => 'Сығанаҡ текст:',
 	'expand_templates_output' => 'Һөҙөмтә',
 	'expand_templates_xml_output' => 'XML һөҙөмтә',
@@ -222,7 +222,7 @@ $messages['bcc'] = array(
 <nowiki>{{</nowiki>#if:…}}, و متغییرانی په داب
 <nowiki>{{</nowiki>CURRENTDAY}}&mdash; در حقیقت هر چیزی که ته دو براکتن.
 آیی ای کارء گون توار کنگ تجزیه کنوک مناسب چه مدیا وی کی وت انجام دنت.',
-	'expand_templates_title' => 'عنوان متن په {{PAGENAME}} و دگه.:',
+	'expand_templates_title' => 'عنوان متن په {{FULLPAGENAME}} و دگه.:',
 	'expand_templates_input' => 'ورودی متن',
 	'expand_templates_output' => 'نتیجه',
 	'expand_templates_xml_output' => 'خروجی XML',
@@ -254,7 +254,7 @@ $messages['be-tarask'] = array(
 
 <nowiki>{{</nowiki>CURRENTDAY}}&mdash; увогуле, усё ўнутры падвойных фігурных дужак.
 Гэта адбываецца праз вызаў адпаведнага парсэра апрацоўшчыка MediaWiki.',
-	'expand_templates_title' => 'Загаловак старонкі, для {{PAGENAME}} і г.д.:',
+	'expand_templates_title' => 'Загаловак старонкі, для {{FULLPAGENAME}} і г.д.:',
 	'expand_templates_input' => 'Крынічны тэкст:',
 	'expand_templates_output' => 'Вынік',
 	'expand_templates_xml_output' => 'вынік у фармаце XML',
@@ -272,7 +272,7 @@ $messages['be-tarask'] = array(
  */
 $messages['bg'] = array(
 	'expandtemplates' => 'Разгръщане на шаблони',
-	'expand_templates_title' => 'Заглавие на страницата (напр. за {{PAGENAME}}):',
+	'expand_templates_title' => 'Заглавие на страницата (напр. за {{FULLPAGENAME}}):',
 	'expand_templates_input' => 'Входящ текст:',
 	'expand_templates_output' => 'Резултат',
 	'expand_templates_xml_output' => 'Изход на XML',
@@ -296,7 +296,7 @@ $messages['bn'] = array(
 <nowiki>{{</nowiki>#if:...}}-এর মত পার্সার ফাংশন,
 <nowiki>{{</nowiki>CURRENTDAY}}-এর মত ভ্যারিয়েবল &mdash; মোটকথা দ্বিতীয় বন্ধনীর মধ্যে অবস্থিত সবকিছুকেই সম্প্রসারিত করতে পারে।
 এটি সংশ্লিষ্ট পার্সার পর্যায় থেকে স্বয়ং মিডিয়াউইকিকে কল করে এই কাজটি করে থাকে।',
-	'expand_templates_title' => 'প্রাতিবেশিক শিরোনাম, {{PAGENAME}}, ইত্যাদির জন্য:',
+	'expand_templates_title' => 'প্রাতিবেশিক শিরোনাম, {{FULLPAGENAME}}, ইত্যাদির জন্য:',
 	'expand_templates_input' => 'ইনপুটকৃত লেখা:',
 	'expand_templates_output' => 'ফলাফল',
 	'expand_templates_xml_output' => 'XML আউটপুট',
@@ -318,7 +318,7 @@ Astenn a ra ivez an arc'hwelioù parser evel
 <nowiki>{{</nowiki>#if:…}}, hag an argemmoù evel
 <nowiki>{{</nowiki>CURRENTDAY}}&mdash; e gwirionez, koulz lavaret kement tra zo etre briataennoù.
 Ober a ra kement-mañ dre c'hervel ar bazenn a zegouezh digant parser MediaWiki e-unan.",
-	'expand_templates_title' => 'Titl ar gendestenn, evit {{PAGENAME}} h.a. :',
+	'expand_templates_title' => 'Titl ar gendestenn, evit {{FULLPAGENAME}} h.a. :',
 	'expand_templates_input' => 'Merkañ ho testenn amañ :',
 	'expand_templates_output' => "Disoc'h",
 	'expand_templates_xml_output' => 'Ezvont XML',
@@ -340,7 +340,7 @@ Ona također proširuje parserske funkcije poput
 <nowiki>{{</nowiki>#if:…}} i varijable poput
 <nowiki>{{</nowiki>CURRENTDAY}}&mdash;u principu gotovo sve između dvostrukih zagrada.
 Ovo se uradi putem poziva relevantnog parserskog nivoa iz same MediaWiki.',
-	'expand_templates_title' => 'Naslov konteksta, za {{PAGENAME}} itd.:',
+	'expand_templates_title' => 'Naslov konteksta, za {{FULLPAGENAME}} itd.:',
 	'expand_templates_input' => 'Tekst unosa:',
 	'expand_templates_output' => 'Rezultat',
 	'expand_templates_xml_output' => 'XML izlaz',
@@ -364,7 +364,7 @@ $messages['ca'] = array(
 	'expand_templates_intro' => "Aquesta pàgina especial expandeix de forma recursiva totes les plantilles d'un text donat.
 També expandeix les funcions sintàctiques, com ara <tt><nowiki>{{</nowiki>#if:…}}</tt>, i les variables predefinides, com <tt><nowiki>{{</nowiki>CURRENTDAY}}</tt> &mdash;de fet, gairebé tot que estigui entre claus dobles.
 Ho fa cridant el nivell sintàctic pertinent del mateix MediaWiki.",
-	'expand_templates_title' => 'Títol per contextualitzar ({{PAGENAME}}, etc):',
+	'expand_templates_title' => 'Títol per contextualitzar ({{FULLPAGENAME}}, etc):',
 	'expand_templates_input' => 'El vostre text:',
 	'expand_templates_output' => 'Resultat:',
 	'expand_templates_xml_output' => 'Sortida XML',
@@ -400,7 +400,7 @@ $messages['cs'] = array(
 	'expandtemplates' => 'Substituce šablon',
 	'expandtemplates-desc' => '[[Special:ExpandTemplates|Rozbaluje šablony, funkce parseru a proměnné]], načež zobrazí výsledný wikitext a náhled stránky',
 	'expand_templates_intro' => 'Pomocí této speciální stránky můžete nechat v textu substituovat všechny šablony a funkce parseru jako <code><nowiki>{{</nowiki>#if:…...}}</code> či proměnné jako <code><nowiki>{{</nowiki>CURRENTDAY}}</code> – tzn. prakticky všechno v dvojitých složených závorkách. K tomu se používají přímo odpovídající funkce parseru MediaWiki.',
-	'expand_templates_title' => 'Název stránky kvůli kontextu pro {{PAGENAME}} apod.:',
+	'expand_templates_title' => 'Název stránky kvůli kontextu pro {{FULLPAGENAME}} apod.:',
 	'expand_templates_input' => 'Vstupní text:',
 	'expand_templates_output' => 'Výstup',
 	'expand_templates_xml_output' => 'Výstup XML',
@@ -423,7 +423,7 @@ $messages['da'] = array(
 Den udfolder også specielle oversætterfunktioner såsom <nowiki>{{#if:...}}</nowiki> samt variabler såsom <nowiki>{{CURRENTDAY}}</nowiki> –
 faktisk folder den næsten hvad som helst i dobbelte krøllede parenteser ud.
 Den gør det ved at kalde det relevante analysetrin i MediaWiki-softwaren.',
-	'expand_templates_title' => 'Titlen på siden som {{PAGENAME}} og tilsvarende skal tolkes ud fra:',
+	'expand_templates_title' => 'Titlen på siden som {{FULLPAGENAME}} og tilsvarende skal tolkes ud fra:',
 	'expand_templates_input' => 'Inputtekst:',
 	'expand_templates_output' => 'Resultat',
 	'expand_templates_xml_output' => 'XML-kode',
@@ -444,7 +444,7 @@ $messages['de'] = array(
 	'expandtemplates' => 'Vorlagen expandieren',
 	'expandtemplates-desc' => 'Ergänzt eine [[Special:ExpandTemplates|Spezialseite]] zum Anzeigen von Vorlagen, Parserfunktionen und Variablen in Wikitext und zeigt deren Vorschau',
 	'expand_templates_intro' => 'In diese Spezialseite kann Text eingegeben werden und alle Vorlagen in ihr werden rekursiv expandiert. Auch Parserfunktionen wie <code><nowiki>{{</nowiki>#if:…}}</code> und Variablen wie <code><nowiki>{{</nowiki>CURRENTDAY}}</code> werden ausgewertet - faktisch alles was in doppelten geschweiften Klammern enthalten ist. Dies geschieht durch den Aufruf der jeweiligen Parser-Phasen in MediaWiki.',
-	'expand_templates_title' => 'Kontexttitel, für {{PAGENAME}} etc.:',
+	'expand_templates_title' => 'Kontexttitel, für {{FULLPAGENAME}} etc.:',
 	'expand_templates_input' => 'Eingabefeld:',
 	'expand_templates_output' => 'Ergebnis',
 	'expand_templates_xml_output' => 'XML-Ausgabe',
@@ -466,7 +466,7 @@ $messages['diq'] = array(
 U hem zi nê fonksiyonan hêra keno
 <nowiki>{{</nowiki>#if:…}}, u zey nê parametreyan
 <nowiki>{{</nowiki>CURRENTDAY}}&mdash;',
-	'expand_templates_title' => 'sernameyê weziyeti, misal qey {{PAGENAME}}.:',
+	'expand_templates_title' => 'sernameyê weziyeti, misal qey {{FULLPAGENAME}}.:',
 	'expand_templates_input' => 'sernameyê cıkewtışi:',
 	'expand_templates_output' => 'netice',
 	'expand_templates_xml_output' => 'XML vıraştış',
@@ -484,7 +484,7 @@ $messages['dsb'] = array(
 	'expandtemplates' => 'Pśedłogi ekspanděrowaś',
 	'expandtemplates-desc' => '[[Special:ExpandTemplates|Ekspanděrujo pśedłogi, parserowe funkcije a wariable]], aby dopołny wikitekst pokazał a woblicony pśeglěd zwobraznił',
 	'expand_templates_intro' => 'Na toś tom boku dajo se tekst zapódaś a wšykne pśedłogi na njom se rekursiwnje ekspanděruju. Teke parserowe funkcije kaž <nowiki>{{</nowiki>#if:…}} a wariable kaž <nowiki>{{</nowiki>CURRENTDAY}} se ekspanděruju - faktiski wšo, což stoj mjazy dwójnymi wugibnjonymi spinkami. To stawa se pśez zawołanje daneje parseroweje faze z MediaWiki.',
-	'expand_templates_title' => 'Kontekstowy titel, za {{PAGENAME}} atd.',
+	'expand_templates_title' => 'Kontekstowy titel, za {{FULLPAGENAME}} atd.',
 	'expand_templates_input' => 'Zapódany tekst:',
 	'expand_templates_output' => 'Wuslědk',
 	'expand_templates_xml_output' => 'Wudany XML',
@@ -517,7 +517,7 @@ $messages['el'] = array(
 <nowiki>{{</nowiki>#if:…}}, και μεταβλητές όπως η<br />
 <nowiki>{{</nowiki>CURRENTDAY}}&mdash;Ουσιαστικά τα πάντα σε διπλές αγκύλες.<br />
 Αυτό το κάνει καλώντας το σχετικό στάδιο του συντακτικού αναλυτή από το MediaWiki αυτό καθαυτό.',
-	'expand_templates_title' => 'Τίτλων συμφραζόμενων, για την {{PAGENAME}} κ.τ.λ.:',
+	'expand_templates_title' => 'Τίτλων συμφραζόμενων, για την {{FULLPAGENAME}} κ.τ.λ.:',
 	'expand_templates_input' => 'Κείμενο εισόδου:',
 	'expand_templates_output' => 'Αποτέλεσμα',
 	'expand_templates_xml_output' => 'Έξοδος XML',
@@ -540,7 +540,7 @@ $messages['eo'] = array(
 <nowiki>{{</nowiki>#if:…}}, variablojn kiel
 <nowiki>{{</nowiki>CURRENTDAY}}&mdash;fakte preskaŭ iujn ajn en duoblaj krampoj.
 Ĝi faras tion per vokado de la koncerna sintaksa kodpeco de MediaWiki mem.',
-	'expand_templates_title' => 'Kunteksta titolo, por {{PAGENAME}}, ktp.:',
+	'expand_templates_title' => 'Kunteksta titolo, por {{FULLPAGENAME}}, ktp.:',
 	'expand_templates_input' => 'Enigita teksto:',
 	'expand_templates_output' => 'Rezulto',
 	'expand_templates_xml_output' => 'XML-eligo',
@@ -566,7 +566,7 @@ $messages['es'] = array(
 También expande las funciones sintácticas como <nowiki>{{</nowiki>#if:…}} y variables como
 <nowiki>{{</nowiki>CURRENTDAY}}. De hecho, expande casi cualquier cosa que esté entre llaves dobles.
 Lo hace llamando al nivel del analizador sintáctico correspondiente del propio MediaWiki.',
-	'expand_templates_title' => 'Título de la página, útil para expandir {{PAGENAME}} o similares',
+	'expand_templates_title' => 'Título de la página, útil para expandir {{FULLPAGENAME}} o similares',
 	'expand_templates_input' => 'Texto a expandir:',
 	'expand_templates_output' => 'Resultado:',
 	'expand_templates_xml_output' => 'Salida XML',
@@ -587,7 +587,7 @@ $messages['et'] = array(
 	'expand_templates_intro' => 'See erileht mahutab natuke teksti ja laiendab tekstis kõik mallid nende lähtekoodideks.
 Samuti laiendab see parserifunktsioonid nagu <nowiki>{{</nowiki>#if:…}} ja muutujad nagu <nowiki>{{</nowiki>CURRENTDAY}} – teisisõnu enamvähem kõik, mis jääb looksulgude vahele.
 Selleks kutsub lehekülg MediaWikist asjassepuutuva parserijärgu.',
-	'expand_templates_title' => 'Sisu pealkiri, näiteks {{PAGENAME}} jaoks:',
+	'expand_templates_title' => 'Sisu pealkiri, näiteks {{FULLPAGENAME}} jaoks:',
 	'expand_templates_input' => 'Sisendtekst:',
 	'expand_templates_output' => 'Tulemus',
 	'expand_templates_xml_output' => 'XML-väljund',
@@ -604,7 +604,7 @@ Selleks kutsub lehekülg MediaWikist asjassepuutuva parserijärgu.',
 $messages['eu'] = array(
 	'expandtemplates' => 'Txantiloi ordezkatzailea',
 	'expand_templates_intro' => 'Aparteko orrialde honek modu errekurtsiboan txantiloiak ordezkatu egiten ditu. Funtzioak ere ordezkatu egiten ditu, hala nola <nowiki>{{</nowiki>#if:...}}, eta baita <nowiki>{{</nowiki>CURRENTDAY}} bezalako aldagaiak ere.',
-	'expand_templates_title' => 'Izenburua ({{PAGENAME}} ordezkatzeko, eta abar):',
+	'expand_templates_title' => 'Izenburua ({{FULLPAGENAME}} ordezkatzeko, eta abar):',
 	'expand_templates_input' => 'Sarrerako testua:',
 	'expand_templates_output' => 'Emaitza',
 	'expand_templates_xml_output' => 'XML irteera',
@@ -630,7 +630,7 @@ $messages['fa'] = array(
 	'expandtemplates' => 'بسط‌دادن الگوها',
 	'expandtemplates-desc' => 'الگوها، دستورهای تجزیه‌کننده و متغیرها را گسترش می‌دهد تا متن نهایی را نمایش دهد و صفحه را به پیش‌نمایش در آورد',
 	'expand_templates_intro' => 'این صفحهٔ ویژه متنی را دریافت کرده و تمام الگوهای به‌کاررفته در آن را به طور بازگشتی بسط می‌دهد. همچنین تابع‌های تجزیه چون <nowiki>{{</nowiki>#if:...}} و متغیرهایی چون  <nowiki>{{</nowiki>CURRENTDAY}} را هم بسط می‌دهد — در واقع تقریباً هرچه را که داخل دوآکولاد باشد. این کار با صدازدن مرحلهٔ تجزیهٔ مربوط در خود مدیاویکی صورت می‌گیرد.',
-	'expand_templates_title' => 'عنوان موضوع، برای {{PAGENAME}} و غیره:',
+	'expand_templates_title' => 'عنوان موضوع، برای {{FULLPAGENAME}} و غیره:',
 	'expand_templates_input' => 'متن ورودی:',
 	'expand_templates_output' => 'نتیجه',
 	'expand_templates_xml_output' => 'خروجی XML',
@@ -650,7 +650,7 @@ $messages['fi'] = array(
 	'expandtemplates' => 'Mallineiden laajennus',
 	'expandtemplates-desc' => '[[Special:ExpandTemplates|Laajentaa mallineet, jäsentimen funktiot sekä muuttujat]] wikitekstiksi sekä näyttää esikatseluversion laajennetusta sivusta.',
 	'expand_templates_intro' => 'Tämä toimintosivu ottaa syötteekseen tekstiä ja laajentaa kaikki mallineet rekursiivisesti sekä jäsenninfunktiot, kuten <nowiki>{{</nowiki>#if:...}}, ja -muuttujat, kuten <nowiki>{{</nowiki>CURRENTDAY}} &mdash; toisin sanoen melkein kaiken, joka on kaksoisaaltosulkeiden sisällä.',
-	'expand_templates_title' => 'Otsikko (esimerkiksi muuttujaa {{PAGENAME}} varten)',
+	'expand_templates_title' => 'Otsikko (esimerkiksi muuttujaa {{FULLPAGENAME}} varten)',
 	'expand_templates_input' => 'Teksti',
 	'expand_templates_output' => 'Tulos',
 	'expand_templates_xml_output' => 'XML-tuloste',
@@ -686,7 +686,7 @@ Elle réalise aussi l’expansion des fonctions du parseur telles que
 <tt><nowiki>{{</nowiki>#if:...<nowiki>}}</nowiki></tt>  et des variables prédéfinies telles que
 <tt><nowiki>{{</nowiki>CURRENTDAY<nowiki>}}</nowiki></tt> — en fait pratiquement tout ce qui est encadré par des doubles accolades.
 Elle réalise ceci en appelant les étages successifs appropriés du parseur de MediaWiki lui-même.',
-	'expand_templates_title' => 'Titre de la page, si le code utilise {{PAGENAME}}, etc. :',
+	'expand_templates_title' => 'Titre de la page, si le code utilise {{FULLPAGENAME}}, etc. :',
 	'expand_templates_input' => 'Texte wiki source :',
 	'expand_templates_output' => 'Texte wiki obtenu après expansion',
 	'expand_templates_xml_output' => 'Résultat intermédiaire de l’analyse, au format XML',
@@ -708,7 +708,7 @@ Rèalise asse-ben l’èxpension de les fonccions du parsor coment
 <tt><nowiki>{{</nowiki>#if:...<nowiki>}}</nowiki></tt> et de les variâbles prèdèfenies coment
 <tt><nowiki>{{</nowiki>CURRENTDAY<nowiki>}}</nowiki></tt> — en veré praticament tot cen qu’est encâdrâ per des dobles colâdes.
 Rèalise cen en apelent los étâjos succèssifs que vont avouéc du parsor de MediaWiki lui-mémo.',
-	'expand_templates_title' => 'Titro de la pâge, se lo code utilise {{PAGENAME}}, etc. :',
+	'expand_templates_title' => 'Titro de la pâge, se lo code utilise {{FULLPAGENAME}}, etc. :',
 	'expand_templates_input' => 'Vouiquitèxto sôrsa :',
 	'expand_templates_output' => 'Rèsultat',
 	'expand_templates_xml_output' => 'Rèsultat u format XML',
@@ -747,7 +747,7 @@ $messages['gl'] = array(
 Tamén expande as funcións de análise como <nowiki>{{</nowiki>#if:…}} e variables como
 <nowiki>{{</nowiki>CURRENTDAY}} (de feito, case calquera cousa entre chaves duplas).
 Faino chamando a etapa de análise correspondente do propio MediaWiki.',
-	'expand_templates_title' => 'Título do contexto, para {{PAGENAME}}, etc.:',
+	'expand_templates_title' => 'Título do contexto, para {{FULLPAGENAME}}, etc.:',
 	'expand_templates_input' => 'Texto de entrada:',
 	'expand_templates_output' => 'Resultado',
 	'expand_templates_xml_output' => 'saída XML',
@@ -776,7 +776,7 @@ $messages['gsw'] = array(
 	'expandtemplates' => 'Vorlage expandiere',
 	'expandtemplates-desc' => '[[Special:ExpandTemplates|Expandiert Vorlage, Parser-Funktione un Variable]] zue vollständigem Wikitext un zeigt di grendert Vorschau',
 	'expand_templates_intro' => 'In däre Spezialsyte cha Täxt yygee wäre und alli Vorlage in ere wäre rekursiv expandiert. Au Parserfunkione wie <nowiki>{{</nowiki>#if:…}} un Variable wie <nowiki>{{</nowiki>CURRENTDAY}} wäre usgwärtet - faktisch alles was in dopplete gschweifte Chlammere din isch. Des gschiht dur dr Ufruef vu dr jewyylige Parser-Phase in MediaWiki.',
-	'expand_templates_title' => 'Kontexttitel, fir {{PAGENAME}} etc.:',
+	'expand_templates_title' => 'Kontexttitel, fir {{FULLPAGENAME}} etc.:',
 	'expand_templates_input' => 'Yygabfäld:',
 	'expand_templates_output' => 'Ergebnis',
 	'expand_templates_xml_output' => 'XML-Usgab',
@@ -818,7 +818,7 @@ $messages['he'] = array(
 	'expandtemplates' => 'פריסת תבניות',
 	'expandtemplates-desc' => '[[Special:ExpandTemplates|פריסת תבניות, הוראות תנאי ומשתנים]] כדי להציג את טקסט הוויקי הפרוס ולבצע תצוגה מקדימה של דף מפוענח',
 	'expand_templates_intro' => 'דף זה מקבל כמות מסוימת של טקסט ופורס ומפרש את כל התבניות שבתוכו באופן רקורסיבי. בנוסף, הוא פורס הוראות פירוש כגון <nowiki>{{</nowiki>#תנאי:...}}, ומשתנים כגון <nowiki>{{</nowiki>יום נוכחי}}, ולמעשה פחות או יותר כל דבר בסוגריים מסולסלות כפולות. הוא עושה זאת באמצעות קריאה לפונקציות הפענוח המתאימות מתוך תוכנת מדיה־ויקי עצמה.',
-	'expand_templates_title' => 'כותרת ההקשר לפענוח, בשביל משתנים כגון {{PAGENAME}} וכדומה:',
+	'expand_templates_title' => 'כותרת ההקשר לפענוח, בשביל משתנים כגון {{FULLPAGENAME}} וכדומה:',
 	'expand_templates_input' => 'טקסט:',
 	'expand_templates_output' => 'תוצאה',
 	'expand_templates_xml_output' => 'פלט XML',
@@ -841,7 +841,7 @@ $messages['hi'] = array(
 <nowiki>{{</nowiki>#if:…}}, और परिवर्तियों को, जैसे -
 <nowiki>{{</nowiki>तत्कालीनदिन}}&mdash; वास्तव में दोहरे-कोष्टक में लगभग सभी को फैलाता है।
 यह मीडियाविकी ही से संबंधित प्रेजर स्तर को बुलाकर कार्य करता है।',
-	'expand_templates_title' => '{{PAGENAME}} इ. के लिये, कन्टेक्स्ट शीर्षक:',
+	'expand_templates_title' => '{{FULLPAGENAME}} इ. के लिये, कन्टेक्स्ट शीर्षक:',
 	'expand_templates_input' => 'इनपुट पाठ:',
 	'expand_templates_output' => 'रिज़ल्ट',
 	'expand_templates_xml_output' => 'XML आउटपुट',
@@ -871,7 +871,7 @@ $messages['hr'] = array(
 uključujući i (rekurzivno, tj. potpuno) sve uključene predloške u wikitekstu.
 Prikazuje i rezultate funkcija kao <nowiki>{{</nowiki>#if:...}} i varijabli
 kao <nowiki>{{</nowiki>CURRENTDAY}}. Funkcionira pozivanjem parsera same MedijeWiki.',
-	'expand_templates_title' => 'Kontekstni naslov stranice, za {{PAGENAME}} i sl.:',
+	'expand_templates_title' => 'Kontekstni naslov stranice, za {{FULLPAGENAME}} i sl.:',
 	'expand_templates_input' => 'Ulazni tekst:',
 	'expand_templates_output' => 'Rezultat',
 	'expand_templates_xml_output' => 'XML kod',
@@ -889,7 +889,7 @@ $messages['hsb'] = array(
 	'expandtemplates' => 'Předłohi ekspandować',
 	'expandtemplates-desc' => 'Rozšěrja předłohi, parserowe funkcije a wariable, zo by so rozšěrjeny wikitekst pokazał a wobličena strona zwobrazniła',
 	'expand_templates_intro' => 'Na tutej specialnej stronje móžeš tekst zapodać a wšitke do njeje zapřijate předłohi so rekursiwnje ekspanduja. Tež funkcije parsera kaž <nowiki>{{</nowiki>#if:...}} a wariable kaž <nowiki>{{</nowiki>CURRENTDAY}} so wuhódnočeja – faktisce wšo, štož steji mjezy dwójnymaj wopušatymaj spinkomaj. To so přez zawołanje jednotliwych fazow parsera software MediaWiki stawa.',
-	'expand_templates_title' => 'Kontekstowy titul, za {{PAGENAME}} atd.:',
+	'expand_templates_title' => 'Kontekstowy titul, za {{FULLPAGENAME}} atd.:',
 	'expand_templates_input' => 'Tekst zapodać:',
 	'expand_templates_output' => 'Wuslědk',
 	'expand_templates_xml_output' => 'Wudaće XML',
@@ -910,7 +910,7 @@ $messages['hu'] = array(
 	'expandtemplates-desc' => '[[Special:ExpandTemplates|Kiértékeli a sablonokat, az értelmező-funkciókat és a változókat]], így megtekinthető a kész wikiszöveg, valamint az oldal',
 	'expand_templates_intro' => 'Ez a speciális lap a bevitt szövegekben megkeresi a sablonokat és rekurzívan kibontja őket.
 Kibontja az elemző függvényeket (pl. <nowiki>{{</nowiki>#if:...}}), és a változókat (pl. <nowiki>{{</nowiki>CURRENTDAY}}) is – mindent, ami a kettős kapcsos zárójelek között van.',
-	'expand_templates_title' => 'Szöveg címe, például {{PAGENAME}} sablonhoz:',
+	'expand_templates_title' => 'Szöveg címe, például {{FULLPAGENAME}} sablonhoz:',
 	'expand_templates_input' => 'Vizsgálandó szöveg',
 	'expand_templates_output' => 'Eredmény',
 	'expand_templates_xml_output' => 'XML kimenet',
@@ -939,7 +939,7 @@ Illo expande etiam le functiones del analysator syntactic como
 <nowiki>{{</nowiki>#if:…}}, e variabiles como
 <nowiki>{{</nowiki>CURRENTDAY}}; de facto, quasi toto inter accolladas duple.
 Illo functiona per appellar le stadio relevante del analysator syntactic a partir de MediaWiki mesme.',
-	'expand_templates_title' => 'Titulo de contexto, pro {{PAGENAME}} etc.:',
+	'expand_templates_title' => 'Titulo de contexto, pro {{FULLPAGENAME}} etc.:',
 	'expand_templates_input' => 'Texto de entrata:',
 	'expand_templates_output' => 'Resultato',
 	'expand_templates_xml_output' => 'Output XML',
@@ -959,7 +959,7 @@ $messages['id'] = array(
 	'expandtemplates' => 'Pengembangan templat',
 	'expandtemplates-desc' => '[[Special:ExpandTemplates|Mengembangkan templat, fungsi parser dan variables]] untuk menunjukkan hasil teks wiki dan pratayang halaman hasilnya',
 	'expand_templates_intro' => 'Halaman istimewa ini menerima teks dan mengembangkan semua templat di dalamnya secara rekursif. Halaman ini juga menerjemahkan semua fungsi parser seperti <nowiki>{{</nowiki>#if:...}}, dan variabel seperti <nowiki>{{</nowiki>CURRENTDAY}}&mdash;bahkan bisa dibilang segala sesuatu yang berada di antara dua tanda kurung. Ini dilakukan dengan memanggil tahapan parser yang sesuai dari MediaWiki.',
-	'expand_templates_title' => 'Judul konteks, untuk {{PAGENAME}} dan lain-lain:',
+	'expand_templates_title' => 'Judul konteks, untuk {{FULLPAGENAME}} dan lain-lain:',
 	'expand_templates_input' => 'Teks masukan:',
 	'expand_templates_output' => 'Hasil',
 	'expand_templates_xml_output' => 'Hasil XML',
@@ -1005,7 +1005,7 @@ $messages['it'] = array(
 	'expandtemplates' => 'Espansione dei template',
 	'expandtemplates-desc' => "[[Special:ExpandTemplates|Espande i template, le funzioni del parser e le variabili]] per mostrare il wikitesto espanso e visualizzare un'anteprima della pagina nella sua forma finale",
 	'expand_templates_intro' => 'Questa pagina speciale elabora un testo espandendo tutti i template presenti. Calcola inoltre il risultato delle funzioni supportate dal parser come <nowiki>{{</nowiki>#if:...}} e delle variabili di sistema quali <nowiki>{{</nowiki>CURRENTDAY}}, ovvero praticamente tutto ciò che si trova tra doppie parentesi graffe. Funziona richiamando le opportune funzioni del parser di MediaWiki.',
-	'expand_templates_title' => 'Contesto (per {{PAGENAME}} ecc.):',
+	'expand_templates_title' => 'Contesto (per {{FULLPAGENAME}} ecc.):',
 	'expand_templates_input' => 'Testo da espandere:',
 	'expand_templates_output' => 'Risultato',
 	'expand_templates_xml_output' => 'Output in formato XML',
@@ -1025,7 +1025,7 @@ $messages['ja'] = array(
 	'expandtemplates' => 'テンプレートを展開',
 	'expandtemplates-desc' => '[[Special:ExpandTemplates|テンプレート・パーサー関数・変数を展開し]]、展開されたウィキテキストと生成されたプレビューページを表示する',
 	'expand_templates_intro' => 'この特別ページは入力したテキストに含まれているすべてのテンプレートを再帰的に展開します。<nowiki>{{</nowiki>#if:…}} のようなパーサー関数や、<nowiki>{{</nowiki>CURRENTDAY}} のような変数など、<nowiki>{{</nowiki> ～ }} で囲まれているほとんどのものを展開します。この機能は、MediaWiki 自身から関連する構文解析段階を呼び出すことで実現されています。',
-	'expand_templates_title' => '{{PAGENAME}} などの評価を行うページの名前:',
+	'expand_templates_title' => '{{FULLPAGENAME}} などの評価を行うページの名前:',
 	'expand_templates_input' => '展開するテキスト',
 	'expand_templates_output' => '展開結果',
 	'expand_templates_xml_output' => 'XML出力',
@@ -1062,7 +1062,7 @@ Kaca iki uga ngembangaké fungsi parser kaya ta
 <nowiki>{{</nowiki>#if:…}}, lan variabel kaya ta
 <nowiki>{{</nowiki>CURRENTDAY}}&mdash;sajatiné mèh kabèh sing ana ing antara rong tandha kurung akolade.
 Perkara iki dilakokaké caranémawa nyeluk tahapan parser sing rélévan saka MediaWiki dhéwé.',
-	'expand_templates_title' => 'Irah-irahan kontèks, kanggo {{PAGENAME}} lan sabanjuré:',
+	'expand_templates_title' => 'Irah-irahan kontèks, kanggo {{FULLPAGENAME}} lan sabanjuré:',
 	'expand_templates_input' => 'Tèks sumber:',
 	'expand_templates_output' => 'Pituwas (kasil)',
 	'expand_templates_xml_output' => 'Pituwas XML',
@@ -1077,7 +1077,7 @@ Perkara iki dilakokaké caranémawa nyeluk tahapan parser sing rélévan saka Me
  */
 $messages['ka'] = array(
 	'expandtemplates' => 'გაშლილი თარგები',
-	'expand_templates_title' => 'კონტექსტის სათაური, {{PAGENAME}}-სთვის და ა.შ.:',
+	'expand_templates_title' => 'კონტექსტის სათაური, {{FULLPAGENAME}}-სთვის და ა.შ.:',
 	'expand_templates_input' => 'შესაყვანი ტექსტი:',
 	'expand_templates_output' => 'შედეგი',
 	'expand_templates_ok' => 'OK',
@@ -1093,7 +1093,7 @@ $messages['kk-arab'] = array(
 مىنا <nowiki>{{#if:...}} سىيياقتى جوڭدەتۋ فۋنكتسىييالارىن دا, جانە {{CURRENTDAY}}
 سىيياقتى اينامالىلارىن دا ۇلعايتادى (ناقتى ايتقاندا, قوس قابات ساداق جاقشالار اراسىنداعى بارلىعىن).
 بۇنى ٴوز MediaWiki باعدارلاماسىنان قاتىستى جوڭدەتۋ ساتىن شاقىرىپ ىستەلىنەدى.',
-	'expand_templates_title' => 'ٴماتىن ارالىق اتاۋى ({{PAGENAME}} ت.ب. بەتتەر ٴۇشىن):',
+	'expand_templates_title' => 'ٴماتىن ارالىق اتاۋى ({{FULLPAGENAME}} ت.ب. بەتتەر ٴۇشىن):',
 	'expand_templates_input' => 'كىرىس ٴماتىنى:',
 	'expand_templates_output' => 'ناتىيجەسى',
 	'expand_templates_xml_output' => 'XML شىعارۋى',
@@ -1111,7 +1111,7 @@ $messages['kk-cyrl'] = array(
 Мына <nowiki>{{</nowiki>#if:...}} сияқты жөңдету функцияларын да, және <nowiki>{{</nowiki>CURRENTDAY}}
 сияқты айнамалыларын да ұлғайтады (нақты айтқанда, қос қабат садақ жақшалар арасындағы барлығын).
 Бұны өз MediaWiki бағдарламасынан қатысты жөңдету сатын шақырып істелінеді.',
-	'expand_templates_title' => 'Мәтін аралық атауы ({{PAGENAME}} т.б. беттер үшін):',
+	'expand_templates_title' => 'Мәтін аралық атауы ({{FULLPAGENAME}} т.б. беттер үшін):',
 	'expand_templates_input' => 'Кіріс мәтіні:',
 	'expand_templates_output' => 'Нәтижесі',
 	'expand_templates_xml_output' => 'XML шығаруы',
@@ -1129,7 +1129,7 @@ bunıñ işindegi barlıq kiriktelgen ülgilerdi meýlinşe ulğaýtadı.
 Mına <nowiki>{{</nowiki>#if:...}} sïyaqtı jöñdetw fwnkcïyaların da, jäne <nowiki>{{</nowiki>CURRENTDAY}}
 sïyaqtı aýnamalıların da ulğaýtadı (naqtı aýtqanda, qos qabat sadaq jaqşalar arasındağı barlığın).
 Bunı öz MediaWiki bağdarlamasınan qatıstı jöñdetw satın şaqırıp istelinedi.',
-	'expand_templates_title' => 'Mätin aralıq atawı ({{PAGENAME}} t.b. better üşin):',
+	'expand_templates_title' => 'Mätin aralıq atawı ({{FULLPAGENAME}} t.b. better üşin):',
 	'expand_templates_input' => 'Kiris mätini:',
 	'expand_templates_output' => 'Nätïjesi',
 	'expand_templates_xml_output' => 'XML şığarwı',
@@ -1171,7 +1171,7 @@ $messages['ko'] = array(
 	'expand_templates_intro' => '이 특수문서는 글의 모든 틀을 끝까지 풀어 줍니다.
 <nowiki>{{</nowiki>#if:…}} 같은 파서 함수나 <nowiki>{{</nowiki>CURRENTDAY}} 같은 변수를 포함해 두개의 중괄호 사이에 있는 것은 모두 풀어줍니다.
 미디어위키의 자체 파서로 작동합니다.',
-	'expand_templates_title' => '문서 이름 ({{PAGENAME}} 등):',
+	'expand_templates_title' => '문서 이름 ({{FULLPAGENAME}} 등):',
 	'expand_templates_input' => '전개할 내용:',
 	'expand_templates_output' => '결과',
 	'expand_templates_xml_output' => 'XML 출력',
@@ -1204,7 +1204,7 @@ $messages['ksh'] = array(
 	'expandtemplates' => 'Schablone üvverpröfe',
 	'expandtemplates-desc' => '[[Special:ExpandTemplates|Schablone, Parserfunktione un Variable oplöse]] un dä komplette Wikitex aanzeije',
 	'expand_templates_intro' => 'Hee kanns de en Schablon usprobeere. Do jiss ene Oprof en, un dann kriss De dä komplett opjelös, och all die ennedren widder opjerofe Schablone, Parameter, Funktione, spezielle Name, un esu, bes nix mieh üvverich es, wat mer noch oplöse künnt. Wann jet en <nowiki>{{ … }} Klammere üvverbliet, dann wor et unbekannt. Do passeet jenau et selve wie söns em Wiki och, nor dat De hee tirek ze sinn kriss wat erus kütt.',
-	'expand_templates_title' => 'Dä Siggetitel, also wat för {{PAGENAME}} uew. enjeföllt weed:',
+	'expand_templates_title' => 'Dä Siggetitel, also wat för {{FULLPAGENAME}} uew. enjeföllt weed:',
 	'expand_templates_input' => 'Wat De üvverpröfe wells:',
 	'expand_templates_output' => 'Wat erus kütt es',
 	'expand_templates_xml_output' => 'XML ußjevve',
@@ -1242,7 +1242,7 @@ $messages['lb'] = array(
 Och Parserfonctioune wéi <nowiki>{{</nowiki>#if:…}} a Variabele wéi 
 <nowiki>{{</nowiki>CURRENTDAY}} ginn ausgewäert&mdash; faktesch alles wat duebelen Accolade steet.
 Dat geschitt duerch d'Oprufe vun de jeeweilege Parser-Phase vu MediaWiki selwer.",
-	'expand_templates_title' => 'Titel vun der Säit, dëst kann nëtzlech si wa(nn) {{PAGENAME}} benotzt gëtt:',
+	'expand_templates_title' => 'Titel vun der Säit, dëst kann nëtzlech si wa(nn) {{FULLPAGENAME}} benotzt gëtt:',
 	'expand_templates_input' => 'Gitt ären Text hei an:',
 	'expand_templates_output' => 'Resultat',
 	'expand_templates_xml_output' => 'Resultat als XML',
@@ -1269,7 +1269,7 @@ $messages['li'] = array(
 	'expandtemplates-desc' => "Substitueert sjablone, parserfunctions, variabele en toent wikiteksti en 'n controleversioe van 'n pagina",
 	'expand_templates_intro' => "Dees speciaal pazjena laes de ingegaeve teks in en plektj (mitte functie subst) recursief alle sjablone in de teks. 't Plek ouch alle parserfuncties wie <nowiki>{{</nowiki>#if:...}} en variabele wie <nowiki>{{</nowiki>CURRENTDAY}} - vriejwaal al tösse dóbbel accolades.
 Hiej veur waere de relevante functies van de MediaWiki-parser gebroek.",
-	'expand_templates_title' => 'Contekstitel, veur {{PAGENAME}}, etc:',
+	'expand_templates_title' => 'Contekstitel, veur {{FULLPAGENAME}}, etc:',
 	'expand_templates_input' => 'Inlaajteks:',
 	'expand_templates_output' => 'Rezultaot',
 	'expand_templates_xml_output' => 'XML-oetveur',
@@ -1321,7 +1321,7 @@ $messages['mk'] = array(
 <nowiki>{{</nowiki>#if:…}}, и променливи како
 <nowiki>{{</nowiki>CURRENTDAY}}&mdash;всушност сето она што е во двојни големи загради.
 Ова го врши со повикување на релевантната парсерска етапа од самиот МедијаВики.',
-	'expand_templates_title' => 'Наслов на контекстот, за {{PAGENAME}} и тн.:',
+	'expand_templates_title' => 'Наслов на контекстот, за {{FULLPAGENAME}} и тн.:',
 	'expand_templates_input' => 'Влезен текст:',
 	'expand_templates_output' => 'Резултат',
 	'expand_templates_xml_output' => 'XML излез',
@@ -1344,7 +1344,7 @@ $messages['ml'] = array(
 <nowiki>{{</nowiki>ഈദിവസം}}&mdash; തുടങ്ങിയ ചരങ്ങളും, ഈ താൾ വികസിപ്പിക്കുന്നുണ്ട്.
 ചുരുക്കിപറഞ്ഞാൽ ഇരട്ട കോഷ്ഠകങ്ങളിലുള്ള എന്തിനേയും വികസിപ്പിക്കുന്നു.
 മീഡിയവിക്കിയിലെ ബന്ധപ്പെട്ട പാഴ്സർ സൗകര്യം ഉപയോഗിച്ചാണ് ഇത് സാദ്ധ്യമാക്കുന്നത്.',
-	'expand_templates_title' => '{{PAGENAME}} താളിന്റെ ഉള്ളടക്ക തലക്കെട്ട് മുതലായവ.:',
+	'expand_templates_title' => '{{FULLPAGENAME}} താളിന്റെ ഉള്ളടക്ക തലക്കെട്ട് മുതലായവ.:',
 	'expand_templates_input' => 'ഇൻപുട്ട് ടെക്സ്റ്റ്:',
 	'expand_templates_output' => 'ഫലം',
 	'expand_templates_xml_output' => 'XML ഔട്ട്പുട്ട്',
@@ -1376,7 +1376,7 @@ $messages['mr'] = array(
 <nowiki>{{</nowiki>#if:...}}, व बदलणार्‍या किमती (variables) जसे की
 <nowiki>{{</nowiki>CURRENTDAY}}&mdash;म्हणजेच दोन ब्रेसेसमधील सर्व मजकूर वाढविते.
 मीडियाविकिमधून पार्सर स्टेज मागवून हे केले जाते.',
-	'expand_templates_title' => '{{PAGENAME}} वगैरे करीता, कन्टेक्स्ट शीर्षक:',
+	'expand_templates_title' => '{{FULLPAGENAME}} वगैरे करीता, कन्टेक्स्ट शीर्षक:',
 	'expand_templates_input' => 'इनपुट मजकूर:',
 	'expand_templates_output' => 'निकाल',
 	'expand_templates_xml_output' => 'XML चे आऊटपुट',
@@ -1395,7 +1395,7 @@ $messages['ms'] = array(
 	'expandtemplates' => 'Kembangkan templat',
 	'expandtemplates-desc' => '[[Special:ExpandTemplates|Mengembangkan templat, fungsi penghurai dan pemboleh ubah]] untuk memaparkan teks wiki yang dikembangkan dan pralihat laman yang terhasil',
 	'expand_templates_intro' => 'Laman khas ini menerima sebarang teks dan mengembangkan semua templat di dalamnya secara rekursif. Laman ini juga mengembangkan fungsi penghurai seperti <nowiki>{{</nowiki>#if:…}} dan pemboleh ubah seperti <nowiki>{{</nowiki>CURRENTDAY}}&mdash;tentunya setiap benda dalam kurungan berganda. Proses ini dilakukan dengan memanggil tahap penghurai yang berkenaan dalam MediaWiki sendiri.',
-	'expand_templates_title' => 'Tajuk konteks, untuk {{PAGENAME}} dan sebagainya:',
+	'expand_templates_title' => 'Tajuk konteks, untuk {{FULLPAGENAME}} dan sebagainya:',
 	'expand_templates_input' => 'Teks input:',
 	'expand_templates_output' => 'Hasil',
 	'expand_templates_xml_output' => 'Output XML',
@@ -1446,7 +1446,7 @@ Ok Parserfunkschonen so as
 <nowiki>{{</nowiki>#if:…}}, un Variabeln so as
 <nowiki>{{</nowiki>CURRENTDAY}} warrt ümwannelt. Also so temlich allens, wat twischen swiefte Klammern steit.
 Dorto warrt de nödigen Parser-Phasen in MediaWiki direkt opropen.',
-	'expand_templates_title' => 'Kontexttitel, för {{PAGENAME}} etc.:',
+	'expand_templates_title' => 'Kontexttitel, för {{FULLPAGENAME}} etc.:',
 	'expand_templates_input' => 'Inputtext:',
 	'expand_templates_output' => 'Resultat',
 	'expand_templates_xml_output' => 'XML-Utgaav',
@@ -1462,7 +1462,7 @@ Dorto warrt de nödigen Parser-Phasen in MediaWiki direkt opropen.',
 $messages['nds-nl'] = array(
 	'expandtemplates' => 'Mallen substitueren',
 	'expand_templates_intro' => 'Op disse speciale pagina kan tekse in-evoerd wönnen en alle mallen derin wönnen recursief esubstitueerd. Oek parserfuncties zoas <nowiki>{{</nowiki>#if:...}} en variabelen zoas <nowiki>{{</nowiki>CURRENTDAY}} wönnen esubstitueerd - eigenlijks alles wat tussen dubbele krulhaken steet. Dit wönnen edaon deur de betreffende parserfuncties op te reupen vanuut de MediaWiki-pregrammetuur.',
-	'expand_templates_title' => 'Titel, veur {{PAGENAME}}, enz.:',
+	'expand_templates_title' => 'Titel, veur {{FULLPAGENAME}}, enz.:',
 	'expand_templates_input' => 'Invoertekse:',
 	'expand_templates_output' => 'Risseltaot',
 	'expand_templates_ok' => 'Oké',
@@ -1482,7 +1482,7 @@ substitueert recursief alle sjablonen in de tekst.
 Het substitueert ook alle parserfuncties zoals <nowiki>{{</nowiki>#if:…}} en
 variabelen als <nowiki>{{</nowiki>CURRENTDAY}} — vrijwel alles tussen dubbele accolades.
 Hiervoor worden de relevante functies van de MediaWiki-parser gebruikt.',
-	'expand_templates_title' => 'Contexttitel, voor {{PAGENAME}}, enzovoort:',
+	'expand_templates_title' => 'Contexttitel, voor {{FULLPAGENAME}}, enzovoort:',
 	'expand_templates_input' => 'Invoertekst:',
 	'expand_templates_output' => 'Resultaat',
 	'expand_templates_xml_output' => 'XML-uitvoer',
@@ -1505,7 +1505,7 @@ Ho utvider òg alle funksjonar som
 <nowiki>{{</nowiki>#if:…}}, og variablar som
 <nowiki>{{</nowiki>CURRENTDAY}}&mdash; bortimot alt som står i dobbelte klammeparentesar.
 Dette gjer ho ved å kalla dei relevante parsersetega frå MediaWiki sjølv.',
-	'expand_templates_title' => 'Konteksttittel, for {{PAGENAME}} etc.:',
+	'expand_templates_title' => 'Konteksttittel, for {{FULLPAGENAME}} etc.:',
 	'expand_templates_input' => 'Inntekst:',
 	'expand_templates_output' => 'Resultat',
 	'expand_templates_xml_output' => 'XML-resultat',
@@ -1524,7 +1524,7 @@ $messages['no'] = array(
 	'expandtemplates' => 'Utvid maler',
 	'expandtemplates-desc' => '[[Special:ExpandTemplates|Utvider maler, parserfunksjoner og variabler]] for å vise resultatråteksten og forhåndsvise siden slik den blir',
 	'expand_templates_intro' => 'Denne siden tar en tekst og utvider alle maler brukt i teksten. Den utvider også alle funksjoner som <nowiki>{{</nowiki>#if:…}}, og variabler som <nowiki>{{</nowiki>CURRENTDAY}}. <!--It does this by calling the relevant parser stage from MediaWiki itself.-->',
-	'expand_templates_title' => 'Konteksttittel, for {{PAGENAME}}, etc.:',
+	'expand_templates_title' => 'Konteksttittel, for {{FULLPAGENAME}}, etc.:',
 	'expand_templates_input' => 'Skriv inn tekst:',
 	'expand_templates_output' => 'Resultat',
 	'expand_templates_xml_output' => 'XML-resultat',
@@ -1549,7 +1549,7 @@ $messages['oc'] = array(
 	'expandtemplates' => 'Espandiment dels modèls',
 	'expandtemplates-desc' => 'Augmenta los modèls, las foncions parsairs e las variablas per visionar los tèxtes wikis espandits e previsualiza las paginas atal rendudas.',
 	'expand_templates_intro' => 'Aquesta pagina permet de testar l’espandiment de modèls, que son desvolopats recursivament. Las foncions e las variablas predefinidas, coma <nowiki>{{</nowiki>#if:...}} e <nowiki>{{</nowiki>CURRENTDAY}} tanben son desvolopadas.',
-	'expand_templates_title' => 'Títol de l’article, util per exemple se lo modèl utiliza {{PAGENAME}} :',
+	'expand_templates_title' => 'Títol de l’article, util per exemple se lo modèl utiliza {{FULLPAGENAME}} :',
 	'expand_templates_input' => 'Picatz vòstre tèxte aicí :',
 	'expand_templates_output' => 'Visualizatz lo resultat :',
 	'expand_templates_xml_output' => 'Sortida XML',
@@ -1597,7 +1597,7 @@ Rozwinięte także zostaną funkcje parsera takie jak
 <nowiki>{{</nowiki>#if...}} i zmienne jak 
 <nowiki>{{</nowiki>CURRENTDAY}} &ndash; w zasadzie prawie wszystko w podwójnych nawiasach klamrowych.
 Wykonywane jest to poprzez wywołanie odpowiedniego przebiegu (etapu) parsera z samego MediaWiki.',
-	'expand_templates_title' => 'Pozorny tytuł strony dla zmiennych takich jak {{PAGENAME}}',
+	'expand_templates_title' => 'Pozorny tytuł strony dla zmiennych takich jak {{FULLPAGENAME}}',
 	'expand_templates_input' => 'Tekst wejściowy',
 	'expand_templates_output' => 'Rezultat',
 	'expand_templates_xml_output' => 'wynik w formacie XML',
@@ -1620,7 +1620,7 @@ A l'analisa ëdcò le fonsion anterpretà coma
 <nowiki>{{</nowiki>#if:...}}, e le variabij coma
 <nowiki>{{</nowiki>CURRENTDAY}}&mdash;visadì bele che tut lòn ch'a-i é antra dobie grafe.
 Sòn a lo fa ën ciamand l'anterprete dal programa MediaWiki.",
-	'expand_templates_title' => 'Tìtol ëd contest për {{PAGENAME}} e via fòrt:',
+	'expand_templates_title' => 'Tìtol ëd contest për {{FULLPAGENAME}} e via fòrt:',
 	'expand_templates_input' => 'Test da analisé:',
 	'expand_templates_output' => 'Arzultà',
 	'expand_templates_xml_output' => 'Output an XML',
@@ -1657,7 +1657,7 @@ Também expande funções do analisador sintáctico ''(parser)'', tais como
 <nowiki>{{</nowiki>CURRENTDAY}} &mdash; de facto, expande tudo o que estiver entre chavetas duplas.
 Isto é feito chamando o estágio relevante do analisador sintáctico a partir do próprio MediaWiki.
 Ver o resultado nas secções abaixo.",
-	'expand_templates_title' => 'Título de contexto para {{PAGENAME}} etc.:',
+	'expand_templates_title' => 'Título de contexto para {{FULLPAGENAME}} etc.:',
 	'expand_templates_input' => 'Texto a expandir:',
 	'expand_templates_output' => 'Resultado',
 	'expand_templates_xml_output' => 'Resultado XML',
@@ -1677,7 +1677,7 @@ $messages['pt-br'] = array(
 	'expandtemplates' => 'Expandir predefinições',
 	'expandtemplates-desc' => 'Expande predefinições, funções do analisador (parser) e variáveis para mostrar texto wiki expandido e prever o aspecto da página',
 	'expand_templates_intro' => 'Esta página especial pega algum texto e expande todas as predefinições nele existentes recursivamente. Também expande funções do analisador (parser) como <nowiki>{{</nowiki>#if:...}}, e variáveis como <nowiki>{{</nowiki>CURRENTDAY}}&mdash;de fato, tudo entre chaves duplas. Isto é feito através da chamada ao estágio relevante do analisador (parser) do próprio MediaWiki.',
-	'expand_templates_title' => 'Título de contexto para {{PAGENAME}} etc.:',
+	'expand_templates_title' => 'Título de contexto para {{FULLPAGENAME}} etc.:',
 	'expand_templates_input' => 'Texto de entrada:',
 	'expand_templates_output' => 'Resultado',
 	'expand_templates_xml_output' => 'Resultado XML',
@@ -1730,7 +1730,7 @@ Jidde spanne pure le funziune de analise cumme<br />
 <nowiki>{{</nowiki>#if:…}}, e variabbele cumme <br />
 <nowiki>{{</nowiki>CURRENTDAY}}&mdash; in pratiche tutte quidde ca stè jndr'à le doppie parendesi graffe.<br />
 'U face quiste, chiamanne l'analizzatore direttamende da MediaUicchi.",
-	'expand_templates_title' => 'Titele condestuale, pe {{PAGENAME}} ecc.:',
+	'expand_templates_title' => 'Titele condestuale, pe {{FULLPAGENAME}} ecc.:',
 	'expand_templates_input' => 'Teste de input:',
 	'expand_templates_output' => 'Resultete',
 	'expand_templates_xml_output' => 'XML de output',
@@ -1753,7 +1753,7 @@ $messages['ru'] = array(
 <nowiki>{{</nowiki>#if:…}} и переменные
 <nowiki>{{</nowiki>CURRENTDAY}} — в общем, всё внутри двойных фигурных скобок.
 Это производится корректным образом, с вызовом соответствующего обработчика MediaWiki.',
-	'expand_templates_title' => 'Заголовок страницы для {{PAGENAME}} и т. п.:',
+	'expand_templates_title' => 'Заголовок страницы для {{FULLPAGENAME}} и т. п.:',
 	'expand_templates_input' => 'Входной текст:',
 	'expand_templates_output' => 'Результат',
 	'expand_templates_xml_output' => 'XML вывод',
@@ -1769,7 +1769,7 @@ $messages['ru'] = array(
  */
 $messages['rue'] = array(
 	'expandtemplates' => 'Розгортаня шаблон',
-	'expand_templates_title' => 'Назва сторінкы про контекст про {{PAGENAME}} ітд.:',
+	'expand_templates_title' => 'Назва сторінкы про контекст про {{FULLPAGENAME}} ітд.:',
 	'expand_templates_input' => 'Вступный текст:',
 	'expand_templates_output' => 'Резултат',
 	'expand_templates_xml_output' => 'XML-выступ',
@@ -1789,7 +1789,7 @@ $messages['sah'] = array(
 	'expand_templates_intro' => 'Бу аналлаах сирэй тиэкиһи уларытарытарыгар туох баар халыыптары тэнитэн көрдөрөр.
 Парсер функциялара эмиэ тэнитиллэллэр. Холобур, <nowiki>{{</nowiki>#if:...}} уонна переменнайдар <nowiki>{{</nowiki>CURRENTDAY}} уо.&nbsp;д.&nbsp;а. — уопсайынан, хос фигурнай скобка иһигэр баар барыта.
 Бу дьайыы сыыһата суох, MediaWiki көмөтүнэн оҥоһуллар.',
-	'expand_templates_title' => '{{PAGENAME}} сирэй аата уонна да атын сибидиэнньэлэр:',
+	'expand_templates_title' => '{{FULLPAGENAME}} сирэй аата уонна да атын сибидиэнньэлэр:',
 	'expand_templates_input' => 'Киирэр сурук:',
 	'expand_templates_output' => 'Түмүк',
 	'expand_templates_xml_output' => 'XML тахсыыта',
@@ -1825,7 +1825,7 @@ $messages['si'] = array(
 <nowiki>{{</nowiki>CURRENTDAY}}වැනි විචල්‍යයන් ද&mdash; ඇත්ත වශයෙන්ම 
 ද්විත්ව-සඟල වරහන් තුල හමුවන සැම දෙයක්ම පාහේ  පුළුල් කරයි.
 එය විසින් මෙය සිදුකරනුයේ මාධයවිකි විසින්ම අදාල ව්‍යාකරණ විග්‍රහ අදියර ඇමතීමෙනි.',
-	'expand_templates_title' => '{{PAGENAME}} වැන්න සඳහා, ප්‍රකරණ ශීර්ෂය.:',
+	'expand_templates_title' => '{{FULLPAGENAME}} වැන්න සඳහා, ප්‍රකරණ ශීර්ෂය.:',
 	'expand_templates_input' => 'ප්‍රදාන පෙළ:',
 	'expand_templates_output' => 'ප්‍රතිඵලය',
 	'expand_templates_xml_output' => 'XML ප්‍රතිදානය',
@@ -1849,7 +1849,7 @@ a premenné ako <nowiki>{{</nowiki>CURRENTDAY}}—v podstate
 takmer všetko v zložených zátvorkách. Robí to pomocou
 volania relevantnej fázy syntaktického analyzátora
 samotného MediaWiki.',
-	'expand_templates_title' => 'Názov kontextu pre {{PAGENAME}} atď.:',
+	'expand_templates_title' => 'Názov kontextu pre {{FULLPAGENAME}} atď.:',
 	'expand_templates_input' => 'Vstupný text:',
 	'expand_templates_output' => 'Výsledok',
 	'expand_templates_xml_output' => 'XML výstup',
@@ -1871,7 +1871,7 @@ Prav tako razreši izraze kot
 <nowiki>{{</nowiki>#if:...}} in spremenljivke kot
 <nowiki>{{</nowiki>CURRENTDAY}} – pravzaprav skoraj vse v dvojnih zavitih oklepajih.
 Deluje s pomočjo razčlenjevalnika kode iz samega programja MediaWiki.',
-	'expand_templates_title' => 'Naslov sobesedila, za {{PAGENAME}} ipd.:',
+	'expand_templates_title' => 'Naslov sobesedila, za {{FULLPAGENAME}} ipd.:',
 	'expand_templates_input' => 'Vhodno besedilo:',
 	'expand_templates_output' => 'Rezultat',
 	'expand_templates_xml_output' => 'Izhod XML',
@@ -1886,7 +1886,7 @@ Deluje s pomočjo razčlenjevalnika kode iz samega programja MediaWiki.',
 $messages['sq'] = array(
 	'expandtemplates' => 'Parapamje stampash',
 	'expand_templates_intro' => 'Kjo faqe speciale merr tekstin me stampa dhe të tregon se si do të duket teksti pasi të jenë stamposur të tëra. Kjo faqe gjithashtu tregon parapamjen e funksioneve dhe fjalëve magjike si p.sh. <nowiki>{{</nowiki>#if:...}} dhe <nowiki>{{</nowiki>CURRENTDAY}}.',
-	'expand_templates_title' => 'Titulli i faqes për rrethanën, si <nowiki>{{</nowiki>PAGENAME}} etj.:',
+	'expand_templates_title' => 'Titulli i faqes për rrethanën, si <nowiki>{{</nowiki>FULLPAGENAME}} etj.:',
 	'expand_templates_input' => 'Teksti me stampa:',
 	'expand_templates_output' => 'Parapamja',
 	'expand_templates_ok' => 'Shko',
@@ -1945,7 +1945,7 @@ $messages['stq'] = array(
 	'expandtemplates' => 'Foarloagen expandierje',
 	'expandtemplates-desc' => '[[Special:ExpandTemplates|Expandiert Foarloagen, Parser-Funktione un Variablen]] toun fulboodigen Wikitext un wiest ju renderde Foarschau',
 	'expand_templates_intro' => "In disse Spezialsiede kon Text ienroat wäide un aal Foarloagen in hier wäide rekursiv expandierd. Uk Parserfunktione as <nowiki>{{</nowiki>#if:...}} un Variabelen as <nowiki>{{</nowiki>CURRENTDAY}} wäide benutsed - faktisk alles wät twiske dubbelde swoangene Klammere '''{{}}''' stoant. Dit geböärt truch dän Aproup fon apstuunse Parser-Phasen in MediaWiki.",
-	'expand_templates_title' => 'Kontexttittel, foar {{PAGENAME}} etc.:',
+	'expand_templates_title' => 'Kontexttittel, foar {{FULLPAGENAME}} etc.:',
 	'expand_templates_input' => 'Iengoawefäild:',
 	'expand_templates_output' => 'Resultoat',
 	'expand_templates_xml_output' => 'XML-Uutgoawe',
@@ -1977,7 +1977,7 @@ $messages['sv'] = array(
 	'expandtemplates' => 'Expandera mallar',
 	'expandtemplates-desc' => '[[Special:ExpandTemplates|Expanderar]] mallar, parserfunktioner och variabler till wikikod och förhandsvisar den sida som renderas',
 	'expand_templates_intro' => 'Den här specialsidan tar en text och expanderar rekursivt alla mallar som används. Även parserfunktioner (som <nowiki>{{</nowiki>#if:...}}), variabler som <nowiki>{{</nowiki>CURRENTDAY}} och annan kod med dubbla klammerparenteser expanderas.',
-	'expand_templates_title' => 'Sidans titel, används för t.ex. {{PAGENAME}}:',
+	'expand_templates_title' => 'Sidans titel, används för t.ex. {{FULLPAGENAME}}:',
 	'expand_templates_input' => 'Text som ska expanderas:',
 	'expand_templates_output' => 'Expanderad kod',
 	'expand_templates_xml_output' => 'XML-kod',
@@ -2019,7 +2019,7 @@ $messages['te'] = array(
 	'expandtemplates' => 'మూసలను విస్తరించు',
 	'expandtemplates-desc' => '[[Special:ExpandTemplates|మూసలు, పార్సరు ఫంక్షన్లు, చరరాశులను విస్తరించి]] వాటిలోని వికీటెక్స్టును, అవి రెండరు చేసే పేజీని చూపిస్తుంది',
 	'expand_templates_intro' => 'ఈ ప్రత్యేక పేజీ మీరిచ్చిన మూసలను పూర్తిగా విస్తరించి, చూపిస్తుంది. ఇది <nowiki>{{</nowiki>#if:...}} వంటి పార్సరు ఫంక్షన్లను, <nowiki>{{</nowiki>CURRENTDAY}} వంటి చరరాశులను(వేరియబుల్) కూడా విస్తరిస్తుంది &mdash; నిజానికి జమిలి(మీసాల) బ్రాకెట్లలో ఉన్న ప్రతీదాన్నీ ఇది విస్తరిస్తుంది. మీడియావికీ నుండి సంబంధిత పార్సరు స్టేజిని పిలిచి ఇది ఈ పనిని సాధిస్తుంది.',
-	'expand_templates_title' => '{{PAGENAME}} మొదలగు వాటి కొరకు సందర్భ శీర్షిక:',
+	'expand_templates_title' => '{{FULLPAGENAME}} మొదలగు వాటి కొరకు సందర్భ శీర్షిక:',
 	'expand_templates_input' => 'ఇన్&zwnj;పుట్ పాఠ్యం:',
 	'expand_templates_output' => 'ఫలితం',
 	'expand_templates_xml_output' => 'XML ఔట్&zwnj;పుట్',
@@ -2046,7 +2046,7 @@ $messages['tg-cyrl'] = array(
 <nowiki>{{</nowiki>#if:...}}, ва мутағйирҳое чун
 <nowiki>{{</nowiki>CURRENTDAY}}&mdash;ро ҳам баст медиҳад – дар воқеъ тақрибан ҳар чиро ки дохили ду акулот бошад.
 Ин кор бо садо задани марҳилаи таҷзеҳи марбут дар худи МедиаВики сурат мегирад.',
-	'expand_templates_title' => 'Унвони мавзӯъ, барои {{PAGENAME}} ва ғайра.:',
+	'expand_templates_title' => 'Унвони мавзӯъ, барои {{FULLPAGENAME}} ва ғайра.:',
 	'expand_templates_input' => 'Матни вурудӣ:',
 	'expand_templates_output' => 'Натиҷа',
 	'expand_templates_xml_output' => 'Хуруҷӣ XML',
@@ -2066,7 +2066,7 @@ $messages['tg-latn'] = array(
 <nowiki>{{</nowiki>#if:...}}, va mutaƣjirhoe cun
 <nowiki>{{</nowiki>CURRENTDAY}}&mdash;ro ham bast medihad – dar voqe' taqriban har ciro ki doxili du akulot boşad.
 In kor bo sado zadani marhilai taçzehi marbut dar xudi MediaViki surat megirad.",
-	'expand_templates_title' => "Unvoni mavzū', baroi {{PAGENAME}} va ƣajra.:",
+	'expand_templates_title' => "Unvoni mavzū', baroi {{FULLPAGENAME}} va ƣajra.:",
 	'expand_templates_input' => 'Matni vurudī:',
 	'expand_templates_output' => 'Natiça',
 	'expand_templates_xml_output' => 'Xuruçī XML',
@@ -2096,7 +2096,7 @@ $messages['tk'] = array(
 <nowiki>{{</nowiki>#if:…}} we şuňa meňzeş üýtgeýänleri
 <nowiki>{{</nowiki>CURRENTDAY}}&mdash;aslynda jübüt ýaýly ähli zatlary diýen ýaly.
 Ol muny degişli parser sepgidini MediaWikiniň özünden çagyryp edýär.',
-	'expand_templates_title' => 'Kontekst ady, {{PAGENAME}} we ş.m. üçin:',
+	'expand_templates_title' => 'Kontekst ady, {{FULLPAGENAME}} we ş.m. üçin:',
 	'expand_templates_input' => 'Giriş teksti:',
 	'expand_templates_output' => 'Netije',
 	'expand_templates_xml_output' => 'XML önümi',
@@ -2118,7 +2118,7 @@ Nagpapalapad din ito ng mga tungkuling pambanghay katulad ng
 <nowiki>{{</nowiki>#kung:…}}, at pabagubagong mga halagang katulad ng
 <nowiki>{{</nowiki>KASALUKUYANGARAW}}&mdash;sa katotohanan ay halos lahat ng mga bagay-bagay na may dalawang mga bantas na pansalalay (brakete).
 Ginagawa ito nito sa pamamagitan ng pagtawag sa mga kaugnay na mga tanghalang pambanghay mula sa sarili mismo ng MediaWiki.',
-	'expand_templates_title' => 'Pamagat na pampaunawa (ng konteksto), para sa {{PAGENAME}} atbp.:',
+	'expand_templates_title' => 'Pamagat na pampaunawa (ng konteksto), para sa {{FULLPAGENAME}} atbp.:',
 	'expand_templates_input' => 'Tekstong ipinasok:',
 	'expand_templates_output' => 'Kinalabasan',
 	'expand_templates_xml_output' => 'kinalabasang XML',
@@ -2155,7 +2155,7 @@ Ayrıca şu gibi derleyici fonksiyonlarını da genişletir
 <nowiki>{{</nowiki>#if:…}}, ve şu gibi değişkenleri
 <nowiki>{{</nowiki>CURRENTDAY}}&mdash;aslında çift-bağlı hemen her şey.
 Bunu, ilgili derleyici aşamasını MedyaVikinin kendisinden çağırarak yapar.',
-	'expand_templates_title' => 'Durum başlığı, ör {{PAGENAME}} için.:',
+	'expand_templates_title' => 'Durum başlığı, ör {{FULLPAGENAME}} için.:',
 	'expand_templates_input' => 'Giriş metni:',
 	'expand_templates_output' => 'Sonuç',
 	'expand_templates_xml_output' => 'XML üretim',
@@ -2210,7 +2210,7 @@ $messages['uk'] = array(
 (наприклад <nowiki>{{</nowiki>#if:...}}) і змінні
 (наприклад <nowiki>{{</nowiki>CURRENTDAY}}) — загалом, усе всередині подвійних фігурних дужок.
 Це відбувається коректним чином з викликом відповідного обробника MediaWiki.',
-	'expand_templates_title' => 'Заголовок сторінки для {{PAGENAME}} тощо:',
+	'expand_templates_title' => 'Заголовок сторінки для {{FULLPAGENAME}} тощо:',
 	'expand_templates_input' => 'Вхідний текст:',
 	'expand_templates_output' => 'Результат',
 	'expand_templates_xml_output' => 'XML-вивід',
@@ -2228,7 +2228,7 @@ $messages['vec'] = array(
 	'expandtemplates' => 'Espansion dei template',
 	'expandtemplates-desc' => "[[Special:ExpandTemplates|Espande i template, le funzion del parser e le variabili]] par mostrar el wikitesto espanso e visualizar n'anteprima de la pagina ne la so forma final",
 	'expand_templates_intro' => 'Sta pagina speciale la elabora un testo espandendo tuti i template presenti. La calcola inoltre el risultato de le funzion suportàe dal parser come <nowiki>{{</nowiki>#if:...}} e de le variabili de sistema quali <nowiki>{{</nowiki>CURRENTDAY}}, overo in pratica tuto quel che se cata tra dopie parentesi grafe. La funsiona riciamando le oportune funzion del parser de MediaWiki.',
-	'expand_templates_title' => 'Contesto (par {{PAGENAME}} ecc.):',
+	'expand_templates_title' => 'Contesto (par {{FULLPAGENAME}} ecc.):',
 	'expand_templates_input' => 'Testo da espàndar:',
 	'expand_templates_output' => 'Risultato',
 	'expand_templates_xml_output' => 'Output in formato XML',
@@ -2259,7 +2259,7 @@ $messages['vi'] = array(
 	'expandtemplates' => 'Bung bản mẫu',
 	'expandtemplates-desc' => '[[Special:ExpandTemplates|Mở rộng các bản mẫu, hàm cú pháp, và biến]] thành mã wiki cuối cùng và hiển thị trang dùng mã này',
 	'expand_templates_intro' => 'Trang đặc biệt này sẽ nhận vào một đoạn văn bản và bung tất cả các bản mẫu trong nó ra một cách đệ quy cho đến hết. Nó cũng bung cả những hàm cú pháp như <nowiki>{{</nowiki>#if:…}}, và những biến số như <nowiki>{{</nowiki>CURRENTDAY}}&nbsp;– thực ra cũng là các dữ liệu bình thường đặt trong ngoặc móc. Nó thực hiện điều này bằng cách gọi tầng dịch cú pháp từ chính MediaWiki.',
-	'expand_templates_title' => 'Tựa đề, đối với {{PAGENAME}}, v.v.:',
+	'expand_templates_title' => 'Tựa đề, đối với {{FULLPAGENAME}}, v.v.:',
 	'expand_templates_input' => 'Văn bản nhập:',
 	'expand_templates_output' => 'Kết quả',
 	'expand_templates_xml_output' => 'Xuất XML',
@@ -2277,7 +2277,7 @@ $messages['vo'] = array(
 	'expandtemplates' => 'stäänükön samafomotis',
 	'expand_templates_intro' => 'Pad patik at sumon vödemi e stäänükon samafomotis onik valik okvokölo. Stäänükon i programasekätis soäs <nowiki>{{</nowiki>#if:...}} e vödis soäs <nowiki>{{</nowiki>CURRENTDAY}}... e valikosi vü els <nowiki>{{ }}</nowiki>.
 Dunon atosi medä vokon programadili tefik se el MediaWiki it.',
-	'expand_templates_title' => 'Yumedatiäd, pro {{PAGENAME}} e r.:',
+	'expand_templates_title' => 'Yumedatiäd, pro {{FULLPAGENAME}} e r.:',
 	'expand_templates_input' => 'Penolös vödem:',
 	'expand_templates_output' => 'Seks',
 	'expand_templates_xml_output' => 'Seks fomätü XML',
@@ -2304,7 +2304,7 @@ $messages['yue'] = array(
 	'expandtemplates' => '展開模',
 	'expandtemplates-desc' => '[[Special:ExpandTemplates|展開模、parser functions同埋變數]]去顯示展開嘅wiki文字同埋預覽處理後嘅版',
 	'expand_templates_intro' => '呢個特別頁係用於將一啲文字中嘅模展開，包括響個模度引用嘅模。同時亦都展開解譯器函數好似<nowiki>{{</nowiki>#if:...}}，以及一啲變數好似<nowiki>{{</nowiki>CURRENTDAY}}&mdash;實際上，幾乎所有響雙括弧中嘅內容都會被展開。呢個特別頁係通過使用MediaWiki嘅相關解釋階段嘅功能完成嘅。',
-	'expand_templates_title' => '內容標題，用於 {{PAGENAME}} 等頁面：',
+	'expand_templates_title' => '內容標題，用於 {{FULLPAGENAME}} 等頁面：',
 	'expand_templates_input' => '輸入文字：',
 	'expand_templates_output' => '結果：',
 	'expand_templates_xml_output' => 'XML輸出',
@@ -2322,7 +2322,7 @@ $messages['zh-hans'] = array(
 	'expandtemplates' => '展开模板',
 	'expandtemplates-desc' => '[[Special:ExpandTemplates|展开模板、解析器函数和变量]]，以显示展开后的wiki文本并预览处理后的页面',
 	'expand_templates_intro' => '此特殊页面可以递归地展开所给文本中的模板。它同时还可展开诸如<nowiki>{{</nowiki>#if:...}}的解析器函数、诸如<nowiki>{{</nowiki>CURRENTDAY}}的变量——实际上，几乎所有在双重花括号中的内容都会被展开。本特殊页面的功能是通过调用MediaWiki的相关解析步骤实现的。',
-	'expand_templates_title' => '上下文标题，用于{{PAGENAME}}等：',
+	'expand_templates_title' => '上下文标题，用于{{FULLPAGENAME}}等：',
 	'expand_templates_input' => '输入文本：',
 	'expand_templates_output' => '结果：',
 	'expand_templates_xml_output' => 'XML输出',
@@ -2341,7 +2341,7 @@ $messages['zh-hant'] = array(
 	'expandtemplates' => '展開模板',
 	'expandtemplates-desc' => '[[Special:ExpandTemplates|展開模板、模版擴展語法以及變數]]去顯示展開之wiki文字和預覽處理後之頁面',
 	'expand_templates_intro' => '本特殊頁面用於將一些文字中的模版展開，包括模版中引用的模版。同時也展開解譯器函數如<nowiki>{{</nowiki>#if:...}}，以及變數如<nowiki>{{</nowiki>CURRENTDAY}}&mdash;實際上，幾乎所有在雙括弧中的內容都被展開。本特殊頁面是通過使用MediaWiki的相關解釋階段的功能完成的。',
-	'expand_templates_title' => '上下文標題，用於 {{PAGENAME}} 等：',
+	'expand_templates_title' => '上下文標題，用於 {{FULLPAGENAME}} 等：',
 	'expand_templates_input' => '輸入文字：',
 	'expand_templates_output' => '結果：',
 	'expand_templates_xml_output' => 'XML輸出',

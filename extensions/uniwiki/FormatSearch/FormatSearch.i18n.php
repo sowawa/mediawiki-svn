@@ -260,7 +260,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'formatsearch-desc' => "Botzt d'Säit mat de Resultater vun der Sich",
+	'formatsearch-desc' => "Botzt d'Säit mat de Resultater vum Sichen",
 );
 
 /** Latvian (Latviešu)

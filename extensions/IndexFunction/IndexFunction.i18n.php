@@ -869,7 +869,7 @@ Huelt w.e.g. "$1" vum <nowiki>{{#index:}}</nowiki> erof op {{PLURAL:$3|der Säit
 	'index-emptylist' => 'Et gëtt keng Säiten déi mat "$1" assoziéiert sinn',
 	'index-expand-detail' => 'Déi Säite weisen déi ënner dësem Titel indexéiert sinn',
 	'index-hide-detail' => "D'Lëscht vu Säite verstoppen",
-	'index-no-results' => "D'Sich hat keng Resultater",
+	'index-no-results' => 'Beim Siche gouf näischt fonnt',
 	'index-search-explain' => 'Dës Säit benotzt Prefix-Sich.
 
 Tippt déi éischt Buchstawen an dréckt op de {{int:index-submit ("Schécken")}} Knäppchen fir no Säitentitelen ze sichen déi mat dem ufänken wat Dir aginn hutt.',
