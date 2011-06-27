@@ -21,7 +21,7 @@ jQuery( document ).ready( function( $ ) {
 		var	$realButton = $( button ),
 			$styleButton = $( '<div>', {
 				'class': 'mw-htmlform-button',
-				text: 'Share Mood'//$realButton.val()			
+				text: $realButton.val()			
 			})
 			.insertAfter( $realButton.hide() )
 			.wrap(

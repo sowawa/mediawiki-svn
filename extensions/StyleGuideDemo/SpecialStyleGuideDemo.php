@@ -17,7 +17,10 @@ class SpecialStyleGuideDemo extends SpecialPage {
 	public function execute( $par ) {
 		global $wgUser, $wgOut;
 
+		// Loads styles when javascript is disabled as well
 		$wgOut->addModuleStyles( 'ext.styleguidedemo.css' );
+
+		// Enhancements
 		$wgOut->addModules( 'ext.styleguidedemo.js' );
 
 		$this->setHeaders();
@@ -28,7 +31,7 @@ class SpecialStyleGuideDemo extends SpecialPage {
 		$formOne = array(
 			'Username' => array(
 				'label-message' => 'styleguidedemo-username',
-				'required' => 1,
+				'required' => true,
 				'type' => 'text',
 				'help-message' => array( 'styleguidedemo-username-help', wfMsg( 'styleguidedemo-username-infopage' ) ),
 				'hint-message' => 'styleguidedemo-username-hint',
@@ -36,12 +39,13 @@ class SpecialStyleGuideDemo extends SpecialPage {
 			),
 			'Password' => array(
 				'label-message' => 'styleguidedemo-password',
-				'required' => 1,
+				'required' => true,
 				'type' => 'password',
 				'help-message' => array( 'styleguidedemo-password-help', wfMsg( 'styleguidedemo-password-infopage' ) ),
 			),
 			'ConfirmPassword' => array(
 				'label-message' => 'styleguidedemo-confirmpassword',
+				'required' => true,
 				'type' => 'password',
 				'help-message' => 'styleguidedemo-confirmpassword-help',
 			),
@@ -55,6 +59,9 @@ class SpecialStyleGuideDemo extends SpecialPage {
 		);
 		$form = new HTMLStyleForm( $formOne );
 		$form->setTitle( $wgOut->getTitle() );
+		$form->setSubmitID( 'wpCreateaccount' );
+		$form->setSubmitName( 'wpCreateaccount' );
+		$form->setSubmitText( wfMsg( 'createaccount' ) );
 		$form->show();
 
 
