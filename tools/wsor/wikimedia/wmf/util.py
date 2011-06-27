@@ -234,3 +234,5 @@ def isVandalismByComment(editComment, testLoose=True, testStrict=True):
 		return True;
 
 	return False;
+	
+

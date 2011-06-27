@@ -2,7 +2,7 @@
 from setuptools import setup, find_packages
 
 setup(
-	name='util',
+	name='wmf',
 	version='1.0',
 	description="WMF utilities",
 	long_description="""
