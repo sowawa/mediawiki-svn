@@ -8,7 +8,7 @@
  * FirePHP is a plugin for Firebug which adds debugging info from HTTP headers
  * into the console output, which some will find handier than tailing a log file
  * or such forth.
- * 
+ *
  * There's not a lot of fancy integration; everything's just output as a 'log' line.
  * You can use $wgFirePHP global (or call FirePHP::getInstance() yourself) to get
  * direct access to FirePHP's fancier features in test code.
@@ -24,6 +24,14 @@ $wgAutoloadClasses['FirePHP'] = dirname( __FILE__ ) . '/lib/FirePHP.class.php';
 $wgExtensionFunctions[] = 'efFirePHPSetup';
 
 $wgHooks['Debug'][] = 'efFirePHPDebug';
+
+$wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
+	'name' => 'FirePHP',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:FirePHP',
+	'author' => 'Brion Vibber',
+	'description' => 'Allows the Firebug Extension for AJAX Development to work with MediaWiki',
+);
 
 global $wgFirePHP;
 $wgFirePHP = null;
