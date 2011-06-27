@@ -699,7 +699,7 @@ $messages['bg'] = array(
 	'openidemail' => 'Електронна поща',
 	'openidlanguage' => 'Език',
 	'openidtimezone' => 'Часова зона',
-	'openidchooselegend' => 'Избор на потребителско име',
+	'openidchooselegend' => 'Избиране на потребителско име и сметка',
 	'openidchooseinstructions' => 'Всички потребители трябва да имат потребителско име;
 можете да изберете своето от предложенията по-долу.',
 	'openidchoosefull' => 'Вашето пълно име ($1)',
@@ -735,7 +735,7 @@ OpenID позволява влизането в много различни са
 ; [http://openid.yahoo.com/ Yahoo!]: Ако имате сметка в Yahoo!, можете да влезете в този сайт като в кутията по-горе въведете вашето Yahoo! OpenID. Yahoo! OpenID адресите са от вида ''<nowiki>https://me.yahoo.com/yourusername</nowiki>''.
 ; [http://dev.aol.com/aol-and-63-million-openids AOL]: Ако притежавате сметка в [http://www.aol.com/ AOL], напр. в [http://www.aim.com/ AIM], можете да влезете в {{SITENAME}} като въведете в кутията по-горе вашето AOL OpenID. AOL OpenID адресите са от вида ''<nowiki>http://openid.aol.com/yourusername</nowiki>''. Потребителското име се изписва само с малки букви и без интервали.
 ; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox] : Ако имате блог в някоя от тези услуги, въведете адреса на блога си в кутията по-горе, напр. ''<nowiki>http://yourusername.blogspot.com/</nowiki>'', ''<nowiki>http://yourusername.wordpress.com/</nowiki>'', ''<nowiki>http://yourusername.livejournal.com/</nowiki>'' или ''<nowiki>http://yourusername.vox.com/</nowiki>''.",
-	'openidupdateuserinfo' => 'Актуализация на моята лична информация',
+	'openidupdateuserinfo' => 'Актуализиране на моите лични данни:',
 	'openiddelete' => 'Изтриване на OpenID',
 	'openiddelete-button' => 'Потвърждаване',
 	'openid-pref-hide' => 'Скриване на OpenID от потребителската страница ако влезете чрез OpenID.',
@@ -743,8 +743,8 @@ OpenID позволява влизането в много различни са
 	'openid-urls-delete' => 'Изтриване',
 	'openid-add-url' => 'Добавяне на нов OpenID',
 	'openid-login-or-create-account' => 'Влизане или създаване на нова сметка',
-	'openid-provider-label-openid' => 'Въведете своя OpenID интернет адрес',
-	'openid-provider-label-google' => 'Влизане в системата през профила в Google',
+	'openid-provider-label-openid' => 'Въведете своя OpenID адрес',
+	'openid-provider-label-google' => 'Влизане чрез сметката в Google',
 	'openid-provider-label-other-username' => 'Въведете вашето $1 потребителско име',
 );
 
@@ -1300,7 +1300,7 @@ Sie können einen aus der untenstehenden Liste auswählen.',
 	'openidconvertinstructions' => 'Mit diesem Formular können Sie Ihr Benutzerkonto zur Benutzung einer OpenID-URL freigeben oder eine weitere OpenID-URL hinzufügen',
 	'openidconvertsuccesstext' => 'Sie haben die Konvertierung Ihrer OpenID nach $1 erfolgreich durchgeführt.',
 	'openidconvertyourstext' => 'Dies ist bereits Ihre OpenID.',
-	'openidalreadyloggedin' => "'''Sie sind bereits angemeldet, $1.'''",
+	'openidalreadyloggedin' => 'Sie sind bereits angemeldet.',
 	'openidalreadyloggedintext' => "'''Sie sind bereits angemeldet, $1.'''
 
 Sie können diese und weitere OpenIDs auf der Seite mit den [[Special:Preferences|Kontoeinstellungen]] unter dem Reiter OpenID verwalten (ansehen, löschen, weitere hinzufügen).",

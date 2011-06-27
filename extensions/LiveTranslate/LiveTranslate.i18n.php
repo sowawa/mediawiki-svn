@@ -675,6 +675,7 @@ $messages['mk'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'livetranslate-special-type' => 'Jenis',
 	'livetranslate-special-location' => 'Lokasi',
 	'livetranslate-special-remove' => 'Buang',
 );

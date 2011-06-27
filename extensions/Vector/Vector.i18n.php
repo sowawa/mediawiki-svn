@@ -430,14 +430,14 @@ Denne advarsel kan slås fra under Redigering i dine indstillinger.',
 $messages['de'] = array(
 	'vector' => 'Verbesserungen für die Vector-Benutzeroberfläche',
 	'vector-desc' => 'Stellt Verbesserungen für die Benutzeroberfläche „Vector“ zur Verfügung',
-	'vector-collapsiblenav-preference' => 'Zusammenklappen von Items im Navigationsmenü des Vector-Skins aktivieren',
+	'vector-collapsiblenav-preference' => 'Zusammenklappen von Elementen im Navigationsmenü der Benutzeroberfläche Vector aktivieren',
 	'vector-collapsiblenav-more' => 'Weitere Sprachen',
 	'vector-editwarning-warning' => 'Das Verlassen dieser Seite kann dazu führen, dass die Änderungen verloren gehen.
 Als angemeldeter Benutzer kann das Anzeigen dieser Warnung im „Bearbeiten“-Bereich der Einstellungen abgeschaltet werden.',
 	'vector-editwarning-preference' => 'Warnen, sofern eine zur Bearbeitung geöffnete Seite verlassen wird, die nicht gespeicherte Änderungen enthält',
 	'vector-simplesearch-search' => 'Suche',
 	'vector-simplesearch-containing' => 'Volltextsuche nach …',
-	'vector-noexperiments-preference' => 'Nicht an Funktions-Experimenten teilnehmen',
+	'vector-noexperiments-preference' => 'Nicht an Funktionsexperimenten teilnehmen',
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬) */

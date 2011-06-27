@@ -1004,6 +1004,7 @@ $messages['mr'] = array(
 $messages['ms'] = array(
 	'player-title' => 'Pemain',
 	'player-playertitle' => 'Pemain: $1',
+	'player-file' => 'Nama fail',
 	'player-goto-player' => 'pemain',
 );
 

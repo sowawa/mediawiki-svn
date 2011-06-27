@@ -7614,8 +7614,10 @@ $messages['mr'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'configure-desc-val' => 'Nilai',
 	'configure-ext-settings' => 'Tetapan',
 	'configure-section-copyright' => 'Hak cipta',
+	'configure-throttle-group' => 'Jenis',
 );
 
 /** Maltese (Malti)

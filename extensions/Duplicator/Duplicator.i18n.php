@@ -1164,6 +1164,7 @@ $messages['mr'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'duplicator-options' => 'Pilihan',
 	'duplicator-source' => 'Sumber:',
 );
 
