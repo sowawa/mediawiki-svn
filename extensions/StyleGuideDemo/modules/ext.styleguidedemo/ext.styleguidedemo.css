@@ -67,12 +67,12 @@
 	width: 200px; /* width: 214px; */
 }
 
-/* no-js */
+/* Buttons (no-js) */
 .mw-htmlform-submit {
 	float: right;
 }
 
-/* js-only */
+/* Buttons (js-only) */
 .mw-htmlform-button,
 .mw-htmlform-button-wrap {
 	-webkit-border-radius: 4px;
@@ -83,6 +83,7 @@
 	float: right;
 	border: 1px solid #9d9d9d;
 }
+
 .mw-htmlform-button {
 	padding: 5px 10px;
 	background: #edecef url(images/MW-StyleGuide-Form-Button-BGShade.png) center center repeat-x;
@@ -91,13 +92,18 @@
 	font-weight: bold;
 	color: #6c6c6c;
 }
-
 .mw-htmlform-button:hover {
 	cursor: pointer;
-	background: #3cb878 url(images/MW-StyleGuide-Form-Button-BGShadeHover.png) center center repeat-x;
-	color: #ffffff;
-	border-color: #5ac084;
 }
 .mw-htmlform-button:active {
 	background-image: url(images/MW-StyleGuide-Form-Button-BGShadeActive.png);
+}
+
+.mw-htmlform-button-special {
+	background: #3cb878 url(images/MW-StyleGuide-Form-Button-BGShadeSpecial.png) center center repeat-x;
+	color: #ffffff;
+	border-color: #5ac084;
+}
+.mw-htmlform-button-special:active {
+	background-image: url(images/MW-StyleGuide-Form-Button-BGShadeSpecialActive.png);
 }
