@@ -509,7 +509,7 @@ class HTMLStyleForm {
 	}
 
 	/**
-	 * Format and display an error message stack.
+	 * Format and display an error message stack on top of the form.
 	 * @param $errors String|Array|Status
 	 * @return String
 	 */
@@ -525,10 +525,19 @@ class HTMLStyleForm {
 		} else {
 			$errorstr = $errors;
 		}
-
-		return $errorstr
-			? Html::rawElement( 'div', array( 'class' => 'error' ), $errorstr )
-			: '';
+		// Build errors
+		if ( $errorstr ) {
+			$errorTitle = Html::element( 'strong', array(
+				'class' => 'mw-htmlform-errors-title',
+			), wfMsg( 'htmlform-errors-title' ) );
+			$errorContent = Html::rawElement( 'div', array(
+			), $errorstr );
+			return Html::rawElement( 'div', array(
+				'class' => 'mw-htmlform-errors'
+			), $errorTitle . $errorContent );	
+		} else {
+			return '';
+		}
 	}
 
 	/**
@@ -948,6 +957,7 @@ abstract class HTMLFormField {
 		# Hint / Tip
 		$hinttext = null;
 		$hinthtml = '';
+		$afterLabelHtml = ''; // inserted into mw-label after the <label>
 
 		if ( isset( $this->mParams['hint-message'] ) ) {
 			$msg = call_user_func_array( 'wfMessage', (array)$this->mParams['hint-message'] );
@@ -965,8 +975,15 @@ abstract class HTMLFormField {
 			   "</div>\n";
 		}
 
+		# Required ?
+		if ( isset( $this->mParams['required'] ) ) {
+			$afterLabelHtml .= Html::element( 'span', array(
+				'class' => 'mw-htmlform-required-tip',
+			), wfMsg( 'parentheses', wfMsg( 'htmlform-required-tip' ) ) );
+		}
+
 		# Label
-		$label = $this->getLabelHtml( $attributes, $hinthtml );
+		$label = $this->getLabelHtml( $attributes, $hinthtml, $afterLabelHtml );
 
 		# Help message (optional)
 		$helptext = null;
@@ -991,8 +1008,10 @@ abstract class HTMLFormField {
 			$helptext = $this->mParams['help'];
 		}
 
-		if ( !is_null( $helptext ) ) {
-			$helphtml = Html::rawElement( 'div', array( 'class' => 'mw-htmlform-tip' ), $helptext );
+		if ( !is_null( $helptext ) && $helptext != '' ) {
+			$helphtml = Html::rawElement( 'div', array(
+				'class' => 'mw-htmlform-tip',
+			), $helptext );
 		}
 
 		# Input
@@ -1014,7 +1033,7 @@ abstract class HTMLFormField {
 	function getLabel() {
 		return $this->mLabel;
 	}
-	function getLabelHtml( $attributes = array(), $hintHtml = '' ) {
+	function getLabelHtml( $attributes = array(), $beforeLabelHtml = '', $afterLabelHtml = '' ) {
 		$labelAttrs = array();
 
 		if ( $this->needsLabel() ) {
@@ -1022,7 +1041,7 @@ abstract class HTMLFormField {
 		}
 
 		return Html::rawElement( 'div', array( 'class' => 'mw-label' ) + $attributes,
-			$hintHtml . Html::rawElement( 'label', $labelAttrs, $this->getLabel() )
+			$beforeLabelHtml . Html::rawElement( 'label', $labelAttrs, $this->getLabel() ) . $afterLabelHtml
 		);
 	}
 

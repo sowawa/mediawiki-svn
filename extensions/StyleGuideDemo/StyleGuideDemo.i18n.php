@@ -7,6 +7,9 @@ $messages = array();
 $messages['en'] = array(
 	'styleguidedemo' => 'Style guide demonstration',
 	'styleguidedemo-desc' => 'An extension to demonstrate and find out how the [[mediawikiwiki:Style guide|style guide]] should be used. Visible on [[Special:StyleGuideDemo]].',
+	/* HTMLStyleForm */
+	'htmlform-errors-title' => 'There has been a problem.',
+	'htmlform-required-tip' => 'Required',
 	/* Special:StyleGuideDemo */
 	'styleguidedemo-head-createform' => 'Create Account',
 	'styleguidedemo-username' => 'Username',
