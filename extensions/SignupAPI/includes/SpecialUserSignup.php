@@ -102,9 +102,6 @@ class SignupForm extends SpecialPage {
 		$this->mStickHTTPS = $request->getCheck( 'wpStickHTTPS' );
 		$this->mLanguage = $request->getText( 'uselang' );
 		$this->mSkipCookieCheck = $request->getCheck( 'wpSkipCookieCheck' );
-
-		//Decide whether login or signup request
-
 		$this->mToken = $request->getVal( 'wpCreateaccountToken' );
 
 		if( $wgEnableEmail ) {
