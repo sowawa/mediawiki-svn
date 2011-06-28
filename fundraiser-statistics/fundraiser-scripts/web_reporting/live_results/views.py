@@ -54,21 +54,24 @@ import operator
 def index(request):
     
     """ Get the donations for all campaigns over the last n hours """
-    end_time, start_time = TP.timestamps_for_interval(datetime.datetime.now() + datetime.timedelta(hours=4), 1, hours=-4)
-    end_time = '20110617000000'
-    start_time = '20110616160000'
+    end_time, start_time = TP.timestamps_for_interval(datetime.datetime.now() + datetime.timedelta(hours=5), 1, hours=-6)
+    end_time = '20110623220000'
+    start_time = '20110623160000'
     
     """ Create a interval loader objects """
     ir_cmpgn = DR.IntervalReporting(query_type=FDH._QTYPE_CAMPAIGN_ + FDH._QTYPE_TIME_)
     ir_banner = DR.IntervalReporting(query_type=FDH._QTYPE_BANNER_ + FDH._QTYPE_TIME_)
     ir_lp = DR.IntervalReporting(query_type=FDH._QTYPE_LP_ + FDH._QTYPE_TIME_)
     
+    sampling_interval = 10
+    
     """ Execute queries for campaign, banner, and landing page donations """    
     os.chdir(projSet.__project_home__ + '/classes')
+    
     #ir.run('20110603120000', '20110604000000', 2, 'donations', '',[])
-    ir_cmpgn.run(start_time, end_time, 10, 'donations', '',[])
-    ir_banner.run(start_time, end_time, 10, 'donations', '',[])
-    ir_lp.run(start_time, end_time, 10, 'donations', '',[])
+    ir_cmpgn.run(start_time, end_time, sampling_interval, 'donations', '',[])
+    ir_banner.run(start_time, end_time, sampling_interval, 'donations', '',[])
+    ir_lp.run(start_time, end_time, sampling_interval, 'donations', '',[])
     os.chdir(projSet.__home__)
     
     """ Extract data from interval reporting objects """
