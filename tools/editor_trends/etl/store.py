@@ -79,7 +79,7 @@ def prepare_data(line):
     date = text_utils.convert_timestamp_to_datetime_utc(line[6])
     md5 = line[7]
     revert = int(line[8])
-    reverted_user = int(line[9])
+    reverted_user = line[9]
     reverted_rev_id = int(line[10])
     bot = int(line[11])
     cur_size = int(line[12])
@@ -96,11 +96,9 @@ def prepare_data(line):
             'cur_size':cur_size,
             'delta':delta,
             'bot':bot,
+            'reverted_user': reverted_user,
+            'reverted_rev_id': reverted_rev_id
     }
-
-    if reverted_user > -1:
-        data['reverted_user'] = reverted_user,
-        data['reverted_rev_id'] = reverted_rev_id
 
     return data
 

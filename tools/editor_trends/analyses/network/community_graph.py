@@ -18,8 +18,8 @@ __date__ = '2011-01-10'
 __version__ = '0.1'
 
 import sys
-if '..' not in sys.path:
-    sys.path.append('..')
+if '../../' not in sys.path:
+    sys.path.append('../../')
 
 from classes import settings
 settings = settings.Settings()
@@ -42,21 +42,22 @@ def create_articles_set(edits):
 
 
 def create_edgelist(project, collection):
-    db = storage.init_database(rts.storage, project, collection)
+    db = storage.init_database('mongo', project, collection)
     ids = db.retrieve_distinct_keys('editor')
     ids.sort()
     fh = file_utils.create_txt_filehandle(settings.dataset_location, '%s_edgelist.csv' % project, 'w', 'utf-8')
     for i in ids:
-        author_i = conn[collection].find_one({'editor': i})
-        article_i = create_articles_set(author_i['edits'])
-        for j in ids:
-            if i > j:
-                author_j = conn[collection].find_one({'editor': j})
-                article_j = create_articles_set(author_j['edits'])
-                common = article_i.intersection(article_j)
-                if len(common) > 0:
-                    file_utils.write_list_to_csv([i, j, len(common)], fh, recursive=False, newline=True)
+        author_i = db.find_one({'editor': i})
+        if author_i != None:
+            article_i = create_articles_set(author_i['edits'])
+            for j in ids:
+                if i > j:
+                    author_j = db.find_one({'editor': j})
+                    article_j = create_articles_set(author_j['edits'])
+                    common = article_i.intersection(article_j)
+                    if len(common) > 0:
+                        file_utils.write_list_to_csv([i, j, len(common)], fh, recursive=False, newline=True)
     fh.close()
 
 if __name__ == '__main__':
-    create_edgelist('enwiki', 'editors')
+    create_edgelist('wikilytics', 'enwiki_editors_raw')

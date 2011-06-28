@@ -55,11 +55,6 @@ class Sorter(consumers.BaseConsumer):
                 fh.close()
                 for x, d in enumerate(data):
                     d = d.strip().split('\t')
-                    #TEMP FIX:
-                    #editor = d[2]
-                    #d[2] = d[0]
-                    #d[0] = editor
-                    #END TEMP FIX
                     data[x] = d
                 #data = [d.strip() for d in data]
                 #data = [d.split('\t') for d in data]
@@ -153,7 +148,7 @@ def launcher(rts):
     pbar = progressbar.ProgressBar(maxval=len(files)).start()
     tasks = multiprocessing.JoinableQueue()
     result = multiprocessing.JoinableQueue()
-    number_of_processes = 3
+    number_of_processes = 2
     sorters = [Sorter(rts, tasks, result) for x in xrange(number_of_processes)]
 
     for filename in files:
@@ -166,16 +161,14 @@ def launcher(rts):
         sorter.start()
 
     ppills = number_of_processes
-    while True:
-        while ppills > 0:
-            try:
-                res = result.get(block=True)
-                if res == True:
-                    pbar.update(pbar.currval + 1)
-                else:
-                    ppills -= 1
-            except Empty:
-                pass
-        break
+    while ppills > 0:
+        try:
+            res = result.get()
+            if res == True:
+                pbar.update(pbar.currval + 1)
+            else:
+                ppills -= 1
+        except Empty:
+            pass
 
     tasks.join()
