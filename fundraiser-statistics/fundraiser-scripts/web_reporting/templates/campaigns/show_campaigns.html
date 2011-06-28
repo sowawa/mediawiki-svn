@@ -8,20 +8,6 @@
 <br><p>Total views broken out of minutely intervals for the given period.</p><br>
 
 
-This is a <u><b>{{ test_type }}</u></b> test with the following artifacts:
-
-{% if artifacts %}
-    <ul>
-    {% for name in artifacts %}
-        <li>{{ name }}</li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No artifacts found for this campaign.</p>
-{% endif %}
-
-
-<h3>Test this campaign?</h3>
 <!-- Test Form -->
 <form action="/tests/build_test" method="post">
 {% csrf_token %}
@@ -29,6 +15,28 @@ This is a <u><b>{{ test_type }}</u></b> test with the following artifacts:
 <input type="hidden" name="artifacts" value="{{ artifacts }}">
 <input type="hidden" name="test_type" value="{{ test_type }}">
 <label for="test_name"> 
+
+This is a <u><b>{{ test_type }}</u></b> test with the following artifacts:
+
+{% if artifacts %}
+    <ul>
+    {% if artifacts|length > 2 %}
+    	<br>Select <u>two</u> of the artifacts using the checkboxes:<br><br>
+		{% for name in artifacts %}
+	        <input type="checkbox" name="artifacts_chosen" value="{{ name }}" />{{ name }}<br>
+	    {% endfor %}
+	{% else %}
+	    {% for name in artifacts %}
+	        <li>{{ name }}</li>
+	    {% endfor %}
+	{% endif %}	
+    </ul>
+{% else %}
+    <p>No artifacts found for this campaign.</p>
+{% endif %}
+
+<br><br>
+<h3>Test this campaign?</h3>
 <pre>TEST NAME:	</pre>		
 </label>
 {% if test_name != '' %}

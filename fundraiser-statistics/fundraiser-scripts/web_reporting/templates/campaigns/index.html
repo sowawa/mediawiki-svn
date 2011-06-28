@@ -3,20 +3,64 @@
 {% block content %}
 
 <h1>Choose a Campaign:</h1><br>
-<u><h3>Report name -- Earliest Access -- Campaign -- Donations -- Report Link </h1></u><br>
+
+{% if err_msg != '' %}
+	<br><span style="color:red">{{err_msg}}</span><br><br>
+{% endif %}
+
+<!-- Table listing all campaigns running -->
+
+<table border="1" cellpadding="10">
+<tr>
+<th>Report Name</th>
+<th>Earliest Access</th>
+<th>Campaign</th>
+<th>Donations</th>
+<th>Report Link</th>
+</tr>
+
 {% if campaigns %}
     <ul>
     {% for c in campaigns %}
     	{% if c.5 %}
-        	<li>{{ c.2 }} -- {{ c.3 }} -- <a href="/campaigns/{{ c.0 }}">{{ c.0 }}</a> -- {{ c.4 }} -- <a href="/tests/report/{{ c.0 }}">view report</a></li><br>
+    		<tr>
+				<td>{{ c.2 }}</td> <!-- test_name -->
+				<td>{{ c.3 }}</td> <!-- test_type -->
+				<td><a href="/campaigns/{{ c.0 }}">{{ c.0 }}</a></td> <!-- utm_campaign -->
+				<td>{{ c.4 }}</td> <!-- start_time -->
+				<td><a href="/tests/report/{{ c.0 }}">view report</a></td> <!-- end_time -->
+			</tr>
         {% else %}
-        	<li>{{ c.2 }} -- {{ c.3 }} -- <a href="/campaigns/{{ c.0 }}">{{ c.0 }}</a> -- {{ c.4 }}</li><br>
+    		<tr>
+				<td></td> <!-- test_name -->
+				<td>{{ c.3 }}</td> <!-- test_type -->
+				<td><a href="/campaigns/{{ c.0 }}">{{ c.0 }}</a></td> <!-- utm_campaign -->
+				<td>{{ c.4 }}</td> <!-- start_time -->
+				<td></td> <!-- end_time -->
+			</tr>
         {% endif %}
     {% endfor %}
     </ul>
 {% else %}
     <p>No campaigns are available.</p>
 {% endif %}
+
+</table> 
+
+<br>
+<form action="/campaigns/" method="post">
+{% csrf_token %}
+<label for="min_donations"> 
+<pre>Minimum Donations:	</pre>
+</label>
+<input type="text" name="min_donations" value="{{min_donations}}" />
+<label for="min_donations"> 
+<pre>Start UTC Timestamp:	</pre>
+</label>
+<input type="text" name="utc_ts" value="{{earliest_utc}}"/>
+<br><br>
+<input type="submit" value="Filter" />
+</form>
 
 <br><br><br>
 <u>Go to:</u>
