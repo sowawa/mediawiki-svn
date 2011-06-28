@@ -50,6 +50,9 @@ class DataMapper(object):
     
     """
         Copies mining logs from remote site for a given hour
+        
+        @param type: specifies whether the log contains banner or landing page requests
+        @type type: string
     """
     def copy_logs(self, type, **kwargs):
         
@@ -583,7 +586,7 @@ class FundraiserDataMapper(DataMapper):
             #print landing_url
             include_request, index_str_flag = self.evaluate_landing_url(landing_url, parsed_landing_url, query_fields, path_pieces)
             #print [include_request, index_str_flag]
-            
+
             
             if include_request:
                 
@@ -647,7 +650,7 @@ class FundraiserDataMapper(DataMapper):
                     utm_source = 'NONE'
                     utm_campaign = 'NONE'
                     utm_medium = 'NONE'
-                    
+                
                 # INSERT INTO landing_page ('utm_source', 'utm_campaign', 'utm_medium', 'landing_page', 'page_url', 'lang', 'project', 'ip')  values ()
                 try:
                     val = '(' + start_timestamp_in + ',\'' + utm_source + '\',\'' + utm_campaign + '\',\'' + utm_medium + '\',\'' + landing_page + \
@@ -736,6 +739,19 @@ class FundraiserDataMapper(DataMapper):
 
     """
         Parses the landing url and determines if its valid
+        
+        @param landing_url: full landing page url
+        @type landing_url: string
+        
+        @param parsed_landing_url: landing_url parsed into components
+        @type parsed_landing_url: dictionary
+        
+        @param query_fields: query string field values
+        @type query_fields: dictionary
+        
+        @param path_pieces: url path components
+        @type path_pieces: list
+        
     """
     def evaluate_landing_url(self, landing_url, parsed_landing_url, query_fields, path_pieces):        
         
@@ -752,7 +768,7 @@ class FundraiserDataMapper(DataMapper):
             Evaluate conditions which determine acceptance of request based on the landing url 
         """
         try: 
-            c1 = re.search('WMF', path_pieces[2] ) != None or re.search('Junetesting001', path_pieces[2] ) != None 
+            c1 = re.search('WMF', path_pieces[2] ) != None or re.search('Junetesting001', path_pieces[2] ) != None or re.search('L11', path_pieces[2] ) 
             c2 = re.search('Hear_from_Kartika', path_pieces[2]) != None
             
             cond1 = parsed_landing_url[hostIndex] == 'wikimediafoundation.org' and path_pieces[1] == 'wiki' and (c1 or c2)
