@@ -121,7 +121,11 @@
 			  });
 			});
 		},
-
+                 
+                /**
+                 * Setup the font selection menu. 
+                 * It also apply the font from cookie, if any.
+                 */
 		setup: function() {
 			var haveSchemes = false;
 			var config = mw.config.get( "wgWebFontsAvailable" );
@@ -191,7 +195,7 @@
 			.append( $menudiv );
 
 			//this is the fonts link
-			var $li = $( '<li />' )
+			var $li = $( '<li />' ).attr('id','pt-webfont')
 			.append( $div );
 
 			//add to the left of top personal links
