@@ -30,13 +30,18 @@ $wgExtensionMessagesFiles['MoodBar'] = dirname(__FILE__).'/MoodBar.i18n.php';
 
 // Resources
 $mbResourceTemplate = array(
-	'localBasePath' => dirname(__FILE__),
-	'remoteExtPath' => 'MoodBar'
+	'localBasePath' => dirname(__FILE__) . '/modules',
+	'remoteExtPath' => 'MoodBar/modules'
 );
 
-$wgResourceModules['ext.moodbar'] = $mbResourceTemplate + array(
-	'styles' => array(  ),
-	'scripts' => array(  ),
-	'dependencies' => array(  ),
-	'messages' => array( ),
+$wgResourceModules['ext.moodBar'] = $mbResourceTemplate + array(
+	'styles' => 'ext.moodBar/ext.moodBar.css',
+	'scripts' => 'ext.moodBar/ext.moodBar.js',
+	'messages' => array(
+		'moodbar-trigger-using',
+		'tooltip-p-moodbar-trigger-using',
+		'moodbar-trigger-feedback',
+		'tooltip-p-moodbar-trigger-feedback',
+	),
+	'position' => 'top',
 );

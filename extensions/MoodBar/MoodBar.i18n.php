@@ -14,6 +14,19 @@ $messages = array();
 
 $messages['en'] = array(
 	'moodbar-desc' => 'Allows specified users to send their "mood" back to the site operator',
+	'moodbar-trigger-using' => 'Using $1...',
+	'tooltip-p-moodbar-trigger-using' => '',
+	'moodbar-trigger-feedback' => 'Feedback',
+	'tooltip-p-moodbar-trigger-feedback' => '',
+);
+ 
+/** Message documentation
+ * @author Krinkle
+ */
+
+$messages['qqq'] = array(
+	'moodbar-trigger-using' => 'Link text of the MoodBar overlay trigger. $1 is the SITENAME.',
+	'moodbar-trigger-feedback' => 'Link text of the MoodBar overlay trigger. $1 is the SITENAME.',
 );
 
 /** Afrikaans (Afrikaans)
