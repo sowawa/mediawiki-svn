@@ -3,8 +3,7 @@
 select
 
 if(imp.dt_min < 10, concat(imp.dt_hr, '0', imp.dt_min,'00'), concat(imp.dt_hr, imp.dt_min,'00')) as day_hr,
-imp.utm_source,
-lp.landing_page,
+concat(imp.utm_source,'-', lp.landing_page) as utm_source,
 floor(impressions * (views / total_views)) as impressions, 
 views,
 -- total_clicks,
@@ -15,7 +14,10 @@ amount50,
 -- donations / total_clicks as completion_rate,
 round((donations / impressions) * (total_views / views), 6) as don_per_imp,
 (amount / impressions) * (total_views / views) as amt_per_imp,
-(amount50 / impressions) * (total_views / views) as amt50_per_imp
+(amount50 / impressions) * (total_views / views) as amt50_per_imp,
+donations / views as don_per_view,
+amount / views as amt_per_view,
+amount50 / views as amt50_per_view
 	
 from
 
@@ -23,7 +25,6 @@ from
 DATE_FORMAT(on_minute,'%sY%sm%sd%sH') as dt_hr,
 FLOOR(MINUTE(on_minute) / %s) * %s as dt_min,
 utm_source, 
-landing_page, 
 sum(counts) as impressions
 from banner_impressions 
 where on_minute > '%s' and on_minute < '%s' 
@@ -78,7 +79,7 @@ group by 1,2,3,4) as ecomm
 
 on ecomm.banner = lp.utm_source and ecomm.landing_page = lp.landing_page and ecomm.hr = lp.dt_hr and ecomm.dt_min = lp.dt_min
 
-where lp.utm_campaign REGEXP '%s'
-group by 1,2,3
+where lp.utm_campaign REGEXP '%s' and views > 1
+group by 1,2
 -- having impressions > 100000 and donations > 10
 order by 1 asc;

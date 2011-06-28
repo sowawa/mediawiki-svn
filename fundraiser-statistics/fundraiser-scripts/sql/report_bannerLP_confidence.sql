@@ -3,8 +3,7 @@
 
 select
 
-lp.utm_source,
-lp.landing_page,
+concat(imp.utm_source,'-', lp.landing_page) as utm_source,
 impressions as total_impressions,
 impressions * (views / total_views) as impressions,
 views as views,
