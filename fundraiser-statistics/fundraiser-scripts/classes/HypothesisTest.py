@@ -284,28 +284,39 @@ class TTest(HypothesisTest):
         
         total_samples = len(metrics_1)
         
-        t = m / math.pow((s_1 + s_2) / total_samples, 0.5)
-        degrees_of_freedom = (math.pow(s_1 / total_samples + s_2 / total_samples, 2) / (math.pow(s_1 / total_samples, 2) + math.pow(s_2 / total_samples, 2))) * total_samples
+        try:
+            t = m / math.pow((s_1 + s_2) / total_samples, 0.5)
+            degrees_of_freedom = (math.pow(s_1 / total_samples + s_2 / total_samples, 2) / (math.pow(s_1 / total_samples, 2) + math.pow(s_2 / total_samples, 2))) * total_samples
+        
+        
+            """ lookup confidence """
+            # get t and df
+            degrees_of_freedom = math.ceil(degrees_of_freedom)
+            if degrees_of_freedom > 30:
+                degrees_of_freedom = 99
             
+            p = self._data_loader_.get_pValue(degrees_of_freedom, t)
+            
+            """ Determine confidence range """
+            probs = [0.400000, 0.250000, 0.100000, 0.050000, 0.025000, 0.010000, 0.005000, 0.000500]
+            prob_diffs = [math.fabs(i-p) for i in probs]
+            min_index = min((n, i) for i, n in enumerate(prob_diffs))[1]
+            
+            lower_p = 1
+            if min_index > 0:
+                lower_p = probs[min_index - 1]
+            
+            conf_str =  'Between ' + str((1 - lower_p) * 100) + '% and ' + str((1 - p) * 100) + '% confident about the winner.'
+            
+        except Exception as inst:
+            
+            print 'Unable to compute a valid p-value.'
+            print type(inst)     # the exception instance
+            print inst.args      # arguments stored in .args
+            print inst           # __str__ allows args to printed directly
+
+            conf_str = 'A valid confidence score could not be computed.'
         
-        """ lookup confidence """
-        # get t and df
-        degrees_of_freedom = math.ceil(degrees_of_freedom)
-        if degrees_of_freedom > 30:
-            degrees_of_freedom = 99
-        
-        p = self._data_loader_.get_pValue(degrees_of_freedom, t)
-        
-        """ Determine confidence range """
-        probs = [0.400000, 0.250000, 0.100000, 0.050000, 0.025000, 0.010000, 0.005000, 0.000500]
-        prob_diffs = [math.fabs(i-p) for i in probs]
-        min_index = min((n, i) for i, n in enumerate(prob_diffs))[1]
-        
-        lower_p = 1
-        if min_index > 0:
-            lower_p = probs[min_index - 1]
-        
-        conf_str =  'Between ' + str((1 - lower_p) * 100) + '% and ' + str((1 - p) * 100) + '% confident about the winner.'
         
         return [means_1, means_2, std_devs_1, std_devs_2, conf_str]
         
