@@ -9,3 +9,4 @@ __user__ = 'rfaulk'
 __db__ = 'faulkner'
 __db_server__ = '127.0.0.1'
 __db_port__ = 3307
+__pass__='baggin5'
