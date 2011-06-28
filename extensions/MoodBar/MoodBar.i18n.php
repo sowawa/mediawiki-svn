@@ -29,6 +29,12 @@ $messages['qqq'] = array(
 	'moodbar-trigger-feedback' => 'Link text of the MoodBar overlay trigger. $1 is the SITENAME.',
 );
 
+/** Message documentation (Message documentation) */
+$messages['qqq'] = array(
+	'moodbar-trigger-using' => 'Link text of the MoodBar overlay trigger. $1 is the SITENAME.',
+	'moodbar-trigger-feedback' => 'Link text of the MoodBar overlay trigger. $1 is the SITENAME.',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -48,6 +54,8 @@ $messages['be-tarask'] = array(
  */
 $messages['de'] = array(
 	'moodbar-desc' => 'Ermöglicht es Benutzern ihre aktuelle Stimmung dem Seitenbetreiber mitzuteilen',
+	'moodbar-trigger-using' => 'Nutze $1 …',
+	'moodbar-trigger-feedback' => 'Rückmeldungen',
 );
 
 /** Spanish (Español)
@@ -83,6 +91,8 @@ $messages['he'] = array(
  */
 $messages['ia'] = array(
 	'moodbar-desc' => 'Permitte al usatores specificate de inviar lor "humor" retro al operator del sito',
+	'moodbar-trigger-using' => 'Usante $1...',
+	'moodbar-trigger-feedback' => 'Commentos',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -104,6 +114,8 @@ $messages['mk'] = array(
  */
 $messages['pt'] = array(
 	'moodbar-desc' => 'Permite que os utilizadores especificados enviem ao operador do site uma indicação da sua "disposição".',
+	'moodbar-trigger-using' => 'A usar $1...',
+	'moodbar-trigger-feedback' => 'Comentários',
 );
 
 /** Russian (Русский)

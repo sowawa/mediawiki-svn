@@ -747,7 +747,7 @@ $messages['gl'] = array(
 Tamén expande as funcións de análise como <nowiki>{{</nowiki>#if:…}} e variables como
 <nowiki>{{</nowiki>CURRENTDAY}} (de feito, case calquera cousa entre chaves duplas).
 Faino chamando a etapa de análise correspondente do propio MediaWiki.',
-	'expand_templates_title' => 'Título do contexto, para {{FULLPAGENAME}}, etc.:',
+	'expand_templates_title' => 'Título do contexto, para {{FULLPAGENAME}} etc.:',
 	'expand_templates_input' => 'Texto de entrada:',
 	'expand_templates_output' => 'Resultado',
 	'expand_templates_xml_output' => 'saída XML',

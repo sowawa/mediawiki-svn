@@ -37,7 +37,14 @@ $messages['he'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'categorysortheaders-desc' => 'Permitte alterar le ordine de apparentia de paginas in categorias, per specificar claves multi-character de ordination usante un syntaxe como <nowiki>[[categoria:Nomine del categoria|^Titulo^Parte invisibile del clave de ordination]]</nowiki>',
+	'categorysortheaders-desc' => 'Permitte alterar le ordine de apparentia de paginas in categorias, per specificar claves multi-character de ordination usante un syntaxe como <nowiki>[[category:Foo|^Header^Invisible part of sortkey]]</nowiki>',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'categorysortheaders-desc' => 'Erlaabt et anescht wéi ënnert dem Titel dee gewise gëtt, Säiten a Kategorien anzekategoriséieren, an deem Dir dës Syntax benotzt: <nowiki>[[category:Foo|^Header^Invisible part of sortkey]]</nowiki>',
 );
 
 /** Macedonian (Македонски)

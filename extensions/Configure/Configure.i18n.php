@@ -5714,12 +5714,13 @@ $messages['ig'] = array(
 );
 
 /** Ingush (ГІалгІай Ğalğaj)
+ * @author Amire80
  * @author Sapral Mikail
  */
 $messages['inh'] = array(
 	'configure-desc-group' => 'Тоаб',
-	'configure-desc-key' => 'ДоагI',
-	'configure-desc-ns' => 'ЦIерий аренаш',
+	'configure-desc-key' => 'ДоагӀ',
+	'configure-desc-ns' => 'ЦӀерий аренаш',
 	'configure-ext-use' => 'Болха бе',
 	'configure-form-reason' => 'Бахьан:',
 );

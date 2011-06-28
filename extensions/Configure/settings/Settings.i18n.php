@@ -11528,10 +11528,11 @@ $messages['ig'] = array(
 );
 
 /** Ingush (ГІалгІай Ğalğaj)
+ * @author Amire80
  * @author Sapral Mikail
  */
 $messages['inh'] = array(
-	'configure-setting-wgExtraLanguageNames-value' => 'ЦIи',
+	'configure-setting-wgExtraLanguageNames-value' => 'ЦӀи',
 );
 
 /** Italian (Italiano)

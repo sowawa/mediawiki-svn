@@ -635,13 +635,17 @@ $messages['bs'] = array(
 	'articlefeedback-form-switch-label' => 'Ocijeni ovu stranicu',
 	'articlefeedback-form-panel-title' => 'Ocijeni ovu stranicu',
 	'articlefeedback-form-panel-explanation' => 'Šta je ovo?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:OcjenjivanjeČlanaka',
 	'articlefeedback-form-panel-clear' => 'Ukloni ovu ocjenu',
 	'articlefeedback-form-panel-expertise' => 'Visoko sam obrazovan o ovoj temi (neobavezno)',
 	'articlefeedback-form-panel-expertise-studies' => 'Imam odgovarajući fakultetsku/univerzitetsku diplomu',
 	'articlefeedback-form-panel-expertise-profession' => 'Ovo je dio moje struke',
 	'articlefeedback-form-panel-expertise-hobby' => 'Ovo je moja duboka lična strast',
 	'articlefeedback-form-panel-expertise-other' => 'Izvor mog znanja nije prikazan ovdje',
+	'articlefeedback-form-panel-helpimprove' => 'Želio bih pomoći da unaprijedim Wikipediju, pošalji mi e-mail (neobavezno)',
+	'articlefeedback-form-panel-helpimprove-note' => 'Poslat ćemo vam e-mail potvrde. Nećemo dijeliti vašu adresu ni s kim. $1',
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Politika privatnosti',
+	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Politika privatnosti',
 	'articlefeedback-form-panel-submit' => 'Pošalji ocjene',
 	'articlefeedback-form-panel-pending' => 'Vaše ocjene još nisu poslane',
 	'articlefeedback-form-panel-success' => 'Uspješno sačuvano',
@@ -677,10 +681,37 @@ Molimo pokušajte kasnije.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Današnji najviši i najniži',
 	'articleFeedback-table-caption-dailyhighs' => 'Stranice sa najvišim ocjenama: $1',
 	'articleFeedback-table-caption-dailylows' => 'Stranice sa najnižim ocjenama: $1',
+	'articleFeedback-table-caption-weeklymostchanged' => 'Najviše mijenjano ove sedmice',
 	'articleFeedback-table-caption-recentlows' => 'Nedavne najniže ocjene',
 	'articleFeedback-table-heading-page' => 'Stranica',
 	'articleFeedback-table-heading-average' => 'Prosjek',
+	'articleFeedback-copy-above-highlow-tables' => 'Ovo je probna osobina. Molimo da nam pošaljete povratne informacije na [$1 stranicu za razgovor].',
+	'articlefeedback-dashboard-bottom' => "'''Napomena''': Mi ćemo nastaviti da probavamo sa raznim načinima prikaza članaka na ovim tablama.  Trenutno, table uključuju slijedeće članke:
+* Stranice sa najboljim/najslabijim ocjenama: članke koji imaju najmanje 10 ocjena u posljednja 24 sata.  Prosjeci su računati tako što su izračunati prosjeci svih poslanih ocjena u posljednja 24 sata.
+* Nedavne padovi: članci koji su dobili 70% ili manje (2 zvijezde ili niže) ocjene u bilo kojoj kategoriji u posljednja 24 sata. Samo članci koji su dobili najmanje 10 ocjena u posljednja 24 sata su ovdje uključeni.",
 	'articlefeedback-disable-preference' => 'Ne prikazuj dodatak Povratne informacije o članku na stranicama',
+	'articlefeedback-emailcapture-response-body' => 'Zdravo!
+
+Hvala što ste izrazili zanimanje za poboljšanje {{SITENAME}}.
+
+Molimo vas potvrdite vaš e-mail putem klika na link ispod: 
+
+$1
+
+Također možete posjetiti:
+
+$2
+
+I unijeti slijedeći kod potvrde:
+
+$3
+
+Bit ćemo ubrzo u kontaktu podacima kako možete pomoći oko poboljšanja {{SITENAME}}.
+
+Ako niste inicirali ovaj zahtjev, molimo zanemarite ovaj e-mail i nećemo vam slati ništa više.
+
+Srdačne čestitke i hvala najljepša,
+Vaš {{SITENAME}} tim',
 );
 
 /** Catalan (Català)

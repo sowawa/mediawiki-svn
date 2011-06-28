@@ -3761,10 +3761,11 @@ $messages['ig'] = array(
 );
 
 /** Ingush (ГІалгІай Ğalğaj)
+ * @author Amire80
  * @author Sapral Mikail
  */
 $messages['inh'] = array(
-	'mwe-link' => 'Iинк',
+	'mwe-link' => 'Ӏинк',
 );
 
 /** Ido (Ido)

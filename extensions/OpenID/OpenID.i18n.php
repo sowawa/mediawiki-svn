@@ -978,6 +978,8 @@ Bez OpenId nećete moći da se prijavite.',
 	'openid-provider-label-yahoo' => 'Prijava putem Vašeg Yahoo računa',
 	'openid-provider-label-aol' => 'Unesite svoj AOL nadimak',
 	'openid-provider-label-other-username' => 'Unesite Vaše $1 korisničko ime',
+	'openid-dashboard-number-openid-users' => 'Broj korisnika sa OpenID',
+	'openid-dashboard-number-openids-in-database' => 'Broj OpenID-eva (ukupno)',
 );
 
 /** Catalan (Català)

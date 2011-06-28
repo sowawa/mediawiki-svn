@@ -536,10 +536,11 @@ $messages['ig'] = array(
 );
 
 /** Ingush (ГІалгІай Ğalğaj)
+ * @author Amire80
  * @author Sapral Mikail
  */
 $messages['inh'] = array(
-	'commentbox-name' => 'ЦIи:',
+	'commentbox-name' => 'ЦӀи:',
 );
 
 /** Italian (Italiano)

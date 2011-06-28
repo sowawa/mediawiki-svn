@@ -1635,6 +1635,7 @@ Provu la lastan version de <a href="http://www.microsoft.com/ie">Interreta Esplo
  * @author Crazymadlover
  * @author Fitoschido
  * @author Imre
+ * @author McDutchie
  * @author Sanbec
  */
 $wgGoogleMapsMessages['es'] = array(
