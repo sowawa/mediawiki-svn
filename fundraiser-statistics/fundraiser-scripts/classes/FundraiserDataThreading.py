@@ -29,23 +29,64 @@ class MinerThread ( threading.Thread ):
     
     def run( self ):
        self.call_mine_log()
-             
-    def call_mine_log(self):
     
+    
+    def call_copy_log(self, type, **kwargs):
+        
+        return
+    
+    def call_mine_log(self):
+        
+        dm = DM.DataMapper()
+        
+        """ Determine whether logs are for banner impressions or landing pages """
+        
         if re.search('bannerImpressions', self._log_name_):
             print 'New Thread:  Mining banner impressions from ' + self._log_name_
             
-            try:
-                self._fdm_.mine_squid_impression_requests(self._log_name_ + '.log.gz')
-            except:
-                self._fdm_.mine_squid_impression_requests(self._log_name_ + '.log')
+            if dm.log_exists(self._log_name_ + '.log.gz'):
+                
+                try:
+                    self._fdm_.mine_squid_impression_requests(self._log_name_ + '.log.gz')
+                
+                except Exception as e:
+                    print type(e)     # the exception instance
+                    print e.args      # arguments stored in .args
+                    print e           # __str__ allows args to printed directly
+                
+
+            elif dm.log_exists(self._log_name_ + '.log'):
+                
+                try:
+                    self._fdm_.mine_squid_impression_requests(self._log_name_ + '.log')
+                    
+                except Exception as e:
+                    print type(e)     # the exception instance
+                    print e.args      # arguments stored in .args
+                    print e           # __str__ allows args to printed directly
+
                 
         elif re.search('landingpages', self._log_name_):
             print 'New Thread:  Mining landing page views from ' + self._log_name_
             
-            try:
-                self._fdm_.mine_squid_landing_page_requests(self._log_name_ + '.log.gz')
-            except:
-                self._fdm_.mine_squid_landing_page_requests(self._log_name_ + '.log')
-    
+            if dm.log_exists(self._log_name_ + '.log.gz'):
+                
+                try:
+                    self._fdm_.mine_squid_landing_page_requests(self._log_name_ + '.log.gz')
+                
+                except Exception as e:
+                        print type(e)     # the exception instance
+                        print e.args      # arguments stored in .args
+                        print e           # __str__ allows args to printed directly
+            
+            elif dm.log_exists(self._log_name_ + '.log'):
+                
+                try:
+                    self._fdm_.mine_squid_landing_page_requests(self._log_name_ + '.log')
+                
+                except Exception as e:
+                            print type(e)     # the exception instance
+                            print e.args      # arguments stored in .args
+                            print e           # __str__ allows args to printed directly
+        
            
