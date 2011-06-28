@@ -16,25 +16,18 @@ __revision__ = "$Rev$"
 __date__ = "December 16th, 2010"
 
 
-import sys
-# sys.path.append('../')
+""" Import python base modules """
+import sys, matplotlib, datetime, MySQLdb, pylab, HTML, math
 
-import matplotlib
-import datetime
-import MySQLdb
-import pylab
-# from matplotlib.lines import Line2D
-import HTML
-import math
-
+""" Import Analytics modules """
 import Fundraiser_Tools.classes.QueryData as QD
 import Fundraiser_Tools.classes.Helper as Hlp
 import Fundraiser_Tools.classes.TimestampProcessor as TP
 import Fundraiser_Tools.classes.DataLoader as DL
 import Fundraiser_Tools.classes.HypothesisTest as HT
+import Fundraiser_Tools.classes.FundraiserDataHandler as FDH
 
 
-# matplotlib.use('Agg')
 
         
         
@@ -245,9 +238,11 @@ class IntervalReporting(DataReporting):
         for key in kwargs:
             if key == 'query_type':                          # Set custom data loaders
                 if kwargs[key] == 'campaign':
-                    self._data_loader_ = DL.CampaignIntervalReportingLoader(kwargs[key])
+                    self._data_loader_ = DL.CampaignIntervalReportingLoader()
                 else:
                     self._data_loader_ = DL.IntervalReportingLoader(kwargs[key])
+            elif key == 'was_run':
+                self._was_run_ = kwargs[key]
                 
         """ Call constructor of parent """
         DataReporting.__init__(self, **kwargs)
@@ -316,7 +311,7 @@ class IntervalReporting(DataReporting):
         
         #line_types = ['b-o','g-o','r-o','c-o','m-o','k-o','y-o','b--d','g--d','r--d','c--d','m--d','k--d','y--d','b-.s','g-.s','r-.s','c-.s','m-.s','k-.s','y-.s']
         line_types = ['b-o','g-x','r-s','c-d','m-o','k-o','y-o','b--d','g--d','r--d','c--d','m--d','k--d','y--d','b-.s','g-.s','r-.s','c-.s','m-.s','k-.s','y-.s']
-        
+
         count = 0
         for key in metrics.keys():
             if self._plot_type_ == 'step':
@@ -378,11 +373,15 @@ class IntervalReporting(DataReporting):
             print >> sys.stderr, 'No summary data for this reporting object.\n'
             return 0
         
+        """ EXTRACT COLUMN NAMES AND ORDER THEM """
+        
         data = self._data_loader_._summary_data_
         index = self._data_loader_._summary_data_.keys()[0]
         col_names = self._data_loader_._summary_data_[index].keys()
         
-        html = '<table border=\"1\" cellpadding=\"5\"><tr>'
+        col_names = FDH.order_column_keys(col_names)
+        
+        html = '<table border=\"1\" cellpadding=\"10\"><tr>'
         
         
         """ Build headers """
@@ -396,8 +395,8 @@ class IntervalReporting(DataReporting):
         for item in data.keys():
             html = html + '<tr>'
             html = html + '<td>' + item + '</td>'
-            for elem in data[item].keys():
-                html = html + '<td>' + str(data[item][elem]) + '</td>'
+            for elem in col_names:
+                html = html + '<td>' + QD.get_metric_data_type(elem,data[item][elem]) + '</td>'
             html = html + '</tr>'
         
         html = html + '</table>'
@@ -433,10 +432,10 @@ class IntervalReporting(DataReporting):
         for key in self._times_.keys():
             self._times_[key] = TP.normalize_timestamps(self._times_[key], False, 3)
             self._times_[key], self._counts_[key] = TP.normalize_intervals(self._times_[key], self._counts_[key], interval)
-        
+                
         """ If there are missing metrics add them as zeros """
         for label in labels:
-            
+
             if not(label in self._times_.keys()):
                 self._times_[label] = self._times_[self._times_.keys()[0]]
                 self._counts_[label] = [0.0] * len(self._times_[label])
@@ -772,7 +771,7 @@ class ConfidenceReporting(DataReporting):
         test_call = "run('" + test_name + "', '" + query_name + "', '" + metric_name + "', '" + campaign + "', '" + \
             item_1 + "', '" + item_2 + "', '" + start_time + "', '" + end_time + "', " + str(interval) + ", " + str(num_samples) + ")"
         winner, percent_increase = self.print_metrics(fname, title, means_1, means_2, std_devs_1, std_devs_2, times_indices, labels, test_call)
-        
+    
         return [winner, percent_increase, confidence]
 
 
