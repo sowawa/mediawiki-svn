@@ -253,32 +253,34 @@ idg = RandomIDGenerator()
 namespaces = IDGenerator()
 print 'Parsing revisions...'
 db_raw = storage.init_database('mongo', 'wikilytics', 'enwiki_editors_raw')
-seen_editors = {}
-editors = {}
-x = 1
-for editor in post_editors:
+#seen_editors = {}
+#editors = {}
+#x = 1
+#for editor in post_editors:
+#    #print editor
+#    editors[x] = editor
+#    x += 2
+#x = 0
+#z = len(post_editors)
+#for y, editor in enumerate(pre_editors):
+#    #print editor
+#    editors[x] = editor
+#    x += 2
+#    if z == y:
+#        break
+#
+#editor_keys = editors.keys()
+#editor_keys.sort()
+#for key in editor_keys:
+#    #print editors
+#    #for editor in editors:
+#    editor = editors[key]
     #print editor
-    editors[x] = editor
-    x += 2
-x = 0
-z = len(post_editors)
-for y, editor in enumerate(pre_editors):
-    #print editor
-    editors[x] = editor
-    x += 2
-    if z == y:
-        break
-
-editor_keys = editors.keys()
-editor_keys.sort()
-for key in editor_keys:
-    #print editors
-    #for editor in editors:
-    editor = editors[key]
-    #print editor
-    go = editors_seen.get(editor, True)
-    if go:
-        editors_seen[editor] = False
+for editors in izip(pre_editors, post_editors):
+    for editor in editors:
+    #go = editors_seen.get(editor, True)
+    #if go:
+    #    editors_seen[editor] = False
         user_id = idg.get_id(editor)
         print 'Parsing editor %s (%s) ...' % (editor, user_id)
         revisions = db_raw.find({'user_id': str(editor)})
