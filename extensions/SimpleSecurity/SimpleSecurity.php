@@ -22,7 +22,7 @@ if( version_compare( $wgVersion, '1.17.0' ) < 0 ) die( 'This version of SimpleSe
  * @copyright © 2007-2011 Aran Dunkley
  * @license GNU General Public Licence 2.0 or later
  */
-define( 'SIMPLESECURITY_VERSION', '5.0.3, 2011-06-28' );
+define( 'SIMPLESECURITY_VERSION', '5.0.4, 2011-06-29' );
 
 # Load the SimpleSecurity class and messages
 $dir = dirname( __FILE__ ) . '/';
