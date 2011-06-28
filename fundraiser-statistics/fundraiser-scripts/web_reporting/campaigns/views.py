@@ -18,6 +18,8 @@ __author__ = "Ryan Faulkner"
 __revision__ = "$Rev$"
 __date__ = "June 20th, 2011"
 
+
+""" Import django modules """
 from django.shortcuts import render_to_response
 from django.http import Http404
 from django.shortcuts import render_to_response, get_object_or_404
@@ -25,17 +27,17 @@ from django.template import RequestContext
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 
-import sys
-import os
-import datetime
+""" Import python base modules """
+import sys, os, datetime, operator
 
+""" Import Analytics modules """
 import Fundraiser_Tools.classes.Helper as Hlp
 import Fundraiser_Tools.classes.DataReporting as DR
 import Fundraiser_Tools.classes.DataLoader as DL
 import Fundraiser_Tools.classes.FundraiserDataHandler as FDH
 import Fundraiser_Tools.classes.TimestampProcessor as TP
 import Fundraiser_Tools.settings as projSet
-import operator
+
 
 
 """
@@ -44,6 +46,18 @@ import operator
     
 """
 def index(request):
+    
+    err_msg = ''
+
+    """ Parse the filter fields """
+    filter_data = True
+    try:
+        min_donations_var = request.POST['min_donations']
+        earliest_utc_ts_var = request.POST['utc_ts']
+
+    except KeyError as e:
+        filter_data = False
+    
     
     """ Interface with the DataLoader """
     
@@ -58,10 +72,27 @@ def index(request):
     end_time = TP.timestamp_from_obj(datetime.datetime.now() + datetime.timedelta(hours=8),1,3)
     
     campaigns, all_data = crl.run_query({'metric_name':'earliest_timestamp','start_time':start_time,'end_time':end_time})
-    
+        
     sorted_campaigns = sorted(campaigns.iteritems(), key=operator.itemgetter(1))
     sorted_campaigns.reverse()
     
+    if filter_data:
+        try:
+            if min_donations_var == '':
+                min_donations = 0
+            else:
+                min_donations = int(min_donations_var)
+            
+            earliest_utc_ts = int(earliest_utc_ts_var)
+        except:
+            err_msg = 'Filter fields are incorrect.'
+
+            filter_data = False
+    else:
+        min_donations_var = ''
+        earliest_utc_ts_var = ''
+
+
     new_sorted_campaigns = list()
     for campaign in sorted_campaigns:
         key = campaign[0]
@@ -72,13 +103,18 @@ def index(request):
                 name = 'none'
             # timestamp = TP.timestamp_from_obj(all_data[key][3], 2, 2)
             timestamp = TP.timestamp_convert_format(all_data[key][3], 1, 2)
-            new_sorted_campaigns.append([campaign[0], campaign[1], name, timestamp, all_data[key][2], all_data[key][4]])
+            
+            if filter_data: 
+                if all_data[key][2] > min_donations and int(all_data[key][3]) > earliest_utc_ts:
+                    new_sorted_campaigns.append([campaign[0], campaign[1], name, timestamp, all_data[key][2], all_data[key][4]])
+            else:
+                new_sorted_campaigns.append([campaign[0], campaign[1], name, timestamp, all_data[key][2], all_data[key][4]])
     
     sorted_campaigns = new_sorted_campaigns
     
     os.chdir(projSet.__project_home__ + 'web_reporting')
 
-    return render_to_response('campaigns/index.html', {'campaigns' : sorted_campaigns})
+    return render_to_response('campaigns/index.html', {'campaigns' : sorted_campaigns, 'err_msg' : err_msg, 'min_donations' : min_donations_var, 'earliest_utc' : earliest_utc_ts_var}, context_instance=RequestContext(request))
 
     
 
@@ -106,7 +142,7 @@ def show_campaigns(request, utm_campaign):
     
     """ Estimate start/end time of campaign """
     """ This generates an image for campaign views """
-    ir = DR.IntervalReporting(use_labels=False, font_size=20, plot_type='line', query_type='campaign', file_path=projSet.__web_home__ + 'campaigns/static/images/')
+    ir = DR.IntervalReporting(was_run=False, use_labels=False, font_size=20, plot_type='line', query_type='campaign', file_path=projSet.__web_home__ + 'campaigns/static/images/')
     
     """ 
         Try to produce analysis on the campaign view data  
@@ -116,16 +152,14 @@ def show_campaigns(request, utm_campaign):
         ir.run(start_time, end_time, interval, 'views', utm_campaign, [])
     
     except Exception as inst:
-        
         print >> sys.stderr, type(inst)     # the exception instance
         print >> sys.stderr, inst.args      # arguments stored in .args
         print >> sys.stderr, inst           # __str__ allows args to printed directly
         
         err_msg = 'There is insufficient data to analyze this campaign %s.' % utm_campaign
         return HttpResponseRedirect(reverse('campaigns.views.index'))
- 
-    """ search for start_time and end_time """
     
+    """ search for start_time and end_time """
     top_view_interval = max(ir._counts_[utm_campaign])
 
     start_count = 0
@@ -145,6 +179,7 @@ def show_campaigns(request, utm_campaign):
             break
         
         count = count + 1
+        
     
     count = 0
     ir._counts_[utm_campaign].reverse()
@@ -170,9 +205,11 @@ def show_campaigns(request, utm_campaign):
     row = ttl.get_test_row(utm_campaign)
     test_name = ttl.get_test_field(row ,'test_name')
     
-    """ Regenerate the data using the estimated start and end times """
+    """ Regenerate the data using the estimated start and end times  !! FIXME / MODIFY -- this is cumbersome .. should just generate the plot !! """
+    ir = DR.IntervalReporting(was_run=False, use_labels=False, font_size=20, plot_type='line', query_type='campaign', file_path=projSet.__web_home__ + 'campaigns/static/images/')
     ir.run(start_time_est, end_time_est, interval, 'views', utm_campaign, [])
-    
+
+        
     """ determine the type of test """
     """ Get the banners  """
     test_type, artifact_name_list = FDH.get_test_type(utm_campaign, start_time, end_time, DL.CampaignReportingLoader(''))
