@@ -206,7 +206,7 @@ class SignupForm extends SpecialPage {
 		# Send out an email authentication message if needed
 		if( $wgEmailAuthentication && User::isValidEmailAddr( $mUser->getEmail() ) ) {
 			$status = $mUser->sendConfirmationMail();
-			if( $status==1 ) {
+			if( $status->isGood() ) {
 				$wgOut->addWikiMsg( 'confirmemail_oncreate' );
 			} else {
 				$wgOut->addWikiText( $status->getWikiText( 'confirmemail_sendfailed' ) );
@@ -336,7 +336,7 @@ class SignupForm extends SpecialPage {
 		# if email is provided then validate it
 		if( !empty( $this->mEmail ) && !Sanitizer::validateEmail( $this->mEmail ) ) {
 			return self::INVALID_EMAIL;
-		}
+		}                
 
 		# Set some additional data so the AbortNewAccount hook can be used for
 		# more than just username validation
