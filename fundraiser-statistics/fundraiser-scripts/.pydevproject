@@ -5,6 +5,8 @@
 <pydev_property name="org.python.pydev.PYTHON_PROJECT_INTERPRETER">Default</pydev_property>
 <pydev_property name="org.python.pydev.PYTHON_PROJECT_VERSION">python 2.7</pydev_property>
 <pydev_pathproperty name="org.python.pydev.PROJECT_SOURCE_PATH">
-<path>/Fundraiser_Tools/src</path>
+<path>/Fundraiser_Tools</path>
+<path>/Fundraiser_Tools/classes</path>
+<path>/Fundraiser_Tools/wrappers</path>
 </pydev_pathproperty>
 </pydev_project>
