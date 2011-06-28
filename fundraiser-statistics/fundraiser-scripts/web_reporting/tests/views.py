@@ -22,7 +22,7 @@ __revision__ = "$Rev$"
 __date__ = "June 20th, 2011"
 
 
-
+""" Import django modules """
 from django.shortcuts import render_to_response, redirect
 from django.http import Http404
 from django.shortcuts import render_to_response, get_object_or_404
@@ -30,13 +30,10 @@ from django.template import RequestContext
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 
-import sys
-import math
-import os
-import getopt
-import re
-import datetime
+""" Import python base modules """
+import sys, math, os, getopt, re, datetime, operator
 
+""" Import Analytics modules """
 import Fundraiser_Tools.classes.Helper as Hlp
 import Fundraiser_Tools.classes.DataLoader as DL
 import Fundraiser_Tools.classes.DataReporting as DR
@@ -44,7 +41,7 @@ import Fundraiser_Tools.classes.FundraiserDataHandler as FDH
 import Fundraiser_Tools.classes.TimestampProcessor as TP
 import Fundraiser_Tools.classes.QueryData as QD
 import Fundraiser_Tools.settings as projSet
-import operator
+
 
 
 """
@@ -54,8 +51,13 @@ def index(request):
     
     ttl = DL.TestTableLoader()
     test_rows = ttl.get_all_test_rows()
+
+    l = []
+    for i in test_rows:
+        l.append(i)
+    l.reverse()
     
-    return render_to_response('tests/index.html', {'test_rows' : test_rows},  context_instance=RequestContext(request))
+    return render_to_response('tests/index.html', {'test_rows' : l},  context_instance=RequestContext(request))
 
 
 
@@ -92,17 +94,29 @@ def test(request):
            
             labels = labels.__str__() 
         
-        labels = labels[1:-1].split(',')
         label_dict = dict()
         
-        for i in range(len(labels)):
-            label = labels[i].split('\'')[1]
-            label = label.strip()            
-            pieces = label.split(' ')
-            label = pieces[0]
-            for j in range(len(pieces) - 1):
-                label = label + '_' + pieces[j+1]
-            label_dict[label] = label
+        """ Look at the artifact names and map them into a dict() 
+            Determine if artifacts were chosen by the user """
+        
+        if request.POST.__contains__('artifacts_chosen'):
+            
+            artifacts_chosen =  request.POST.getlist()
+            
+            for elem in artifacts_chosen:
+                label_dict[elem] = elem
+        else:
+            print labels
+            labels = labels[1:-1].split(',')
+            
+            for i in range(len(labels)):
+                label = labels[i].split('\'')[1]
+                label = label.strip()            
+                pieces = label.split(' ')
+                label = pieces[0]
+                for j in range(len(pieces) - 1):
+                    label = label + '_' + pieces[j+1]
+                label_dict[label] = label
         
     except Exception as inst:
         
@@ -133,7 +147,7 @@ def test(request):
         crl._query_type_ = test_type_var
         artifact_list = crl.run_query({'utm_campaign' : utm_campaign_var, 'start_time' : start_time_var, 'end_time' : end_time_var})
     elif test_type_override == 'Banner and LP':
-        test_type_var = FDH._TESTTYPE_BANNER_
+        test_type_var = FDH._TESTTYPE_BANNER_LP_
         crl._query_type_ = test_type_var
         artifact_list = crl.run_query({'utm_campaign' : utm_campaign_var, 'start_time' : start_time_var, 'end_time' : end_time_var})
     
@@ -144,19 +158,23 @@ def test(request):
         for elem in artifact_list:
             label_dict[elem] = elem
     
-    # os.chdir(projSet.__project_home__ + 'classes')
+
+    """ 
+        EXECUTE REPORT 
     
+        -> setup time parameters
+        -> determine test metrics
+        -> execute queries
+    """
     
-    """ EXECUTE REPORT """
-    
-    # Build a test interval - use the entire test period
     sample_interval = 2
+    
     start_time_obj = TP.timestamp_to_obj(start_time_var, 1)
     end_time_obj = TP.timestamp_to_obj(end_time_var, 1)
+    
     time_diff = end_time_obj - start_time_obj
     time_diff_min = time_diff.seconds / 60.0
     test_interval = int(math.floor(time_diff_min / sample_interval)) # 2 is the interval
-    
     
     
     os.chdir(projSet.__project_home__ + 'web_reporting')
@@ -164,24 +182,40 @@ def test(request):
     metric_types = FDH.get_test_type_metrics(test_type_var)
     metric_types_full = dict()
     
-    """ Get the full (descriptive) version of the metric names """
+    
+    """ Get the full (descriptive) version of the metric names 
+        !! FIXME / TODO -- order these properly !! """
+    
     for i in range(len(metric_types)):
         metric_types_full[metric_types[i]] = QD.get_metric_full_name(metric_types[i])
+    
+    
+    """ USE autogen() TO GENERATE THE REPORT DATA - dependent on test type """
 
-    """ Depending on the type of test specified call the auto_gen function """
     if test_type_var == FDH._TESTTYPE_BANNER_:
         
-        winner_dpi, percent_win_dpi, conf_dpi, winner_api, percent_win_api, conf_api, html_table =  auto_gen(test_name_var, start_time_var, end_time_var, utm_campaign_var, label_dict, sample_interval, test_interval, test_type_var, metric_types)
+        winner_dpi, percent_win_dpi, conf_dpi, winner_api, percent_win_api, conf_api, percent_win_cr, conf_cr, html_table =  auto_gen(test_name_var, start_time_var, end_time_var, utm_campaign_var, label_dict, sample_interval, test_interval, test_type_var, metric_types)
         
-        html = render_to_response('tests/results_' + FDH._TESTTYPE_BANNER_ + '.html', {'winner' : winner_dpi, 'percent_win_dpi' : '%.2f' % percent_win_dpi, 'percent_win_api' : '%.2f' % percent_win_api, 'conf_dpi' : conf_dpi, 'conf_api' : conf_api, 'utm_campaign' : utm_campaign_var, \
-                                    'metric_names_full' : metric_types_full, 'summary_table': html_table, 'sample_interval' : sample_interval}, context_instance=RequestContext(request))
+        html = render_to_response('tests/results_' + FDH._TESTTYPE_BANNER_ + '.html', {'winner' : winner_dpi, 'percent_win_dpi' : '%.2f' % percent_win_dpi, 'percent_win_api' : '%.2f' % percent_win_api, 'percent_win_cr' : '%.2f' % percent_win_cr, \
+                                                                                       'conf_dpi' : conf_dpi, 'conf_api' : conf_api, 'conf_cr' : conf_cr, 'utm_campaign' : utm_campaign_var, 'metric_names_full' : metric_types_full, \
+                                    'summary_table': html_table, 'sample_interval' : sample_interval}, context_instance=RequestContext(request))
     elif test_type_var == FDH._TESTTYPE_LP_:
         
         winner_dpv, percent_win_dpv, conf_dpv, winner_apv, percent_win_apv, conf_apv, html_table =  auto_gen(test_name_var, start_time_var, end_time_var, utm_campaign_var, label_dict, sample_interval, test_interval, test_type_var, metric_types)
         
         html = render_to_response('tests/results_' + FDH._TESTTYPE_LP_ + '.html', {'winner' : winner_dpv, 'percent_win_dpv' : '%.2f' % percent_win_dpv, 'percent_win_apv' : '%.2f' % percent_win_apv, 'conf_dpv' : conf_dpv, 'conf_apv' : conf_apv, 'utm_campaign' : utm_campaign_var, \
                                     'metric_names_full' : metric_types_full, 'summary_table': html_table, 'sample_interval' : sample_interval}, context_instance=RequestContext(request))
+    
+    elif test_type_var == FDH._TESTTYPE_BANNER_LP_:
+        
+        winner_dpi, percent_win_dpi, conf_dpi, winner_api, percent_win_api, conf_api, percent_win_cr, conf_cr, html_table =  auto_gen(test_name_var, start_time_var, end_time_var, utm_campaign_var, label_dict, sample_interval, test_interval, test_type_var, metric_types)
+        
+        html = render_to_response('tests/results_' + FDH._TESTTYPE_BANNER_LP_ + '.html', {'winner' : winner_dpi, 'percent_win_dpi' : '%.2f' % percent_win_dpi, 'percent_win_api' : '%.2f' % percent_win_api, 'percent_win_cr' : '%.2f' % percent_win_cr, \
+                                                                                          'conf_dpi' : conf_dpi, 'conf_api' : conf_api, 'conf_cr' : conf_cr, 'utm_campaign' : utm_campaign_var, 'metric_names_full' : metric_types_full, \
+                                                                                          'summary_table': html_table, 'sample_interval' : sample_interval}, context_instance=RequestContext(request))
             
+    
+    
     """ WRITE TO TEST TABLE """
     
     ttl = DL.TestTableLoader()
@@ -223,44 +257,64 @@ def auto_gen(test_name, start_time, end_time, campaign, labels, sample_interval,
     if len(labels) == 0:
         use_labels_var = False
         
-    """ Build reporting objects """
+    """ 
+        BUILD REPORTING OBJECTS 
+    """
     if test_type == FDH._TESTTYPE_BANNER_:
-        ir = DR.IntervalReporting(use_labels=use_labels_var,font_size=20,plot_type='step',query_type='banner',file_path=projSet.__web_home__ + 'tests/static/images/')
+        ir = DR.IntervalReporting(use_labels=use_labels_var,font_size=20,plot_type='step',query_type=FDH._QTYPE_BANNER_,file_path=projSet.__web_home__ + 'tests/static/images/')
     elif test_type == FDH._TESTTYPE_LP_:
-        ir = DR.IntervalReporting(use_labels=use_labels_var,font_size=20,plot_type='step',query_type='LP',file_path=projSet.__web_home__ + 'tests/static/images/')
+        ir = DR.IntervalReporting(use_labels=use_labels_var,font_size=20,plot_type='step',query_type=FDH._QTYPE_LP_, file_path=projSet.__web_home__ + 'tests/static/images/')
+    elif test_type == FDH._TESTTYPE_BANNER_LP_:
+        ir = DR.IntervalReporting(use_labels=use_labels_var,font_size=20,plot_type='step',query_type=FDH._QTYPE_BANNER_LP_,file_path=projSet.__web_home__ + 'tests/static/images/')
         
     ir_cmpgn = DR.IntervalReporting(use_labels=False,font_size=20,plot_type='line',query_type='campaign',file_path=projSet.__web_home__ + 'campaigns/static/images/')
     cr = DR.ConfidenceReporting(use_labels=use_labels_var,font_size=20,plot_type='line',hyp_test='t_test',file_path=projSet.__web_home__ + 'tests/static/images/')
     
-    """ generate interval reporting plots """ 
-    
-    
-    """ !! MODIFY -- allow a list of metrics to be passed """
+
+    """
+        GENERATE PLOTS FOR EACH METRIC OF INTEREST
+         !! MODIFY -- allow a list of metrics to be passed 
+    """
     for metric in metric_types:
         #print [start_time, end_time, sample_interval, metric, campaign, labels.keys()]
         ir.run(start_time, end_time, sample_interval, metric, campaign, labels.keys())
         
-    """ Report summary """
+        
+    """ GENERATE A REPORT SUMMARY """
     ir._write_html_table()
     html_table = ir._table_html_
     
-    # print 'Generating campaign plots...\n'
+    
+    """ CHECK THE CAMPAIGN VIEWS AND DONATIONS """
     ir_cmpgn.run(start_time, end_time, sample_interval, 'views', campaign, [])
     ir_cmpgn.run(start_time, end_time, sample_interval, 'donations', campaign, [])
     
-    """ generate confidence reporting plots """
-        #!!! MODIFY -- Omit for now 
+    
+    """ PERFORM HYPOTHESIS TESTING """
     
     if test_type == FDH._TESTTYPE_BANNER_:
         winner_dpi, percent_increase_dpi, confidence_dpi = cr.run(test_name,'report_banner_confidence','don_per_imp',campaign, labels, start_time, end_time, sample_interval,test_interval)
         winner_api, percent_increase_api, confidence_api = cr.run(test_name,'report_banner_confidence','amt50_per_imp',campaign, labels, start_time, end_time, sample_interval,test_interval)
+        winner_cr, percent_increase_cr, confidence_cr = cr.run(test_name,'report_banner_confidence','click_rate',campaign, labels, start_time, end_time, sample_interval,test_interval)
+        
+        return [winner_dpi, percent_increase_dpi, confidence_dpi, winner_api, percent_increase_api, confidence_api, percent_increase_cr, confidence_cr, html_table]
+    
     elif test_type == FDH._TESTTYPE_LP_:
         winner_dpi, percent_increase_dpi, confidence_dpi = cr.run(test_name,'report_LP_confidence','don_per_view',campaign, labels, start_time, end_time, sample_interval,test_interval)
         winner_api, percent_increase_api, confidence_api = cr.run(test_name,'report_LP_confidence','amt50_per_view',campaign, labels, start_time, end_time, sample_interval,test_interval)
+        
+        return [winner_dpi, percent_increase_dpi, confidence_dpi, winner_api, percent_increase_api, confidence_api, html_table]
     
+    elif test_type == FDH._TESTTYPE_BANNER_LP_:
+        winner_dpi, percent_increase_dpi, confidence_dpi = cr.run(test_name,'report_bannerLP_confidence','don_per_imp',campaign, labels, start_time, end_time, sample_interval,test_interval)
+        winner_api, percent_increase_api, confidence_api = cr.run(test_name,'report_bannerLP_confidence','amt50_per_imp',campaign, labels, start_time, end_time, sample_interval,test_interval)
+        winner_cr, percent_increase_cr, confidence_cr = cr.run(test_name,'report_bannerLP_confidence','click_rate',campaign, labels, start_time, end_time, sample_interval,test_interval)
+        
+        return [winner_dpi, percent_increase_dpi, confidence_dpi, winner_api, percent_increase_api, confidence_api, percent_increase_cr, confidence_cr, html_table]
+        
     #winner_dpi, percent_increase_dpi, confidence_dpi = ['',0.0,'']
     #winner_api, percent_increase_api, confidence_api = ['',0.0,'']
-    return [winner_dpi, percent_increase_dpi, confidence_dpi, winner_api, percent_increase_api, confidence_api, html_table]
+    # return [winner_dpi, percent_increase_dpi, confidence_dpi, winner_api, percent_increase_api, confidence_api, html_table]
 
 
 """
