@@ -12,7 +12,16 @@ $wgExtensionCredits['other'][] = array(
 	'description' => 'Api for Wikimedia Metrics Reporting output',
 );
 
+$wgMetricsDBserver         = '';
+//$wgMetricsDBport           = 5432;
+$wgMetricsDBname           = '';
+$wgMetricsDBuser           = '';
+$wgMetricsDBpassword       = '';
+//$wgMetricsDBtype           = 'mysql';
+
 $dir = dirname( __FILE__ ) . '/';
 
 $wgAutoloadClasses['ApiAnalytics'] = $dir . 'ApiAnalytics.php';
 $wgAPIModules['analytics'] = 'ApiAnalytics';
+
+$wgAutoloadClasses['ApiAnalyticsBase'] = $dir . 'ApiAnalyticsBase.php';

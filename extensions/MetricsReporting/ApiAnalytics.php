@@ -2,7 +2,7 @@
 
 class ApiAnalytics extends ApiBase {
 
-	private $metricModuleNames;
+	private $metricModuleNames, $params;
 
 	private $metricModules = array(
 	);
@@ -13,12 +13,38 @@ class ApiAnalytics extends ApiBase {
 	}
 
 	public function execute() {
+		$this->params = $this->extractRequestParams();
+
+		// Instantiate requested modules
+		$modules = array();
+		$this->instantiateModules( $modules, 'prop', $this->mQueryPropModules );
+
+		// Execute all requested modules.
+		foreach ( $modules as $module ) {
+			$module->profileIn();
+			$module->execute();
+			$module->profileOut();
+		}
+	}
+
+	/**
+	 * Create instances of all modules requested by the client
+	 * @param $modules Array to append instantiated modules to
+	 * @param $param string Parameter name to read modules from
+	 * @param $moduleList Array array(modulename => classname)
+	 */
+	protected function instantiateModules( &$modules, $param, $moduleList ) {
+		if ( isset( $this->params[$param] ) ) {
+			foreach ( $this->params[$param] as $moduleName ) {
+				$modules[] = new $moduleList[$moduleName] ( $this, $moduleName );
+			}
+		}
 	}
 
 	public function getAllowedParams() {
 		return array(
 			'metric' => array(
-				ApiBase::PARAM_ISMULTI => true,
+				ApiBase::PARAM_ISMULTI => false,
 				ApiBase::PARAM_TYPE => $this->metricModuleNames
 			),
 		);
@@ -26,13 +52,16 @@ class ApiAnalytics extends ApiBase {
 
 	public function getParamDescription() {
 		return array(
-			'metric' => '',
+			'metric' => array(
+				'Type of data to collect',
+				'About metric names: these include source of data, to allow for alternate sources of similar metrics, which likely are defined differently or have other intrinsic issues (e.g. precision/reliability).'
+			),
 		);
 	}
 
 	public function getDescription() {
 		return array(
-			''
+			'Collect data from the analytics database'
 		);
 	}
 
