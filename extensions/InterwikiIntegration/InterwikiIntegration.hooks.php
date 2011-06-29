@@ -193,7 +193,7 @@ class InterwikiIntegrationHooks {
 	}
 	
 	public static function InterwikiIntegrationArticleSaveComplete( &$article, &$user, $text, $summary,
-		$minoredit, &$watchthis, $sectionanchor, &$flags, $revision, &$status, $baseRevId, &$redirect ) {
+		$minoredit, $watchthis, $sectionanchor, &$flags, $revision, &$status, $baseRevId, &$redirect ) {
 		global $wgDBname;
 		if ( !is_null ( $revision ) ) {
 			$mDb = wfGetDB( DB_MASTER );
