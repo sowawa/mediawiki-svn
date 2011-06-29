@@ -86,7 +86,7 @@ class ApiAnalytics extends ApiBase {
 
 		$querySeparator = str_repeat( '--- ', 12 );
 		$moduleSeparator = str_repeat( '*** ', 14 );
-		$msg .= "\n$querySeparator Analytics: Metric  $querySeparator\n\n";
+		$msg .= "\n$querySeparator Analytics: Metrics  $querySeparator\n\n";
 		$msg .= $this->makeHelpMsgHelper( $this->metricModules, 'metric' );
 		$msg .= "\n\n$moduleSeparator Modules: continuation  $moduleSeparator\n\n";
 
