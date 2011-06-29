@@ -1,6 +1,6 @@
 <?php
 
-class ApiMetrics extends ApiBase {
+class ApiAnalytics extends ApiBase {
 
 	private $metricModuleNames;
 
@@ -91,6 +91,6 @@ class ApiMetrics extends ApiBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: $';
+		return __CLASS__ . ': $Id$';
 	}
 }
