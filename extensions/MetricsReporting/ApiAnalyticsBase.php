@@ -375,7 +375,7 @@ abstract class ApiAnalyticsBase extends ApiBase/*ApiQueryBase*/ {
 			),
 		);
 
-		return array_merge( $params, array_intersect_key( $select, $this->getAllowedFilters() ) );
+		return array_merge( $params, array_intersect_key( $select, array_flip( $this->getAllowedFilters() ) ) );
 	}
 
 	public function getParamDescription() {
