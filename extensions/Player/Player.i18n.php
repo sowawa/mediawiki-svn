@@ -1006,6 +1006,7 @@ $messages['ms'] = array(
 	'player-playertitle' => 'Pemain: $1',
 	'player-file' => 'Nama fail',
 	'player-goto-player' => 'pemain',
+	'player-goto-page' => 'Laman',
 );
 
 /** Maltese (Malti)

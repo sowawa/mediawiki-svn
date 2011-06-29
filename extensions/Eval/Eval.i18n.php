@@ -488,6 +488,14 @@ $messages['mr'] = array(
 	'eval_code' => 'कोड',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'eval_out' => 'Output',
+	'eval_code' => 'Kod',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

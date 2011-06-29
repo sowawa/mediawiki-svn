@@ -4799,7 +4799,10 @@ $messages['ms'] = array(
 	'wikilog-view-summary' => 'Ringkasan',
 	'wikilog-pager-prev' => 'sebelumnya',
 	'wikilog-pager-next' => 'berikutnya',
+	'wikilog-form-name' => 'Nama:',
 	'wikilog-form-date' => 'Tarikh:',
+	'wikilog-approve-lc' => 'luluskan',
+	'wikilog-page-lc' => 'laman',
 );
 
 /** Nedersaksisch (Nedersaksisch)

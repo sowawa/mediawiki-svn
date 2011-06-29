@@ -695,6 +695,7 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Aurora
  * @author Aviator
  */
@@ -704,6 +705,7 @@ $messages['ms'] = array(
 	'findspam-ip' => 'Alamat IP:',
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => 'Tiada sumbangan dijumpai',
+	'right-findspam' => 'Cari spam yang baru masuk',
 );
 
 /** Erzya (Эрзянь)

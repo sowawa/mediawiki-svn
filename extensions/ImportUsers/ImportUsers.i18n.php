@@ -1367,6 +1367,7 @@ $messages['ms'] = array(
 	'importusers-uploadfile' => 'Muat naik fail',
 	'importusers-form-button' => 'Import',
 	'importusers-log-summary-all' => 'Semua: $1',
+	'importusers-password' => 'kata laluan',
 );
 
 /** Maltese (Malti)

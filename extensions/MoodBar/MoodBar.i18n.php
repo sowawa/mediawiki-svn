@@ -47,6 +47,8 @@ $messages['af'] = array(
  */
 $messages['be-tarask'] = array(
 	'moodbar-desc' => 'Дазваляе вызначаным удзельнікам дасылаць іх «настрой» апэратару сайта',
+	'moodbar-trigger-using' => 'Выкарыстоўваючы $1…',
+	'moodbar-trigger-feedback' => 'Водгук',
 );
 
 /** German (Deutsch)
@@ -84,6 +86,8 @@ $messages['gl'] = array(
  */
 $messages['he'] = array(
 	'moodbar-desc' => 'מתן אפשרות למשתמשם לשלוח את "מצב הרוח" שלהם למפעיל האתר',
+	'moodbar-trigger-using' => 'נעשה שימוש באתר $1...',
+	'moodbar-trigger-feedback' => 'משוב',
 );
 
 /** Interlingua (Interlingua)
@@ -107,6 +111,8 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'moodbar-desc' => 'Им овозможува на одредени корисници да му го соопштуваат нивното „расположение“ на операторот на мрежното место',
+	'moodbar-trigger-using' => 'Користење на $1...',
+	'moodbar-trigger-feedback' => 'Мислења',
 );
 
 /** Portuguese (Português)

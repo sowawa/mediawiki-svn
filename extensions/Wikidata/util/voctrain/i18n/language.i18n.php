@@ -3335,6 +3335,13 @@ $messages['myv'] = array(
 	'voctrain_Translation' => 'Ютавтома',
 );
 
+/** Mazanderani (مازِرونی)
+ * @author محک
+ */
+$messages['mzn'] = array(
+	'voctrain_Language' => 'زوون',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  * @author Teòtlalili

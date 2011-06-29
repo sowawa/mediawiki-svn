@@ -338,7 +338,13 @@ $messages['mk'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'bookmanager-desc' => 'Alatan untuk buku',
+	'bm-booktools-section' => 'Alatan buku',
+	'bm-randomchapter-link' => 'Bab rawak',
 	'bm-printversion' => 'Versi boleh cetak',
+	'bm-printversion-desc' => 'Menjana [[Special:PrintVersion|versi cetakan]] buku',
+	'bm-printversion-no-book' => 'Sila isikan nama buku untuk mendapatkan versi cetakannya.',
+	'bm-printversion-inexistent-book' => 'Buku tidak dijumpai. Sila isikan nama buku yang wujud untuk mendapatkan versi cetakannya.',
 );
 
 /** Dutch (Nederlands)

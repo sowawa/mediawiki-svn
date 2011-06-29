@@ -144,6 +144,7 @@ You would not able to log in without an OpenID.',
 );
 
 /** Message documentation (Message documentation)
+ * @author Dbc334
  * @author EugeneZelenko
  * @author Fryed-peach
  * @author Hamilton Abreu
@@ -177,6 +178,7 @@ Parameters:
 	'openidlanguage' => '{{Identical|Language}}',
 	'openidtimezone' => '{{Identical|Time zone}}',
 	'openidchoosepassword' => '{{Identical|Password}}',
+	'openidalreadyloggedin' => '',
 	'openidautosubmit' => '{{doc-important|"Continue" will never be localised. It is hardcoded in a PHP extension. Translations could be made like ""Continue" (translation)"}}',
 	'openiddelete-button' => '{{Identical|Confirm}}',
 	'openid-openids-were-not-merged' => 'When merging user accounts by UserMerge or similar extensions, OpenID(s) are not merged if $wgOpenIDMergeOnAccountMerge=false (default).',
@@ -191,7 +193,7 @@ OpenID preferences tab title',
 	'right-openid-dashboard-access' => 'the standard access right for the OpenID dashboard, which is a restricted special page',
 	'right-openid-dashboard-admin' => 'the special adminstrator access right for the OpenID dashboard, which is a restricted special page',
 	'openid-dashboard-title' => 'Display name and page title for the OpenID dashboard (non-admin) on Special:SpecialPages',
-	'openid-dashboard-title-admin' => 'Display name and page title for the adminstrator OpenID dashboard on Special:SpecialPages',
+	'openid-dashboard-title-admin' => 'Display name and page title for the administrator OpenID dashboard on Special:SpecialPages',
 	'openid-dashboard-introduction' => 'Intro text for the special OpenID dashboard page: the user gets status information about the current OpenID settings of this wiki.
 * $1 is the url of the help page explaining the parameters',
 );
@@ -3879,6 +3881,7 @@ Sila hubungi [[Special:ListUsers/sysop|pentadbir]].',
 	'openidchooseurl' => 'Nama yang dipilih daripada OpenID anda ($1)',
 	'openidchooseauto' => 'Nama janaan automatik ($1)',
 	'openidchoosemanual' => 'Nama pilihan anda:',
+	'openidchooseusername' => 'Nama pengguna:',
 	'openidchoosepassword' => 'Kata laluan:',
 	'openidconvertinstructions' => 'Gunakan borang ini untuk menukar akaun anda untuk menggunakan OpenID URL.',
 	'openidconvertsuccess' => 'Berjaya ditukar ke OpenID',
@@ -3891,6 +3894,7 @@ Sekiranya anda inign menggunakan OpenID untuk log masuk pada masa hadapan, sila 
 	'openidnousername' => 'Nama pengguna tidak dinyatakan.',
 	'openidbadusername' => 'Nama pengguna yang dinyatakan tidak sah.',
 	'openidloginlabel' => 'URL OpenID',
+	'openiddelete-button' => 'Sahkan',
 	'openid-urls-action' => 'Tindakan',
 );
 
@@ -5236,6 +5240,9 @@ svojega si lahko izberete med spodnjimi možnostmi.',
 	'openidconvertyourstext' => 'To je že vaš OpenID.',
 	'openidconvertothertext' => 'To je OpenID nekoga drugega.',
 	'openidalreadyloggedin' => 'Ste že prijavljeni.',
+	'openidalreadyloggedintext' => "'''$1, ste že prijavljeni!'''
+
+OpenID-je lahko upravljate (si jih ogledate, izbrišete in drugo) na zavihku OpenID v vaših [[Special:Preferences|nastavitvah]].",
 	'openidnousername' => 'Uporabniško ime ni določeno.',
 	'openidbadusername' => 'Določeno je neustrezno uporabniško ime.',
 	'openidautosubmit' => 'Ta stran vsebuje obrazec, ki bi se moral potrditi samodejno, če imate omogočen JavaScript.
@@ -5254,6 +5261,7 @@ Brez OpenID se ne boste mogli prijaviti.',
 Brez OpenID se ne boste mogli prijaviti.',
 	'openiddelete-sucess' => 'OpenID je bil uspešno odstranjen iz vašega računa.',
 	'openiddelete-error' => 'Pri odstranjevanju OpenID iz vašega računa je prišlo do napake.',
+	'openid-openids-were-not-merged' => 'OpenID(-ji) med združevanjem uporabniških računov niso bili združeni.',
 	'openid-prefstext' => 'Nastavitve [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Skrijte svoj URL OpenID na svoji uporabniški strani, če se prijavite z OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Posodobi naslednje informacije iz osebe Open ID vsakič, ko se prijavim:',
@@ -5267,7 +5275,15 @@ Brez OpenID se ne boste mogli prijaviti.',
 	'openid-provider-label-yahoo' => 'Prijavite se s svojim računom Yahoo',
 	'openid-provider-label-aol' => 'Vnesite svoje prikazno ime AOL',
 	'openid-provider-label-other-username' => 'Vnesite svoje uporabniško ime $1',
+	'specialpages-group-openid' => 'Storitvene strani in informacije o stanju OpenID',
+	'right-openid-dashboard-access' => 'Običajni dostop do pregledne plošče OpenID',
+	'right-openid-dashboard-admin' => 'Administratorski dostop do pregledne plošče OpenID',
+	'openid-dashboard-title' => 'Pregledna plošča OpenID',
+	'openid-dashboard-title-admin' => 'Pregledna plošča OpenID (administrator)',
 	'openid-dashboard-introduction' => 'Trenutne nastavitve razširitve OpenID ([$1 pomoč])',
+	'openid-dashboard-number-openid-users' => 'Število uporabnikov z OpenID',
+	'openid-dashboard-number-openids-in-database' => 'Število OpenID-jev (skupno)',
+	'openid-dashboard-number-users-without-openid' => 'Število uporabnikov brez OpenID',
 );
 
 /** Lower Silesian (Schläsch)

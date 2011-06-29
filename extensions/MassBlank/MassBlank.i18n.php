@@ -499,6 +499,13 @@ $messages['mn'] = array(
 	'massblank-blankcomment' => 'Шалтгаан:',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'massblank-blankcomment' => 'Sebab:',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -611,6 +611,13 @@ $messages['mn'] = array(
 	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|хуудас}}',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'cooperationstatistics-articles' => '$1 laman',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -367,6 +367,13 @@ $messages['mk'] = array(
 	'svgedit-toolbar-insert' => 'SVG-цртеж',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'svgedit-editor-close' => 'Batalkan',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -1354,6 +1354,7 @@ $messages['mr'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'todo-list-cancel' => 'Batalkan',
 	'todo-form-details' => 'Butiran:',
 );
 

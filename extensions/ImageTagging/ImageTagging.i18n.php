@@ -1449,6 +1449,14 @@ $messages['mr'] = array(
 	'imagetagging-taggedimages-displaying' => '"$4" ची $3 चित्रांपैकी $1 - $2 दर्शविली आहेत',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'imagetagging-article' => 'Laman:',
+	'imagetagging-tagcancel-button' => 'Batalkan',
+);
+
 /** Maltese (Malti)
  * @author Roderick Mallia
  */

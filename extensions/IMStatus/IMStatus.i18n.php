@@ -1038,6 +1038,7 @@ $messages['mk'] = array(
  */
 $messages['ms'] = array(
 	'imstatus_default' => 'Tersedia',
+	'imstatus_or' => 'atau',
 );
 
 /** Erzya (Эрзянь)

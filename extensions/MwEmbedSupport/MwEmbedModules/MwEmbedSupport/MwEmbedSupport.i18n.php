@@ -585,6 +585,7 @@ $messages['mn'] = array(
  */
 $messages['ms'] = array(
 	'mwe-ok' => 'OK',
+	'mwe-cancel' => 'Batalkan',
 );
 
 /** Erzya (Эрзянь)

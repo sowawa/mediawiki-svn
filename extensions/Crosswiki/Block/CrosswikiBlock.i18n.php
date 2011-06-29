@@ -1913,9 +1913,11 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Aurora
  */
 $messages['ms'] = array(
+	'crosswikiblock-expiry' => 'Tamat:',
 	'crosswikiblock-reason' => 'Sebab:',
 	'crosswikiunblock-reason' => 'Sebab:',
 );

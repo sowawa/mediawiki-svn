@@ -1166,6 +1166,8 @@ $messages['mr'] = array(
 $messages['ms'] = array(
 	'duplicator-options' => 'Pilihan',
 	'duplicator-source' => 'Sumber:',
+	'duplicator-summary' => 'Disalin dari [[$1]]',
+	'duplicator-success' => "<big>'''[[$1]] disalin kepada [[$2]].'''</big>",
 );
 
 /** Erzya (Эрзянь)

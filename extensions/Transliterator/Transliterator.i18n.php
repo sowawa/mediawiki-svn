@@ -384,6 +384,18 @@ $messages['mk'] = array(
 	'transliterator-error-prefix' => '[[MediaWiki:$2]] мора да биде со должина од барем $1 {{PLURAL:$1|знак|знаци}}.',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'transliterator-desc' => 'Menyediakan fungsi penghurai yang boleh dikonfigurasi untuk alih huruf',
+	'transliterator-error-ambiguous' => 'Peraturan taksa <code>$1</code> dalam [[MediaWiki:$2]]',
+	'transliterator-error-syntax' => 'Sintaks tidak sah <code>$1</code> dalam [[MediaWiki:$2]]',
+	'transliterator-error-rulecount' => 'Melebihi $1 peraturan dalam [[MediaWiki:$2]]',
+	'transliterator-error-rulesize' => 'Peraturan <code>$1</code> ada lebih daripada $3 aksara di kiri dalam [[MediaWiki:$2]]',
+	'transliterator-error-prefix' => '[[MediaWiki:$2]] mestilah sekurang-kurangnya $1 aksara panjangnya.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -61,3 +61,10 @@ $messages['pt'] = array(
 	'localjquery-desc' => 'Carrega código jQuery de [[MediaWiki:JQuery.js]] (com o Carregador de Recursos)',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'localjquery-desc' => 'Загружает jQuery из [[MediaWiki:JQuery.js]] (с помощью ResourceLoader)',
+);
+

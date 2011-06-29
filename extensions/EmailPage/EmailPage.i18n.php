@@ -836,6 +836,14 @@ $messages['mr'] = array(
 	'ea-selectcss' => 'सीएसएस स्टाइलशीट पाठवा',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'e-mailpage' => 'Laman e-mel',
+	'ea-desc' => 'Hantar laman berbentuk HTML kepada alamat e-mel atau senarai alamat dengan menggunakan [http://phpmailer.sourceforge.net phpmailer]',
+);
+
 /** Burmese (မြန်မာဘာသာ)
  * @author Erikoo
  */

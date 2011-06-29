@@ -1784,10 +1784,27 @@ $messages['mr'] = array(
  * @author Aurora
  */
 $messages['ms'] = array(
+	'badimages' => 'Senarai imej tidak elok',
+	'badimage-desc' => 'Tingkatkan kebolehan senarai imej tak elok MediaWiki',
+	'badimages-add-btn' => 'Tambahkan',
+	'badimages-added' => '$1 ditambahkan ke dalam senarai.',
+	'badimages-count' => "Terdapat '''$1''' imej dalam senarai imej tak elok.",
+	'badimages-name' => 'Nama:',
+	'badimages-not-added' => 'Imej tidak dapat ditambahkan.',
+	'badimages-not-removed' => 'Imej tidak dapat dibuang.',
 	'badimages-reason' => 'Sebab:',
 	'badimages-remove' => '(buang)',
 	'badimages-remove-btn' => 'Buang',
+	'badimages-remove-confirm' => 'Sila sahkan bahawa anda ingin membuang $1 daripada senarai ini:',
+	'badimages-removed' => '$1 dibuang daripada senarai.',
+	'badimages-subheading' => 'Item semasa',
+	'badimages-unprivileged' => '(Anda tiada kebenaran yang memadai untuk mengubah senarai ini)',
+	'badimages-log-name' => 'Senarai imej tidak elok',
+	'badimages-log-header' => 'Ini ialah log perubahan pada [[{{MediaWiki:Badimages-page}}|senarai imej tidak elok]].',
+	'badimages-log-add' => 'menambahkan [[$1]] kepada senarai imej tidak elok',
+	'badimages-log-remove' => 'menggugurkan [[$1]] daripada senarai imej tidak elok',
 	'badimages-page' => '{{ns:help}}:Senarai imej tak elok',
+	'right-badimages' => 'Kemas kini senarai imej tidak elok',
 );
 
 /** Maltese (Malti)

@@ -3588,6 +3588,7 @@ $messages['mrj'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Aviator
  * @author Izzudin
  */
@@ -3625,6 +3626,11 @@ $messages['ms'] = array(
 	'contribstats-value-under' => 'Di bawah $1',
 	'contribstats-value-from' => 'Antara $1 - $2',
 	'contribstats-value-over' => 'Melebihi $1',
+	'contributiontrackingstatistics' => 'Statistik penjejakan sumbangan',
+	'contribstats-day-totals' => 'Jumlah hari ini',
+	'contribstats-week' => 'Minggu',
+	'contribstats-weekly-totals' => '{{PLURAL:$1|Jumlah minggu ini|Jumlah mingguan untuk $1 minggu yang lepas}}',
+	'contribstats-average' => 'Purata',
 	'fundraiserstatistics' => 'Statistik tabung',
 	'fundraiserstats-date' => 'Tarikh',
 	'fundraiserstats-day' => 'Hari ke-$1 daripada $2',

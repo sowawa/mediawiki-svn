@@ -14029,10 +14029,12 @@ $messages['mn'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Aurora
  */
 $messages['ms'] = array(
 	'configure-setting-wgActionPaths-key' => 'Tindakan',
+	'configure-setting-wgExtraLanguageNames-value' => 'Nama',
 );
 
 /** Erzya (Эрзянь)

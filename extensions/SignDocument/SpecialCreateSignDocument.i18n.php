@@ -1356,6 +1356,8 @@ $messages['mr'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'createsigndoc-pagename' => 'Laman:',
+	'createsigndoc-email' => 'Alamat e-mel:',
 	'createsigndoc-create' => 'Cipta',
 );
 

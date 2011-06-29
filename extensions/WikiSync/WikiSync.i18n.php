@@ -1120,6 +1120,13 @@ $messages['mk'] = array(
 	'wikisync_js_sync_end_rtl' => 'Завршив со усогласување од далечинското вики на локалното вики на $1',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'wikisync_remote_login_button' => 'Log masuk',
+);
+
 /** Dutch (Nederlands)
  * @author McDutchie
  * @author Siebrand

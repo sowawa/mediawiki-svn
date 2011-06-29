@@ -598,6 +598,7 @@ $messages['ms'] = array(
 	'pf-admin-menu-default' => 'Tersedia',
 	'pf-header-documentation' => 'Dokumentasi',
 	'pf-header-page_title' => 'Tajuk',
+	'pf-header-approve' => 'Luluskan',
 );
 
 /** Dutch (Nederlands)

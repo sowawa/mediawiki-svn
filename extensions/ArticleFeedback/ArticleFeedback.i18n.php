@@ -3093,9 +3093,101 @@ $messages['mn'] = array(
 $messages['ms'] = array(
 	'articlefeedback' => 'Papan pemuka maklum balas rencana',
 	'articlefeedback-desc' => 'Pentaksiran rencana (versi percubaan)',
+	'articlefeedback-survey-question-origin' => 'Di laman yang manakah anda berada ketika anda memulakan pantauan ini?',
+	'articlefeedback-survey-question-whyrated' => 'Sila maklumkan kami sebab anda menilai laman ini hari ini (tandai semua yang berkenaan):',
+	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'Saya ingin menyumbang kepada penilaian keseluruhan laman ini',
+	'articlefeedback-survey-answer-whyrated-development' => 'Saya berharap agar penilaian saya akan memperbaiki perkembangan dalam laman',
+	'articlefeedback-survey-answer-whyrated-contribute-wiki' => 'Saya ingin menyumbang kepada {{SITENAME}}',
+	'articlefeedback-survey-answer-whyrated-sharing-opinion' => 'Saya ingin berkongsi pendapat',
+	'articlefeedback-survey-answer-whyrated-didntrate' => 'Saya tidak menyumbangkan apa-apa penilaian hari ini, tetapi hendak memberi maklum bakas kepada ciri ini',
 	'articlefeedback-survey-answer-whyrated-other' => 'Lain',
+	'articlefeedback-survey-question-useful' => 'Adakah anda setuju bahawa penilaian yang diberikan ini adalah berguna dan mudah difahami?',
 	'articlefeedback-survey-question-useful-iffalse' => 'Мезекс?',
+	'articlefeedback-survey-question-comments' => 'Adakah anda mempunyai sebarang komen tambahan?',
 	'articlefeedback-survey-submit' => 'Serahkan',
+	'articlefeedback-survey-title' => 'Sila jawab beberapa soalan',
+	'articlefeedback-survey-thanks' => 'Terima kasih kerana membalas tinjauan kami.',
+	'articlefeedback-error' => 'Berlakunya ralat. Sila cuba lagi kemudian.',
+	'articlefeedback-form-switch-label' => 'Nilai laman ini',
+	'articlefeedback-form-panel-title' => 'Nilai laman ini',
+	'articlefeedback-form-panel-explanation' => 'Apakah ini?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:MaklumBalasRencana',
+	'articlefeedback-form-panel-clear' => 'Tarik balik markah ini',
+	'articlefeedback-form-panel-expertise' => 'Saya berpengetahuan tinggi tentang topik ini (pilihan)',
+	'articlefeedback-form-panel-expertise-studies' => 'Saya memegang ijazah kolej/maktab/universiti yang berkenaan',
+	'articlefeedback-form-panel-expertise-profession' => 'Kerjaya saya menyentuh tentang topik ini',
+	'articlefeedback-form-panel-expertise-hobby' => 'Saya amat berminat dengan topik ini secara peribadi',
+	'articlefeedback-form-panel-expertise-other' => 'Sumber pengetahuan saya tidak tersenarai di sini',
+	'articlefeedback-form-panel-helpimprove' => 'Saya ingin membantu mempertingkat Wikipedia, hantarkan saya e-mel (pilihan)',
+	'articlefeedback-form-panel-helpimprove-note' => 'Kami akan menghantar e-mel pengesahan kepada anda. Kami tidak akan berkongsi alamat anda dengan sesiapa. $1',
+	'articlefeedback-form-panel-helpimprove-privacy' => 'Dasar privasi',
+	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Dasar privasi',
+	'articlefeedback-form-panel-submit' => 'Serahkan penilaian',
+	'articlefeedback-form-panel-pending' => 'Penilaian anda belum diserahkan',
+	'articlefeedback-form-panel-success' => 'Berjaya disimpan',
+	'articlefeedback-form-panel-expiry-title' => 'Penilaian anda telah luput',
+	'articlefeedback-form-panel-expiry-message' => 'Sila nilai semula laman ini dan serahkan penilaian baru.',
+	'articlefeedback-report-switch-label' => 'Lihat penilaian laman',
+	'articlefeedback-report-panel-title' => 'Penilaian laman',
+	'articlefeedback-report-panel-description' => 'Purata penilaian semasa.',
+	'articlefeedback-report-empty' => 'Tiada penilaian',
+	'articlefeedback-report-ratings' => '$1 penilaian',
+	'articlefeedback-field-trustworthy-label' => 'Boleh dipercayai',
+	'articlefeedback-field-trustworthy-tip' => 'Adakah anda berpendapat bahawa laman ini mempunyai petikan yang mencukupi, dan petikan-petikan itu datang dari sumber-sumber yang boleh dipercayai?',
+	'articlefeedback-field-complete-label' => 'Lengkap',
+	'articlefeedback-field-complete-tip' => 'Adakah anda berpendapat bahawa laman ini merangkumi bahan-bahan topik terpenting yang sewajarnya?',
+	'articlefeedback-field-objective-label' => 'Objektif',
+	'articlefeedback-field-objective-tip' => 'Adakah anda berpendapat bahawa laman ini menunjukkan pernyataan yang adil daripada semua sudut pandangan tentang isu ini?',
+	'articlefeedback-field-wellwritten-label' => 'Kemas',
+	'articlefeedback-field-wellwritten-tip' => 'Adakah anda berpendapat bahawa laman ini disusun dan ditulis dengan kemas?',
+	'articlefeedback-pitch-reject' => 'Lain kalilah',
+	'articlefeedback-pitch-or' => 'atau',
+	'articlefeedback-pitch-thanks' => 'Terima kasih! Penilaian anda telah disimpan.',
+	'articlefeedback-pitch-survey-message' => 'Sila mengambil sedikit masa untuk melengkapkan tinjauan yang ringkas ini.',
+	'articlefeedback-pitch-survey-accept' => 'Mulakan tinjauan',
+	'articlefeedback-pitch-join-message' => 'Adakah anda ingin membuka akaun?',
+	'articlefeedback-pitch-join-body' => 'Akaun akan membantu anda menjejaki suntingan anda, melibatkan diri dalam perbincangan, dan menyertai komuniti.',
+	'articlefeedback-pitch-join-accept' => 'Buka akaun',
+	'articlefeedback-pitch-join-login' => 'Log masuk',
+	'articlefeedback-pitch-edit-message' => 'Tahukah anda bahawa anda boleh menyunting laman ini?',
+	'articlefeedback-pitch-edit-accept' => 'Sunting laman ini',
+	'articlefeedback-survey-message-success' => 'Terima kasih kerana membalas tinjauan kami.',
+	'articlefeedback-survey-message-error' => 'Berlakunya ralat.
+ Sila cuba lagi kemudian.',
+	'articleFeedback-table-caption-dailyhighsandlows' => 'Penilaian tertinggi dan terendah hari ini',
+	'articleFeedback-table-caption-dailyhighs' => 'Laman yang tertinggi penilaiannya: $1',
+	'articleFeedback-table-caption-dailylows' => 'Laman yang terendah penilaiannya: $1',
+	'articleFeedback-table-caption-weeklymostchanged' => 'Laman yang paling banyak berubah minggu ini',
+	'articleFeedback-table-caption-recentlows' => 'Penilaian terendah terkini',
+	'articleFeedback-table-heading-page' => 'Laman',
+	'articleFeedback-table-heading-average' => 'Purata',
+	'articleFeedback-copy-above-highlow-tables' => 'Ciri ini sedang diuji kaji. Sila berikan maklum balas di [$1 laman perbincangan].',
+	'articlefeedback-dashboard-bottom' => "'''Perhatian''': Kami akan terus menguji kaji cara-cara lain untuk menimbulkan rencana di papan pemuka ini. Ketika ini, papan pemuka merangkumi rencana-rencana berikut:
+* Laman yang tertinggi/terendah penilaiannya: rencana yang menerima sekurang-kurangnya 10 penilaian dalam masa 24 jam yang lalu.  Puratanya dihitung dengan mengambil min semua penilaian yang diterima dalam masa 24 jam yang lalu.
+* Penilaian terendah terkini: rencana yang menerima 70% atau lebih penilaian rendah (2 bintang ke bawah) dalam mana-mana kategori dalam masa 24 jam yang lalu; hanya mengambil kira rencana yang menerima sekurang-kurangnya 10 penilaian dalam masa 24 jam yang lalu.",
+	'articlefeedback-disable-preference' => 'Jangan tunjukkan widget Maklum balas rencana pada laman',
+	'articlefeedback-emailcapture-response-body' => 'Selamat sejahtera!
+
+Terima kasih kerana menunjukkan minat untuk membantu mempertingkatkan {{SITENAME}}.
+
+Sila luangkan sedikit masa untuk mengesahkan e-mel anda dengan mengklik pautan berikut: 
+
+$1
+
+Anda juga boleh melawati:
+
+$2
+
+Dan isikan kod pengesahan yang berikut:
+
+$3
+
+Kami akan menghubungi anda sebentar lagi dengan cara-cara untuk anda mempertingkat mutu {{SITENAME}}.
+
+Jika bukan anda yang membuat permohonan ini, sila abaikan e-mel ini dan kami tidak akan menghantar apa-apa lagi kepada anda.
+
+Sekian, terima kasih,
+Pasukan {{SITENAME}}',
 );
 
 /** Erzya (Эрзянь)
@@ -4106,8 +4198,9 @@ $messages['rue'] = array(
  * @author HalanTul
  */
 $messages['sah'] = array(
-	'articlefeedback' => 'Ыстатыйаны сыаналааһын',
+	'articlefeedback' => 'Ыстатыйаны сыаналааһын хаптаһына',
 	'articlefeedback-desc' => 'Ыстатыйаны сыаналааһын (тургутуллар барыла)',
+	'articlefeedback-survey-question-origin' => 'Бу ыйытыгы саҕалыыргар ханнык сирэйи көрө олорбуккунуй?',
 	'articlefeedback-survey-question-whyrated' => 'Бука диэн эт эрэ, тоҕо бүгүн бу сирэйи сыаналаатыҥ (туох баар сөп түбэһэр барыллары бэлиэтээ):',
 	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'Бу сирэй түмүк рейтинин уларытаары',
 	'articlefeedback-survey-answer-whyrated-development' => 'Сыанам бу сирэй тупсарыгар көмөлөһүө диэн санааттан',
@@ -4121,16 +4214,23 @@ $messages['sah'] = array(
 	'articlefeedback-survey-submit' => 'Ыытарга',
 	'articlefeedback-survey-title' => 'Бука диэн аҕыйах ыйытыыга хоруйдаа эрэ',
 	'articlefeedback-survey-thanks' => 'Ыйытыыларга хоруйдаабыккар махтанабыт.',
+	'articlefeedback-error' => 'Туох эрэ алҕас таҕыста. Хойутуу боруобалаар.',
 	'articlefeedback-form-switch-label' => 'Бу сирэйи сыаналаа',
 	'articlefeedback-form-panel-title' => 'Бу сирэйи сыаналаа',
-	'articlefeedback-form-panel-instructions' => 'Бука диэн бу сирэйгэ сыанабылла туруор эрэ.',
+	'articlefeedback-form-panel-explanation' => 'Бу тугуй?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:ArticleFeedback',
 	'articlefeedback-form-panel-clear' => 'Бу сыананы сот',
-	'articlefeedback-form-panel-expertise' => 'Бу тиэмэни бэркэ билэбин',
+	'articlefeedback-form-panel-expertise' => 'Бу тиэмэни бэркэ билэбин (толоруу булгуччута суох)',
 	'articlefeedback-form-panel-expertise-studies' => 'Бу тиэмэни колледжка/университекка үөрэппитим',
 	'articlefeedback-form-panel-expertise-profession' => 'Идэм сорҕото',
 	'articlefeedback-form-panel-expertise-hobby' => 'Мин дьарыктанар үлүһүйүүм, сүрүн дьулҕаным',
 	'articlefeedback-form-panel-expertise-other' => 'Туох сыһыаннааҕым туһунан манна ыйыллыбатах',
+	'articlefeedback-form-panel-helpimprove' => 'Бикипиэдьийэни тупсарарга көмө буолуом этэ, сурукта ыытыҥ (толорор булгуччута суох)',
+	'articlefeedback-form-panel-helpimprove-note' => 'Бигэргэтэр сурук ыытыахпыт. Аадырыскын кимиэхэ да биэриэхпит суоҕа. $1',
+	'articlefeedback-form-panel-helpimprove-privacy' => 'Кистээһин сиэрэ',
+	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Кистээһин сиэрэ',
 	'articlefeedback-form-panel-submit' => 'Сыанабылы ыытыы',
+	'articlefeedback-form-panel-pending' => 'Эн сыанабылыҥ өссө да ыытылла илик',
 	'articlefeedback-form-panel-success' => 'Бигэргэтилиннэ',
 	'articlefeedback-form-panel-expiry-title' => 'Сыанабылыҥ эргэрбит',
 	'articlefeedback-form-panel-expiry-message' => 'Бука диэн бу сирэйи хат көр уонна саҥа сыаната быс.',
@@ -4160,6 +4260,14 @@ $messages['sah'] = array(
 	'articlefeedback-survey-message-success' => 'Ыйытыыларга хоруйдаабыккар махтанабыт.',
 	'articlefeedback-survey-message-error' => 'Алҕас таҕыста.
 Бука диэн хойутуу хос боруобалаар.',
+	'articleFeedback-table-caption-dailyhighsandlows' => 'Бүгүү тахсыылар уонна түһүүлэр',
+	'articleFeedback-table-caption-dailyhighs' => 'Уһулуччу сыанабылы ылбыт ыстатыйалар: $1',
+	'articleFeedback-table-caption-dailylows' => 'Саамай намыһах сыанабылы ылбыт ыстатыйалар: $1',
+	'articleFeedback-table-caption-weeklymostchanged' => 'Бу нэдиэлэҕэ саамай элбэхтэ уларыйбыттар',
+	'articleFeedback-table-caption-recentlows' => 'Соторутааҥы түһүүлэр',
+	'articleFeedback-table-heading-page' => 'Сирэй',
+	'articleFeedback-table-heading-average' => 'Орто',
+	'articleFeedback-copy-above-highlow-tables' => 'Бу кыах тургутулла турар. Бука диэн, санааҕын [$1 сирэйгэ] суруй.',
 );
 
 /** Sicilian (Sicilianu)

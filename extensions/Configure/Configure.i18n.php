@@ -7617,8 +7617,10 @@ $messages['mr'] = array(
 $messages['ms'] = array(
 	'configure-desc-val' => 'Nilai',
 	'configure-ext-settings' => 'Tetapan',
+	'configure-form-reason' => 'Sebab:',
 	'configure-section-copyright' => 'Hak cipta',
 	'configure-throttle-group' => 'Jenis',
+	'configure-condition-operator-or' => 'Atau',
 );
 
 /** Maltese (Malti)

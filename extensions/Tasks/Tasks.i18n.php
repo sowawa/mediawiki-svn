@@ -2531,6 +2531,7 @@ $messages['mn'] = array(
  */
 $messages['ms'] = array(
 	'tasks_noone' => 'tiada',
+	'tasks_table_header_page' => 'Laman',
 	'tasks_previous' => 'Sebelumnya',
 	'tasks_next' => 'Berikutnya',
 );

@@ -2419,6 +2419,17 @@ $messages['mr'] = array(
 	'math_WrongFontEncodingWithHint' => '"$2" च्या टंक एन्कोडिंगमध्ये कदाचित "$1" मिळणार नाही ("$3{...}" ही क्रिया वापरून पहा)',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'math_noblahtex' => 'Tidak dapat melaksanakan blahtex, yang sepatutnya berada di $1',
+	'blahtext-desc' => 'Output MathML untuk tag &lt;math&gt;',
+	'math_IllegalCharacter' => 'Aksara terlarang dalam input',
+	'math_InvalidUtf8Input' => 'Rentetan input ini bukan berbentuk UTF-8 yang sah',
+	'math_TooManyTokens' => 'Input terlalu panjang',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

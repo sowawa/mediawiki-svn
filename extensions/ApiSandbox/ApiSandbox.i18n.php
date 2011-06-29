@@ -584,6 +584,34 @@ $messages['ru'] = array(
 	'apisb-query-meta' => 'Мета-информация',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'apisb-desc' => 'Omogoča popravljanje napak klicev [http://www.mediawiki.org/wiki/API MediaWiki API] iz brskalnika',
+	'apisandbox' => 'Peskovnik API',
+	'apisb-no-js' => "'''Napaka''': funkcija potrebuje JavaScript.",
+	'apisb-intro' => "Uporabite to stran za preizkušanje '''MediaWiki API'''.
+	Oglejte si [http://www.mediawiki.org/wiki/API dokumentacijo API] za nadaljnje podrobnosti uporabe API.",
+	'apisb-api-disabled' => 'API je onemogočen na tej spletni strani.',
+	'apisb-parameters' => 'Parametri',
+	'apisb-result' => 'Rezultat',
+	'apisb-request-url' => 'URL zahteve:',
+	'apisb-request-post' => 'Podatki POST:',
+	'apisb-select-action' => 'Izberite dejanje',
+	'apisb-select-query' => 'Kaj naj poizvem?',
+	'apisb-select-value' => 'Izberite vrednost',
+	'apisb-loading' => 'Nalaganje ...',
+	'apisb-load-error' => 'Napaka pri nalaganju opisa API',
+	'apisb-request-error' => 'Napak pri izvajanju zahteve API',
+	'apisb-namespaces-error' => 'Napaka pri nalaganju imenskih prostorov',
+	'apisb-ns-main' => '(Osnovno)',
+	'apisb-submit' => 'Izvedi zahtevo',
+	'apisb-query-prop' => 'Lastnosti',
+	'apisb-query-list' => 'Seznami',
+	'apisb-query-meta' => 'Metapodatki',
+);
+
 /** Swedish (Svenska)
  * @author WikiPhoenix
  */

@@ -30,6 +30,13 @@ $messages['br'] = array(
 	'dublincorerdf-desc' => 'Metaroadennoù RDF Dublin Core',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'dublincorerdf-desc' => 'Dublin Core RDF-meta podaci',
+);
+
 /** Danish (Dansk)
  * @author Peter Alberti
  */

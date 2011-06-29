@@ -1236,7 +1236,17 @@ $messages['mr'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'bookinfo-header' => 'Maklumat buku',
+	'bookinformation-desc' => 'Meluaskan [[Special:Booksources|laman khas sumber buku]] dengan maklumat dari perkhidmatan web',
 	'bookinfo-result-title' => 'Tajuk:',
+	'bookinfo-result-author' => 'Pengarang:',
+	'bookinfo-result-publisher' => 'Penerbit:',
+	'bookinfo-result-year' => 'Tahun:',
+	'bookinfo-error-invalidisbn' => 'ISBN yang diberikan tidak sah.',
+	'bookinfo-error-nosuchitem' => 'Butiran tidak wujud atau tidak dapat dicari.',
+	'bookinfo-error-nodriver' => 'Book Information Driver yang bersesuaian tidak dapat dilancarkan.',
+	'bookinfo-error-noresponse' => 'Tiada gerak balas, atau permohonan kehabisan masa.',
+	'bookinfo-purchase' => 'Beli buku ini dari $1',
 	'bookinfo-provider' => 'Pembekal data: $1',
 );
 

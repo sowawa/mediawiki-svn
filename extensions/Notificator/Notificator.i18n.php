@@ -250,6 +250,13 @@ $messages['mk'] = array(
 	'notificator-notified-already' => 'Корисникот $1 е известен за оваа страница или претходните измени на страницата.',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'notificator-e-mail-address' => 'alamat e-mel',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  */

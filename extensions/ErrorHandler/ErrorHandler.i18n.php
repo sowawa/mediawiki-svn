@@ -938,6 +938,13 @@ $messages['mk'] = array(
 	'errorhandler-trace-line-internal' => '[внатрешна функција]: $1',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'errorhandler-msg-text' => '$1 : $2 dalam $3 (baris $4)',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

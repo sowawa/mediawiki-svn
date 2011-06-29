@@ -1575,6 +1575,7 @@ $messages['mr'] = array(
 $messages['ms'] = array(
 	'changeauthor-pagenameform-go' => 'Pergi',
 	'changeauthor-comment' => 'Komen:',
+	'changeauthor-changeauthors-multi' => 'Tukar {{PLURAL:$1|pengarang|pengarang}}',
 	'changeauthor-changeauthors-single' => 'Tukar pengarang',
 );
 

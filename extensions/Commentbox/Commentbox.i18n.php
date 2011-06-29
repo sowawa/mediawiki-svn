@@ -727,6 +727,13 @@ $messages['mn'] = array(
 	'commentbox-regex' => '/\\n==\\s*Сэтгэгдлүүдs*==\\s*\\n/i',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'commentbox-name' => 'Nama:',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

@@ -219,6 +219,13 @@ $messages['mk'] = array(
 	'filepagemasking-desc' => 'Го менува „.xxx“ во „_xxx“ во врските на страницата за опис на податотека',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'filepagemasking-desc' => 'Menulis semula ".xxx" menjadi "_xxx" dalam pautan laman penerangan fail',
+);
+
 /** Nepali (नेपाली)
  * @author सरोज कुमार ढकाल
  */

@@ -3299,10 +3299,18 @@ $1',
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Aurora
  */
 $messages['ms'] = array(
+	'sign-realname' => 'Nama:',
+	'sign-country' => 'Negara:',
+	'sign-email' => 'Alamat e-mel:',
+	'sign-viewfield-realname' => 'Nama',
+	'sign-viewfield-address' => 'Alamat',
+	'sign-viewfield-country' => 'Negara',
 	'sign-viewfield-agent' => 'Ejen pengguna',
+	'sign-viewfield-reviewedby' => 'Pengkaji semula',
 );
 
 /** Maltese (Malti)

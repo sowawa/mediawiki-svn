@@ -4552,8 +4552,15 @@ $messages['mn'] = array(
  */
 $messages['ms'] = array(
 	'deletequeue-delnom-otherreason' => 'Sebab lain',
+	'deletequeue-review-reason' => 'Komen:',
+	'deletequeue-list-queue' => 'Baris gilir:',
+	'deletequeue-list-header-page' => 'Laman',
+	'deletequeue-list-header-queue' => 'Baris gilir',
+	'deletequeue-list-header-expiry' => 'Tamat:',
 	'deletequeue-list-header-reason' => 'Sebab penghapusan',
+	'deletequeue-case-page' => 'Laman:',
 	'deletequeue-case-reason' => 'Sebab:',
+	'deletequeue-case-expiry' => 'Tamat:',
 );
 
 /** Mirandese (Mirandés)

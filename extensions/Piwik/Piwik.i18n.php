@@ -435,6 +435,13 @@ $messages['ml'] = array(
 	'piwik-browsers' => 'ബ്രൗസറുകൾ',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'piwik-countries' => 'Negara',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

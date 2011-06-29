@@ -51,6 +51,13 @@ $messages['br'] = array(
 	'customusersignup-desc' => 'Aotren a ra lakaat kemennadennoù a bep seurt pa vez krouet kontoù',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'customusersignup-desc' => 'Omogućava podešavanje poruka tokom procesa pravljenja računa',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
