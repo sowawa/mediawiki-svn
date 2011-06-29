@@ -78,6 +78,8 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 	protected $messages = array();
 	/** String: Name of group to load this module in */
 	protected $group;
+	/** String: Position on the page to load this module at */
+	protected $position = 'bottom';
 	/** Boolean: Link to raw files in debug mode */
 	protected $debugRaw = true;
 	/**
@@ -137,6 +139,8 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 	 * 		'messages' => [array of message key strings],
 	 * 		// Group which this module should be loaded together with
 	 * 		'group' => [group name string],
+	 * 		// Position on the page to load this module at
+	 * 		'position' => ['bottom' (default) or 'top']
 	 * 	)
 	 */
 	public function __construct( $options = array(), $localBasePath = null, 
@@ -187,6 +191,7 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 					break;
 				// Single strings
 				case 'group':
+				case 'position':
 				case 'localBasePath':
 				case 'remoteBasePath':
 					$this->{$member} = (string) $option;
@@ -292,6 +297,10 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 	 */
 	public function getGroup() {
 		return $this->group;
+	}
+	
+	public function getPosition() {
+		return $this->position;
 	}
 
 	/**

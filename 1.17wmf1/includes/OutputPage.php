@@ -228,12 +228,37 @@ class OutputPage {
 	}
 
 	/**
+	 * Filter an array of modules to remove modules
+	 * which are no longer registered (eg a page is cached before an extension is disabled)
+	 * @param $modules Array
+	 * @param $position String if not null, only return modules with this position
+	 * @return Array
+	 */
+	protected function filterModules( $modules, $position = null ){
+		$resourceLoader = $this->getResourceLoader();
+		$filteredModules = array();
+		foreach( $modules as $val ){
+			$module = $resourceLoader->getModule( $val );
+			if( $module instanceof ResourceLoaderModule
+				&& ( is_null( $position ) || $module->getPosition() == $position ) )
+			{
+				$filteredModules[] = $val;
+			}
+		}
+		return $filteredModules;
+	}
+
+	/**
 	 * Get the list of modules to include on this page
 	 *
+	 * @param $position String if not null, only return modules with this position
 	 * @return Array of module names
 	 */
-	public function getModules() {
-		return array_values( array_unique( $this->mModules ) );
+	public function getModules( $filter = false, $position = null, $param = 'mModules' ) {
+		$modules = array_values( array_unique( $this->$param ) );
+		return $filter
+			? $this->filterModules( $modules, $position )
+			: $modules;
 	}
 
 	/**
@@ -251,8 +276,8 @@ class OutputPage {
 	 * Get the list of module JS to include on this page
 	 * @return array of module names
 	 */
-	public function getModuleScripts() {
-		return array_values( array_unique( $this->mModuleScripts ) );
+	public function getModuleScripts( $filter = false, $position = null ) {
+		return $this->getModules( $filter, $position, 'mModuleScripts' );
 	}
 
 	/**
@@ -271,8 +296,8 @@ class OutputPage {
 	 *
 	 * @return Array of module names
 	 */
-	public function getModuleStyles() {
-		return array_values( array_unique( $this->mModuleStyles ) );
+	public function getModuleStyles( $filter = false, $position = null ) {
+		return $this->getModules( $filter,  $position, 'mModuleStyles' );
 	}
 
 	/**
@@ -291,8 +316,8 @@ class OutputPage {
 	 *
 	 * @return Array of module names
 	 */
-	public function getModuleMessages() {
-		return array_values( array_unique( $this->mModuleMessages ) );
+	public function getModuleMessages( $filter = false, $position = null ) {
+		return $this->getModules( $filter, $position, 'mModuleMessages' );
 	}
 
 	/**
@@ -2257,6 +2282,7 @@ class OutputPage {
 		$ret .= implode( "\n", array(
 			$this->getHeadLinks( $sk ),
 			$this->buildCssLinks( $sk ),
+			$this->getHeadScripts( $sk ),
 			$this->getHeadItems()
 		) );
 
@@ -2458,32 +2484,59 @@ class OutputPage {
 	}
 
 	/**
-	 * Gets the global variables and mScripts; also adds userjs to the end if
-	 * enabled. Despite the name, these scripts are no longer put in the
-	 * <head> but at the bottom of the <body>
+	 * JS stuff to put in the <head>. This is the startup module, config
+	 * vars and modules marked with position 'top'
 	 *
 	 * @param $sk Skin object to use
 	 * @return String: HTML fragment
 	 */
 	function getHeadScripts( Skin $sk ) {
-		global $wgUser, $wgRequest, $wgUseSiteJs;
-
 		// Startup - this will immediately load jquery and mediawiki modules
 		$scripts = $this->makeResourceLoaderLink( $sk, 'startup', 'scripts', true );
-
-		// Configuration -- This could be merged together with the load and go, but
-		// makeGlobalVariablesScript returns a whole script tag -- grumble grumble...
+		
+		// Load config before anything else
 		$scripts .= Skin::makeGlobalVariablesScript( $sk->getSkinName() ) . "\n";
-
-		// Script and Messages "only" requests
-		$scripts .= $this->makeResourceLoaderLink( $sk, $this->getModuleScripts(), 'scripts' );
-		$scripts .= $this->makeResourceLoaderLink( $sk, $this->getModuleMessages(), 'messages' );
+			
+		// Script and Messages "only" requests marked for top inclusion
+		// Messages should go first
+		$scripts .= $this->makeResourceLoaderLink( $sk, $this->getModuleMessages( true, 'top' ), 'messages' );
+		$scripts .= $this->makeResourceLoaderLink( $sk, $this->getModuleScripts( true, 'top' ), 'scripts' );
 
 		// Modules requests - let the client calculate dependencies and batch requests as it likes
-		if ( $this->getModules() ) {
+		// Only load modules that have marked themselves for loading at the top
+		$modules = $this->getModules( true, 'top' );
+		if ( $modules ) {
 			$scripts .= Html::inlineScript(
 				ResourceLoader::makeLoaderConditionalScript(
-					Xml::encodeJsCall( 'mediaWiki.loader.load', array( $this->getModules() ) ) .
+					Xml::encodeJsCall( 'mediaWiki.loader.load', array( $modules ) ) .
+					Xml::encodeJsCall( 'mediaWiki.loader.go', array() )
+				)
+			) . "\n";
+		}
+
+		return $scripts;
+	}
+	
+	/**
+	 * JS stuff to put at the bottom of the <body>: modules marked with position 'bottom',
+	 * legacy scripts ($this->mScripts), user preferences, site JS and user JS
+	 */
+	function getBottomScripts( Skin $sk ) {
+		global $wgUseSiteJs, $wgAllowUserJs, $wgUser, $wgRequest;
+		
+		// Script and Messages "only" requests marked for bottom inclusion
+		// Messages should go first
+		$scripts = $this->makeResourceLoaderLink( $sk, $this->getModuleMessages( true, 'bottom' ), 'messages' );
+		$scripts .= $this->makeResourceLoaderLink( $sk, $this->getModuleScripts( true, 'bottom' ), 'scripts' );
+
+		// Modules requests - let the client calculate dependencies and batch requests as it likes
+		// Only load modules that have marked themselves for loading at the bottom
+		$modules = $this->getModules( true, 'bottom' );
+		if ( $modules ) {
+			$scripts .= Html::inlineScript(
+				ResourceLoader::makeLoaderConditionalScript(
+					Xml::encodeJsCall( 'mediaWiki.loader.load', array( $modules ) ) .
+					// the go() call is unnecessary if we inserted top modules, but we don't know for sure that we did
 					Xml::encodeJsCall( 'mediaWiki.loader.go', array() )
 				)
 			) . "\n";
