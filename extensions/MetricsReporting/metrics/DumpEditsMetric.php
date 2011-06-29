@@ -13,6 +13,12 @@ class DumpEditsMetric extends ApiAnalyticsBase {
 		return 'All edits on articles (as defined by dumparticlecount)';
 	}
 
+	protected function getExamples() {
+		return array(
+			'api.php?action=analytics&metric=',
+		);
+	}
+
 	public function getVersion() {
 		return __CLASS__ . ': $Id$';
 	}

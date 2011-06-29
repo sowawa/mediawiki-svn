@@ -39,7 +39,10 @@ abstract class ApiAnalyticsBase extends ApiBase/*ApiQueryBase*/ {
 
 	public function getAllowedParams() {
 		$params = array(
-			'months' => 'string',
+			'months' => array(
+				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_REQUIRED => true,
+			),
 			'normalized' => 'bool',
 			'data' => array(
 				ApiBase::PARAM_DFLT => 'timeseries',
@@ -397,9 +400,9 @@ abstract class ApiAnalyticsBase extends ApiBase/*ApiQueryBase*/ {
 			'selectwebproperties' => '',
 			'selectprojects' => '',
 			'selectwikis' => '',
-			'selecteditors' => '',
-			'selectedits' => '',
-			'selectplatform' => '',
+			'selecteditors' => 'a for anonymous, r for registered, b for bot',
+			'selectedits' => 'm for manual, b for bot-induced',
+			'selectplatform' => 'm for mobile, n for non-mobile',
 		);
 	}
 

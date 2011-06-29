@@ -13,6 +13,12 @@ class DumpNewRegisteredEditorsMetric extends ApiAnalyticsBase {
 		return 'All registered editors that in a certain month for the first time crossed the threshold of 10 edits since signing up';
 	}
 
+	protected function getExamples() {
+		return array(
+			'api.php?action=analytics&metric=',
+		);
+	}
+
 	public function getVersion() {
 		return __CLASS__ . ': $Id$';
 	}

@@ -13,6 +13,12 @@ class DumpBinaryCountMetric extends ApiAnalyticsBase {
 		return 'All binary files (nearly all of which are multimedia files) available for download/article inclusion on a wiki';
 	}
 
+	protected function getExamples() {
+		return array(
+			'api.php?action=analytics&metric=',
+		);
+	}
+
 	public function getVersion() {
 		return __CLASS__ . ': $Id$';
 	}

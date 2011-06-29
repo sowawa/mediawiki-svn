@@ -13,6 +13,12 @@ class ComScoreUniqueVisitorMetric extends ApiAnalyticsBase {
 		return 'Unique persons that visited one of the Wikimedia wikis at least once in a certain month';
 	}
 
+	protected function getExamples() {
+		return array(
+			'api.php?action=analytics&metric=',
+		);
+	}
+
 	public function getVersion() {
 		return __CLASS__ . ': $Id$';
 	}
