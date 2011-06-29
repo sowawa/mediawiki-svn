@@ -151,11 +151,16 @@ class ImagePage extends Article {
 			$wgOut->addWikiText( $this->makeMetadataTable( $formattedMetadata ) );
 			$wgOut->addModules( array( 'mediawiki.legacy.metadata' ) );
 		}
-		
-		$css = $this->repo->getDescriptionStylesheetUrl();
-		if ( $css ) {
-			$wgOut->addStyle( $css );
+
+		// Add remote Filepage.css
+		if( !$this->repo->isLocal() ) {
+			$css = $this->repo->getDescriptionStylesheetUrl();
+			if ( $css ) {
+				$wgOut->addStyle( $css );
+			}
 		}
+		// always show the local local Filepage.css, bug 29277
+		$wgOut->addModuleStyles( 'filepage' );
 	}
 	
 	public function getRedirectTarget() {
