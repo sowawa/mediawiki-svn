@@ -129,7 +129,7 @@ $wgDiff3 = "/usr/bin/diff3";
 require_once( "$IP/extensions/SwiftMedia/SwiftMedia.php" );
 
 $wgUploadDirectory = "$IP/images/swift";
-$wgDeletedDirectory = "{$wgUploadDirectory}/deleted";
+// we don't need this and will ignore it. $wgDeletedDirectory = "{$wgUploadDirectory}/deleted";
 $wgUploadPath = "http://alsted.wikimedia.org/images/swift";
 
 $wgLocalFileRepo = array(
@@ -148,9 +148,10 @@ $wgLocalFileRepo = array(
 	'hashLevels' => $wgHashedUploadDirectory ? 2 : 0,
 	'thumbScriptUrl' => $wgThumbnailScriptPath,
 	'transformVia404' => !$wgGenerateThumbnailOnParse,
-	 'deletedDir' => $wgDeletedDirectory,
+	#'deletedDir' => $wgDeletedDirectory,
 	 'deletedHashLevels' => 3 
 );
 
 $wgDebugLogFile = "/var/www/debug/abcd";
+$wgDebugTimestamps = true;
 $wgShowExceptionDetails = true;
