@@ -9,6 +9,14 @@ class DumpActiveEditors5Metric extends ApiAnalyticsBase {
 		);
 	}
 
+	protected function getQueryInfo() {
+		return array();
+	}
+
+	protected function getQueryFields() {
+		return array();
+	}
+
 	public function getDescription() {
 		return 'All registered editors that made 5 or more edits in a certain month';
 	}

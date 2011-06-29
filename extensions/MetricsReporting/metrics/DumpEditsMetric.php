@@ -9,6 +9,14 @@ class DumpEditsMetric extends ApiAnalyticsBase {
 		);
 	}
 
+	protected function getQueryInfo() {
+		return array();
+	}
+
+	protected function getQueryFields() {
+		return array();
+	}
+
 	public function getDescription() {
 		return 'All edits on articles (as defined by dumparticlecount)';
 	}

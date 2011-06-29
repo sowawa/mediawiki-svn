@@ -9,6 +9,14 @@ class DumpArticleCountMetric extends ApiAnalyticsBase {
 		);
 	}
 
+	protected function getQueryInfo() {
+		return array();
+	}
+
+	protected function getQueryFields() {
+		return array();
+	}
+
 	public function getDescription() {
 		return 'All namespace 0 pages which contain an internal link minus redirect pages (for some projects extra namespaces qualify)';
 	}

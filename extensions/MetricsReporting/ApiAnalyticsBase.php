@@ -28,7 +28,15 @@ abstract class ApiAnalyticsBase extends ApiBase/*ApiQueryBase*/ {
 	}
 
 	public function execute() {
+		$params = $this->extractRequestParams();
+
+		$query = $this->getQueryInfo();
+		$query['fields'] = $this->getQueryFields();
 	}
+
+	protected abstract function getQueryInfo();
+
+	protected abstract function getQueryFields();
 
 	/**
 	 * @return array
@@ -395,10 +403,32 @@ abstract class ApiAnalyticsBase extends ApiBase/*ApiQueryBase*/ {
 					'  growth percentages are relative to oldest value (80->100=25%) although trivial, requesting these metrics through API ensures all clients use same calculation',
 			),
 			'reportlanguage' => 'Language code, used to expand region and country codes into region and country name',
-			'selectregions' => '',
-			'selectcountries' => '',
+			'selectregions' => array(
+				'What region',
+				' as = Asia Pacific',
+				' c  = China',
+				' eu = Europe',
+				' i  = India',
+				' la = Latin-America',
+				' ma = Middle-East/Africa',
+				' na = North-America',
+				' us = United States',
+				' w  = World',
+			),
+			'selectcountries' => 'What country, based on ISO 3166-1 codes',
 			'selectwebproperties' => '',
-			'selectprojects' => '',
+			'selectprojects' => array(
+				'Which projects',
+				' wb = Wikibooks',
+				' wk = Wiktionary',
+				' wn = Wikinews',
+				' wp = Wikipedia',
+				' wq = Wikiquote',
+				' ws = Wikisource',
+				' wv = Wikiversity',
+				' co = Commons',
+				' wx = Other projects',
+			),
 			'selectwikis' => '',
 			'selecteditors' => 'a for anonymous, r for registered, b for bot',
 			'selectedits' => 'm for manual, b for bot-induced',

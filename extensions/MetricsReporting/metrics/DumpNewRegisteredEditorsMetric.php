@@ -9,6 +9,14 @@ class DumpNewRegisteredEditorsMetric extends ApiAnalyticsBase {
 		);
 	}
 
+	protected function getQueryInfo() {
+		return array();
+	}
+
+	protected function getQueryFields() {
+		return array();
+	}
+
 	public function getDescription() {
 		return 'All registered editors that in a certain month for the first time crossed the threshold of 10 edits since signing up';
 	}

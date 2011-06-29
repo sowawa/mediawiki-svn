@@ -9,6 +9,14 @@ class DumpBinaryCountMetric extends ApiAnalyticsBase {
 		);
 	}
 
+	protected function getQueryInfo() {
+		return array();
+	}
+
+	protected function getQueryFields() {
+		return array();
+	}
+
 	public function getDescription() {
 		return 'All binary files (nearly all of which are multimedia files) available for download/article inclusion on a wiki';
 	}
