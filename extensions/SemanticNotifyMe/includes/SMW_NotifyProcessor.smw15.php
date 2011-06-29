@@ -120,8 +120,7 @@ class SMWNotifyProcessor {
 		// Take care at least of some templates -- for better template support use #ask
 		$parser = new Parser();
 		$parserOptions = new ParserOptions();
-		$parser->startExternalParse( $wgTitle, $parserOptions, OT_HTML );
-		$rawquery = $parser->transformMsg( $rawquery, $parserOptions );
+		$rawquery = $parser->transformMsg( $rawquery, $parserOptions, $wgTitle );
 
 		wfProfileIn( 'SMWNotifyProcessor::createNotify (SMW)' );
 		$sStore = NMStorage::getDatabase();
