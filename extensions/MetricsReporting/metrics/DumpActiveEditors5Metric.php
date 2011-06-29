@@ -1,6 +1,6 @@
 <?php
 
-class DumpActiveEditors15Metric extends ApiAnalyticsBase {
+class DumpActiveEditors5Metric extends ApiAnalyticsBase {
 
 	public function getAllowedFilters() {
 		return array(
