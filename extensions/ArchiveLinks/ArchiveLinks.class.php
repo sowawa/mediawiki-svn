@@ -76,9 +76,15 @@ class ArchiveLinks {
 
 		}
 	    }
-	    //Note to self: need to fix this to use Html.php instead of direct html
-	    $link = "<a rel=\"nofollow\" class=\"{$attributes['class']}\" href=\"{$url}\">{$text}</a>&#160;<sup><small><a href=\""
-	    . "{$link_to_archive}\">" . wfMsg( 'archive-links-cache-title' ) . '</a></small></sup>&#160;';  
+	    
+	    $link = HTML::element('a', array ( 'rel' => 'nofollow', 'class' => $attributes['class'], 'href' => $url ), $text )
+		    . HTML::openElement('sup')
+		    . HTML::openElement('small')
+		    . '&#160;'
+		    . HTML::element('a', array ( 'href' => $link_to_archive ), wfMsg( 'archivelinks-cache-title') )
+		    . HTML::closeElement('small')
+		    . HTML::closeElement('sup');
+	    
 	    return false;
 	} else {
 	    return true;
