@@ -27,6 +27,9 @@ abstract class ApiAnalyticsBase extends ApiBase/*ApiQueryBase*/ {
 		return $this->mDb;
 	}
 
+	public function execute() {
+	}
+
 	/**
 	 * @return array
 	 */

@@ -12,6 +12,8 @@ $wgExtensionCredits['other'][] = array(
 	'description' => 'Api for Wikimedia Metrics Reporting output',
 );
 
+$wgMetricAPIModules = array();
+
 $wgMetricsDBserver         = '';
 //$wgMetricsDBport           = 5432;
 $wgMetricsDBname           = '';
@@ -25,3 +27,8 @@ $wgAutoloadClasses['ApiAnalytics'] = $dir . 'ApiAnalytics.php';
 $wgAPIModules['analytics'] = 'ApiAnalytics';
 
 $wgAutoloadClasses['ApiAnalyticsBase'] = $dir . 'ApiAnalyticsBase.php';
+
+$metricsDir = $dir . 'metrics/';
+
+$wgAutoloadClasses['ComScoreUniqueVisitorMetric'] = $metricsDir . 'ComScoreUniqueVisitorMetric.php';
+$wgMetricAPIModules['comscoreuniquevisitors'] = 'ComScoreUniqueVisitorMetric';

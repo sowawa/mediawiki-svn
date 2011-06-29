@@ -4,20 +4,19 @@ class ApiAnalytics extends ApiBase {
 
 	private $metricModuleNames, $params;
 
-	private $metricModules = array(
-	);
-
 	public function __construct( $main, $action ) {
 		parent::__construct( $main, $action );
-		$this->metricModuleNames = array_keys( $this->metricModules );
+		global $wgMetricAPIModules;
+		$this->metricModuleNames = array_keys( $wgMetricAPIModules );
 	}
 
 	public function execute() {
 		$this->params = $this->extractRequestParams();
 
+		global $wgMetricAPIModules;
 		// Instantiate requested modules
 		$modules = array();
-		$this->instantiateModules( $modules, 'prop', $this->mQueryPropModules );
+		$this->instantiateModules( $modules, 'prop', $wgMetricAPIModules );
 
 		// Execute all requested modules.
 		foreach ( $modules as $module ) {
@@ -42,10 +41,11 @@ class ApiAnalytics extends ApiBase {
 	}
 
 	public function getAllowedParams() {
+		global $wgMetricAPIModules;
 		return array(
 			'metric' => array(
 				ApiBase::PARAM_ISMULTI => false,
-				ApiBase::PARAM_TYPE => $this->metricModuleNames,
+				ApiBase::PARAM_TYPE => $wgMetricAPIModules,
 				ApiBase::PARAM_REQUIRED => true,
 			),
 		);
@@ -82,18 +82,13 @@ class ApiAnalytics extends ApiBase {
 	 * @return string
 	 */
 	public function makeHelpMsg() {
-		$msg = '';
+		$msg = parent::makeHelpMsg();
 
 		$querySeparator = str_repeat( '--- ', 12 );
 		$moduleSeparator = str_repeat( '*** ', 14 );
 		$msg .= "\n$querySeparator Analytics: Metrics  $querySeparator\n\n";
 		$msg .= $this->makeHelpMsgHelper( $this->metricModules, 'metric' );
 		$msg .= "\n\n$moduleSeparator Modules: continuation  $moduleSeparator\n\n";
-
-		// Perform the base call last because the $this->mAllowedGenerators
-		// will be updated inside makeHelpMsgHelper()
-		// Use parent to make default message for the query module
-		$msg = parent::makeHelpMsg() . $msg;
 
 		return $msg;
 	}
