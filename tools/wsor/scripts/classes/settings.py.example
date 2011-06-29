@@ -1,0 +1,20 @@
+
+"""
+	Example settings file.  This must be configured locally to work.
+"""
+
+__project_home__ = '/home/projects/'
+__WSOR_home__ = '/home/projects/WSOR/'
+__analytics_project_home__ = '/home/projects/Analytics/'
+
+""" 
+	Database credentials 
+
+	To setup ssh tunnel: 	ssh -L <local port>:<server url>:<remote port> <user>@<db serevr url>
+"""
+__user__ = '<username>'
+__db__ = '<dbname>'
+__db_server__ = '127.0.0.1'		# localhost if you're using an ssh tunnel
+__db_port__ = <dbport>			# use the port of your tunnel
+__pass__='<passwd>'
+__db_enwikislave__ = 'enwiki'

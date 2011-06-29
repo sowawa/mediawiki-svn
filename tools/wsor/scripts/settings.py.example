@@ -1,0 +1,9 @@
+
+"""
+	Example settings file.  This must be configured locally to work.
+"""
+
+__project_home__ = '/home/projects/'
+__WSOR_home__ = '/home/projects/WSOR/'
+__analytics_project_home__ = '/home/projects/Analytics/'
+
