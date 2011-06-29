@@ -14,15 +14,15 @@ error_reporting ( E_ALL | E_STRICT );
 $path = dirname( __FILE__ );
 
 $wgExtensionMessagesFiles['ArchiveLinks'] =  "$path/ArchiveLinks.i18n.php";
-$wgExtensionMessagesFiles['ArchiveBlacklist'] = "$path/ArchiveLinks.i18n.php";
+$wgExtensionMessagesFiles['ModifyBlacklist'] = "$path/ArchiveLinks.i18n.php";
 
 $wgAutoloadClasses['ArchiveLinks'] = "$path/ArchiveLinks.class.php";
-$wgAutoloadClasses['SpecialArchiveBlacklist'] = "$path/SpecialArchiveBlacklist.php";
+$wgAutoloadClasses['SpecialModifyBlacklist'] = "$path/SpecialModifyBlacklist.php";
     
 $wgHooks['ArticleSaveComplete'][] = 'ArchiveLinks::queueExternalLinks';
 $wgHooks['LinkerMakeExternalLink'][] = 'ArchiveLinks::rewriteLinks';
 
-$wgSpecialPages['ArchiveBlacklist'] = 'SpecialArchiveBlacklist';
+$wgSpecialPages['ModifyBlacklist'] = 'SpecialModifyBlacklist';
 
 $wgArchiveLinksConfig = array (
     'archive_service' => 'wikiwix',
