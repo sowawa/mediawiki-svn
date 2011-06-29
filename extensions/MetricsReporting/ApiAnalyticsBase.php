@@ -1,6 +1,6 @@
 <?php
 
-abstract class ApiAnalyticsBase extends ApiBase/*ApiQueryBase*/ {
+abstract class ApiAnalyticsBase extends ApiBase {
 
 	protected $mDb;
 
@@ -32,6 +32,16 @@ abstract class ApiAnalyticsBase extends ApiBase/*ApiQueryBase*/ {
 
 		$query = $this->getQueryInfo();
 		$query['fields'] = $this->getQueryFields();
+
+		$db = $this->getDB();
+
+		$this->profileDBIn();
+		$res = $db->select( $query['table'], $query['fields'], $query['conds'], __METHOD__, $query['options'], $query['join_conds'] );
+		$this->profileDBOut();
+
+		foreach( $res as $row ) {
+
+		}
 	}
 
 	protected abstract function getQueryInfo();
@@ -337,7 +347,6 @@ abstract class ApiAnalyticsBase extends ApiBase/*ApiQueryBase*/ {
 					'YE',
 					'ZM',
 					'ZW',
-
 				),
 			),
 			'selectwebproperties' => array(
