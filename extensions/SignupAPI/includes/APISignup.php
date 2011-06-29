@@ -27,6 +27,7 @@ class ApiSignup extends ApiBase {
 			'wpRetype' => $params['retype'],
 			'wpEmail'  => $params['email'],
 			'wpDomain' => $params['domain'],
+                        'wpReason' => $params['realname'],
 			'wpRemember' => ''
 		) );
 
@@ -42,7 +43,7 @@ class ApiSignup extends ApiBase {
 		$signupRes = $signupForm->addNewAccountInternal();
 		switch( $signupRes ) {
 			case SignupForm::SUCCESS:
-				$signupForm->initUser();
+				//$signupForm->initUser($signupForm->mUser);
 
 				wfRunHooks( 'AddNewAccount', array( $wgUser, false ) );
 				# Run any hooks; display injected HTML
@@ -156,6 +157,7 @@ class ApiSignup extends ApiBase {
 			'retype' => null,
 			'email' => null,
 			'domain' => null,
+                        'realname' => null,
 		);
 	}
 
@@ -166,6 +168,7 @@ class ApiSignup extends ApiBase {
 			'retype' => 'Re-typed Password',
 			'email' => 'Email ID(optional)',
 			'domain' => 'Domain (optional)',
+                        'realname' => 'Real Name(optional)',
 		);
 	}
 
