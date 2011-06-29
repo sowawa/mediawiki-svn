@@ -11,8 +11,9 @@ class CentralNoticeDB {
 	/*
 	 * Return campaigns in the system within given constraints
 	 * By default returns enabled campaigns, if $enabled set to false, returns both enabled and disabled campaigns
+	 * @return an array of ids
 	 */
-	static function getNotices( $project = false, $language = false, $date = false, $enabled = true, $preferred = false, $location = false ) {
+	static function getCampaigns( $project = false, $language = false, $date = false, $enabled = true, $preferred = false, $location = false ) {
 		global $wgCentralDBname;
 	
 		$notices = array();
@@ -120,14 +121,17 @@ class CentralNoticeDB {
 
 	/*
 	 * Given one or more campaign ids, return all banners bound to them
+	 * @param $campaigns An array of id numbers
+	 * @return a 2D array of banners with associated weights and settings
 	 */
-	static function selectTemplatesAssigned( $campaigns ) {
+	static function selectBannersAssigned( $campaigns ) {
 		global $wgCentralDBname;
 		
 		$dbr = wfGetDB( DB_SLAVE, array(), $wgCentralDBname );
 
+		$templates = array();
+
 		if ( $campaigns ) {
-			// Pull templates based on join with assignments
 			$res = $dbr->select(
 				array(
 					'cn_notices',
@@ -136,31 +140,50 @@ class CentralNoticeDB {
 				),
 				array(
 					'tmp_name',
-					'SUM(tmp_weight) AS total_weight',
+					'tmp_weight',
 					'tmp_display_anon',
-					'tmp_display_account'
+					'tmp_display_account',
+					'tmp_fundraising',
+					'tmp_landing_pages',
+					'not_name'
 				),
 				array(
 					'cn_notices.not_id' => $campaigns,
 					'cn_notices.not_id = cn_assignments.not_id',
 					'cn_assignments.tmp_id = cn_templates.tmp_id'
 				),
-				__METHOD__,
-				array(
-					'GROUP BY' => 'tmp_name'
-				)
+				__METHOD__
 			);
-		}
-		$templates = array();
-		foreach ( $res as $row ) {
-			$templates[] = array(
-				'name' => $row->tmp_name,
-				'weight' => intval( $row->total_weight ),
-				'display_anon' => intval( $row->tmp_display_anon ),
-				'display_account' => intval( $row->tmp_display_account ),
-			);
+
+			foreach ( $res as $row ) {
+				$templates[] = array(
+					'name' => $row->tmp_name,
+					'weight' => intval( $row->tmp_weight ),
+					'display_anon' => intval( $row->tmp_display_anon ),
+					'display_account' => intval( $row->tmp_display_account ),
+					'fundraising' => intval( $row->tmp_fundraising ),
+					'landing_pages' => $row->tmp_landing_pages,
+					'campaign' => $row->not_name
+				);
+			}
 		}
 		return $templates;
+	}
+	
+	/*
+	 * See if a given banner exists in the database
+	 */
+	public static function bannerExists( $bannerName ) {
+		 global $wgCentralDBname;
+		 $dbr = wfGetDB( DB_SLAVE, array(), $wgCentralDBname );
+
+		 $eBannerName = htmlspecialchars( $bannerName );
+		 $row = $dbr->selectRow( 'cn_templates', 'tmp_name', array( 'tmp_name' => $eBannerName ) );
+		 if ( $row ) {
+		 	return true;
+		 } else {
+		 	return false;
+		 }
 	}
 	
 	/*

@@ -21,6 +21,7 @@ class CentralNotice extends SpecialPage {
 
 		// Begin output
 		$this->setHeaders();
+		$this->outputHeader();
 		
 		// Add style file to the output headers
 		$wgOut->addExtensionStyle( "$wgExtensionAssetsPath/CentralNotice/centralnotice.css" );
@@ -33,9 +34,6 @@ class CentralNotice extends SpecialPage {
 		
 		// Initialize error variable
 		$this->centralNoticeError = false;
-
-		// Show summary
-		$wgOut->addWikiText( wfMsg( 'centralnotice-summary' ) );
 
 		// Show header
 		$this->printHeader( $sub );
@@ -77,7 +75,7 @@ class CentralNotice extends SpecialPage {
 				$lockedNotices = $wgRequest->getArray( 'locked' );
 				if ( $lockedNotices ) {
 					// Build list of campaigns to lock
-					$unlockedNotices = array_diff( $this->getNoticesName(), $lockedNotices );
+					$unlockedNotices = array_diff( $this->getAllCampaignNames(), $lockedNotices );
 
 					// Set locked/unlocked flag accordingly
 					foreach ( $lockedNotices as $notice ) {
@@ -88,7 +86,7 @@ class CentralNotice extends SpecialPage {
 					}
 				// Handle updates if no post content came through (all checkboxes unchecked)
 				} elseif ( $method !== 'addNotice' ) {
-					$allNotices = $this->getNoticesName();
+					$allNotices = $this->getAllCampaignNames();
 					foreach ( $allNotices as $notice ) {
 						$this->updateLock( $notice, '0' );
 					}
@@ -98,7 +96,7 @@ class CentralNotice extends SpecialPage {
 				$enabledNotices = $wgRequest->getArray( 'enabled' );
 				if ( $enabledNotices ) {
 					// Build list of campaigns to disable
-					$disabledNotices = array_diff( $this->getNoticesName(), $enabledNotices );
+					$disabledNotices = array_diff( $this->getAllCampaignNames(), $enabledNotices );
 
 					// Set enabled/disabled flag accordingly
 					foreach ( $enabledNotices as $notice ) {
@@ -109,7 +107,7 @@ class CentralNotice extends SpecialPage {
 					}
 				// Handle updates if no post content came through (all checkboxes unchecked)
 				} elseif ( $method !== 'addNotice' ) {
-					$allNotices = $this->getNoticesName();
+					$allNotices = $this->getAllCampaignNames();
 					foreach ( $allNotices as $notice ) {
 						$this->updateEnabled( $notice, '0' );
 					}
@@ -119,7 +117,7 @@ class CentralNotice extends SpecialPage {
 				$preferredNotices = $wgRequest->getArray( 'preferred' );
 				if ( $preferredNotices ) {
 					// Build list of campaigns to unset 
-					$unsetNotices = array_diff( $this->getNoticesName(), $preferredNotices );
+					$unsetNotices = array_diff( $this->getAllCampaignNames(), $preferredNotices );
 
 					// Set flag accordingly
 					foreach ( $preferredNotices as $notice ) {
@@ -130,7 +128,7 @@ class CentralNotice extends SpecialPage {
 					}
 				// Handle updates if no post content came through (all checkboxes unchecked)
 				} elseif ( $method !== 'addNotice' ) {
-					$allNotices = $this->getNoticesName();
+					$allNotices = $this->getAllCampaignNames();
 					foreach ( $allNotices as $notice ) {
 						$this->updatePreferred( $notice, '0' );
 					}
@@ -171,6 +169,9 @@ class CentralNotice extends SpecialPage {
 		$wgOut->addHTML( Xml::closeElement( 'div' ) );
 	}
 
+	/**
+	 * Output the tabs for the different CentralNotice interfaces (Allocation, Logs, etc.)
+	 */
 	public static function printHeader() {
 		global $wgOut, $wgTitle, $wgUser;
 		$sk = $wgUser->getSkin();
@@ -200,7 +201,7 @@ class CentralNotice extends SpecialPage {
 	 * Get all the campaigns in the database
 	 * @return an array of campaign names
 	 */
-	function getNoticesName() {
+	function getAllCampaignNames() {
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( 'cn_notices', 'not_name', null, __METHOD__ );
 		$notices = array();
@@ -239,7 +240,7 @@ class CentralNotice extends SpecialPage {
 				array( "year",  "centralnotice-year",  $years,  substr( $ts, 0, 4 ) ),
 			);
 	
-			return $this->genSelector( $prefix, $fields );
+			return $this->createSelector( $prefix, $fields );
 		} else {
 			global $wgLang;
 			return $wgLang->date( $timestamp );
@@ -262,14 +263,19 @@ class CentralNotice extends SpecialPage {
 				array( "min",  "centralnotice-min",   $minutes, substr( $ts, 10, 2 ) ),
 			);
 	
-			return $this->genSelector( $prefix, $fields );
+			return $this->createSelector( $prefix, $fields );
 		} else {
 			global $wgLang;
 			return $wgLang->time( $timestamp );
 		}
 	}
 
-	private function genSelector( $prefix, $fields ) {
+	/**
+	 * Build a set of select lists. Used by dateSelector and timeSelector.
+	 * @param $prefix string
+	 * @param $fields array
+	 */	
+	private function createSelector( $prefix, $fields ) {
 		$out = '';
 		foreach ( $fields as $data ) {
 			list( $field, $label, $set, $current ) = $data;
@@ -373,7 +379,7 @@ class CentralNotice extends SpecialPage {
 					if ( $allProjects ) {
 						$projectList = wfMsg ( 'centralnotice-all-projects' );
 					} else {
-						$projectList = wfMsg ( 'centralnotice-multiple', $project_count );
+						$projectList = wfMsg ( 'centralnotice-multiple-projects', $project_count );
 					}
 				} elseif ( $project_count == 1 ) {
 					$projectList = htmlspecialchars( $projects[0] );
@@ -385,7 +391,7 @@ class CentralNotice extends SpecialPage {
 				$language_count = count( $project_langs );
 				$languageList = '';
 				if ( $language_count > 3 ) {
-					$languageList = wfMsg ( 'centralnotice-multiple', $language_count );
+					$languageList = wfMsg ( 'centralnotice-multiple-languages', $language_count );
 				} elseif ( $language_count > 0 ) {
 					$languageList = $wgLang->commaList( $project_langs );
 				}
@@ -995,16 +1001,23 @@ class CentralNotice extends SpecialPage {
 			);
 
 			$viewPage = $this->getTitleFor( 'NoticeTemplate', 'view' );
+
+			/* XXX this code is duplicated in the CentralNoticePager::formatRow */
 			$render = new SpecialBannerLoader();
 			$render->siteName = 'Wikipedia';
 			global $wgRequest;
 			$render->language = $wgRequest->getVal( 'wpUserLanguage' );
+			try { 
+				$preview = $render->getHtmlNotice( $row->tmp_name );
+			} catch ( SpecialBannerLoaderException $e ) {
+				$preview = wfMsg( 'centralnotice-nopreview' );
+			}
 			$htmlOut .= Xml::tags( 'td', array( 'valign' => 'top' ),
 				$sk->makeLinkObj( $viewPage,
 					htmlspecialchars( $row->tmp_name ),
 					'template=' . urlencode( $row->tmp_name ) ) .
 				Xml::fieldset( wfMsg( 'centralnotice-preview' ),
-					$render->getHtmlNotice( $row->tmp_name ),
+					$preview,
 					array( 'class' => 'cn-bannerpreview')
 				)
 			);
@@ -1064,7 +1077,7 @@ class CentralNotice extends SpecialPage {
 	 * Lookup function for active banners under a given language/project/location. This function is 
 	 * called by SpecialBannerListLoader::getJsonList() in order to build the banner list JSON for
 	 * each project.
-	 * @return A 2D array of running banners with associated weights and settings
+	 * @return a 2D array of running banners with associated weights and settings
 	 */
 	static function selectNoticeTemplates( $project, $language, $location = null ) {
 		global $wgCentralDBname;
@@ -1139,7 +1152,7 @@ class CentralNotice extends SpecialPage {
 		$templates = array();
 		if ( $campaigns ) {
 			// Pull all banners assigned to the campaigns
-			$templates = CentralNoticeDB::selectTemplatesAssigned( $campaigns );
+			$templates = CentralNoticeDB::selectBannersAssigned( $campaigns );
 		}
 		return $templates;
 	}
@@ -1206,7 +1219,7 @@ class CentralNotice extends SpecialPage {
 			$res = $dbw->insert( 'cn_notice_languages', $insertArray, 
 				__METHOD__, array( 'IGNORE' ) );
 			
-			if ( $geotargeted ) {
+			if ( $geotargeted && $geo_countries ) {
 				// Do multi-row insert for campaign countries
 				$insertArray = array();
 				foreach( $geo_countries as $code ) {
@@ -1280,14 +1293,28 @@ class CentralNotice extends SpecialPage {
 	 * Lookup the ID for a campaign based on the campaign name
 	 */
 	public static function getNoticeId( $noticeName ) {
-		 $dbr = wfGetDB( DB_SLAVE );
-		 $eNoticeName = htmlspecialchars( $noticeName );
-		 $row = $dbr->selectRow( 'cn_notices', 'not_id', array( 'not_name' => $eNoticeName ) );
-		 if ( $row ) {
-		 	return $row->not_id;
-		 } else {
-		 	return null;
-		 }
+		$dbr = wfGetDB( DB_SLAVE );
+		$eNoticeName = htmlspecialchars( $noticeName );
+		$row = $dbr->selectRow( 'cn_notices', 'not_id', array( 'not_name' => $eNoticeName ) );
+		if ( $row ) {
+			return $row->not_id;
+		} else {
+			return null;
+		}
+	}
+	
+	/*
+	 * Lookup the name of a campaign based on the campaign ID
+	 */
+	public static function getNoticeName( $noticeId ) {
+		$dbr = wfGetDB( DB_SLAVE );
+		if ( is_numeric( $noticeId ) ) {
+			$row = $dbr->selectRow( 'cn_notices', 'not_name', array( 'not_id' => $noticeId ) );
+			if ( $row ) {
+				return $row->not_name;
+			}
+		}
+		return null;
 	}
 	
 	function getNoticeProjects( $noticeName ) {
@@ -1468,13 +1495,23 @@ class CentralNotice extends SpecialPage {
 	 * @return multiple select list
 	 */
 	function languageMultiSelector( $selected = array(), $customisedOnly = true ) {
-		global $wgContLanguageCode, $wgExtensionAssetsPath, $wgLang;
+		global $wgLanguageCode, $wgExtensionAssetsPath, $wgLang;
 		$scriptPath = "$wgExtensionAssetsPath/CentralNotice";
+		if ( is_callable( array( 'LanguageNames', 'getNames' ) ) ) {
+			// Retrieve the list of languages in user's language (via CLDR)
+			$languages = LanguageNames::getNames( 
+				$wgLang->getCode(), // User's language
+				LanguageNames::FALLBACK_NORMAL, // Use fallback chain
+				LanguageNames::LIST_MW // Pull all languages that are in Names.php
+			);
+		} else {
+			// Use this as fallback if CLDR extension is not enabled
+			$languages = Language::getLanguageNames();
+		}
 		// Make sure the site language is in the list; a custom language code 
 		// might not have a defined name...
-		$languages = Language::getLanguageNames( $customisedOnly );
-		if( !array_key_exists( $wgContLanguageCode, $languages ) ) {
-			$languages[$wgContLanguageCode] = $wgContLanguageCode;
+		if( !array_key_exists( $wgLanguageCode, $languages ) ) {
+			$languages[$wgLanguageCode] = $wgLanguageCode;
 		}
 		ksort( $languages );
 
@@ -1677,7 +1714,7 @@ class CentralNotice extends SpecialPage {
 	}
 
 	public static function dropDownList( $text, $values ) {
-		$dropDown = "* {$text}\n";
+		$dropDown = "*{$text}\n";
 		foreach ( $values as $value ) {
 			$dropDown .= "**{$value}\n";
 		}
@@ -1807,12 +1844,17 @@ class CentralNoticePager extends TemplatePager {
 		$render = new SpecialBannerLoader();
 		$render->siteName = 'Wikipedia';
 		$render->language = $this->mRequest->getVal( 'wpUserLanguage' );
+		try { 
+			$preview = $render->getHtmlNotice( $row->tmp_name );
+		} catch ( SpecialBannerLoaderException $e ) {
+			$preview = wfMsg( 'centralnotice-nopreview' );
+		}
 		$htmlOut .= Xml::tags( 'td', array( 'valign' => 'top' ),
 			$this->getSkin()->makeLinkObj( $this->viewPage,
 				htmlspecialchars( $row->tmp_name ),
 				'template=' . urlencode( $row->tmp_name ) ) .
 			Xml::fieldset( wfMsg( 'centralnotice-preview' ),
-				$render->getHtmlNotice( $row->tmp_name ),
+				$preview,
 				array( 'class' => 'cn-bannerpreview')
 			)
 		);
