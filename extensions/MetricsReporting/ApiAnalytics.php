@@ -45,7 +45,8 @@ class ApiAnalytics extends ApiBase {
 		return array(
 			'metric' => array(
 				ApiBase::PARAM_ISMULTI => false,
-				ApiBase::PARAM_TYPE => $this->metricModuleNames
+				ApiBase::PARAM_TYPE => $this->metricModuleNames,
+				ApiBase::PARAM_REQUIRED => true,
 			),
 		);
 	}
@@ -54,7 +55,8 @@ class ApiAnalytics extends ApiBase {
 		return array(
 			'metric' => array(
 				'Type of data to collect',
-				'About metric names: these include source of data, to allow for alternate sources of similar metrics, which likely are defined differently or have other intrinsic issues (e.g. precision/reliability).'
+				'About metric names: these include source of data, to allow for alternate sources of similar metrics,',
+				'which likely are defined differently or have other intrinsic issues (e.g. precision/reliability).',
 			),
 		);
 	}
