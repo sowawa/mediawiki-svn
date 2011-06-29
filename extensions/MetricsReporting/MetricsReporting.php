@@ -30,5 +30,29 @@ $wgAutoloadClasses['ApiAnalyticsBase'] = $dir . 'ApiAnalyticsBase.php';
 
 $metricsDir = $dir . 'metrics/';
 
+$wgAutoloadClasses['ComScoreReachPercentageMetric'] = $metricsDir . 'ComScoreReachPercentageMetric.php';
+$wgMetricAPIModules['comscorereachpercentage'] = 'ComScoreReachPercentageMetric';
+
 $wgAutoloadClasses['ComScoreUniqueVisitorMetric'] = $metricsDir . 'ComScoreUniqueVisitorMetric.php';
 $wgMetricAPIModules['comscoreuniquevisitors'] = 'ComScoreUniqueVisitorMetric';
+
+$wgAutoloadClasses['DumpActiveEditors100Metric'] = $metricsDir . 'DumpActiveEditors100Metric.php';
+$wgMetricAPIModules['dumpactiveeditors100'] = 'DumpActiveEditors100Metric';
+
+$wgAutoloadClasses['DumpActiveEditors15Metric'] = $metricsDir . 'DumpActiveEditors15Metric.php';
+$wgMetricAPIModules['dumpactiveeditors15'] = 'DumpActiveEditors15Metric';
+
+$wgAutoloadClasses['DumpArticleCountMetric'] = $metricsDir . 'DumpArticleCountMetric.php';
+$wgMetricAPIModules['dumparticlecount'] = 'DumpArticleCountMetric';
+
+$wgAutoloadClasses['DumpBinaryCountMetric'] = $metricsDir . 'DumpBinaryCountMetric.php';
+$wgMetricAPIModules['dumpbinarycount'] = 'DumpBinaryCountMetric';
+
+$wgAutoloadClasses['DumpEditsMetric'] = $metricsDir . 'DumpEditsMetric.php';
+$wgMetricAPIModules['dumpedits'] = 'DumpEditsMetric';
+
+$wgAutoloadClasses['DumpNewRegisteredEditorsMetric'] = $metricsDir . 'DumpNewRegisteredEditorsMetric.php';
+$wgMetricAPIModules['dumpnewregisterededitors'] = 'DumpNewRegisteredEditorsMetric';
+
+$wgAutoloadClasses['SquidPageViewsMetric'] = $metricsDir . 'SquidPageViewsMetric.php';
+$wgMetricAPIModules['squidpageviews'] = 'SquidPageViewsMetric';
