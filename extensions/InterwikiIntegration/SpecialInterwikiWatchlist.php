@@ -62,9 +62,21 @@ class InterwikiWatchlist extends SpecialWatchlist {
 		$sub .= '<br />' . WatchlistEditor::buildTools( $wgUser->getSkin() );
 		$wgOut->setSubtitle( $sub );
 	
-		if( ( $mode = WatchlistEditor::getMode( $wgRequest, $par ) ) !== false ) {
-			$editor = new WatchlistEditor();
-			$editor->execute( $wgUser, $wgOut, $wgRequest, $mode );
+		$mode = SpecialEditWatchlist::getMode( $this->getRequest(), $par );
+		if( $mode !== false ) {
+			# TODO: localise?
+			switch( $mode ){
+				case SpecialEditWatchlist::EDIT_CLEAR:
+					$mode = 'clear';
+					break;
+				case SpecialEditWatchlist::EDIT_RAW:
+					$mode = 'raw';
+					break;
+				default:
+					$mode = null;
+			}
+			$title = SpecialPage::getTitleFor( 'EditWatchlist', $mode );
+			$wgOut->redirect( $title->getLocalUrl() );
 			return;
 		}
 	
@@ -72,7 +84,7 @@ class InterwikiWatchlist extends SpecialWatchlist {
 		if( ($wgEnotifWatchlist || $wgShowUpdatedMarker) && $wgRequest->getVal( 'reset' ) && 
 			$wgRequest->wasPosted() )
 		{
-			$wgUser->clearAllNotifications( $uid );
+			$wgUser->clearAllNotifications();
 			$wgOut->redirect( $specialTitle->getFullUrl() );
 			return;
 		}
@@ -127,11 +139,7 @@ class InterwikiWatchlist extends SpecialWatchlist {
 		$dbr = wfGetDB( DB_SLAVE, 'integration_watchlist' );
 		$recentchanges = $dbr->tableName( 'integration_recentchanges' );
 	
-		$watchlistCount = $dbr->selectField( 'integration_watchlist', 'COUNT(*)',
-			array( 'integration_wl_user' => $uid ), __METHOD__ );
-		// Adjust for page X, talk:page X, which are both stored separately,
-		// but treated together
-		$nitems = floor($watchlistCount / 2);
+		$nitems = $this->countItems();
 	
 		if( is_null($days) || !is_numeric($days) ) {
 			$big = 1000; /* The magical big */
@@ -282,26 +290,24 @@ class InterwikiWatchlist extends SpecialWatchlist {
 				) . '<br />';
 		}
 	
-		$cutofflinks = "\n" . self::cutoffLinks( $days, 'Watchlist', $nondefaults ) . "<br />\n";
-	
-		$thisTitle = SpecialPage::getTitleFor( 'Watchlist' );
-	
+		$cutofflinks = "\n" . $this->cutoffLinks( $days, $nondefaults ) . "<br />\n";
+
 		# Spit out some control panel links
-		$links[] = self::showHideLink( $nondefaults, 'rcshowhideminor', 'hideMinor', $hideMinor );
-		$links[] = self::showHideLink( $nondefaults, 'rcshowhidebots', 'hideBots', $hideBots );
-		$links[] = self::showHideLink( $nondefaults, 'rcshowhideanons', 'hideAnons', $hideAnons );
-		$links[] = self::showHideLink( $nondefaults, 'rcshowhideliu', 'hideLiu', $hideLiu );
-		$links[] = self::showHideLink( $nondefaults, 'rcshowhidemine', 'hideOwn', $hideOwn );
+		$links[] = $this->showHideLink( $nondefaults, 'rcshowhideminor', 'hideMinor', $hideMinor );
+		$links[] = $this->showHideLink( $nondefaults, 'rcshowhidebots', 'hideBots', $hideBots );
+		$links[] = $this->showHideLink( $nondefaults, 'rcshowhideanons', 'hideAnons', $hideAnons );
+		$links[] = $this->showHideLink( $nondefaults, 'rcshowhideliu', 'hideLiu', $hideLiu );
+		$links[] = $this->showHideLink( $nondefaults, 'rcshowhidemine', 'hideOwn', $hideOwn );
 	
 		if( $wgUser->useRCPatrol() ) {
-			$links[] = self::showHideLink( $nondefaults, 'rcshowhidepatr', 'hidePatrolled', $hidePatrolled );
+			$links[] = $this->showHideLink( $nondefaults, 'rcshowhidepatr', 'hidePatrolled', $hidePatrolled );
 		}
 	
 		# Namespace filter and put the whole form together.
 		$form .= $wlInfo;
 		$form .= $cutofflinks;
 		$form .= $wgLang->pipeList( $links );
-		$form .= Xml::openElement( 'form', array( 'method' => 'post', 'action' => $thisTitle->getLocalUrl(), 'id' => 'mw-watchlist-form-namespaceselector' ) );
+		$form .= Xml::openElement( 'form', array( 'method' => 'post', 'action' => $this->getTitle()->getLocalUrl(), 'id' => 'mw-watchlist-form-namespaceselector' ) );
 		$form .= '<hr /><p>';
 		$form .= Xml::label( wfMsg( 'namespace' ), 'namespace' ) . '&#160;';
 		$form .= Xml::namespaceSelector( $nameSpace, '' ) . '&#160;';
@@ -385,23 +391,18 @@ class InterwikiWatchlist extends SpecialWatchlist {
 	/**
 	 * Count the number of items on a user's watchlist
 	 *
-	 * @param $talk Include talk pages
 	 * @return integer
 	 */
-	function countItems( &$user, $talk = true ) {
+	function countItems() {
 		$dbr = wfGetDB( DB_SLAVE, 'integration_watchlist' );
-	
+
 		# Fetch the raw count
 		$res = $dbr->select( 'integration_watchlist', 'COUNT(*) AS count', 
-			array( 'integration_wl_user' => $user->mId ), __METHOD__ );
+			array( 'integration_wl_user' => $this->getUser()->getId() ), __METHOD__ );
 		$row = $dbr->fetchObject( $res );
 		$count = $row->count;
 		$dbr->freeResult( $res );
-	
-		# Halve to remove talk pages if needed
-		if( !$talk )
-			$count = floor( $count / 2 );
-	
-		return( $count );
+
+		return floor( $count / 2 );
 	}
 }
