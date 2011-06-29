@@ -46,6 +46,7 @@ class SignupForm extends SpecialPage {
 	const BLOCKED_BY_HOOK = 15;
 	const EXTR_DB_ERROR = 16;
 	const THROTLLED = 17;
+        const INIT_FAILED = 18;
 
 
 	//Initialise all variables to be used
@@ -55,7 +56,7 @@ class SignupForm extends SpecialPage {
 	var $mSkipCookieCheck, $mReturnToQuery, $mToken, $mStickHTTPS;
 	var $mType, $mReason, $mRealName;
 	var $abortError = '';
-	var $mUser;
+	var $mUser,$mConfirmationMailStatus,$mRunCookieRedirect,$mRunCreationConfirmation;
 
 	/**
 	 * @var ExternalUser
@@ -187,12 +188,6 @@ class SignupForm extends SpecialPage {
 	function addNewAccount($mUser) {
 		global $wgUser, $wgEmailAuthentication, $wgOut;
 
-		# Create the account and abort if there's a problem doing so
-		//$mUser = $this->addNewAccountInternal();
-		if( $mUser == null ) {
-			return;
-		}
-
 		# If we showed up language selection links, and one was in use, be
 		# smart (and sensible) and save that language as the user's preference
 		global $wgLoginLanguageSelector;
@@ -201,13 +196,8 @@ class SignupForm extends SpecialPage {
 		}
 
 		# Send out an email authentication message if needed
-		if( $wgEmailAuthentication && User::isValidEmailAddr( $mUser->getEmail() ) ) {
-			$status = $mUser->sendConfirmationMail();
-			if( $status->isGood() ) {
-				$wgOut->addWikiMsg( 'confirmemail_oncreate' );
-			} else {
-				$wgOut->addWikiText( $status->getWikiText( 'confirmemail_sendfailed' ) );
-			}
+		if( $wgEmailAuthentication ) {
+			$this->mConfirmationMailStatus = $mUser->sendConfirmationMail();
 		}
 
 		# Save settings (including confirmation token)
@@ -222,16 +212,13 @@ class SignupForm extends SpecialPage {
 			wfRunHooks( 'AddNewAccount', array( $wgUser, false ) );
 			$wgUser->addNewUserLogEntry();
 			if( $this->hasSessionCookie() ) {
-				return $this->successfulCreation();
+				return true;
 			} else {
-				return $this->cookieRedirectCheck( 'new' );
+				$this->mRunCookieRedirect = true;
+                                return true;
 			}
 		} else {
-			# Confirm that the account was created
-			$self = SpecialPage::getTitleFor( 'Userlogin' );
-			$wgOut->setPageTitle( wfMsgHtml( 'accountcreated' ) );
-			$wgOut->addWikiMsg( 'accountcreatedtext', $mUser->getName() );
-			$wgOut->returnToMain( false, $self );
+                        $this->mRunCreationConfirmation = true;
 			wfRunHooks( 'AddNewAccount', array( $mUser, false ) );
 			$mUser->addNewUserLogEntry( false, $this->mReason );
 			return true;
@@ -274,17 +261,18 @@ class SignupForm extends SpecialPage {
 			self::setCreateaccountToken();
 			return self::NO_COOKIES;
 		}
-
+                
 		# The user didn't pass a createaccount token
 		if ( !$this->mToken ) {
 			return self::NEED_TOKEN;
 		}
 
+
 		# Validate the createaccount token
 		if ( $this->mToken !== self::getCreateaccountToken() ) {
 			return self::WRONG_TOKEN;
 		}
-
+                
 		# Check permissions
 		if ( !$wgUser->isAllowed( 'createaccount' ) ) {
 			return self::INSUFFICIENT_PERMISSION;
@@ -364,8 +352,12 @@ class SignupForm extends SpecialPage {
 
 		self::clearCreateaccountToken();
 		$mUser = $this->initUser( $mUser, false );
-		$this->addNewAccount($mUser);
-		return self::SUCCESS;
+                if( $mUser == null ) {
+                    return self::INIT_FAILED;
+                }
+		
+                $this->addNewAccount($mUser);
+                return self::SUCCESS;
 	}
 
 	/**
@@ -411,12 +403,28 @@ class SignupForm extends SpecialPage {
 	}
 
 	function processSignup() {
-		global $wgUser, $wgOut;
+		global $wgUser, $wgOut, $wgEmailAuthentication;
 
 		switch ( $this->addNewAccountInternal() ) {
 			case self::SUCCESS:
-				//$this->initUser( $mUser, false );
-				//$this->addNewAccount($mUser);
+                                if( $wgEmailAuthentication ) {
+                                    if( $this->mConfirmationMailStatus->isGood() ) {
+                                            $wgOut->addWikiMsg( 'confirmemail_oncreate' );
+                                        } else {
+                                            $wgOut->addWikiText( $this->mConfirmationMailStatus->getWikiText( 'confirmemail_sendfailed' ) );
+                                        }
+                                    }
+                                 if( $this->mRunCookieRedirect ) {
+                                     $this->cookieRedirectCheck( 'new' );
+                                 }
+                                 # Confirm that the account was created
+                                 if($this->mRunCreationConfirmation) {
+                                     $self = SpecialPage::getTitleFor( 'Userlogin' );
+                                     $wgOut->setPageTitle( wfMsgHtml( 'accountcreated' ) );
+			             $wgOut->addWikiMsg( 'accountcreatedtext', $mUser->getName() );
+			             $wgOut->returnToMain( false, $self );
+                                 }
+				$this->successfulCreation();
 				break;
 			case self::INVALID_DOMAIN:
 				$this->mainSignupForm( wfMsg( 'wrongpassword' ) );
@@ -475,9 +483,12 @@ class SignupForm extends SpecialPage {
 			case self::EXTR_DB_ERROR:
 				$this->mainSignupForm( wfMsg( 'externaldberror' ) );
 				break;
-			case self::THROTLLED;
+			case self::THROTLLED:
 				global $wgAccountCreationThrottle;
 				$this->mainSignupForm( wfMsgExt( 'acct_creation_throttle_hit', array( 'parseinline' ), $wgAccountCreationThrottle ) );
+				break;
+                        case self::INIT_FAILED:
+                                $this->mainSignupForm( wfMsg( 'init_failed' ) );
 				break;
 			default:
 				throw new MWException( 'Unhandled case value' );
@@ -602,7 +613,7 @@ class SignupForm extends SpecialPage {
 			if ( $wgUser->isLoggedIn() ) {
 				$this->mUsername = $wgUser->getName();
 			} else {
-				//$this->mUsername = $wgRequest->getCookie( 'UserName' );
+				$this->mUsername = $wgRequest->getCookie( 'UserName' );
 			}
 		}
 
