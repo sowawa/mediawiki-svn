@@ -39,8 +39,8 @@ $wgMetricAPIModules['comscoreuniquevisitors'] = 'ComScoreUniqueVisitorMetric';
 $wgAutoloadClasses['DumpActiveEditors100Metric'] = $metricsDir . 'DumpActiveEditors100Metric.php';
 $wgMetricAPIModules['dumpactiveeditors100'] = 'DumpActiveEditors100Metric';
 
-$wgAutoloadClasses['DumpActiveEditors15Metric'] = $metricsDir . 'DumpActiveEditors15Metric.php';
-$wgMetricAPIModules['dumpactiveeditors15'] = 'DumpActiveEditors15Metric';
+$wgAutoloadClasses['DumpActiveEditors5Metric'] = $metricsDir . 'DumpActiveEditors5Metric.php';
+$wgMetricAPIModules['dumpactiveeditors5'] = 'DumpActiveEditors5Metric';
 
 $wgAutoloadClasses['DumpArticleCountMetric'] = $metricsDir . 'DumpArticleCountMetric.php';
 $wgMetricAPIModules['dumparticlecount'] = 'DumpArticleCountMetric';
