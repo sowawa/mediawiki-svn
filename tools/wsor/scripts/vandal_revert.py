@@ -42,16 +42,18 @@ def query_name(input):
 """
 def main(args):
     
-    #print args.test
-    
     """ Configure the logger """
     LOGGING_STREAM = sys.stderr
     logging.basicConfig(level=logging.DEBUG, stream=LOGGING_STREAM, format='%(asctime)s %(levelname)-8s %(message)s', datefmt='%b-%d %H:%M:%S')
        
-    vl = VandalLoader()
+    """ Create a DataLoader object and execute """
+    vl = VandalLoader(args.query)
     data = vl.run_query()
     
-    print data
+    """ PROCESS the data  -- !! TODO - add data reporting here to build results !! """
+    # print data
+    
+    vl.close_db()
     
     return 0
 
