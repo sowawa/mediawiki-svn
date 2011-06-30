@@ -207,7 +207,7 @@ $(document).ready( function() {
 						}, pp.renderMap);
 					},
 					hide: function() {
-						$('#pegparser-source').hide(); // it'll reshow; others won't need it
+						//$('#pegparser-source').hide(); // it'll reshow; others won't need it
 						context.$iframe = undefined;
 						if (context.$parserContainer !== undefined) {
 							context.$parserContainer.remove();
