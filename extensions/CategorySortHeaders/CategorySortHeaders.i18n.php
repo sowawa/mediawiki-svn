@@ -19,6 +19,13 @@ $messages['qqq'] = array(
 	'categorysortheaders-desc' => '{{desc}}',
 );
 
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author Wizardist
+ */
+$messages['be-tarask'] = array(
+	'categorysortheaders-desc' => 'Дазваляе рабіць загалоўкі сьпісаў артыкулаў па альфабэце ў катэгорыях зь некалькіх сымбаляў з выкарыстаньнем сынтаксісу <nowiki>[[Катэгорыя:Прыклад|^Загаловак^Нябачная частка ключа сартыроўкі]]</nowiki>',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

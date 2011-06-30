@@ -76,7 +76,8 @@ $messages['qqq'] = array(
 {{Identical|Translate}}',
 	'toolbase-navigation' => 'Text shown at the top of the navigation sidebar
 {{Identical|Navigation}}',
-	'toolbase-navigation-homepage' => 'Text shown in the nagivation link to the homepage',
+	'toolbase-navigation-homepage' => 'Text shown in the nagivation link to the homepage
+{{Identical|Homepage}}',
 	'toolbase-navigation-user_id' => 'Text shown in the nagivation link to the user_id tool',
 	'toolbase-userid-submit' => 'Text on the submit button for the user_id tool',
 	'toolbase-userid-title' => 'Header on the user_id tool',

@@ -345,10 +345,11 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Waldir
  */
 $messages['pt'] = array(
-	'metakeywords-desc' => 'Permite a configuração de tags <code>&lt;meta "keywords"&gt;</code> e <code>&lt;meta "description"&gt;</code> por domínio',
+	'metakeywords-desc' => 'Permite a configuração de tags <code>&lt;meta "keywords"&gt;</code> e <code>&lt;meta "description"&gt;</code> por espaço nominal',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

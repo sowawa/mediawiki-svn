@@ -502,9 +502,10 @@ $messages['fi'] = array(
  * @author Grondin
  * @author IAlex
  * @author Urhixidur
+ * @author Wyz
  */
 $messages['fr'] = array(
-	'importfreeimages' => 'Importer des Images Libres',
+	'importfreeimages' => 'Importer des images libres',
 	'importfreeimages-desc' => 'Fournit un moyen d’importer des photographies sous licence appropriée depuis flickr.',
 	'importfreeimages_description' => 'Cette page vous permet de rechercher des images sous licences appropriées depuis flickr et de les importer dans votre wiki.',
 	'importfreeimages_nophotosfound' => "Aucune photo n’a été trouvée à partir de vos critères de recherches  '$1', veuillez essayer à nouveau.",

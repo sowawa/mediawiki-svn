@@ -148,13 +148,14 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Melancholie
  * @author Raimond Spekking
  * @author SVG
  */
 $messages['de'] = array(
 	'seealso' => 'Siehe auch',
-	'seealso-desc' => 'Lokalisierte Siehe-auch-Überschriften mittels <code>&lt;seealso&gt;</code>',
+	'seealso-desc' => 'Ermöglicht die Lokalisierung von Siehe-auch-Überschriften mithilfe des Auszeichnungselements <code>&lt;seealso&gt;</code>',
 );
 
 /** Lower Sorbian (Dolnoserbski)

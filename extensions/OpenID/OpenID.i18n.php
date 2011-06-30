@@ -567,6 +567,7 @@ $messages['be'] = array(
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Wizardist
  * @author Zedlik
  */
 $messages['be-tarask'] = array(
@@ -665,7 +666,10 @@ $messages['be-tarask'] = array(
 	'openid-provider-label-aol' => 'Увядзіце назву Вашага рахунку ў AOL',
 	'openid-provider-label-other-username' => 'Увядзіце Вашае імя ўдзельніка $1',
 	'specialpages-group-openid' => 'Старонка сэрвісу OpenID і інфармацыя пра статус',
+	'right-openid-dashboard-access' => 'стандартны доступ да панэлі кіраваньня OpenID',
+	'right-openid-dashboard-admin' => 'доступ адміністратара да панэлі кіраваньня OpenID',
 	'openid-dashboard-title' => 'Дошка OpenID',
+	'openid-dashboard-title-admin' => 'Панэль кіраваньня OpenID (адміністратар)',
 	'openid-dashboard-introduction' => 'Цяперашнія налады пашырэньня OpenID ([$1 дапамога])',
 	'openid-dashboard-number-openid-users' => 'Колькасьць удзельнікаў з OpenID',
 	'openid-dashboard-number-openids-in-database' => 'Колькасьць OpenID (агульна)',
@@ -1205,7 +1209,7 @@ Diese und weitere OpenIDs, sowie das fakultative Benutzerkontopasswort, können 
 	'openidrequired' => 'Pflicht',
 	'openidnickname' => 'Benutzername',
 	'openidfullname' => 'Bürgerlicher Name',
-	'openidemail' => 'E-Mail-Adresse:',
+	'openidemail' => 'E-Mail-Adresse',
 	'openidlanguage' => 'Sprache',
 	'openidtimezone' => 'Zeitzone',
 	'openidchooselegend' => 'Wahl des Benutzernamens und Benutzerkontos',
