@@ -229,7 +229,7 @@ class SpecialTasks extends IncludableSpecialPage {
 		$dbw = wfGetDB( DB_MASTER );
 		$user_id = 0;
 		if ( !is_null($name) ) {
-			$user_id = $wgUser->idFromName($name);
+			$user_id = User::idFromName($name);
 			if ( !ctype_digit($user_id) ) {
 				$user_id = 0; # (int)0 indicates assigned to "no one"
 			}
@@ -459,7 +459,7 @@ class SpecialTasks extends IncludableSpecialPage {
 				# Unassign me; this can be invoked for every user by editing the URL!
 				$user_id = 0;
 			} elseif ( $mode == 'assignto' ) {
-				$user_id = $wgUser->idFromName($name);
+				$user_id = User::idFromName($name);
 				if ( empty($user_id) ) {
 					break; # break as though "mode" were undefined (no action)
 				}
