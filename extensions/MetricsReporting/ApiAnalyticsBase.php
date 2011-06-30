@@ -38,6 +38,45 @@ abstract class ApiAnalyticsBase extends ApiBase {
 		// months, normalized, data, reportlanguage
 		// selectregions, selectcountries, selectwebproperties, selectprojects, selectwikis, selecteditors, selectedits, selectplatform
 
+		$query['conds']['date'] = $params['months'];
+
+		if ( $params['normalised'] ) {
+			// Do data normalisation stuffs here
+		}
+		// if/switch on $params['data']
+
+		// $params['reportlanguage'] Change join based on select language
+
+		foreach( $this->getAllowedFilters() as $filter ) {
+			if ( isset( $params[$filter] ) ) {
+				switch ( $filter ) {
+					case 'selectregions':
+						$query['conds']['region_code'] = $params[$filter];
+						break;
+					case 'selectcountries':
+						$query['conds']['country_code'] = $params[$filter];
+						break;
+					case 'selectwebproperties':
+						$query['conds']['web_property'] = $params[$filter];
+						break;
+					case 'selectprojects':
+						$query['conds']['project_code'] = $params[$filter];
+						break;
+					case 'selectwikis':
+						$query['conds'][''] = $params[$filter];
+						break;
+					case 'selecteditors':
+						$query['conds'][''] = $params[$filter];
+						break;
+					case 'selectedits':
+						$query['conds'][''] = $params[$filter];
+						break;
+					case 'selectplatform':
+						$query['conds'][''] = $params[$filter];
+						break;
+				}
+			}
+		}
 		$db = $this->getDB();
 
 		$this->profileDBIn();
@@ -45,9 +84,19 @@ abstract class ApiAnalyticsBase extends ApiBase {
 		$this->profileDBOut();
 
 		$result = $this->getResult();
-		foreach( $res as $row ) {
+		$data = array();
 
+		$fields = $this->getQueryFields();
+		foreach( $res as $row ) {
+			$item = array();
+			foreach( $fields as $field ) {
+				$item[$field] = $row->$field;
+			}
+			$data[] = $item;
 		}
+
+		$result->setIndexedTagName( $data, 'metric' );
+		$result->addValue( 'quermetricy', $this->getModuleName(), $data );
 	}
 
 	protected abstract function getQueryInfo();
