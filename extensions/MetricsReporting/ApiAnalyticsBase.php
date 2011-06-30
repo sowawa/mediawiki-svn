@@ -38,57 +38,69 @@ abstract class ApiAnalyticsBase extends ApiBase {
 		$query = $this->getQueryInfo();
 		$query['fields'] = $this->getQueryFields();
 
-		// Params needed for extra filters etc
-		// months, normalized, data, reportlanguage
-		// selectregions, selectcountries, selectwebproperties, selectprojects, selectwikis, selecteditors, selectedits, selectplatform
-
 		$query['conds']['date'] = $params['months'];
 
 		if ( $params['normalized'] ) {
 			// Do data normalisation stuffs here
 		}
 
-		switch ( $params['data'] ) {
-			case 'timeseries':
-				break;
-			case 'timeseriesindexed':
-				break;
-			case 'percentagegrowthlastmonth':
-				break;
-			case 'percentagegrowthlasyyear':
-				break;
-			case 'percentagegrowthfullperiod':
-				break;
+		foreach( $params['data'] as $data ) {
+			switch ( $data ) {
+				case 'timeseries':
+					break;
+				case 'timeseriesindexed':
+					break;
+				case 'percentagegrowthlastmonth':
+					break;
+				case 'percentagegrowthlasyyear':
+					break;
+				case 'percentagegrowthfullperiod':
+					break;
+			}
 		}
-
 		// $params['reportlanguage'] Change join based on select language
 
 		foreach( $this->getAllowedFilters() as $filter ) {
-			if ( isset( $params[$filter] ) ) {
+			if ( /*isset( $params[$filter] ) && */count( $params[$filter] ) ) {
+				if ( $params[$filter][0] === '*' ) {
+					// For */"all", don't do any filtering
+					continue;
+				}
+
+				$parsedFilter = $this->getAllUniqueParams( $params[$filter] );
 				switch ( $filter ) {
 					case 'selectregions':
-						$query['conds']['region_code'] = $params[$filter];
+						// a, b, c
+						$query['conds']['region_code'] = $parsedFilter;
 						break;
 					case 'selectcountries':
-						$query['conds']['country_code'] = $params[$filter];
+						// b, c, d
+						$query['conds']['country_code'] = $parsedFilter;
 						break;
 					case 'selectwebproperties':
-						$query['conds']['web_property'] = $params[$filter];
+						// c, d
+						$query['conds']['web_property'] = $parsedFilter;
 						break;
 					case 'selectprojects':
-						$query['conds']['project_code'] = $params[$filter];
+						// c
+						$query['conds']['project_code'] = $parsedFilter;
 						break;
 					case 'selectwikis':
-						$query['conds'][''] = $params[$filter];
+						// c
+						// ( lang = ltarget AND project = ptarget ) OR ( lang =ltarget2 AND project = ptarget2 )
+						$query['conds'][''] = $parsedFilter;
 						break;
 					case 'selecteditors':
-						$query['conds'][''] = $params[$filter];
+						// b, c
+						$query['conds'][''] = $parsedFilter;
 						break;
 					case 'selectedits':
-						$query['conds'][''] = $params[$filter];
+						// b, c
+						$query['conds'][''] = $parsedFilter;
 						break;
 					case 'selectplatform':
-						$query['conds'][''] = $params[$filter];
+						// b, c
+						$query['conds'][''] = $parsedFilter;
 						break;
 				}
 			}
@@ -131,6 +143,25 @@ abstract class ApiAnalyticsBase extends ApiBase {
 		return substr( $col, $pos + 1 );
 	}
 
+	/**
+	 * array( 'a', 'b', 'c', 'a', 'a,c' ) => array( 'a', 'b', 'c' )
+	 *
+	 * @param $array
+	 * @return array
+	 */
+	private function getAllUniqueParams( $array ) {
+		$ret = array();
+		foreach( $array as $a ) {
+			$pos = strpos( $a, ',' );
+			if ( !$pos ) {
+				$ret[] = $a;
+				continue;
+			}
+			$ret = array_merge( $ret, explode( ',', $a ) );
+		}
+		return array_unique( $ret );
+	}
+
 	protected abstract function getQueryInfo();
 
 	protected abstract function getQueryFields();
@@ -152,6 +183,7 @@ abstract class ApiAnalyticsBase extends ApiBase {
 			'data' => array(
 				ApiBase::PARAM_DFLT => 'timeseries',
 				ApiBase::PARAM_ISMULTI => true,
+				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_TYPE => array(
 					'timeseries',
 					'timeseriesindexed',
@@ -214,23 +246,23 @@ abstract class ApiAnalyticsBase extends ApiBase {
 				'(WMF Report Card will use normalized time series when available)',
 			),
 			'data' => array(
-					' timeseries - returns ordered list of value pairs, on efor each month within range',
+					' timeseries        - returns ordered list of value pairs, on efor each month within range',
 					' timeseriesindexed - like timeseries, but each month\'s value will be relative to oldest month\'s value which is always 100',
 					' percentagegrowthlastmonth, percentagegrowthlastyear, percentagegrowthfullperiod',
-					'  growth percentages are relative to oldest value (80->100=25%) although trivial, requesting these metrics through API ensures all clients use same calculation',
+					' - growth percentages are relative to oldest value (80->100=25%) although trivial, requesting these metrics through API ensures all clients use same calculation',
 			),
 			'reportlanguage' => 'Language code, used to expand region and country codes into region and country name',
 			'selectregions' => array(
 				'What region',
-				' as = Asia Pacific',
-				' c  = China',
-				' eu = Europe',
-				' i  = India',
-				' la = Latin-America',
-				' ma = Middle-East/Africa',
-				' na = North-America',
-				' us = United States',
-				' w  = World',
+				' as - Asia Pacific',
+				' c  - China',
+				' eu - Europe',
+				' i  - India',
+				' la - Latin-America',
+				' ma - Middle-East/Africa',
+				' na - North-America',
+				' us - United States',
+				' w  - World',
 			),
 			'selectcountries' => array(
 				'What country, based on ISO 3166-1 codes',
@@ -489,17 +521,17 @@ abstract class ApiAnalyticsBase extends ApiBase {
 			),
 			'selectprojects' => array(
 				'Which projects',
-				' wb = Wikibooks',
-				' wk = Wiktionary',
-				' wn = Wikinews',
-				' wp = Wikipedia',
-				' wq = Wikiquote',
-				' ws = Wikisource',
-				' wv = Wikiversity',
-				' co = Commons',
-				' wx = Other projects',
+				' wb - Wikibooks',
+				' wk - Wiktionary',
+				' wn - Wikinews',
+				' wp - Wikipedia',
+				' wq - Wikiquote',
+				' ws - Wikisource',
+				' wv - Wikiversity',
+				' co - Commons',
+				' wx - Other projects',
 			),
-			'selectwikis' => 'specify each wiki code as project:language, e.g. wp:en for English Wikipedia, wq:de for German Wikiquote',
+			'selectwikis' => 'Specify each wiki code as project:language, e.g. wp:en for English Wikipedia, wq:de for German Wikiquote',
 			'selecteditors' => 'a for anonymous, r for registered, b for bot',
 			'selectedits' => 'm for manual, b for bot-induced',
 			'selectplatform' => 'm for mobile, n for non-mobile',
