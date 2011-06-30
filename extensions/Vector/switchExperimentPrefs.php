@@ -23,7 +23,6 @@ class SwitchExperimentPrefs extends Maintenance {
 		$total = 0;
 		$lastUserID = 0;
 		while ( true ) {
-			$dbw->begin();
 			$res = $dbw->select( 'user_properties', array( 'up_user' ),
 				array( 'up_property' => 'vector-noexperiments', "up_user > $lastUserID" ),
 				__METHOD__,
@@ -59,6 +58,6 @@ class SwitchExperimentPrefs extends Maintenance {
 }
 
 $maintClass = 'SwitchExperimentPrefs';
-require_once( DO_MAINTENANCE );
+require_once( RUN_MAINTENANCE_IF_MAIN );
 
 
