@@ -38,12 +38,19 @@ abstract class ApiAnalyticsBase extends ApiBase {
 		$query = $this->getQueryInfo();
 		$query['fields'] = $this->getQueryFields();
 
-		$query['conds']['date'] = $params['months'];
-
-		if ( $params['normalized'] ) {
-			// Do data normalisation stuffs here
+		$db = $this->getDB();
+		if ( $params['startmonth'] && !$params['endmonth'] ) {
+			$query['conds']['date'] = $params['months'];
+		} else {
+			$query['conds'] = "date >= ". $db->addQuotes( $params['startmonth'] )
+							. " AND date <= " . $db->addQuotes( $params['endmonth'] ) ;
 		}
 
+		if ( $params['normalized'] ) {
+			// TODO: Do data normalisation stuffs here
+		}
+
+		// TODO: Data formatting
 		foreach( $params['data'] as $data ) {
 			switch ( $data ) {
 				case 'timeseries':
@@ -58,7 +65,7 @@ abstract class ApiAnalyticsBase extends ApiBase {
 					break;
 			}
 		}
-		// $params['reportlanguage'] Change join based on select language
+		// TODO: Change join based on selected language $params['reportlanguage']
 
 		foreach( $this->getAllowedFilters() as $filter ) {
 			if ( /*isset( $params[$filter] ) && */count( $params[$filter] ) ) {
@@ -75,10 +82,12 @@ abstract class ApiAnalyticsBase extends ApiBase {
 						break;
 					case 'selectcountries':
 						// b, c, d
+						// TODO: Cater for "top:20" etc
 						$query['conds']['country_code'] = $parsedFilter;
 						break;
 					case 'selectwebproperties':
 						// c, d
+						// TODO: Cater for "top:20" etc
 						$query['conds']['web_property'] = $parsedFilter;
 						break;
 					case 'selectprojects':
@@ -87,25 +96,28 @@ abstract class ApiAnalyticsBase extends ApiBase {
 						break;
 					case 'selectwikis':
 						// c
+						// TODO: What's the format of the query need to be?
 						// ( lang = ltarget AND project = ptarget ) OR ( lang =ltarget2 AND project = ptarget2 )
 						$query['conds'][''] = $parsedFilter;
 						break;
 					case 'selecteditors':
 						// b, c
+						// TODO: Need where column
 						$query['conds'][''] = $parsedFilter;
 						break;
 					case 'selectedits':
 						// b, c
+						// TODO: Need where column
 						$query['conds'][''] = $parsedFilter;
 						break;
 					case 'selectplatform':
 						// b, c
+						// TODO: Need where column
 						$query['conds'][''] = $parsedFilter;
 						break;
 				}
 			}
 		}
-		$db = $this->getDB();
 
 		$this->profileDBIn();
 		$res = $db->select( $query['table'], $query['fields'], $query['conds'], __METHOD__, $query['options'], $query['join_conds'] );
@@ -175,9 +187,12 @@ abstract class ApiAnalyticsBase extends ApiBase {
 
 	public function getAllowedParams() {
 		$params = array(
-			'months' => array(
+			'startmonth' => array(
 				ApiBase::PARAM_TYPE => 'string',
 				ApiBase::PARAM_REQUIRED => true,
+			),
+			'endmonth' => array(
+				ApiBase::PARAM_TYPE => 'string',
 			),
 			'normalized' => false,
 			'data' => array(
@@ -240,7 +255,8 @@ abstract class ApiAnalyticsBase extends ApiBase {
 
 	public function getParamDescription() {
 		return array(
-			'months' => 'First and last month to include in time series',
+			'startmonth' => 'Start month (if a range), else target month',
+			'endmonth' => 'End month (if a range)',
 			'normalized' => array(
 				'Only applies to squidpageviews, where data for each month are recalculated to 30 days (other metrics may follow)',
 				'(WMF Report Card will use normalized time series when available)',
