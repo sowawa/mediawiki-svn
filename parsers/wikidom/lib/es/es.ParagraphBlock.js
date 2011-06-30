@@ -6,11 +6,19 @@
 function ParagraphBlock( lines ) {
 	Block.call( this );
 	this.lines = lines || [];
-	this.lineMetrics = [];
 	this.$ = $( '<div class="editSurface-block editSurface-paragraph"></div>' )
 		.data( 'block', this );
 	this.flow = new TextFlow( this.$ );
+	this.updateText();
 }
+
+Block.prototype.updateText = function() {
+	var text = [];
+	for ( var i = 0; i < this.lines.length; i++ ) {
+		text.push( this.lines[i].text );
+	}
+	this.flow.setText( text.join( '\n' ) );
+};
 
 /**
  * Inserts content into a block at an offset.
@@ -29,6 +37,7 @@ Block.prototype.insertContent = function( offset, content ) {
 		}
 		lineOffset += line.text.length;
 	}
+	this.updateText();
 };
 
 /**
@@ -74,6 +83,7 @@ Block.prototype.deleteContent = function( offset, length ) {
 		// Remove lines after "from" up to and including "to"
 		this.lines = this.lines.splice( from.index + 1, to.index - from.index );
 	}
+	this.updateText();
 };
 
 /**
@@ -82,11 +92,7 @@ Block.prototype.deleteContent = function( offset, length ) {
  * @param $container {jQuery Selection} Container to render into
  */
 Block.prototype.renderContent = function() {
-	var text = [];
-	for ( var i = 0; i < this.lines.length; i++ ) {
-		text.push( this.lines[i].text );
-	}
-	this.lineMetrics = this.flow.render( text.join( '\n' ) );
+	this.flow.render();
 };
 
 /**

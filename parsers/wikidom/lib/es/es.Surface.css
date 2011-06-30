@@ -1,20 +1,24 @@
 body {
 	font-family: "Arial";
-	font-size: 0.8em;
+	font-size: 1em;
 	width: 100%;
 	margin: 0;
 	padding: 0;
+	overflow-y: scroll;
 }
 
 .editSurface-document {
-	/*border: solid 1px silver;*/
-	background-color: lightgreen;
+	border: solid 1px silver;
+	background-color: #dddddd;
 	cursor: text;
-	width: 50%;
+	margin-left: 12.5%;
+	margin-top: 1em;
+	width: 75%;
 }
 
 .editSurface-paragraph {
-	/*margin: 2em;*/
+	background-color: #eeeeee;
+	margin: 2em;
 }
 
 .editSurface-line {
@@ -23,8 +27,8 @@ body {
 	line-height: 1.5em;
 	cursor: text;
 	white-space: nowrap;
-	color: #eeeeee;
-	background-color: #333333;
+	color: #000000;
+	background-color: #ffffff;
 }
 
 .editSurface-line.empty {
