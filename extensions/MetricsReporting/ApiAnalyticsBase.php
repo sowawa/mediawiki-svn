@@ -2,6 +2,9 @@
 
 abstract class ApiAnalyticsBase extends ApiBase {
 
+	/**
+	 * @var DatabaseBase
+	 */
 	protected $mDb;
 
 	public function __construct( ApiBase $query, $moduleName, $paramPrefix = '' ) {
@@ -24,6 +27,7 @@ abstract class ApiAnalyticsBase extends ApiBase {
 					'tablePrefix' => '',
 				)
 			);
+			//$this->mDb->query( "SET names utf8" );
 		}
 		return $this->mDb;
 	}
@@ -43,7 +47,19 @@ abstract class ApiAnalyticsBase extends ApiBase {
 		if ( $params['normalized'] ) {
 			// Do data normalisation stuffs here
 		}
-		// if/switch on $params['data']
+
+		switch ( $params['data'] ) {
+			case 'timeseries':
+				break;
+			case 'timeseriesindexed':
+				break;
+			case 'percentagegrowthlastmonth':
+				break;
+			case 'percentagegrowthlasyyear':
+				break;
+			case 'percentagegrowthfullperiod':
+				break;
+		}
 
 		// $params['reportlanguage'] Change join based on select language
 
@@ -99,6 +115,13 @@ abstract class ApiAnalyticsBase extends ApiBase {
 		$result->addValue( 'metric', $this->getModuleName(), $data );
 	}
 
+	/**
+	 * Looks to see if the column is fully qualified (table.column)
+	 * If is, return only the column name
+	 *
+	 * @param $col Column name
+	 * @return string
+	 */
 	private function getColumnName( $col ) {
 		$pos = strpos( $col, '.' );
 
@@ -148,22 +171,70 @@ abstract class ApiAnalyticsBase extends ApiBase {
 		$select = array(
 			'selectregions' => array(
 				ApiBase::PARAM_ISMULTI => true,
-				ApiBase::PARAM_TYPE => array(
-					'as',
-					'c',
-					'eu',
-					'i',
-					'la',
-					'ma',
-					'na',
-					'us',
-					'w',
-				),
+				ApiBase::PARAM_TYPE => 'string',
 			),
 			'selectcountries' => array(
-				ApiBase::PARAM_ISMULTI => false,
-				ApiBase::PARAM_TYPE => array(
-					'AF',
+				ApiBase::PARAM_ISMULTI => true,
+				ApiBase::PARAM_TYPE => 'string',
+			),
+			'selectwebproperties' => array(
+				ApiBase::PARAM_ISMULTI => true,
+				ApiBase::PARAM_TYPE => 'string',
+			),
+			'selectprojects' => array(
+				ApiBase::PARAM_ISMULTI => true,
+				ApiBase::PARAM_TYPE => 'string',
+			),
+			'selectwikis' => array(
+				ApiBase::PARAM_ISMULTI => true,
+				ApiBase::PARAM_TYPE => 'string',
+			),
+			'selecteditors' => array(
+				ApiBase::PARAM_ISMULTI => true,
+				ApiBase::PARAM_TYPE => 'string',
+			),
+			'selectedits' => array(
+				ApiBase::PARAM_ISMULTI => true,
+				ApiBase::PARAM_TYPE => 'string',
+			),
+			'selectplatforms' => array(
+				ApiBase::PARAM_ISMULTI => true,
+				ApiBase::PARAM_TYPE => 'string',
+			),
+		);
+
+		return array_merge( $params, array_intersect_key( $select, array_flip( $this->getAllowedFilters() ) ) );
+	}
+
+	public function getParamDescription() {
+		return array(
+			'months' => 'First and last month to include in time series',
+			'normalized' => array(
+				'Only applies to squidpageviews, where data for each month are recalculated to 30 days (other metrics may follow)',
+				'(WMF Report Card will use normalized time series when available)',
+			),
+			'data' => array(
+					' timeseries - returns ordered list of value pairs, on efor each month within range',
+					' timeseriesindexed - like timeseries, but each month\'s value will be relative to oldest month\'s value which is always 100',
+					' percentagegrowthlastmonth, percentagegrowthlastyear, percentagegrowthfullperiod',
+					'  growth percentages are relative to oldest value (80->100=25%) although trivial, requesting these metrics through API ensures all clients use same calculation',
+			),
+			'reportlanguage' => 'Language code, used to expand region and country codes into region and country name',
+			'selectregions' => array(
+				'What region',
+				' as = Asia Pacific',
+				' c  = China',
+				' eu = Europe',
+				' i  = India',
+				' la = Latin-America',
+				' ma = Middle-East/Africa',
+				' na = North-America',
+				' us = United States',
+				' w  = World',
+			),
+			'selectcountries' => array(
+				'What country, based on ISO 3166-1 codes',
+					/*'AF',
 					'AX',
 					'AL',
 					'DZ',
@@ -410,86 +481,12 @@ abstract class ApiAnalyticsBase extends ApiBase {
 					'EH',
 					'YE',
 					'ZM',
-					'ZW',
-				),
+					'ZW',*/
 			),
 			'selectwebproperties' => array(
-				ApiBase::PARAM_ISMULTI => false,
-				ApiBase::PARAM_TYPE => 'string',
+				'',
+				'This parameter requires extra authorisation',
 			),
-			'selectprojects' => array(
-				ApiBase::PARAM_ISMULTI => false,
-				ApiBase::PARAM_TYPE => array(
-					'wb',
-					'wk',
-					'wm',
-					'wp',
-					'wq',
-					'ws',
-					'wv',
-					'co',
-					'wx',
-				),
-			),
-			'selectwikis' => array(
-				ApiBase::PARAM_ISMULTI => false,
-				ApiBase::PARAM_TYPE => 'string',
-			),
-			'selecteditors' => array(
-				ApiBase::PARAM_ISMULTI => false,
-				ApiBase::PARAM_TYPE => array(
-					'a',
-					'r',
-					'b',
-				),
-			),
-			'selectedits' => array(
-				ApiBase::PARAM_ISMULTI => false,
-				ApiBase::PARAM_TYPE => array(
-					'm',
-					'b',
-				),
-			),
-			'selectplatforms' => array(
-				ApiBase::PARAM_ISMULTI => false,
-				ApiBase::PARAM_TYPE => array(
-					'm',
-					'n'
-				),
-			),
-		);
-
-		return array_merge( $params, array_intersect_key( $select, array_flip( $this->getAllowedFilters() ) ) );
-	}
-
-	public function getParamDescription() {
-		return array(
-			'months' => 'First and last month to include in time series',
-			'normalized' => array(
-				'Only applies to squidpageviews, where data for each month are recalculated to 30 days (other metrics may follow)',
-				'(WMF Report Card will use normalized time series when available)',
-			),
-			'data' => array(
-					' timeseries - returns ordered list of value pairs, on efor each month within range',
-					' timeseriesindexed - like timeseries, but each month\'s value will be relative to oldest month\'s value which is always 100',
-					' percentagegrowthlastmonth, percentagegrowthlastyear, percentagegrowthfullperiod',
-					'  growth percentages are relative to oldest value (80->100=25%) although trivial, requesting these metrics through API ensures all clients use same calculation',
-			),
-			'reportlanguage' => 'Language code, used to expand region and country codes into region and country name',
-			'selectregions' => array(
-				'What region',
-				' as = Asia Pacific',
-				' c  = China',
-				' eu = Europe',
-				' i  = India',
-				' la = Latin-America',
-				' ma = Middle-East/Africa',
-				' na = North-America',
-				' us = United States',
-				' w  = World',
-			),
-			'selectcountries' => 'What country, based on ISO 3166-1 codes',
-			'selectwebproperties' => '',
 			'selectprojects' => array(
 				'Which projects',
 				' wb = Wikibooks',
@@ -502,7 +499,7 @@ abstract class ApiAnalyticsBase extends ApiBase {
 				' co = Commons',
 				' wx = Other projects',
 			),
-			'selectwikis' => '',
+			'selectwikis' => 'specify each wiki code as project:language, e.g. wp:en for English Wikipedia, wq:de for German Wikiquote',
 			'selecteditors' => 'a for anonymous, r for registered, b for bot',
 			'selectedits' => 'm for manual, b for bot-induced',
 			'selectplatform' => 'm for mobile, n for non-mobile',
