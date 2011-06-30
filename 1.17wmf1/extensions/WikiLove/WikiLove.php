@@ -16,6 +16,7 @@
  * http://www.gnu.org/copyleft/gpl.html
  *
  * Heart icon by Mark James (Creative Commons Attribution 3.0 License)
+ * Interface design by Brandon Harris
  */
 
 /**
@@ -37,7 +38,7 @@ EOT;
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'WikiLove',
-	'version' => '0.1',
+	'version' => '1.0',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:WikiLove',
 	'author' => array(
 		'Ryan Kaldari', 'Jan Paul Posma'
@@ -54,7 +55,8 @@ $wgWikiLoveLogging = false; // enable logging of giving of WikiLove
 $dir = dirname( __FILE__ ) . '/';
 
 // add autoload classes
-$wgAutoloadClasses['WikiLoveApi']                 = $dir . 'WikiLove.api.php';
+$wgAutoloadClasses['ApiWikiLove']                 = $dir . 'ApiWikiLove.php';
+$wgAutoloadClasses['ApiWikiLoveImageLog']         = $dir . 'ApiWikiLoveImageLog.php';
 $wgAutoloadClasses['WikiLoveHooks']               = $dir . 'WikiLove.hooks.php';
 $wgAutoloadClasses['WikiLoveLocal']               = $dir . 'WikiLove.local.php';
 
@@ -70,23 +72,36 @@ $wgHooks['LoadExtensionSchemaUpdates'][]          = 'WikiLoveHooks::loadExtensio
 $wgHooks['MakeGlobalVariablesScript'][]           = 'WikiLoveHooks::makeGlobalVariablesScript';
 
 // api modules
-$wgAPIModules['wikilove'] = 'WikiLoveApi';
+$wgAPIModules['wikilove'] = 'ApiWikiLove';
+$wgAPIModules['wikiloveimagelog'] = 'ApiWikiLoveImageLog';
 
 $extWikiLoveTpl = array(
 	'localBasePath' => dirname( __FILE__ ) . '/modules/ext.wikiLove',
 	'remoteExtPath' => 'WikiLove/modules/ext.wikiLove',
 );
 
-// resources
+// messages for default options, because we want to use them in the default
+// options module, but also for the user in the user options module
+$wgWikiLoveOptionMessages = array(
+	'wikilove-type-makeyourown',
+);
+
+// Because of bug 29608 we can't make a dependancy on a wiki module yet
+// For now using 'using' to load the wiki module from within init.
 $wgResourceModules += array(
 	'ext.wikiLove.icon' => $extWikiLoveTpl + array(
 		'styles' => 'ext.wikiLove.icon.css',
 		'position' => 'top',
 	),
+	'ext.wikiLove.defaultOptions' => $extWikiLoveTpl + array(
+		'scripts' => array(
+			'ext.wikiLove.defaultOptions.js',
+		),
+		'messages' => $wgWikiLoveOptionMessages,
+	),
 	'ext.wikiLove.startup' => $extWikiLoveTpl + array(
 		'scripts' => array(
 			'ext.wikiLove.core.js',
-			'ext.wikiLove.defaultOptions.js',
 		),
 		'styles' => 'ext.wikiLove.css',
 		'messages' => array(
@@ -98,42 +113,50 @@ $wgResourceModules += array(
 			'wikilove-get-started-list-3',
 			'wikilove-add-details',
 			'wikilove-image',
+			'wikilove-select-image',
 			'wikilove-header',
 			'wikilove-title',
 			'wikilove-enter-message',
 			'wikilove-omit-sig',
+			'wikilove-image-example',
 			'wikilove-button-preview',
 			'wikilove-preview',
 			'wikilove-notify',
 			'wikilove-button-send',
-			'wikilove-type-makeyourown',
 			'wikilove-err-header',
 			'wikilove-err-title',
 			'wikilove-err-msg',
 			'wikilove-err-image',
+			'wikilove-err-image-bad',
+			'wikilove-err-image-api',
 			'wikilove-err-sig',
 			'wikilove-err-gallery',
 			'wikilove-err-gallery-again',
+			'wikilove-what-is-this',
+			'wikilove-anon-warning',
+			'wikilove-commons-text',
+			'wikilove-commons-link',
+			'wikilove-commons-url',
+			'wikilove-err-preview-api',
+			'wikilove-err-send-api',
 		),
 		'dependencies' => array(
+			'ext.wikiLove.defaultOptions',
 			'jquery.ui.dialog',
 			'jquery.ui.button',
-			'jquery.elastic',
 			'jquery.localize',
+			'jquery.elastic',
 		),
 	),
 	'ext.wikiLove.local' => array(
 		'class' => 'WikiLoveLocal',
-		/* for information only, this is actually in the class!
-		'dependencies' => array(
-			'ext.wikiLove.startup',
-		),
-		*/
 	),
 	'ext.wikiLove.init' => $extWikiLoveTpl + array(
-		'scripts' => 'ext.wikiLove.init.js',
+		'scripts' => array(
+			'ext.wikiLove.init.js',
+		),
 		'dependencies' => array(
-			'ext.wikiLove.local',
+			'ext.wikiLove.startup',
 		),
 	),
 	'jquery.elastic' => array(

@@ -1,5 +1,5 @@
 <?php
-class WikiLoveApi extends ApiBase {
+class ApiWikiLove extends ApiBase {
 	public function execute() {
 		global $wgRequest, $wgWikiLoveLogging, $wgParser;
 		
@@ -31,15 +31,12 @@ class WikiLoveApi extends ApiBase {
 			'notminor' => true,
 		), false, array( 'wsEditToken' => $wgRequest->getSessionData( 'wsEditToken' ) ) ), true );
 		
+		$api->execute();
+		
 		if ( isset( $params['email'] ) ) {
 			$this->emailUser( $talk, $params['subject'], $params['email'], $params['token'] );
 		}
 
-		$api->execute();
-		
-		$result = $api->getResult();
-		$data = $result->getData();
-		
 		$this->getResult()->addValue( 'redirect', 'pageName', $talk->getPrefixedDBkey() );
 		$this->getResult()->addValue( 'redirect', 'fragment', Title::escapeFragmentForURL( $params['subject'] ) );
 		// note that we cannot use Title::makeTitle here as it doesn't sanitize the fragment
@@ -57,7 +54,7 @@ class WikiLoveApi extends ApiBase {
 		global $wgUser;
 		$dbw = wfGetDB( DB_MASTER );
 		$receiver = User::newFromName( $talk->getSubjectPage()->getBaseText() );
-		if ( $receiver->isAnon() ) {
+		if ( $receiver === false || $receiver->isAnon() ) {
 			$this->setWarning( 'Not logging anonymous recipients' );
 			return;
 		}
@@ -82,7 +79,13 @@ class WikiLoveApi extends ApiBase {
 			$this->setWarning( 'Action was not logged' );
 		}
 	}
-	
+
+	/**
+	 * @param $talk Title
+	 * @param $subject string
+	 * @param $text string
+	 * @param $token string
+	 */
 	private function emailUser( $talk, $subject, $text, $token ) {
 		global $wgRequest;
 		$api = new ApiMain( new FauxRequest( array(

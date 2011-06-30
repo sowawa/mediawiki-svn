@@ -1,3 +1,1 @@
-( function( $ ) {
-$( document ).ready( $.wikiLove.init );
-} )( jQuery );
+mw.loader.using( 'ext.wikiLove.local', jQuery.wikiLove.init );

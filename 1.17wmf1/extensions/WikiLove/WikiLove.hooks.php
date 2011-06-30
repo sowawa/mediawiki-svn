@@ -18,9 +18,12 @@ class WikiLoveHooks {
 		if ( $updater === null ) {
 			global $wgExtNewTables;
 			$wgExtNewTables[] = array( 'wikilove_log', dirname( __FILE__ ) . '/patches/WikiLoveLog.sql' );
+			$wgExtNewTables[] = array( 'wikilove_image_log', dirname( __FILE__ ) . '/patches/WikiLoveImageLog.sql' );
 		} else {
 			$updater->addExtensionUpdate( array( 'addTable', 'wikilove_log',
 				dirname( __FILE__ ) . '/patches/WikiLoveLog.sql', true ) );
+			$updater->addExtensionUpdate( array( 'addTable', 'wikilove_image_log', 
+				dirname( __FILE__ ) . '/patches/WikiLoveImageLog.sql', true ) );
 		}
 		return true;
 	}
@@ -56,9 +59,8 @@ class WikiLoveHooks {
 		
 		$title = self::getUserTalkPage( $skin->getTitle() );
 		if ( !is_null( $title ) ) {
-			$out->addModules( 'ext.wikiLove.icon' );
-			$out->addModules( 'ext.wikiLove.init' );
-			self::$recipient = $title->getText();
+			$out->addModules( array( 'ext.wikiLove.icon', 'ext.wikiLove.init' ) );
+			self::$recipient = $title->getBaseText();
 		}
 		return true;
 	}
@@ -70,6 +72,12 @@ class WikiLoveHooks {
 		global $wgUser;
 		$vars['wikilove-recipient'] = self::$recipient;
 		$vars['wikilove-edittoken'] = $wgUser->edittoken();
+		
+		$vars['wikilove-anon'] = 0;
+		if ( self::$recipient !== '' ) {
+			$receiver = User::newFromName( self::$recipient );
+			if ( $receiver === false || $receiver->isAnon() ) $vars['wikilove-anon'] = 1;
+		}
 		return true;
 	}
 	
@@ -104,7 +112,9 @@ class WikiLoveHooks {
 	 */
 	private static function skinConfigViewsLinks( $skin, &$views ) {
 		global $wgWikiLoveGlobal, $wgUser;
-		if ( !$wgWikiLoveGlobal && !$wgUser->getOption( 'wikilove-enabled' ) ) return true;
+		if ( !$wgWikiLoveGlobal && !$wgUser->getOption( 'wikilove-enabled' ) ) {
+			return true;
+		}
 		
 		if ( !is_null( self::getUserTalkPage( $skin->getTitle() ) ) ) {
 			$views['wikilove'] = array(
@@ -144,7 +154,9 @@ class WikiLoveHooks {
 		
 		$ns = $title->getNamespace();
 		// return quickly if we're in the wrong namespace anyway
-		if ( $ns != NS_USER && $ns != NS_USER_TALK ) return null;
+		if ( $ns != NS_USER && $ns != NS_USER_TALK ) {
+			return null;
+		}
 		
 		$baseTitle = Title::newFromText( $title->getBaseText(), $ns );
 		
