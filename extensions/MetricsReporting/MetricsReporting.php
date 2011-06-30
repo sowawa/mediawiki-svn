@@ -19,7 +19,7 @@ $wgMetricsDBserver         = '';
 $wgMetricsDBname           = '';
 $wgMetricsDBuser           = '';
 $wgMetricsDBpassword       = '';
-//$wgMetricsDBtype           = 'mysql';
+$wgMetricsDBtype           = 'mysql';
 
 $dir = dirname( __FILE__ ) . '/';
 

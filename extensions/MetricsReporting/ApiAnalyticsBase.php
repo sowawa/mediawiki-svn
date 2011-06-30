@@ -21,6 +21,7 @@ abstract class ApiAnalyticsBase extends ApiBase {
 					'user' => $wgMetricsDBuser,
 					'password' => $wgMetricsDBpassword,
 					'dbname' => $wgMetricsDBname,
+					'tablePrefix' => '',
 				)
 			);
 		}

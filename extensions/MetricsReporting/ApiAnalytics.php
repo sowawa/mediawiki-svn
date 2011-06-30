@@ -43,7 +43,7 @@ class ApiAnalytics extends ApiBase {
 	public function getAllowedParams() {
 		return array(
 			'metric' => array(
-				ApiBase::PARAM_ISMULTI => false,
+				ApiBase::PARAM_ISMULTI => true,
 				ApiBase::PARAM_TYPE => $this->metricModuleNames,
 				ApiBase::PARAM_REQUIRED => true,
 			),
