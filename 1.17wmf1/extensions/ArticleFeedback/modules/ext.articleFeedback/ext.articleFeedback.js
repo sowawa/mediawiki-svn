@@ -253,7 +253,7 @@ var config = {
 						'title': 'Special:UserLogin',
 						'type': 'signup',
 						'returnto': mw.config.get( 'wgPageName' )
-					} ), 'pitch-signup-accept' );
+					} ), 'pitch-join-accept-signup' );
 				return false;
 			},
 			'title': 'articlefeedback-pitch-thanks',
@@ -272,7 +272,7 @@ var config = {
 					mw.config.get( 'wgScript' ) + '?' + $.param( {
 						'title': 'Special:UserLogin',
 						'returnto': mw.config.get( 'wgPageName' )
-					} ), 'pitch-join-accept' );
+					} ), 'pitch-join-accept-login' );
 				return false;
 			}
 		},
@@ -280,7 +280,7 @@ var config = {
 			'weight': 2,
 			'condition': function() {
 				// An empty restrictions array means anyone can edit
-				var restrictions =  mw.config.get( 'wgRestrictionEdit' );
+				var restrictions =  mw.config.get( 'wgRestrictionEdit', [] );
 				if ( restrictions.length ) {
 					var groups =  mw.config.get( 'wgUserGroups' );
 					// Verify that each restriction exists in the user's groups

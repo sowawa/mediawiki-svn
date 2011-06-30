@@ -112,6 +112,7 @@ $.articleFeedback = {
 		<div class="articleFeedback-rating-label" rel="5"></div>\
 		<div class="articleFeedback-rating-clear"></div>\
 	</div>\
+	<div class="articleFeedback-rating-tooltip articleFeedback-visibleWith-form"></div>\
 	<div class="articleFeedback-rating-average articleFeedback-visibleWith-report"></div>\
 	<div class="articleFeedback-rating-meter articleFeedback-visibleWith-report"><div></div></div>\
 	<div class="articleFeedback-rating-count articleFeedback-visibleWith-report"></div>\
@@ -486,11 +487,12 @@ $.articleFeedback = {
 				.find( '.articleFeedback-ratings' )
 					.each( function() {
 						for ( var key in context.options.ratings ) {
+							var rating = context.options.ratings[key];
 							$( $.articleFeedback.tpl.rating )
 								.attr( 'rel', key )
 								.find( '.articleFeedback-label' )
-									.attr( 'title', mw.msg( context.options.ratings[key].tip ) )
-									.text( mw.msg( context.options.ratings[key].label ) )
+									.attr( 'title', mw.msg( rating.tip ) )
+									.text( mw.msg( rating.label ) )
 									.end()
 								.find( '.articleFeedback-rating-clear' )
 									.attr( 'title', mw.msg( 'articlefeedback-form-panel-clear' ) )
@@ -731,19 +733,30 @@ $.articleFeedback = {
 				.find( '.articleFeedback-rating-label' )
 					.hover(
 						function() {
-							$(this)
+							var	$el = $(this),
+								$rating = $el.closest( '.articleFeedback-rating' );
+							$el
 								.addClass( 'articleFeedback-rating-label-hover-head' )
 								.prevAll( '.articleFeedback-rating-label' )
 									.addClass( 'articleFeedback-rating-label-hover-tail' );
+							$rating
+								.find( '.articleFeedback-rating-tooltip' )
+								.text( mw.msg( 'articlefeedback-field-' + $rating.attr( 'rel' ) + '-tooltip-' + $el.attr( 'rel' ) ) )
+								.show();
 						},
 						function() {
-							$(this)
+							var	$el = $(this),
+								$rating = $el.closest( '.articleFeedback-rating' );
+							$el
 								.removeClass( 'articleFeedback-rating-label-hover-head' )
 								.prevAll( '.articleFeedback-rating-label' )
 									.removeClass( 'articleFeedback-rating-label-hover-tail' );
-							$.articleFeedback.fn.updateRating.call(
-								$(this).closest( '.articleFeedback-rating' )
-							);
+							$rating
+								.closest( '.articleFeedback-rating' )
+									.find( '.articleFeedback-rating-tooltip' )
+									.hide();
+
+							$.articleFeedback.fn.updateRating.call( $rating );
 						}
 					)
 					.mousedown( function() {
