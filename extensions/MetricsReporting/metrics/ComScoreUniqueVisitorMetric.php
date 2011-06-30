@@ -31,7 +31,7 @@ class ComScoreUniqueVisitorMetric extends ApiAnalyticsBase {
 
 	protected function getExamples() {
 		return array(
-			'api.php?action=analytics&metric=',
+			'api.php?action=analytics&metric=comscoreuniquevisitors',
 		);
 	}
 

@@ -16,7 +16,7 @@ class ApiAnalytics extends ApiBase {
 		global $wgMetricAPIModules;
 		// Instantiate requested modules
 		$modules = array();
-		$this->instantiateModules( $modules, 'prop', $wgMetricAPIModules );
+		$this->instantiateModules( $modules, 'metric', $wgMetricAPIModules );
 
 		// Execute all requested modules.
 		foreach ( $modules as $module ) {
@@ -41,11 +41,10 @@ class ApiAnalytics extends ApiBase {
 	}
 
 	public function getAllowedParams() {
-		global $wgMetricAPIModules;
 		return array(
 			'metric' => array(
 				ApiBase::PARAM_ISMULTI => false,
-				ApiBase::PARAM_TYPE => $wgMetricAPIModules,
+				ApiBase::PARAM_TYPE => $this->metricModuleNames,
 				ApiBase::PARAM_REQUIRED => true,
 			),
 		);
