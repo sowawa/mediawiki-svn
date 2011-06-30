@@ -40,7 +40,7 @@ abstract class ApiAnalyticsBase extends ApiBase {
 
 		$query['conds']['date'] = $params['months'];
 
-		if ( $params['normalised'] ) {
+		if ( $params['normalized'] ) {
 			// Do data normalisation stuffs here
 		}
 		// if/switch on $params['data']
@@ -90,13 +90,13 @@ abstract class ApiAnalyticsBase extends ApiBase {
 		foreach( $res as $row ) {
 			$item = array();
 			foreach( $fields as $field ) {
-				$item[$field] = $row->$field;
+				$item[$field] = $row->$$field;
 			}
 			$data[] = $item;
 		}
 
-		$result->setIndexedTagName( $data, 'metric' );
-		$result->addValue( 'quermetricy', $this->getModuleName(), $data );
+		$result->setIndexedTagName( $data, 'data' );
+		$result->addValue( 'metric', $this->getModuleName(), $data );
 	}
 
 	protected abstract function getQueryInfo();
@@ -116,7 +116,7 @@ abstract class ApiAnalyticsBase extends ApiBase {
 				ApiBase::PARAM_TYPE => 'string',
 				ApiBase::PARAM_REQUIRED => true,
 			),
-			'normalized' => 'bool',
+			'normalized' => false,
 			'data' => array(
 				ApiBase::PARAM_DFLT => 'timeseries',
 				ApiBase::PARAM_ISMULTI => true,
