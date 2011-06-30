@@ -128,6 +128,10 @@ var addParserModes = function(modes, parserClass, className, detail) {
 			'execute': function( context ) {
 				context.parserPlayground.parser = new parserClass();
 				context.parserPlayground.fn.initDisplay();
+				$.cookie('pp-editmode', className, {
+					expires: 30,
+					path: '/'
+				});
 			}
 		}
 	};
@@ -144,6 +148,7 @@ $(document).ready( function() {
 				'action': {
 					'type': 'callback',
 					'execute': function( context ) {
+						$.cookie('pp-editmode', null);
 						context.parserPlayground.fn.disable();
 					}
 				}
@@ -382,6 +387,10 @@ $(document).ready( function() {
 					}
 				}
 			} );
+			var editMode = $.cookie('pp-editmode');
+			if ( editMode && editMode in listItems ) {
+				listItems[editMode].action.execute( context );
+			}
 		}, 500 );
 	} else {
 		mw.log('No wiki editor');
