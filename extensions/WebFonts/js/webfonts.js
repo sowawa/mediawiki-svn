@@ -198,9 +198,13 @@
 			var $li = $( '<li />' ).attr('id','pt-webfont')
 			.append( $div );
 
-			//add to the left of top personal links
-			$($( '#p-personal ul' )[0]).prepend( $li );
-
+			//if rtl, add to the right of top personal links. Else, to the left
+			if($('body').hasClass('rtl')){
+				$($('#p-personal ul')[0]).append( $li );
+			}
+			else{
+				$($('#p-personal ul')[0]).prepend( $li );
+			}    
 			//see if there is a font in cookie
 			cookie_font = $.cookie('webfonts-font');
 			if(cookie_font == null){
