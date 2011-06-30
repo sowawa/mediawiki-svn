@@ -86,17 +86,26 @@ abstract class ApiAnalyticsBase extends ApiBase {
 		$result = $this->getResult();
 		$data = array();
 
-		$fields = $this->getQueryFields();
+		$fields = array_map( array( $this, 'getColumnName' ), $query['fields'] );
 		foreach( $res as $row ) {
 			$item = array();
 			foreach( $fields as $field ) {
-				$item[$field] = $row->$$field;
+				$item[$field] = $row->$field;
 			}
 			$data[] = $item;
 		}
 
 		$result->setIndexedTagName( $data, 'data' );
 		$result->addValue( 'metric', $this->getModuleName(), $data );
+	}
+
+	private function getColumnName( $col ) {
+		$pos = strpos( $col, '.' );
+
+		if ( !$pos ) {
+			return $col;
+		}
+		return substr( $col, $pos + 1 );
 	}
 
 	protected abstract function getQueryInfo();
