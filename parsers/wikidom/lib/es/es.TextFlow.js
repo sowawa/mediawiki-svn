@@ -7,14 +7,14 @@
 function TextFlow( $container ) {
 	this.$ = $container;
 	this.lines = [];
+	this.boundaries = [];
 	this.words = [];
-	this.html = [];
 }
 
 TextFlow.prototype.htmlEncode = function( text, trim ) {
 	if ( trim ) {
 		// Trailing whitespace
-		text = text.replace( /\s+$/, '' );
+		text = text.replace( / $/, '' );
 	}
 	return text
 		// Tags
@@ -32,9 +32,36 @@ TextFlow.prototype.htmlEncode = function( text, trim ) {
 
 /**
  * Gets an offset within from x and y coordinates.
+ * 
+ * @param x {Integer}
+ * @param y {Integer}
  */
 TextFlow.prototype.getOffset = function( x, y ) {
+	var line = 0,
+		lineCount = this.lines.length,
+		offset = 0,
+		top = 0,
+		bottom = 0;
 	
+	/*
+	 * Line finding
+	 * 
+	 * It's possible that a more efficient method could be used here, but the number of lines to be
+	 * iterated through will rarely be over 100, so it's unlikely that any significant gains will be
+	 * had. Plus, as long as we are iterating over each line, we can also sum up the top and bottom
+	 * positions, which is a nice benefit of this method.
+	 */
+	while ( line < lineCount ) {
+		bottom += lines[line].height;
+		if ( y >= top && y < bottom ) {
+			offset = lines[line].start;
+			break;
+		}
+		top = bottom;
+		line++;
+	};
+	
+	return offset;
 };
 
 TextFlow.prototype.getPosition = function( offset ) {
@@ -90,12 +117,13 @@ TextFlow.prototype.getPosition = function( offset ) {
 	 * measuring for those cases.
 	 */
 	if ( lines[line].start < offset ) {
-		var $lineRuler = $( '<div class="editSurface-line"></div>' ).appendTo( this.$ ),
-			lineRuler = $lineRuler[0];
-		lineRuler.innerHTML = this.htmlEncode( text.substring( lines[startLine].start, offset ) );
-		position.left = lineRuler.clientWidth;
-		$lineRuler.remove();
+		var $ruler = $( '<div class="editSurface-line"></div>' ).appendTo( this.$ ),
+			ruler = $ruler[0];
+		ruler.innerHTML = this.htmlEncode( text.substring( lines[startLine].start, offset ) );
+		position.left = ruler.clientWidth;
+		$ruler.remove();
 	} 
+	
 	return position;
 };
 
@@ -128,14 +156,15 @@ TextFlow.prototype.render = function( text ) {
 	 * end.
 	 * 
 	 * To avoid encoding the same words as HTML over and over while fitting text to lines, we also
-	 * build a list of HTML encoded strings for each gap between the offsets stored in the "words"
-	 * array. Slices of the "html" array can be joined, producing the encoded HTML of the words. In
-	 * the final pass, each line will get encoded 1 more time, to allow for whitespace trimming.
+	 * build a list of HTML encoded strings for each gap between the offsets stored in the
+	 * "boundaries" array. Slices of the "words" array can be joined, producing the encoded HTML of
+	 * the words. In the final pass, each line will get encoded 1 more time, to allow for whitespace
+	 * trimming.
 	 * 
-	 * Both "words" and "html" data is kept around between renders.
+	 * Both "boundaries" and "words" data is kept around between renders.
 	 */
-	var words = this.words = [0],
-		html = this.html = [],
+	var boundaries = this.boundaries = [],
+		words = this.words = [],
 		boundary = /([ \.\,\;\:\-\t\r\n\f])/g,
 		match,
 		right,
@@ -144,16 +173,17 @@ TextFlow.prototype.render = function( text ) {
 		// Include the boundary character in the range
 		right = match.index + 1;
 		// Store the boundary offset
-		words.push( right );
+		boundaries.push( right );
 		// Store the word's encoded HTML
-		html.push( this.htmlEncode( text.substring( left, right ) ) );
+		words.push( this.htmlEncode( text.substring( left, right ) ) );
 		// Remember the previous match
 		left = right;
 	}
-	// Ensure the words array ends in a boundary, which may automatically happen if the text ends
-	// in a period, for instance, but may not in other cases
-	if ( right !== text.length ) {
-		words.push( text.length );
+	// Ensure the "boundaries" array ends in a boundary, which may automatically happen if the text
+	// ends in a period, for instance, but may not in other cases
+	if ( right < text.length ) {
+		boundaries.push( text.length );
+		words.push( this.htmlEncode( text.substring( right, text.length ) ) );
 	}
 	
 	/*
@@ -164,63 +194,134 @@ TextFlow.prototype.render = function( text ) {
 	 * between renders.
 	 * 
 	 * TODO: It may be possible to improve the efficiency of this code by making a best guess and
-	 * working from there, rather than always starting with [i .. words.length], which results in
-	 * reducing the right position in all but the last line, and in most cases 2 or 3 times.
+	 * working from there, rather than always starting with [i .. boundaries.length], which results
+	 * in reducing the right position in all but the last line, and in most cases 2 or 3 times.
 	 */
-	var lines = this.lines = [],
-		lineOffset = 0,
-		$lineRuler = $( '<div class="editSurface-line"></div>' ).appendTo( this.$ ),
-		lineRuler = $lineRuler[0];	
-	while ( lineOffset < words.length ) {
-		var left = lineOffset,
-			right = words.length,
-			middle,
-			clampedLeft;
-		do {
-			// Place "middle" directly in the center of "left" and "right"
-			middle = Math.ceil( ( left + right ) / 2 );
-			// Prepare the line for measurement using pre-encoded HTML
-			lineRuler.innerHTML = html.slice( lineOffset, middle ).join( '' );
-			// Test for over/under using width of the rendered line
-			if ( lineRuler.clientWidth > width ) {
-				// Words after "middle" won't fit
-				right = middle - 1;
-			} else {
-				// Words before "middle" will fit
-				left = middle;
-			}
-		} while ( left < right );
-		
-		// TODO: Check if it fits yet, if not, do binary search within the really long word
-		
-		// On the last line, l and r will both equal words.length, which is not a valid index
-		clampedLeft = left === words.length ? left - 1 : left;
-		
-		// Collect line information
-		lines.push({
-			'text': text.substring( words[lineOffset], words[clampedLeft] ),
-			'start': words[lineOffset],
-			'end': words[clampedLeft],
-			'width': lineRuler.clientWidth
-			// 'height': (will be added after final rendering)
-		});
-		
-		// Step forward
-		lineOffset = left;
-	}
-	// Cleanup - technically this will get removed by the empty() call below, but if that changes
-	// we don't want to accidentally introduce any bugs, so explicit removal is preferred
-	$lineRuler.remove();
-	
-	// TODO: It may be more efficient to re-use existing lines
-	
-	// Make way for the new lines
 	this.$.empty();
-	for ( var i = 0; i < lines.length; i++ ) {
-		var $line = $( '<div class="editSurface-line"></div>' )
-			.attr( 'line-index', i )
-			.html( this.htmlEncode( text.substring( lines[i].start, lines[i].end ), true ) )
-			.appendTo( this.$ );
-		lines[i].height = $line.outerHeight();
+	var lines = this.lines = [],
+		offset = 0,
+		subOffset,
+		start = 0,
+		end,
+		fit,
+		subFit,
+		$ruler = $( '<div class="editSurface-line"></div>' ).appendTo( this.$ ),
+		ruler = $ruler[0],
+		lineText,
+		$line;
+	while ( offset < boundaries.length ) {
+		fit = this.fitWords( words, offset, ruler, width );
+		if ( fit.width > width ) {
+			// The first word didn't fit, we need to split it up
+			subOffset = start;
+			offset++;
+			end = boundaries[offset];
+			do {
+				subFit = this.fitCharacters( text, subOffset, end, ruler, width );
+				// If we were able to get the rest of the characters on the line OK
+				if (subFit.end === end) {
+					// Try to fit more words on the line
+					fit = this.fitWords( words, offset, ruler, width - subFit.width );
+					if ( fit.end > offset ) {
+						offset = fit.end - 1;
+						subFit.end = end = boundaries[offset];
+					}
+				}
+				this.appendLine( text, subOffset, subFit.end );
+				// Move on to another line
+				subOffset = subFit.end;
+			} while (subOffset < end);
+		} else {
+			offset = fit.end - 1;
+			end = boundaries[offset];
+			this.appendLine( text, start, end );
+		}
+		start = end;
+		offset++;
 	}
+	// Cleanup
+	$ruler.remove();
+};
+
+TextFlow.prototype.appendLine = function( text, start, end ) {
+	var lineText = text.substring( start, end );
+	$line = $( '<div class="editSurface-line" line-index="'
+			+ this.lines.length + '">' + this.htmlEncode( lineText, true ) + '</div>' )
+		.appendTo( this.$ );
+	// Collect line information
+	this.lines.push({
+		'text': lineText,
+		'start': start,
+		'end': end,
+		'width': $line.outerWidth(),
+		'height': $line.outerHeight()
+	});
+};
+
+/**
+ * Gets the index of the last word that fits inside the line
+ * 
+ * @param words {Array} List of HTML encoded strings, each a word to be fit
+ * @param offset {Integer} Index within "words" to begin fitting from
+ * @param line {HTMLElement} Element to take measurements with
+ * @param width {Integer} Maximum width to allow the line to extend to
+ * @return {Integer} Last index within "words" that contains a word that fits
+ * @return {Null} If not even the first word can fit
+ */
+TextFlow.prototype.fitWords = function( words, offset, ruler, width ) {
+	var start = offset,
+		end = words.length,
+		middle,
+		finalWidth;
+	do {
+		// Place "middle" directly in the center of "start" and "end"
+		middle = Math.ceil( ( start + end ) / 2 );
+		// Prepare the line for measurement using pre-encoded HTML
+		ruler.innerHTML = words.slice( offset, middle ).join( '' );
+		// Test for over/under using width of the rendered line
+		if ( ruler.clientWidth > width ) {
+			// Detect impossible fit (the first word won't fit by itself)
+			if (middle - offset === 1) {
+				start = middle;
+				break;
+			}
+			// Words after "middle" won't fit
+			end = middle - 1;
+		} else {
+			// Words before "middle" will fit
+			start = middle;
+		}
+	} while ( start < end );
+	// Final measurment
+	ruler.innerHTML = words.slice( offset, start ).join( '' );
+	return { 'end': start, 'width': ruler.clientWidth };
+};
+
+TextFlow.prototype.fitCharacters = function( text, offset, limit, ruler, width ) {
+	var start = offset,
+		end = limit,
+		middle,
+		finalWidth;
+	do {
+		// Place "middle" directly in the center of "start" and "end"
+		middle = Math.ceil( ( start + end ) / 2 );
+		// Fill the line with a portion of the text, encoded as HTML
+		ruler.innerHTML = this.htmlEncode( text.substring( offset, middle ) );
+		// Test for over/under using width of the rendered line
+		if ( ruler.clientWidth > width ) {
+			// Detect impossible fit (the first character won't fit by itself)
+			if (middle - offset === 1) {
+				start = middle;
+				break;
+			}
+			// Words after "middle" won't fit
+			end = middle - 1;
+		} else {
+			// Words before "middle" will fit
+			start = middle;
+		}
+	} while ( start < end );
+	// Final measurement
+	ruler.innerHTML = this.htmlEncode( text.substring( offset, start ) );
+	return { 'end': start, 'width': ruler.clientWidth };
 };
