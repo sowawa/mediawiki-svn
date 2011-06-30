@@ -10,11 +10,19 @@ class ComScoreUniqueVisitorMetric extends ApiAnalyticsBase {
 	}
 
 	protected function getQueryInfo() {
-		return array();
+		return array(
+			'table' => array( 'comscore', 'comscore_regions' ),
+			'conds' => array(),
+			'options' => array( 'ORDER BY' => 'date, project_code, region_code' ),
+			'join_conds' => array( 'comscore_regions' => array( 'LEFT JOIN', 'comscore.region_code = comscore_regions.region_code' ) ),
+		);
 	}
 
 	protected function getQueryFields() {
-		return array();
+		return array(
+			'date', 'country_code', /* 'country_name', */ 'comscore.region_code',
+			'region_name', 'web_property', 'project_code', 'reach', 'visitors'
+		);
 	}
 
 	public function getDescription() {

@@ -33,12 +33,17 @@ abstract class ApiAnalyticsBase extends ApiBase {
 		$query = $this->getQueryInfo();
 		$query['fields'] = $this->getQueryFields();
 
+		// Params needed for extra filters etc
+		// months, normalized, data, reportlanguage
+		// selectregions, selectcountries, selectwebproperties, selectprojects, selectwikis, selecteditors, selectedits, selectplatform
+
 		$db = $this->getDB();
 
 		$this->profileDBIn();
 		$res = $db->select( $query['table'], $query['fields'], $query['conds'], __METHOD__, $query['options'], $query['join_conds'] );
 		$this->profileDBOut();
 
+		$result = $this->getResult();
 		foreach( $res as $row ) {
 
 		}

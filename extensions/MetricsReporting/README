@@ -20,6 +20,19 @@ class BalloonsPerWikipedianMetric extends ApiAnalyticsBase {
 		);
 	}
 
+	protected function getQueryInfo() {
+		return array(
+			'table' => array(),
+			'conds' => array(),
+			'options' => array(),
+			'join_conds' => array() ),
+		);
+	}
+
+	protected function getQueryFields() {
+		return array();
+	}
+
 	public function getDescription() {
 		return 'Wikipedians like balloons, right?';
 	}
