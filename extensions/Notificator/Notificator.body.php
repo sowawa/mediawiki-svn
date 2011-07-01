@@ -28,7 +28,7 @@ public static function notificator_Render( $parser, $receiver = '', $receiverLab
 	if ( Notificator::receiverIsValid( $receiver ) ) {
 		// Valid e-mail address available, so build a hidden input with that address
 		// set, and a button
-		$receiverInputAndSubmitButton = Html::hidden( receiver, $receiver ) .
+		$receiverInputAndSubmitButton = Html::hidden( 'receiver', $receiver ) .
 		Html::element(
 			'input',
 			array( 'type' => 'submit',
@@ -63,8 +63,8 @@ public static function notificator_Render( $parser, $receiver = '', $receiverLab
 				     'method' => 'post',
 				     'enctype' => 'multipart/form-data'
 				),
-			Html::hidden( pageId, $wgTitle->getArticleID() ) .
-				Html::hidden( revId, $wgTitle->getLatestRevID() ) .
+			Html::hidden( 'pageId', $wgTitle->getArticleID() ) .
+				Html::hidden( 'revId', $wgTitle->getLatestRevID() ) .
 				$receiverInputAndSubmitButton
 		);
 
@@ -93,7 +93,7 @@ public static function receiverIsValid( $receiver ) {
 
 	// User::isValidEmailAddr() has been moved to Sanitizer::validateEmail as of
 	// MediaWiki version 1.18 (I think).
-	if ( method_exists( Sanitizer, validateEmail ) ) {
+	if ( method_exists( 'Sanitizer', 'validateEmail' ) ) {
 		if ( Sanitizer::validateEmail( $receiver ) ) {
 			$receiverIsValid = true;
 		}
@@ -128,7 +128,7 @@ public static function getLastNotifiedRevId( $pageId, $revId, $receiver ) {
 
 	$row = $dbr->fetchRow( $res );
 
-	$oldRevId = $row[rev_id];
+	$oldRevId = $row['rev_id'];
 
 	if ( ! $oldRevId ) {
 		$oldRevId = 0;

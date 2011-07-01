@@ -75,8 +75,8 @@ function execute( $par ) {
 			$mailSubject = htmlspecialchars( $mailSubjectPrefix . $pageTitle );
 
 			if ( Notificator::sendNotificationMail( $receiver, $mailSubject, $notificationText ) ) {
-				$output = '<strong>' . htmlspecialchars( wfMsg( 'notificator-following-e-mail-sent-to' ),
-					htmlspecialchars( $receiver ) ) . '</strong><div style="margin-top: 1em;"><h3>' .
+				$output = '<strong>' . htmlspecialchars( wfMsg( 'notificator-following-e-mail-sent-to',
+					$receiver ) ) . '</strong><div style="margin-top: 1em;"><h3>' .
 					wfMsg( 'notificator-subject' ) . ' ' . $mailSubject . '</h3><p>' . $notificationText .
 					'</p></div>';
 				Notificator::recordNotificationInDatabase( $pageId, $revId, $receiver );
