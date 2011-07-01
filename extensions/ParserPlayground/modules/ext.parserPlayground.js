@@ -89,17 +89,8 @@ var setupInspector = function(left, right, leftMap, rightMap) {
 			$('.parseNodeHighlight').removeClass('parseNodeHighlight');
 			match(this, function(node, other) {
 				$(node).addClass('parseNodeHighlight');
-				$(other).addClass('parseNodeHighlight');
-			});
-			event.preventDefault();
-			return false;
-		}).delegate('.parseNode', 'mouseleave', function(event) {
-			$('.parseNodeHighlight').removeClass('parseNodeHighlight');
-			event.preventDefault();
-			return false;
-		}).delegate('.parseNode', 'click', function(event) {
-			match(this, function(node, other) {
 				if (other) {
+					$(other).addClass('parseNodeHighlight');
 					// try to scroll the other into view. how... feasible is this? :DD
 					var visibleStart = b.scrollTop();
 					var visibleEnd = visibleStart + b.height();
@@ -114,6 +105,12 @@ var setupInspector = function(left, right, leftMap, rightMap) {
 					return false;
 				}
 			});
+			event.preventDefault();
+			return false;
+		}).delegate('.parseNode', 'mouseleave', function(event) {
+			$('.parseNodeHighlight').removeClass('parseNodeHighlight');
+			event.preventDefault();
+			return false;
 		});
 	};
 	makeMagic(left, right, rightMap);
@@ -257,9 +254,6 @@ $(document).ready( function() {
 					},
 					setupEditor: function($target) {
 						$target.delegate('.parseNode', 'click', function(event) {
-							if (context.parserPlayground.useInspector) {
-								return true;
-							}
 							var node = $(this).data('parseNode');
 							if ( node ) {
 								// Ok, not 100% kosher right now but... :D

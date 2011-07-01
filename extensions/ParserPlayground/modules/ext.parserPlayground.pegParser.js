@@ -33,25 +33,36 @@ PegParser.prototype.initSource = function(callback) {
 		callback();
 	} else {
 		if ( typeof parserPlaygroundPegPage !== 'undefined' ) {
-			$.get(wgScriptPath + '/api' + wgScriptExtension, {
-				format: 'json',
-				action: 'query',
-				prop: 'revisions',
-				rvprop: 'content',
-				titles: parserPlaygroundPegPage
-			}, function(data, xhr) {
-				$.each(data.query.pages, function(i, page) {
-					if (page.revisions && page.revisions.length) {
-						PegParser.src = page.revisions[0]['*'];
-					}
-				});
-				callback();
+			$.ajax({
+				url: wgScriptPath + '/api' + wgScriptExtension,
+				data: {
+					format: 'json',
+					action: 'query',
+					prop: 'revisions',
+					rvprop: 'content',
+					titles: parserPlaygroundPegPage
+				},
+				success: function(data, xhr) {
+					$.each(data.query.pages, function(i, page) {
+						if (page.revisions && page.revisions.length) {
+							PegParser.src = page.revisions[0]['*'];
+						}
+					});
+					callback()
+				},
+				dataType: 'json',
+				cache: false
 			}, 'json');
 		} else {
-			$.get(wgExtensionAssetsPath + '/ParserPlayground/modules/pegParser.pegjs.txt', function(data) {
-				PegParser.src = data;
-				callback();
-			}, 'text' );
+			$.ajax({
+				url: wgExtensionAssetsPath + '/ParserPlayground/modules/pegParser.pegjs.txt',
+				success: function(data) {
+					PegParser.src = data;
+					callback();
+				},
+				dataType: 'text',
+				cache: false
+			});
 		}
 	}
 };

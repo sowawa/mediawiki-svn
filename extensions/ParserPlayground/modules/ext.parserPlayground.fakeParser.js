@@ -305,6 +305,10 @@ FakeParser.prototype.treeToSource = function(tree, callback) {
 		return str;
 	};
 	var src;
+	if (typeof tree === "string") {
+		callback(tree);
+		return;
+	}
 	switch (tree.type) {
 		case 'page':
 			src = subParseArray(tree.content);
@@ -330,7 +334,7 @@ FakeParser.prototype.treeToSource = function(tree, callback) {
 			src += ']]';
 			break;
 		case 'h':
-			stub = '';
+			var stub = '';
 			for (var i = 0; i < tree.level; i++) {
 				stub += '=';
 			}
@@ -339,7 +343,18 @@ FakeParser.prototype.treeToSource = function(tree, callback) {
 		case 'ext':
 			src = '<' + tree.name;
 			if (tree.params) {
-				src += ' ' + tree.params;
+				for (var i = 0; i < tree.params.length; i++) {
+					var param = tree.params[i];
+					src += ' ';
+					src += param.name + '=';
+					if ('quote' in param) {
+						src += param.quote;
+					}
+					src += param.text;
+					if ('quote' in param) {
+						src += param.quote;
+					}
+				}
 			}
 			if ('content' in tree) {
 				src += '>';

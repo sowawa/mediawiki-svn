@@ -222,11 +222,7 @@ ref_empty
 
 ref_start
   = "<ref" params:ext_param* space* {
-  var obj = {};
-  for (var i = 0; i < params.length; i++) {
-    obj[params[i][0]] = params[i][1];
-  }
-  return obj;
+  return params;
 }
 
 ref_end
@@ -241,7 +237,8 @@ ref_content
 
 ext_param
   = space* name:ext_param_name "=" val:ext_param_val {
-  return [name, val];
+  val.name = name;
+  return val;
 }
 
 ext_param_name
@@ -250,6 +247,6 @@ ext_param_name
 }
 
 ext_param_val
-  = t:[0-9A-Za-z]+ { return t.join('') }
-  / "'" t:[^'>]+ "'" { return t.join('') }
-  / '"' t:[^">]+ '"' { return t.join('') }
+  = t:[0-9A-Za-z]+ { return {text: t.join('') } }
+  / "'" t:[^'>]+ "'" { return { quote: "'", text: t.join('') } }
+  / '"' t:[^">]+ '"' { return { quote: '"', text: t.join('') } }
