@@ -1,0 +1,3 @@
+[setup]
+chmod 707 phase3/config
+ln -s phase3 public_html
